@@ -2,7 +2,7 @@
 
 Math camp for the incoming Political Science PhD cohort at Pol Sci.
 
-**Instructors:** Parushya, Rong Qin
+**Instructors:**  Rong Qin, Parushya
 
 ## About
 
@@ -30,7 +30,11 @@ Or open `MathCamp2026.Rproj` in RStudio, which sets the working directory correc
 
 ## Collaborating
 
+We're a two-person repo (Rong Qin, Parushya), so we push directly to `main` — no pull requests required.
+
 1. Clone the repo and open `MathCamp2026.Rproj` in RStudio (or your editor of choice).
-2. Work on a feature branch (e.g. `git checkout -b yourname/session-2-content`) rather than committing directly to `main`.
-3. Open a pull request into `main` for review. Once merged, the GitHub Actions workflow automatically rebuilds and republishes the site.
-4. Render locally (`quarto render` and `quarto render slides`) before opening a PR to make sure both the webpage and slide versions build cleanly.
+2. `git pull` before you start working, to get the other person's latest changes.
+3. Edit, then render locally (`quarto render` and `quarto render slides`) to make sure both the webpage and slide versions build cleanly.
+4. `git add`, `git commit`, `git pull` (in case anything changed while you were working), then `git push`. The GitHub Actions workflow automatically rebuilds and republishes the site within a minute or two.
+
+If `git push` is rejected, it means the other person pushed first — `git pull` to merge their changes in, resolve any conflicts, then push again. Avoid `git push --force`.

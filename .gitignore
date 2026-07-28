@@ -9,6 +9,10 @@
 .RData
 .Rproj.user/
 
+# PDFs (not tracked going forward; existing archived PDFs already
+# committed under Resources/ are unaffected by this rule)
+*.pdf
+
 # macOS
 .DS_Store
 

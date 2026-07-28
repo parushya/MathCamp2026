@@ -2,6 +2,17 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Filesystem boundary
+
+Never read, write, or otherwise access any path outside this repo's root
+folder without asking first — including parent directories, sibling repos,
+the Desktop, home directory, and other system paths like `/tmp`. This
+applies on any machine this repo is checked out on, whoever is running
+Claude Code — Parushya, Rong Qin, or any other collaborator — not just one
+specific path on one specific computer. Use the scratchpad directory for
+temporary files instead. If a task seems to require going outside the repo
+root, stop and ask rather than doing it.
+
 ## Project overview
 
 This repo holds materials for MathCamp 2026, a math camp for the incoming Political Science PhD cohort at Pol Sci. Instructors are Parushya and Rong Qin.
