@@ -9,6 +9,8 @@ subtitle: "MathCamp 2026 — Session 1"
 - Math camp goals, logistics, and schedule
 - What are quantitative methods? Quantitative vs. qualitative methods
 
+$\beta = \alpha$
+
 ## Variables & Measures
 
 - Variables and constants
