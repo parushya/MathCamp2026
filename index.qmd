@@ -1,0 +1,25 @@
+# Welcome {.unnumbered}
+
+This is the interactive companion book for **MathCamp 2026**, the math camp
+for the incoming Political Science PhD cohort. It replaces last year's
+slide-based sessions (archived in `Resources/Slide Decks 2025/`) with
+interactive, web-based material built in Quarto.
+
+## How to use this book
+
+Each chapter corresponds to a lecture session and includes worked examples,
+practice problems, and interactive visualizations (via `plotly`, `Shiny`, or
+similar R tooling) to build intuition alongside the math. Every session is
+available in two forms:
+
+- **Webpage** (this book) — the full written version, with more detail and
+  worked examples.
+- **[Slides](slides/index.html)** — a slideshow version for in-class use.
+
+## Sessions
+
+1. Notation, Functions, and Limits
+2. Probability
+3. Calculus I: Differentiation & Optimization
+4. Calculus II: Integration & Multivariate Calculus
+5. Linear Algebra

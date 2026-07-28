@@ -1,0 +1,40 @@
+project:
+  type: book
+  output-dir: docs
+
+book:
+  title: "MathCamp 2026"
+  subtitle: "Math camp for the incoming Political Science PhD cohort"
+  author:
+    - Parushya
+    - Rong Qin
+  date: today
+  repo-url: https://github.com/
+  page-footer:
+    left: "MathCamp 2026, Political Science PhD Program"
+    right: "Built with Quarto"
+  sidebar:
+    style: docked
+    background: light
+  chapters:
+    - index.qmd
+    - part: "Lectures"
+      chapters:
+        - chapters/01-notation-functions-limits.qmd
+        - chapters/02-probability.qmd
+        - chapters/03-calculus-differentiation.qmd
+        - chapters/04-calculus-integration.qmd
+        - chapters/05-linear-algebra.qmd
+  appendices:
+    - chapters/references.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+    number-sections: true
+    code-fold: true
+    code-tools: true
+
+editor: source

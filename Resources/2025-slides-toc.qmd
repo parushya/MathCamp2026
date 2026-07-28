@@ -1,0 +1,177 @@
+---
+title: "MathCamp 2025 — Slide Deck Overview"
+subtitle: "Table of contents drafted from last year's slide-based sessions"
+author: "Draft prepared for MathCamp 2026 planning"
+date: today
+format:
+  pdf:
+    toc: false
+    number-sections: true
+    documentclass: report
+---
+
+## Purpose
+
+This document is a working table of contents (down to the third level) for the
+five slide decks used in the 2025 MathCamp session
+(`Resources/Slide Decks 2025/`). It's meant to give a quick overview of what
+was covered last year, to inform how we scope and sequence the new
+Quarto-book-based, interactive version of the material for 2026.
+
+## Lecture 1 — Notation, Functions, and Limits {#sec-l1}
+
+*`SlideDeck1_081825.pdf`, Aug 18, 2025*
+
+### Introduction & Logistics
+- Introductions
+- Math camp goals, logistics, and schedule
+- What are quantitative methods? Quantitative vs. qualitative methods
+
+### Variables & Measures
+- Variables and constants
+- Sets and sample spaces
+- Unions, intersections, subsets (set notation)
+- Levels of measurement, and why it matters
+
+### Rules of Algebra
+- Basic properties of arithmetic
+- Order of operations
+- Inequalities
+- Exponents, logarithms, and roots
+
+### Functions
+- Functions and their characteristics
+- Function composition
+- Graph examples: linear, quadratic, exponential functions
+- Functions and theorizing; Anscombe's quartet
+
+### Solving Equations
+- Special products and factoring
+- Quadratics and special products
+- Quadratic formula, checking work graphically
+
+### Series, Sequences, and Limits
+- Sequences and series
+- Limits (including piecewise function examples)
+
+---
+
+## Lecture 2 — Probability {#sec-l2}
+
+*`SlideDeck2_081925.pdf`, Aug 19, 2025*
+
+### Introduction
+- Agenda
+- Frequentist vs. Bayesian framing
+
+### Bayesian Probability
+- Definitions and notation
+- Relationships between events
+- Bayes' theorem (notation, derivation, examples)
+- The Monty Hall problem
+- Odds and odds ratios
+
+### Frequentist Statistics
+- Frequentist methods and uncertainty
+- Confidence interval demonstration in R
+
+### Combinations and Permutations
+- Review of factorials
+- Combinations (why the formulas work, worked examples)
+- Calculating probabilities; the birthday problem
+
+### Distributions
+- Random variables: discrete vs. continuous
+- Sample distributions and contingency tables
+- Probability distributions: PMF, PDF, CDF
+- Normal/Gaussian distribution and other distribution types
+
+---
+
+## Lecture 3 — Calculus I: Differentiation & Optimization {#sec-l3}
+
+*`SlideDeck3_082025.pdf`, Aug 20, 2025*
+
+### Differentiation
+- Types of change and derivatives
+- Discrete change (secant lines) vs. instantaneous change (tangent lines)
+- Rules of differentiation: power, product, quotient, and chain rules
+- Worked examples and practice
+
+### Optimization
+- What is optimization?
+- Extreme value theorem
+- Derivatives and the shape of a function
+- Inflection points vs. extrema
+- Worked optimization example
+
+---
+
+## Lecture 4 — Calculus II: Integration & Multivariate Calculus {#sec-l4}
+
+*`SlideDeck4_082125.pdf`, Aug 21, 2025*
+
+### Integration
+- Area under the curve
+- Integrals and the fundamental theorem of calculus
+- Reversing the rules of differentiation ("don't forget the C!")
+- Rules of integration, worked examples
+- Integration by substitution
+
+### Multivariate Calculus
+- Partial derivatives
+- Gradients and mixed partial derivatives
+- The Hessian matrix
+- Application: deriving Ordinary Least Squares (OLS)
+
+---
+
+## Lecture 5 — Linear Algebra {#sec-l5}
+
+*`SlideDeck5_082225.pdf`, Aug 22, 2025*
+
+### Equations & Systems of Equations
+- Equations and unknowns
+- Solving by substitution and elimination
+- More complex systems of equations
+
+### Vectors
+- Vectors and scalars
+- Vector addition/subtraction, scalar multiplication
+- Dot product
+
+### Matrices
+- Important types of matrices
+- Matrix transposition
+- Matrix addition, subtraction, and scalar multiplication
+- Matrix multiplication
+
+### Determinants
+- Solving for a determinant
+- Worked full example
+
+### Inverse Matrices
+- Deriving the inverse of a 2×2 matrix
+- Inverting 2×2 and 3×3 matrices (minors, cofactor matrix, transpose)
+
+### Matrix & Vector Properties
+- Linear independence
+- Matrix rank
+
+### Systems of Equations as Matrices
+- Solving systems via matrix inversion, worked example
+- Overdetermined systems of equations
+- Best-fit line via matrices (connects back to OLS from Lecture 4)
+
+---
+
+## Notes for the 2026 redesign
+
+- Topic flow across the week runs: algebra/functions/limits → probability →
+  differential calculus → integral/multivariate calculus → linear algebra,
+  with OLS introduced twice (as a multivariate-calculus application in
+  Lecture 4, and derived via matrices in Lecture 5).
+- Candidate spots for interactive visualizations: set operations (Venn
+  diagrams), function graphing, limits, the Monty Hall problem, distribution
+  shapes (PMF/PDF/CDF), tangent/secant lines, optimization surfaces,
+  gradients/Hessian, and matrix operations (esp. determinants and inverses).

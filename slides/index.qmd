@@ -1,0 +1,16 @@
+---
+title: "MathCamp 2026 — Slides"
+format:
+  html:
+    theme: cosmo
+---
+
+Slide-deck versions of each MathCamp 2026 session. For the full written
+version of each session (with more detail and worked examples), see the
+[webpage book](../index.html).
+
+1. [Notation, Functions, and Limits](01-notation-functions-limits.html)
+2. [Probability](02-probability.html)
+3. [Calculus I: Differentiation & Optimization](03-calculus-differentiation.html)
+4. [Calculus II: Integration & Multivariate Calculus](04-calculus-integration.html)
+5. [Linear Algebra](05-linear-algebra.html)

@@ -1,0 +1,46 @@
+---
+title: "Notation, Functions, and Limits"
+subtitle: "MathCamp 2026 — Session 1"
+---
+
+## Introduction & Logistics
+
+- Introductions
+- Math camp goals, logistics, and schedule
+- What are quantitative methods? Quantitative vs. qualitative methods
+
+## Variables & Measures
+
+- Variables and constants
+- Sets and sample spaces
+- Unions, intersections, subsets (set notation)
+- Levels of measurement, and why it matters
+
+## Rules of Algebra
+
+- Basic properties of arithmetic
+- Order of operations
+- Inequalities
+- Exponents, logarithms, and roots
+
+## Functions
+
+- Functions and their characteristics
+- Function composition
+- Graph examples: linear, quadratic, exponential functions
+- Functions and theorizing; Anscombe's quartet
+
+## Solving Equations
+
+- Special products and factoring
+- Quadratics and special products
+- Quadratic formula, checking work graphically
+
+## Series, Sequences, and Limits
+
+- Sequences and series
+- Limits (including piecewise function examples)
+
+## {.center}
+
+**Full written version:** [webpage chapter](../chapters/01-notation-functions-limits.html)

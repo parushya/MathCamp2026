@@ -1,0 +1,15 @@
+project:
+  type: default
+  output-dir: ../docs/slides
+  render:
+    - "*.qmd"
+
+format:
+  revealjs:
+    theme: simple
+    slide-number: true
+    chalkboard: true
+    css: slides.css
+    footer: "MathCamp 2026"
+
+editor: source

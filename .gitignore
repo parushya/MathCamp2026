@@ -1,0 +1,15 @@
+# Quarto
+.quarto/
+/docs/
+*_files/
+*_cache/
+
+# R
+.Rhistory
+.RData
+.Rproj.user/
+
+# macOS
+.DS_Store
+
+**/*.quarto_ipynb

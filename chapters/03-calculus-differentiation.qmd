@@ -1,0 +1,20 @@
+# Calculus I: Differentiation & Optimization
+
+::: {.callout-note}
+Prefer slides? See the [slideshow version](../slides/03-calculus-differentiation.html) of this session.
+:::
+
+## Differentiation
+
+- Types of change and derivatives
+- Discrete change (secant lines) vs. instantaneous change (tangent lines)
+- Rules of differentiation: power, product, quotient, and chain rules
+- Worked examples and practice
+
+## Optimization
+
+- What is optimization?
+- Extreme value theorem
+- Derivatives and the shape of a function
+- Inflection points vs. extrema
+- Worked optimization example

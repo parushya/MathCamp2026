@@ -1,0 +1,24 @@
+# Linear Algebra
+
+::: {.callout-note}
+Prefer slides? See the [slideshow version](../slides/05-linear-algebra.html) of this session.
+:::
+
+## Equations & Systems of Equations
+
+- Equations and unknowns
+- Solving by substitution and elimination
+- More complex systems of equations
+
+## Vectors
+
+- Vectors and scalars
+- Vector addition/subtraction, scalar multiplication
+- Dot product
+
+## Matrices
+
+- Important types of matrices
+- Matrix transposition
+- Matrix addition, subtraction, and scalar multiplication
+- Matrix multiplication

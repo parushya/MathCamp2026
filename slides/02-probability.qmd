@@ -1,0 +1,39 @@
+---
+title: "Probability"
+subtitle: "MathCamp 2026 — Session 2"
+---
+
+## Introduction
+
+- Agenda
+- Frequentist vs. Bayesian framing
+
+## Bayesian Probability
+
+- Definitions and notation
+- Relationships between events
+- Bayes' theorem (notation, derivation, examples)
+- The Monty Hall problem
+- Odds and odds ratios
+
+## Frequentist Statistics
+
+- Frequentist methods and uncertainty
+- Confidence interval demonstration in R
+
+## Combinations and Permutations
+
+- Review of factorials
+- Combinations (why the formulas work, worked examples)
+- Calculating probabilities; the birthday problem
+
+## Distributions
+
+- Random variables: discrete vs. continuous
+- Sample distributions and contingency tables
+- Probability distributions: PMF, PDF, CDF
+- Normal/Gaussian distribution and other distribution types
+
+## {.center}
+
+**Full written version:** [webpage chapter](../chapters/02-probability.html)
