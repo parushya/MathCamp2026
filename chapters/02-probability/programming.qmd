@@ -1,0 +1,47 @@
+## Programming Lecture {#sec-02-programming}
+
+### Simulating a random process: coin flips
+
+```{r}
+set.seed(2026)
+flips <- sample(c("H", "T"), size = 10000, replace = TRUE)
+table(flips) / length(flips)
+```
+
+### The Monty Hall problem, by simulation
+
+```{r}
+monty_hall <- function(switch = TRUE) {
+  doors <- 1:3
+  car <- sample(doors, 1)
+  pick <- sample(doors, 1)
+  reveal <- sample(setdiff(doors, c(car, pick)), 1)
+  final <- if (switch) setdiff(doors, c(pick, reveal)) else pick
+  final == car
+}
+
+set.seed(2026)
+n <- 5000
+p_switch <- mean(replicate(n, monty_hall(switch = TRUE)))
+p_stay <- mean(replicate(n, monty_hall(switch = FALSE)))
+data.frame(strategy = c("switch", "stay"), win_rate = c(p_switch, p_stay))
+```
+
+### Combinations: the birthday problem
+
+```{r}
+birthday_prob <- function(n_people) 1 - exp(lchoose(365, n_people) + lfactorial(n_people) - n_people * log(365))
+sapply(c(10, 23, 50), birthday_prob)
+```
+
+### Distributions: PMF, CDF, and the normal curve
+
+```{r}
+x <- seq(-4, 4, length.out = 200)
+plot(x, dnorm(x), type = "l", lwd = 2,
+     main = "Standard normal density", ylab = "density")
+```
+
+```{r}
+pnorm(1.96) - pnorm(-1.96) # probability mass within ~2 SD
+```

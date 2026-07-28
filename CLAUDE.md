@@ -12,34 +12,37 @@ Last year's camp (2025) was slide-based; the decks are archived in `Resources/Sl
 
 The interactive website is an R-based Quarto book, with interactive visualizations to be embedded directly in the book pages (e.g. via Shiny, plotly, or similar R interactive-viz tooling). Content is primarily `.qmd` files rendered by Quarto. `MathCamp2026.Rproj` is the RStudio project file for the repo.
 
-Every session ships in **two parts**: a webpage chapter (`chapters/`, detailed book format) and a slideshow (`slides/`, `revealjs`, for in-class use). Keep both in sync when editing content for a session, and cross-link them (see existing chapters/slides for the pattern).
+Every session is its own book chapter (a "part" page) with **two sub-chapters**:
+`slides.qmd` (embeds the session's standalone `revealjs` deck from `slides/`) and
+`programming.qmd` (a webpage with runnable R code — the "programming lecture").
+Keep the two in sync when editing a session's content: the slide bullets live in
+`slides/0N-*.qmd`, the code walkthrough lives in `chapters/0N-*/programming.qmd`.
 
 ## Build/render commands
 
-- `quarto render` — renders the book (webpages) to `docs/` (gitignored, only produced locally or in CI).
-- `quarto render slides` — renders the slideshows to `docs/slides/` (run from repo root; `slides/_quarto.yml` sets `output-dir: ../docs/slides`).
-- `quarto preview` — live-reloading local preview of the book. Run `quarto preview` from inside `slides/` to preview slides.
-- `quarto render chapters/02-probability.qmd` — render a single webpage chapter.
+- `quarto render` — renders the book (all sessions' `index.qmd`/`slides.qmd`/`programming.qmd`) to `docs/` (gitignored, only produced locally or in CI).
+- `quarto render slides` — renders the standalone `revealjs` decks to `docs/slides/` (run from repo root; `slides/_quarto.yml` sets `output-dir: ../docs/slides`). **Render the book after this** (or re-render both) since each session's `slides.qmd` sub-chapter iframes the standalone deck — the iframe just needs the target file to exist at render time, order doesn't otherwise matter, but do render both before checking links.
+- `quarto preview` — live-reloading local preview of the book. Run `quarto preview` from inside `slides/` to preview the standalone decks.
+- `quarto render chapters/02-probability/programming.qmd` — render a single sub-chapter.
 - Both `quarto render` and `quarto render slides` must succeed before opening a PR — this is enforced implicitly since `.github/workflows/publish.yml` runs both on every push to `main`.
 
 ## Book structure
 
-- `_quarto.yml` — book config: title, chapter list/order, HTML theme (`cosmo`) and options. `output-dir: docs`.
+- `_quarto.yml` — book config: title, nested chapter list/order (`part:` + `chapters:` per session), HTML theme (`cosmo`) and options. `output-dir: docs`.
 - `index.qmd` — book landing page (`Welcome`), links out to `slides/index.html`.
-- `chapters/` — one `.qmd` file per lecture session, currently placeholders mirroring the 2025 slide-deck sessions, each with a callout linking to its `slides/` counterpart:
-  - `01-notation-functions-limits.qmd`
-  - `02-probability.qmd`
-  - `03-calculus-differentiation.qmd`
-  - `04-calculus-integration.qmd`
-  - `05-linear-algebra.qmd`
-  - `references.qmd` — appendix
+- `chapters/0N-<session-name>/` — one folder per lecture session, each with:
+  - `index.qmd` — the part/session landing page (short overview + links to the two sub-chapters).
+  - `slides.qmd` — sub-chapter that embeds the session's `revealjs` deck via `<iframe>` (`src="../../slides/0N-*.html"`) plus a "open full-screen" link and a link back to the deck's `.qmd` source.
+  - `programming.qmd` — sub-chapter with the programming lecture: R code chunks (executed by Quarto/knitr at render time) walking through the session's material.
+  - Sessions: `01-notation-functions-limits/`, `02-probability/`, `03-calculus-differentiation/`, `04-calculus-integration/`, `05-linear-algebra/`.
+- `chapters/references.qmd` — appendix.
 - `styles.css` — book-wide custom CSS, linked from `_quarto.yml`.
 
 ## Slides structure
 
-- `slides/_quarto.yml` — own Quarto project (`type: default`, `format: revealjs`, `output-dir: ../docs/slides`), independent of the book project.
-- `slides/index.qmd` — slide-deck index, links back to the book (`../index.html`).
-- `slides/0N-*.qmd` — one `revealjs` deck per session, filenames mirroring `chapters/`. Each ends with a link back to its full webpage chapter (`../chapters/0N-*.html`).
+- `slides/_quarto.yml` — own Quarto project (`type: default`, `format: revealjs`, `output-dir: ../docs/slides`), independent of the book project. This is the **source of truth** for slide content — the book's `slides.qmd` sub-chapters just embed the rendered output.
+- `slides/index.qmd` — slide-deck index (browsable on its own, outside the book), links back to the book (`../index.html`).
+- `slides/0N-*.qmd` — one `revealjs` deck per session, filenames mirroring `chapters/0N-*/`. Each ends with a link to its programming lecture (`../chapters/0N-*/programming.html`).
 - `slides/slides.css` — slide-theme overrides.
 
 ## Publishing / GitHub Pages
@@ -53,4 +56,4 @@ Every session ships in **two parts**: a webpage chapter (`chapters/`, detailed b
 
 ## Interactive visualizations
 
-Not yet added. When embedding Shiny/plotly/etc., put visualization code directly in the relevant chapter's `.qmd` (R code chunks); if a chapter needs a live Shiny app rather than a static widget, it will need `format: html` with a Shiny runtime (`server: shiny`) and cannot be rendered as a fully static page in `docs/` — flag this tradeoff when it comes up. Widgets can be mirrored into the slide deck too, but keep in mind revealjs slides are a more cramped canvas than the webpage.
+Base-R only so far (each `programming.qmd` uses only base graphics/stats to keep CI dependency-free — no `renv.lock` exists yet, so `r-lib/actions/setup-r` in CI installs nothing extra). When embedding `plotly`/`Shiny`/etc., put visualization code directly in the relevant session's `programming.qmd` (R code chunks), and add the package to a `renv.lock` (or `DESCRIPTION`) so CI can install it. If a chapter needs a live Shiny app rather than a static widget, it will need `format: html` with a Shiny runtime (`server: shiny`) and cannot be rendered as a fully static page in `docs/` — flag this tradeoff when it comes up.

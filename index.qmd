@@ -7,14 +7,13 @@ interactive, web-based material built in Quarto.
 
 ## How to use this book
 
-Each chapter corresponds to a lecture session and includes worked examples,
-practice problems, and interactive visualizations (via `plotly`, `Shiny`, or
-similar R tooling) to build intuition alongside the math. Every session is
-available in two forms:
+Each session is its own chapter with two sub-chapters:
 
-- **Webpage** (this book) — the full written version, with more detail and
-  worked examples.
-- **[Slides](slides/index.html)** — a slideshow version for in-class use.
+- **Slides** — the in-class slideshow (also browsable on its own at
+  [`slides/index.html`](slides/index.html)).
+- **Programming Lecture** — a webpage walking through the same material with
+  runnable R code, worked examples, and (eventually) interactive
+  visualizations via `plotly`, `Shiny`, or similar R tooling.
 
 ## Sessions
 

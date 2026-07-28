@@ -20,4 +20,4 @@ subtitle: "MathCamp 2026 — Session 4"
 
 ## {.center}
 
-**Full written version:** [webpage chapter](../chapters/04-calculus-integration.html)
+**Programming lecture:** [webpage chapter](../chapters/04-calculus-integration/programming.html)

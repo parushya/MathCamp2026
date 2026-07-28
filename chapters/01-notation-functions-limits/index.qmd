@@ -1,0 +1,10 @@
+# Notation, Functions, and Limits
+
+Session 1 covers math notation, algebra review, functions, and an
+introduction to limits — the foundation for everything else in the camp.
+
+This session has two parts:
+
+- **[Slides](slides.qmd)** — the in-class slideshow.
+- **[Programming Lecture](programming.qmd)** — a webpage walking through the
+  same material with runnable R code.

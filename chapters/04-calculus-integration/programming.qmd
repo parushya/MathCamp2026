@@ -1,0 +1,50 @@
+## Programming Lecture {#sec-04-programming}
+
+### Area under the curve, numerically
+
+```{r}
+f <- function(x) x^2
+result <- integrate(f, lower = 0, upper = 3)
+result
+```
+
+```{r}
+# Analytic check: integral of x^2 from 0 to 3 is x^3/3 -> 9
+curve(f, from = -0.5, to = 3.5, lwd = 2, main = "Area under f(x) = x^2, [0, 3]")
+xs <- seq(0, 3, length.out = 200)
+polygon(c(xs, rev(xs)), c(f(xs), rep(0, length(xs))), col = rgb(0, 0, 1, 0.2), border = NA)
+```
+
+### Reversing differentiation: symbolic antiderivative check
+
+```{r}
+# f(x) = x^2, F(x) = x^3/3 + C; verify F' = f
+F <- function(x) x^3 / 3
+h <- 1e-6
+x0 <- 2
+(F(x0 + h) - F(x0 - h)) / (2 * h) # numerical derivative of F at x0
+f(x0)
+```
+
+### Multivariate calculus: partial derivatives and the gradient
+
+```{r}
+f2 <- function(x, y) x^2 * y + y^3
+
+partial_x <- function(x, y, h = 1e-6) (f2(x + h, y) - f2(x - h, y)) / (2 * h)
+partial_y <- function(x, y, h = 1e-6) (f2(x, y + h) - f2(x, y - h)) / (2 * h)
+
+gradient <- c(partial_x(1, 2), partial_y(1, 2))
+gradient
+```
+
+### Application: deriving OLS with `lm()`
+
+```{r}
+set.seed(2026)
+x <- rnorm(100)
+y <- 2 + 3 * x + rnorm(100, sd = 0.5)
+
+fit <- lm(y ~ x)
+coef(fit) # OLS solves the same minimization problem worked out by hand in the slides
+```

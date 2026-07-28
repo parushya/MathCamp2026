@@ -1,0 +1,11 @@
+## Slides {#sec-01-slides}
+
+::: {.callout-note}
+[Open the slides full-screen](../../slides/01-notation-functions-limits.html){target="_blank"}
+:::
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/01-notation-functions-limits.html" height="500" width="100%" style="border: 1px solid #ddd;"></iframe>
+```
+
+Slide source: `slides/01-notation-functions-limits.qmd`.

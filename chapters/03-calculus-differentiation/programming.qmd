@@ -1,0 +1,38 @@
+## Programming Lecture {#sec-03-programming}
+
+### Numerical differentiation: the secant approaching the tangent
+
+```{r}
+f <- function(x) x^3 - 2 * x
+secant_slope <- function(f, x, h) (f(x + h) - f(x)) / h
+
+x0 <- 1
+hs <- 10^-(1:6)
+data.frame(h = hs, secant_slope = secant_slope(f, x0, hs))
+```
+
+```{r}
+# Analytic derivative f'(x) = 3x^2 - 2, so f'(1) = 1
+f_prime <- function(x) 3 * x^2 - 2
+f_prime(1)
+```
+
+### Differentiation rules by symbolic differentiation
+
+```{r}
+D(expression(x^3 - 2 * x), "x")
+D(expression(sin(x) * x^2), "x") # product rule
+```
+
+### Optimization: finding an extremum
+
+```{r}
+g <- function(x) (x - 2)^2 + 1
+result <- optimize(g, interval = c(-10, 10))
+result
+```
+
+```{r}
+curve(g, from = -2, to = 6, lwd = 2, main = "g(x) = (x - 2)^2 + 1")
+points(result$minimum, result$objective, col = "red", pch = 19)
+```

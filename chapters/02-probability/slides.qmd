@@ -1,0 +1,11 @@
+## Slides {#sec-02-slides}
+
+::: {.callout-note}
+[Open the slides full-screen](../../slides/02-probability.html){target="_blank"}
+:::
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/02-probability.html" height="500" width="100%" style="border: 1px solid #ddd;"></iframe>
+```
+
+Slide source: `slides/02-probability.qmd`.

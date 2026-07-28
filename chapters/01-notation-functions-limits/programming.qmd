@@ -1,0 +1,44 @@
+## Programming Lecture {#sec-01-programming}
+
+This page walks through Session 1's ideas using R. Edit the code chunks
+below directly — they run when the book is rendered.
+
+### Defining and plotting functions
+
+```{r}
+f <- function(x) x^2 - 3 * x + 2
+f(0)
+f(2)
+```
+
+```{r}
+curve(f, from = -2, to = 5, lwd = 2,
+      main = "f(x) = x^2 - 3x + 2", ylab = "f(x)")
+abline(h = 0, lty = 2, col = "gray50")
+```
+
+### Function composition
+
+```{r}
+g <- function(x) sqrt(x)
+fg <- function(x) g(f(x))
+fg(3)
+```
+
+### Solving equations: roots of a quadratic
+
+```{r}
+roots <- polyroot(c(2, -3, 1)) # coefficients of 2 - 3x + x^2, constant first
+Re(roots)
+```
+
+### Limits: approaching a value numerically
+
+```{r}
+h <- function(x) (x^2 - 1) / (x - 1)
+xs <- 1 + 10^-(1:6)
+data.frame(x = xs, h_x = h(xs))
+```
+
+As `x` approaches 1, `h(x)` approaches 2 — matching the algebraic
+simplification `h(x) = x + 1` for `x != 1`.

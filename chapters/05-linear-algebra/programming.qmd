@@ -1,0 +1,46 @@
+## Programming Lecture {#sec-05-programming}
+
+### Systems of equations
+
+```{r}
+# 2x + y = 5
+# x - y = 1
+A <- matrix(c(2, 1, 1, -1), nrow = 2, byrow = TRUE)
+b <- c(5, 1)
+solve(A, b)
+```
+
+### Vectors
+
+```{r}
+u <- c(1, 2, 3)
+v <- c(4, -1, 0)
+
+u + v
+2 * u
+sum(u * v) # dot product
+```
+
+### Matrices
+
+```{r}
+M <- matrix(1:6, nrow = 2)
+M
+t(M) # transpose
+```
+
+```{r}
+A <- matrix(c(1, 2, 3, 4), nrow = 2)
+B <- matrix(c(5, 6, 7, 8), nrow = 2)
+
+A + B
+A %*% B # matrix multiplication
+```
+
+### Determinants and inverses
+
+```{r}
+det(A)
+solve(A) # matrix inverse
+A %*% solve(A) # should be (close to) the identity matrix
+```

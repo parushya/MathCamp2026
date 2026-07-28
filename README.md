@@ -6,12 +6,12 @@ Math camp for the incoming Political Science PhD cohort at Pol Sci.
 
 ## About
 
-This repo holds the materials for MathCamp 2026. Last year's session was slide-based (see `Resources/Slide Decks 2025`); this year we're moving to interactive, website-based material, published to GitHub Pages. Every session ships in two forms: a **webpage** chapter (detailed, book-style) and a **slideshow** (for in-class use).
+This repo holds the materials for MathCamp 2026. Last year's session was slide-based (see `Resources/Slide Decks 2025`); this year we're moving to interactive, website-based material, published to GitHub Pages. Every session is a book chapter with **two sub-chapters**: a **Slides** page (the in-class slideshow) and a **Programming Lecture** page (runnable R code walking through the material).
 
 ## Contents
 
-- `_quarto.yml`, `index.qmd`, `chapters/` — the webpage/book source.
-- `slides/` — the slideshow source (own `_quarto.yml`, one `.qmd` per session, `revealjs` format).
+- `_quarto.yml`, `index.qmd`, `chapters/0N-<session>/` — the book source. Each session folder has `index.qmd` (overview), `slides.qmd` (embeds the slideshow), and `programming.qmd` (the R code walkthrough — edit this to add/change worked examples).
+- `slides/` — the standalone slideshow source (own `_quarto.yml`, one `.qmd` per session, `revealjs` format); this is the source of truth for slide content, embedded into each session's `slides.qmd`.
 - `MathCamp2026.Rproj` — RStudio project file.
 - `Resources/Slide Decks 2025/` — slide decks from the 2025 (slides-based) session, being ported into `chapters/` and `slides/`.
 - `.github/workflows/publish.yml` — builds both the book and the slides and deploys them together to GitHub Pages on every push to `main`.

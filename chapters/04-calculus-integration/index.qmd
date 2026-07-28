@@ -1,0 +1,11 @@
+# Calculus II: Integration & Multivariate Calculus
+
+Session 4 covers integration, the fundamental theorem of calculus, and an
+introduction to multivariate calculus (partial derivatives, gradients, and
+their application to deriving OLS).
+
+This session has two parts:
+
+- **[Slides](slides.qmd)** — the in-class slideshow.
+- **[Programming Lecture](programming.qmd)** — a webpage walking through the
+  same material with runnable R code.

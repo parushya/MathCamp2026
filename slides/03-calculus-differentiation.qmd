@@ -20,4 +20,4 @@ subtitle: "MathCamp 2026 — Session 3"
 
 ## {.center}
 
-**Full written version:** [webpage chapter](../chapters/03-calculus-differentiation.html)
+**Programming lecture:** [webpage chapter](../chapters/03-calculus-differentiation/programming.html)

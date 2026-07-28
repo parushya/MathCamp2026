@@ -1,0 +1,10 @@
+# Calculus I: Differentiation & Optimization
+
+Session 3 covers derivatives, differentiation rules, and using derivatives
+to optimize functions.
+
+This session has two parts:
+
+- **[Slides](slides.qmd)** — the in-class slideshow.
+- **[Programming Lecture](programming.qmd)** — a webpage walking through the
+  same material with runnable R code.

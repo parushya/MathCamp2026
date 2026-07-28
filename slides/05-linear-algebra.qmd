@@ -24,4 +24,4 @@ subtitle: "MathCamp 2026 — Session 5"
 
 ## {.center}
 
-**Full written version:** [webpage chapter](../chapters/05-linear-algebra.html)
+**Programming lecture:** [webpage chapter](../chapters/05-linear-algebra/programming.html)

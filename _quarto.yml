@@ -18,13 +18,26 @@ book:
     background: light
   chapters:
     - index.qmd
-    - part: "Lectures"
+    - part: chapters/01-notation-functions-limits/index.qmd
       chapters:
-        - chapters/01-notation-functions-limits.qmd
-        - chapters/02-probability.qmd
-        - chapters/03-calculus-differentiation.qmd
-        - chapters/04-calculus-integration.qmd
-        - chapters/05-linear-algebra.qmd
+        - chapters/01-notation-functions-limits/slides.qmd
+        - chapters/01-notation-functions-limits/programming.qmd
+    - part: chapters/02-probability/index.qmd
+      chapters:
+        - chapters/02-probability/slides.qmd
+        - chapters/02-probability/programming.qmd
+    - part: chapters/03-calculus-differentiation/index.qmd
+      chapters:
+        - chapters/03-calculus-differentiation/slides.qmd
+        - chapters/03-calculus-differentiation/programming.qmd
+    - part: chapters/04-calculus-integration/index.qmd
+      chapters:
+        - chapters/04-calculus-integration/slides.qmd
+        - chapters/04-calculus-integration/programming.qmd
+    - part: chapters/05-linear-algebra/index.qmd
+      chapters:
+        - chapters/05-linear-algebra/slides.qmd
+        - chapters/05-linear-algebra/programming.qmd
   appendices:
     - chapters/references.qmd
 

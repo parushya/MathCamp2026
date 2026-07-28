@@ -36,4 +36,4 @@ subtitle: "MathCamp 2026 — Session 2"
 
 ## {.center}
 
-**Full written version:** [webpage chapter](../chapters/02-probability.html)
+**Programming lecture:** [webpage chapter](../chapters/02-probability/programming.html)

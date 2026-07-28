@@ -43,4 +43,4 @@ subtitle: "MathCamp 2026 — Session 1"
 
 ## {.center}
 
-**Full written version:** [webpage chapter](../chapters/01-notation-functions-limits.html)
+**Programming lecture:** [webpage chapter](../chapters/01-notation-functions-limits/programming.html)

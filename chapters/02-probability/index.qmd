@@ -1,0 +1,10 @@
+# Probability
+
+Session 2 covers Bayesian and frequentist probability, combinations and
+permutations, and common probability distributions.
+
+This session has two parts:
+
+- **[Slides](slides.qmd)** — the in-class slideshow.
+- **[Programming Lecture](programming.qmd)** — a webpage walking through the
+  same material with runnable R code.

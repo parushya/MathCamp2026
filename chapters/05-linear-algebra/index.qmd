@@ -1,0 +1,10 @@
+# Linear Algebra
+
+Session 5 covers systems of equations, vectors, and matrices — the
+building blocks for the linear algebra used throughout methods courses.
+
+This session has two parts:
+
+- **[Slides](slides.qmd)** — the in-class slideshow.
+- **[Programming Lecture](programming.qmd)** — a webpage walking through the
+  same material with runnable R code.
