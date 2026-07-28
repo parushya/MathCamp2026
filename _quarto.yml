@@ -9,7 +9,7 @@ book:
     - Parushya
     - Rong Qin
   date: today
-  repo-url: https://github.com/
+  repo-url: https://github.com/parushya/MathCamp2026
   page-footer:
     left: "MathCamp 2026, Political Science PhD Program"
     right: "Built with Quarto"
