@@ -14,7 +14,7 @@
     "href": "index.html#how-to-use-this-book",
     "title": "MathCamp 2026",
     "section": "How to use this book",
-    "text": "How to use this book\nEach chapter corresponds to a lecture session and includes worked examples, practice problems, and interactive visualizations (via plotly, Shiny, or similar R tooling) to build intuition alongside the math. Every session is available in two forms:\n\nWebpage (this book) — the full written version, with more detail and worked examples.\nSlides — a slideshow version for in-class use.",
+    "text": "How to use this book\nEach session is its own chapter with two sub-chapters:\n\nSlides — the in-class slideshow (also browsable on its own at slides/index.html).\nProgramming Lecture — a webpage walking through the same material with runnable R code, worked examples, and (eventually) interactive visualizations via plotly, Shiny, or similar R tooling.",
     "crumbs": [
       "Welcome"
     ]
@@ -30,256 +30,163 @@
     ]
   },
   {
-    "objectID": "chapters/01-notation-functions-limits.html",
-    "href": "chapters/01-notation-functions-limits.html",
-    "title": "1  Notation, Functions, and Limits",
+    "objectID": "chapters/01-notation-functions-limits/index.html",
+    "href": "chapters/01-notation-functions-limits/index.html",
+    "title": "Notation, Functions, and Limits",
     "section": "",
-    "text": "1.1 Introduction & Logistics\nPlaceholder content — port from Resources/Slide Decks 2025/.",
+    "text": "Session 1 covers math notation, algebra review, functions, and an introduction to limits — the foundation for everything else in the camp.\nThis session has two parts:\n\nSlides — the in-class slideshow.\nProgramming Lecture — a webpage walking through the same material with runnable R code.",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Notation, Functions, and Limits</span>"
+      "Notation, Functions, and Limits"
     ]
   },
   {
-    "objectID": "chapters/01-notation-functions-limits.html#introduction-logistics",
-    "href": "chapters/01-notation-functions-limits.html#introduction-logistics",
-    "title": "1  Notation, Functions, and Limits",
+    "objectID": "chapters/01-notation-functions-limits/slides.html",
+    "href": "chapters/01-notation-functions-limits/slides.html",
+    "title": "1  Slides",
     "section": "",
-    "text": "Introductions\nMath camp goals, logistics, and schedule\nWhat are quantitative methods? Quantitative vs. qualitative methods",
+    "text": "Note\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/01-notation-functions-limits.qmd.",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Notation, Functions, and Limits</span>"
+      "Notation, Functions, and Limits",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Slides</span>"
     ]
   },
   {
-    "objectID": "chapters/01-notation-functions-limits.html#variables-measures",
-    "href": "chapters/01-notation-functions-limits.html#variables-measures",
-    "title": "1  Notation, Functions, and Limits",
-    "section": "1.2 Variables & Measures",
-    "text": "1.2 Variables & Measures\n\nVariables and constants\nSets and sample spaces\nUnions, intersections, subsets (set notation)\nLevels of measurement, and why it matters",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Notation, Functions, and Limits</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/01-notation-functions-limits.html#rules-of-algebra",
-    "href": "chapters/01-notation-functions-limits.html#rules-of-algebra",
-    "title": "1  Notation, Functions, and Limits",
-    "section": "1.3 Rules of Algebra",
-    "text": "1.3 Rules of Algebra\n\nBasic properties of arithmetic\nOrder of operations\nInequalities\nExponents, logarithms, and roots",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Notation, Functions, and Limits</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/01-notation-functions-limits.html#functions",
-    "href": "chapters/01-notation-functions-limits.html#functions",
-    "title": "1  Notation, Functions, and Limits",
-    "section": "1.4 Functions",
-    "text": "1.4 Functions\n\nFunctions and their characteristics\nFunction composition\nGraph examples: linear, quadratic, exponential functions\nFunctions and theorizing; Anscombe’s quartet",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Notation, Functions, and Limits</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/01-notation-functions-limits.html#solving-equations",
-    "href": "chapters/01-notation-functions-limits.html#solving-equations",
-    "title": "1  Notation, Functions, and Limits",
-    "section": "1.5 Solving Equations",
-    "text": "1.5 Solving Equations\n\nSpecial products and factoring\nQuadratics and special products\nQuadratic formula, checking work graphically",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Notation, Functions, and Limits</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/01-notation-functions-limits.html#series-sequences-and-limits",
-    "href": "chapters/01-notation-functions-limits.html#series-sequences-and-limits",
-    "title": "1  Notation, Functions, and Limits",
-    "section": "1.6 Series, Sequences, and Limits",
-    "text": "1.6 Series, Sequences, and Limits\n\nSequences and series\nLimits (including piecewise function examples)",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Notation, Functions, and Limits</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/02-probability.html",
-    "href": "chapters/02-probability.html",
-    "title": "2  Probability",
+    "objectID": "chapters/01-notation-functions-limits/programming.html",
+    "href": "chapters/01-notation-functions-limits/programming.html",
+    "title": "2  Programming Lecture",
     "section": "",
-    "text": "2.1 Introduction",
+    "text": "This page walks through Session 1’s ideas using R. Edit the code chunks below directly — they run when the book is rendered.\n\n2.0.1 Defining and plotting functions\n\n\nCode\nf &lt;- function(x) x^2 - 3 * x + 2\nf(0)\n\n\n[1] 2\n\n\nCode\nf(2)\n\n\n[1] 0\n\n\n\n\nCode\ncurve(f, from = -2, to = 5, lwd = 2,\n      main = \"f(x) = x^2 - 3x + 2\", ylab = \"f(x)\")\nabline(h = 0, lty = 2, col = \"gray50\")\n\n\n\n\n\n\n\n\n\n\n\n2.0.2 Function composition\n\n\nCode\ng &lt;- function(x) sqrt(x)\nfg &lt;- function(x) g(f(x))\nfg(3)\n\n\n[1] 1.414214\n\n\n\n\n2.0.3 Solving equations: roots of a quadratic\n\n\nCode\nroots &lt;- polyroot(c(2, -3, 1)) # coefficients of 2 - 3x + x^2, constant first\nRe(roots)\n\n\n[1] 1 2\n\n\n\n\n2.0.4 Limits: approaching a value numerically\n\n\nCode\nh &lt;- function(x) (x^2 - 1) / (x - 1)\nxs &lt;- 1 + 10^-(1:6)\ndata.frame(x = xs, h_x = h(xs))\n\n\n         x      h_x\n1 1.100000 2.100000\n2 1.010000 2.010000\n3 1.001000 2.001000\n4 1.000100 2.000100\n5 1.000010 2.000010\n6 1.000001 2.000001\n\n\nAs x approaches 1, h(x) approaches 2 — matching the algebraic simplification h(x) = x + 1 for x != 1.",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Probability</span>"
+      "Notation, Functions, and Limits",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Programming Lecture</span>"
     ]
   },
   {
-    "objectID": "chapters/02-probability.html#introduction",
-    "href": "chapters/02-probability.html#introduction",
-    "title": "2  Probability",
+    "objectID": "chapters/02-probability/index.html",
+    "href": "chapters/02-probability/index.html",
+    "title": "Probability",
     "section": "",
-    "text": "Agenda\nFrequentist vs. Bayesian framing",
+    "text": "Session 2 covers Bayesian and frequentist probability, combinations and permutations, and common probability distributions.\nThis session has two parts:\n\nSlides — the in-class slideshow.\nProgramming Lecture — a webpage walking through the same material with runnable R code.",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Probability</span>"
+      "Probability"
     ]
   },
   {
-    "objectID": "chapters/02-probability.html#bayesian-probability",
-    "href": "chapters/02-probability.html#bayesian-probability",
-    "title": "2  Probability",
-    "section": "2.2 Bayesian Probability",
-    "text": "2.2 Bayesian Probability\n\nDefinitions and notation\nRelationships between events\nBayes’ theorem (notation, derivation, examples)\nThe Monty Hall problem\nOdds and odds ratios",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Probability</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/02-probability.html#frequentist-statistics",
-    "href": "chapters/02-probability.html#frequentist-statistics",
-    "title": "2  Probability",
-    "section": "2.3 Frequentist Statistics",
-    "text": "2.3 Frequentist Statistics\n\nFrequentist methods and uncertainty\nConfidence interval demonstration in R",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Probability</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/02-probability.html#combinations-and-permutations",
-    "href": "chapters/02-probability.html#combinations-and-permutations",
-    "title": "2  Probability",
-    "section": "2.4 Combinations and Permutations",
-    "text": "2.4 Combinations and Permutations\n\nReview of factorials\nCombinations (why the formulas work, worked examples)\nCalculating probabilities; the birthday problem",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Probability</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/02-probability.html#distributions",
-    "href": "chapters/02-probability.html#distributions",
-    "title": "2  Probability",
-    "section": "2.5 Distributions",
-    "text": "2.5 Distributions\n\nRandom variables: discrete vs. continuous\nSample distributions and contingency tables\nProbability distributions: PMF, PDF, CDF\nNormal/Gaussian distribution and other distribution types",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Probability</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/03-calculus-differentiation.html",
-    "href": "chapters/03-calculus-differentiation.html",
-    "title": "3  Calculus I: Differentiation & Optimization",
+    "objectID": "chapters/02-probability/slides.html",
+    "href": "chapters/02-probability/slides.html",
+    "title": "3  Slides",
     "section": "",
-    "text": "3.1 Differentiation",
+    "text": "Note\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/02-probability.qmd.",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Calculus I: Differentiation & Optimization</span>"
+      "Probability",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Slides</span>"
     ]
   },
   {
-    "objectID": "chapters/03-calculus-differentiation.html#differentiation",
-    "href": "chapters/03-calculus-differentiation.html#differentiation",
-    "title": "3  Calculus I: Differentiation & Optimization",
+    "objectID": "chapters/02-probability/programming.html",
+    "href": "chapters/02-probability/programming.html",
+    "title": "4  Programming Lecture",
     "section": "",
-    "text": "Types of change and derivatives\nDiscrete change (secant lines) vs. instantaneous change (tangent lines)\nRules of differentiation: power, product, quotient, and chain rules\nWorked examples and practice",
+    "text": "4.0.1 Simulating a random process: coin flips\n\n\nCode\nset.seed(2026)\nflips &lt;- sample(c(\"H\", \"T\"), size = 10000, replace = TRUE)\ntable(flips) / length(flips)\n\n\nflips\n    H     T \n0.499 0.501 \n\n\n\n\n4.0.2 The Monty Hall problem, by simulation\n\n\nCode\nmonty_hall &lt;- function(switch = TRUE) {\n  doors &lt;- 1:3\n  car &lt;- sample(doors, 1)\n  pick &lt;- sample(doors, 1)\n  reveal &lt;- sample(setdiff(doors, c(car, pick)), 1)\n  final &lt;- if (switch) setdiff(doors, c(pick, reveal)) else pick\n  final == car\n}\n\nset.seed(2026)\nn &lt;- 5000\np_switch &lt;- mean(replicate(n, monty_hall(switch = TRUE)))\n\n\nWarning in mean.default(replicate(n, monty_hall(switch = TRUE))): argument is\nnot numeric or logical: returning NA\n\n\nCode\np_stay &lt;- mean(replicate(n, monty_hall(switch = FALSE)))\ndata.frame(strategy = c(\"switch\", \"stay\"), win_rate = c(p_switch, p_stay))\n\n\n  strategy win_rate\n1   switch       NA\n2     stay    0.347\n\n\n\n\n4.0.3 Combinations: the birthday problem\n\n\nCode\nbirthday_prob &lt;- function(n_people) 1 - exp(lchoose(365, n_people) + lfactorial(n_people) - n_people * log(365))\nsapply(c(10, 23, 50), birthday_prob)\n\n\n[1] 0.1169482 0.5072972 0.9703736\n\n\n\n\n4.0.4 Distributions: PMF, CDF, and the normal curve\n\n\nCode\nx &lt;- seq(-4, 4, length.out = 200)\nplot(x, dnorm(x), type = \"l\", lwd = 2,\n     main = \"Standard normal density\", ylab = \"density\")\n\n\n\n\n\n\n\n\n\n\n\nCode\npnorm(1.96) - pnorm(-1.96) # probability mass within ~2 SD\n\n\n[1] 0.9500042",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Calculus I: Differentiation & Optimization</span>"
+      "Probability",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Programming Lecture</span>"
     ]
   },
   {
-    "objectID": "chapters/03-calculus-differentiation.html#optimization",
-    "href": "chapters/03-calculus-differentiation.html#optimization",
-    "title": "3  Calculus I: Differentiation & Optimization",
-    "section": "3.2 Optimization",
-    "text": "3.2 Optimization\n\nWhat is optimization?\nExtreme value theorem\nDerivatives and the shape of a function\nInflection points vs. extrema\nWorked optimization example",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Calculus I: Differentiation & Optimization</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/04-calculus-integration.html",
-    "href": "chapters/04-calculus-integration.html",
-    "title": "4  Calculus II: Integration & Multivariate Calculus",
+    "objectID": "chapters/03-calculus-differentiation/index.html",
+    "href": "chapters/03-calculus-differentiation/index.html",
+    "title": "Calculus I: Differentiation & Optimization",
     "section": "",
-    "text": "4.1 Integration",
+    "text": "Session 3 covers derivatives, differentiation rules, and using derivatives to optimize functions.\nThis session has two parts:\n\nSlides — the in-class slideshow.\nProgramming Lecture — a webpage walking through the same material with runnable R code.",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Calculus II: Integration & Multivariate Calculus</span>"
+      "Calculus I: Differentiation & Optimization"
     ]
   },
   {
-    "objectID": "chapters/04-calculus-integration.html#integration",
-    "href": "chapters/04-calculus-integration.html#integration",
-    "title": "4  Calculus II: Integration & Multivariate Calculus",
+    "objectID": "chapters/03-calculus-differentiation/slides.html",
+    "href": "chapters/03-calculus-differentiation/slides.html",
+    "title": "5  Slides",
     "section": "",
-    "text": "Area under the curve\nIntegrals and the fundamental theorem of calculus\nReversing the rules of differentiation (“don’t forget the C!”)\nRules of integration, worked examples\nIntegration by substitution",
+    "text": "Note\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/03-calculus-differentiation.qmd.",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Calculus II: Integration & Multivariate Calculus</span>"
+      "Calculus I: Differentiation & Optimization",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Slides</span>"
     ]
   },
   {
-    "objectID": "chapters/04-calculus-integration.html#multivariate-calculus",
-    "href": "chapters/04-calculus-integration.html#multivariate-calculus",
-    "title": "4  Calculus II: Integration & Multivariate Calculus",
-    "section": "4.2 Multivariate Calculus",
-    "text": "4.2 Multivariate Calculus\n\nPartial derivatives\nGradients and mixed partial derivatives\nThe Hessian matrix\nApplication: deriving Ordinary Least Squares (OLS)",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Calculus II: Integration & Multivariate Calculus</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/05-linear-algebra.html",
-    "href": "chapters/05-linear-algebra.html",
-    "title": "5  Linear Algebra",
+    "objectID": "chapters/03-calculus-differentiation/programming.html",
+    "href": "chapters/03-calculus-differentiation/programming.html",
+    "title": "6  Programming Lecture",
     "section": "",
-    "text": "5.1 Equations & Systems of Equations",
+    "text": "6.0.1 Numerical differentiation: the secant approaching the tangent\n\n\nCode\nf &lt;- function(x) x^3 - 2 * x\nsecant_slope &lt;- function(f, x, h) (f(x + h) - f(x)) / h\n\nx0 &lt;- 1\nhs &lt;- 10^-(1:6)\ndata.frame(h = hs, secant_slope = secant_slope(f, x0, hs))\n\n\n      h secant_slope\n1 1e-01     1.310000\n2 1e-02     1.030100\n3 1e-03     1.003001\n4 1e-04     1.000300\n5 1e-05     1.000030\n6 1e-06     1.000003\n\n\n\n\nCode\n# Analytic derivative f'(x) = 3x^2 - 2, so f'(1) = 1\nf_prime &lt;- function(x) 3 * x^2 - 2\nf_prime(1)\n\n\n[1] 1\n\n\n\n\n6.0.2 Differentiation rules by symbolic differentiation\n\n\nCode\nD(expression(x^3 - 2 * x), \"x\")\n\n\n3 * x^2 - 2\n\n\nCode\nD(expression(sin(x) * x^2), \"x\") # product rule\n\n\ncos(x) * x^2 + sin(x) * (2 * x)\n\n\n\n\n6.0.3 Optimization: finding an extremum\n\n\nCode\ng &lt;- function(x) (x - 2)^2 + 1\nresult &lt;- optimize(g, interval = c(-10, 10))\nresult\n\n\n$minimum\n[1] 2\n\n$objective\n[1] 1\n\n\n\n\nCode\ncurve(g, from = -2, to = 6, lwd = 2, main = \"g(x) = (x - 2)^2 + 1\")\npoints(result$minimum, result$objective, col = \"red\", pch = 19)",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra</span>"
+      "Calculus I: Differentiation & Optimization",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Programming Lecture</span>"
     ]
   },
   {
-    "objectID": "chapters/05-linear-algebra.html#equations-systems-of-equations",
-    "href": "chapters/05-linear-algebra.html#equations-systems-of-equations",
-    "title": "5  Linear Algebra",
+    "objectID": "chapters/04-calculus-integration/index.html",
+    "href": "chapters/04-calculus-integration/index.html",
+    "title": "Calculus II: Integration & Multivariate Calculus",
     "section": "",
-    "text": "Equations and unknowns\nSolving by substitution and elimination\nMore complex systems of equations",
+    "text": "Session 4 covers integration, the fundamental theorem of calculus, and an introduction to multivariate calculus (partial derivatives, gradients, and their application to deriving OLS).\nThis session has two parts:\n\nSlides — the in-class slideshow.\nProgramming Lecture — a webpage walking through the same material with runnable R code.",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra</span>"
+      "Calculus II: Integration & Multivariate Calculus"
     ]
   },
   {
-    "objectID": "chapters/05-linear-algebra.html#vectors",
-    "href": "chapters/05-linear-algebra.html#vectors",
-    "title": "5  Linear Algebra",
-    "section": "5.2 Vectors",
-    "text": "5.2 Vectors\n\nVectors and scalars\nVector addition/subtraction, scalar multiplication\nDot product",
+    "objectID": "chapters/04-calculus-integration/slides.html",
+    "href": "chapters/04-calculus-integration/slides.html",
+    "title": "7  Slides",
+    "section": "",
+    "text": "Note\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/04-calculus-integration.qmd.",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra</span>"
+      "Calculus II: Integration & Multivariate Calculus",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Slides</span>"
     ]
   },
   {
-    "objectID": "chapters/05-linear-algebra.html#matrices",
-    "href": "chapters/05-linear-algebra.html#matrices",
-    "title": "5  Linear Algebra",
-    "section": "5.3 Matrices",
-    "text": "5.3 Matrices\n\nImportant types of matrices\nMatrix transposition\nMatrix addition, subtraction, and scalar multiplication\nMatrix multiplication",
+    "objectID": "chapters/04-calculus-integration/programming.html",
+    "href": "chapters/04-calculus-integration/programming.html",
+    "title": "8  Programming Lecture",
+    "section": "",
+    "text": "8.0.1 Area under the curve, numerically\n\n\nCode\nf &lt;- function(x) x^2\nresult &lt;- integrate(f, lower = 0, upper = 3)\nresult\n\n\n9 with absolute error &lt; 1e-13\n\n\n\n\nCode\n# Analytic check: integral of x^2 from 0 to 3 is x^3/3 -&gt; 9\ncurve(f, from = -0.5, to = 3.5, lwd = 2, main = \"Area under f(x) = x^2, [0, 3]\")\nxs &lt;- seq(0, 3, length.out = 200)\npolygon(c(xs, rev(xs)), c(f(xs), rep(0, length(xs))), col = rgb(0, 0, 1, 0.2), border = NA)\n\n\n\n\n\n\n\n\n\n\n\n8.0.2 Reversing differentiation: symbolic antiderivative check\n\n\nCode\n# f(x) = x^2, F(x) = x^3/3 + C; verify F' = f\nF &lt;- function(x) x^3 / 3\nh &lt;- 1e-6\nx0 &lt;- 2\n(F(x0 + h) - F(x0 - h)) / (2 * h) # numerical derivative of F at x0\n\n\n[1] 4\n\n\nCode\nf(x0)\n\n\n[1] 4\n\n\n\n\n8.0.3 Multivariate calculus: partial derivatives and the gradient\n\n\nCode\nf2 &lt;- function(x, y) x^2 * y + y^3\n\npartial_x &lt;- function(x, y, h = 1e-6) (f2(x + h, y) - f2(x - h, y)) / (2 * h)\npartial_y &lt;- function(x, y, h = 1e-6) (f2(x, y + h) - f2(x, y - h)) / (2 * h)\n\ngradient &lt;- c(partial_x(1, 2), partial_y(1, 2))\ngradient\n\n\n[1]  4 13\n\n\n\n\n8.0.4 Application: deriving OLS with lm()\n\n\nCode\nset.seed(2026)\nx &lt;- rnorm(100)\ny &lt;- 2 + 3 * x + rnorm(100, sd = 0.5)\n\nfit &lt;- lm(y ~ x)\ncoef(fit) # OLS solves the same minimization problem worked out by hand in the slides\n\n\n(Intercept)           x \n   2.057986    2.971808",
     "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Linear Algebra</span>"
+      "Calculus II: Integration & Multivariate Calculus",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Lecture</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-linear-algebra/index.html",
+    "href": "chapters/05-linear-algebra/index.html",
+    "title": "Linear Algebra",
+    "section": "",
+    "text": "Session 5 covers systems of equations, vectors, and matrices — the building blocks for the linear algebra used throughout methods courses.\nThis session has two parts:\n\nSlides — the in-class slideshow.\nProgramming Lecture — a webpage walking through the same material with runnable R code.",
+    "crumbs": [
+      "Linear Algebra"
+    ]
+  },
+  {
+    "objectID": "chapters/05-linear-algebra/slides.html",
+    "href": "chapters/05-linear-algebra/slides.html",
+    "title": "9  Slides",
+    "section": "",
+    "text": "Note\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/05-linear-algebra.qmd.",
+    "crumbs": [
+      "Linear Algebra",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Slides</span>"
+    ]
+  },
+  {
+    "objectID": "chapters/05-linear-algebra/programming.html",
+    "href": "chapters/05-linear-algebra/programming.html",
+    "title": "10  Programming Lecture",
+    "section": "",
+    "text": "10.0.1 Systems of equations\n\n\nCode\n# 2x + y = 5\n# x - y = 1\nA &lt;- matrix(c(2, 1, 1, -1), nrow = 2, byrow = TRUE)\nb &lt;- c(5, 1)\nsolve(A, b)\n\n\n[1] 2 1\n\n\n\n\n10.0.2 Vectors\n\n\nCode\nu &lt;- c(1, 2, 3)\nv &lt;- c(4, -1, 0)\n\nu + v\n\n\n[1] 5 1 3\n\n\nCode\n2 * u\n\n\n[1] 2 4 6\n\n\nCode\nsum(u * v) # dot product\n\n\n[1] 2\n\n\n\n\n10.0.3 Matrices\n\n\nCode\nM &lt;- matrix(1:6, nrow = 2)\nM\n\n\n     [,1] [,2] [,3]\n[1,]    1    3    5\n[2,]    2    4    6\n\n\nCode\nt(M) # transpose\n\n\n     [,1] [,2]\n[1,]    1    2\n[2,]    3    4\n[3,]    5    6\n\n\n\n\nCode\nA &lt;- matrix(c(1, 2, 3, 4), nrow = 2)\nB &lt;- matrix(c(5, 6, 7, 8), nrow = 2)\n\nA + B\n\n\n     [,1] [,2]\n[1,]    6   10\n[2,]    8   12\n\n\nCode\nA %*% B # matrix multiplication\n\n\n     [,1] [,2]\n[1,]   23   31\n[2,]   34   46\n\n\n\n\n10.0.4 Determinants and inverses\n\n\nCode\ndet(A)\n\n\n[1] -2\n\n\nCode\nsolve(A) # matrix inverse\n\n\n     [,1] [,2]\n[1,]   -2  1.5\n[2,]    1 -0.5\n\n\nCode\nA %*% solve(A) # should be (close to) the identity matrix\n\n\n     [,1] [,2]\n[1,]    1    0\n[2,]    0    1",
+    "crumbs": [
+      "Linear Algebra",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Programming Lecture</span>"
     ]
   }
 ]
