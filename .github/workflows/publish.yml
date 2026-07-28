@@ -23,9 +23,13 @@ jobs:
         with:
           use-public-rspm: true
 
-      - name: Install R dependencies
+      - name: Install R dependencies (renv)
         uses: r-lib/actions/setup-renv@v2
         if: hashFiles('renv.lock') != ''
+
+      - name: Install R dependencies (fallback)
+        if: hashFiles('renv.lock') == ''
+        run: Rscript -e 'install.packages(c("knitr", "rmarkdown"))'
 
       - name: Render book (webpages)
         run: quarto render
