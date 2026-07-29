@@ -63,8 +63,28 @@ Keep the two in sync when editing a session's content: the slide bullets live in
 
 ## Collaboration
 
-- This is a shared repo (Parushya + Rong Qin). Work on feature branches and merge via PR rather than pushing directly to `main`, per `README.md`.
+- This is a shared repo (Parushya + Rong Qin). Per `README.md`, we push directly to `main` — no feature branches or pull requests required.
 
 ## Interactive visualizations
 
-Base-R only so far (each `programming.qmd` uses only base graphics/stats to keep CI dependency-free — no `renv.lock` exists yet, so `r-lib/actions/setup-r` in CI installs nothing extra). When embedding `plotly`/`Shiny`/etc., put visualization code directly in the relevant session's `programming.qmd` (R code chunks), and add the package to a `renv.lock` (or `DESCRIPTION`) so CI can install it. If a chapter needs a live Shiny app rather than a static widget, it will need `format: html` with a Shiny runtime (`server: shiny`) and cannot be rendered as a fully static page in `docs/` — flag this tradeoff when it comes up.
+When embedding `plotly`/`Shiny`/etc., put visualization code directly in the relevant session's `programming.qmd` (R code chunks). After adding a new package's `library()`/`::` call anywhere in the repo, run `renv::snapshot()` (see "R package management" below) so CI can install it. If a chapter needs a live Shiny app rather than a static widget, it will need `format: html` with a Shiny runtime (`server: shiny`) and cannot be rendered as a fully static page in `docs/` — flag this tradeoff when it comes up.
+
+## R package management (renv)
+
+This repo uses `renv` to pin R package versions so local machines and CI all install the exact same set. `renv.lock` is the source of truth and **is committed**; `renv/library/` (the actual installed package files) is gitignored and never committed — each machine restores it locally from the lockfile.
+
+**One-time setup per machine** (new clone, or first time after this was introduced): open the project in RStudio (or `cd` into the repo and start R) — `.Rprofile` auto-activates renv, then run:
+```r
+renv::restore()
+```
+This installs exactly the package versions recorded in `renv.lock` into a project-local library.
+
+**Every time you add or start using a new R package in any `.qmd` (or `.R`) file:**
+1. Write your code as normal, e.g. add `library(readr)` to a chunk.
+2. Run `install.packages("readr")` if it's not already installed locally.
+3. Run `renv::snapshot()` from the repo root. It scans the project's code for `library()`/`require()`/`pkg::fn()` calls and updates `renv.lock` to match — you don't need to manually list packages anywhere.
+4. Commit the updated `renv.lock` (and `.Rprofile` / `renv/activate.R` / `renv/settings.json` if this is the first snapshot) along with your `.qmd` changes, in the same PR.
+
+**Every time you pull changes that touched `renv.lock`:** run `renv::status()` to check if your local library is out of sync, and `renv::restore()` if so, before rendering.
+
+If you forget step 3, your local render will work (you have the package installed globally/in a personal library) but CI will fail with `there is no package called 'X'` — `renv::restore()` in CI only installs what's actually in the lockfile.

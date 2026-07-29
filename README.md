@@ -18,13 +18,21 @@ This repo holds the materials for MathCamp 2026. Last year's session was slide-b
 
 ## Building locally
 
+This repo uses `renv` to pin R package versions so everyone (and CI) installs the same set. First time on a machine (or after pulling a change to `renv.lock`):
+
+```r
+renv::restore()   # installs the exact package versions from renv.lock
+```
+
+Then:
+
 ```sh
 quarto render          # renders the book -> docs/
 quarto render slides   # renders the slides -> docs/slides/
 quarto preview          # live-reloading preview of the book
 ```
 
-Or open `MathCamp2026.Rproj` in RStudio, which sets the working directory correctly for all of the above.
+Or open `MathCamp2026.Rproj` in RStudio, which sets the working directory correctly for all of the above (and auto-activates `renv` via `.Rprofile`).
 
 `docs/` is the combined build output for both book and slides; it's gitignored locally and only produced on GitHub by the publish workflow — you don't need to commit it.
 
@@ -33,8 +41,9 @@ Or open `MathCamp2026.Rproj` in RStudio, which sets the working directory correc
 We're a two-person repo (Rong Qin, Parushya), so we push directly to `main` — no pull requests required.
 
 1. Clone the repo and open `MathCamp2026.Rproj` in RStudio (or your editor of choice).
-2. `git pull` before you start working, to get the other person's latest changes.
+2. `git pull` before you start working, to get the other person's latest changes. If `renv.lock` changed, run `renv::restore()`.
 3. Edit, then render locally (`quarto render` and `quarto render slides`) to make sure both the webpage and slide versions build cleanly.
-4. `git add`, `git commit`, `git pull` (in case anything changed while you were working), then `git push`. The GitHub Actions workflow automatically rebuilds and republishes the site within a minute or two.
+4. **If you added a new R package** (any new `library()`/`::` call), run `renv::snapshot()` before committing — it scans the project and updates `renv.lock` to match. Commit `renv.lock` together with the code that needs it, or CI will fail with "there is no package called ...".
+5. `git add`, `git commit`, `git pull` (in case anything changed while you were working), then `git push`. The GitHub Actions workflow automatically rebuilds and republishes the site within a minute or two.
 
 If `git push` is rejected, it means the other person pushed first — `git pull` to merge their changes in, resolve any conflicts, then push again. Avoid `git push --force`.

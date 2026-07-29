@@ -48,8 +48,8 @@ $\beta = \alpha$
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(readr)
 library(dplyr)
-load("~/Desktop/MathCamp2026/Resources/Dataset/JPRdata_Haim.rda")
-COW_country_codes <- read_csv("~/Desktop/MathCamp2026/Resources/Dataset/COW-country-codes.csv")
+load("../Resources/Dataset/JPRdata_Haim.rda")
+COW_country_codes <- read_csv("../Resources/Dataset/COW-country-codes.csv")
 
 JPRdata_joined <- left_join(JPRdata, COW_country_codes, by = c("ccode_e" = "CCode"))
 JPRdata_joined <- JPRdata_joined %>%
