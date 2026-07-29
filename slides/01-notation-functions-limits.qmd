@@ -5,44 +5,136 @@ subtitle: "MathCamp 2026 — Session 1"
 
 ## Introduction & Logistics
 
-- Introductions
-- Math camp goals, logistics, and schedule
-- What are quantitative methods? Quantitative vs. qualitative methods
+-   Introductions
+-   Math camp goals, logistics, and schedule
+-   What are quantitative methods? Quantitative vs. qualitative methods
 
 $\beta = \alpha$
 
 ## Variables & Measures
 
-- Variables and constants
-- Sets and sample spaces
-- Unions, intersections, subsets (set notation)
-- Levels of measurement, and why it matters
+-   Variables and constants
+-   Sets and sample spaces
+-   Unions, intersections, subsets (set notation)
+-   Levels of measurement, and why it matters
 
 ## Rules of Algebra
 
-- Basic properties of arithmetic
-- Order of operations
-- Inequalities
-- Exponents, logarithms, and roots
+-   Basic properties of arithmetic
+-   Order of operations
+-   Inequalities
+-   Exponents, logarithms, and roots
 
 ## Functions
 
-- Functions and their characteristics
-- Function composition
-- Graph examples: linear, quadratic, exponential functions
-- Functions and theorizing; Anscombe's quartet
+-   Functions and their characteristics
+-   Function composition
+-   Graph examples: linear, quadratic, exponential functions
+-   Functions and theorizing; Anscombe's quartet
 
 ## Solving Equations
 
-- Special products and factoring
-- Quadratics and special products
-- Quadratic formula, checking work graphically
+-   Special products and factoring
+-   Quadratics and special products
+-   Quadratic formula, checking work graphically
 
 ## Series, Sequences, and Limits
 
-- Sequences and series
-- Limits (including piecewise function examples)
+-   Sequences and series
+-   Limits (including piecewise function examples)
 
-## {.center}
+## Dataset preparation
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
+library(readr)
+library(dplyr)
+load("~/Desktop/MathCamp2026/Resources/Dataset/JPRdata_Haim.rda")
+COW_country_codes <- read_csv("~/Desktop/MathCamp2026/Resources/Dataset/COW-country-codes.csv")
+
+JPRdata_joined <- left_join(JPRdata, COW_country_codes, by = c("ccode_e" = "CCode"))
+JPRdata_joined <- JPRdata_joined %>%
+  rename(StateAbb_export = StateAbb,
+         StateNme_export = StateNme) %>%
+  relocate(
+    StateAbb_export,
+    StateNme_export,
+    .after = ccode_e
+  ) 
+
+JPRdata_joined <- left_join(JPRdata_joined, COW_country_codes, by = c("ccode_a" = "CCode"))
+JPRdata_joined <- JPRdata_joined %>%
+  rename(StateAbb_import = StateAbb,
+         StateNme_import = StateNme) %>%
+  relocate(
+    StateAbb_import,
+    StateNme_import,
+    .after = ccode_a
+  ) 
+
+JPRdata_cut <- JPRdata_joined %>%
+  filter(year > 2000)
+
+JPRdata_select <- JPRdata_cut%>%
+  select(year,
+         ccode_e,
+         StateAbb_export,
+         StateNme_export,
+         ccode_a,
+         StateAbb_import,
+         StateNme_import,
+         logflow,
+         shareally,
+         MID,
+         loggdp.e,
+         loggdp.a,
+         comcur,
+         sscore,
+         region,
+         bilatno,
+         multino)
+
+```
+
+## Dataset
+
+This sample dataset is adapted from the replication data accompanying:
+
+> Haim, Dotan. 2016. *Alliance Networks and Trade: The Effect of Indirect Political Alliances on Bilateral Trade Flows*. Journal of Peace Research.
+
+The original replication files and codebook are available through the Journal of Peace Research replication archive and the author's website. This version retains a subset of variables for instructional purposes and adds country names and abbreviations by merging the Correlates of War (COW) country code list.
+
+## Variables
+
+| Variable          | Description                                                                                                                                                                                                                                        |
+|:------------------------------|:---------------------------------------|
+| `year`            | Year of the observation.                                                                                                                                                                                                                           |
+| `ccode_e`         | Correlates of War (COW) numeric country code for the exporting (ego) state.                                                                                                                                                                        |
+| `StateAbb_export` | Three-letter country abbreviation for the exporting state (added from the COW country code list).                                                                                                                                                  |
+| `StateNme_export` | Country name for the exporting state (added from the COW country code list).                                                                                                                                                                       |
+| `ccode_a`         | Correlates of War (COW) numeric country code for the importing (alter) state.                                                                                                                                                                      |
+| `StateAbb_import` | Three-letter country abbreviation for the importing state (added from the COW country code list).                                                                                                                                                  |
+| `StateNme_import` | Country name for the importing state (added from the COW country code list).                                                                                                                                                                       |
+| `logflow`         | Natural logarithm of exports from the exporting state to the importing state, measured in millions of standardized U.S. dollars. Data originate from the CEPII Trade dataset.                                                                      |
+| `shareally`       | Number of alliance ties jointly shared by both members of a dyad, adjusted for allies unique to the importing state. This variable measures indirect alliance embeddedness.                                                                        |
+| `MID`             | Indicator for whether the two states were involved in a Militarized Interstate Dispute (MID) during the observation year.                                                                                                                          |
+| `loggdp.e`        | Natural logarithm of the exporting state's gross domestic product (GDP), measured in millions of standardized U.S. dollars.                                                                                                                        |
+| `loggdp.a`        | Natural logarithm of the importing state's gross domestic product (GDP), measured in millions of standardized U.S. dollars.                                                                                                                        |
+| `comcur`          | Indicator for whether the two states share a common currency.                                                                                                                                                                                      |
+| `sscore`          | Affinity (S-) score measuring similarity in the two states' United Nations General Assembly voting behavior.                                                                                                                                       |
+| `region`          | Geographic region of the exporting state. Categories include East Asia and Pacific, South Asia, Middle East and North Africa, Sub-Saharan Africa, Europe and Central Asia, Latin America and Caribbean, North/Central America, and Western Europe. |
+| `bilatno`         | Indicator for whether the two states are partners in at least one bilateral alliance.                                                                                                                                                              |
+| `multino`         | Indicator for whether the two states are partners in at least one multilateral alliance.                                                                                                                                                           |
+
+## Notes
+
+-   Each observation represents a **directed country dyad-year**, where an exporting state trades with an importing state.
+-   Variables beginning with `.e` refer to characteristics of the exporting (ego) state, whereas variables beginning with `.a` refer to the importing (alter) state.
+-   `StateAbb_*` and `StateNme_*` were added to improve readability and are not part of the original Haim (2016) replication dataset.
+
+```{r}
+head(JPRdata)
+```
+
+##  {.center}
 
 **Programming lecture:** [webpage chapter](../chapters/01-notation-functions-limits/programming.html)
