@@ -1,44 +1,45 @@
-## Programming Lecture {#sec-01-programming}
+## Programming Session - Day 1 {#sec-01-programming}
 
-This page walks through Session 1's ideas using R. Edit the code chunks
-below directly — they run when the book is rendered.
+We will be getting started with installing and setting up a few softwares today: 
 
-### Defining and plotting functions
+1.    [R](https://www.r-project.org/about.html) - Statistical Programming Language
 
-```{r}
-f <- function(x) x^2 - 3 * x + 2
-f(0)
-f(2)
-```
+2.    [RStudio](https://posit.co/products/open-source/rstudio/) - Interactive Development Environment for R
 
-```{r}
-curve(f, from = -2, to = 5, lwd = 2,
-      main = "f(x) = x^2 - 3x + 2", ylab = "f(x)")
-abline(h = 0, lty = 2, col = "gray50")
-```
+3.    [Zotero](https://www.zotero.org/) - Reference Management Tool
 
-### Function composition
+4.    [GitHub](https://github.com/) - Storing code online with version control
 
-```{r}
-g <- function(x) sqrt(x)
-fg <- function(x) g(f(x))
-fg(3)
-```
 
-### Solving equations: roots of a quadratic
+### R and R Studio
 
-```{r}
-roots <- polyroot(c(2, -3, 1)) # coefficients of 2 - 3x + x^2, constant first
-Re(roots)
-```
+Use the [link here](https://rstudio-education.github.io/hopr/starting.html) to install RStudio on your systems. 
 
-### Limits: approaching a value numerically
+::: {.callout-note}
+## The connection between R and R Studio
+
+R is a programming language while RStudio, an integrated development environment (IDE), provides the interface for us to run computations. You can think of R as the engine of the car, and RStudio as the dashboard. 
+
+:::
+
+
+### Zotero 
+
+Zotero is a reference management tool. It allows you to maintain a structured bibliography. Its integration with various web browsers and software like MS Word and R, makes it a fantastic tool for keeping track of readings as well as citing them.  
 
 ```{r}
-h <- function(x) (x^2 - 1) / (x - 1)
-xs <- 1 + 10^-(1:6)
-data.frame(x = xs, h_x = h(xs))
+#| echo: false
+#| fig-cap: "Zotero Folder"
+knitr::include_graphics("../../Resources/Pics/zotero.png") 
+
 ```
 
-As `x` approaches 1, `h(x)` approaches 2 — matching the algebraic
-simplification `h(x) = x + 1` for `x != 1`.
+1.    Make [Zotero](https://www.zotero.org/) Account. 
+2.    Add a connector to the browser (For eg, [zotero connector](https://www.zotero.org/start) for google chrome). 
+3.    Download Zotero Desktop App [here]((https://www.zotero.org/)). 
+4.    Connect Zotero to R Studio. (We will do this step on Day 5, using the link [here](https://github.com/scskalicky/zotero_tutorial/blob/main/zotero_and_Rstudio.md)). 
+
+### GitHub
+
+Make your account [here](https://github.com/)
+
