@@ -6,12 +6,17 @@ People often give sophisticated answers to this question. But the basic idea is 
 
 As political scientists, we use data to learn about the world. Data by themselves do not tell us anything—they must be cleaned, organized, analyzed, and visualized before they become evidence. Programming is simply the language we use to tell the computer how to perform these tasks.
 
-Learning to code therefore requires two skills:
+::: {.callout-note icon=false}
+
+## Two goals are the pre-requisite of coding:
 
 **Understanding your data**: how it is structured and what each observation and variable represent.
+
 **Understanding your goal**: what question you are trying to answer and what operations are needed to answer it.
 
-Notice that neither of these skills is really about programming. Coding is simply the tool that translates your analytical thinking into a sequence of instructions that the computer can execute.
+:::
+
+Notice that neither of these is really about programming. Coding is simply the tool that translates your analytical thinking into a sequence of instructions that the computer can execute.
 
 One of the greatest benefits of programming is that it allows you to be productively lazy. Rather than repeating the same steps over and over again, you teach the computer how to perform them once and then let it repeat those tasks accurately and consistently.
 
@@ -19,7 +24,8 @@ This matters because many research tasks—data cleaning, data wrangling, visual
 
 Ultimately, programming is about formalizing your reasoning. Every line of code represents a decision about how data should be processed and analyzed. Once those decisions are written down, they become transparent, reproducible, and easy to improve. In that sense, coding not only increases efficiency but also strengthens the quality and credibility of your research.
 
-Guidelines for data and statistical analyses:[^Aaron]
+::: {.callout style="background:#eef7fc; border-left:6px solid #1696d2; padding: 1em;"}
+**Guidelines for data and statistical analyses:[^Aaron]**
 
 [^Aaron]: Inspired by the summary provided by Prof [Aaron Williams](https://aaronrwilliams.com/about)' course on Data Analysis offered at McCourt School. Strongly recommended to learn good coding using R
 
@@ -29,9 +35,11 @@ Guidelines for data and statistical analyses:[^Aaron]
 4.    **Human Interpretability**: Writing code is not just about analyzing but allowing yourself and then others to be able to understand your analytic choices.  
 5.    **Public Good**: Research is a public good. And the code allows your research to be truly accessible. This means you write a code that anyone else who understands the language can read, reuse, and recreate without you being present. We essentially ensure that by writing a readable and ideally publicly accessible code.
 
+:::
+
 ### R and RStudio
 
-Recall: R is a free open-source statistical programming language. We generally use R through RStudio which is an integrated development environment (IDE). Essentially, it is the graphic user interface that allows us to use R efficiently. It has point-and-click functionality also (which we would not use a lot).  
+*Recall: R is a free open-source statistical programming language. We generally use R through RStudio which is an integrated development environment (IDE). Essentially, it is the graphic user interface that allows us to use R efficiently. It has point-and-click functionality also (which we would not use a lot).*
 
 ```{r}
 #| echo: false
@@ -49,11 +57,11 @@ knitr::include_graphics("../../Resources/Pics/rstudio.png")
 
 #### Script Types
 
-1. **Basic R scripts** (`.R`) 
+**Basic R scripts** (`.R`) 
 * A plain text file that stores a sequence of R commands.
 * Best suited for writing reproducible analytical workflows.
 
-2. **Quarto** (`.qmd`) [^Gastner]
+**Quarto** (`.qmd`) [^Gastner]
 
 * A more advanced canvas that combines code and output in a cohesive document.
 * Compatible with other programming langagues (e.g., Python and Julia)
