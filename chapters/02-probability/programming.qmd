@@ -254,9 +254,9 @@ Two basic or "atomic" data structures in R are:
 
 1.  **Vectors**: Vectors can hold objects of same datatype (i.e., homogeneous). Vectors are the most basic and fundamental data structure in R. Other data structures are made up of one or more vectors.
 
-2.   **Matrix**: Matrices are vectors with two dimenions, so are also homogenous.
+2.  **Matrix**: Matrices are vectors with two dimenions, so are also homogenous.
 
-2.    **Lists**: Lists are the most flexible form of data structures and can hold objects with different datatypes (i.e., heterogeneous).
+3.  **Lists**: Lists are the most flexible form of data structures and can hold objects with different datatypes (i.e., heterogeneous).
 
 
 #### Understanding Vectors
@@ -384,14 +384,14 @@ G
 
 
 
-### Lists
+#### Lists
 
 If we want to create something that stores objects of different classes together, we use another data structure called `list`.
 
 A list can contain two or more classes of objects with different lengths.  
 
 
-#### Creating lists
+##### Creating lists
 
 ```{r eval=TRUE}
 
@@ -409,7 +409,7 @@ Profile
 Note how each element has a name under $name heading. And note how vectors of different nature - `numeric`, `logical`, and `character` are all stored in one object now. 
 :::
 
-#### Accessing elements in lists
+##### Accessing elements in lists
 
 `[[ ]]` reaches into the list and returns the element itself, by capturing the position of that vector in the list. `$` is the readable shortcut for `[[ ]]` when you know the name as you type it.
 
@@ -430,7 +430,7 @@ Profile[[3]][3]
 
 ```
 
-#### Modifying lists
+##### Modifying lists
 
 ```{r eval=TRUE}
 # add a new element
@@ -577,9 +577,7 @@ JPRdata_select <- readr::read_csv(
 
 3. How to extract the column `shareally` from this dataset?
 
-4. Try to extract the first, second, fifth, and tenth columns of this dataset and save them into a new object. What is this new dataset about? Do you think it contains information that is helpful?
-
-5. Can you find a way to extract rows only in which the exporting state is the United States?
+4. Can you create a list to store the dyad information from the first observation in this dataset?
 
 ### [`r paste("Code for your reference")`]{style="color:#1696d2;"}
 
@@ -610,19 +608,21 @@ shareally <- JPRdata_select$shareally
 #### Question 4
 
 ```{r eval=FALSE}
-new <- JPRdata_select[, c(1, 2, 5, 9)]
+Dyad1 <- list(
+  year      = JPRdata_select$year[1],
+  exporter  = JPRdata_select$StateNme_export[1],
+  importer  = JPRdata_select$StateNme_import[1],
+  trade     = JPRdata_select$logflow[1],
+  alliance  = JPRdata_select$shareally[1],
+  MID       = JPRdata_select$MID[1],
+  region    = JPRdata_select$region[1]
+)
 
-## arguably a better way
+Dyad1$alliance
 
-new_updated <- JPRdata_select[, c(1, 2, 3, 5, 6, 9)]
-```
-
-#### Question 5
-
-```{r eval=FALSE}
-new_US <- new_updated[new_updated$ccode_e==2,]
-dim(new_US)
-
+Dyad1$MID
+Dyad1[3]
+Dyad1[[3]]
 ```
 
 :::
