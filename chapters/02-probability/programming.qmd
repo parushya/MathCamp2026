@@ -602,7 +602,7 @@ dim(JPRdata_select)
 #### Question 3
 
 ```{r eval=FALSE}
-shareally <- JPRdata_select[,9]
+shareally <- JPRdata_select[,10]
 shareally <- JPRdata_select$shareally
 ```
 
