@@ -486,6 +486,7 @@ JPRdata_select <- JPRdata_cut%>%
          StateAbb_import,
          StateNme_import,
          logflow,
+         atopally,
          shareally,
          MID,
          loggdp.e,
