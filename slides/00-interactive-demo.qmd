@@ -1,0 +1,110 @@
+---
+title: "Interactive Visualization Template"
+subtitle: "Reference deck — not camp content"
+---
+
+## How to use this deck {.smaller}
+
+This deck is a reference/template, not session material. It shows the
+pattern for embedding a live, canvas-based interactive visualization
+directly into a revealjs slide so it always fits within the slide, no
+matter how much text sits above it:
+
+-   A unique wrapper class (`.viz-sinewave` below) that every CSS rule and
+    DOM query is scoped under, combined with the shared `.viz` class that
+    caps the whole block at 45% of the viewport height and lays controls +
+    canvas out as a column flexbox
+-   The `<script>` wrapped in an IIFE so its variables/functions never
+    become globals
+-   A canvas with **no hardcoded height** — it's sized in JS from its own
+    rendered box (`clientWidth`/`clientHeight`), which the `.viz` flexbox
+    determines, so it exactly fills whatever space is left under the
+    controls
+
+See `slides/slides.css` for the shared convention notes and the `.viz`
+layout rules this relies on.
+
+## Live example: amplitude slider {.smaller}
+
+```{=html}
+<div class="viz viz-sinewave">
+  <div class="viz-sinewave-controls">
+    <label for="viz-sinewave-amplitude">Amplitude: <span class="viz-sinewave-readout">50</span></label>
+    <input id="viz-sinewave-amplitude" type="range" min="10" max="100" value="50" step="1">
+  </div>
+  <canvas class="viz-sinewave-canvas"></canvas>
+</div>
+
+<style>
+.viz-sinewave { max-width: 700px; margin: 0 auto; }
+.viz-sinewave-controls { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; font-size: 0.4em; }
+.viz-sinewave-controls input[type="range"] { flex: 1; }
+.viz-sinewave-canvas { display: block; border: 1px solid #ddd; border-radius: 6px; background: #fff; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-sinewave');
+  container = container[container.length - 1];
+
+  var canvas = container.querySelector('.viz-sinewave-canvas');
+  var slider = container.querySelector('#viz-sinewave-amplitude');
+  var readout = container.querySelector('.viz-sinewave-readout');
+  var ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+  }
+
+  function draw() {
+    var amplitude = Number(slider.value);
+    readout.textContent = amplitude;
+
+    var w = canvas.width;
+    var h = canvas.height;
+    var midY = h / 2;
+
+    ctx.clearRect(0, 0, w, h);
+
+    ctx.strokeStyle = '#ccc';
+    ctx.beginPath();
+    ctx.moveTo(0, midY);
+    ctx.lineTo(w, midY);
+    ctx.stroke();
+
+    ctx.strokeStyle = '#2b6cb0';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (var x = 0; x <= w; x++) {
+      var y = midY - amplitude * Math.sin((x / w) * 4 * Math.PI);
+      if (x === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    }
+    ctx.stroke();
+  }
+
+  function refresh() {
+    resize();
+    draw();
+  }
+
+  slider.addEventListener('input', draw);
+  window.addEventListener('resize', refresh);
+
+  // The slide holding this canvas may be hidden (clientWidth/Height === 0)
+  // when this script first runs, since reveal.js only lays out the active
+  // slide. Re-measure every time reveal.js navigates so the canvas is
+  // sized correctly the first time this slide actually becomes visible.
+  if (window.Reveal && typeof window.Reveal.on === 'function') {
+    window.Reveal.on('slidechanged', refresh);
+    window.Reveal.on('resize', refresh);
+  }
+
+  refresh();
+})();
+</script>
+```

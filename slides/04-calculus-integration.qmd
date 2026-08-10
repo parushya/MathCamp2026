@@ -3,7 +3,7 @@ title: "Calculus II: Integration & Multivariate Calculus"
 subtitle: "MathCamp 2026 — Session 4"
 ---
 
-## Integration
+## Integration {.smaller}
 
 - Area under the curve
 - Integrals and the fundamental theorem of calculus
@@ -11,7 +11,7 @@ subtitle: "MathCamp 2026 — Session 4"
 - Rules of integration, worked examples
 - Integration by substitution
 
-## Multivariate Calculus
+## Multivariate Calculus {.smaller}
 
 - Partial derivatives
 - Gradients and mixed partial derivatives

@@ -1,1 +1,48 @@
 /* MathCamp 2026 slide theme overrides */
+
+/* Interactive visualizations (canvas/SVG + JS embedded directly in a slide):
+   - A revealjs deck is one HTML document, so all slides share one CSS/JS
+     scope. Give each visualization a unique wrapper class (e.g. .viz-coinflip)
+     and scope every rule under it -- never bare tag selectors like
+     `button { ... }` or `:root { --teal: ... }`, since those leak to every
+     other slide in the deck.
+   - Wrap each visualization's <script> in an IIFE, `(function() { ... })()`,
+     so its variables/functions don't become globals that a later
+     visualization's script could collide with.
+   - Every visualization's outer wrapper must also carry the shared `.viz`
+     class (in addition to its unique name, e.g. `class="viz viz-coinflip"`).
+     `.viz` caps total height at 45vh and lays controls + plot out as a
+     column flexbox, so the plot always shrinks to whatever room is left
+     under the slide's heading/controls -- it can never push the slide
+     taller than the viewport, regardless of how much text is above it.
+   - Don't hardcode a canvas `height` attribute. Instead size it in JS from
+     the element's own rendered box (`canvas.width = canvas.clientWidth`,
+     `canvas.height = canvas.clientHeight`) on load and on window resize, so
+     it always exactly fills the flex space `.viz` gives it.
+   - reveal.js only lays out the currently active slide, so a canvas on a
+     slide that isn't visible yet measures 0x0. Re-run the resize+redraw on
+     `Reveal.on('slidechanged', ...)` (and `Reveal.on('resize', ...)`), not
+     just on page load / window resize, so the plot is sized correctly the
+     first time its slide is actually shown.
+   - reveal.js's default slide font is large (sized for a projector, read
+     from the back of a room). This affects any slide with more than a
+     couple of short bullets, not just visualization slides -- put
+     `{.smaller}` on the `##` heading of any slide with a paragraph, a
+     longer bullet list, or a visualization (e.g. `## My demo {.smaller}`),
+     and keep control/label text around `font-size: 0.4em` in a
+     visualization's own CSS -- otherwise labels/buttons dwarf the plot.
+   - See slides/00-interactive-demo.qmd for a working example of the pattern. */
+
+.reveal .slides .viz {
+  max-height: 45vh;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.reveal .slides .viz canvas,
+.reveal .slides .viz svg.viz-plot {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+}

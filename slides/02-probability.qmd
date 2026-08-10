@@ -8,7 +8,7 @@ subtitle: "MathCamp 2026 — Session 2"
 - Agenda
 - Frequentist vs. Bayesian framing
 
-## Bayesian Probability
+## Bayesian Probability {.smaller}
 
 - Definitions and notation
 - Relationships between events
@@ -21,13 +21,13 @@ subtitle: "MathCamp 2026 — Session 2"
 - Frequentist methods and uncertainty
 - Confidence interval demonstration in R
 
-## Combinations and Permutations
+## Combinations and Permutations {.smaller}
 
 - Review of factorials
 - Combinations (why the formulas work, worked examples)
 - Calculating probabilities; the birthday problem
 
-## Distributions
+## Distributions {.smaller}
 
 - Random variables: discrete vs. continuous
 - Sample distributions and contingency tables

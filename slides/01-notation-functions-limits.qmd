@@ -3,7 +3,7 @@ title: "Notation, Functions, and Limits"
 subtitle: "MathCamp 2026 — Session 1"
 ---
 
-## Introduction & Logistics
+## Introduction & Logistics {.smaller}
 
 -   Introductions
 -   Math camp goals, logistics, and schedule
@@ -11,28 +11,28 @@ subtitle: "MathCamp 2026 — Session 1"
 
 $\beta = \alpha$
 
-## Variables & Measures
+## Variables & Measures {.smaller}
 
 -   Variables and constants
 -   Sets and sample spaces
 -   Unions, intersections, subsets (set notation)
 -   Levels of measurement, and why it matters
 
-## Rules of Algebra
+## Rules of Algebra {.smaller}
 
 -   Basic properties of arithmetic
 -   Order of operations
 -   Inequalities
 -   Exponents, logarithms, and roots
 
-## Functions
+## Functions {.smaller}
 
 -   Functions and their characteristics
 -   Function composition
 -   Graph examples: linear, quadratic, exponential functions
 -   Functions and theorizing; Anscombe's quartet
 
-## Solving Equations
+## Solving Equations {.smaller}
 
 -   Special products and factoring
 -   Quadratics and special products
@@ -43,7 +43,7 @@ $\beta = \alpha$
 -   Sequences and series
 -   Limits (including piecewise function examples)
 
-## Dataset preparation
+## Dataset preparation {.smaller}
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 library(readr)
@@ -95,7 +95,7 @@ JPRdata_select <- JPRdata_cut%>%
 
 ```
 
-## Dataset
+## Dataset {.smaller}
 
 This sample dataset is adapted from the replication data accompanying:
 
@@ -103,7 +103,7 @@ This sample dataset is adapted from the replication data accompanying:
 
 The original replication files and codebook are available through the Journal of Peace Research replication archive and the author's website. This version retains a subset of variables for instructional purposes and adds country names and abbreviations by merging the Correlates of War (COW) country code list.
 
-## Variables
+## Variables {.smaller}
 
 | Variable          | Description                                                                                                                                                                                                                                        |
 |:------------------------------|:---------------------------------------|
@@ -125,7 +125,7 @@ The original replication files and codebook are available through the Journal of
 | `bilatno`         | Indicator for whether the two states are partners in at least one bilateral alliance.                                                                                                                                                              |
 | `multino`         | Indicator for whether the two states are partners in at least one multilateral alliance.                                                                                                                                                           |
 
-## Notes
+## Notes {.smaller}
 
 -   Each observation represents a **directed country dyad-year**, where an exporting state trades with an importing state.
 -   Variables beginning with `.e` refer to characteristics of the exporting (ego) state, whereas variables beginning with `.a` refer to the importing (alter) state.

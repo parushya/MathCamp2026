@@ -14,3 +14,9 @@ version of each session (with more detail and worked examples), see the
 3. [Calculus I: Differentiation & Optimization](03-calculus-differentiation.html)
 4. [Calculus II: Integration & Multivariate Calculus](04-calculus-integration.html)
 5. [Linear Algebra](05-linear-algebra.html)
+
+---
+
+[Interactive Visualization Template](00-interactive-demo.html) — a
+reference deck (not camp content) showing the pattern for embedding a
+live, canvas-based visualization directly into a slide.

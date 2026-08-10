@@ -3,14 +3,14 @@ title: "Calculus I: Differentiation & Optimization"
 subtitle: "MathCamp 2026 — Session 3"
 ---
 
-## Differentiation
+## Differentiation {.smaller}
 
 - Types of change and derivatives
 - Discrete change (secant lines) vs. instantaneous change (tangent lines)
 - Rules of differentiation: power, product, quotient, and chain rules
 - Worked examples and practice
 
-## Optimization
+## Optimization {.smaller}
 
 - What is optimization?
 - Extreme value theorem
