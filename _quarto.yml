@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "MathCamp 2026"
+  title: "Math Camp 2026"
   subtitle: "Math camp for the incoming Political Science PhD cohort"
   author:
     - Parushya
@@ -11,13 +11,14 @@ book:
   date: today
   repo-url: https://github.com/parushya/MathCamp2026
   page-footer:
-    left: "MathCamp 2026, Political Science PhD Program"
+    left: "Math Camp 2026, Government PhD Program"
     right: "Built with Quarto"
   sidebar:
     style: docked
     background: light
   chapters:
     - index.qmd
+    - intro.qmd
     - part: chapters/01-notation-functions-limits/index.qmd
       chapters:
         - chapters/01-notation-functions-limits/slides.qmd

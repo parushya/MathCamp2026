@@ -1,21 +1,19 @@
 # Welcome {.unnumbered}
 
-This is the interactive companion book for **MathCamp 2026**, the math camp
-for the incoming Political Science PhD cohort. It replaces last year's
-slide-based sessions (archived in `Resources/Slide Decks 2025/`) with
-interactive, web-based material built in Quarto.
+This is the interactive  book for **Math and Programming 2026**, built
+for the incoming Government PhD cohort. 
 
 ## How to use this book
 
 Each session is its own chapter with two sub-chapters:
 
-- **Slides** — the in-class slideshow (also browsable on its own at
+- **Slides** — the in-class Mathematics slides (also browsable on its own at
   [`slides/index.html`](slides/index.html)).
-- **Programming Lecture** — a webpage walking through the same material with
-  runnable R code, worked examples, and (eventually) interactive
-  visualizations via `plotly`, `Shiny`, or similar R tooling.
+- **Programming Lecture** — a webpage walking through the programming material with
+  runnable R code, worked examples, and  interactive
+  visualizations.
 
-## Sessions
+## Sessions (TBD)
 
 1. Notation, Functions, and Limits
 2. Probability
