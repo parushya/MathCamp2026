@@ -9,7 +9,7 @@
 <link href="01-notation-functions-limits_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
-  <title>Notation, Functions, and Limits</title>
+  <title>Set Theory</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -135,63 +135,1124 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Notation, Functions, and Limits</h1>
-  <p class="subtitle">MathCamp 2026 — Session 1</p>
+  <h1 class="title">Set Theory</h1>
+  <p class="subtitle">Math and Programming Camp Session 1</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="introduction-logistics" class="slide level2 smaller">
-<h2>Introduction &amp; Logistics</h2>
-<ul>
-<li>Introductions</li>
-<li>Math camp goals, logistics, and schedule</li>
-<li>What are quantitative methods? Quantitative vs.&nbsp;qualitative methods</li>
-</ul>
-<p><span class="math inline">\(\beta = \alpha\)</span></p>
+<section id="the-big-questions" class="slide level2 smaller">
+<h2>The Big Question(s)</h2>
+<h3 id="does-democracy-cause-growth">Does Democracy Cause Growth?</h3>
+<div class="viz term-cards">
+  <div class="term-head">
+    <div class="term-head-term">Term</div>
+    <div class="term-head-def">Definition</div>
+    <div class="term-head-ex">Democracy → growth, cross-section 2020</div>
+  </div>
+
+  <div class="term-row fragment">
+    <div class="term-badge">Theory</div>
+    <div class="term-def">A set of statements involving concepts</div>
+    <div class="term-ex">Democracy constrains executive predation and secures property rights → investment → growth</div>
+  </div>
+
+  <div class="term-row fragment">
+    <div class="term-badge">Concept</div>
+    <div class="term-def">Abstract ideas used to understand the world</div>
+    <div class="term-ex">Democracy; economic growth</div>
+  </div>
+
+  <div class="term-row fragment">
+    <div class="term-badge">Measure</div>
+    <div class="term-def">An operational indicator of a concept</div>
+    <div class="term-ex">V-Dem polyarchy index (0–1); average annual growth in log GDP per capita</div>
+  </div>
+
+  <div class="term-row fragment">
+    <div class="term-badge">Unit of analysis</div>
+    <div class="term-def">The entity a row describes</div>
+    <div class="term-ex">The country (<em>n</em> ≈ 175)</div>
+  </div>
+
+  <div class="term-row fragment">
+    <div class="term-badge">Variable</div>
+    <div class="term-def">Takes different values in the given set</div>
+    <div class="term-ex">polyarchy; growth; region</div>
+  </div>
+
+  <div class="term-row fragment">
+    <div class="term-badge">Constant</div>
+    <div class="term-def">Single value in the given set</div>
+    <div class="term-ex">The year (2020); the planet; anything time-varying</div>
+  </div>
+</div>
+
+<style>
+.term-cards {
+  max-width: 100%;
+  font-size: 0.42em;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.term-cards .term-head,
+.term-cards .term-row {
+  display: grid;
+  grid-template-columns: 16% 32% 52%;
+  gap: 14px;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 8px;
+}
+.term-cards .term-head {
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  color: #5A6B80;
+  border-bottom: 2px solid #D9E0EA;
+  padding-bottom: 10px;
+}
+.term-cards .term-row {
+  background: #F7F8FA;
+  border: 1px solid #EDF0F5;
+}
+.term-cards .term-badge {
+  display: inline-block;
+  background: #2b6cb0;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 999px;
+  padding: 5px 10px;
+}
+.term-cards .term-def {
+  color: #22303F;
+}
+.term-cards .term-ex {
+  color: #5A6B80;
+}
+</style>
 </section>
-<section id="variables-measures" class="slide level2 smaller">
-<h2>Variables &amp; Measures</h2>
+<section id="hypotheses" class="slide level2 smaller">
+<h2>Hypotheses</h2>
+<p><strong>Hypothesis:</strong> a testable statement, derived from a theory, about the expected relationship between concepts or variables.</p>
+<div class="viz hyp-cards">
+  <div class="hyp-head">
+    <div class="hyp-head-type">Hypothesis</div>
+    <div class="hyp-head-stmt">Statement</div>
+  </div>
+
+  <div class="hyp-row fragment">
+    <div class="hyp-badge">Theoretical</div>
+    <div class="hyp-stmt">Democracy causes higher economic growth</div>
+  </div>
+
+  <div class="hyp-row fragment">
+    <div class="hyp-badge">Empirical</div>
+    <div class="hyp-stmt">Countries with higher democracy scores have higher average growth</div>
+  </div>
+
+  <div class="hyp-row fragment">
+    <div class="hyp-badge">Null</div>
+    <div class="hyp-stmt">Average growth is the same in both groups</div>
+  </div>
+
+  <div class="hyp-row fragment">
+    <div class="hyp-badge">Rival</div>
+    <div class="hyp-stmt">Growth causes democracy — same correlation, opposite arrow</div>
+  </div>
+</div>
+
+<style>
+.hyp-cards {
+  max-width: 100%;
+  font-size: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.hyp-cards .hyp-head,
+.hyp-cards .hyp-row {
+  display: grid;
+  grid-template-columns: 20% 80%;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 14px;
+  border-radius: 8px;
+}
+.hyp-cards .hyp-head {
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  font-size: 0.85em;
+  color: #5A6B80;
+  border-bottom: 2px solid #D9E0EA;
+  padding-bottom: 10px;
+}
+.hyp-cards .hyp-row {
+  background: #F7F8FA;
+  border: 1px solid #EDF0F5;
+}
+.hyp-cards .hyp-badge {
+  display: inline-block;
+  background: #2b6cb0;
+  color: #fff;
+  font-weight: 600;
+  text-align: center;
+  border-radius: 999px;
+  padding: 6px 12px;
+}
+.hyp-cards .hyp-stmt {
+  color: #22303F;
+}
+</style>
+</section>
+<section id="hence-theory-to-empirics" class="slide level2">
+<h2>Hence, theory to empirics</h2>
 <ul>
-<li>Variables and constants</li>
-<li>Sets and sample spaces</li>
-<li>Unions, intersections, subsets (set notation)</li>
-<li>Levels of measurement, and why it matters</li>
+<li class="fragment"><strong>Theory:</strong> (simplified) a set of statements that involve concepts.</li>
+<li class="fragment"><strong>Concept:</strong> abstract ideas used to understand the world.</li>
+<li class="fragment"><strong>Measure:</strong> an operational indicator of a concept</li>
+<li class="fragment"><strong>Variable:</strong> A concept or measure that takes different values in a given set.</li>
+<li class="fragment"><strong>Constant:</strong> A concept or measure that has a single value for a given set.</li>
+<li class="fragment"><strong>Hypothesis:</strong> a testable statement, derived from a theory, about the expected relationship between concepts or variables.</li>
+</ul>
+<ul>
+<li class="fragment"><strong>Let’s hear some ideas from your research areas!</strong></li>
 </ul>
 </section>
-<section id="rules-of-algebra" class="slide level2 smaller">
-<h2>Rules of Algebra</h2>
+<section id="democracy-and-growth-in-the-data-v-dem-2019" class="slide level2 smaller">
+<h2>Democracy and Growth, in the Data (V-Dem 2019)</h2>
+
+<img data-src="01-notation-functions-limits/images/vdem-polyarchy-gdppc-2019.png" class="r-stretch"><p>Polyarchy (our <strong>measure</strong> of democracy) vs.&nbsp;GDP per capita, one dot per country. <span class="math inline">\(n = 174\)</span>.</p>
+</section>
+<section id="the-same-data-as-sets" class="slide level2 smaller">
+<h2>The Same Data, as Sets</h2>
+<div class="viz viz-scatter-to-sets">
+  <div class="sts-layout">
+    <div class="sts-plot-col">
+      <svg class="sts-svg" viewbox="0 0 480 300" role="img" aria-label="Scatterplot of polyarchy vs GDP per capita for 174 countries, with 8 countries highlighted"></svg>
+      <div class="sts-caption">Polyarchy vs. GDP per capita, V-Dem 2019. n = 174.</div>
+    </div>
+    <div class="sts-sets-col">
+      <div class="sts-set">
+        <div class="sts-set-title">Countries</div>
+        <div class="sts-set-brace">{ <span class="sts-items" data-set="country"></span>, … }</div>
+      </div>
+      <div class="sts-set">
+        <div class="sts-set-title">Polyarchy</div>
+        <div class="sts-set-brace">{ <span class="sts-items" data-set="polyarchy"></span>, … }</div>
+      </div>
+      <div class="sts-set">
+        <div class="sts-set-title">GDP per capita</div>
+        <div class="sts-set-brace">{ <span class="sts-items" data-set="gdppc"></span>, … }</div>
+      </div>
+      <div class="sts-note">showing 8 of 174 countries</div>
+    </div>
+  </div>
+  <div class="sts-hint">Click to split the highlighted points into three sets →</div>
+</div>
+
+<style>
+.viz-scatter-to-sets { max-width: 100%; font-size: 0.6em; }
+.viz-scatter-to-sets .sts-layout {
+  display: flex;
+  gap: 24px;
+  flex: 1 1 auto;
+  min-height: 0;
+  align-items: stretch;
+}
+.viz-scatter-to-sets .sts-plot-col {
+  flex: 1 1 55%;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+.viz-scatter-to-sets .sts-svg {
+  width: 100%;
+  height: auto;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+.viz-scatter-to-sets .sts-caption {
+  flex: 0 0 auto;
+  font-size: 0.6em;
+  color: #5A6B80;
+  text-align: center;
+  margin-top: 4px;
+}
+.viz-scatter-to-sets .sts-dot {
+  fill: #C7CDD6;
+  opacity: 0.7;
+}
+.viz-scatter-to-sets .sts-dot-hl {
+  stroke: #fff;
+  stroke-width: 1;
+  transition: r 0.4s ease, filter 0.4s ease;
+}
+.viz-scatter-to-sets .sts-dot-label {
+  font-size: 9px;
+  font-weight: 700;
+  fill: #22303F;
+}
+.viz-scatter-to-sets .sts-axis {
+  stroke: #D9E0EA;
+  stroke-width: 1;
+}
+.viz-scatter-to-sets .sts-tick {
+  font-size: 8px;
+  fill: #5A6B80;
+}
+
+.viz-scatter-to-sets .sts-sets-col {
+  flex: 1 1 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  min-width: 0;
+}
+.viz-scatter-to-sets .sts-set-title {
+  font-size: 0.65em;
+  font-weight: 600;
+  letter-spacing: .04em;
+  text-transform: uppercase;
+  color: #5A6B80;
+}
+.viz-scatter-to-sets .sts-set-brace {
+  font-size: 0.75em;
+  color: #22303F;
+  background: #F7F8FA;
+  border: 1px solid #EDF0F5;
+  border-radius: 8px;
+  padding: 6px 10px;
+  min-height: 1.6em;
+}
+.viz-scatter-to-sets .sts-item {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition-delay: calc(var(--i) * 90ms);
+}
+.viz-scatter-to-sets .sts-item::after {
+  content: ", ";
+  color: #5A6B80;
+}
+.viz-scatter-to-sets .sts-item:last-child::after {
+  content: "";
+}
+.viz-scatter-to-sets .sts-item .sts-badge {
+  display: inline-block;
+  background: #2b6cb0;
+  color: #fff;
+  border-radius: 999px;
+  font-size: 0.8em;
+  width: 1.3em;
+  height: 1.3em;
+  line-height: 1.3em;
+  text-align: center;
+  margin-right: 3px;
+}
+.viz-scatter-to-sets .sts-note {
+  font-size: 0.55em;
+  color: #5A6B80;
+  font-style: italic;
+}
+
+.viz-scatter-to-sets .sts-hint {
+  flex: 0 0 auto;
+  text-align: center;
+  font-size: 0.6em;
+  color: #5A6B80;
+  margin-top: 8px;
+  cursor: pointer;
+}
+
+.viz-scatter-to-sets.sts-revealed .sts-item {
+  opacity: 1;
+  transform: translateY(0);
+}
+.viz-scatter-to-sets.sts-revealed .sts-dot-hl {
+  r: 6;
+  filter: drop-shadow(0 0 4px var(--hlc, #2b6cb0));
+}
+</style>
+
+<script>
+(function () {
+  var ALL_POINTS = [
+    [0.684,34308],[0.741,24668],[0.899,106746],[0.902,109451],[0.718,10820],
+    [0.727,24104],[0.830,88837],[0.421,13762],[0.259,58026],[0.511,25857],
+    [0.174,20346],[0.117,4619],[0.651,30629],[0.682,58956],[0.691,25458],
+    [0.818,144274],[0.886,63753],[0.599,13803],[0.251,8755],[0.456,13750],
+    [0.421,4474],[0.368,10796],[0.516,4533],[0.368,10187],[0.801,24750],
+    [0.697,6748],[0.160,3619],[0.193,8554],[0.211,15775],[0.329,3975],
+    [0.779,42896],[0.329,4867],[0.430,16082],[0.501,7280],[0.083,4007],
+    [0.842,91211],[0.677,17835],[0.429,25081],[0.520,10467],[0.428,16533],
+    [0.383,5408],[0.834,98923],[0.208,37955],[0.284,4827],[0.209,12790],
+    [0.452,6148],[0.598,25697],[0.657,5487],[0.194,9816],[0.596,23400],
+    [0.397,4132],[0.606,6354],[0.215,9400],[0.528,2461],[0.358,5907],
+    [0.304,5818],[0.360,4594],[0.534,7669],[0.407,7151],[0.850,104068],
+    [0.825,115340],[0.656,32139],[0.159,1743],[0.790,14275],[0.379,1813],
+    [0.829,53121],[0.893,37622],[0.703,7587],[0.617,21463],[0.866,91636],
+    [0.878,100560],[0.597,15925],[0.181,23538],[0.393,19391],[0.887,149770],
+    [0.854,73132],[0.260,17520],[0.826,60021],[0.621,7374],[0.623,2796],
+    [0.480,2915],[0.570,31125],[0.653,18664],[0.257,18495],[0.866,105434],
+    [0.731,53534],[0.462,10506],[0.040,167513],[0.554,3934],[0.871,81503],
+    [0.136,8627],[0.725,24531],[0.289,47988],[0.528,22043],[0.854,96727],
+    [0.896,47918],[0.293,24322],[0.347,10867],[0.796,27448],[0.195,32471],
+    [0.259,46491],[0.280,6176],[0.270,3822],[0.075,35272],[0.344,1849],
+    [0.250,7090],[0.251,11417],[0.569,32642],[0.070,4021],[0.377,23549],
+    [0.524,4622],[0.627,29006],[0.529,3632],[0.810,16689],[0.236,52424],
+    [0.441,11894],[0.127,13965],[0.263,24137],[0.478,2753],[0.588,17553],
+    [0.647,20338],[0.227,5210],[0.148,6578],[0.564,27126],[0.133,18037],
+    [0.164,8843],[0.395,3584],[0.787,65763],[0.149,47662],[0.203,22516],
+    [0.862,98753],[0.132,55987],[0.792,37336],[0.901,96770],[0.515,26094],
+    [0.609,46229],[0.305,4837],[0.734,50321],[0.181,19759],[0.840,69276],
+    [0.800,75901],[0.916,108005],[0.178,54551],[0.898,68392],[0.391,22338],
+    [0.881,87580],[0.864,53067],[0.640,22018],[0.859,115552],[0.708,82950],
+    [0.323,96897],[0.817,67225],[0.872,181069],[0.602,30736],[0.470,56016],
+    [0.767,81913],[0.694,56700],[0.483,34992],[0.885,83507],[0.889,124864],
+    [0.176,43703],[0.585,19990],[0.750,40590],[0.670,7829],[0.015,63454],
+    [0.365,27929],[0.621,58857],[0.403,142915],[0.841,65901],[0.814,76072],
+    [0.656,8192],[0.779,6496],[0.102,114381],[0.466,54310]
+  ];
+
+  var SAMPLE = [
+    { country: "Saudi Arabia",   polyarchy: 0.01, gdppc: 63454 },
+    { country: "Thailand",       polyarchy: 0.21, gdppc: 37955 },
+    { country: "DR Congo",       polyarchy: 0.34, gdppc: 1849 },
+    { country: "Hungary",        polyarchy: 0.47, gdppc: 54310 },
+    { country: "N. Macedonia",   polyarchy: 0.60, gdppc: 30736 },
+    { country: "Tunisia",        polyarchy: 0.72, gdppc: 24531 },
+    { country: "Cyprus",         polyarchy: 0.84, gdppc: 69276 },
+    { country: "Denmark",        polyarchy: 0.92, gdppc: 108005 }
+  ];
+
+  var wrappers = document.querySelectorAll('.viz-scatter-to-sets');
+  var wrapper = wrappers[wrappers.length - 1];
+  var svg = wrapper.querySelector('.sts-svg');
+  var hint = wrapper.querySelector('.sts-hint');
+  var svgNS = 'http://www.w3.org/2000/svg';
+
+  var margin = { top: 14, right: 14, bottom: 26, left: 34 };
+  var W = 480, H = 300;
+  var plotW = W - margin.left - margin.right;
+  var plotH = H - margin.top - margin.bottom;
+
+  var logs = ALL_POINTS.map(function (p) { return Math.log10(p[1]); });
+  var logMin = Math.min.apply(null, logs);
+  var logMax = Math.max.apply(null, logs);
+
+  function x(polyarchy) { return margin.left + polyarchy * plotW; }
+  function y(gdppc) {
+    var t = (Math.log10(gdppc) - logMin) / (logMax - logMin);
+    return margin.top + plotH - t * plotH;
+  }
+
+  function el(tag, attrs) {
+    var e = document.createElementNS(svgNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // axes
+  svg.appendChild(el('line', { class: 'sts-axis', x1: margin.left, y1: H - margin.bottom, x2: W - margin.right, y2: H - margin.bottom }));
+  svg.appendChild(el('line', { class: 'sts-axis', x1: margin.left, y1: margin.top, x2: margin.left, y2: H - margin.bottom }));
+  [0, 0.25, 0.5, 0.75, 1].forEach(function (v) {
+    var t = el('text', { class: 'sts-tick', x: x(v), y: H - margin.bottom + 12, 'text-anchor': 'middle' });
+    t.textContent = v;
+    svg.appendChild(t);
+  });
+
+  // 174 faint dots
+  ALL_POINTS.forEach(function (p) {
+    svg.appendChild(el('circle', { class: 'sts-dot', cx: x(p[0]), cy: y(p[1]), r: 2 }));
+  });
+
+  var COLORS = ['#2b6cb0', '#e53e3e', '#38a169', '#d69e2e', '#805ad5', '#dd6b20', '#319795', '#d53f8c'];
+
+  // 8 highlighted dots + numbers, one distinct color per point
+  SAMPLE.forEach(function (s, i) {
+    var color = COLORS[i % COLORS.length];
+    var dot = el('circle', {
+      class: 'sts-dot-hl', cx: x(s.polyarchy), cy: y(s.gdppc), r: 4,
+      fill: color, 'fill-opacity': 0.4
+    });
+    dot.style.setProperty('--hlc', color);
+    svg.appendChild(dot);
+    var t = el('text', { class: 'sts-dot-label', x: x(s.polyarchy) + 6, y: y(s.gdppc) - 6, fill: color });
+    t.textContent = i + 1;
+    svg.appendChild(t);
+  });
+
+  function fmtGdp(v) {
+    return '$' + (v / 1000).toFixed(1) + 'k';
+  }
+
+  function fillSet(name, formatter) {
+    var target = wrapper.querySelector('.sts-items[data-set="' + name + '"]');
+    SAMPLE.forEach(function (s, i) {
+      var span = document.createElement('span');
+      span.className = 'sts-item';
+      span.style.setProperty('--i', i);
+      span.innerHTML = '<span class="sts-badge" style="background:' + COLORS[i % COLORS.length] + '">' + (i + 1) + '</span>' + formatter(s);
+      target.appendChild(span);
+    });
+  }
+
+  fillSet('country', function (s) { return s.country; });
+  fillSet('polyarchy', function (s) { return s.polyarchy.toFixed(2); });
+  fillSet('gdppc', function (s) { return fmtGdp(s.gdppc); });
+
+  wrapper.addEventListener('click', function () {
+    var on = wrapper.classList.toggle('sts-revealed');
+    hint.textContent = on
+      ? '← Click to collapse the sets'
+      : 'Click to split the highlighted points into three sets →';
+  });
+})();
+</script>
+</section>
+<section id="all-the-values-it-could-take" class="slide level2 smaller">
+<h2>All the Values It Could Take</h2>
 <ul>
-<li>Basic properties of arithmetic</li>
-<li>Order of operations</li>
-<li>Inequalities</li>
-<li>Exponents, logarithms, and roots</li>
+<li class="fragment">Every dot’s polyarchy score is <em>some</em> value between 0 and 1.</li>
+<li class="fragment">The full range of values it <strong>could</strong> take — before we see any particular country — is its <strong>sample space</strong>.</li>
+<li class="fragment">Same idea for GDP per capita: some positive number, no fixed upper bound in principle.</li>
+<li class="fragment">Political scientists build claims about <em>all</em> of this range, not just the countries plotted here.</li>
 </ul>
 </section>
-<section id="functions" class="slide level2 smaller">
-<h2>Functions</h2>
+<section id="from-the-picture-to-notation" class="slide level2 smaller">
+<h2>From the Picture to Notation</h2>
 <ul>
-<li>Functions and their characteristics</li>
-<li>Function composition</li>
-<li>Graph examples: linear, quadratic, exponential functions</li>
-<li>Functions and theorizing; Anscombe’s quartet</li>
+<li class="fragment">Polyarchy <span class="math inline">\(\in [0,1]\)</span> — the sample space, written formally.</li>
+<li class="fragment">Each dot: one <strong>unit of analysis</strong> (a country), with a polyarchy value and a GDP value.</li>
+<li class="fragment">The threshold used to split “democracies” from “non-democracies”: <span class="math inline">\(D = 1\{\text{polyarchy} &gt; 0.5\}\)</span>.</li>
+<li class="fragment">Where did 0.5 come from? <em>(open question — we’ll come back to this)</em></li>
+<li class="fragment">To make statements like this precise, we need the formal language of <strong>sets</strong>.</li>
 </ul>
 </section>
+<section id="sets-and-sample-spaces" class="slide level2 smaller">
+<h2>Sets and Sample Spaces</h2>
+<ul>
+<li class="fragment">A <em>set</em> is a collection of elements.</li>
+<li class="fragment"><strong>Common sets:</strong> Natural numbers (<span class="math inline">\(\mathbb{N}\)</span>), Integers (<span class="math inline">\(\mathbb{Z}\)</span>), Rational numbers (<span class="math inline">\(\mathbb{Q}\)</span>), Real numbers (<span class="math inline">\(\mathbb{R}\)</span>), etc.</li>
+<li class="fragment">A set can be:
+<ul>
+<li class="fragment"><strong>Finite or infinite:</strong> <span class="math inline">\(\mathbb{Z}\)</span> is infinite, but all the integers from 1 to 10 is finite.</li>
+<li class="fragment"><strong>Countable or uncountable:</strong> a countable set is one whose each of its elements can be associated with a natural number (or an integer).</li>
+<li class="fragment"><strong>Bounded or unbounded:</strong> A bounded set has finite size (but may have infinite elements).</li>
+</ul></li>
+<li class="fragment">Some important sets that we are going to use as political scientists:
+<ul>
+<li class="fragment"><strong>Solution set:</strong> a set that contains all solutions for an equation</li>
+<li class="fragment"><strong>Sample space:</strong> a set that contains all values that a variable can take.</li>
+</ul></li>
+</ul>
+</section>
+<section id="unions-and-intersections" class="slide level2 smaller">
+<h2>Unions and Intersections</h2>
+<ul>
+<li class="fragment">Much as sets contain elements, they also can contain, and be contained by, other sets.</li>
+<li class="fragment">Notation:
+<ul>
+<li class="fragment"><span class="math inline">\(A \subset B\)</span>: “A is a <strong>proper subset</strong> of B” implies that set B contains all the elements in A, plus at least one more</li>
+<li class="fragment"><span class="math inline">\(A \subseteq B\)</span>: “A is a <strong>subset</strong> of B”. In this case, it allows A and B to be the same.</li>
+</ul></li>
+<li class="fragment"><strong>Intersection:</strong> <span class="math inline">\(A \cap B\)</span>. The set of elements common to two sets.</li>
+<li class="fragment"><strong>Union:</strong> <span class="math inline">\(A \cup B\)</span>. The set that contains all elements in both sets.</li>
+<li class="fragment"><strong>Mutually exclusive sets:</strong> the intersection is the empty set.</li>
+</ul>
+</section>
+<section id="a-subset-b-proper-subset" class="slide level2 smaller">
+<h2><span class="math inline">\(A \subset B\)</span> (Proper Subset)</h2>
+<div class="viz venn-subset">
+<svg class="viz-plot" viewbox="0 0 300 220" role="img" aria-label="Circle A entirely inside circle B">
+  <circle cx="150" cy="115" r="95" fill="#8a8f98"></circle>
+  <circle cx="150" cy="115" r="46" fill="#2b6cb0"></circle>
+  <text x="150" y="26" text-anchor="middle" font-size="20" fill="#22303F">B</text>
+  <text x="150" y="120" text-anchor="middle" font-size="20" fill="#fff">A</text>
+</svg>
+</div>
+<style>.venn-subset { max-width: 340px; margin: 0 auto; }</style>
+</section>
+<section id="a-cap-b-intersection" class="slide level2 smaller">
+<h2><span class="math inline">\(A \cap B\)</span> (Intersection)</h2>
+<div class="viz venn-intersection">
+<svg class="viz-plot" viewbox="0 0 320 200" role="img" aria-label="Two overlapping circles A and B with their intersection highlighted">
+  <circle cx="130" cy="100" r="80" fill="#2b6cb0" fill-opacity="0.6"></circle>
+  <circle cx="210" cy="100" r="80" fill="#8a8f98" fill-opacity="0.6"></circle>
+  <text x="80" y="35" font-size="20" fill="#22303F">A</text>
+  <text x="250" y="35" font-size="20" fill="#22303F">B</text>
+  <text x="170" y="105" text-anchor="middle" font-size="16" fill="#fff">A∩B</text>
+</svg>
+</div>
+<style>.venn-intersection { max-width: 360px; margin: 0 auto; }</style>
+</section>
+<section id="a-cup-b-union" class="slide level2 smaller">
+<h2><span class="math inline">\(A \cup B\)</span> (Union)</h2>
+<div class="viz venn-union">
+<svg class="viz-plot" viewbox="0 0 320 220" role="img" aria-label="Two overlapping circles A and B, both fully shaded to represent their union">
+  <circle cx="130" cy="110" r="80" fill="#2b6cb0"></circle>
+  <circle cx="210" cy="110" r="80" fill="#2b6cb0"></circle>
+  <text x="80" y="35" font-size="20" fill="#22303F">A</text>
+  <text x="250" y="35" font-size="20" fill="#22303F">B</text>
+  <text x="170" y="18" text-anchor="middle" font-size="16" fill="#22303F">A∪B</text>
+</svg>
+</div>
+<style>.venn-union { max-width: 360px; margin: 0 auto; }</style>
+</section>
+<section id="a-cap-b-emptyset-mutually-exclusive" class="slide level2 smaller">
+<h2><span class="math inline">\(A \cap B = \emptyset\)</span> (Mutually Exclusive)</h2>
+<div class="viz venn-disjoint">
+<svg class="viz-plot" viewbox="0 0 340 200" role="img" aria-label="Two separate, non-overlapping circles A and B">
+  <circle cx="90" cy="100" r="70" fill="#2b6cb0"></circle>
+  <circle cx="260" cy="100" r="70" fill="#8a8f98"></circle>
+  <text x="90" y="35" text-anchor="middle" font-size="20" fill="#22303F">A</text>
+  <text x="260" y="35" text-anchor="middle" font-size="20" fill="#22303F">B</text>
+</svg>
+</div>
+<style>.venn-disjoint { max-width: 380px; margin: 0 auto; }</style>
+</section>
+<section id="levels-of-measurement" class="slide level2 smaller">
+<h2>Levels of Measurement</h2>
+<ul>
+<li class="fragment">Categorical
+<ul>
+<li class="fragment"><strong>Nominal</strong>: No mathematical relationship; difference of kind.
+<ul>
+<li class="fragment">Occupation, colors, political party, gender</li>
+</ul></li>
+<li class="fragment"><strong>Ordinal:</strong> Meaningful order, no meaningful “distance” between categories.
+<ul>
+<li class="fragment">Ideology, agree/disagree, education level</li>
+</ul></li>
+</ul></li>
+<li class="fragment">Numerical
+<ul>
+<li class="fragment"><strong>Interval</strong>: Meaningful order and distance between values.
+<ul>
+<li class="fragment">Age, budget, polity scores, vote share, feeling thermometer</li>
+<li class="fragment">Discrete: countable</li>
+<li class="fragment">Continuous: non-countable</li>
+<li class="fragment">Ratio: meaningful zero (re-scaled thermometer)</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="why-it-matters" class="slide level2 smaller">
+<h2>Why it Matters</h2>
+<ul>
+<li class="fragment">Visualization
+<ul>
+<li class="fragment">Categorical: pie charts, bar charts</li>
+<li class="fragment">Numerical (especially continuous): histograms, box plots</li>
+</ul></li>
+<li class="fragment">Analysis
+<ul>
+<li class="fragment">Numerical data can use summary statistics (mean, median, standard deviation)</li>
+<li class="fragment">Categorical – Categorical: cross-tabulation</li>
+<li class="fragment">Categorical – Continuous: difference in means</li>
+<li class="fragment">Continuous – Continuous: scatter plots, regression</li>
+</ul></li>
+</ul>
+</section>
+<section id="basic-properties-of-arithmetic" class="slide level2 smaller">
+<h2>Basic Properties of Arithmetic</h2>
+<p>For variables that stand for real numbers or integers, these properties will always hold:</p>
+<ul>
+<li class="fragment"><strong>Associative properties:</strong>
+<ul>
+<li class="fragment"><span class="math inline">\((a+b)+c=a+(b+c)\)</span></li>
+<li class="fragment"><span class="math inline">\((a \cdot b)\cdot c=a \cdot (b \cdot c)\)</span></li>
+</ul></li>
+<li class="fragment"><strong>Commutative properties:</strong>
+<ul>
+<li class="fragment"><span class="math inline">\(a+b=b+a\)</span></li>
+<li class="fragment"><span class="math inline">\(a \cdot b = b \cdot a\)</span></li>
+</ul></li>
+<li class="fragment"><strong>Distributive properties:</strong>
+<ul>
+<li class="fragment"><span class="math inline">\(a \cdot (b+c)=ab+ac\)</span></li>
+</ul></li>
+<li class="fragment"><strong>Identity properties:</strong>
+<ul>
+<li class="fragment"><span class="math inline">\(a+0=a\)</span></li>
+<li class="fragment"><span class="math inline">\(a \cdot 1 = a\)</span></li>
+</ul></li>
+<li class="fragment"><strong>Inverse properties (for real numbers, not integers):</strong>
+<ul>
+<li class="fragment"><span class="math inline">\((-a) + a = 0\)</span></li>
+<li class="fragment"><span class="math inline">\(a^{-1} \cdot a = 1\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="order-of-operations" class="slide level2 smaller">
+<h2>Order of Operations</h2>
+<p><strong>PEMDAS:</strong></p>
+<ul>
+<li class="fragment">Parentheses ()</li>
+<li class="fragment">Exponents (<span class="math inline">\(x^{n}\)</span>)</li>
+<li class="fragment">Multiplication (<span class="math inline">\(\cdot\)</span>)</li>
+<li class="fragment">Division (<span class="math inline">\(\div\)</span>)</li>
+<li class="fragment">Addition (<span class="math inline">\(+\)</span>)</li>
+<li class="fragment">Subtraction (<span class="math inline">\(-\)</span>)</li>
+</ul>
+</section>
+<section id="inequalities" class="slide level2 smaller">
+<h2>Inequalities</h2>
+<ul>
+<li class="fragment">All pairs of real numbers have exactly one of the following relations: <span class="math inline">\(x=y\)</span>, <span class="math inline">\(x&gt;y\)</span>, or <span class="math inline">\(x&lt;y\)</span>.</li>
+<li class="fragment">Solving inequalities is similar to solving equations, but there are a few extra properties.</li>
+<li class="fragment">Adding any number to each side of these relations will not change them; this includes inequalities.</li>
+<li class="fragment">Multiplication:
+<ul>
+<li class="fragment">If <span class="math inline">\(a\)</span> is positive and <span class="math inline">\(x&gt;y\)</span>, then <span class="math inline">\(ax&gt;ay\)</span>.</li>
+<li class="fragment">If <span class="math inline">\(a\)</span> is negative and <span class="math inline">\(x&gt;y\)</span>, then <span class="math inline">\(ax&lt;ay\)</span>.</li>
+</ul></li>
+<li class="fragment">Division:
+<ul>
+<li class="fragment">If <span class="math inline">\(a\)</span> is positive and <span class="math inline">\(x&gt;y\)</span>, then <span class="math inline">\(\frac{x}{a}&gt;\frac{y}{a}\)</span>.</li>
+<li class="fragment">If <span class="math inline">\(a\)</span> is negative and <span class="math inline">\(x&gt;y\)</span>, then <span class="math inline">\(\frac{x}{a}&lt;\frac{y}{a}\)</span>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="exponents-logarithms-and-roots" class="slide level2 smaller">
+<h2>Exponents, Logarithms, and Roots</h2>
+<ul>
+<li class="fragment">Exponential: <span class="math inline">\(x^{a}\)</span></li>
+<li class="fragment">Roots: <span class="math inline">\(\sqrt[a]{x}\)</span>
+<ul>
+<li class="fragment">All roots can be expressed as fractional exponents</li>
+<li class="fragment"><span class="math inline">\(\sqrt[a]{x} = x^{1/a}\)</span></li>
+</ul></li>
+<li class="fragment">Logarithm: inverse of exponents, <span class="math inline">\(\log_{a}x\)</span>
+<ul>
+<li class="fragment">To what power would you need to raise <span class="math inline">\(a\)</span> to get <span class="math inline">\(x\)</span>?</li>
+</ul></li>
+<li class="fragment">Natural log: log base <span class="math inline">\(e\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(e \approx 2.7183\)</span></li>
+<li class="fragment">Useful properties in calculus</li>
+<li class="fragment">Taking the natural log of a variable allows us to interpret relationships in terms of percentage changes</li>
+</ul></li>
+</ul>
+</section>
+<section id="exponent-logarithm-and-root-rules" class="slide level2 smaller">
+<h2>Exponent, Logarithm, and Root Rules</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Exponent rules</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(x^{a} \cdot x^{b}=x^{a+b}\)</span></li>
+<li class="fragment"><span class="math inline">\(x^{a} \cdot z^{a}=(xz)^{a}\)</span></li>
+<li class="fragment"><span class="math inline">\((x^{a})^{b}=x^{ab}\)</span></li>
+<li class="fragment"><span class="math inline">\(\frac{x^{a}}{x^{b}}=x^{a-b}\)</span></li>
+<li class="fragment"><span class="math inline">\(\frac{x^{a}}{z^{a}}=\left(\frac{x}{z}\right)^{a}\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Logarithm rules</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(\log(x_{1} \cdot x_{2})=\log(x_{1})+\log(x_{2})\)</span> for <span class="math inline">\(x_{1},x_{2}&gt;0\)</span></li>
+<li class="fragment"><span class="math inline">\(\log\left(\frac{x_{1}}{x_{2}}\right)=\log(x_{1})-\log(x_{2})\)</span> for <span class="math inline">\(x_{1},x_{2}&gt;0\)</span></li>
+<li class="fragment"><span class="math inline">\(\log(x^{b})=b \cdot \ln(x)\)</span> for <span class="math inline">\(x&gt;0\)</span></li>
+</ul>
+</div></div>
+</section>
+<section id="exponent-logarithm-and-root-rules-root-rules" class="slide level2 smaller">
+<h2>Exponent, Logarithm, and Root Rules — Root Rules</h2>
+<p><strong>Root rules</strong></p>
+<ul>
+<li><span class="math inline">\(\sqrt{x}=x^{\frac{1}{2}}\)</span></li>
+<li><span class="math inline">\(\sqrt[n]{x} \cdot \sqrt[n]{z}=\sqrt[n]{xz}\)</span> for <span class="math inline">\(n&gt;1\)</span></li>
+<li><span class="math inline">\(\frac{\sqrt[n]{x}}{\sqrt[n]{z}}=\sqrt[n]{\frac{x}{z}}\)</span> for <span class="math inline">\(n&gt;1\)</span></li>
+</ul>
+</section>
+<section id="functions-and-their-characteristics" class="slide level2 smaller">
+<h2>Functions and Their Characteristics</h2>
+<ul>
+<li class="fragment">Functions provide a <strong>specific</strong> description of the association or relationship between two (or among several) concepts (in theoretical work) or variables (in empirical work)</li>
+<li class="fragment">Functions assign one element of the range to an element of the domain (no <span class="math inline">\(x\)</span> can be assigned to multiple <span class="math inline">\(y\)</span>)</li>
+<li class="fragment">Noted as <span class="math inline">\(f(x):A \rightarrow B\)</span> or “f maps A into B”</li>
+<li class="fragment"><span class="math inline">\(A\)</span> is the <em>domain</em>, or set of possible <span class="math inline">\(x\)</span> values.</li>
+<li class="fragment"><span class="math inline">\(B\)</span> is the <em>codomain</em>, or set of possible <span class="math inline">\(y\)</span> values.</li>
+<li class="fragment">To be a function, there must only be one unique value in its range (<span class="math inline">\(y\)</span>) for each value in its domain (<span class="math inline">\(x\)</span>)</li>
+</ul>
+</section>
+<section id="graph-examples" class="slide level2 smaller">
+<h2>Graph Examples</h2>
+<p>In which of these graphs can we observe a function?</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/function1.png"></p>
+<figcaption>a)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/function3.png"></p>
+<figcaption>b)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/function2.png"></p>
+<figcaption>c)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/function4.png"></p>
+<figcaption>d)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="graph-examples-answer" class="slide level2 smaller">
+<h2>Graph Examples — Answer</h2>
+<p><strong>a)</strong> and <strong>d)</strong> are functions — for every <span class="math inline">\(x\)</span> there’s exactly one <span class="math inline">\(y\)</span>.</p>
+<div class="quarto-layout-panel" data-layout-ncol="2">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/function1.png"></p>
+<figcaption>a) ✓ function</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/function3.png"></p>
+<figcaption>b)</figcaption>
+</figure>
+</div>
+</div>
+</div>
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/function2.png"></p>
+<figcaption>c)</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 50.0%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/function4.png"></p>
+<figcaption>d) ✓ function</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="function-composition" class="slide level2 smaller">
+<h2>Function Composition</h2>
+<ul>
+<li class="fragment">We can chain multiple functions using function composition.
+<ul>
+<li class="fragment">This is written either as <span class="math inline">\(g \circ f(x)\)</span> or <span class="math inline">\(g(f(x))\)</span>.</li>
+<li class="fragment">It is read as “<span class="math inline">\(g\)</span> composed with <span class="math inline">\(f\)</span>” or “<span class="math inline">\(g\)</span> of <span class="math inline">\(f\)</span> of <span class="math inline">\(x\)</span>”</li>
+<li class="fragment">Generally, <span class="math inline">\(g \circ f(x) \neq f \circ g(x)\)</span></li>
+</ul></li>
+<li class="fragment">Example: Suppose <span class="math inline">\(f(x)=2x\)</span> and <span class="math inline">\(g(x)=x^{3}\)</span>
+<ul>
+<li class="fragment"><span class="math inline">\(g \circ f(x)=(2x)^{3}=8x^{3}\)</span></li>
+<li class="fragment"><span class="math inline">\(f \circ g(x)=2(x^{3})=2x^{3}\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="examples-of-functions-of-one-variable-linear-equation" class="slide level2 smaller">
+<h2>Examples of Functions of One Variable — Linear Equation</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/lineare.png"></p>
+<figcaption>y = 2 + x</figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment">This is the classic linear equation <span class="math inline">\(y=a+bx\)</span> or <span class="math inline">\(y=mx+n\)</span></li>
+<li class="fragment"><span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are constants and <span class="math inline">\(x\)</span> is the variable.</li>
+<li class="fragment"><span class="math inline">\(a\)</span> is the intercept and <span class="math inline">\(b\)</span> is the slope of the line, or the amount that <span class="math inline">\(y\)</span> changes given a one-unit increase in <span class="math inline">\(x\)</span>.</li>
+</ul>
+</div></div>
+</section>
+<section id="examples-of-functions-of-one-variable-quadratic-function" class="slide level2 smaller">
+<h2>Examples of Functions of One Variable — Quadratic Function</h2>
+<div class="columns">
+<div class="column" style="width:40%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/quadratic.png"></p>
+<figcaption><span class="math inline">\(y=-2x^{2}+8x+6\)</span></figcaption>
+</figure>
+</div>
+</div><div class="column" style="width:60%;">
+<ul>
+<li class="fragment">This is the classical quadratic function: <span class="math inline">\(f(x)=ax^{2}+bx+c\)</span> or <span class="math inline">\(f(x)=\alpha+\beta_{1}x+\beta_{2}x^{2}\)</span></li>
+<li class="fragment">If we set <span class="math inline">\(a&gt;0\)</span> (<span class="math inline">\(\beta_{2}&gt;0\)</span>) we get a curve shaped like a U (a convex parabola).</li>
+<li class="fragment">If we set <span class="math inline">\(a&lt;0\)</span> (<span class="math inline">\(\beta_{2}&lt;0\)</span>) we get a curve shaped like an inverse U (a concave parabola).</li>
+</ul>
+</div></div>
+</section>
+<section id="exponent-logarithm-and-root-graphs" class="slide level2 smaller">
+<h2>Exponent, Logarithm, and Root Graphs</h2>
+<div class="quarto-layout-panel" data-layout-ncol="3">
+<div class="quarto-layout-row">
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/exp.png"></p>
+<figcaption>Exponential function</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/log.png"></p>
+<figcaption>Logarithmic function</figcaption>
+</figure>
+</div>
+</div>
+<div class="quarto-layout-cell" style="flex-basis: 33.3%;justify-content: flex-start;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/root.png"></p>
+<figcaption>Root function</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="functions-and-theorizing" class="slide level2 smaller">
+<h2>Functions and Theorizing</h2>
+<ul>
+<li class="fragment">Functions are important for theorizing about politics</li>
+<li class="fragment">Most quantitative social science boils down to how two variables relate!</li>
+<li class="fragment">Our examples suggest a precise function between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
+<li class="fragment">In statistics, you will <em>theorize</em> the functional form of the relationship</li>
+<li class="fragment">Statistical methods will <em>estimate</em> the most appropriate parameters; “a line of best fit”</li>
+</ul>
+</section>
+<section id="anscombes-quartet" class="slide level2 smaller">
+<h2>Anscombe’s Quartet</h2>
+
+<img data-src="01-notation-functions-limits/images/anscombe.jpg" class="r-stretch"></section>
 <section id="solving-equations" class="slide level2 smaller">
 <h2>Solving Equations</h2>
+<ol type="1">
+<li class="fragment">Isolate the variable you are looking for</li>
+<li class="fragment">Combine like terms</li>
+<li class="fragment">Factor and cancel</li>
+<li class="fragment">Operate on both sides of the equation</li>
+<li class="fragment">Check your answer</li>
+</ol>
+</section>
+<section id="special-products" class="slide level2 smaller">
+<h2>Special Products</h2>
+<ol type="1">
+<li class="fragment"><span class="math inline">\((a+b)^{2}=a^{2}+2ab+b^{2}\)</span></li>
+<li class="fragment"><span class="math inline">\((a-b)^{2}=a^{2}-2ab+b^{2}\)</span></li>
+<li class="fragment"><span class="math inline">\((x+a)(x+b)=x^{2}+(a+b)x+ab\)</span></li>
+<li class="fragment"><span class="math inline">\((a+b)(a-b)=a^{2}-b^{2}\)</span></li>
+<li class="fragment"><span class="math inline">\((a+b+c)^{2}=a^{2}+b^{2}+c^{2}+2(ab+ac+bc)\)</span></li>
+<li class="fragment"><span class="math inline">\((a+b)^{3}=a^{3}+3a^{2}b+3ab^{2}+b^{3}\)</span></li>
+</ol>
+</section>
+<section id="factoring" class="slide level2 smaller">
+<h2>Factoring</h2>
+<p>Factoring: rearranging terms in an equation to make it simpler.</p>
+<div class="fragment">
+<p><span class="math display">\[\frac{3x^4 + 3x^3 - 6x^2}{6x^2 + 12x}\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\frac{3x^2(x^2 + x - 2)}{6x(x+2)}\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\frac{3x^2(x + 2)(x - 1)}{6x(x + 2)}\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\frac{3x^2(x - 1)}{6x}\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[\frac{x(x - 1)}{2}\]</span></p>
+</div>
+</section>
+<section id="quadratics-and-special-products" class="slide level2 smaller">
+<h2>Quadratics and Special Products</h2>
+<p>Quadratic polynomials can be factored into the product of two terms: <span class="math inline">\((x\pm?) \times (x\pm?)\)</span></p>
+<p><span class="math display">\[x^2 - 8x + 16 = 9\]</span></p>
+<div class="fragment">
+<p><span class="math inline">\((x\pm?) \times (x\pm?) = x^2 - 8x + 16\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[(x - 4)^2 = 9\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[(x - 4) = \pm 3\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[x = 4 \pm 3\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(x = 1\)</span> OR <span class="math inline">\(x = 7\)</span></p>
+</div>
+</section>
+<section id="why-two-solutions" class="slide level2 smaller">
+<h2>Why Two Solutions?</h2>
+<div class="fragment">
+<p><img data-src="01-notation-functions-limits/images/quadratic-two-solutions.png"></p>
+</div>
+</section>
+<section id="another-example" class="slide level2 smaller">
+<h2>Another Example</h2>
+<p><span class="math display">\[x^2 + 7x = -12\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[x^2 + 7x + 12 = 0\]</span></p>
+</div>
+<div class="fragment">
+<p>How can we use special products here? Find <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>:</p>
+<p><span class="math display">\[(x + a)(x + b) = x^2 + (a+b)x + ab\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math display">\[(x + 3)(x + 4) = 0\]</span></p>
+</div>
+<div class="fragment">
+<p>Either <span class="math inline">\(x + 3 = 0\)</span> OR <span class="math inline">\(x + 4 = 0\)</span></p>
+<p><span class="math inline">\(x = -3\)</span> OR <span class="math inline">\(x = -4\)</span></p>
+</div>
+</section>
+<section id="quadratic-formula" class="slide level2 smaller">
+<h2>Quadratic Formula</h2>
+<p>Useful if special products can’t easily be found!</p>
+<p><span class="math display">\[3x^2 + 8x - 13 = 0\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}\]</span></p>
+</div>
+</section>
+<section id="quadratic-formula-worked-example" class="slide level2 smaller">
+<h2>Quadratic Formula — Worked Example</h2>
+<p><span class="math display">\[3x^2 + 8x - 13 = 0\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[x = \frac{-8\pm\sqrt{8^2-(4 \cdot 3 \cdot -13)}}{2 \cdot 3}\]</span></p>
+</div>
+<div class="fragment">
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><span class="math display">\[x = \frac{-8 + \sqrt{220}}{6}\]</span></p>
+<p><span class="math display">\[x \approx 1.14\]</span></p>
+</div><div class="column" style="width:50%;">
+<p><span class="math display">\[x = \frac{-8 - \sqrt{220}}{6}\]</span></p>
+<p><span class="math display">\[x \approx -3.81\]</span></p>
+</div></div>
+</div>
+</section>
+<section id="checking-our-work-graphically" class="slide level2 smaller">
+<h2>Checking Our Work Graphically</h2>
+
+<img data-src="01-notation-functions-limits/images/quadratic-check-graph.png" class="r-stretch"></section>
+<section id="sequences-and-series" class="slide level2 smaller">
+<h2>Sequences and Series</h2>
 <ul>
-<li>Special products and factoring</li>
-<li>Quadratics and special products</li>
-<li>Quadratic formula, checking work graphically</li>
+<li class="fragment">A <em>sequence</em> is an ordered list of numbers
+<ul>
+<li class="fragment">A sequence can be infinite, such as <span class="math inline">\(\{1,2,3,4,\dots\}\)</span></li>
+<li class="fragment">Or a sequence can be finite, such as <span class="math inline">\(\{5,10,15,20,25\}\)</span></li>
+</ul></li>
+<li class="fragment">A <em>series</em> is the sum of a sequence.
+<ul>
+<li class="fragment">Typically noted as <span class="math inline">\(\sum_{i=1}^{N}x_{i}\)</span>, which means add the terms in the sequence beginning at <span class="math inline">\(x_1\)</span> and stopping at <span class="math inline">\(x_N\)</span>.</li>
+<li class="fragment">For an infinite sequence, <span class="math inline">\(N=\infty\)</span></li>
+</ul></li>
 </ul>
 </section>
-<section id="series-sequences-and-limits" class="slide level2">
-<h2>Series, Sequences, and Limits</h2>
+<section id="limits" class="slide level2 smaller">
+<h2>Limits</h2>
 <ul>
-<li>Sequences and series</li>
-<li>Limits (including piecewise function examples)</li>
+<li class="fragment"><em>Limits help us describe the behavior of a sequence, series, or function as it approaches a given value.</em>
+<ul>
+<li class="fragment">A sequence/series/function <em>converges</em> if it has a finite limit.</li>
+<li class="fragment">A sequence/series/function <em>diverges</em> if it has no limit or the limit is <span class="math inline">\(\pm\infty\)</span></li>
+</ul></li>
+<li class="fragment">The limit of a sequence is the number <span class="math inline">\(L\)</span> such that as we approach infinity, <span class="math inline">\(x_i\)</span> gets arbitrarily close to <span class="math inline">\(L\)</span>. Noted as: <span class="math inline">\(\lim_{i\to\infty} x_{i}=L\)</span></li>
+<li class="fragment">Example of the limit of a sequence:
+<ul>
+<li class="fragment">The limit of the sequence <span class="math inline">\(\{i\}_{i=1}^{\infty}\)</span> does not have an “endpoint” and approaches infinity, so it diverges.</li>
+<li class="fragment">The limit of the sequence <span class="math inline">\(\left\{\frac{3}{10^{i}}\right\}_{i=1}^{\infty}\)</span> approaches zero as <span class="math inline">\(i \to \infty\)</span>, so it converges.</li>
+</ul></li>
 </ul>
+</section>
+<section id="limits-continued" class="slide level2 smaller">
+<h2>Limits (continued)</h2>
+<ul>
+<li class="fragment">The limit of a series is similar, but you are not looking for an “endpoint”. In this case, you are looking for the sum of all elements in an infinite sequence. For example:
+<ul>
+<li class="fragment"><span class="math inline">\(\lim_{n\to\infty} \sum_{i=1}^{n} i= \infty\)</span>. So, this series is divergent.</li>
+<li class="fragment"><span class="math inline">\(\lim_{n\to\infty} \sum_{i=0}^{n} \frac{1}{2^{i}}\)</span>. This series converges. Where?</li>
+</ul></li>
+<li class="fragment">For a function <span class="math inline">\(y=f(x)\)</span>, the limit is the value of <span class="math inline">\(y\)</span> that the function tends towards as small steps are taken towards a value <span class="math inline">\(x=c\)</span></li>
+<li class="fragment">Piecewise function: the function (relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>) is different for different parts of the domain</li>
+</ul>
+</section>
+<section id="piecewise-function-example" class="slide level2 smaller">
+<h2>Piecewise Function Example</h2>
+<p>Estimate the value of the following limits: <span class="math inline">\(\lim_{x\to 0^{-}} f(x)\)</span> and <span class="math inline">\(\lim_{x\to 0^{+}} f(x)\)</span> for the function:</p>
+
+<img data-src="01-notation-functions-limits/images/lim.png" class="r-stretch"><p><span class="math display">\[f(x) = \begin{cases} x+1 &amp; x\leq 0 \\ x^{2} &amp; x &gt; 0 \end{cases}\]</span></p>
+<div class="fragment">
+<p><span class="math display">\[\lim_{x\to 0^{-}} f(x) =\lim_{x\to 0^{-}} x+1 = 1\]</span></p>
+<p><span class="math display">\[\lim_{x\to 0^{+}} f(x) =\lim_{x\to 0^{+}} x^{2} = 0\]</span></p>
+</div>
+</section>
+<section id="section" class="slide level2 center">
+<h2></h2>
+
+<img data-src="01-notation-functions-limits/images/limit-joke.jpg" class="r-stretch"></section>
+<section id="limit-example" class="slide level2 smaller">
+<h2>Limit Example</h2>
+<ul>
+<li class="fragment">The function <span class="math inline">\(f(x) = \frac{1}{x-5}\)</span> is undefined at which value of <span class="math inline">\(x\)</span>?</li>
+<li class="fragment">The function <span class="math inline">\(f(x)\)</span> has a limit at <span class="math inline">\(x = 5\)</span></li>
+<li class="fragment">What is the value of <span class="math inline">\(\lim_{x\to 5} f(x)\)</span>?</li>
+<li class="fragment">Does that value change whether we approach the limit from the negative or positive side?</li>
+<li class="fragment">Functions are <strong>continuous</strong> if they do not have sudden breaks, and <strong>discontinuous</strong> otherwise</li>
+</ul>
+</section>
+<section id="math-camp-exercises-day-1" class="slide level2 smaller">
+<h2>Math Camp Exercises — Day 1</h2>
+<ol type="1">
+<li class="fragment">M&amp;S Chapter 1: Exercises 3, 5</li>
+<li class="fragment">M&amp;S Chapter 2: Exercises 16, 17, 19, 20, 21, 22, 26, 29</li>
+<li class="fragment">M&amp;S Chapter 3: Exercises 2, 3</li>
+<li class="fragment">M&amp;S Chapter 4: Exercises 3, 4, 5, 6, 9</li>
+</ol>
 </section>
 <section id="dataset-preparation" class="slide level2 smaller">
 <h2>Dataset preparation</h2>
@@ -343,7 +1404,7 @@
 </div>
 </div>
 </section>
-<section id="section" class="slide level2 center">
+<section id="section-1" class="slide level2 center">
 <h2></h2>
 <p><strong>Programming lecture:</strong> <a href="../chapters/01-notation-functions-limits/programming.html">webpage chapter</a></p>
 
@@ -386,7 +1447,7 @@
 'jumpToSlide': true,
 'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
 'chalkboard': {"buttons":true},
-'smaller': false,
+'smaller': true,
  
         // Display controls in the bottom right corner
         controls: false,
