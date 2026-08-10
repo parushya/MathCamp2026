@@ -17,7 +17,7 @@ root, stop and ask rather than doing it.
 
 This repo holds materials for MathCamp 2026, a math camp for the incoming Political Science PhD cohort at Pol Sci. Instructors are Parushya and Rong Qin.
 
-Last year's camp (2025) was slide-based; the decks are archived in `Resources/Slide Decks 2025/`. This year the plan is to build interactive, website-based material instead, eventually published as a GitHub-based website for the camp.
+Last year's camp (2025) was slide-based; the decks are archived in `Resources/Slide Decks 2025/`. This year the plan is to build interactive, website-based material instead, eventually published as a GitHub-based website for the camp. `Resources/Slide Decks 2025/Latex_materials_mc/Latex/Slides` has the LaTeX source of last year's math-part slides.
 
 ## Stack
 
