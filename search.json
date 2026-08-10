@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "MathCamp 2026",
+    "title": "Math Camp 2026",
     "section": "",
-    "text": "Welcome\nThis is the interactive companion book for MathCamp 2026, the math camp for the incoming Political Science PhD cohort. It replaces last year’s slide-based sessions (archived in Resources/Slide Decks 2025/) with interactive, web-based material built in Quarto.",
+    "text": "Welcome\nThis is the interactive book for Math and Programming 2026, built for the incoming Government PhD cohort.",
     "crumbs": [
       "Welcome"
     ]
@@ -12,21 +12,51 @@
   {
     "objectID": "index.html#how-to-use-this-book",
     "href": "index.html#how-to-use-this-book",
-    "title": "MathCamp 2026",
+    "title": "Math Camp 2026",
     "section": "How to use this book",
-    "text": "How to use this book\nEach session is its own chapter with two sub-chapters:\n\nSlides — the in-class slideshow (also browsable on its own at slides/index.html).\nProgramming Lecture — a webpage walking through the same material with runnable R code, worked examples, and (eventually) interactive visualizations via plotly, Shiny, or similar R tooling.",
+    "text": "How to use this book\nEach session is its own chapter with two sub-chapters:\n\nSlides — the in-class Mathematics slides (also browsable on its own at slides/index.html).\nProgramming Lecture — a webpage walking through the programming material with runnable R code, worked examples, and interactive visualizations.",
     "crumbs": [
       "Welcome"
     ]
   },
   {
-    "objectID": "index.html#sessions",
-    "href": "index.html#sessions",
-    "title": "MathCamp 2026",
-    "section": "Sessions",
-    "text": "Sessions\n\nNotation, Functions, and Limits\nProbability\nCalculus I: Differentiation & Optimization\nCalculus II: Integration & Multivariate Calculus\nLinear Algebra",
+    "objectID": "index.html#sessions-tbd",
+    "href": "index.html#sessions-tbd",
+    "title": "Math Camp 2026",
+    "section": "Sessions (TBD)",
+    "text": "Sessions (TBD)\n\nNotation, Functions, and Limits\nProbability\nCalculus I: Differentiation & Optimization\nCalculus II: Integration & Multivariate Calculus\nLinear Algebra",
     "crumbs": [
       "Welcome"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "Introduction",
+    "section": "",
+    "text": "Instructors\nTBD",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "intro.html#schedule",
+    "href": "intro.html#schedule",
+    "title": "Introduction",
+    "section": "Schedule",
+    "text": "Schedule\nTBD",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "intro.html#plan-logistics",
+    "href": "intro.html#plan-logistics",
+    "title": "Introduction",
+    "section": "Plan & logistics",
+    "text": "Plan & logistics\nTBD",
+    "crumbs": [
+      "Introduction"
     ]
   },
   {
