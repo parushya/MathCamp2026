@@ -30,7 +30,7 @@ Zotero is a reference management tool. It allows you to maintain a structured bi
 ```{r}
 #| echo: false
 #| fig-cap: "Zotero Folder"
-knitr::include_graphics("../../Resources/Pics/zotero.png") 
+knitr::include_graphics("images/zotero.png")
 
 ```
 

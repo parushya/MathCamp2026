@@ -45,7 +45,7 @@ Ultimately, programming is about formalizing your reasoning. Every line of code 
 #| echo: false
 #| fig-cap: "RStudio Screen"
 
-knitr::include_graphics("../../Resources/Pics/rstudio.png") 
+knitr::include_graphics("images/rstudio.png")
 ```
 
 #### Interface
@@ -73,7 +73,7 @@ knitr::include_graphics("../../Resources/Pics/rstudio.png")
 #| echo: false
 #| fig-cap: "RStudio Screen"
 
-knitr::include_graphics("../../Resources/Pics/quarto_page.png") 
+knitr::include_graphics("images/quarto_page.png")
 ```
 
 
@@ -225,7 +225,7 @@ R has 4 basic or "atomic" **classes/datatypes** of objects.[^Wickham]
 #| echo: false
 #| fig-cap: "RStudio Screen"
 
-knitr::include_graphics("../../Resources/Pics/atomic.png") 
+knitr::include_graphics("images/atomic.png")
 ```
 
 ::: {.callout-note}
@@ -451,8 +451,8 @@ str(Profile)
 library(readr)
 library(dplyr)
 
-load("../../Resources/Dataset/JPRdata_Haim.rda")
-COW_country_codes <- read_csv("../../Resources/Dataset/COW-country-codes.csv")
+load("data/JPRdata_Haim.rda")
+COW_country_codes <- read_csv("data/COW-country-codes.csv")
 
 JPRdata_joined <- left_join(JPRdata, COW_country_codes, by = c("ccode_e" = "CCode"))
 JPRdata_joined <- JPRdata_joined %>%
@@ -499,7 +499,7 @@ JPRdata_select <- JPRdata_cut%>%
 
 readr::write_csv(
   JPRdata_select,
-  "../../Resources/Dataset/JPRdata_select.csv"
+  "data/JPRdata_select.csv"
 )
 ```
 
@@ -515,7 +515,7 @@ The original replication files and codebook are available through the Journal of
 #| echo: false
 #| fig-cap: "RStudio Screen"
 
-knitr::include_graphics("../../Resources/Pics/haim.png") 
+knitr::include_graphics("images/haim.png")
 ```
 
 ### KNOW YOUR DATA!
@@ -552,7 +552,7 @@ knitr::include_graphics("../../Resources/Pics/haim.png")
 
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
 JPRdata_select <- readr::read_csv(
-  "../../Resources/Dataset/JPRdata_select.csv"
+  "data/JPRdata_select.csv"
 )
 head(JPRdata_select)
 ```
@@ -563,7 +563,7 @@ head(JPRdata_select)
 #install.packages(readr)
 library(readr)
 JPRdata_select <- readr::read_csv(
-  "Resources/Dataset/JPRdata_select.csv"
+  "data/JPRdata_select.csv"
 )
 
 ```

@@ -9,9 +9,12 @@
 .RData
 .Rproj.user/
 
-# PDFs (not tracked going forward; existing archived PDFs already
-# committed under Resources/ are unaffected by this rule)
+# PDFs
 *.pdf
+
+# Resources: images/datasets used by the book now live under chapters/
+# and slides/; only untracked local-only archive material is left here.
+/Resources/
 
 # LaTeX
 *.tex

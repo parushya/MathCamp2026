@@ -125,7 +125,7 @@ df_1[1,3]
 ```{r, message=FALSE, warning=FALSE, echo=FALSE}
 library(readr)
 JPRdata_select <- readr::read_csv(
-  "../../Resources/Dataset/JPRdata_select.csv"
+  "../02-probability/data/JPRdata_select.csv"
 )
 #head(JPRdata_select)
 ```
@@ -156,7 +156,7 @@ Let's go back and reload our sample dataset.
 #install.packages(readr)
 library(readr)
 JPRdata_select <- readr::read_csv(
-  "Resources/Dataset/JPRdata_select.csv"
+  "../02-probability/data/JPRdata_select.csv"
 )
 
 str(JPRdata_select)
