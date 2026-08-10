@@ -11,5 +11,6 @@ format:
     chalkboard: true
     css: slides.css
     footer: "MathCamp 2026"
+    smaller: true
 
 editor: source
