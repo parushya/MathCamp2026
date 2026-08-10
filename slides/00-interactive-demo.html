@@ -1,20 +1,20 @@
 <!DOCTYPE html>
 <html lang="en"><head>
-<script src="01-notation-functions-limits_files/libs/clipboard/clipboard.min.js"></script>
-<script src="01-notation-functions-limits_files/libs/quarto-html/tabby.min.js"></script>
-<script src="01-notation-functions-limits_files/libs/quarto-html/popper.min.js"></script>
-<script src="01-notation-functions-limits_files/libs/quarto-html/tippy.umd.min.js"></script>
-<link href="01-notation-functions-limits_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="01-notation-functions-limits_files/libs/quarto-html/light-border.css" rel="stylesheet">
-<link href="01-notation-functions-limits_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+<script src="00-interactive-demo_files/libs/clipboard/clipboard.min.js"></script>
+<script src="00-interactive-demo_files/libs/quarto-html/tabby.min.js"></script>
+<script src="00-interactive-demo_files/libs/quarto-html/popper.min.js"></script>
+<script src="00-interactive-demo_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="00-interactive-demo_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="00-interactive-demo_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="00-interactive-demo_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
-  <title>Notation, Functions, and Limits</title>
+  <title>Interactive Visualization Template</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
-  <link rel="stylesheet" href="01-notation-functions-limits_files/libs/revealjs/dist/reset.css">
-  <link rel="stylesheet" href="01-notation-functions-limits_files/libs/revealjs/dist/reveal.css">
+  <link rel="stylesheet" href="00-interactive-demo_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="00-interactive-demo_files/libs/revealjs/dist/reveal.css">
   <style>
     /* Default styles provided by pandoc.
     ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -34,14 +34,14 @@
       vertical-align: middle;
     }
   </style>
-  <link rel="stylesheet" href="01-notation-functions-limits_files/libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
+  <link rel="stylesheet" href="00-interactive-demo_files/libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
   <link rel="stylesheet" href="slides.css">
-  <link href="01-notation-functions-limits_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
-  <link href="01-notation-functions-limits_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
-  <link href="01-notation-functions-limits_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
-  <link href="01-notation-functions-limits_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
-  <link href="01-notation-functions-limits_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
-  <link href="01-notation-functions-limits_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <link href="00-interactive-demo_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="00-interactive-demo_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="00-interactive-demo_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="00-interactive-demo_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="00-interactive-demo_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="00-interactive-demo_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
   <style type="text/css">
     .reveal div.sourceCode {
       margin: 0;
@@ -135,217 +135,105 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Notation, Functions, and Limits</h1>
-  <p class="subtitle">MathCamp 2026 — Session 1</p>
+  <h1 class="title">Interactive Visualization Template</h1>
+  <p class="subtitle">Reference deck — not camp content</p>
 
 <div class="quarto-title-authors">
 </div>
 
 </section>
-<section id="introduction-logistics" class="slide level2 smaller">
-<h2>Introduction &amp; Logistics</h2>
+<section id="how-to-use-this-deck" class="slide level2 smaller">
+<h2>How to use this deck</h2>
+<p>This deck is a reference/template, not session material. It shows the pattern for embedding a live, canvas-based interactive visualization directly into a revealjs slide so it always fits within the slide, no matter how much text sits above it:</p>
 <ul>
-<li>Introductions</li>
-<li>Math camp goals, logistics, and schedule</li>
-<li>What are quantitative methods? Quantitative vs.&nbsp;qualitative methods</li>
+<li>A unique wrapper class (<code>.viz-sinewave</code> below) that every CSS rule and DOM query is scoped under, combined with the shared <code>.viz</code> class that caps the whole block at 45% of the viewport height and lays controls + canvas out as a column flexbox</li>
+<li>The <code>&lt;script&gt;</code> wrapped in an IIFE so its variables/functions never become globals</li>
+<li>A canvas with <strong>no hardcoded height</strong> — it’s sized in JS from its own rendered box (<code>clientWidth</code>/<code>clientHeight</code>), which the <code>.viz</code> flexbox determines, so it exactly fills whatever space is left under the controls</li>
 </ul>
-<p><span class="math inline">\(\beta = \alpha\)</span></p>
+<p>See <code>slides/slides.css</code> for the shared convention notes and the <code>.viz</code> layout rules this relies on.</p>
 </section>
-<section id="variables-measures" class="slide level2 smaller">
-<h2>Variables &amp; Measures</h2>
-<ul>
-<li>Variables and constants</li>
-<li>Sets and sample spaces</li>
-<li>Unions, intersections, subsets (set notation)</li>
-<li>Levels of measurement, and why it matters</li>
-</ul>
-</section>
-<section id="rules-of-algebra" class="slide level2 smaller">
-<h2>Rules of Algebra</h2>
-<ul>
-<li>Basic properties of arithmetic</li>
-<li>Order of operations</li>
-<li>Inequalities</li>
-<li>Exponents, logarithms, and roots</li>
-</ul>
-</section>
-<section id="functions" class="slide level2 smaller">
-<h2>Functions</h2>
-<ul>
-<li>Functions and their characteristics</li>
-<li>Function composition</li>
-<li>Graph examples: linear, quadratic, exponential functions</li>
-<li>Functions and theorizing; Anscombe’s quartet</li>
-</ul>
-</section>
-<section id="solving-equations" class="slide level2 smaller">
-<h2>Solving Equations</h2>
-<ul>
-<li>Special products and factoring</li>
-<li>Quadratics and special products</li>
-<li>Quadratic formula, checking work graphically</li>
-</ul>
-</section>
-<section id="series-sequences-and-limits" class="slide level2">
-<h2>Series, Sequences, and Limits</h2>
-<ul>
-<li>Sequences and series</li>
-<li>Limits (including piecewise function examples)</li>
-</ul>
-</section>
-<section id="dataset-preparation" class="slide level2 smaller">
-<h2>Dataset preparation</h2>
-</section>
-<section id="dataset" class="slide level2 smaller">
-<h2>Dataset</h2>
-<p>This sample dataset is adapted from the replication data accompanying:</p>
-<blockquote>
-<p>Haim, Dotan. 2016. <em>Alliance Networks and Trade: The Effect of Indirect Political Alliances on Bilateral Trade Flows</em>. Journal of Peace Research.</p>
-</blockquote>
-<p>The original replication files and codebook are available through the Journal of Peace Research replication archive and the author’s website. This version retains a subset of variables for instructional purposes and adds country names and abbreviations by merging the Correlates of War (COW) country code list.</p>
-</section>
-<section id="variables" class="slide level2 smaller">
-<h2>Variables</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 43%">
-<col style="width: 56%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>year</code></td>
-<td style="text-align: left;">Year of the observation.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>ccode_e</code></td>
-<td style="text-align: left;">Correlates of War (COW) numeric country code for the exporting (ego) state.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>StateAbb_export</code></td>
-<td style="text-align: left;">Three-letter country abbreviation for the exporting state (added from the COW country code list).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>StateNme_export</code></td>
-<td style="text-align: left;">Country name for the exporting state (added from the COW country code list).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>ccode_a</code></td>
-<td style="text-align: left;">Correlates of War (COW) numeric country code for the importing (alter) state.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>StateAbb_import</code></td>
-<td style="text-align: left;">Three-letter country abbreviation for the importing state (added from the COW country code list).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>StateNme_import</code></td>
-<td style="text-align: left;">Country name for the importing state (added from the COW country code list).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>logflow</code></td>
-<td style="text-align: left;">Natural logarithm of exports from the exporting state to the importing state, measured in millions of standardized U.S. dollars. Data originate from the CEPII Trade dataset.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>shareally</code></td>
-<td style="text-align: left;">Number of alliance ties jointly shared by both members of a dyad, adjusted for allies unique to the importing state. This variable measures indirect alliance embeddedness.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>MID</code></td>
-<td style="text-align: left;">Indicator for whether the two states were involved in a Militarized Interstate Dispute (MID) during the observation year.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>loggdp.e</code></td>
-<td style="text-align: left;">Natural logarithm of the exporting state’s gross domestic product (GDP), measured in millions of standardized U.S. dollars.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>loggdp.a</code></td>
-<td style="text-align: left;">Natural logarithm of the importing state’s gross domestic product (GDP), measured in millions of standardized U.S. dollars.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>comcur</code></td>
-<td style="text-align: left;">Indicator for whether the two states share a common currency.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>sscore</code></td>
-<td style="text-align: left;">Affinity (S-) score measuring similarity in the two states’ United Nations General Assembly voting behavior.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>region</code></td>
-<td style="text-align: left;">Geographic region of the exporting state. Categories include East Asia and Pacific, South Asia, Middle East and North Africa, Sub-Saharan Africa, Europe and Central Asia, Latin America and Caribbean, North/Central America, and Western Europe.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>bilatno</code></td>
-<td style="text-align: left;">Indicator for whether the two states are partners in at least one bilateral alliance.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>multino</code></td>
-<td style="text-align: left;">Indicator for whether the two states are partners in at least one multilateral alliance.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="notes" class="slide level2 smaller">
-<h2>Notes</h2>
-<ul>
-<li>Each observation represents a <strong>directed country dyad-year</strong>, where an exporting state trades with an importing state.</li>
-<li>Variables beginning with <code>.e</code> refer to characteristics of the exporting (ego) state, whereas variables beginning with <code>.a</code> refer to the importing (alter) state.</li>
-<li><code>StateAbb_*</code> and <code>StateNme_*</code> were added to improve readability and are not part of the original Haim (2016) replication dataset.</li>
-</ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  year ccode_e ccode_a  logflow shareally sharecom atopally MID logflow.lag
-1 1950       2      20 7.709084         9        1        1   0    7.675964
-2 1950       2      40 6.224162        18        0        1   0    6.037871
-3 1950       2      41 3.380995        18        0        1   0    3.310543
-4 1950       2      42 3.854394        18        0        1   0    3.756538
-5 1950       2      51 2.292535        NA       NA       NA   0    2.549445
-6 1950       2      52 2.197225        NA       NA       NA   0    2.985682
-  loggdp.e loggdp.a logpop.e   logpop.a  logdist contig gatt.e gatt.a rta
-1 12.56549 9.739733 5.025662  2.6398427 7.639785      1      1      1   0
-2 12.56549 7.434257 5.025662  1.7552683 7.855788      0      1      1   0
-3 12.56549 5.784440 5.025662  1.1304339 8.066461      0      1      1   0
-4 12.56549 5.947513 5.025662  0.8556911 8.104875      0      1      1   0
-5 12.56549       NA 5.025662  0.3257001 8.013994      0      1      0   0
-6 12.56549       NA 5.025662 -0.4588658 8.420803      0      1      0   0
-  comcur comlang_off comleg jointdem    sscore degcent_e degcent_a bilatno
-1      0           1      1        1 0.6200000        62        22       0
-2      0           0      0        0 0.4600000        62        40       0
-3      0           0      0        0 0.6808510        62        40       0
-4      1           0      0        0 0.6382979        62        40       0
-5      0           1      1        0        NA        62        NA      NA
-6      0           1      1        0        NA        62        NA      NA
-  multino logbet_e logbet_a ptarat ptaexist   perptarat vetos
-1       1 6.580639        0      0        0 0.006650832  0.39
-2       1 6.580639        0      0        0 0.006650832  0.39
-3       1 6.580639        0      0        0 0.006650832  0.39
-4       1 6.580639        0      0        0 0.006650832  0.39
-5      NA 6.580639       NA     NA       NA          NA    NA
-6      NA 6.580639       NA     NA       NA          NA    NA
-                 region pcw heg gdpchange USdum fdibi fdibi_lag jointIO Ebloc_e
-1 North/Central America   0  NA        NA     1    NA        NA    40.8       0
-2 North/Central America   0  NA        NA     1    NA        NA    40.8       0
-3 North/Central America   0  NA        NA     1    NA        NA    41.5       0
-4 North/Central America   0  NA        NA     1    NA        NA    41.4       0
-5                  &lt;NA&gt;  NA  NA        NA    NA    NA        NA      NA       0
-6                  &lt;NA&gt;  NA  NA        NA    NA    NA        NA      NA       0
-  Wbloc_e Ebloc_a Wbloc_a   ddyad    dyad sharecom.def    allex  imports
-1       0       0       0 103.121 103.121            1 312.3181 7.650645
-2       0       0       0 103.141 103.141            0 312.3181 6.079933
-3       0       0       0 103.142 103.142            0 312.3181 3.252697
-4       0       0       0 103.143 103.143            0 312.3181 3.737670
-5       0       0       0 103.152 103.152           NA 312.3181 1.386294
-6       0       0       0 103.153 103.153           NA 312.3181 2.397895</code></pre>
+<section id="live-example-amplitude-slider" class="slide level2 smaller">
+<h2>Live example: amplitude slider</h2>
+<div class="viz viz-sinewave">
+  <div class="viz-sinewave-controls">
+    <label for="viz-sinewave-amplitude">Amplitude: <span class="viz-sinewave-readout">50</span></label>
+    <input id="viz-sinewave-amplitude" type="range" min="10" max="100" value="50" step="1">
+  </div>
+  <canvas class="viz-sinewave-canvas"></canvas>
 </div>
-</div>
-</section>
-<section id="section" class="slide level2 center">
-<h2></h2>
-<p><strong>Programming lecture:</strong> <a href="../chapters/01-notation-functions-limits/programming.html">webpage chapter</a></p>
+
+<style>
+.viz-sinewave { max-width: 700px; margin: 0 auto; }
+.viz-sinewave-controls { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; font-size: 0.4em; }
+.viz-sinewave-controls input[type="range"] { flex: 1; }
+.viz-sinewave-canvas { display: block; border: 1px solid #ddd; border-radius: 6px; background: #fff; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-sinewave');
+  container = container[container.length - 1];
+
+  var canvas = container.querySelector('.viz-sinewave-canvas');
+  var slider = container.querySelector('#viz-sinewave-amplitude');
+  var readout = container.querySelector('.viz-sinewave-readout');
+  var ctx = canvas.getContext('2d');
+
+  function resize() {
+    canvas.width = canvas.clientWidth;
+    canvas.height = canvas.clientHeight;
+  }
+
+  function draw() {
+    var amplitude = Number(slider.value);
+    readout.textContent = amplitude;
+
+    var w = canvas.width;
+    var h = canvas.height;
+    var midY = h / 2;
+
+    ctx.clearRect(0, 0, w, h);
+
+    ctx.strokeStyle = '#ccc';
+    ctx.beginPath();
+    ctx.moveTo(0, midY);
+    ctx.lineTo(w, midY);
+    ctx.stroke();
+
+    ctx.strokeStyle = '#2b6cb0';
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    for (var x = 0; x <= w; x++) {
+      var y = midY - amplitude * Math.sin((x / w) * 4 * Math.PI);
+      if (x === 0) {
+        ctx.moveTo(x, y);
+      } else {
+        ctx.lineTo(x, y);
+      }
+    }
+    ctx.stroke();
+  }
+
+  function refresh() {
+    resize();
+    draw();
+  }
+
+  slider.addEventListener('input', draw);
+  window.addEventListener('resize', refresh);
+
+  // The slide holding this canvas may be hidden (clientWidth/Height === 0)
+  // when this script first runs, since reveal.js only lays out the active
+  // slide. Re-measure every time reveal.js navigates so the canvas is
+  // sized correctly the first time this slide actually becomes visible.
+  if (window.Reveal && typeof window.Reveal.on === 'function') {
+    window.Reveal.on('slidechanged', refresh);
+    window.Reveal.on('resize', refresh);
+  }
+
+  refresh();
+})();
+</script>
 
 </section>
     </div>
@@ -356,20 +244,20 @@
 </div></div>
 
   <script>window.backupDefine = window.define; window.define = undefined;</script>
-  <script src="01-notation-functions-limits_files/libs/revealjs/dist/reveal.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/dist/reveal.js"></script>
   <!-- reveal.js plugins -->
-  <script src="01-notation-functions-limits_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
-  <script src="01-notation-functions-limits_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
-  <script src="01-notation-functions-limits_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
-  <script src="01-notation-functions-limits_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
-  <script src="01-notation-functions-limits_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
-  <script src="01-notation-functions-limits_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/plugin/quarto-support/support.js"></script>
   
 
-  <script src="01-notation-functions-limits_files/libs/revealjs/plugin/notes/notes.js"></script>
-  <script src="01-notation-functions-limits_files/libs/revealjs/plugin/search/search.js"></script>
-  <script src="01-notation-functions-limits_files/libs/revealjs/plugin/zoom/zoom.js"></script>
-  <script src="01-notation-functions-limits_files/libs/revealjs/plugin/math/math.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="00-interactive-demo_files/libs/revealjs/plugin/math/math.js"></script>
   <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
 
   <script>
@@ -565,44 +453,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
