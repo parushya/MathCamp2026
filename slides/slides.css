@@ -46,3 +46,29 @@
   min-height: 0;
   width: 100%;
 }
+
+/* Cap every plain markdown image so it can never exceed the slide viewport
+   -- reveal.js only auto-stretches a slide whose sole content is one image,
+   which doesn't fire for images inside a `.fragment`, alongside other
+   content, or in `{layout-ncol}` grids. This is a blanket safety net for
+   all of those cases. The tighter grid rule keeps multi-row image grids
+   (`{layout-ncol}`) within budget when stacked. */
+.reveal .slides img {
+  max-height: 40vh;
+  width: auto;
+  max-width: 100%;
+}
+.reveal .slides .quarto-layout-panel img {
+  max-height: 20vh;
+}
+
+/* Small footer tying a slide's concept back to the deck's running example
+   (see Resources/RUNNING_EXAMPLE.md). Shared so it isn't redefined per slide. */
+.running-example-note {
+  font-size: 0.5em;
+  font-style: italic;
+  color: #5A6B80;
+  border-top: 1px dashed #D9E0EA;
+  margin-top: 12px;
+  padding-top: 6px;
+}

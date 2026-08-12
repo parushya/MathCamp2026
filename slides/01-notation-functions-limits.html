@@ -310,7 +310,7 @@
 }
 </style>
 </section>
-<section id="hence-theory-to-empirics" class="slide level2">
+<section id="hence-theory-to-empirics" class="slide level2 smaller">
 <h2>Hence, theory to empirics</h2>
 <ul>
 <li class="fragment"><strong>Theory:</strong> (simplified) a set of statements that involve concepts.</li>
@@ -319,8 +319,6 @@
 <li class="fragment"><strong>Variable:</strong> A concept or measure that takes different values in a given set.</li>
 <li class="fragment"><strong>Constant:</strong> A concept or measure that has a single value for a given set.</li>
 <li class="fragment"><strong>Hypothesis:</strong> a testable statement, derived from a theory, about the expected relationship between concepts or variables.</li>
-</ul>
-<ul>
 <li class="fragment"><strong>Let’s hear some ideas from your research areas!</strong></li>
 </ul>
 </section>
@@ -654,6 +652,7 @@
 <li class="fragment"><strong>Sample space:</strong> a set that contains all values that a variable can take.</li>
 </ul></li>
 </ul>
+<div class="running-example-note">↪ Running example: our sample space is Ω = {174 countries}; each country's polyarchy score is one element of [0,1].</div>
 </section>
 <section id="unions-and-intersections" class="slide level2 smaller">
 <h2>Unions and Intersections</h2>
@@ -668,6 +667,7 @@
 <li class="fragment"><strong>Union:</strong> <span class="math inline">\(A \cup B\)</span>. The set that contains all elements in both sets.</li>
 <li class="fragment"><strong>Mutually exclusive sets:</strong> the intersection is the empty set.</li>
 </ul>
+<div class="running-example-note">↪ Running example: {polyarchy &gt; 0.5} ∩ {GDP per capita &gt; $30k} — the overlap our hypothesis is really about.</div>
 </section>
 <section id="a-subset-b-proper-subset" class="slide level2 smaller">
 <h2><span class="math inline">\(A \subset B\)</span> (Proper Subset)</h2>
@@ -680,6 +680,7 @@
 </svg>
 </div>
 <style>.venn-subset { max-width: 340px; margin: 0 auto; }</style>
+<div class="running-example-note">↪ Running example: {Nordic democracies} ⊂ {polyarchy &gt; 0.5} — a proper subset of our "democracies."</div>
 </section>
 <section id="a-cap-b-intersection" class="slide level2 smaller">
 <h2><span class="math inline">\(A \cap B\)</span> (Intersection)</h2>
@@ -693,6 +694,7 @@
 </svg>
 </div>
 <style>.venn-intersection { max-width: 360px; margin: 0 auto; }</style>
+<div class="running-example-note">↪ Running example: {high polyarchy} ∩ {high GDP per capita} — exactly the cell selection bias is about.</div>
 </section>
 <section id="a-cup-b-union" class="slide level2 smaller">
 <h2><span class="math inline">\(A \cup B\)</span> (Union)</h2>
@@ -706,6 +708,7 @@
 </svg>
 </div>
 <style>.venn-union { max-width: 360px; margin: 0 auto; }</style>
+<div class="running-example-note">↪ Running example: {high polyarchy} ∪ {high GDP per capita} — every country in at least one of our comparison groups.</div>
 </section>
 <section id="a-cap-b-emptyset-mutually-exclusive" class="slide level2 smaller">
 <h2><span class="math inline">\(A \cap B = \emptyset\)</span> (Mutually Exclusive)</h2>
@@ -718,6 +721,7 @@
 </svg>
 </div>
 <style>.venn-disjoint { max-width: 380px; margin: 0 auto; }</style>
+<div class="running-example-note">↪ Running example: {D=1} and {D=0} are mutually exclusive — a country can't be on both sides of the polyarchy &gt; 0.5 threshold.</div>
 </section>
 <section id="levels-of-measurement" class="slide level2 smaller">
 <h2>Levels of Measurement</h2>
@@ -1254,156 +1258,6 @@
 <li class="fragment">M&amp;S Chapter 4: Exercises 3, 4, 5, 6, 9</li>
 </ol>
 </section>
-<section id="dataset-preparation" class="slide level2 smaller">
-<h2>Dataset preparation</h2>
-</section>
-<section id="dataset" class="slide level2 smaller">
-<h2>Dataset</h2>
-<p>This sample dataset is adapted from the replication data accompanying:</p>
-<blockquote>
-<p>Haim, Dotan. 2016. <em>Alliance Networks and Trade: The Effect of Indirect Political Alliances on Bilateral Trade Flows</em>. Journal of Peace Research.</p>
-</blockquote>
-<p>The original replication files and codebook are available through the Journal of Peace Research replication archive and the author’s website. This version retains a subset of variables for instructional purposes and adds country names and abbreviations by merging the Correlates of War (COW) country code list.</p>
-</section>
-<section id="variables" class="slide level2 smaller">
-<h2>Variables</h2>
-<table class="caption-top">
-<colgroup>
-<col style="width: 43%">
-<col style="width: 56%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Variable</th>
-<th style="text-align: left;">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><code>year</code></td>
-<td style="text-align: left;">Year of the observation.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>ccode_e</code></td>
-<td style="text-align: left;">Correlates of War (COW) numeric country code for the exporting (ego) state.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>StateAbb_export</code></td>
-<td style="text-align: left;">Three-letter country abbreviation for the exporting state (added from the COW country code list).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>StateNme_export</code></td>
-<td style="text-align: left;">Country name for the exporting state (added from the COW country code list).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>ccode_a</code></td>
-<td style="text-align: left;">Correlates of War (COW) numeric country code for the importing (alter) state.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>StateAbb_import</code></td>
-<td style="text-align: left;">Three-letter country abbreviation for the importing state (added from the COW country code list).</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>StateNme_import</code></td>
-<td style="text-align: left;">Country name for the importing state (added from the COW country code list).</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>logflow</code></td>
-<td style="text-align: left;">Natural logarithm of exports from the exporting state to the importing state, measured in millions of standardized U.S. dollars. Data originate from the CEPII Trade dataset.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>shareally</code></td>
-<td style="text-align: left;">Number of alliance ties jointly shared by both members of a dyad, adjusted for allies unique to the importing state. This variable measures indirect alliance embeddedness.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>MID</code></td>
-<td style="text-align: left;">Indicator for whether the two states were involved in a Militarized Interstate Dispute (MID) during the observation year.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>loggdp.e</code></td>
-<td style="text-align: left;">Natural logarithm of the exporting state’s gross domestic product (GDP), measured in millions of standardized U.S. dollars.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>loggdp.a</code></td>
-<td style="text-align: left;">Natural logarithm of the importing state’s gross domestic product (GDP), measured in millions of standardized U.S. dollars.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>comcur</code></td>
-<td style="text-align: left;">Indicator for whether the two states share a common currency.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>sscore</code></td>
-<td style="text-align: left;">Affinity (S-) score measuring similarity in the two states’ United Nations General Assembly voting behavior.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>region</code></td>
-<td style="text-align: left;">Geographic region of the exporting state. Categories include East Asia and Pacific, South Asia, Middle East and North Africa, Sub-Saharan Africa, Europe and Central Asia, Latin America and Caribbean, North/Central America, and Western Europe.</td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><code>bilatno</code></td>
-<td style="text-align: left;">Indicator for whether the two states are partners in at least one bilateral alliance.</td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;"><code>multino</code></td>
-<td style="text-align: left;">Indicator for whether the two states are partners in at least one multilateral alliance.</td>
-</tr>
-</tbody>
-</table>
-</section>
-<section id="notes" class="slide level2 smaller">
-<h2>Notes</h2>
-<ul>
-<li>Each observation represents a <strong>directed country dyad-year</strong>, where an exporting state trades with an importing state.</li>
-<li>Variables beginning with <code>.e</code> refer to characteristics of the exporting (ego) state, whereas variables beginning with <code>.a</code> refer to the importing (alter) state.</li>
-<li><code>StateAbb_*</code> and <code>StateNme_*</code> were added to improve readability and are not part of the original Haim (2016) replication dataset.</li>
-</ul>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>  year ccode_e ccode_a  logflow shareally sharecom atopally MID logflow.lag
-1 1950       2      20 7.709084         9        1        1   0    7.675964
-2 1950       2      40 6.224162        18        0        1   0    6.037871
-3 1950       2      41 3.380995        18        0        1   0    3.310543
-4 1950       2      42 3.854394        18        0        1   0    3.756538
-5 1950       2      51 2.292535        NA       NA       NA   0    2.549445
-6 1950       2      52 2.197225        NA       NA       NA   0    2.985682
-  loggdp.e loggdp.a logpop.e   logpop.a  logdist contig gatt.e gatt.a rta
-1 12.56549 9.739733 5.025662  2.6398427 7.639785      1      1      1   0
-2 12.56549 7.434257 5.025662  1.7552683 7.855788      0      1      1   0
-3 12.56549 5.784440 5.025662  1.1304339 8.066461      0      1      1   0
-4 12.56549 5.947513 5.025662  0.8556911 8.104875      0      1      1   0
-5 12.56549       NA 5.025662  0.3257001 8.013994      0      1      0   0
-6 12.56549       NA 5.025662 -0.4588658 8.420803      0      1      0   0
-  comcur comlang_off comleg jointdem    sscore degcent_e degcent_a bilatno
-1      0           1      1        1 0.6200000        62        22       0
-2      0           0      0        0 0.4600000        62        40       0
-3      0           0      0        0 0.6808510        62        40       0
-4      1           0      0        0 0.6382979        62        40       0
-5      0           1      1        0        NA        62        NA      NA
-6      0           1      1        0        NA        62        NA      NA
-  multino logbet_e logbet_a ptarat ptaexist   perptarat vetos
-1       1 6.580639        0      0        0 0.006650832  0.39
-2       1 6.580639        0      0        0 0.006650832  0.39
-3       1 6.580639        0      0        0 0.006650832  0.39
-4       1 6.580639        0      0        0 0.006650832  0.39
-5      NA 6.580639       NA     NA       NA          NA    NA
-6      NA 6.580639       NA     NA       NA          NA    NA
-                 region pcw heg gdpchange USdum fdibi fdibi_lag jointIO Ebloc_e
-1 North/Central America   0  NA        NA     1    NA        NA    40.8       0
-2 North/Central America   0  NA        NA     1    NA        NA    40.8       0
-3 North/Central America   0  NA        NA     1    NA        NA    41.5       0
-4 North/Central America   0  NA        NA     1    NA        NA    41.4       0
-5                  &lt;NA&gt;  NA  NA        NA    NA    NA        NA      NA       0
-6                  &lt;NA&gt;  NA  NA        NA    NA    NA        NA      NA       0
-  Wbloc_e Ebloc_a Wbloc_a   ddyad    dyad sharecom.def    allex  imports
-1       0       0       0 103.121 103.121            1 312.3181 7.650645
-2       0       0       0 103.141 103.141            0 312.3181 6.079933
-3       0       0       0 103.142 103.142            0 312.3181 3.252697
-4       0       0       0 103.143 103.143            0 312.3181 3.737670
-5       0       0       0 103.152 103.152           NA 312.3181 1.386294
-6       0       0       0 103.153 103.153           NA 312.3181 2.397895</code></pre>
-</div>
-</div>
-</section>
 <section id="section-1" class="slide level2 center">
 <h2></h2>
 <p><strong>Programming lecture:</strong> <a href="../chapters/01-notation-functions-limits/programming.html">webpage chapter</a></p>
@@ -1626,44 +1480,6 @@
         ]
       });
     </script>
-    
-    <script>
-      // htmlwidgets need to know to resize themselves when slides are shown/hidden.
-      // Fire the "slideenter" event (handled by htmlwidgets.js) when the current
-      // slide changes (different for each slide format).
-      (function () {
-        // dispatch for htmlwidgets
-        function fireSlideEnter() {
-          const event = window.document.createEvent("Event");
-          event.initEvent("slideenter", true, true);
-          window.document.dispatchEvent(event);
-        }
-
-        function fireSlideChanged(previousSlide, currentSlide) {
-          fireSlideEnter();
-
-          // dispatch for shiny
-          if (window.jQuery) {
-            if (previousSlide) {
-              window.jQuery(previousSlide).trigger("hidden");
-            }
-            if (currentSlide) {
-              window.jQuery(currentSlide).trigger("shown");
-            }
-          }
-        }
-
-        // hookup for slidy
-        if (window.w3c_slidy) {
-          window.w3c_slidy.add_observer(function (slide_num) {
-            // slide_num starts at position 1
-            fireSlideChanged(null, w3c_slidy.slides[slide_num - 1]);
-          });
-        }
-
-      })();
-    </script>
-
     <script id="quarto-html-after-body" type="application/javascript">
       window.document.addEventListener("DOMContentLoaded", function (event) {
         const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
