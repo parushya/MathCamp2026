@@ -37,67 +37,6 @@ Ultimately, programming is about formalizing your reasoning. Every line of code 
 
 :::
 
-### R and RStudio
-
-*Recall: R is a free open-source statistical programming language. We generally use R through RStudio which is an integrated development environment (IDE). Essentially, it is the graphic user interface that allows us to use R efficiently. It has point-and-click functionality also (which we would not use a lot).*
-
-```{r}
-#| echo: false
-#| fig-cap: "RStudio Screen"
-
-knitr::include_graphics("images/rstudio.png")
-```
-
-#### Interface
-
-**R Scripts**: This is where put your code in a script. The script is saved with a `.R` extension. An R script is a text file that you can read on text editors too. We use RStudio to run the code in a way that the computer understands.   
-**Console**: Output from your code appears here. You can also write the code directly here. But it does not get saved. Also, by default, it shows only a limited number of previous steps (commands + outputs). Not a good practice to code here.  
-**Environment**: All the objects, datasets, lists, etc that you have created/loaded in the environment appear here. Alongside, you also see the custom functions that you might create.  
-**File Browser/Help/Plot**: Internal file navigator and help documentation for packages and functions appear here. Further, when you plot anything, that also gets shown here. 
-
-#### Script Types
-
-**Basic R scripts** (`.R`) 
-* A plain text file that stores a sequence of R commands.
-* Best suited for writing reproducible analytical workflows.
-
-**Quarto** (`.qmd`) [^Gastner]
-
-* A more advanced canvas that combines code and output in a cohesive document.
-* Compatible with other programming langagues (e.g., Python and Julia)
-* Produce a wide range of file formats (e.g., HTML, PDF, and Microsoft word) and support various project types such as presentations and websites.
-
-[^Gastner]: Inspired by Prof Michael T. Gastner's [book](https://data-vis-using-r.info/) on "Mastering Data Visualization Using R, Quarto, and the Tidyverse". 
-
-```{r}
-#| echo: false
-#| fig-cap: "RStudio Screen"
-
-knitr::include_graphics("images/quarto_page.png")
-```
-
-
-#### Commenting and Chunks
-
-**Comments**: R interprets every line in the script as a separate command. And it does for each line unless preceded by a `#`. Comments signal to R that what follows the `#` is to be ignored. We use comments to write explanatory notes about the code. A comment should explain the purpose of a command or code and not just be a description of what it does. 
-
-```{r}
-#| echo: true
-
-1 + 1 # an operation
-
-#getwd()  #silence the code
-
-```
-
-**Chunks**: One of the fascinating features about quarto is that you can write code to analyze data and regular text in the same document, and we integrate code into quarto by setting up code chunks. 
-
-::: {.callout-tip}
-##### Ideal Practice With Code Chunks
-
-A chunk should be relatively self-contained, and focused around a single task. This helps break down the entire project or operation by tasks, and makes any adjustment to each segment easier. For example, we can more easily turn on and off individual tasks by manipuating the entire code chuck. We will come back to code chunk options in day 4 - stay tuned!
-
-:::
 
 ### Basics
 
