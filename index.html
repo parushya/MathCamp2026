@@ -8,7 +8,7 @@
 
 <meta name="author" content="Parushya">
 <meta name="author" content="Rong Qin">
-<meta name="dcterms.date" content="2026-08-13">
+<meta name="dcterms.date" content="2026-08-16">
 
 <title>Math Camp 2026</title>
 <style>
@@ -81,10 +81,14 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-b047b78a5474e83e4a64397270a01037.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-571e6285f55efe5c2f4d285306a07d24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark-8c2b17065e4478d2890ba6668fc6c718.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-571e6285f55efe5c2f4d285306a07d24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -113,11 +117,202 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -144,6 +339,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="./">Math Camp 2026</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/parushya/MathCamp2026" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -169,7 +365,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./chapters/01-notation-functions-limits/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Notation, Functions, and Limits</span></a>
+ <span class="menu-text">Day 1 — Talking in Mathematics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -177,14 +373,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/01-notation-functions-limits/slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+  <a href="./chapters/01-notation-functions-limits/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/01-notation-functions-limits/programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Programming Session - Day 1</span></span></a>
+  <a href="./chapters/01-notation-functions-limits/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session</span></a>
   </div>
 </li>
       </ul>
@@ -192,7 +386,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="./chapters/02-probability/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Probability</span></a>
+ <span class="menu-text">Day 2 — Probability</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -200,22 +394,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/02-probability/slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+  <a href="./chapters/02-probability/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/02-probability/programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming Session - Day 2</span></span></a>
+  <a href="./chapters/02-probability/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session - Day 2</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./chapters/03-calculus-differentiation/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Calculus I: Differentiation &amp; Optimization</span></a>
+            <a href="./chapters/03-calculus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 3 — Calculus</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -223,22 +415,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/03-calculus-differentiation/slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+  <a href="./chapters/03-calculus/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/03-calculus-differentiation/programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Programming Session - Day 3</span></span></a>
+  <a href="./chapters/03-calculus/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./chapters/04-calculus-integration/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Calculus II: Integration &amp; Multivariate Calculus</span></a>
+            <a href="./chapters/04-linear-algebra/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 4 — Linear Algebra</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -246,22 +436,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/04-calculus-integration/slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+  <a href="./chapters/04-linear-algebra/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/04-calculus-integration/programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Programming Session - Day 4</span></span></a>
+  <a href="./chapters/04-linear-algebra/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="./chapters/05-linear-algebra/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear Algebra</span></a>
+            <a href="./chapters/05-advanced-topics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 5 — Intro to Advanced Topics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -269,14 +457,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/05-linear-algebra/slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+  <a href="./chapters/05-advanced-topics/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./chapters/05-linear-algebra/programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Programming Lecture</span></span></a>
+  <a href="./chapters/05-advanced-topics/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session</span></a>
   </div>
 </li>
       </ul>
@@ -311,13 +497,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#welcome" id="toc-welcome" class="nav-link active" data-scroll-target="#welcome">Welcome</a>
   <ul class="collapse">
   <li><a href="#how-to-use-this-book" id="toc-how-to-use-this-book" class="nav-link" data-scroll-target="#how-to-use-this-book">How to use this book</a></li>
-  <li><a href="#sessions-tbd" id="toc-sessions-tbd" class="nav-link" data-scroll-target="#sessions-tbd">Sessions (TBD)</a></li>
+  <li><a href="#sessions" id="toc-sessions" class="nav-link" data-scroll-target="#sessions">Sessions</a>
+  <ul class="collapse">
+  <li><a href="#day-1-talking-in-mathematics-setup" id="toc-day-1-talking-in-mathematics-setup" class="nav-link" data-scroll-target="#day-1-talking-in-mathematics-setup">Day 1 — Talking in Mathematics / Setup</a></li>
+  <li><a href="#day-2-probability-basics" id="toc-day-2-probability-basics" class="nav-link" data-scroll-target="#day-2-probability-basics">Day 2 — Probability / Basics</a></li>
+  <li><a href="#day-3-calculus-exploration" id="toc-day-3-calculus-exploration" class="nav-link" data-scroll-target="#day-3-calculus-exploration">Day 3 — Calculus / Exploration</a></li>
+  <li><a href="#day-4-linear-algebra-mission" id="toc-day-4-linear-algebra-mission" class="nav-link" data-scroll-target="#day-4-linear-algebra-mission">Day 4 — Linear Algebra / Mission</a></li>
+  <li><a href="#day-5-intro-to-advanced-topics-ai" id="toc-day-5-intro-to-advanced-topics-ai" class="nav-link" data-scroll-target="#day-5-intro-to-advanced-topics-ai">Day 5 — Intro to Advanced Topics / AI</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
+
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
@@ -340,7 +534,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <div>
     <div class="quarto-title-meta-heading">Published</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">August 13, 2026</p>
+      <p class="date">August 16, 2026</p>
     </div>
   </div>
   
@@ -359,29 +553,70 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 class="anchored" data-anchor-id="how-to-use-this-book">How to use this book</h2>
 <p>Each session is its own chapter with two sub-chapters:</p>
 <ul>
-<li><strong>Slides</strong> — the in-class Mathematics slides (also browsable on its own at <a href="slides/index.html"><code>slides/index.html</code></a>).</li>
+<li><strong>Slides</strong> — the in-class Mathematics slides (also browsable on its own <a href="slides/index.html">here</a>).</li>
 <li><strong>Programming Lecture</strong> — a webpage walking through the programming material with runnable R code, worked examples, and interactive visualizations.</li>
 </ul>
 </section>
-<section id="sessions-tbd" class="level2">
-<h2 class="anchored" data-anchor-id="sessions-tbd">Sessions (TBD)</h2>
-<ol type="1">
-<li>Notation, Functions, and Limits</li>
-<li>Probability</li>
-<li>Calculus I: Differentiation &amp; Optimization</li>
-<li>Calculus II: Integration &amp; Multivariate Calculus</li>
-<li>Linear Algebra</li>
-</ol>
+<section id="sessions" class="level2">
+<h2 class="anchored" data-anchor-id="sessions">Sessions</h2>
+<p>This camp runs Monday, August 17 – Friday, August 21, 2026, ahead of the start of the Political Science PhD program. Each day pairs a math session with a hands-on R programming session. No prior programming experience is assumed.</p>
+<section id="day-1-talking-in-mathematics-setup" class="level3">
+<h3 class="anchored" data-anchor-id="day-1-talking-in-mathematics-setup">Day 1 — Talking in Mathematics / Setup</h3>
+<p><strong>Math:</strong> theory, concept, measure, variable, and hypothesis; sets and set notation (unions, intersections, subsets, sample spaces); functions (domain, codomain, range); summation and product notation; exponents, logarithms, and roots; solving equations and finding roots.<br>
+<strong>Programming — Setup:</strong> setting up R, RStudio, Zotero, and GitHub; basic introduction to R and RStudio; basic practices (commenting, code chunks).</p>
+<p><a href="./chapters/01-notation-functions-limits/slides.html">Slides</a> &nbsp;|&nbsp; <a href="./chapters/01-notation-functions-limits/programming.html">Programming Lecture</a></p>
+</section>
+<section id="day-2-probability-basics" class="level3">
+<h3 class="anchored" data-anchor-id="day-2-probability-basics">Day 2 — Probability / Basics</h3>
+<p><strong>Math:</strong> basic probability; compound probability; random variables and expectation algebra; conditional expectation and the type-shift (<span class="math inline">\(E[Y|X=x]\)</span> vs.&nbsp;<span class="math inline">\(E[Y|X]\)</span>).<br>
+<strong>Programming — Basics:</strong> why programming; R basics; objects, data types, and data structures (vectors, matrices, lists); exercise on a real replication dataset.</p>
+<p><a href="./chapters/02-probability/slides.html">Slides</a> &nbsp;|&nbsp; <a href="./chapters/02-probability/programming.html">Programming Lecture</a></p>
+</section>
+<section id="day-3-calculus-exploration" class="level3">
+<h3 class="anchored" data-anchor-id="day-3-calculus-exploration">Day 3 — Calculus / Exploration</h3>
+<p><strong>Math:</strong> limits; differentiation and optimization (first-order conditions); integration basics; area under the curve.<br>
+<strong>Programming — Exploration:</strong> data structures continued (factors and data frames); conditionals in base R; descriptive statistics and aggregation; exercise exploring summary statistics of the sample dataset.</p>
+<p><a href="./chapters/03-calculus/slides.html">Slides</a> &nbsp;|&nbsp; <a href="./chapters/03-calculus/programming.html">Programming Lecture</a></p>
+</section>
+<section id="day-4-linear-algebra-mission" class="level3">
+<h3 class="anchored" data-anchor-id="day-4-linear-algebra-mission">Day 4 — Linear Algebra / Mission</h3>
+<p><strong>Math:</strong> matrix readings; transformations; sampling distributions; basic derivations.</p>
+<p><strong>Programming — Mission:</strong> housekeeping (working directories, importing/exporting datasets, packages, YAML, code chunks); data wrangling with dplyr and tidyr; grammar of graphics with ggplot; why functions.</p>
+<p><a href="./chapters/04-linear-algebra/slides.html">Slides</a> &nbsp;|&nbsp; <a href="./chapters/04-linear-algebra/programming.html">Programming Lecture</a></p>
+</section>
+<section id="day-5-intro-to-advanced-topics-ai" class="level3">
+<h3 class="anchored" data-anchor-id="day-5-intro-to-advanced-topics-ai">Day 5 — Intro to Advanced Topics / AI</h3>
+<p><strong>Math:</strong> sampling distributions; the law of large numbers and central limit theorem, by demonstration; frequentist vs.&nbsp;Bayesian inference; causality and causal inference; the road ahead.</p>
+<p><strong>Programming — AI:</strong> coding with AI.</p>
+<p><a href="./chapters/05-advanced-topics/slides.html">Slides</a> &nbsp;|&nbsp; <a href="./chapters/05-advanced-topics/programming.html">Programming Lecture</a></p>
+<p><strong>Open Discussion and Q&amp;A:</strong><br>
+Prof.&nbsp;<a href="https://www.mrichardson.info/">Mark Richardson</a><br>
+Methods’ Coordinator<br>
+Department of Government</p>
 
 
 <!-- -->
 
 </section>
 </section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -849,19 +1084,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>Each session is its own chapter with two sub-chapters:</span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Slides** — the in-class Mathematics slides (also browsable on its own at</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">[</span><span class="ot">`slides/index.html`</span><span class="co">](slides/index.html)</span>).</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Slides** — the in-class Mathematics slides (also browsable on its own</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>  <span class="co">[</span><span class="ot">here</span><span class="co">](slides/index.html)</span>).</span>
 <span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="ss">- </span>**Programming Lecture** — a webpage walking through the programming material with</span>
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>  runnable R code, worked examples, and  interactive</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  visualizations.</span>
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sessions (TBD)</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">## Sessions</span></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>Notation, Functions, and Limits</span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>Probability</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>Calculus I: Differentiation &amp; Optimization</span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Calculus II: Integration &amp; Multivariate Calculus</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="ss">5. </span>Linear Algebra</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>This camp runs Monday, August 17 – Friday, August 21, 2026, ahead of the</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>start of the Political Science PhD program. Each day pairs a math</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>session with a hands-on R programming session. No prior programming</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>experience is assumed.</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a><span class="fu">### Day 1 — Talking in Mathematics / Setup</span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>**Math:** theory, concept, measure, variable, and hypothesis; sets and</span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>set notation (unions, intersections, subsets, sample spaces);</span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>functions (domain, codomain, range); summation and product notation;</span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>exponents, logarithms, and roots; solving equations and finding roots.    </span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>**Programming — Setup:** setting up R, RStudio, Zotero, and GitHub;</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>basic introduction to R and RStudio; basic practices (commenting, code</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>chunks).  </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Slides</span><span class="co">](chapters/01-notation-functions-limits/slides.qmd)</span> <span class="dv">&amp;nbsp;</span>|<span class="dv">&amp;nbsp;</span></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Programming Lecture</span><span class="co">](chapters/01-notation-functions-limits/programming.qmd)</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a><span class="fu">### Day 2 — Probability / Basics</span></span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>**Math:** basic probability; compound probability; random variables</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>and expectation algebra; conditional expectation and the type-shift</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>($E<span class="co">[</span><span class="ot">Y|X=x</span><span class="co">]</span>$ vs. $E<span class="co">[</span><span class="ot">Y|X</span><span class="co">]</span>$).    </span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>**Programming — Basics:** why programming;</span>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>R basics; objects, data types, and data structures (vectors, matrices,</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>lists); exercise on a real replication dataset.  </span>
+<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Slides</span><span class="co">](chapters/02-probability/slides.qmd)</span> <span class="dv">&amp;nbsp;</span>|<span class="dv">&amp;nbsp;</span></span>
+<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Programming Lecture</span><span class="co">](chapters/02-probability/programming.qmd)</span></span>
+<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a><span class="fu">### Day 3 — Calculus / Exploration</span></span>
+<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a>**Math:** limits; differentiation and optimization (first-order</span>
+<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a>conditions); integration basics; area under the curve.   </span>
+<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a>**Programming — Exploration:** data structures continued (factors and data frames);</span>
+<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>conditionals in base R; descriptive statistics and aggregation;</span>
+<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>exercise exploring summary statistics of the sample dataset.  </span>
+<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Slides</span><span class="co">](chapters/03-calculus/slides.qmd)</span> <span class="dv">&amp;nbsp;</span>|<span class="dv">&amp;nbsp;</span></span>
+<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Programming Lecture</span><span class="co">](chapters/03-calculus/programming.qmd)</span></span>
+<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a><span class="fu">### Day 4 — Linear Algebra / Mission</span></span>
+<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>**Math:** matrix readings; transformations; sampling distributions;</span>
+<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>basic derivations.  </span>
+<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>**Programming — Mission:** housekeeping (working</span>
+<span id="cb1-65"><a href="#cb1-65" aria-hidden="true" tabindex="-1"></a>directories, importing/exporting datasets, packages, YAML, code</span>
+<span id="cb1-66"><a href="#cb1-66" aria-hidden="true" tabindex="-1"></a>chunks); data wrangling with dplyr and tidyr; grammar of graphics with</span>
+<span id="cb1-67"><a href="#cb1-67" aria-hidden="true" tabindex="-1"></a>ggplot; why functions.  </span>
+<span id="cb1-68"><a href="#cb1-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-69"><a href="#cb1-69" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Slides</span><span class="co">](chapters/04-linear-algebra/slides.qmd)</span> <span class="dv">&amp;nbsp;</span>|<span class="dv">&amp;nbsp;</span></span>
+<span id="cb1-70"><a href="#cb1-70" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Programming Lecture</span><span class="co">](chapters/04-linear-algebra/programming.qmd)</span></span>
+<span id="cb1-71"><a href="#cb1-71" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-72"><a href="#cb1-72" aria-hidden="true" tabindex="-1"></a><span class="fu">### Day 5 — Intro to Advanced Topics / AI</span></span>
+<span id="cb1-73"><a href="#cb1-73" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-74"><a href="#cb1-74" aria-hidden="true" tabindex="-1"></a>**Math:** sampling distributions; the law of large numbers and central</span>
+<span id="cb1-75"><a href="#cb1-75" aria-hidden="true" tabindex="-1"></a>limit theorem, by demonstration; frequentist vs. Bayesian inference;</span>
+<span id="cb1-76"><a href="#cb1-76" aria-hidden="true" tabindex="-1"></a>causality and causal inference; the road ahead.   </span>
+<span id="cb1-77"><a href="#cb1-77" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-78"><a href="#cb1-78" aria-hidden="true" tabindex="-1"></a>**Programming — AI:** coding with AI.</span>
+<span id="cb1-79"><a href="#cb1-79" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-80"><a href="#cb1-80" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-81"><a href="#cb1-81" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Slides</span><span class="co">](chapters/05-advanced-topics/slides.qmd)</span> <span class="dv">&amp;nbsp;</span>|<span class="dv">&amp;nbsp;</span></span>
+<span id="cb1-82"><a href="#cb1-82" aria-hidden="true" tabindex="-1"></a><span class="co">[</span><span class="ot">Programming Lecture</span><span class="co">](chapters/05-advanced-topics/programming.qmd)</span></span>
+<span id="cb1-83"><a href="#cb1-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-84"><a href="#cb1-84" aria-hidden="true" tabindex="-1"></a>**Open Discussion and Q&amp;A:**   </span>
+<span id="cb1-85"><a href="#cb1-85" aria-hidden="true" tabindex="-1"></a>Prof. <span class="co">[</span><span class="ot">Mark Richardson </span><span class="co">](https://www.mrichardson.info/)</span>  </span>
+<span id="cb1-86"><a href="#cb1-86" aria-hidden="true" tabindex="-1"></a>Methods' Coordinator  </span>
+<span id="cb1-87"><a href="#cb1-87" aria-hidden="true" tabindex="-1"></a>Department of Government</span>
+<span id="cb1-88"><a href="#cb1-88" aria-hidden="true" tabindex="-1"></a></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
 <footer class="footer">
@@ -873,7 +1174,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Built with Quarto</p>
+<p>Georgetown University</p>
 </div>
   </div>
 </footer>

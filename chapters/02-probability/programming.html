@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>4&nbsp; Programming Session - Day 2 – Math Camp 2026</title>
+<title>Programming Session - Day 2 – Math Camp 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -71,7 +71,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../chapters/03-calculus-differentiation/index.html" rel="next">
+<link href="../../chapters/03-calculus/index.html" rel="next">
 <link href="../../chapters/02-probability/slides.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -79,10 +79,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-b85bc7c33db8c58e0ec93c3465666fed.css" rel="stylesheet" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" class="quarto-color-scheme-extra" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-b047b78a5474e83e4a64397270a01037.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-571e6285f55efe5c2f4d285306a07d24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-dark-8c2b17065e4478d2890ba6668fc6c718.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-571e6285f55efe5c2f4d285306a07d24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="../../site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="../../site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -115,7 +122,169 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 </head>
 
-<body class="nav-sidebar docked quarto-light">
+<body class="nav-sidebar docked quarto-light"><script id="quarto-html-before-body" type="application/javascript">
+    const toggleBodyColorMode = (bsSheetEl) => {
+      const mode = bsSheetEl.getAttribute("data-mode");
+      const bodyEl = window.document.querySelector("body");
+      if (mode === "dark") {
+        bodyEl.classList.add("quarto-dark");
+        bodyEl.classList.remove("quarto-light");
+      } else {
+        bodyEl.classList.add("quarto-light");
+        bodyEl.classList.remove("quarto-dark");
+      }
+    }
+    const toggleBodyColorPrimary = () => {
+      const bsSheetEl = window.document.querySelector("link#quarto-bootstrap:not([rel=disabled-stylesheet])");
+      if (bsSheetEl) {
+        toggleBodyColorMode(bsSheetEl);
+      }
+    }
+    const setColorSchemeToggle = (alternate) => {
+      const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+      for (let i=0; i < toggles.length; i++) {
+        const toggle = toggles[i];
+        if (toggle) {
+          if (alternate) {
+            toggle.classList.add("alternate");
+          } else {
+            toggle.classList.remove("alternate");
+          }
+        }
+      }
+    };
+    const toggleColorMode = (alternate) => {
+      // Switch the stylesheets
+      const primaryStylesheets = window.document.querySelectorAll('link.quarto-color-scheme:not(.quarto-color-alternate)');
+      const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+      manageTransitions('#quarto-margin-sidebar .nav-link', false);
+      if (alternate) {
+        // note: dark is layered on light, we don't disable primary!
+        enableStylesheet(alternateStylesheets);
+        for (const sheetNode of alternateStylesheets) {
+          if (sheetNode.id === "quarto-bootstrap") {
+            toggleBodyColorMode(sheetNode);
+          }
+        }
+      } else {
+        disableStylesheet(alternateStylesheets);
+        enableStylesheet(primaryStylesheets)
+        toggleBodyColorPrimary();
+      }
+      manageTransitions('#quarto-margin-sidebar .nav-link', true);
+      // Switch the toggles
+      setColorSchemeToggle(alternate)
+      // Hack to workaround the fact that safari doesn't
+      // properly recolor the scrollbar when toggling (#1455)
+      if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+        manageTransitions("body", false);
+        window.scrollTo(0, 1);
+        setTimeout(() => {
+          window.scrollTo(0, 0);
+          manageTransitions("body", true);
+        }, 40);
+      }
+    }
+    const disableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        stylesheet.rel = 'disabled-stylesheet';
+      }
+    }
+    const enableStylesheet = (stylesheets) => {
+      for (let i=0; i < stylesheets.length; i++) {
+        const stylesheet = stylesheets[i];
+        if(stylesheet.rel !== 'stylesheet') { // for Chrome, which will still FOUC without this check
+          stylesheet.rel = 'stylesheet';
+        }
+      }
+    }
+    const manageTransitions = (selector, allowTransitions) => {
+      const els = window.document.querySelectorAll(selector);
+      for (let i=0; i < els.length; i++) {
+        const el = els[i];
+        if (allowTransitions) {
+          el.classList.remove('notransition');
+        } else {
+          el.classList.add('notransition');
+        }
+      }
+    }
+    const isFileUrl = () => {
+      return window.location.protocol === 'file:';
+    }
+    const hasAlternateSentinel = () => {
+      let styleSentinel = getColorSchemeSentinel();
+      if (styleSentinel !== null) {
+        return styleSentinel === "alternate";
+      } else {
+        return false;
+      }
+    }
+    const setStyleSentinel = (alternate) => {
+      const value = alternate ? "alternate" : "default";
+      if (!isFileUrl()) {
+        window.localStorage.setItem("quarto-color-scheme", value);
+      } else {
+        localAlternateSentinel = value;
+      }
+    }
+    const getColorSchemeSentinel = () => {
+      if (!isFileUrl()) {
+        const storageValue = window.localStorage.getItem("quarto-color-scheme");
+        return storageValue != null ? storageValue : localAlternateSentinel;
+      } else {
+        return localAlternateSentinel;
+      }
+    }
+    const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+      const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+      const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+      let newTheme = '';
+      if(authorPrefersDark) {
+        newTheme = isAlternate ? baseTheme : alternateTheme;
+      } else {
+        newTheme = isAlternate ? alternateTheme : baseTheme;
+      }
+      const changeGiscusTheme = () => {
+        // From: https://github.com/giscus/giscus/issues/336
+        const sendMessage = (message) => {
+          const iframe = document.querySelector('iframe.giscus-frame');
+          if (!iframe) return;
+          iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+        }
+        sendMessage({
+          setConfig: {
+            theme: newTheme
+          }
+        });
+      }
+      const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+      if (isGiscussLoaded) {
+        changeGiscusTheme();
+      }
+    };
+    const authorPrefersDark = false;
+    const darkModeDefault = authorPrefersDark;
+      document.querySelector('link#quarto-text-highlighting-styles.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+      document.querySelector('link#quarto-bootstrap.quarto-color-scheme-extra').rel = 'disabled-stylesheet';
+    let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+    // Dark / light mode switch
+    window.quartoToggleColorScheme = () => {
+      // Read the current dark / light value
+      let toAlternate = !hasAlternateSentinel();
+      toggleColorMode(toAlternate);
+      setStyleSentinel(toAlternate);
+      toggleGiscusIfUsed(toAlternate, darkModeDefault);
+      window.dispatchEvent(new Event('resize'));
+    };
+    // Switch to dark mode if need be
+    if (hasAlternateSentinel()) {
+      toggleColorMode(true);
+    } else {
+      toggleColorMode(false);
+    }
+  </script>
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
@@ -124,7 +293,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/02-probability/index.html">Probability</a></li><li class="breadcrumb-item"><a href="../../chapters/02-probability/programming.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming Session - Day 2</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/02-probability/index.html">Day 2 — Probability</a></li><li class="breadcrumb-item"><a href="../../chapters/02-probability/programming.html"><span class="chapter-title">Programming Session - Day 2</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -142,6 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <a href="../../">Math Camp 2026</a> 
         <div class="sidebar-tools-main">
     <a href="https://github.com/parushya/MathCamp2026" title="Source Code" class="quarto-navigation-tool px-1" aria-label="Source Code"><i class="bi bi-github"></i></a>
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
     </div>
       </div>
@@ -167,7 +337,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../chapters/01-notation-functions-limits/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Notation, Functions, and Limits</span></a>
+ <span class="menu-text">Day 1 — Talking in Mathematics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -175,14 +345,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/01-notation-functions-limits/slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+  <a href="../../chapters/01-notation-functions-limits/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/01-notation-functions-limits/programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Programming Session - Day 1</span></span></a>
+  <a href="../../chapters/01-notation-functions-limits/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session</span></a>
   </div>
 </li>
       </ul>
@@ -190,7 +358,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../chapters/02-probability/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Probability</span></a>
+ <span class="menu-text">Day 2 — Probability</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -198,22 +366,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/02-probability/slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+  <a href="../../chapters/02-probability/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/02-probability/programming.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming Session - Day 2</span></span></a>
+  <a href="../../chapters/02-probability/programming.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Programming Session - Day 2</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../chapters/03-calculus-differentiation/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Calculus I: Differentiation &amp; Optimization</span></a>
+            <a href="../../chapters/03-calculus/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 3 — Calculus</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -221,22 +387,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/03-calculus-differentiation/slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+  <a href="../../chapters/03-calculus/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/03-calculus-differentiation/programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Programming Session - Day 3</span></span></a>
+  <a href="../../chapters/03-calculus/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../chapters/04-calculus-integration/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Calculus II: Integration &amp; Multivariate Calculus</span></a>
+            <a href="../../chapters/04-linear-algebra/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 4 — Linear Algebra</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -244,22 +408,20 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/04-calculus-integration/slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+  <a href="../../chapters/04-linear-algebra/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/04-calculus-integration/programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Programming Session - Day 4</span></span></a>
+  <a href="../../chapters/04-linear-algebra/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session</span></a>
   </div>
 </li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../chapters/05-linear-algebra/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Linear Algebra</span></a>
+            <a href="../../chapters/05-advanced-topics/index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Day 5 — Intro to Advanced Topics</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -267,14 +429,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/05-linear-algebra/slides.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Slides</span></span></a>
+  <a href="../../chapters/05-advanced-topics/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/05-linear-algebra/programming.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Programming Lecture</span></span></a>
+  <a href="../../chapters/05-advanced-topics/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session</span></a>
   </div>
 </li>
       </ul>
@@ -306,16 +466,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#why-programming-or-coding-as-a-political-scientist" id="toc-why-programming-or-coding-as-a-political-scientist" class="nav-link active" data-scroll-target="#why-programming-or-coding-as-a-political-scientist"><span class="header-section-number">4.0.1</span> Why programming or coding, as a political scientist?</a></li>
-  <li><a href="#basics" id="toc-basics" class="nav-link" data-scroll-target="#basics"><span class="header-section-number">4.0.2</span> Basics</a></li>
-  <li><a href="#objects-datatypes-and-data-structures" id="toc-objects-datatypes-and-data-structures" class="nav-link" data-scroll-target="#objects-datatypes-and-data-structures"><span class="header-section-number">4.1</span> Objects, Datatypes, and Data Structures</a>
+  <li><a href="#why-programming-or-coding-as-a-political-scientist" id="toc-why-programming-or-coding-as-a-political-scientist" class="nav-link active" data-scroll-target="#why-programming-or-coding-as-a-political-scientist">Why programming or coding, as a political scientist?</a></li>
+  <li><a href="#basics" id="toc-basics" class="nav-link" data-scroll-target="#basics">Basics</a></li>
+  <li><a href="#objects-datatypes-and-data-structures" id="toc-objects-datatypes-and-data-structures" class="nav-link" data-scroll-target="#objects-datatypes-and-data-structures">Objects, Datatypes, and Data Structures</a>
   <ul class="collapse">
-  <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects"><span class="header-section-number">4.1.1</span> Objects</a></li>
-  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures"><span class="header-section-number">4.1.2</span> Data Structures</a></li>
+  <li><a href="#objects" id="toc-objects" class="nav-link" data-scroll-target="#objects">Objects</a></li>
+  <li><a href="#data-structures" id="toc-data-structures" class="nav-link" data-scroll-target="#data-structures">Data Structures</a></li>
   </ul></li>
-  <li><a href="#exercise-with-a-real-replication-dataset" id="toc-exercise-with-a-real-replication-dataset" class="nav-link" data-scroll-target="#exercise-with-a-real-replication-dataset"><span class="header-section-number">4.2</span> Exercise with a real replication dataset</a>
+  <li><a href="#exercise-with-a-real-replication-dataset" id="toc-exercise-with-a-real-replication-dataset" class="nav-link" data-scroll-target="#exercise-with-a-real-replication-dataset">Exercise with a real replication dataset</a>
   <ul class="collapse">
-  <li><a href="#know-your-data" id="toc-know-your-data" class="nav-link" data-scroll-target="#know-your-data"><span class="header-section-number">4.2.1</span> KNOW YOUR DATA!</a></li>
+  <li><a href="#know-your-data" id="toc-know-your-data" class="nav-link" data-scroll-target="#know-your-data">KNOW YOUR DATA!</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -323,9 +483,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/02-probability/index.html">Probability</a></li><li class="breadcrumb-item"><a href="../../chapters/02-probability/programming.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming Session - Day 2</span></a></li></ol></nav>
+
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/02-probability/index.html">Day 2 — Probability</a></li><li class="breadcrumb-item"><a href="../../chapters/02-probability/programming.html"><span class="chapter-title">Programming Session - Day 2</span></a></li></ol></nav>
 <div class="quarto-title">
-<div class="quarto-title-block"><div><h1 class="title"><span id="sec-02-programming" class="quarto-section-identifier"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Programming Session - Day 2</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+<div class="quarto-title-block"><div><h1 class="title"><span id="sec-02-programming" class="quarto-section-identifier"><span class="chapter-title">Programming Session - Day 2</span></span></h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
 </div>
 
 
@@ -342,8 +503,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<section id="why-programming-or-coding-as-a-political-scientist" class="level3" data-number="4.0.1">
-<h3 data-number="4.0.1" class="anchored" data-anchor-id="why-programming-or-coding-as-a-political-scientist"><span class="header-section-number">4.0.1</span> Why programming or coding, as a political scientist?</h3>
+<section id="why-programming-or-coding-as-a-political-scientist" class="level3">
+<h3 class="anchored" data-anchor-id="why-programming-or-coding-as-a-political-scientist">Why programming or coding, as a political scientist?</h3>
 <p>People often give sophisticated answers to this question. But the basic idea is surprisingly simple.</p>
 <p>As political scientists, we use data to learn about the world. Data by themselves do not tell us anything—they must be cleaned, organized, analyzed, and visualized before they become evidence. Programming is simply the language we use to tell the computer how to perform these tasks.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -384,12 +545,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 </section>
-<section id="basics" class="level3" data-number="4.0.2">
-<h3 data-number="4.0.2" class="anchored" data-anchor-id="basics"><span class="header-section-number">4.0.2</span> Basics</h3>
+<section id="basics" class="level3">
+<h3 class="anchored" data-anchor-id="basics">Basics</h3>
 <p>R uses <code>&lt;-</code> as the assignment operator. To the left of it is an object (sort of like a box that stores values which are to the right of the operator).</p>
 <p><strong>Syntax</strong>: <code>object &lt;- value/data</code></p>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href=""><span style="color:#1696d2;">Exercise 1</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><span style="color:#1696d2;">Code 1</span></a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="" aria-current="page"><span style="color:#1696d2;">Exercise 1</span></a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href=""><span style="color:#1696d2;">Code 1</span></a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <ol type="1">
@@ -477,10 +638,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p><br></p>
 </section>
-<section id="objects-datatypes-and-data-structures" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="objects-datatypes-and-data-structures"><span class="header-section-number">4.1</span> Objects, Datatypes, and Data Structures</h2>
-<section id="objects" class="level3" data-number="4.1.1">
-<h3 data-number="4.1.1" class="anchored" data-anchor-id="objects"><span class="header-section-number">4.1.1</span> Objects</h3>
+<section id="objects-datatypes-and-data-structures" class="level2">
+<h2 class="anchored" data-anchor-id="objects-datatypes-and-data-structures">Objects, Datatypes, and Data Structures</h2>
+<section id="objects" class="level3">
+<h3 class="anchored" data-anchor-id="objects">Objects</h3>
 <div class="callout callout-style-simple callout-none no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -520,7 +681,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/atomic.png" class="img-fluid figure-img"></p>
+<p><a href="images/atomic.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="RStudio Screen"><img src="images/atomic.png" class="img-fluid figure-img" alt="RStudio Screen"></a></p>
 <figcaption>RStudio Screen</figcaption>
 </figure>
 </div>
@@ -577,8 +738,8 @@ Note
 </div>
 </div>
 </section>
-<section id="data-structures" class="level3" data-number="4.1.2">
-<h3 data-number="4.1.2" class="anchored" data-anchor-id="data-structures"><span class="header-section-number">4.1.2</span> Data Structures</h3>
+<section id="data-structures" class="level3">
+<h3 class="anchored" data-anchor-id="data-structures">Data Structures</h3>
 <p><strong>Data structures</strong> are bigger containers that hold many objects.</p>
 <p>Two basic or “atomic” data structures in R are:</p>
 <ol type="1">
@@ -586,8 +747,8 @@ Note
 <li><p><strong>Matrix</strong>: Matrices are vectors with two dimenions, so are also homogenous.</p></li>
 <li><p><strong>Lists</strong>: Lists are the most flexible form of data structures and can hold objects with different datatypes (i.e., heterogeneous).</p></li>
 </ol>
-<section id="understanding-vectors" class="level4" data-number="4.1.2.1">
-<h4 data-number="4.1.2.1" class="anchored" data-anchor-id="understanding-vectors"><span class="header-section-number">4.1.2.1</span> Understanding Vectors</h4>
+<section id="understanding-vectors" class="level4">
+<h4 class="anchored" data-anchor-id="understanding-vectors">Understanding Vectors</h4>
 <p>We can create a vector using the <code>c()</code> command.</p>
 <div class="cell">
 <details class="code-fold">
@@ -623,8 +784,8 @@ Note
 </details>
 </div>
 </section>
-<section id="indexing" class="level4" data-number="4.1.2.2">
-<h4 data-number="4.1.2.2" class="anchored" data-anchor-id="indexing"><span class="header-section-number">4.1.2.2</span> Indexing</h4>
+<section id="indexing" class="level4">
+<h4 class="anchored" data-anchor-id="indexing">Indexing</h4>
 <p>Indexing can be used to get values from an object or to set values in an object. <a href="#fn3" class="footnote-ref" id="fnref3" role="doc-noteref"><sup>3</sup></a></p>
 <p>The main indexing operator in R is the square bracket <code>[]</code>.</p>
 <div class="cell">
@@ -664,8 +825,8 @@ Note
 </div>
 </div>
 </section>
-<section id="working-with-matrices" class="level4" data-number="4.1.2.3">
-<h4 data-number="4.1.2.3" class="anchored" data-anchor-id="working-with-matrices"><span class="header-section-number">4.1.2.3</span> Working with matrices</h4>
+<section id="working-with-matrices" class="level4">
+<h4 class="anchored" data-anchor-id="working-with-matrices">Working with matrices</h4>
 <p>Basic vectors are uni-dimensional. We can make a two dimensional vector, which is called <strong>matrix</strong>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -838,12 +999,12 @@ Student 5 "Minha"   "Diana"    "Mckenzie"</code></pre>
 </div>
 </div>
 </section>
-<section id="lists" class="level4" data-number="4.1.2.4">
-<h4 data-number="4.1.2.4" class="anchored" data-anchor-id="lists"><span class="header-section-number">4.1.2.4</span> Lists</h4>
+<section id="lists" class="level4">
+<h4 class="anchored" data-anchor-id="lists">Lists</h4>
 <p>If we want to create something that stores objects of different classes together, we use another data structure called <code>list</code>.</p>
 <p>A list can contain two or more classes of objects with different lengths.</p>
-<section id="creating-lists" class="level5" data-number="4.1.2.4.1">
-<h5 data-number="4.1.2.4.1" class="anchored" data-anchor-id="creating-lists"><span class="header-section-number">4.1.2.4.1</span> Creating lists</h5>
+<section id="creating-lists" class="level5">
+<h5 class="anchored" data-anchor-id="creating-lists">Creating lists</h5>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -883,8 +1044,8 @@ Note
 </div>
 </div>
 </section>
-<section id="accessing-elements-in-lists" class="level5" data-number="4.1.2.4.2">
-<h5 data-number="4.1.2.4.2" class="anchored" data-anchor-id="accessing-elements-in-lists"><span class="header-section-number">4.1.2.4.2</span> Accessing elements in lists</h5>
+<section id="accessing-elements-in-lists" class="level5">
+<h5 class="anchored" data-anchor-id="accessing-elements-in-lists">Accessing elements in lists</h5>
 <p><code>[[ ]]</code> reaches into the list and returns the element itself, by capturing the position of that vector in the list. <code>$</code> is the readable shortcut for <code>[[ ]]</code> when you know the name as you type it.</p>
 <div class="cell">
 <details class="code-fold">
@@ -947,8 +1108,8 @@ $GREscores
 </div>
 </div>
 </section>
-<section id="modifying-lists" class="level5" data-number="4.1.2.4.3">
-<h5 data-number="4.1.2.4.3" class="anchored" data-anchor-id="modifying-lists"><span class="header-section-number">4.1.2.4.3</span> Modifying lists</h5>
+<section id="modifying-lists" class="level5">
+<h5 class="anchored" data-anchor-id="modifying-lists">Modifying lists</h5>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -975,8 +1136,8 @@ $GREscores
 </section>
 </section>
 </section>
-<section id="exercise-with-a-real-replication-dataset" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="exercise-with-a-real-replication-dataset"><span class="header-section-number">4.2</span> Exercise with a real replication dataset</h2>
+<section id="exercise-with-a-real-replication-dataset" class="level2">
+<h2 class="anchored" data-anchor-id="exercise-with-a-real-replication-dataset">Exercise with a real replication dataset</h2>
 <p>This sample dataset is adapted from the replication data accompanying:</p>
 <blockquote class="blockquote">
 <p>Haim, Dotan. 2016. <em>Alliance Networks and Trade: The Effect of Indirect Political Alliances on Bilateral Trade Flows</em>. Journal of Peace Research.</p>
@@ -987,16 +1148,16 @@ $GREscores
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="images/haim.png" class="img-fluid figure-img"></p>
+<p><a href="images/haim.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="RStudio Screen"><img src="images/haim.png" class="img-fluid figure-img" alt="RStudio Screen"></a></p>
 <figcaption>RStudio Screen</figcaption>
 </figure>
 </div>
 </div>
 </div>
-<section id="know-your-data" class="level3" data-number="4.2.1">
-<h3 data-number="4.2.1" class="anchored" data-anchor-id="know-your-data"><span class="header-section-number">4.2.1</span> KNOW YOUR DATA!</h3>
-<section id="variables" class="level4" data-number="4.2.1.1">
-<h4 data-number="4.2.1.1" class="anchored" data-anchor-id="variables"><span class="header-section-number">4.2.1.1</span> Variables</h4>
+<section id="know-your-data" class="level3">
+<h3 class="anchored" data-anchor-id="know-your-data">KNOW YOUR DATA!</h3>
+<section id="variables" class="level4">
+<h4 class="anchored" data-anchor-id="variables">Variables</h4>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 43%">
@@ -1113,8 +1274,8 @@ Note
 </div>
 </div>
 </section>
-<section id="exercises" class="level4" data-number="4.2.1.2">
-<h4 data-number="4.2.1.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.2.1.2</span> Exercises</h4>
+<section id="exercises" class="level4">
+<h4 class="anchored" data-anchor-id="exercises">Exercises</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1137,8 +1298,8 @@ Note
 </ol>
 </div>
 <div id="tabset-2-2" class="tab-pane" role="tabpanel" aria-labelledby="tabset-2-2-tab">
-<section id="question-1" class="level4" data-number="4.2.1.3">
-<h4 data-number="4.2.1.3" class="anchored" data-anchor-id="question-1"><span class="header-section-number">4.2.1.3</span> Question 1</h4>
+<section id="question-1" class="level4">
+<h4 class="anchored" data-anchor-id="question-1">Question 1</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1151,8 +1312,8 @@ Note
 </details>
 </div>
 </section>
-<section id="question-2" class="level4" data-number="4.2.1.4">
-<h4 data-number="4.2.1.4" class="anchored" data-anchor-id="question-2"><span class="header-section-number">4.2.1.4</span> Question 2</h4>
+<section id="question-2" class="level4">
+<h4 class="anchored" data-anchor-id="question-2">Question 2</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1160,8 +1321,8 @@ Note
 </details>
 </div>
 </section>
-<section id="question-3" class="level4" data-number="4.2.1.5">
-<h4 data-number="4.2.1.5" class="anchored" data-anchor-id="question-3"><span class="header-section-number">4.2.1.5</span> Question 3</h4>
+<section id="question-3" class="level4">
+<h4 class="anchored" data-anchor-id="question-3">Question 3</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1170,8 +1331,8 @@ Note
 </details>
 </div>
 </section>
-<section id="question-4" class="level4" data-number="4.2.1.6">
-<h4 data-number="4.2.1.6" class="anchored" data-anchor-id="question-4"><span class="header-section-number">4.2.1.6</span> Question 4</h4>
+<section id="question-4" class="level4">
+<h4 class="anchored" data-anchor-id="question-4">Question 4</h4>
 <div class="cell">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1216,6 +1377,19 @@ Note
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
+    // Ensure there is a toggle, if there isn't float one in the top right
+    if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+      const a = window.document.createElement('a');
+      a.classList.add('top-right');
+      a.classList.add('quarto-color-scheme-toggle');
+      a.href = "";
+      a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+      const i = window.document.createElement("i");
+      i.classList.add('bi');
+      a.appendChild(i);
+      window.document.body.appendChild(a);
+    }
+    setColorSchemeToggle(hasAlternateSentinel())
     const icon = "";
     const anchorJS = new window.AnchorJS();
     anchorJS.options = {
@@ -1667,13 +1841,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../chapters/02-probability/slides.html" class="pagination-link" aria-label="Slides">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Slides</span></span>
+      <a href="../../chapters/02-probability/slides.html" class="pagination-link" aria-label="Math Session">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Math Session</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../chapters/03-calculus-differentiation/index.html" class="pagination-link" aria-label="Calculus I: Differentiation &amp; Optimization">
-        <span class="nav-page-text">Calculus I: Differentiation &amp; Optimization</span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/03-calculus/index.html" class="pagination-link" aria-label="Day 3 — Calculus">
+        <span class="nav-page-text">Day 3 — Calculus</span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
@@ -2259,10 +2433,42 @@ Note
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>Built with Quarto</p>
+<p>Georgetown University</p>
 </div>
   </div>
 </footer>
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
 
 
 

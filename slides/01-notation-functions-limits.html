@@ -9,7 +9,9 @@
 <link href="01-notation-functions-limits_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
-  <title>Set Theory</title>
+  <meta name="author" content="Parushya">
+  <meta name="dcterms.date" content="2026-08-16">
+  <title>Talking in Mathematics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -135,16 +137,22 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Set Theory</h1>
-  <p class="subtitle">Math and Programming Camp Session 1</p>
+  <h1 class="title">Talking in <em>Mathematics</em></h1>
+  <p class="subtitle">Math and Programming Camp Day 1</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Parushya
+</div>
+</div>
 </div>
 
+  <p class="date">2026-08-16</p>
 </section>
 <section id="the-big-questions" class="slide level2 smaller">
 <h2>The Big Question(s)</h2>
-<h3 id="does-democracy-cause-growth">Does Democracy Cause Growth?</h3>
+<p><strong>Does Democracy Cause Growth?</strong></p>
 <div class="viz term-cards">
   <div class="term-head">
     <div class="term-head-term">Term</div>
@@ -322,8 +330,12 @@
 <li class="fragment"><strong>Let’s hear some ideas from your research areas!</strong></li>
 </ul>
 </section>
-<section id="democracy-and-growth-in-the-data-v-dem-2019" class="slide level2 smaller">
-<h2>Democracy and Growth, in the Data (V-Dem 2019)</h2>
+<section id="sets" class="slide level2">
+<h2>Sets</h2>
+<p><em>Reading a dataset as a set, and the union/intersection operations we can do on it.</em></p>
+</section>
+<section id="democracy-and-growth" class="slide level2 smaller">
+<h2>Democracy and Growth</h2>
 
 <img data-src="01-notation-functions-limits/images/vdem-polyarchy-gdppc-2019.png" class="r-stretch"><p>Polyarchy (our <strong>measure</strong> of democracy) vs.&nbsp;GDP per capita, one dot per country. <span class="math inline">\(n = 174\)</span>.</p>
 </section>
@@ -723,30 +735,31 @@
 <style>.venn-disjoint { max-width: 380px; margin: 0 auto; }</style>
 <div class="running-example-note">↪ Running example: {D=1} and {D=0} are mutually exclusive — a country can't be on both sides of the polyarchy &gt; 0.5 threshold.</div>
 </section>
+<section id="essential-math-refresher" class="slide level2">
+<h2>Essential Math Refresher</h2>
+<p><em>Levels of measurement, arithmetic, notation, and sequences — the toolkit everything else builds on.</em></p>
+</section>
 <section id="levels-of-measurement" class="slide level2 smaller">
 <h2>Levels of Measurement</h2>
+<p>Four levels, each subsuming the ones below it (Moore &amp; Siegel 2013, ch.&nbsp;1):</p>
 <ul>
-<li class="fragment">Categorical
+<li class="fragment"><strong>Nominal</strong>: differences of <em>kind</em> only — <span class="math inline">\(&lt;, \le, =, \ge, &gt;\)</span> have no meaning.
 <ul>
-<li class="fragment"><strong>Nominal</strong>: No mathematical relationship; difference of kind.
-<ul>
-<li class="fragment">Occupation, colors, political party, gender</li>
+<li class="fragment">e.g.&nbsp;gender, party affiliation</li>
 </ul></li>
-<li class="fragment"><strong>Ordinal:</strong> Meaningful order, no meaningful “distance” between categories.
+<li class="fragment"><strong>Ordinal</strong>: differences of <em>degree</em>, with meaningful order (<span class="math inline">\(&lt;, \le, =, \ge, &gt;\)</span> apply) — but distance between values isn’t constant, so addition/subtraction don’t make sense.
 <ul>
-<li class="fragment">Ideology, agree/disagree, education level</li>
+<li class="fragment">e.g.&nbsp;self-placed ideology (far left … far right)</li>
 </ul></li>
-</ul></li>
-<li class="fragment">Numerical
+<li class="fragment"><strong>Interval</strong>: order <em>and</em> a constant distance between values — addition/subtraction are meaningful, but zero isn’t.
 <ul>
-<li class="fragment"><strong>Interval</strong>: Meaningful order and distance between values.
+<li class="fragment">e.g.&nbsp;feeling thermometer (0–100; 0 isn’t “no feeling”)</li>
+</ul></li>
+<li class="fragment"><strong>Ratio</strong>: interval, plus a meaningful zero — multiplication/division (ratios) are also meaningful.
 <ul>
-<li class="fragment">Age, budget, polity scores, vote share, feeling thermometer</li>
-<li class="fragment">Discrete: countable</li>
-<li class="fragment">Continuous: non-countable</li>
-<li class="fragment">Ratio: meaningful zero (re-scaled thermometer)</li>
+<li class="fragment">e.g.&nbsp;government spending, event counts (wars, vetoes)</li>
 </ul></li>
-</ul></li>
+<li class="fragment">Discrete vs.&nbsp;continuous cuts across interval/ratio: discrete = countable, continuous = not.</li>
 </ul>
 </section>
 <section id="why-it-matters" class="slide level2 smaller">
@@ -764,6 +777,17 @@
 <li class="fragment">Categorical – Continuous: difference in means</li>
 <li class="fragment">Continuous – Continuous: scatter plots, regression</li>
 </ul></li>
+</ul>
+</section>
+<section id="quick-drill-levels-of-measurement" class="slide level2 smaller">
+<h2>Quick Drill: Levels of Measurement</h2>
+<p>What level of measurement is each? Click to check.</p>
+<ul>
+<li class="fragment">Highest level of education (1 = some high school, …, 5 = postgraduate) — <span class="fragment"><strong>ordinal</strong>, discrete: ordered, but the gap between levels isn’t constant.</span></li>
+<li class="fragment">Annual income — <span class="fragment"><strong>ratio</strong>, continuous: constant distances, and $0 means no income.</span></li>
+<li class="fragment">Vote choice among Bush, Clinton, and Perot — <span class="fragment"><strong>nominal</strong>: categories, no ordering.</span></li>
+<li class="fragment">Absence/presence of a militarized interstate dispute — <span class="fragment"><strong>nominal</strong> (binary): a difference of kind, not degree.</span></li>
+<li class="fragment">Number of wars a country has participated in — <span class="fragment"><strong>ratio</strong>, discrete: an event count — 0 means none, and 4 is twice 2.</span></li>
 </ul>
 </section>
 <section id="basic-properties-of-arithmetic" class="slide level2 smaller">
@@ -808,6 +832,15 @@
 <li class="fragment">Subtraction (<span class="math inline">\(-\)</span>)</li>
 </ul>
 </section>
+<section id="examples-order-of-operations" class="slide level2 smaller">
+<h2>Examples: Order of Operations</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(2 + 3 \times 4\)</span> = <span class="fragment"><span class="math inline">\(2 + 12 = 14\)</span></span></li>
+<li class="fragment"><span class="math inline">\((2 + 3) \times 4\)</span> = <span class="fragment"><span class="math inline">\(5 \times 4 = 20\)</span></span></li>
+<li class="fragment"><span class="math inline">\(10 - 2^2 \times 3\)</span> = <span class="fragment"><span class="math inline">\(10 - 4 \times 3 = 10 - 12 = -2\)</span></span></li>
+<li class="fragment"><span class="math inline">\(\dfrac{8 + 4}{2 \times 3}\)</span> = <span class="fragment"><span class="math inline">\(\dfrac{12}{6} = 2\)</span></span></li>
+</ul>
+</section>
 <section id="inequalities" class="slide level2 smaller">
 <h2>Inequalities</h2>
 <ul>
@@ -826,67 +859,151 @@
 </ul></li>
 </ul>
 </section>
-<section id="exponents-logarithms-and-roots" class="slide level2 smaller">
-<h2>Exponents, Logarithms, and Roots</h2>
+<section id="examples-inequalities" class="slide level2 smaller">
+<h2>Examples: Inequalities</h2>
 <ul>
-<li class="fragment">Exponential: <span class="math inline">\(x^{a}\)</span></li>
-<li class="fragment">Roots: <span class="math inline">\(\sqrt[a]{x}\)</span>
+<li class="fragment">Solve <span class="math inline">\(3x - 2 &gt; 10\)</span>: <span class="fragment">add 2 to both sides, then divide by 3 (positive, keeps direction): <span class="math inline">\(x &gt; 4\)</span>.</span></li>
+<li class="fragment">Solve <span class="math inline">\(-2x \le 8\)</span>: <span class="fragment">divide both sides by <span class="math inline">\(-2\)</span> (negative, flips direction): <span class="math inline">\(x \ge -4\)</span>.</span></li>
+<li class="fragment">Is <span class="math inline">\(-5 &lt; -2\)</span>? <span class="fragment">Yes — on the number line, <span class="math inline">\(-5\)</span> sits to the left of <span class="math inline">\(-2\)</span>.</span></li>
+</ul>
+</section>
+<section id="sequences-and-series" class="slide level2 smaller">
+<h2>Sequences and Series</h2>
 <ul>
-<li class="fragment">All roots can be expressed as fractional exponents</li>
-<li class="fragment"><span class="math inline">\(\sqrt[a]{x} = x^{1/a}\)</span></li>
+<li class="fragment">A <strong>sequence</strong> is an ordered list of numbers, <span class="math inline">\(x_1, x_2, x_3, \dots\)</span>
+<ul>
+<li class="fragment">Finite, e.g.&nbsp;<span class="math inline">\(5, 10, 15, 20, 25\)</span></li>
+<li class="fragment">Infinite, e.g.&nbsp;<span class="math inline">\(1, 2, 3, 4, \dots\)</span></li>
 </ul></li>
-<li class="fragment">Logarithm: inverse of exponents, <span class="math inline">\(\log_{a}x\)</span>
+<li class="fragment">A <strong>series</strong> is the sum of a sequence.
 <ul>
-<li class="fragment">To what power would you need to raise <span class="math inline">\(a\)</span> to get <span class="math inline">\(x\)</span>?</li>
-</ul></li>
-<li class="fragment">Natural log: log base <span class="math inline">\(e\)</span>
-<ul>
-<li class="fragment"><span class="math inline">\(e \approx 2.7183\)</span></li>
-<li class="fragment">Useful properties in calculus</li>
-<li class="fragment">Taking the natural log of a variable allows us to interpret relationships in terms of percentage changes</li>
+<li class="fragment">Written <span class="math inline">\(\sum\limits_{i=1}^{N} x_i\)</span>: add the terms starting at <span class="math inline">\(x_1\)</span> and stopping at <span class="math inline">\(x_N\)</span>.</li>
+<li class="fragment">For an infinite sequence, <span class="math inline">\(N = \infty\)</span>.</li>
 </ul></li>
 </ul>
 </section>
-<section id="exponent-logarithm-and-root-rules" class="slide level2 smaller">
-<h2>Exponent, Logarithm, and Root Rules</h2>
-<div class="columns">
-<div class="column" style="width:50%;">
-<p><strong>Exponent rules</strong></p>
+<section id="examples-sequences-and-series" class="slide level2 smaller">
+<h2>Examples: Sequences and Series</h2>
 <ul>
-<li class="fragment"><span class="math inline">\(x^{a} \cdot x^{b}=x^{a+b}\)</span></li>
-<li class="fragment"><span class="math inline">\(x^{a} \cdot z^{a}=(xz)^{a}\)</span></li>
-<li class="fragment"><span class="math inline">\((x^{a})^{b}=x^{ab}\)</span></li>
-<li class="fragment"><span class="math inline">\(\frac{x^{a}}{x^{b}}=x^{a-b}\)</span></li>
-<li class="fragment"><span class="math inline">\(\frac{x^{a}}{z^{a}}=\left(\frac{x}{z}\right)^{a}\)</span></li>
+<li class="fragment">The sequence of the first 5 even numbers: <span class="fragment"><span class="math inline">\(2, 4, 6, 8, 10\)</span></span></li>
+<li class="fragment">The corresponding series (sum of that sequence): <span class="fragment"><span class="math inline">\(2+4+6+8+10 = 30\)</span>, i.e.&nbsp;<span class="math inline">\(\sum\limits_{i=1}^{5} 2i = 30\)</span></span></li>
+<li class="fragment">A country’s polyarchy score each year is a <strong>sequence</strong> indexed by year; summing it over a decade gives a <strong>series</strong>.</li>
 </ul>
-</div><div class="column" style="width:50%;">
-<p><strong>Logarithm rules</strong></p>
-<ul>
-<li class="fragment"><span class="math inline">\(\log(x_{1} \cdot x_{2})=\log(x_{1})+\log(x_{2})\)</span> for <span class="math inline">\(x_{1},x_{2}&gt;0\)</span></li>
-<li class="fragment"><span class="math inline">\(\log\left(\frac{x_{1}}{x_{2}}\right)=\log(x_{1})-\log(x_{2})\)</span> for <span class="math inline">\(x_{1},x_{2}&gt;0\)</span></li>
-<li class="fragment"><span class="math inline">\(\log(x^{b})=b \cdot \ln(x)\)</span> for <span class="math inline">\(x&gt;0\)</span></li>
-</ul>
-</div></div>
+<!--
+The sections below (through "Checking Our Work Graphically") cover the
+same topics as IQSS's "prefresher" course notes, functions chapter:
+https://github.com/IQSS/prefresher/blob/main/02_functions.qmd (GPLv3
+licensed). Content here is written independently in this deck's own voice
+and slide format, not copied verbatim -- credit to the IQSS prefresher
+authors for the topic selection and pedagogical structure this draws on.
+-->
 </section>
-<section id="exponent-logarithm-and-root-rules-root-rules" class="slide level2 smaller">
-<h2>Exponent, Logarithm, and Root Rules — Root Rules</h2>
-<p><strong>Root rules</strong></p>
+<section id="notations" class="slide level2">
+<h2>Notations</h2>
 <ul>
-<li><span class="math inline">\(\sqrt{x}=x^{\frac{1}{2}}\)</span></li>
-<li><span class="math inline">\(\sqrt[n]{x} \cdot \sqrt[n]{z}=\sqrt[n]{xz}\)</span> for <span class="math inline">\(n&gt;1\)</span></li>
-<li><span class="math inline">\(\frac{\sqrt[n]{x}}{\sqrt[n]{z}}=\sqrt[n]{\frac{x}{z}}\)</span> for <span class="math inline">\(n&gt;1\)</span></li>
+<li><p>Summation</p></li>
+<li><p>Product</p></li>
+<li><p>Factorial</p></li>
 </ul>
 </section>
-<section id="functions-and-their-characteristics" class="slide level2 smaller">
-<h2>Functions and Their Characteristics</h2>
+<section id="summation-notation" class="slide level2 smaller">
+<h2>Summation Notation</h2>
 <ul>
-<li class="fragment">Functions provide a <strong>specific</strong> description of the association or relationship between two (or among several) concepts (in theoretical work) or variables (in empirical work)</li>
-<li class="fragment">Functions assign one element of the range to an element of the domain (no <span class="math inline">\(x\)</span> can be assigned to multiple <span class="math inline">\(y\)</span>)</li>
-<li class="fragment">Noted as <span class="math inline">\(f(x):A \rightarrow B\)</span> or “f maps A into B”</li>
-<li class="fragment"><span class="math inline">\(A\)</span> is the <em>domain</em>, or set of possible <span class="math inline">\(x\)</span> values.</li>
-<li class="fragment"><span class="math inline">\(B\)</span> is the <em>codomain</em>, or set of possible <span class="math inline">\(y\)</span> values.</li>
-<li class="fragment">To be a function, there must only be one unique value in its range (<span class="math inline">\(y\)</span>) for each value in its domain (<span class="math inline">\(x\)</span>)</li>
+<li class="fragment">Writing out a long sum term by term gets unwieldy fast — summation notation is shorthand for “add up a pattern.”</li>
+<li class="fragment"><span class="math inline">\(\sum\limits_{i=1}^{n} x_i = x_1 + x_2 + \cdots + x_n\)</span></li>
+<li class="fragment">The number below <span class="math inline">\(\sum\)</span> is where the index <span class="math inline">\(i\)</span> starts; the number above is where it stops. Everything to the right (which must involve <span class="math inline">\(i\)</span>) is what gets added at each step.</li>
 </ul>
+</section>
+<section id="rules-of-summation" class="slide level2 smaller">
+<h2>Rules of Summation</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\sum\limits_{i=1}^{n} c\,x_i = c\sum\limits_{i=1}^{n} x_i\)</span> — a constant factor can be pulled out front.</li>
+<li class="fragment"><span class="math inline">\(\sum\limits_{i=1}^{n} (x_i + y_i) = \sum\limits_{i=1}^{n} x_i + \sum\limits_{i=1}^{n} y_i\)</span> — a sum of sums splits apart.</li>
+<li class="fragment"><span class="math inline">\(\sum\limits_{i=1}^{n} c = nc\)</span> — adding the same constant <span class="math inline">\(n\)</span> times is just <span class="math inline">\(n\)</span> times that constant.</li>
+</ul>
+</section>
+<section id="product-notation" class="slide level2 smaller">
+<h2>Product Notation</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\prod\)</span> works the same way as <span class="math inline">\(\sum\)</span>, but multiplies instead of adds: <span class="math inline">\(\prod\limits_{i=1}^{n} x_i = x_1 \cdot x_2 \cdots x_n\)</span></li>
+<li class="fragment"><span class="math inline">\(\prod\limits_{i=1}^{n} c\,x_i = c^{n}\prod\limits_{i=1}^{n} x_i\)</span> — pulling out a constant costs you an exponent <span class="math inline">\(n\)</span>, since it’s multiplied in <span class="math inline">\(n\)</span> times.</li>
+<li class="fragment"><span class="math inline">\(\prod\limits_{i=1}^{n} c = c^{n}\)</span></li>
+<li class="fragment">Unlike summation, <span class="math inline">\(\prod\limits_{i=1}^{n} (x_i + y_i)\)</span> does <strong>not</strong> simplify nicely — multiplication doesn’t distribute across a sum of sequences the way addition distributes across sums.</li>
+</ul>
+</section>
+<section id="factorials-and-modulo" class="slide level2 smaller">
+<h2>Factorials and Modulo</h2>
+<ul>
+<li class="fragment"><strong>Factorial:</strong> <span class="math inline">\(x! = x \cdot (x-1) \cdot (x-2) \cdots 1\)</span> — multiply a whole number down to 1.</li>
+<li class="fragment"><strong>Modulo:</strong> the remainder left over after division.
+<ul>
+<li class="fragment"><span class="math inline">\(17 \bmod 3 = 2\)</span> (since <span class="math inline">\(17 = 5\times3 + 2\)</span>)</li>
+<li class="fragment"><span class="math inline">\(100 \bmod 30 = 10\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="quick-drill-operators" class="slide level2 smaller">
+<h2>Quick Drill: Operators</h2>
+<p>Work these out, then click to check.</p>
+<ul>
+<li class="fragment"><span class="math inline">\(\sum\limits_{i=1}^{5} i\)</span> = <span class="fragment"><span class="math inline">\(1+2+3+4+5 = 15\)</span></span></li>
+<li class="fragment"><span class="math inline">\(\prod\limits_{i=1}^{5} i\)</span> = <span class="fragment"><span class="math inline">\(1\times2\times3\times4\times5 = 120\)</span></span></li>
+<li class="fragment"><span class="math inline">\(14 \bmod 4\)</span> = <span class="fragment"><span class="math inline">\(2\)</span></span></li>
+<li class="fragment"><span class="math inline">\(4!\)</span> = <span class="fragment"><span class="math inline">\(4\times3\times2\times1 = 24\)</span></span></li>
+</ul>
+</section>
+<section id="functions" class="slide level2">
+<h2>Functions</h2>
+<p><em>Mappings between sets, domain and range, and the shapes a relationship can take.</em></p>
+</section>
+<section id="functions-as-mappings" class="slide level2 smaller">
+<h2>Functions as Mappings</h2>
+<ul>
+<li class="fragment">A <strong>function</strong> maps every element of one set (the input) to exactly one element of another set (the output) — never to more than one.</li>
+<li class="fragment">What a function can <em>never</em> do is send a single input to two different outputs — that’s the one property that actually defines “function.”</li>
+</ul>
+</section>
+<section id="function-or-not-visualized" class="slide level2 smaller">
+<h2>Function or Not? — Visualized</h2>
+<div class="viz function-check-map">
+  <div class="fcm-panel">
+    <svg class="viz-plot" viewbox="0 0 240 200" role="img" aria-label="A valid function: each of three inputs points to exactly one output, though two inputs share the same output">
+      <text x="120" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#22303F">Valid function</text>
+      <circle cx="60" cy="60" r="4" fill="#22303F"></circle><text x="40" y="55" font-size="12" fill="#22303F">x₁</text>
+      <circle cx="60" cy="100" r="4" fill="#22303F"></circle><text x="40" y="105" font-size="12" fill="#22303F">x₂</text>
+      <circle cx="60" cy="140" r="4" fill="#22303F"></circle><text x="40" y="145" font-size="12" fill="#22303F">x₃</text>
+      <circle cx="180" cy="80" r="4" fill="#2b6cb0"></circle><text x="192" y="75" font-size="12" fill="#2b6cb0">y₁</text>
+      <circle cx="180" cy="140" r="4" fill="#2b6cb0"></circle><text x="192" y="145" font-size="12" fill="#2b6cb0">y₂</text>
+      <line x1="64" y1="60" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-ok)"></line>
+      <line x1="64" y1="100" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-ok)"></line>
+      <line x1="64" y1="140" x2="176" y2="140" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-ok)"></line>
+      <defs><marker id="fcm-arrow-ok" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker></defs>
+    </svg>
+  </div>
+  <div class="fcm-panel">
+    <svg class="viz-plot" viewbox="0 0 240 200" role="img" aria-label="Not a function: one input points to two different outputs">
+      <text x="120" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#B23A48">Not a function</text>
+      <circle cx="60" cy="60" r="4" fill="#22303F"></circle><text x="40" y="55" font-size="12" fill="#22303F">x₁</text>
+      <circle cx="60" cy="100" r="4" fill="#22303F"></circle><text x="40" y="105" font-size="12" fill="#22303F">x₂</text>
+      <circle cx="60" cy="140" r="4" fill="#22303F"></circle><text x="40" y="145" font-size="12" fill="#22303F">x₃</text>
+      <circle cx="180" cy="70" r="4" fill="#B23A48"></circle><text x="192" y="65" font-size="12" fill="#B23A48">y₁</text>
+      <circle cx="180" cy="110" r="4" fill="#B23A48"></circle><text x="192" y="115" font-size="12" fill="#B23A48">y₂</text>
+      <circle cx="180" cy="150" r="4" fill="#2b6cb0"></circle><text x="192" y="155" font-size="12" fill="#2b6cb0">y₃</text>
+      <line x1="64" y1="60" x2="176" y2="70" stroke="#B23A48" stroke-width="1.5" marker-end="url(#fcm-arrow-bad)"></line>
+      <line x1="64" y1="60" x2="176" y2="110" stroke="#B23A48" stroke-width="1.5" marker-end="url(#fcm-arrow-bad)"></line>
+      <line x1="64" y1="140" x2="176" y2="150" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-bad2)"></line>
+      <defs>
+        <marker id="fcm-arrow-bad" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B23A48"></path></marker>
+        <marker id="fcm-arrow-bad2" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker>
+      </defs>
+    </svg>
+  </div>
+</div>
+<style>
+.function-check-map { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+.fcm-panel { max-width: 280px; }
+</style>
+<p><span class="math inline">\(x_1\)</span> pointing to both <span class="math inline">\(y_1\)</span> and <span class="math inline">\(y_2\)</span> is what breaks it — everything else about the diagram (shared outputs, an unused <span class="math inline">\(y\)</span>) is still fine for a function.</p>
 </section>
 <section id="graph-examples" class="slide level2 smaller">
 <h2>Graph Examples</h2>
@@ -972,6 +1089,227 @@
 </div>
 </div>
 </section>
+<section id="domain-range-and-image" class="slide level2 smaller">
+<h2>Domain, Range, and Image</h2>
+<ul>
+<li class="fragment"><strong>Domain:</strong> the set of inputs where <span class="math inline">\(f(x)\)</span> is actually defined.</li>
+<li class="fragment"><strong>Range</strong> (or <strong>image</strong>): the set of outputs <span class="math inline">\(f\)</span> actually produces, <span class="math inline">\(f(X) = \{y : y = f(x),\, x \in X\}\)</span>.</li>
+<li class="fragment">Some functions aren’t defined everywhere — e.g.&nbsp;<span class="math inline">\(f(x) = \sqrt{x}\)</span> has domain <span class="math inline">\([0,\infty)\)</span>, not all of <span class="math inline">\(\mathbb{R}^1\)</span>.</li>
+</ul>
+</section>
+<section id="domain-codomain-and-range-visualized" class="slide level2 smaller">
+<h2>Domain, Codomain, and Range — Visualized</h2>
+<div class="viz drc-map">
+<svg class="viz-plot" viewbox="0 0 500 280" role="img" aria-label="A function f mapping four points in the domain A to points in the codomain B; the range is the subset of the codomain that is actually hit, smaller than the full codomain">
+  <circle cx="120" cy="140" r="90" fill="#8a8f98" fill-opacity="0.35" stroke="#8a8f98" stroke-width="2"></circle>
+  <text x="120" y="38" text-anchor="middle" font-size="16" font-weight="700" fill="#22303F">Domain (A)</text>
+
+  <circle cx="380" cy="140" r="100" fill="#EDF0F5" stroke="#D9E0EA" stroke-width="2"></circle>
+  <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#22303F">Codomain (B)</text>
+
+  <ellipse cx="362" cy="143" rx="55" ry="72" fill="#2b6cb0" fill-opacity="0.18" stroke="#2b6cb0" stroke-width="2" stroke-dasharray="5,4"></ellipse>
+  <text x="362" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0">Range</text>
+
+  <line x1="98" y1="90" x2="332" y2="90" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#drc-arrow)"></line>
+  <line x1="98" y1="140" x2="332" y2="90" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#drc-arrow)"></line>
+  <line x1="98" y1="190" x2="332" y2="150" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#drc-arrow)"></line>
+  <line x1="150" y1="140" x2="392" y2="190" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#drc-arrow)"></line>
+
+  <defs>
+    <marker id="drc-arrow" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path>
+    </marker>
+  </defs>
+
+  <circle cx="90" cy="90" r="5" fill="#22303F"></circle>
+  <text x="78" y="78" font-size="13" fill="#22303F">x₁</text>
+  <circle cx="90" cy="140" r="5" fill="#22303F"></circle>
+  <text x="78" y="128" font-size="13" fill="#22303F">x₂</text>
+  <circle cx="90" cy="190" r="5" fill="#22303F"></circle>
+  <text x="78" y="212" font-size="13" fill="#22303F">x₃</text>
+  <circle cx="150" cy="140" r="5" fill="#22303F"></circle>
+  <text x="156" y="132" font-size="13" fill="#22303F">x₄</text>
+
+  <circle cx="340" cy="90" r="5" fill="#2b6cb0"></circle>
+  <text x="316" y="78" font-size="13" fill="#2b6cb0">y₁</text>
+  <circle cx="340" cy="150" r="5" fill="#2b6cb0"></circle>
+  <text x="316" y="168" font-size="13" fill="#2b6cb0">y₃</text>
+  <circle cx="400" cy="190" r="5" fill="#2b6cb0"></circle>
+  <text x="406" y="210" font-size="13" fill="#2b6cb0">y₄</text>
+
+  <circle cx="440" cy="90" r="5" fill="#8a8f98"></circle>
+  <text x="446" y="82" font-size="13" fill="#5A6B80">y₂</text>
+  <circle cx="450" cy="150" r="5" fill="#8a8f98"></circle>
+  <text x="456" y="142" font-size="13" fill="#5A6B80">y₅</text>
+</svg>
+</div>
+<style>.drc-map { max-width: 560px; margin: 0 auto; }</style>
+<ul>
+<li class="fragment"><span class="math inline">\(x_1\)</span> and <span class="math inline">\(x_2\)</span> both map to <span class="math inline">\(y_1\)</span> — many-to-one is still a function.</li>
+<li class="fragment"><span class="math inline">\(y_2\)</span> and <span class="math inline">\(y_5\)</span> sit in the <strong>codomain</strong> but are never hit — they’re not in the range.</li>
+<li class="fragment"><strong>Range <span class="math inline">\(\subseteq\)</span> Codomain</strong>, always. They’re only equal when every element of <span class="math inline">\(B\)</span> gets used.</li>
+</ul>
+</section>
+<section id="functions-and-their-characteristics" class="slide level2 smaller">
+<h2>Functions and Their Characteristics</h2>
+<ul>
+<li class="fragment">Functions give a <strong>specific</strong> description of the relationship between two (or more) concepts (in theory) or variables (in data).</li>
+<li class="fragment">Noted as <span class="math inline">\(f(x): A \to B\)</span>, read “<span class="math inline">\(f\)</span> maps <span class="math inline">\(A\)</span> into <span class="math inline">\(B\)</span>.”</li>
+<li class="fragment"><span class="math inline">\(A\)</span> is the <strong>domain</strong> — the set of possible <span class="math inline">\(x\)</span> values.</li>
+<li class="fragment"><span class="math inline">\(B\)</span> is the <strong>codomain</strong> — the set of possible <span class="math inline">\(y\)</span> values.</li>
+<li class="fragment">To be a function, there must be exactly one value in the range (<span class="math inline">\(y\)</span>) for each value in the domain (<span class="math inline">\(x\)</span>).</li>
+</ul>
+</section>
+<section id="one-to-one-vs.-many-to-one" class="slide level2 smaller">
+<h2>One-to-One vs.&nbsp;Many-to-One</h2>
+<ul>
+<li class="fragment"><strong>Many-to-one:</strong> several different inputs can share the same output — still a function.</li>
+<li class="fragment"><strong>One-to-one:</strong> every input has its own distinct output — also a function.</li>
+</ul>
+</section>
+<section id="one-to-one-vs.-many-to-one-visualized" class="slide level2 smaller">
+<h2>One-to-One vs.&nbsp;Many-to-One — Visualized</h2>
+<div class="viz function-check-map">
+  <div class="fcm-panel">
+    <svg class="viz-plot" viewbox="0 0 240 200" role="img" aria-label="One-to-one: three inputs each map to their own distinct output">
+      <text x="120" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#22303F">One-to-one</text>
+      <circle cx="60" cy="60" r="4" fill="#22303F"></circle><text x="40" y="55" font-size="12" fill="#22303F">x₁</text>
+      <circle cx="60" cy="100" r="4" fill="#22303F"></circle><text x="40" y="105" font-size="12" fill="#22303F">x₂</text>
+      <circle cx="60" cy="140" r="4" fill="#22303F"></circle><text x="40" y="145" font-size="12" fill="#22303F">x₃</text>
+      <circle cx="180" cy="60" r="4" fill="#2b6cb0"></circle><text x="192" y="55" font-size="12" fill="#2b6cb0">y₁</text>
+      <circle cx="180" cy="100" r="4" fill="#2b6cb0"></circle><text x="192" y="105" font-size="12" fill="#2b6cb0">y₂</text>
+      <circle cx="180" cy="140" r="4" fill="#2b6cb0"></circle><text x="192" y="145" font-size="12" fill="#2b6cb0">y₃</text>
+      <line x1="64" y1="60" x2="176" y2="60" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#oto-arrow)"></line>
+      <line x1="64" y1="100" x2="176" y2="100" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#oto-arrow)"></line>
+      <line x1="64" y1="140" x2="176" y2="140" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#oto-arrow)"></line>
+      <defs><marker id="oto-arrow" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker></defs>
+    </svg>
+  </div>
+  <div class="fcm-panel">
+    <svg class="viz-plot" viewbox="0 0 240 200" role="img" aria-label="Many-to-one: two inputs share the same output, the third has its own">
+      <text x="120" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#22303F">Many-to-one</text>
+      <circle cx="60" cy="60" r="4" fill="#22303F"></circle><text x="40" y="55" font-size="12" fill="#22303F">x₁</text>
+      <circle cx="60" cy="100" r="4" fill="#22303F"></circle><text x="40" y="105" font-size="12" fill="#22303F">x₂</text>
+      <circle cx="60" cy="140" r="4" fill="#22303F"></circle><text x="40" y="145" font-size="12" fill="#22303F">x₃</text>
+      <circle cx="180" cy="80" r="4" fill="#2b6cb0"></circle><text x="192" y="75" font-size="12" fill="#2b6cb0">y₁</text>
+      <circle cx="180" cy="140" r="4" fill="#2b6cb0"></circle><text x="192" y="145" font-size="12" fill="#2b6cb0">y₂</text>
+      <line x1="64" y1="60" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#mto-arrow)"></line>
+      <line x1="64" y1="100" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#mto-arrow)"></line>
+      <line x1="64" y1="140" x2="176" y2="140" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#mto-arrow)"></line>
+      <defs><marker id="mto-arrow" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker></defs>
+    </svg>
+  </div>
+</div>
+<style>
+.function-check-map { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; }
+.fcm-panel { max-width: 280px; }
+</style>
+<p>Both diagrams are still valid functions — the only question is whether any <span class="math inline">\(y\)</span> gets hit more than once.</p>
+</section>
+<section id="quick-drill-one-to-one-or-many-to-one" class="slide level2 smaller">
+<h2>Quick Drill: One-to-One or Many-to-One?</h2>
+<ul>
+<li class="fragment">For <span class="math inline">\(x \in [0,\infty)\)</span>, <span class="math inline">\(f(x) = x^2\)</span>. <span class="fragment">One-to-one — on this restricted domain, each output has only one input.</span></li>
+<li class="fragment">For <span class="math inline">\(x \in (-\infty,\infty)\)</span>, <span class="math inline">\(f(x) = x^2\)</span>. <span class="fragment">Many-to-one — both <span class="math inline">\(2\)</span> and <span class="math inline">\(-2\)</span> map to <span class="math inline">\(4\)</span>.</span></li>
+</ul>
+</section>
+<section id="dimensionality" class="slide level2 smaller">
+<h2>Dimensionality</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\mathbb{R}^1\)</span> is the set of all real numbers extending from <span class="math inline">\(-\infty\)</span> to <span class="math inline">\(\infty\)</span> — i.e., the real number line.</li>
+<li class="fragment"><span class="math inline">\(\mathbb{R}^2\)</span> is two-dimensional — a plane; <span class="math inline">\(\mathbb{R}^3\)</span> is three-dimensional — a space; and so on for <span class="math inline">\(\mathbb{R}^n\)</span>.</li>
+<li class="fragment">A point in <span class="math inline">\(\mathbb{R}^n\)</span> is an <strong>ordered <span class="math inline">\(n\)</span>-tuple</strong> — an ordered combination of <span class="math inline">\(n\)</span> elements, where order matters — and each element of the tuple is the coordinate along that dimension.</li>
+<li class="fragment"><span class="math inline">\(\mathbb{R}^1\)</span>: a point like <span class="math inline">\((3)\)</span>.</li>
+<li class="fragment"><span class="math inline">\(\mathbb{R}^2\)</span>: a point like <span class="math inline">\((-15, 5)\)</span>.</li>
+<li class="fragment"><span class="math inline">\(\mathbb{R}^3\)</span>: a point like <span class="math inline">\((86, 4, 0)\)</span>.</li>
+</ul>
+</section>
+<section id="dimensionality-as-sets" class="slide level2 smaller">
+<h2>Dimensionality, as Sets</h2>
+<p><span class="math inline">\(\mathbb{R}^n\)</span> is just the <strong>Cartesian product</strong> of <span class="math inline">\(\mathbb{R}\)</span> with itself, <span class="math inline">\(n\)</span> times — the set of all ordered <span class="math inline">\(n\)</span>-tuples you can build by picking one number from each copy of <span class="math inline">\(\mathbb{R}\)</span>.</p>
+<div class="viz dim-sets">
+  <div class="dim-panel">
+    <svg class="viz-plot" viewbox="0 0 200 160" role="img" aria-label="R1: a single number line with one point marked, an example of a 1-tuple">
+      <line x1="20" y1="90" x2="180" y2="90" stroke="#5A6B80" stroke-width="1.5" marker-start="url(#dim-arrow-1a)" marker-end="url(#dim-arrow-1b)"></line>
+      <line x1="50" y1="86" x2="50" y2="94" stroke="#5A6B80" stroke-width="1.25"></line>
+      <line x1="100" y1="86" x2="100" y2="94" stroke="#5A6B80" stroke-width="1.25"></line>
+      <line x1="150" y1="86" x2="150" y2="94" stroke="#5A6B80" stroke-width="1.25"></line>
+      <text x="100" y="112" text-anchor="middle" font-size="12" fill="#5A6B80">0</text>
+      <circle cx="145" cy="90" r="5" fill="#2b6cb0"></circle>
+      <text x="145" y="72" text-anchor="middle" font-size="13" fill="#2b6cb0">(3)</text>
+      <defs>
+        <marker id="dim-arrow-1a" markerwidth="8" markerheight="8" refx="2" refy="3" orient="auto"><path d="M6,0 L0,3 L6,6 Z" fill="#5A6B80"></path></marker>
+        <marker id="dim-arrow-1b" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker>
+      </defs>
+    </svg>
+    <div class="dim-caption">$\mathbb{R}^1$ — a line<br>1-tuple: $(x)$</div>
+  </div>
+  <div class="dim-panel">
+    <svg class="viz-plot" viewbox="0 0 200 160" role="img" aria-label="R2: a coordinate plane with x and y axes crossing at the origin, and one point marked with dashed guide lines to each axis">
+      <line x1="10" y1="120" x2="190" y2="120" stroke="#5A6B80" stroke-width="1.5" marker-start="url(#dim-arrow-2a)" marker-end="url(#dim-arrow-2b)"></line>
+      <line x1="100" y1="150" x2="100" y2="20" stroke="#5A6B80" stroke-width="1.5" marker-start="url(#dim-arrow-2a)" marker-end="url(#dim-arrow-2b)"></line>
+      <text x="182" y="114" font-size="12" fill="#5A6B80">x</text>
+      <text x="105" y="28" font-size="12" fill="#5A6B80">y</text>
+      <text x="90" y="134" font-size="12" fill="#5A6B80">0</text>
+      <line x1="55" y1="50" x2="55" y2="120" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"></line>
+      <line x1="55" y1="50" x2="100" y2="50" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"></line>
+      <circle cx="55" cy="50" r="5" fill="#2b6cb0"></circle>
+      <text x="30" y="42" font-size="13" fill="#2b6cb0">(-15, 5)</text>
+      <defs>
+        <marker id="dim-arrow-2a" markerwidth="8" markerheight="8" refx="2" refy="3" orient="auto"><path d="M6,0 L0,3 L6,6 Z" fill="#5A6B80"></path></marker>
+        <marker id="dim-arrow-2b" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker>
+      </defs>
+    </svg>
+    <div class="dim-caption">$\mathbb{R}^2$ — a plane<br>2-tuple: $(x, y)$</div>
+  </div>
+  <div class="dim-panel">
+    <svg class="viz-plot" viewbox="0 0 200 200" role="img" aria-label="R3: three axes x, y, and z meeting at the origin, with one point in space located by dashed guide lines showing its x, y, and z coordinates">
+      <line x1="70" y1="140" x2="190" y2="140" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#dim-arrow-3)"></line>
+      <line x1="70" y1="140" x2="70" y2="20" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#dim-arrow-3)"></line>
+      <line x1="70" y1="140" x2="25" y2="175" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#dim-arrow-3)"></line>
+      <text x="196" y="144" font-size="12" fill="#5A6B80">x</text>
+      <text x="75" y="24" font-size="12" fill="#5A6B80">y</text>
+      <text x="8" y="184" font-size="12" fill="#5A6B80">z</text>
+      <text x="58" y="153" font-size="12" fill="#5A6B80">0</text>
+      <line x1="121" y1="95" x2="148" y2="74" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"></line>
+      <line x1="148" y1="74" x2="148" y2="140" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"></line>
+      <line x1="148" y1="74" x2="70" y2="74" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"></line>
+      <circle cx="121" cy="95" r="5" fill="#2b6cb0"></circle>
+      <text x="128" y="88" font-size="13" fill="#2b6cb0">(x, y, z)</text>
+      <defs>
+        <marker id="dim-arrow-3" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker>
+      </defs>
+    </svg>
+    <div class="dim-caption">$\mathbb{R}^3$ — a space<br>3-tuple: $(x, y, z)$</div>
+  </div>
+</div>
+<style>
+.dim-sets { display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; align-items: flex-end; }
+.dim-panel { max-width: 210px; text-align: center; }
+.dim-caption { font-size: 0.85rem; margin-top: 0.25rem; }
+</style>
+<ul>
+<li class="fragment"><span class="math inline">\(\mathbb{R}^2 = \mathbb{R} \times \mathbb{R} = \{(x,y) : x \in \mathbb{R},\, y \in \mathbb{R}\}\)</span> — every ordered pair you get by picking one value from each set.</li>
+<li class="fragment"><span class="math inline">\(\mathbb{R}^n = \underbrace{\mathbb{R} \times \mathbb{R} \times \cdots \times \mathbb{R}}_{n \text{ times}}\)</span> — the set of all ordered <span class="math inline">\(n\)</span>-tuples of real numbers.</li>
+<li class="fragment">Same idea as the sets we started with — we’re just crossing <span class="math inline">\(\mathbb{R}\)</span> with itself instead of crossing two different variables.</li>
+</ul>
+</section>
+<section id="function-notation" class="slide level2 smaller">
+<h2>Function Notation</h2>
+<ul>
+<li class="fragment">One variable in, one variable out: <span class="math inline">\(f: \mathbb{R}^1 \to \mathbb{R}^1\)</span>, e.g.&nbsp;<span class="math inline">\(f(x) = x + 1\)</span>.</li>
+<li class="fragment">Two variables in, one out: <span class="math inline">\(f: \mathbb{R}^2 \to \mathbb{R}^1\)</span>, e.g.&nbsp;<span class="math inline">\(f(x,y) = x^2 + y^2\)</span> — every ordered pair <span class="math inline">\((x,y)\)</span> maps to a single number.</li>
+<li class="fragment">We usually call the input <span class="math inline">\(x\)</span> and the output <span class="math inline">\(y\)</span>: <span class="math inline">\(y = f(x)\)</span>.</li>
+</ul>
+</section>
+<section id="types-of-functions" class="slide level2 smaller">
+<h2>Types of Functions</h2>
+<ul>
+<li class="fragment"><strong>Monomial:</strong> <span class="math inline">\(f(x) = ax^{k}\)</span> — one term; <span class="math inline">\(a\)</span> is the coefficient, <span class="math inline">\(k\)</span> the degree. E.g. <span class="math inline">\(y = x^2\)</span>.</li>
+<li class="fragment"><strong>Polynomial:</strong> a sum of monomials, e.g.&nbsp;<span class="math inline">\(y = -\tfrac{1}{2}x^3 + x^2\)</span>. Its degree is the highest degree among its terms.</li>
+<li class="fragment"><strong>Exponential:</strong> the variable is in the exponent, e.g.&nbsp;<span class="math inline">\(y = 2^x\)</span> — grows (or shrinks) multiplicatively rather than additively.</li>
+</ul>
+</section>
 <section id="function-composition" class="slide level2 smaller">
 <h2>Function Composition</h2>
 <ul>
@@ -1024,6 +1362,67 @@
 </ul>
 </div></div>
 </section>
+<section id="functions-and-theorizing" class="slide level2 smaller">
+<h2>Functions and Theorizing</h2>
+<ul>
+<li class="fragment">Functions are important for theorizing about politics</li>
+<li class="fragment">Most quantitative social science boils down to how two variables relate!</li>
+<li class="fragment">Our examples suggest a precise function between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
+<li class="fragment">In statistics, you will <em>theorize</em> the functional form of the relationship</li>
+<li class="fragment">Statistical methods will <em>estimate</em> the most appropriate parameters; “a line of best fit”</li>
+</ul>
+</section>
+<section id="anscombes-quartet" class="slide level2 smaller">
+<h2>Anscombe’s Quartet</h2>
+
+<img data-src="01-notation-functions-limits/images/anscombe.jpg" class="r-stretch"></section>
+<section id="special-functions-and-finding-roots" class="slide level2">
+<h2>Special Functions and Finding Roots</h2>
+<p><em>Exponents, logarithms, roots, and solving an equation for <span class="math inline">\(x\)</span>.</em></p>
+</section>
+<section id="exponents-roots-and-logarithms" class="slide level2 smaller">
+<h2>Exponents, Roots, and Logarithms</h2>
+<ul>
+<li class="fragment">Exponential: <span class="math inline">\(x^{a}\)</span></li>
+<li class="fragment">Roots: <span class="math inline">\(\sqrt[a]{x}\)</span> — can always be written as a fractional exponent, <span class="math inline">\(\sqrt[a]{x} = x^{1/a}\)</span></li>
+<li class="fragment">Logarithm: the inverse of an exponent. <span class="math inline">\(y = \log_a(x) \iff a^{y} = x\)</span> — “what power do I raise <span class="math inline">\(a\)</span> to, to get <span class="math inline">\(x\)</span>?”</li>
+<li class="fragment"><strong>Base 10:</strong> written <span class="math inline">\(\log(x)\)</span> with no base shown.</li>
+<li class="fragment"><strong>Base <span class="math inline">\(e\)</span>:</strong> the <em>natural</em> log, written <span class="math inline">\(\ln(x)\)</span>, with <span class="math inline">\(e \approx 2.7183\)</span>. Useful in calculus, and lets us interpret relationships in percentage-change terms.</li>
+</ul>
+</section>
+<section id="exponent-and-logarithm-rules" class="slide level2 smaller">
+<h2>Exponent and Logarithm Rules</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Exponent rules</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(x^{a} \cdot x^{b}=x^{a+b}\)</span></li>
+<li class="fragment"><span class="math inline">\(x^{a} \cdot z^{a}=(xz)^{a}\)</span></li>
+<li class="fragment"><span class="math inline">\((x^{a})^{b}=x^{ab}\)</span></li>
+<li class="fragment"><span class="math inline">\(\frac{x^{a}}{x^{b}}=x^{a-b}\)</span></li>
+<li class="fragment"><span class="math inline">\(\frac{x^{a}}{z^{a}}=\left(\frac{x}{z}\right)^{a}\)</span></li>
+<li class="fragment"><span class="math inline">\(x^{-a} = 1/x^{a}\)</span></li>
+<li class="fragment"><span class="math inline">\(x^{0} = 1\)</span></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<p><strong>Logarithm rules</strong></p>
+<ul>
+<li class="fragment"><span class="math inline">\(\log(x_{1} \cdot x_{2})=\log(x_{1})+\log(x_{2})\)</span> for <span class="math inline">\(x_{1},x_{2}&gt;0\)</span></li>
+<li class="fragment"><span class="math inline">\(\log\left(\frac{x_{1}}{x_{2}}\right)=\log(x_{1})-\log(x_{2})\)</span> for <span class="math inline">\(x_{1},x_{2}&gt;0\)</span></li>
+<li class="fragment"><span class="math inline">\(\log(x^{b})=b \cdot \log(x)\)</span> for <span class="math inline">\(x&gt;0\)</span></li>
+<li class="fragment"><span class="math inline">\(\log(1/x) = -\log(x)\)</span></li>
+<li class="fragment"><span class="math inline">\(\log(1) = 0\)</span></li>
+</ul>
+</div></div>
+</section>
+<section id="root-rules" class="slide level2 smaller">
+<h2>Root Rules</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\sqrt{x}=x^{\frac{1}{2}}\)</span></li>
+<li class="fragment"><span class="math inline">\(\sqrt[n]{x} \cdot \sqrt[n]{z}=\sqrt[n]{xz}\)</span> for <span class="math inline">\(n&gt;1\)</span></li>
+<li class="fragment"><span class="math inline">\(\frac{\sqrt[n]{x}}{\sqrt[n]{z}}=\sqrt[n]{\frac{x}{z}}\)</span> for <span class="math inline">\(n&gt;1\)</span></li>
+</ul>
+</section>
 <section id="exponent-logarithm-and-root-graphs" class="slide level2 smaller">
 <h2>Exponent, Logarithm, and Root Graphs</h2>
 <div class="quarto-layout-panel" data-layout-ncol="3">
@@ -1055,110 +1454,61 @@
 </div>
 </div>
 </section>
-<section id="functions-and-theorizing" class="slide level2 smaller">
-<h2>Functions and Theorizing</h2>
+<section id="change-of-base" class="slide level2 smaller">
+<h2>Change of Base</h2>
 <ul>
-<li class="fragment">Functions are important for theorizing about politics</li>
-<li class="fragment">Most quantitative social science boils down to how two variables relate!</li>
-<li class="fragment">Our examples suggest a precise function between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></li>
-<li class="fragment">In statistics, you will <em>theorize</em> the functional form of the relationship</li>
-<li class="fragment">Statistical methods will <em>estimate</em> the most appropriate parameters; “a line of best fit”</li>
+<li class="fragment">Any log can be rewritten in a different base: <span class="math inline">\(\log_b(x) = \dfrac{\log_a(x)}{\log_a(b)}\)</span></li>
+<li class="fragment">Example: <span class="math inline">\(\log_{10}(x) = \dfrac{\ln(x)}{\ln(10)}\)</span></li>
 </ul>
 </section>
-<section id="anscombes-quartet" class="slide level2 smaller">
-<h2>Anscombe’s Quartet</h2>
-
-<img data-src="01-notation-functions-limits/images/anscombe.jpg" class="r-stretch"></section>
-<section id="solving-equations" class="slide level2 smaller">
-<h2>Solving Equations</h2>
-<ol type="1">
-<li class="fragment">Isolate the variable you are looking for</li>
-<li class="fragment">Combine like terms</li>
-<li class="fragment">Factor and cancel</li>
-<li class="fragment">Operate on both sides of the equation</li>
-<li class="fragment">Check your answer</li>
-</ol>
-</section>
-<section id="special-products" class="slide level2 smaller">
-<h2>Special Products</h2>
-<ol type="1">
-<li class="fragment"><span class="math inline">\((a+b)^{2}=a^{2}+2ab+b^{2}\)</span></li>
-<li class="fragment"><span class="math inline">\((a-b)^{2}=a^{2}-2ab+b^{2}\)</span></li>
-<li class="fragment"><span class="math inline">\((x+a)(x+b)=x^{2}+(a+b)x+ab\)</span></li>
-<li class="fragment"><span class="math inline">\((a+b)(a-b)=a^{2}-b^{2}\)</span></li>
-<li class="fragment"><span class="math inline">\((a+b+c)^{2}=a^{2}+b^{2}+c^{2}+2(ab+ac+bc)\)</span></li>
-<li class="fragment"><span class="math inline">\((a+b)^{3}=a^{3}+3a^{2}b+3ab^{2}+b^{3}\)</span></li>
-</ol>
-</section>
-<section id="factoring" class="slide level2 smaller">
-<h2>Factoring</h2>
-<p>Factoring: rearranging terms in an equation to make it simpler.</p>
+<section id="logs-turn-products-into-sums" class="slide level2 smaller">
+<h2>Logs Turn Products into Sums</h2>
+<p>Take the log of a product, term by term:</p>
 <div class="fragment">
-<p><span class="math display">\[\frac{3x^4 + 3x^3 - 6x^2}{6x^2 + 12x}\]</span></p>
+<p><span class="math display">\[\log\Big(\prod_{i=1}^n x_i\Big) = \log(x_1) + \log(x_2) + \cdots + \log(x_n) = \sum_{i=1}^n \log(x_i)\]</span></p>
 </div>
 <div class="fragment">
-<p><span class="math display">\[\frac{3x^2(x^2 + x - 2)}{6x(x+2)}\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[\frac{3x^2(x + 2)(x - 1)}{6x(x + 2)}\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[\frac{3x^2(x - 1)}{6x}\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[\frac{x(x - 1)}{2}\]</span></p>
+<p>This is exactly why maximum-likelihood estimation works with a <strong>log-likelihood</strong>: it turns a product of probabilities into a sum, which is far easier to differentiate.</p>
 </div>
 </section>
-<section id="quadratics-and-special-products" class="slide level2 smaller">
-<h2>Quadratics and Special Products</h2>
-<p>Quadratic polynomials can be factored into the product of two terms: <span class="math inline">\((x\pm?) \times (x\pm?)\)</span></p>
-<p><span class="math display">\[x^2 - 8x + 16 = 9\]</span></p>
-<div class="fragment">
-<p><span class="math inline">\((x\pm?) \times (x\pm?) = x^2 - 8x + 16\)</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[(x - 4)^2 = 9\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[(x - 4) = \pm 3\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[x = 4 \pm 3\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math inline">\(x = 1\)</span> OR <span class="math inline">\(x = 7\)</span></p>
-</div>
+<section id="quick-drill-logarithms" class="slide level2 smaller">
+<h2>Quick Drill: Logarithms</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\log_4(16)\)</span> = <span class="fragment"><span class="math inline">\(2\)</span>, since <span class="math inline">\(4^2 = 16\)</span></span></li>
+<li class="fragment"><span class="math inline">\(\log_2(16)\)</span> = <span class="fragment"><span class="math inline">\(4\)</span>, since <span class="math inline">\(2^4 = 16\)</span></span></li>
+<li class="fragment">Simplify <span class="math inline">\(\log_4(x^3 y^5)\)</span> = <span class="fragment"><span class="math inline">\(3\log_4(x) + 5\log_4(y)\)</span></span></li>
+</ul>
+</section>
+<section id="reading-a-graph" class="slide level2 smaller">
+<h2>Reading a Graph</h2>
+<ul>
+<li class="fragment">Where is the function increasing or decreasing — and how fast?</li>
+<li class="fragment">Are there local or global maxima/minima? Where?</li>
+<li class="fragment">Any inflection points?</li>
+<li class="fragment">Is it continuous? Differentiable?</li>
+<li class="fragment">Does it approach some limiting value?</li>
+</ul>
+</section>
+<section id="solving-for-a-variable" class="slide level2 smaller">
+<h2>Solving for a Variable</h2>
+<ul>
+<li class="fragment">Given <span class="math inline">\(y = f(x)\)</span>, isolate <span class="math inline">\(x\)</span> using algebra — move everything else to the other side.</li>
+<li class="fragment"><span class="math inline">\(y = 3x + 2 \;\Rightarrow\; x = \tfrac{1}{3}(y-2)\)</span></li>
+<li class="fragment"><span class="math inline">\(y = e^x \;\Rightarrow\; x = \ln(y)\)</span></li>
+</ul>
+</section>
+<section id="finding-roots" class="slide level2 smaller">
+<h2>Finding Roots</h2>
+<ul>
+<li class="fragment">A <strong>root</strong> is a value of <span class="math inline">\(x\)</span> where <span class="math inline">\(f(x) = 0\)</span> — set the function equal to zero and solve.</li>
+<li class="fragment"><span class="math inline">\(x^2 - 9 = 0 \;\Rightarrow\; x^2 = 9 \;\Rightarrow\; x = \pm 3\)</span> — quadratics generically have two roots.</li>
+<li class="fragment"><strong>Quadratic formula:</strong> for <span class="math inline">\(ax^2+bx+c=0\)</span>, <span class="math inline">\(\;x = \dfrac{-b \pm \sqrt{b^2-4ac}}{2a}\)</span></li>
+</ul>
 </section>
 <section id="why-two-solutions" class="slide level2 smaller">
 <h2>Why Two Solutions?</h2>
 <div class="fragment">
 <p><img data-src="01-notation-functions-limits/images/quadratic-two-solutions.png"></p>
-</div>
-</section>
-<section id="another-example" class="slide level2 smaller">
-<h2>Another Example</h2>
-<p><span class="math display">\[x^2 + 7x = -12\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[x^2 + 7x + 12 = 0\]</span></p>
-</div>
-<div class="fragment">
-<p>How can we use special products here? Find <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>:</p>
-<p><span class="math display">\[(x + a)(x + b) = x^2 + (a+b)x + ab\]</span></p>
-</div>
-<div class="fragment">
-<p><span class="math display">\[(x + 3)(x + 4) = 0\]</span></p>
-</div>
-<div class="fragment">
-<p>Either <span class="math inline">\(x + 3 = 0\)</span> OR <span class="math inline">\(x + 4 = 0\)</span></p>
-<p><span class="math inline">\(x = -3\)</span> OR <span class="math inline">\(x = -4\)</span></p>
-</div>
-</section>
-<section id="quadratic-formula" class="slide level2 smaller">
-<h2>Quadratic Formula</h2>
-<p>Useful if special products can’t easily be found!</p>
-<p><span class="math display">\[3x^2 + 8x - 13 = 0\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[x = \frac{-b\pm\sqrt{b^2-4ac}}{2a}\]</span></p>
 </div>
 </section>
 <section id="quadratic-formula-worked-example" class="slide level2 smaller">
@@ -1182,91 +1532,424 @@
 <h2>Checking Our Work Graphically</h2>
 
 <img data-src="01-notation-functions-limits/images/quadratic-check-graph.png" class="r-stretch"></section>
-<section id="sequences-and-series" class="slide level2 smaller">
-<h2>Sequences and Series</h2>
+<section id="quick-drill-solving-and-roots" class="slide level2 smaller">
+<h2>Quick Drill: Solving and Roots</h2>
 <ul>
-<li class="fragment">A <em>sequence</em> is an ordered list of numbers
-<ul>
-<li class="fragment">A sequence can be infinite, such as <span class="math inline">\(\{1,2,3,4,\dots\}\)</span></li>
-<li class="fragment">Or a sequence can be finite, such as <span class="math inline">\(\{5,10,15,20,25\}\)</span></li>
-</ul></li>
-<li class="fragment">A <em>series</em> is the sum of a sequence.
-<ul>
-<li class="fragment">Typically noted as <span class="math inline">\(\sum_{i=1}^{N}x_{i}\)</span>, which means add the terms in the sequence beginning at <span class="math inline">\(x_1\)</span> and stopping at <span class="math inline">\(x_N\)</span>.</li>
-<li class="fragment">For an infinite sequence, <span class="math inline">\(N=\infty\)</span></li>
-</ul></li>
+<li class="fragment"><span class="math inline">\(3x + 2 = 0\)</span> = <span class="fragment"><span class="math inline">\(x = -\tfrac{2}{3}\)</span></span></li>
+<li class="fragment"><span class="math inline">\(x^2 + 3x - 4 = 0\)</span> = <span class="fragment"><span class="math inline">\(x = 1\)</span> or <span class="math inline">\(x = -4\)</span></span></li>
+<li class="fragment"><span class="math inline">\(e^{-x} - 10 = 0\)</span> = <span class="fragment"><span class="math inline">\(x = -\ln(10)\)</span></span></li>
 </ul>
 </section>
-<section id="limits" class="slide level2 smaller">
-<h2>Limits</h2>
+<section id="final-exercise" class="slide level2">
+<h2>Final Exercise</h2>
+<p><em>One derivation, using every tool from today.</em></p>
+</section>
+<section id="the-problem" class="slide level2 smaller">
+<h2>The Problem</h2>
+<p>We have eight polyarchy values from the running V-Dem example, <span class="math inline">\(x_1, \dots, x_8\)</span>, and their mean <span class="math inline">\(\bar x = \frac{1}{n}\sum_{i=1}^n x_i\)</span>.</p>
 <ul>
-<li class="fragment"><em>Limits help us describe the behavior of a sequence, series, or function as it approaches a given value.</em>
-<ul>
-<li class="fragment">A sequence/series/function <em>converges</em> if it has a finite limit.</li>
-<li class="fragment">A sequence/series/function <em>diverges</em> if it has no limit or the limit is <span class="math inline">\(\pm\infty\)</span></li>
-</ul></li>
-<li class="fragment">The limit of a sequence is the number <span class="math inline">\(L\)</span> such that as we approach infinity, <span class="math inline">\(x_i\)</span> gets arbitrarily close to <span class="math inline">\(L\)</span>. Noted as: <span class="math inline">\(\lim_{i\to\infty} x_{i}=L\)</span></li>
-<li class="fragment">Example of the limit of a sequence:
-<ul>
-<li class="fragment">The limit of the sequence <span class="math inline">\(\{i\}_{i=1}^{\infty}\)</span> does not have an “endpoint” and approaches infinity, so it diverges.</li>
-<li class="fragment">The limit of the sequence <span class="math inline">\(\left\{\frac{3}{10^{i}}\right\}_{i=1}^{\infty}\)</span> approaches zero as <span class="math inline">\(i \to \infty\)</span>, so it converges.</li>
-</ul></li>
+<li class="fragment"><strong>Claim 1:</strong> the deviations from the mean sum to zero — <span class="math inline">\(\displaystyle\sum_{i=1}^n (x_i - \bar x) = 0\)</span>.</li>
+<li class="fragment"><strong>Claim 2:</strong> among <em>every</em> possible constant <span class="math inline">\(c\)</span>, the mean <span class="math inline">\(\bar x\)</span> is the one that minimizes the sum of squared deviations, <span class="math inline">\(\displaystyle S(c) = \sum_{i=1}^n (x_i - c)^2\)</span>.</li>
+<li class="fragment">We’ll see both claims happen on a graph, then prove them algebraically, step by step.</li>
 </ul>
 </section>
-<section id="limits-continued" class="slide level2 smaller">
-<h2>Limits (continued)</h2>
-<ul>
-<li class="fragment">The limit of a series is similar, but you are not looking for an “endpoint”. In this case, you are looking for the sum of all elements in an infinite sequence. For example:
-<ul>
-<li class="fragment"><span class="math inline">\(\lim_{n\to\infty} \sum_{i=1}^{n} i= \infty\)</span>. So, this series is divergent.</li>
-<li class="fragment"><span class="math inline">\(\lim_{n\to\infty} \sum_{i=0}^{n} \frac{1}{2^{i}}\)</span>. This series converges. Where?</li>
-</ul></li>
-<li class="fragment">For a function <span class="math inline">\(y=f(x)\)</span>, the limit is the value of <span class="math inline">\(y\)</span> that the function tends towards as small steps are taken towards a value <span class="math inline">\(x=c\)</span></li>
-<li class="fragment">Piecewise function: the function (relationship between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>) is different for different parts of the domain</li>
-</ul>
-</section>
-<section id="piecewise-function-example" class="slide level2 smaller">
-<h2>Piecewise Function Example</h2>
-<p>Estimate the value of the following limits: <span class="math inline">\(\lim_{x\to 0^{-}} f(x)\)</span> and <span class="math inline">\(\lim_{x\to 0^{+}} f(x)\)</span> for the function:</p>
+<section id="watch-it-happen-the-residuals" class="slide level2 smaller">
+<h2>Watch It Happen — The Residuals</h2>
+<p>Drag the point <span class="math inline">\(c\)</span> along the eight polyarchy values and watch <span class="math inline">\(\Sigma(x_i - c)\)</span> in the readout.</p>
+<div class="viz join-minimize jm-part-residuals">
+  <div class="jm-numberline-wrap">
+    <svg class="jm-numberline" viewbox="0 0 640 210" role="img" aria-label="Eight polyarchy values on a number line, a draggable point c, and its signed residual to each value"></svg>
+  </div>
 
-<img data-src="01-notation-functions-limits/images/lim.png" class="r-stretch"><p><span class="math display">\[f(x) = \begin{cases} x+1 &amp; x\leq 0 \\ x^{2} &amp; x &gt; 0 \end{cases}\]</span></p>
-<div class="fragment">
-<p><span class="math display">\[\lim_{x\to 0^{-}} f(x) =\lim_{x\to 0^{-}} x+1 = 1\]</span></p>
-<p><span class="math display">\[\lim_{x\to 0^{+}} f(x) =\lim_{x\to 0^{+}} x^{2} = 0\]</span></p>
+  <div class="jm-controls">
+    <input type="range" class="jm-slider" min="0" max="1" step="0.001" value="0.5" aria-label="c">
+    <button class="jm-snap" type="button">Snap to x̄</button>
+  </div>
+
+  <div class="jm-readout">
+    <div class="jm-readout-item">
+      <span class="jm-readout-label">c</span>
+      <span class="jm-readout-value jm-c-value">0.500</span>
+    </div>
+    <div class="jm-readout-item">
+      <span class="jm-readout-label">Σ(x⁵ − c)</span>
+      <span class="jm-readout-value jm-sum-dev">0.000</span>
+    </div>
+    <div class="jm-readout-item">
+      <span class="jm-readout-label">S(c) = Σ(x⁵ − c)²</span>
+      <span class="jm-readout-value jm-sum-sq">0.000</span>
+    </div>
+  </div>
+
+  <div class="jm-hint">Drag the blue point on the number line, or use the slider.</div>
 </div>
+
+<style>
+.viz.join-minimize { max-width: 640px; margin: 0 auto; font-size: 0.5em; }
+.join-minimize .jm-numberline-wrap,
+.join-minimize .jm-curve-wrap { width: 100%; }
+.join-minimize svg { width: 100%; height: auto; display: block; }
+.join-minimize .jm-axis { stroke: #D9E0EA; stroke-width: 1.5; }
+.join-minimize .jm-tick { font-size: 11px; fill: #5A6B80; }
+.join-minimize .jm-point { fill: #8a8f98; }
+.join-minimize .jm-marker-line { stroke: #2b6cb0; stroke-width: 2; }
+.join-minimize .jm-marker { fill: #2b6cb0; cursor: grab; touch-action: none; }
+.join-minimize .jm-marker:active { cursor: grabbing; }
+.join-minimize .jm-bar-pos { stroke: #2b6cb0; stroke-width: 5; }
+.join-minimize .jm-bar-neg { stroke: #e53e3e; stroke-width: 5; }
+.join-minimize .jm-bar-zero { stroke: #8a8f98; stroke-width: 5; }
+
+.join-minimize .jm-controls {
+  display: flex; align-items: center; gap: 14px; justify-content: center; margin: 10px 0;
+}
+.join-minimize .jm-slider { flex: 1 1 auto; max-width: 360px; }
+.join-minimize .jm-snap {
+  font-size: 0.9em; padding: 5px 12px; border-radius: 999px; border: 1px solid #2b6cb0;
+  background: #fff; color: #2b6cb0; cursor: pointer;
+}
+.join-minimize .jm-snap:hover { background: #2b6cb0; color: #fff; }
+
+.join-minimize .jm-readout {
+  display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 8px;
+}
+.join-minimize .jm-readout-item {
+  background: #F7F8FA; border: 1px solid #EDF0F5; border-radius: 8px;
+  padding: 6px 14px; text-align: center; min-width: 120px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.join-minimize .jm-readout-label { display: block; font-size: 0.85em; color: #5A6B80; }
+.join-minimize .jm-readout-value { display: block; font-size: 1.2em; font-weight: 700; color: #22303F; }
+
+.join-minimize.jm-at-min .jm-readout-item { background: #EAF6EF; border-color: #38a169; }
+.join-minimize.jm-at-min .jm-readout-value { color: #2f855a; }
+
+.join-minimize .jm-curve-line { fill: none; stroke: #2b6cb0; stroke-width: 2.5; }
+.join-minimize .jm-curve-dot { fill: #2b6cb0; stroke: #fff; stroke-width: 1.5; }
+.join-minimize .jm-xbar-line { stroke: #8a8f98; stroke-width: 1.5; stroke-dasharray: 4,4; }
+.join-minimize .jm-xbar-label { font-size: 11px; fill: #5A6B80; }
+
+.join-minimize .jm-hint {
+  text-align: center; font-size: 0.85em; color: #5A6B80; font-style: italic; margin-top: 4px;
+}
+</style>
+<ul>
+<li class="fragment"><span class="math inline">\(\Sigma(x_i - c)\)</span> is a straight line in <span class="math inline">\(c\)</span> — it crosses zero exactly once.</li>
+<li class="fragment">Watch the readout: it hits <span class="math inline">\(0.000\)</span> right when <span class="math inline">\(c = \bar x\)</span>.</li>
+</ul>
+</section>
+<section id="watch-it-happen-minimizing-sc" class="slide level2 smaller">
+<h2>Watch It Happen — Minimizing <span class="math inline">\(S(c)\)</span></h2>
+<p>Same drag, same <span class="math inline">\(c\)</span> — now watch <span class="math inline">\(S(c) = \Sigma(x_i - c)^2\)</span> trace out a curve.</p>
+<div class="viz join-minimize jm-part-curve">
+  <div class="jm-curve-wrap">
+    <svg class="jm-curve" viewbox="0 0 640 190" role="img" aria-label="Parabola of S(c) versus c, with a marker at the current c and a dashed line at x-bar"></svg>
+  </div>
+
+  <div class="jm-hint">Keep dragging on the previous slide — the dot here moves with it.</div>
+</div>
+
+<script>
+(function () {
+  var DATA = [0.01, 0.21, 0.34, 0.47, 0.60, 0.72, 0.84, 0.92];
+  var N = DATA.length;
+  var XBAR = DATA.reduce(function (a, b) { return a + b; }, 0) / N;
+
+  var wraps = document.querySelectorAll('.viz.join-minimize');
+  var lineSvg = document.querySelector('.jm-numberline');
+  var curveSvg = document.querySelector('.jm-curve');
+  var slider = document.querySelector('.jm-slider');
+  var snapBtn = document.querySelector('.jm-snap');
+  var cValueEl = document.querySelector('.jm-c-value');
+  var sumDevEl = document.querySelector('.jm-sum-dev');
+  var sumSqEl = document.querySelector('.jm-sum-sq');
+  var svgNS = 'http://www.w3.org/2000/svg';
+
+  function el(tag, attrs) {
+    var e = document.createElementNS(svgNS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  // ---- number line geometry ----
+  var lineMargin = { left: 40, right: 40 };
+  var LW = 640;
+  var axisY = 34;
+  var plotW = LW - lineMargin.left - lineMargin.right;
+
+  function lx(v) { return lineMargin.left + v * plotW; }
+
+  lineSvg.appendChild(el('line', { class: 'jm-axis', x1: lineMargin.left, y1: axisY, x2: LW - lineMargin.right, y2: axisY }));
+  [0, 0.25, 0.5, 0.75, 1].forEach(function (v) {
+    lineSvg.appendChild(el('line', { class: 'jm-axis', x1: lx(v), y1: axisY - 4, x2: lx(v), y2: axisY + 4 }));
+    var t = el('text', { class: 'jm-tick', x: lx(v), y: axisY + 18, 'text-anchor': 'middle' });
+    t.textContent = v;
+    lineSvg.appendChild(t);
+  });
+  DATA.forEach(function (x) {
+    lineSvg.appendChild(el('circle', { class: 'jm-point', cx: lx(x), cy: axisY, r: 4 }));
+  });
+
+  var markerLine = el('line', { class: 'jm-marker-line', x1: 0, y1: axisY - 16, x2: 0, y2: axisY + 16 });
+  lineSvg.appendChild(markerLine);
+  var marker = el('circle', { class: 'jm-marker', cx: 0, cy: axisY - 16, r: 8 });
+  lineSvg.appendChild(marker);
+
+  var barRows = DATA.map(function (x, i) {
+    var y = axisY + 30 + i * 20;
+    var bar = el('line', { class: 'jm-bar-zero', x1: lx(x), y1: y, x2: lx(x), y2: y });
+    lineSvg.appendChild(bar);
+    return { x: x, y: y, bar: bar };
+  });
+
+  // ---- curve geometry ----
+  var curveMargin = { left: 46, right: 20, top: 16, bottom: 30 };
+  var CW = 640, CH = 190;
+  var cPlotW = CW - curveMargin.left - curveMargin.right;
+  var cPlotH = CH - curveMargin.top - curveMargin.bottom;
+
+  function sumSq(c) {
+    var s = 0;
+    for (var i = 0; i < N; i++) { var d = DATA[i] - c; s += d * d; }
+    return s;
+  }
+  function sumDev(c) {
+    var s = 0;
+    for (var i = 0; i < N; i++) s += (DATA[i] - c);
+    return s;
+  }
+
+  var yMax = Math.max(sumSq(0), sumSq(1)) * 1.08;
+
+  function cx(v) { return curveMargin.left + v * cPlotW; }
+  function cy(v) { return curveMargin.top + cPlotH - (v / yMax) * cPlotH; }
+
+  curveSvg.appendChild(el('line', { class: 'jm-axis', x1: curveMargin.left, y1: CH - curveMargin.bottom, x2: CW - curveMargin.right, y2: CH - curveMargin.bottom }));
+  curveSvg.appendChild(el('line', { class: 'jm-axis', x1: curveMargin.left, y1: curveMargin.top, x2: curveMargin.left, y2: CH - curveMargin.bottom }));
+  [0, 0.25, 0.5, 0.75, 1].forEach(function (v) {
+    var t = el('text', { class: 'jm-tick', x: cx(v), y: CH - curveMargin.bottom + 16, 'text-anchor': 'middle' });
+    t.textContent = v;
+    curveSvg.appendChild(t);
+  });
+
+  var pts = [];
+  for (var i = 0; i <= 100; i++) {
+    var c = i / 100;
+    pts.push(cx(c) + ',' + cy(sumSq(c)));
+  }
+  curveSvg.appendChild(el('polyline', { class: 'jm-curve-line', points: pts.join(' ') }));
+
+  curveSvg.appendChild(el('line', { class: 'jm-xbar-line', x1: cx(XBAR), y1: curveMargin.top, x2: cx(XBAR), y2: CH - curveMargin.bottom }));
+  var xbarLabel = el('text', { class: 'jm-xbar-label', x: cx(XBAR), y: curveMargin.top - 4, 'text-anchor': 'middle' });
+  xbarLabel.textContent = 'x̄';
+  curveSvg.appendChild(xbarLabel);
+
+  var curveDot = el('circle', { class: 'jm-curve-dot', cx: cx(0.5), cy: cy(sumSq(0.5)), r: 6 });
+  curveSvg.appendChild(curveDot);
+
+  // ---- render ----
+  function render(c) {
+    c = Math.max(0, Math.min(1, c));
+    var dev = sumDev(c);
+    var sq = sumSq(c);
+    var atMin = Math.abs(c - XBAR) < 0.003;
+
+    marker.setAttribute('cx', lx(c));
+    markerLine.setAttribute('x1', lx(c));
+    markerLine.setAttribute('x2', lx(c));
+
+    barRows.forEach(function (row) {
+      var positive = row.x - c > 0.0005;
+      var negative = row.x - c < -0.0005;
+      row.bar.setAttribute('x1', lx(c));
+      row.bar.setAttribute('x2', lx(row.x));
+      row.bar.setAttribute('class', positive ? 'jm-bar-pos' : negative ? 'jm-bar-neg' : 'jm-bar-zero');
+    });
+
+    curveDot.setAttribute('cx', cx(c));
+    curveDot.setAttribute('cy', cy(sq));
+
+    cValueEl.textContent = c.toFixed(3);
+    sumDevEl.textContent = dev.toFixed(3);
+    sumSqEl.textContent = sq.toFixed(3);
+
+    wraps.forEach(function (w) { w.classList.toggle('jm-at-min', atMin); });
+    slider.value = c;
+  }
+
+  render(parseFloat(slider.value));
+
+  slider.addEventListener('input', function () { render(parseFloat(slider.value)); });
+  snapBtn.addEventListener('click', function () { render(XBAR); });
+
+  var dragging = false;
+  function clientXToC(clientX) {
+    var rect = lineSvg.getBoundingClientRect();
+    var svgX = (clientX - rect.left) / rect.width * LW;
+    return (svgX - lineMargin.left) / plotW;
+  }
+  marker.addEventListener('pointerdown', function (ev) {
+    dragging = true;
+    marker.setPointerCapture(ev.pointerId);
+  });
+  marker.addEventListener('pointermove', function (ev) {
+    if (!dragging) return;
+    render(clientXToC(ev.clientX));
+  });
+  marker.addEventListener('pointerup', function () { dragging = false; });
+  marker.addEventListener('pointercancel', function () { dragging = false; });
+})();
+</script>
+<ul>
+<li class="fragment"><span class="math inline">\(\Sigma(x_i - c)\)</span> is a straight line in <span class="math inline">\(c\)</span> — it crosses zero exactly once.</li>
+<li class="fragment"><span class="math inline">\(S(c) = \Sigma(x_i-c)^2\)</span> is a parabola in <span class="math inline">\(c\)</span> — it has exactly one minimum.</li>
+<li class="fragment">Drag until both readouts hit their special value together. That <span class="math inline">\(c\)</span> is <span class="math inline">\(\bar x\)</span>.</li>
+</ul>
+</section>
+<section id="proof-step-1-expand-the-sum" class="slide level2 smaller">
+<h2>Proof, Step 1: Expand the Sum</h2>
+<p><strong>Claim 1:</strong> <span class="math inline">\(\displaystyle\sum_{i=1}^n (x_i - \bar x) = 0\)</span></p>
+<div class="fragment">
+<p>Split the sum term by term: <span class="math inline">\(\displaystyle\sum_{i=1}^n (x_i - \bar x) = \sum_{i=1}^n x_i \;-\; \sum_{i=1}^n \bar x\)</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\(\bar x\)</span> is a constant, so adding it to itself <span class="math inline">\(n\)</span> times just gives <span class="math inline">\(n\bar x\)</span>:</p>
+<p><span class="math display">\[\sum_{i=1}^n (x_i - \bar x) = \sum_{i=1}^n x_i - n\bar x\]</span></p>
+</div>
+</section>
+<section id="proof-step-2-substitute-the-definition-of-bar-x" class="slide level2 smaller">
+<h2>Proof, Step 2: Substitute the Definition of <span class="math inline">\(\bar x\)</span></h2>
+<div class="fragment">
+<p>Recall <span class="math inline">\(\bar x = \dfrac{1}{n}\displaystyle\sum_{i=1}^n x_i\)</span>, so <span class="math inline">\(n\bar x = \displaystyle\sum_{i=1}^n x_i\)</span>.</p>
+</div>
+<div class="fragment">
+<p>Substitute that back in:</p>
+<p><span class="math display">\[\sum_{i=1}^n x_i - n\bar x = \sum_{i=1}^n x_i - \sum_{i=1}^n x_i = 0\]</span></p>
+</div>
+<div class="fragment">
+<p><strong>Claim 1 proved</strong> — deviations from the mean always sum to zero, for any data.</p>
+</div>
+</section>
+<section id="proof-step-3-set-up-sc" class="slide level2 smaller">
+<h2>Proof, Step 3: Set Up <span class="math inline">\(S(c)\)</span></h2>
+<p><strong>Claim 2:</strong> <span class="math inline">\(\bar x\)</span> minimizes <span class="math inline">\(S(c) = \displaystyle\sum_i (x_i-c)^2\)</span> — no calculus required.</p>
+<div class="fragment">
+<p>The trick: add and subtract <span class="math inline">\(\bar x\)</span> inside each term.</p>
+<p><span class="math display">\[x_i - c = (x_i - \bar x) + (\bar x - c)\]</span></p>
+</div>
+<div class="fragment">
+<p>So we can rewrite <span class="math inline">\(S(c)\)</span> as</p>
+<p><span class="math display">\[S(c) = \sum_i \big[(x_i-\bar x) + (\bar x - c)\big]^2\]</span></p>
+</div>
+</section>
+<section id="proof-step-4-expand-the-square" class="slide level2 smaller">
+<h2>Proof, Step 4: Expand the Square</h2>
+<div class="fragment">
+<p>Expand <span class="math inline">\((a+b)^2 = a^2 + 2ab + b^2\)</span> with <span class="math inline">\(a = (x_i-\bar x)\)</span> and <span class="math inline">\(b = (\bar x - c)\)</span>:</p>
+<p><span class="math display">\[S(c) = \sum_i (x_i-\bar x)^2 \;+\; 2(\bar x-c)\sum_i(x_i-\bar x) \;+\; \sum_i(\bar x - c)^2\]</span></p>
+</div>
+<div class="fragment">
+<p><span class="math inline">\((\bar x - c)\)</span> doesn’t depend on <span class="math inline">\(i\)</span>, so it factors out of the last sum — same trick as Step 1: <span class="math inline">\(\sum_i(\bar x-c)^2 = n(\bar x-c)^2\)</span>.</p>
+<p><span class="math display">\[S(c) = \sum_i (x_i-\bar x)^2 \;+\; 2(\bar x-c)\sum_i(x_i-\bar x) \;+\; n(\bar x - c)^2\]</span></p>
+</div>
+</section>
+<section id="proof-step-5-kill-the-middle-term" class="slide level2 smaller">
+<h2>Proof, Step 5: Kill the Middle Term</h2>
+<div class="fragment">
+<p>The middle term contains <span class="math inline">\(\displaystyle\sum_i(x_i-\bar x)\)</span> — that’s exactly Claim 1. It’s <span class="math inline">\(0\)</span>.</p>
+</div>
+<div class="fragment">
+<p>So the whole middle term vanishes, leaving</p>
+<p><span class="math display">\[S(c) = \underbrace{\sum_i(x_i-\bar x)^2}_{\text{fixed — doesn't depend on } c} \;+\; n(\bar x - c)^2\]</span></p>
+</div>
+</section>
+<section id="proof-step-6-conclude" class="slide level2 smaller">
+<h2>Proof, Step 6: Conclude</h2>
+<div class="fragment">
+<p>The first term is fixed once the data is fixed — <span class="math inline">\(c\)</span> can’t change it.</p>
+</div>
+<div class="fragment">
+<p>The second term, <span class="math inline">\(n(\bar x-c)^2\)</span>, is a positive constant times a square — always <span class="math inline">\(\ge 0\)</span>, and equal to <span class="math inline">\(0\)</span> only when <span class="math inline">\(c=\bar x\)</span>.</p>
+</div>
+<div class="fragment">
+<p>So <span class="math inline">\(S(c)\)</span> is smallest exactly when <span class="math inline">\(c=\bar x\)</span> — <strong>Claim 2 proved</strong>, matching what you found by dragging.</p>
+</div>
+<div class="fragment">
+<p><em>(We’ll rederive this same fact with derivatives on Day 3 — same answer, different tool.)</em></p>
+</div>
+</section>
+<section id="recap-the-toolkit" class="slide level2 smaller">
+<h2>Recap: The Toolkit</h2>
+<ul>
+<li class="fragment"><strong>Summation (<span class="math inline">\(\sum\)</span>):</strong> compress repeated addition into one symbol — our growth variable <span class="math inline">\(Y\)</span> is itself <span class="math inline">\(\frac{1}{20}\sum_{t=2000}^{2019}\text{growth}_t\)</span>, a mean in disguise.</li>
+<li class="fragment"><strong>Functions:</strong> polyarchy <em>is</em> a function, country <span class="math inline">\(\to [0,1]\)</span> — domain is every country in <span class="math inline">\(\Omega\)</span>, range is whatever scores actually occur.</li>
+<li class="fragment"><strong>Logs and exponents:</strong> GDP per capita gets log-transformed precisely so differences read as <em>percentage</em> changes, not raw dollars.</li>
+<li class="fragment"><strong>Solving for roots:</strong> the same algebra that solves <span class="math inline">\(ax^2+bx+c=0\)</span> resurfaces later this week solving for the coefficients that minimize a sum of squared errors.</li>
+<li class="fragment"><strong>Sets:</strong> our sample space is <span class="math inline">\(\Omega = \{\text{174 countries}\}\)</span>; the threshold <span class="math inline">\(D=1\{\text{polyarchy}&gt;0.5\}\)</span> is nothing more than set membership.</li>
+</ul>
+</section>
+<section id="recap-one-example-every-tool" class="slide level2 smaller">
+<h2>Recap: One Example, Every Tool</h2>
+<div style="font-size: 0.55em;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>This week’s running example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Summation</strong></td>
+<td><span class="math inline">\(Y = \frac{1}{20}\sum_{t=2000}^{2019} \text{growth}_t\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Function</strong></td>
+<td>polyarchy: country <span class="math inline">\(\to [0,1]\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Domain / codomain / range</strong></td>
+<td>domain = 174 countries; codomain = <span class="math inline">\([0,1]\)</span>; range = the polyarchy scores that actually occur</td>
+</tr>
+<tr class="even">
+<td><strong>Logarithm</strong></td>
+<td>log GDP per capita, so differences are percentage changes</td>
+</tr>
+<tr class="odd">
+<td><strong>Roots / quadratics</strong></td>
+<td>the algebra that will later minimize a sum of squared errors</td>
+</tr>
+<tr class="even">
+<td><strong>Sets</strong></td>
+<td><span class="math inline">\(\Omega = \{\text{174 countries}\}\)</span>; <span class="math inline">\(D = 1\{\text{polyarchy}&gt;0.5\}\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Same dataset, same questions — just increasingly precise language for asking them.</p>
+</section>
+<section id="practice-exercises-day-1" class="slide level2 smaller">
+<h2>Practice Exercises — Day 1</h2>
+<p>Moore, W. H., &amp; Siegel, D. A. (2013). <em>A Mathematics Course for Political and Social Research</em>. Princeton University Press.</p>
+<ol type="1">
+<li class="fragment">Chapter 1: Exercises 3, 5</li>
+<li class="fragment">Chapter 2: Exercises 16, 17, 19, 20, 21, 22, 26, 29</li>
+<li class="fragment">Chapter 3: Exercises 2, 3</li>
+</ol>
 </section>
 <section id="section" class="slide level2 center">
 <h2></h2>
-
-<img data-src="01-notation-functions-limits/images/limit-joke.jpg" class="r-stretch"></section>
-<section id="limit-example" class="slide level2 smaller">
-<h2>Limit Example</h2>
-<ul>
-<li class="fragment">The function <span class="math inline">\(f(x) = \frac{1}{x-5}\)</span> is undefined at which value of <span class="math inline">\(x\)</span>?</li>
-<li class="fragment">The function <span class="math inline">\(f(x)\)</span> has a limit at <span class="math inline">\(x = 5\)</span></li>
-<li class="fragment">What is the value of <span class="math inline">\(\lim_{x\to 5} f(x)\)</span>?</li>
-<li class="fragment">Does that value change whether we approach the limit from the negative or positive side?</li>
-<li class="fragment">Functions are <strong>continuous</strong> if they do not have sudden breaks, and <strong>discontinuous</strong> otherwise</li>
-</ul>
-</section>
-<section id="math-camp-exercises-day-1" class="slide level2 smaller">
-<h2>Math Camp Exercises — Day 1</h2>
-<ol type="1">
-<li class="fragment">M&amp;S Chapter 1: Exercises 3, 5</li>
-<li class="fragment">M&amp;S Chapter 2: Exercises 16, 17, 19, 20, 21, 22, 26, 29</li>
-<li class="fragment">M&amp;S Chapter 3: Exercises 2, 3</li>
-<li class="fragment">M&amp;S Chapter 4: Exercises 3, 4, 5, 6, 9</li>
-</ol>
-</section>
-<section id="section-1" class="slide level2 center">
-<h2></h2>
 <p><strong>Programming lecture:</strong> <a href="../chapters/01-notation-functions-limits/programming.html">webpage chapter</a></p>
+<p><strong>Back to:</strong> <a href="../index.html">MathCamp 2026 website</a></p>
 
 </section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
-<p>MathCamp 2026</p>
+<p>Math and Programming Camp, Dept. of Government, Georgetown University</p>
 </div>
 </div></div>
 
