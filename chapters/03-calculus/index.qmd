@@ -1,0 +1,12 @@
+# Day 3 — Calculus
+
+Day 3 — Calculus / Exploration. Math covers limits, differentiation
+and optimization (first-order conditions), and integration basics.
+Programming continues exploring R's data structures (factors, data
+frames), conditionals, and descriptive statistics.
+
+This session has two parts:
+
+- **[Math Session](slides.qmd)** — the in-class slideshow.
+- **[Programming Session](programming.qmd)** — a webpage walking through the
+  same material with runnable R code.

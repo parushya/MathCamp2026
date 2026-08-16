@@ -1,0 +1,11 @@
+## Math Session {#sec-03-slides}
+
+::: {.callout-note}
+[Open the slides full-screen](../../slides/03-calculus.html){target="_blank"}
+:::
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/03-calculus.html" height="500" width="100%" style="border: 1px solid #ddd;"></iframe>
+```
+
+Slide source: `slides/03-calculus.qmd`.

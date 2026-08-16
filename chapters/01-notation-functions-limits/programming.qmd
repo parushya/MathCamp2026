@@ -1,4 +1,4 @@
-## Programming Session - Day 1 {#sec-01-programming}
+## Programming Session {#sec-01-programming}
 
 We will be getting started with installing and setting up a few softwares today: 
 

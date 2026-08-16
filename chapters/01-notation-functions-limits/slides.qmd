@@ -1,4 +1,4 @@
-## Slides {#sec-01-slides}
+## Math Session {#sec-01-slides}
 
 ::: {.callout-note}
 [Open the slides full-screen](../../slides/01-notation-functions-limits.html){target="_blank"}

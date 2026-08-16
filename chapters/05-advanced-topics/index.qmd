@@ -1,0 +1,12 @@
+# Day 5 — Intro to Advanced Topics
+
+Day 5 — Intro to Advanced Topics / AI. Math covers sampling
+distributions, the law of large numbers and central limit theorem,
+frequentist vs. Bayesian inference, and causality — a bridge into
+first-year coursework. Programming covers coding with AI.
+
+This session has two parts:
+
+- **[Math Session](slides.qmd)** — the in-class slideshow.
+- **[Programming Session](programming.qmd)** — a webpage walking through the
+  same material with runnable R code.

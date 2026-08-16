@@ -1,0 +1,11 @@
+## Math Session {#sec-04-slides}
+
+::: {.callout-note}
+[Open the slides full-screen](../../slides/04-linear-algebra.html){target="_blank"}
+:::
+
+```{=html}
+<iframe class="slide-deck" src="../../slides/04-linear-algebra.html" height="500" width="100%" style="border: 1px solid #ddd;"></iframe>
+```
+
+Slide source: `slides/04-linear-algebra.qmd`.

@@ -1,18 +1,30 @@
 # Introduction {.unnumbered}
 
-::: {.callout-note}
-This page is a placeholder. Instructor bios, the daily schedule, and other
-logistics will be filled in here.
-:::
+Math & Programming Camp is designed to refresh mathematical concepts
+and introduce statistical programming that Ph.D. students will use in
+their research. It starts with an intensive week-long course followed
+by weekly Methods Brown Bag sessions (more details will be provided on
+the last day of the camp). This course reintroduces students to basic
+topics in probability, linear algebra, and calculus through lectures,
+problem sets, and homework assignments, while also teaching the
+statistical software packages and workflow management skills needed
+for data-driven research.
 
 ## Instructors
 
-TBD
+| | Math Instructor | Programming Instructor |
+|---|---|---|
+| **Name** | Parushya | Rong Qin |
+| **Email** | [pp714@georgetown.edu](mailto:pp714@georgetown.edu) | [rq58@georgetown.edu](mailto:rq58@georgetown.edu) |
+
+## Logistics
+
+- **Dates:** Monday, August 17 – Friday, August 21, 2026
+- **Time:** 9:00 AM – 4:00 PM (Friday extends to 4:30 PM)
+- **Location:** ICC 450 (Mon–Thu) · ICC 662 (Fri)
 
 ## Schedule
 
-TBD
-
-## Plan & logistics
-
-TBD
+See the [Sessions](index.qmd#sessions) list on the welcome page for the
+day-by-day topic breakdown, with links to each day's slides and
+programming lecture.

@@ -1,0 +1,446 @@
+---
+title: Uncertain World and what to *Expect*
+subtitle: "Math and Programming Camp Day 2"
+author: Parushya
+date: today
+---
+
+<!--
+Placeholder deck for Day 2, restructured against Resources/HANDOFF.md's
+schedule skeleton and schedule_fb.qmd's Day 2 review. Slide titles and
+running order follow the design notes; content within each slide is not
+yet written (marked [placeholder]). Formatting conventions (frontmatter,
+.smaller, incremental bullets, running-example-note divs, quick drills,
+recap slides, closing programming-lecture link) mirror
+01-notation-functions-limits-draft.qmd.
+-->
+
+## Big questions live in an uncertain world
+
+::: {.incremental}
+
+- Democracies are *more likely* to grow faster — or not
+- India will *probably* remain democratic — or not
+- This poll is accurate to *within* three points — probably
+- We *think* the effect is positive; the evidence is *thin*
+
+- **Likely, chance, prone, probably, thin. The same vocabulary in journals, in newspapers, and at dinner.**
+:::
+
+---
+
+## Probability is the mathematical language through which
+
+::: {.incremental}
+
+- we acknowledge how humble our knowledge of an uncertain world is
+- yet audaciously analyse that uncertainty, and engage it critically
+- communicate it in a language held in common
+- and say, with a stated degree of confidence, what to expect
+
+- **Not certainty. But uncertainty, made precise enough to argue with.**
+
+:::
+
+## Today {.smaller}
+
+::: {.incremental}
+- Basic Probability
+    - Terminology
+    - Pr() notation, computing event probabilities
+    - Interactive: sample space and events
+    - Revisit Sets
+    - The axioms of probability
+    - Counting
+- Pobability as a function
+    - Random variables: discrete vs. continuous
+-   **Expectation algebra** — today's fluency block, same weight as Day 1's summation drill
+-   Variance and covariance
+-   **Conditional expectation and the type-shift**
+-   The Law of Iterated Expectations (LIE)
+-   Bayes' theorem
+-   **Join:** the selection-bias decomposition, in four lines, from linearity alone
+:::
+
+```{=html}
+<div class="running-example-note">&#8618; Running example carried over from Day 1: &Omega; = {174 countries}, polyarchy and GDP per capita from V-Dem 2019.</div>
+```
+
+## Why Probability? {.smaller}
+
+::: {.incremental}
+-   Even the best model can't say with certainty whether any one country will grow next year — the world is uncertain, and probability is the language for being precise about *how* uncertain.
+-   Two different quantities get called "probability": the *theoretical* chance built into the process, and the *empirical* frequency we actually observe in one sample.
+-   Running example: of our 174 countries, some fraction happened to have positive growth — that's an empirical frequency. Probability asks what generated it.
+:::
+
+## Terminology: Outcomes, Events, Sample Space {.smaller}
+
+::: {.incremental}
+-   **Outcome:** any single thing that might happen — one specific result.
+-   **Event:** a collection of one or more outcomes we care about.
+-   **Sample space ($\Omega$):** the set of *all* possible outcomes.
+-   **Random event:** an event that's probabilistic rather than deterministic — we can point to causes that shift its probability, without any cause guaranteeing it happens.
+:::
+
+```{=html}
+<div class="running-example-note">&#8618; Running example: &Omega; = {174 countries}; the event "high polyarchy" = {countries with polyarchy &gt; 0.5} &sub; &Omega;.</div>
+```
+
+## Pr() Notation {.smaller}
+
+::: {.incremental}
+-   When every outcome is equally likely, probability is just a counting ratio:
+    $$Pr(e) = \frac{\text{number of outcomes in event } e}{\text{number of outcomes in the sample space}}$$
+-   Example: probability of flipping tails on a fair coin — one favorable outcome out of two possible ones, $Pr(\text{tails}) = 1/2$.
+-   Running example: $Pr(\text{polyarchy} > 0.5) = \dfrac{\#\{\text{high-polyarchy countries}\}}{174}$ — same idea, now with its own notation.
+:::
+
+## Computing an Event's Probability {.smaller}
+
+::: {.incremental}
+-   An event's probability is the sum of the probabilities of the outcomes it contains: $P(A) = \sum_{\omega \in A} P(\omega)$.
+-   Useful trick: it's often easier to compute $P(A^c)$ (the complement) and subtract from 1 than to compute $P(A)$ directly.
+-   Running example: $P(\text{polyarchy} > 0.5) = \dfrac{\#\{\text{high-polyarchy countries}\}}{174}$.
+:::
+
+<!--
+The Sets and Counting slides below cover the same topics as IQSS's
+"prefresher" course notes, probability chapter:
+https://iqss.github.io/prefresher/06_probability.html (GPLv3 licensed).
+Content here is written independently in this deck's own voice and
+slide format, not copied verbatim -- credit to the IQSS prefresher
+authors for the topic selection this draws on.
+-->
+
+## Sets Formalize Events {.smaller}
+
+::: {.incremental}
+-   Events aren't inherently numbers — "the country is a democracy" isn't a number until we formalize it.
+-   *Set theory* is the formal language: an event is a subset of the sample space, and set operations tell us how to combine events.
+-   This is the same set vocabulary from Day 1 (subset, union, intersection) — now put to work on probability.
+:::
+
+## Set Operations, Recap {.smaller}
+
+::: {.incremental}
+-   **Union** $A \cup B$: outcomes in $A$ *or* $B$ (or both).
+-   **Intersection** $A \cap B$: outcomes in *both* $A$ and $B$.
+-   **Complement** $A^c$: outcomes in $\Omega$ but *not* in $A$.
+-   **Empty set** $\emptyset$: the event with no outcomes at all — probability zero.
+:::
+
+```{=html}
+<div class="running-example-note">&#8618; Running example: A = {polyarchy &gt; 0.5}, B = {growth &gt; 0}. A &cap; B = high-polyarchy, positive-growth countries; A &cup; B = countries with at least one of the two; A<sup>c</sup> = low-polyarchy countries.</div>
+```
+
+## Sample Space and Events, Interactively {.smaller}
+
+```{=html}
+<div class="viz venn-interactive">
+  <div class="vi-controls">
+    <div class="vi-ctrl">
+      <label for="vi-pa">P(A): <span class="vi-pa-val">0.40</span></label>
+      <input id="vi-pa" type="range" min="0.05" max="0.85" step="0.01" value="0.40">
+    </div>
+    <div class="vi-ctrl">
+      <label for="vi-pb">P(B): <span class="vi-pb-val">0.35</span></label>
+      <input id="vi-pb" type="range" min="0.05" max="0.85" step="0.01" value="0.35">
+    </div>
+    <div class="vi-ctrl">
+      <label for="vi-overlap">Overlap: <span class="vi-overlap-val">0.50</span></label>
+      <input id="vi-overlap" type="range" min="0" max="1" step="0.01" value="0.50">
+    </div>
+  </div>
+  <svg class="viz-plot vi-svg" viewBox="0 0 480 220" role="img" aria-label="Interactive Venn diagram of two events A and B inside sample space Omega, with sliders for P(A), P(B), and their overlap">
+    <rect class="vi-omega" x="6" y="6" width="468" height="208" rx="10"/>
+    <text class="vi-omega-label" x="18" y="26">&Omega;</text>
+    <circle class="vi-circle-a"></circle>
+    <circle class="vi-circle-b"></circle>
+    <text class="vi-label-a"></text>
+    <text class="vi-label-b"></text>
+  </svg>
+  <div class="vi-readout">
+    <span>P(A) = <strong class="vi-out-pa"></strong></span>
+    <span>P(B) = <strong class="vi-out-pb"></strong></span>
+    <span>P(A&cap;B) = <strong class="vi-out-pab"></strong></span>
+    <span>P(A&cup;B) = <strong class="vi-out-pau"></strong></span>
+    <span>P(A<sup>c</sup>) = <strong class="vi-out-pac"></strong></span>
+  </div>
+</div>
+
+<style>
+.venn-interactive { max-width: 100%; font-size: 0.55em; }
+.venn-interactive .vi-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  flex: 0 0 auto;
+  margin-bottom: 4px;
+}
+.venn-interactive .vi-ctrl { display: flex; align-items: center; gap: 8px; }
+.venn-interactive .vi-ctrl input[type="range"] { width: 130px; }
+.venn-interactive .vi-svg { flex: 1 1 auto; min-height: 0; width: 100%; }
+.venn-interactive .vi-omega { fill: #F7F8FA; stroke: #D9E0EA; stroke-width: 1.5; }
+.venn-interactive .vi-omega-label { font-size: 14px; fill: #5A6B80; font-weight: 700; }
+.venn-interactive .vi-circle-a { fill: #2b6cb0; fill-opacity: 0.45; stroke: #2b6cb0; stroke-width: 1.5; }
+.venn-interactive .vi-circle-b { fill: #8a8f98; fill-opacity: 0.45; stroke: #8a8f98; stroke-width: 1.5; }
+.venn-interactive .vi-label-a { font-size: 15px; font-weight: 700; fill: #22303F; }
+.venn-interactive .vi-label-b { font-size: 15px; font-weight: 700; fill: #22303F; }
+.venn-interactive .vi-readout {
+  flex: 0 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  margin-top: 6px;
+  color: #5A6B80;
+}
+.venn-interactive .vi-readout strong { color: #2b6cb0; }
+</style>
+
+<script>
+(function () {
+  var wrappers = document.querySelectorAll('.venn-interactive');
+  var wrapper = wrappers[wrappers.length - 1];
+  var svg = wrapper.querySelector('.vi-svg');
+  var circleA = wrapper.querySelector('.vi-circle-a');
+  var circleB = wrapper.querySelector('.vi-circle-b');
+  var labelA = wrapper.querySelector('.vi-label-a');
+  var labelB = wrapper.querySelector('.vi-label-b');
+
+  var paSlider = wrapper.querySelector('#vi-pa');
+  var pbSlider = wrapper.querySelector('#vi-pb');
+  var ovSlider = wrapper.querySelector('#vi-overlap');
+
+  var cx = 240, cy = 112, maxR = 82;
+
+  function fmt(v) { return v.toFixed(2); }
+
+  function draw() {
+    var pa = parseFloat(paSlider.value);
+    var pb = parseFloat(pbSlider.value);
+    var ov = parseFloat(ovSlider.value);
+
+    wrapper.querySelector('.vi-pa-val').textContent = fmt(pa);
+    wrapper.querySelector('.vi-pb-val').textContent = fmt(pb);
+    wrapper.querySelector('.vi-overlap-val').textContent = fmt(ov);
+
+    var rA = maxR * Math.sqrt(pa);
+    var rB = maxR * Math.sqrt(pb);
+    var touching = rA + rB;
+    var nested = Math.abs(rA - rB);
+    var dist = touching - ov * (touching - nested);
+
+    var xA = cx - dist / 2;
+    var xB = cx + dist / 2;
+
+    circleA.setAttribute('cx', xA);
+    circleA.setAttribute('cy', cy);
+    circleA.setAttribute('r', rA);
+    circleB.setAttribute('cx', xB);
+    circleB.setAttribute('cy', cy);
+    circleB.setAttribute('r', rB);
+
+    labelA.setAttribute('x', xA - rA - 4);
+    labelA.setAttribute('y', cy - rA + 4);
+    labelA.setAttribute('text-anchor', 'end');
+    labelA.textContent = 'A';
+    labelB.setAttribute('x', xB + rB + 4);
+    labelB.setAttribute('y', cy - rB + 4);
+    labelB.textContent = 'B';
+
+    var pab = ov * Math.min(pa, pb);
+    var pau = pa + pb - pab;
+    var pac = 1 - pa;
+
+    wrapper.querySelector('.vi-out-pa').textContent = fmt(pa);
+    wrapper.querySelector('.vi-out-pb').textContent = fmt(pb);
+    wrapper.querySelector('.vi-out-pab').textContent = fmt(pab);
+    wrapper.querySelector('.vi-out-pau').textContent = fmt(pau);
+    wrapper.querySelector('.vi-out-pac').textContent = fmt(pac);
+  }
+
+  [paSlider, pbSlider, ovSlider].forEach(function (el) {
+    el.addEventListener('input', draw);
+  });
+
+  draw();
+})();
+</script>
+```
+
+```{=html}
+<div class="running-example-note">&#8618; Running example: let A = {polyarchy &gt; 0.5}, B = {growth &gt; 0}. Drag the sliders and watch P(A&cap;B) and P(A&cup;B) update as the circles move.</div>
+```
+
+## Properties of Set Operations {.smaller}
+
+::: {.incremental}
+-   **Commutative / associative:** $A \cup B = B \cup A$; grouping doesn't matter for repeated unions or intersections.
+-   **Distributive:** $A \cap (B \cup C) = (A \cap B) \cup (A \cap C)$.
+-   **De Morgan's laws:** $(A \cup B)^c = A^c \cap B^c$ — "not (A or B)" is the same event as "not A, and not B."
+-   **Mutually exclusive / partition:** disjoint sets ($A \cap B = \emptyset$) that together cover $\Omega$ split the sample space into non-overlapping pieces — exactly what `D=1{polyarchy>0.5}` does to our 174 countries.
+:::
+
+## Quick Drill: Sets {.smaller}
+
+::: {.incremental}
+-   $A$ = {polyarchy > 0.5}, $B$ = {growth > 0}. In words, what is $A^c \cap B^c$? [Low-polyarchy countries with non-positive growth — by De Morgan's, this is $(A \cup B)^c$.]{.fragment}
+-   Are $\{D=1\}$ and $\{D=0\}$ mutually exclusive? Do they partition $\Omega$? [Yes to both — every country is in exactly one, so they're disjoint and cover all 174.]{.fragment}
+:::
+
+## The Axioms of Probability {.smaller}
+
+::: {.incremental}
+-   $P(A) \geq 0$ for any event $A$ — nothing is less likely than impossible.
+-   $P(\Omega) = 1$ — some outcome always occurs.
+-   If $A$ and $B$ can't both happen (mutually exclusive), $P(A \cup B) = P(A) + P(B)$.
+-   Everything we've done with sets and events so far — unions, complements, the interactive diagram — all obeys just these three rules.
+:::
+
+<!--
+The Counting slides below cover the same topic as IQSS's "prefresher"
+course notes, probability chapter:
+https://iqss.github.io/prefresher/06_probability.html (GPLv3 licensed).
+Content here is written independently in this deck's own voice and
+slide format, not copied verbatim -- credit to the IQSS prefresher
+authors for the topic selection this draws on.
+-->
+
+## Counting: Why We Need It {.smaller}
+
+::: {.incremental}
+-   `Pr(e)` was a ratio of counts — but counting outcomes by hand stops working once the sample space gets big.
+-   *Combinatorics* gives us shortcuts for counting without listing every possibility.
+-   Two questions decide which shortcut applies: does **order** matter, and are we sampling **with or without replacement**?
+:::
+
+## The Fundamental Rule of Counting {.smaller}
+
+::: {.incremental}
+-   If a choice is made in stages, and stage $i$ has $n_i$ independent options, the total number of ways to complete all stages is $\prod_i n_i$ — multiply, don't add.
+-   Example: classifying one country by region (5 options) and by regime type (2 options) gives $5 \times 2 = 10$ possible classifications.
+-   This single multiplication rule is what everything else on this slide builds on.
+:::
+
+## Permutations and Combinations {.smaller}
+
+::: {.incremental}
+-   Selecting $k$ items from $n$, **order matters**, **with replacement**: $n^k$ possible outcomes.
+-   Selecting $k$ from $n$, **order matters**, **without replacement** (a *permutation*): $\dfrac{n!}{(n-k)!}$.
+-   Selecting $k$ from $n$, **order doesn't matter**, **without replacement** (a *combination*): $\dbinom{n}{k} = \dfrac{n!}{k!(n-k)!}$ — read "n choose k."
+:::
+
+```{=html}
+<div class="running-example-note">&#8618; Running example: choosing an unordered comparison group of 3 countries from a shortlist of 10 is a combination, $\binom{10}{3}=120$; ranking a top-3 by growth from that same shortlist is a permutation, $10 \cdot 9 \cdot 8 = 720$.</div>
+```
+
+## Quick Drill: Counting {.smaller}
+
+::: {.incremental}
+-   From a shortlist of 8 countries, how many ways to choose an *unordered* pair for a paired comparison? [$\binom{8}{2} = 28$]{.fragment}
+-   From that same shortlist, how many ways to pick an *ordered* "most, then second-most" democratic pair? [$8 \cdot 7 = 56$]{.fragment}
+-   With 4 possible polyarchy categories and 3 possible growth categories, how many (polyarchy category, growth category) pairs are there? [$4 \times 3 = 12$, by the fundamental rule]{.fragment}
+:::
+
+## Random Variables: Discrete vs. Continuous {.smaller}
+
+[placeholder]
+
+::: {.incremental}
+-   Definition of a random variable as a function from the sample space to the reals
+-   Discrete vs. continuous, with a worked example from the running dataset
+-   Notation: capital $X$ for the variable, lowercase $x$ for a realized value
+:::
+
+## Expectation Algebra {.smaller}
+
+**Fluency block — drill this like Day 1's summation, not a single bullet among many.**
+
+[placeholder]
+
+::: {.incremental}
+-   Definition: $E[X]$ as a weighted sum/integral
+-   Linearity of expectation: $E[aX+bY] = aE[X]+bE[Y]$ — holds regardless of independence
+-   Worked examples building up from one term to a full linear combination
+:::
+
+## Quick Drill: Expectation Algebra {.smaller}
+
+[placeholder — several linearity problems, fragment-revealed answers, same style as Day 1's quick drills]
+
+## Variance and Covariance {.smaller}
+
+[placeholder]
+
+::: {.incremental}
+-   $\text{Var}(X) = E[(X-E[X])^2]$, and the computational shortcut $E[X^2]-(E[X])^2$
+-   $\text{Cov}(X,Y) = E[(X-E[X])(Y-E[Y])]$
+-   $\text{Var}(aX+bY) = a^2\text{Var}(X) + b^2\text{Var}(Y) + 2ab\,\text{Cov}(X,Y)$
+:::
+
+## Conditional Expectation and the Type-Shift {.smaller}
+
+**The hardest notational transition of the first year — give it its own slide(s), not a bullet.**
+
+[placeholder]
+
+::: {.incremental}
+-   $E[Y|X=x]$: a *number*, one per value of $x$
+-   $E[Y|X]$: a *random variable* — a function of $X$ itself
+-   Side-by-side worked example distinguishing the two
+:::
+
+```{=html}
+<div class="running-example-note">&#8618; Running example: E[growth | polyarchy = 0.8] is a number; E[growth | polyarchy] is a random variable across all 174 countries.</div>
+```
+
+## The Law of Iterated Expectations {.smaller}
+
+[placeholder]
+
+::: {.incremental}
+-   $E[E[Y|X]] = E[Y]$
+-   Why this follows directly from the type-shift distinction on the previous slide
+-   Worked example
+:::
+
+## Bayes' Theorem {.smaller}
+
+[placeholder]
+
+::: {.incremental}
+-   Statement and derivation from the definition of conditional probability
+-   Worked example using the running dataset (e.g. P(democracy | high growth))
+:::
+
+## Quick Drill: Conditioning and Bayes {.smaller}
+
+[placeholder — mirrors Day 1's quick-drill format, fragment-revealed answers]
+
+## Join: The Selection-Bias Decomposition {.smaller}
+
+**Today's closing exercise — assembled from this slide's tools, not a new topic.**
+
+[placeholder]
+
+::: {.incremental}
+-   Derive $E[Y(0)|D=1] - E[Y(0)|D=0]$ in four lines, using linearity of expectation alone
+-   Connects directly to Thursday's dialect equivalence ($E[\varepsilon|X]=0$)
+:::
+
+## Recap: The Toolkit {.smaller}
+
+[placeholder — one line per tool tying back to the running V-Dem example, same style as Day 1's recap]
+
+::: {.incremental}
+-   **Expectation algebra:** linearity as the one move that does most of the work
+-   **Variance/covariance:** building blocks for everything from here to standard errors
+-   **The type-shift:** $E[Y|X=x]$ vs. $E[Y|X]$
+-   **LIE:** the identity that makes the type-shift useful
+-   **Bayes' theorem:** flips a conditional around
+:::
+
+##  {.center}
+
+**Programming lecture:** [webpage chapter](../chapters/02-probability/programming.html)

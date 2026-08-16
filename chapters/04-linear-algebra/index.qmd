@@ -1,0 +1,12 @@
+# Day 4 — Linear Algebra
+
+Day 4 — Linear Algebra / Mission. Math covers matrix readings,
+transformations, sampling distributions, and basic derivations.
+Programming covers R housekeeping, data wrangling with dplyr and
+tidyr, and the grammar of graphics with ggplot.
+
+This session has two parts:
+
+- **[Math Session](slides.qmd)** — the in-class slideshow.
+- **[Programming Session](programming.qmd)** — a webpage walking through the
+  same material with runnable R code.

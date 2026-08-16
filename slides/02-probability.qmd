@@ -1,38 +1,16 @@
 ---
 title: "Probability"
-subtitle: "MathCamp 2026 — Session 2"
+subtitle: "MathCamp 2026 — Day 2"
 ---
 
-## Introduction
+## Slides: TBD
 
-- Agenda
-- Frequentist vs. Bayesian framing
+Topics for this session:
 
-## Bayesian Probability {.smaller}
-
-- Definitions and notation
-- Relationships between events
-- Bayes' theorem (notation, derivation, examples)
-- The Monty Hall problem
-- Odds and odds ratios
-
-## Frequentist Statistics
-
-- Frequentist methods and uncertainty
-- Confidence interval demonstration in R
-
-## Combinations and Permutations {.smaller}
-
-- Review of factorials
-- Combinations (why the formulas work, worked examples)
-- Calculating probabilities; the birthday problem
-
-## Distributions {.smaller}
-
-- Random variables: discrete vs. continuous
-- Sample distributions and contingency tables
-- Probability distributions: PMF, PDF, CDF
-- Normal/Gaussian distribution and other distribution types
+- Basic probability
+- Compound probability
+- Random variables and expectation algebra
+- Conditional expectation and the type-shift ($E[Y|X=x]$ vs. $E[Y|X]$)
 
 ## {.center}
 

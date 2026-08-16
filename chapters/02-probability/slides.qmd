@@ -1,4 +1,4 @@
-## Slides {#sec-02-slides}
+## Math Session {#sec-02-slides}
 
 ::: {.callout-note}
 [Open the slides full-screen](../../slides/02-probability.html){target="_blank"}

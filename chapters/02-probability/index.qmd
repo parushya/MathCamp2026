@@ -1,10 +1,12 @@
-# Probability
+# Day 2 — Probability
 
-Session 2 covers Bayesian and frequentist probability, combinations and
-permutations, and common probability distributions.
+Day 2 — Probability / Basics. Math covers basic and compound
+probability, random variables and expectation algebra, and conditional
+expectation. Programming covers R basics: objects, data types, and
+data structures.
 
 This session has two parts:
 
-- **[Slides](slides.qmd)** — the in-class slideshow.
-- **[Programming Lecture](programming.qmd)** — a webpage walking through the
+- **[Math Session](slides.qmd)** — the in-class slideshow.
+- **[Programming Session](programming.qmd)** — a webpage walking through the
   same material with runnable R code.

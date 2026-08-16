@@ -36,6 +36,7 @@ Keep the two in sync when editing a session's content: the slide bullets live in
 - `quarto preview` — live-reloading local preview of the book. Run `quarto preview` from inside `slides/` to preview the standalone decks.
 - `quarto render chapters/02-probability/programming.qmd` — render a single sub-chapter.
 - Both `quarto render` and `quarto render slides` must succeed before opening a PR — this is enforced implicitly since `.github/workflows/publish.yml` runs both on every push to `main`.
+- The book has `execute: freeze: auto` set in `_quarto.yml`, so `quarto render` skips re-executing a `programming.qmd`'s R code if its source hasn't changed since the last render — cached results live in `_freeze/` (committed to git, not gitignored). Every `quarto render` still traverses and writes out every page (so nav/search stay consistent), but only files you actually edited re-run R code. If you edit a `programming.qmd`, its `_freeze/` entry updates automatically on the next render — just commit the updated `_freeze/` files alongside your `.qmd` change. If a render looks stale after editing data files or upstream dependencies a chunk reads from (without editing the `.qmd` itself), delete the relevant subfolder under `_freeze/` (or the whole directory) to force re-execution.
 
 ## Book structure
 
@@ -45,7 +46,7 @@ Keep the two in sync when editing a session's content: the slide bullets live in
   - `index.qmd` — the part/session landing page (short overview + links to the two sub-chapters).
   - `slides.qmd` — sub-chapter that embeds the session's `revealjs` deck via `<iframe>` (`src="../../slides/0N-*.html"`) plus a "open full-screen" link and a link back to the deck's `.qmd` source.
   - `programming.qmd` — sub-chapter with the programming lecture: R code chunks (executed by Quarto/knitr at render time) walking through the session's material.
-  - Sessions: `01-notation-functions-limits/`, `02-probability/`, `03-calculus-differentiation/`, `04-calculus-integration/`, `05-linear-algebra/`.
+  - Sessions: `01-notation-functions-limits/`, `02-probability/`, `03-calculus/`, `04-linear-algebra/`, `05-advanced-topics/`.
 - `chapters/references.qmd` — appendix.
 - `styles.css` — book-wide custom CSS, linked from `_quarto.yml`.
 

@@ -62,6 +62,13 @@
   max-height: 20vh;
 }
 
+/* Deck-wide footer (set via `footer:` in _quarto.yml) -- render it in a
+   light font weight/color so it recedes behind the slide content. */
+.reveal .footer {
+  font-weight: 300;
+  color: #8a8f98;
+}
+
 /* Small footer tying a slide's concept back to the deck's running example
    (see Resources/RUNNING_EXAMPLE.md). Shared so it isn't redefined per slide. */
 .running-example-note {

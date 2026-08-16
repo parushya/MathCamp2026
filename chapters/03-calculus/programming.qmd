@@ -1,0 +1,436 @@
+## Programming Session {#sec-03-programming}
+
+### Data Structures (continued)
+
+#### Factors
+
+Factors are used for categorical data - both nominal and ordinal ones.
+
+Factors are a special form of vectors:
+
+* Each element corresponds to a value from a set known as a factor's levels.
+* A factor's levels are stored in a specific order.
+
+::: callout
+You can define a factor by using `factor()` command.
+
+For example, we have a variable measuring dose of vaccine administered (placebo, medium, high) in two waves of experiment. 
+
+```{r}
+vec_1 <- c("High", "Medium", "Medium", "High", "High","Placebo","Placebo")
+
+fct_1 <- factor(vec_1)
+
+# Notice the difference in outputs
+
+vec_1
+
+fct_1
+# i.e., `factor()` creates a vector that contains two levels: "no" and "yes"
+
+class(fct_1)
+class(vec_1)
+```
+
+Since these experiments were conducted in two waves. It could be of interest to denote the no. of wave for each experiment. 
+
+```{r}
+# Btw, table() command cn be used in R for cross-tabulations
+table(vec_1)
+table(fct_1)
+
+fct_2 <- factor(c("Run 1", "Run 2", "Run 2", "Run 1", "Run 2","Run 1","Run 2"))
+
+table(fct_1, fct_2)            
+
+```
+
+**Ordering Factors**
+
+Sometimes it is essential to specify the orders of your factor levels. Particularly during modelling and estimation with binary or categorical variables, given that the first level of factor is used in most functions, like `lm`(linear regression command in R), will be treated as baseline level or category.
+
+We use `levels()` within `factor()` command to do this.
+
+```{r}
+# Order is often determined using alphabetical variables by default) (H-M-P)
+
+# Ordering it
+fct_3 <- factor(c("High", "Medium", "Medium", "High", "High","Placebo","Placebo"),
+levels = c("Placebo","Medium","High"))
+
+fct_3
+```
+:::
+
+#### Dataframes
+
+In R, dataframes are data structure which store data in a tabular format.
+
+::: callout
+We create dataframes using `data.frame()` command.
+
+```{r}
+df_1 <- data.frame(
+    Foo= 15:18, 
+    Bar= c(T, F, T, T), 
+    Name= c("Penny", "Sheldon", "Rajesh", "Leonard")
+)
+
+```
+
+Exploring the contents and structure of the dataframe
+
+```{r eval=FALSE}
+# Viewing dataframe
+df_1 # In Console
+View(df_1)  # In Viewer
+
+# structure of dataframe
+str(df_1)
+
+# Names of columns/variables
+names(df_1)
+
+# Dimesnions of Dataframe
+nrow(df_1)      
+ncol(df_1)
+dim(df_1)
+
+# Summary of dataframe
+summary(df_1) # See the output closely | very useful for understanding the dataset
+```
+Accessing the objects inside dataframe
+
+```{r}
+
+# Access Items using [] 
+df_1[1]
+ 
+# Access Items using [[]]
+df_1[['Bar']]
+ 
+# Access Items using $
+df_1$Bar
+
+# Access particular data point
+df_1$Foo[3]
+
+# what will be the output?
+df_1[1,3]
+```
+
+`Tidyverse` package has a very efficient framwork for working with dataset. Check the tidyverse book from day 2 for the same.
+:::
+
+```{r, message=FALSE, warning=FALSE, echo=FALSE}
+library(readr)
+JPRdata_select <- readr::read_csv(
+  "../02-probability/data/JPRdata_select.csv"
+)
+#head(JPRdata_select)
+```
+
+
+::: {.panel-tabset}
+
+### [`r paste("Exercise", 1)`]{style="color:#1696d2;"}
+
+Let's go back and reload our sample dataset.
+
+1. How can we better understand this dataset now?
+
+2. What is the class of the variable `region`? Can we make it a factor?
+
+3. Based on this new dataset, try to extract the first (`year`), second (`ccode_e`), fifth (`ccode_a`), 9th (`atopally`), 11th (`MID`), and 16th (`region`) columns of this dataset and save them into a new dataframe. What is this new dataframe about? Do you think it contains information that is helpful?
+
+4. Can you find a way to extract rows only in which the importing state is the United States?
+
+5. Can you find a way to show how many regions were experiencing military conflicts with the US based on this new dataset?
+
+### [`r paste("Code for your reference")`]{style="color:#1696d2;"}
+
+#### Question 1
+
+```{r eval=FALSE}
+
+#install.packages(readr)
+library(readr)
+JPRdata_select <- readr::read_csv(
+  "../02-probability/data/JPRdata_select.csv"
+)
+
+str(JPRdata_select)
+colnames(JPRdata_select)
+summary(JPRdata_select)
+```
+
+#### Question 2
+
+```{r}
+class(JPRdata_select$region)
+
+JPRdata_select$region <- as.factor(JPRdata_select$region)
+class(JPRdata_select$region)
+
+levels(JPRdata_select$region)
+```
+
+#### Question 3
+
+```{r}
+new <- JPRdata_select[, c(1, 2, 5, 9, 11, 16)]
+
+new <- JPRdata_select[, c("year", "ccode_e", "ccode_a", "atopally", "MID", "region")]
+
+## arguably a better way
+new_updated <- JPRdata_select[, c(1, 2, 3, 5, 6, 11, 16)]
+new_updated <- JPRdata_select[, c("year", "ccode_e", "StateAbb_export", "ccode_a", "StateAbb_import", "atopally", "MID", "region")]
+```
+
+#### Question 4
+
+```{r}
+new_US <- new_updated[new_updated$ccode_a==2,]
+dim(new_US)
+
+```
+
+#### Question 5
+
+```{r}
+table(new_US$region, new_US$MID)
+```
+
+:::
+
+<br>
+
+## Conditionals in Base R
+
+Conditional statements let your code make decisions.
+
+### Comparison operators (what they do)
+
+-   `==`, `!=`: test equality / inequality (return TRUE/FALSE).
+-   `>`, `>=`, `<`, `<=`: numeric comparisons.
+-   `&`, `|`: logic operators
+-   `!`: logical negation.
+
+```{r}
+x <- 10
+y <- 20
+
+x == y     # FALSE
+x != y     # TRUE
+x > 0      # TRUE
+x >= 10    # TRUE
+x < y      # TRUE
+x <= y     # TRUE
+```
+
+### `if`
+
+-   Runs a code block **only if** the condition is TRUE.
+
+```{r}
+if (x > 0) {
+  print("x is a positive number")
+}
+```
+
+### `if ... else`
+
+-   Chooses **one** of two paths.
+
+```{{r}}
+if (x > y) {
+  print("x is greater than y")
+} else {
+  print("y is greater than or equal to x")
+}
+```
+
+### Laddered `else if`
+
+-   Chains multiple mutually exclusive tests.
+
+```{r}
+# condition 1
+x <- 10
+y <- 20
+# condition 2
+x <- y
+
+# test
+if (x > y) {
+  print("x is greater than y")
+} else if (y > x) {
+  print("y is greater than x")
+} else {
+  print("x and y are equal")
+}
+```
+
+### Nested `if`
+
+-   Scope one decision **inside** another.
+
+```{r}
+x <- 20; y <- 10; z <- -30
+
+if (x > y) {
+  print("x is greater than y") #decision 1 if x>y
+  if (x > z) {                 #decision 2 if x>y
+    print("x is greater than y and z")
+  }
+}
+```
+
+### Multiple conditions and `&`/`|` `
+
+```{r}
+#one number
+x <- 5
+y <- 3
+z <- 1
+
+x > y & x > z
+
+
+#Vectors
+
+x <- c(10, 50, 30)
+y <- c(6, 40, 15)
+z <- c(12, 35, 40)
+
+x > y 
+y > z
+
+x > y & y > z
+```
+
+
+------------------------------------------------------------------------
+
+## Descriptive Statistics & Aggregation (Base R)
+
+Summarize the [`mpg` dataset](https://rpubs.com/shailesh/mpg-exploration) to understand central tendency, spread, and relationships.
+
+### Central tendency
+
+-   `mean(x)`: arithmetic average (sensitive to outliers).
+-   `median(x)`: middle value (robust to outliers).
+
+```{r}
+#| message: false
+# Install if needed (run once):
+#install.packages("ggplot2")
+library(ggplot2)   # loads ggplot2, dplyr, tidyr, readr, tibble, stringr, forcats, purrr
+```
+
+```{r}
+summary(mpg)
+mean(mpg$displ)
+median(mpg$displ)
+
+# Note: base R's mode() returns the storage mode, not the statistical mode.
+mode(mpg$displ)
+```
+
+### Spread & quantiles
+
+-   `var(x)`, `sd(x)`: variance and SD.
+-   `quantile(x, p)`: p-th quantile (e.g., 0.25 = Q1).
+-   `IQR(x)`: Q3 - Q1.
+-   `range(x)`, `min(x)`, `max(x)`.
+
+```{r}
+var(mpg$cty)
+sd(mpg$cty)
+
+quantile(mpg$cty, c(0.25, 0.75))
+IQR(mpg$cty)
+
+min(mpg$cty); max(mpg$cty)
+range(mpg$cty)
+```
+
+### Categorical summaries
+
+-   `table(x)`: counts by category.
+-   `unique(x)`: distinct values.
+
+```{r}
+table(mpg$fl)
+unique(mpg$cyl)
+```
+
+### Group-wise means (manual vs. `aggregate()`)
+
+-   `aggregate(y ~ g, FUN, data)`: summary of y by groups g.
+-   `subset =` lets you compute summaries on filtered rows.
+
+```{r}
+# Manual subsetting (repetitive)
+mean(mpg$cty[mpg$cyl == 4])
+mean(mpg$cty[mpg$cyl == 6])
+mean(mpg$cty[mpg$cyl == 8])
+
+# Using aggregate(): dv ~ iv
+aggregate(cty ~ cyl, FUN = mean, data = mpg)
+
+# Subset argument
+aggregate(cty ~ cyl,
+          FUN = mean,
+          subset = cty < 15,
+          data = mpg)
+```
+
+### Quick summaries (`summary()`, `by()`)
+
+-   `summary(df)` gives per-column summaries.
+-   `by(df, group, summary)` applies `summary()` within each group.
+
+```{r}
+summary(mpg)
+summary(mpg$displ)
+
+by(mpg, mpg$cyl, summary)
+```
+::: {.panel-tabset}
+
+### [`r paste("Exercise", 2)`]{style="color:#1696d2;"}
+
+Let's explore our sample dataset.
+
+1. How can we learn more about countries' wealth levels (hint: `loggdp.e`) across regions?
+
+2. I cam now curious about the dyads that are involved in military conflicts. Are they more likely dissimilar in foreign policy positions (hint: `sscore`)? Are they less likely to trade with each other (hint: `logflow`)? 
+
+3. What other questions you might have for this dataset?
+
+### [`r paste("Code for your reference")`]{style="color:#1696d2;"}
+
+#### Question 1
+
+```{r, message=FALSE, warning=FALSE}
+new_updated_full <- JPRdata_select[, c(1, 2, 3, 5, 6, 10, 11, 15)] #add the counter party's GDP (log)
+
+new_US_full <- new_updated_full[new_updated_full$ccode_a==2,]
+
+mean(new_US_full$loggdp.e[new_US_full$region== "Western Europe"])
+mean(new_US_full$loggdp.e[new_US_full$region== "South Asia"])
+mean(new_US_full$loggdp.e[new_US_full$region== "Sub-Saharan Africa"], na.rm = TRUE)
+
+```
+
+#### Question 2
+
+```{r, message=FALSE, warning=FALSE}
+table(JPRdata_select$atopally, JPRdata_select$MID)
+
+by(JPRdata_select$logflow, JPRdata_select$MID, summary)
+
+by(JPRdata_select$sscore, JPRdata_select$MID, summary)
+```
+:::

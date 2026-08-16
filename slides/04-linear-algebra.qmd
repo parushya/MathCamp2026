@@ -1,0 +1,17 @@
+---
+title: "Linear Algebra"
+subtitle: "MathCamp 2026 — Day 4"
+---
+
+## Slides: TBD
+
+Topics for this session:
+
+- Matrix readings
+- Transformations
+- Sampling distributions
+- Basic derivations
+
+## {.center}
+
+**Programming lecture:** [webpage chapter](../chapters/04-linear-algebra/programming.html)

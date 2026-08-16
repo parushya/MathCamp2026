@@ -10,7 +10,7 @@ format:
     slide-number: true
     chalkboard: true
     css: slides.css
-    footer: "MathCamp 2026"
+    footer: "Math and Programming Camp, Dept. of Government, Georgetown University"
     smaller: true
 
 editor: source

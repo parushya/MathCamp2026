@@ -1,10 +1,12 @@
-# Notation, Functions, and Limits
+# Day 1 — Talking in Mathematics
 
-Session 1 covers math notation, algebra review, functions, and an
-introduction to limits — the foundation for everything else in the camp.
+Day 1 — Talking in Mathematics / Setup. Math covers notation, algebra
+review, functions, and an introduction to limits — the foundation for
+everything else in the camp. Programming covers setup (R, RStudio,
+Zotero, GitHub) and the basics of the R/RStudio interface.
 
 This session has two parts:
 
-- **[Slides](slides.qmd)** — the in-class slideshow.
-- **[Programming Lecture](programming.qmd)** — a webpage walking through the
+- **[Math Session](slides.qmd)** — the in-class slideshow.
+- **[Programming Session](programming.qmd)** — a webpage walking through the
   same material with runnable R code.

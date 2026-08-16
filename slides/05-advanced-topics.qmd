@@ -1,0 +1,23 @@
+---
+title: "Intro to Advanced Topics"
+subtitle: "MathCamp 2026 — Day 5"
+---
+
+## Overview
+
+A bridge from camp into first-year coursework — connecting the week's
+tools (probability, calculus, linear algebra) to what's ahead.
+
+## Topics for this session {.smaller}
+
+- Sampling distributions
+- The law of large numbers and the central limit theorem, by
+  demonstration
+- Frequentist vs. Bayesian inference
+- Causality and causal inference
+- The road ahead: where each of this week's tools reappears in your
+  first-year courses
+
+## {.center}
+
+**Programming lecture:** [webpage chapter](../chapters/05-advanced-topics/programming.html)

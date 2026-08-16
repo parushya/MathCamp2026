@@ -2,6 +2,9 @@ project:
   type: book
   output-dir: docs
 
+execute:
+  freeze: auto
+
 book:
   title: "Math Camp 2026"
   subtitle: "Math camp for the incoming Political Science PhD cohort"
@@ -12,7 +15,7 @@ book:
   repo-url: https://github.com/parushya/MathCamp2026
   page-footer:
     left: "Math Camp 2026, Government PhD Program"
-    right: "Built with Quarto"
+    right: "Georgetown University"
   sidebar:
     style: docked
     background: light
@@ -27,28 +30,31 @@ book:
       chapters:
         - chapters/02-probability/slides.qmd
         - chapters/02-probability/programming.qmd
-    - part: chapters/03-calculus-differentiation/index.qmd
+    - part: chapters/03-calculus/index.qmd
       chapters:
-        - chapters/03-calculus-differentiation/slides.qmd
-        - chapters/03-calculus-differentiation/programming.qmd
-    - part: chapters/04-calculus-integration/index.qmd
+        - chapters/03-calculus/slides.qmd
+        - chapters/03-calculus/programming.qmd
+    - part: chapters/04-linear-algebra/index.qmd
       chapters:
-        - chapters/04-calculus-integration/slides.qmd
-        - chapters/04-calculus-integration/programming.qmd
-    - part: chapters/05-linear-algebra/index.qmd
+        - chapters/04-linear-algebra/slides.qmd
+        - chapters/04-linear-algebra/programming.qmd
+    - part: chapters/05-advanced-topics/index.qmd
       chapters:
-        - chapters/05-linear-algebra/slides.qmd
-        - chapters/05-linear-algebra/programming.qmd
+        - chapters/05-advanced-topics/slides.qmd
+        - chapters/05-advanced-topics/programming.qmd
   appendices:
     - chapters/references.qmd
 
 format:
   html:
-    theme: cosmo
+    theme:
+      light: flatly
+      dark: darkly
     css: styles.css
     toc: true
-    number-sections: true
+    number-sections: false
     code-fold: true
     code-tools: true
+    lightbox: true
 
 editor: source
