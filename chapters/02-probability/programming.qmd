@@ -452,7 +452,7 @@ The original replication files and codebook are available through the Journal of
 
 ```{r}
 #| echo: false
-#| fig-cap: "RStudio Screen"
+#| fig-cap: "Haim's Research Question"
 
 knitr::include_graphics("images/haim.png")
 ```
@@ -501,10 +501,11 @@ head(JPRdata_select)
 ```{r, eval=FALSE, echo=TRUE}
 #install.packages(readr)
 library(readr)
+#create a subfolder called "data" first
 JPRdata_select <- readr::read_csv(
-  "data/JPRdata_select.csv"
+  "data/JPRdata_select.csv" 
 )
-
+head(JPRdata_select)
 ```
 
 ::: {.panel-tabset}
