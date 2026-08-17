@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Parushya">
-  <meta name="dcterms.date" content="2026-08-16">
+  <meta name="dcterms.date" content="2026-08-17">
   <title>Talking in Mathematics</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -137,7 +137,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Talking in <em>Mathematics</em></h1>
+  <h1 class="title"><span style="color:#000;">Talking in</span> <span class="flatly-green" style="font-style:italic;">Mathematics</span></h1>
   <p class="subtitle">Math and Programming Camp Day 1</p>
 
 <div class="quarto-title-authors">
@@ -148,13 +148,15 @@ Parushya
 </div>
 </div>
 
-  <p class="date">2026-08-16</p>
+  <p class="date">2026-08-17</p>
 </section>
 <section id="the-big-questions" class="slide level2 smaller">
 <h2>The Big Question(s)</h2>
+<div class="fragment">
 <p><strong>Does Democracy Cause Growth?</strong></p>
+</div>
 <div class="viz term-cards">
-  <div class="term-head">
+  <div class="term-head fragment">
     <div class="term-head-term">Term</div>
     <div class="term-head-def">Definition</div>
     <div class="term-head-ex">Democracy → growth, cross-section 2020</div>
@@ -229,7 +231,7 @@ Parushya
 }
 .term-cards .term-badge {
   display: inline-block;
-  background: #2b6cb0;
+  background: #18BC9C;
   color: #fff;
   font-weight: 600;
   text-align: center;
@@ -306,7 +308,7 @@ Parushya
 }
 .hyp-cards .hyp-badge {
   display: inline-block;
-  background: #2b6cb0;
+  background: #18BC9C;
   color: #fff;
   font-weight: 600;
   text-align: center;
@@ -327,7 +329,18 @@ Parushya
 <li class="fragment"><strong>Variable:</strong> A concept or measure that takes different values in a given set.</li>
 <li class="fragment"><strong>Constant:</strong> A concept or measure that has a single value for a given set.</li>
 <li class="fragment"><strong>Hypothesis:</strong> a testable statement, derived from a theory, about the expected relationship between concepts or variables.</li>
-<li class="fragment"><strong>Let’s hear some ideas from your research areas!</strong></li>
+<li class="fragment"><span class="flatly-green"><strong>Let’s hear some ideas from your research areas!</strong></span></li>
+</ul>
+</section>
+<section id="todays-agenda" class="slide level2 smaller">
+<h2>Today’s Agenda</h2>
+<ul>
+<li class="fragment"><strong>Sets</strong> — reading a dataset as a set, unions and intersections.</li>
+<li class="fragment"><strong>Essential Math Refresher</strong> — levels of measurement, arithmetic, order of operations, sequences and series.</li>
+<li class="fragment"><strong>Notations</strong> — summation, product, factorial, and modulo notation.</li>
+<li class="fragment"><strong>Functions</strong> — mappings, domain/range/codomain, composition, dimensionality.</li>
+<li class="fragment"><strong>Special Functions and Finding Roots</strong> — exponents, logarithms, roots, solving equations.</li>
+<li class="fragment"><strong>Final Exercise</strong> — a worked example, start to finish.</li>
 </ul>
 </section>
 <section id="sets" class="slide level2">
@@ -336,8 +349,12 @@ Parushya
 </section>
 <section id="democracy-and-growth" class="slide level2 smaller">
 <h2>Democracy and Growth</h2>
-
-<img data-src="01-notation-functions-limits/images/vdem-polyarchy-gdppc-2019.png" class="r-stretch"><p>Polyarchy (our <strong>measure</strong> of democracy) vs.&nbsp;GDP per capita, one dot per country. <span class="math inline">\(n = 174\)</span>.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="01-notation-functions-limits/images/vdem-polyarchy-gdppc-2019.png" class="quarto-figure quarto-figure-center" style="width:60.0%"></p>
+</figure>
+</div>
+<p>Polyarchy (our <strong>measure</strong> of democracy) vs.&nbsp;GDP per capita, one dot per country. <span class="math inline">\(n = 174\)</span>.</p>
 </section>
 <section id="the-same-data-as-sets" class="slide level2 smaller">
 <h2>The Same Data, as Sets</h2>
@@ -457,7 +474,7 @@ Parushya
 }
 .viz-scatter-to-sets .sts-item .sts-badge {
   display: inline-block;
-  background: #2b6cb0;
+  background: #18BC9C;
   color: #fff;
   border-radius: 999px;
   font-size: 0.8em;
@@ -488,7 +505,7 @@ Parushya
 }
 .viz-scatter-to-sets.sts-revealed .sts-dot-hl {
   r: 6;
-  filter: drop-shadow(0 0 4px var(--hlc, #2b6cb0));
+  filter: drop-shadow(0 0 4px var(--hlc, #18BC9C));
 }
 </style>
 
@@ -686,7 +703,7 @@ Parushya
 <div class="viz venn-subset">
 <svg class="viz-plot" viewbox="0 0 300 220" role="img" aria-label="Circle A entirely inside circle B">
   <circle cx="150" cy="115" r="95" fill="#8a8f98"></circle>
-  <circle cx="150" cy="115" r="46" fill="#2b6cb0"></circle>
+  <circle cx="150" cy="115" r="46" fill="#18BC9C"></circle>
   <text x="150" y="26" text-anchor="middle" font-size="20" fill="#22303F">B</text>
   <text x="150" y="120" text-anchor="middle" font-size="20" fill="#fff">A</text>
 </svg>
@@ -698,7 +715,7 @@ Parushya
 <h2><span class="math inline">\(A \cap B\)</span> (Intersection)</h2>
 <div class="viz venn-intersection">
 <svg class="viz-plot" viewbox="0 0 320 200" role="img" aria-label="Two overlapping circles A and B with their intersection highlighted">
-  <circle cx="130" cy="100" r="80" fill="#2b6cb0" fill-opacity="0.6"></circle>
+  <circle cx="130" cy="100" r="80" fill="#18BC9C" fill-opacity="0.6"></circle>
   <circle cx="210" cy="100" r="80" fill="#8a8f98" fill-opacity="0.6"></circle>
   <text x="80" y="35" font-size="20" fill="#22303F">A</text>
   <text x="250" y="35" font-size="20" fill="#22303F">B</text>
@@ -712,8 +729,8 @@ Parushya
 <h2><span class="math inline">\(A \cup B\)</span> (Union)</h2>
 <div class="viz venn-union">
 <svg class="viz-plot" viewbox="0 0 320 220" role="img" aria-label="Two overlapping circles A and B, both fully shaded to represent their union">
-  <circle cx="130" cy="110" r="80" fill="#2b6cb0"></circle>
-  <circle cx="210" cy="110" r="80" fill="#2b6cb0"></circle>
+  <circle cx="130" cy="110" r="80" fill="#18BC9C"></circle>
+  <circle cx="210" cy="110" r="80" fill="#18BC9C"></circle>
   <text x="80" y="35" font-size="20" fill="#22303F">A</text>
   <text x="250" y="35" font-size="20" fill="#22303F">B</text>
   <text x="170" y="18" text-anchor="middle" font-size="16" fill="#22303F">A∪B</text>
@@ -726,7 +743,7 @@ Parushya
 <h2><span class="math inline">\(A \cap B = \emptyset\)</span> (Mutually Exclusive)</h2>
 <div class="viz venn-disjoint">
 <svg class="viz-plot" viewbox="0 0 340 200" role="img" aria-label="Two separate, non-overlapping circles A and B">
-  <circle cx="90" cy="100" r="70" fill="#2b6cb0"></circle>
+  <circle cx="90" cy="100" r="70" fill="#18BC9C"></circle>
   <circle cx="260" cy="100" r="70" fill="#8a8f98"></circle>
   <text x="90" y="35" text-anchor="middle" font-size="20" fill="#22303F">A</text>
   <text x="260" y="35" text-anchor="middle" font-size="20" fill="#22303F">B</text>
@@ -739,8 +756,8 @@ Parushya
 <h2>Essential Math Refresher</h2>
 <p><em>Levels of measurement, arithmetic, notation, and sequences — the toolkit everything else builds on.</em></p>
 </section>
-<section id="levels-of-measurement" class="slide level2 smaller">
-<h2>Levels of Measurement</h2>
+<section id="levels-of-measurement-12" class="slide level2 smaller">
+<h2>Levels of Measurement (1/2)</h2>
 <p>Four levels, each subsuming the ones below it (Moore &amp; Siegel 2013, ch.&nbsp;1):</p>
 <ul>
 <li class="fragment"><strong>Nominal</strong>: differences of <em>kind</em> only — <span class="math inline">\(&lt;, \le, =, \ge, &gt;\)</span> have no meaning.
@@ -751,6 +768,11 @@ Parushya
 <ul>
 <li class="fragment">e.g.&nbsp;self-placed ideology (far left … far right)</li>
 </ul></li>
+</ul>
+</section>
+<section id="levels-of-measurement-22" class="slide level2 smaller">
+<h2>Levels of Measurement (2/2)</h2>
+<ul>
 <li class="fragment"><strong>Interval</strong>: order <em>and</em> a constant distance between values — addition/subtraction are meaningful, but zero isn’t.
 <ul>
 <li class="fragment">e.g.&nbsp;feeling thermometer (0–100; 0 isn’t “no feeling”)</li>
@@ -790,8 +812,8 @@ Parushya
 <li class="fragment">Number of wars a country has participated in — <span class="fragment"><strong>ratio</strong>, discrete: an event count — 0 means none, and 4 is twice 2.</span></li>
 </ul>
 </section>
-<section id="basic-properties-of-arithmetic" class="slide level2 smaller">
-<h2>Basic Properties of Arithmetic</h2>
+<section id="basic-properties-of-arithmetic-12" class="slide level2 smaller">
+<h2>Basic Properties of Arithmetic (1/2)</h2>
 <p>For variables that stand for real numbers or integers, these properties will always hold:</p>
 <ul>
 <li class="fragment"><strong>Associative properties:</strong>
@@ -808,6 +830,11 @@ Parushya
 <ul>
 <li class="fragment"><span class="math inline">\(a \cdot (b+c)=ab+ac\)</span></li>
 </ul></li>
+</ul>
+</section>
+<section id="basic-properties-of-arithmetic-22" class="slide level2 smaller">
+<h2>Basic Properties of Arithmetic (2/2)</h2>
+<ul>
 <li class="fragment"><strong>Identity properties:</strong>
 <ul>
 <li class="fragment"><span class="math inline">\(a+0=a\)</span></li>
@@ -972,8 +999,8 @@ authors for the topic selection and pedagogical structure this draws on.
       <circle cx="60" cy="60" r="4" fill="#22303F"></circle><text x="40" y="55" font-size="12" fill="#22303F">x₁</text>
       <circle cx="60" cy="100" r="4" fill="#22303F"></circle><text x="40" y="105" font-size="12" fill="#22303F">x₂</text>
       <circle cx="60" cy="140" r="4" fill="#22303F"></circle><text x="40" y="145" font-size="12" fill="#22303F">x₃</text>
-      <circle cx="180" cy="80" r="4" fill="#2b6cb0"></circle><text x="192" y="75" font-size="12" fill="#2b6cb0">y₁</text>
-      <circle cx="180" cy="140" r="4" fill="#2b6cb0"></circle><text x="192" y="145" font-size="12" fill="#2b6cb0">y₂</text>
+      <circle cx="180" cy="80" r="4" fill="#18BC9C"></circle><text x="192" y="75" font-size="12" fill="#18BC9C">y₁</text>
+      <circle cx="180" cy="140" r="4" fill="#18BC9C"></circle><text x="192" y="145" font-size="12" fill="#18BC9C">y₂</text>
       <line x1="64" y1="60" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-ok)"></line>
       <line x1="64" y1="100" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-ok)"></line>
       <line x1="64" y1="140" x2="176" y2="140" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-ok)"></line>
@@ -982,18 +1009,18 @@ authors for the topic selection and pedagogical structure this draws on.
   </div>
   <div class="fcm-panel">
     <svg class="viz-plot" viewbox="0 0 240 200" role="img" aria-label="Not a function: one input points to two different outputs">
-      <text x="120" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#B23A48">Not a function</text>
+      <text x="120" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#BC1838">Not a function</text>
       <circle cx="60" cy="60" r="4" fill="#22303F"></circle><text x="40" y="55" font-size="12" fill="#22303F">x₁</text>
       <circle cx="60" cy="100" r="4" fill="#22303F"></circle><text x="40" y="105" font-size="12" fill="#22303F">x₂</text>
       <circle cx="60" cy="140" r="4" fill="#22303F"></circle><text x="40" y="145" font-size="12" fill="#22303F">x₃</text>
-      <circle cx="180" cy="70" r="4" fill="#B23A48"></circle><text x="192" y="65" font-size="12" fill="#B23A48">y₁</text>
-      <circle cx="180" cy="110" r="4" fill="#B23A48"></circle><text x="192" y="115" font-size="12" fill="#B23A48">y₂</text>
-      <circle cx="180" cy="150" r="4" fill="#2b6cb0"></circle><text x="192" y="155" font-size="12" fill="#2b6cb0">y₃</text>
-      <line x1="64" y1="60" x2="176" y2="70" stroke="#B23A48" stroke-width="1.5" marker-end="url(#fcm-arrow-bad)"></line>
-      <line x1="64" y1="60" x2="176" y2="110" stroke="#B23A48" stroke-width="1.5" marker-end="url(#fcm-arrow-bad)"></line>
+      <circle cx="180" cy="70" r="4" fill="#BC1838"></circle><text x="192" y="65" font-size="12" fill="#BC1838">y₁</text>
+      <circle cx="180" cy="110" r="4" fill="#BC1838"></circle><text x="192" y="115" font-size="12" fill="#BC1838">y₂</text>
+      <circle cx="180" cy="150" r="4" fill="#18BC9C"></circle><text x="192" y="155" font-size="12" fill="#18BC9C">y₃</text>
+      <line x1="64" y1="60" x2="176" y2="70" stroke="#BC1838" stroke-width="1.5" marker-end="url(#fcm-arrow-bad)"></line>
+      <line x1="64" y1="60" x2="176" y2="110" stroke="#BC1838" stroke-width="1.5" marker-end="url(#fcm-arrow-bad)"></line>
       <line x1="64" y1="140" x2="176" y2="150" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-bad2)"></line>
       <defs>
-        <marker id="fcm-arrow-bad" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B23A48"></path></marker>
+        <marker id="fcm-arrow-bad" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#BC1838"></path></marker>
         <marker id="fcm-arrow-bad2" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker>
       </defs>
     </svg>
@@ -1107,8 +1134,8 @@ authors for the topic selection and pedagogical structure this draws on.
   <circle cx="380" cy="140" r="100" fill="#EDF0F5" stroke="#D9E0EA" stroke-width="2"></circle>
   <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#22303F">Codomain (B)</text>
 
-  <ellipse cx="362" cy="143" rx="55" ry="72" fill="#2b6cb0" fill-opacity="0.18" stroke="#2b6cb0" stroke-width="2" stroke-dasharray="5,4"></ellipse>
-  <text x="362" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0">Range</text>
+  <ellipse cx="362" cy="143" rx="55" ry="72" fill="#18BC9C" fill-opacity="0.18" stroke="#18BC9C" stroke-width="2" stroke-dasharray="5,4"></ellipse>
+  <text x="362" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#18BC9C">Range</text>
 
   <line x1="98" y1="90" x2="332" y2="90" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#drc-arrow)"></line>
   <line x1="98" y1="140" x2="332" y2="90" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#drc-arrow)"></line>
@@ -1130,12 +1157,12 @@ authors for the topic selection and pedagogical structure this draws on.
   <circle cx="150" cy="140" r="5" fill="#22303F"></circle>
   <text x="156" y="132" font-size="13" fill="#22303F">x₄</text>
 
-  <circle cx="340" cy="90" r="5" fill="#2b6cb0"></circle>
-  <text x="316" y="78" font-size="13" fill="#2b6cb0">y₁</text>
-  <circle cx="340" cy="150" r="5" fill="#2b6cb0"></circle>
-  <text x="316" y="168" font-size="13" fill="#2b6cb0">y₃</text>
-  <circle cx="400" cy="190" r="5" fill="#2b6cb0"></circle>
-  <text x="406" y="210" font-size="13" fill="#2b6cb0">y₄</text>
+  <circle cx="340" cy="90" r="5" fill="#18BC9C"></circle>
+  <text x="316" y="78" font-size="13" fill="#18BC9C">y₁</text>
+  <circle cx="340" cy="150" r="5" fill="#18BC9C"></circle>
+  <text x="316" y="168" font-size="13" fill="#18BC9C">y₃</text>
+  <circle cx="400" cy="190" r="5" fill="#18BC9C"></circle>
+  <text x="406" y="210" font-size="13" fill="#18BC9C">y₄</text>
 
   <circle cx="440" cy="90" r="5" fill="#8a8f98"></circle>
   <text x="446" y="82" font-size="13" fill="#5A6B80">y₂</text>
@@ -1176,9 +1203,9 @@ authors for the topic selection and pedagogical structure this draws on.
       <circle cx="60" cy="60" r="4" fill="#22303F"></circle><text x="40" y="55" font-size="12" fill="#22303F">x₁</text>
       <circle cx="60" cy="100" r="4" fill="#22303F"></circle><text x="40" y="105" font-size="12" fill="#22303F">x₂</text>
       <circle cx="60" cy="140" r="4" fill="#22303F"></circle><text x="40" y="145" font-size="12" fill="#22303F">x₃</text>
-      <circle cx="180" cy="60" r="4" fill="#2b6cb0"></circle><text x="192" y="55" font-size="12" fill="#2b6cb0">y₁</text>
-      <circle cx="180" cy="100" r="4" fill="#2b6cb0"></circle><text x="192" y="105" font-size="12" fill="#2b6cb0">y₂</text>
-      <circle cx="180" cy="140" r="4" fill="#2b6cb0"></circle><text x="192" y="145" font-size="12" fill="#2b6cb0">y₃</text>
+      <circle cx="180" cy="60" r="4" fill="#18BC9C"></circle><text x="192" y="55" font-size="12" fill="#18BC9C">y₁</text>
+      <circle cx="180" cy="100" r="4" fill="#18BC9C"></circle><text x="192" y="105" font-size="12" fill="#18BC9C">y₂</text>
+      <circle cx="180" cy="140" r="4" fill="#18BC9C"></circle><text x="192" y="145" font-size="12" fill="#18BC9C">y₃</text>
       <line x1="64" y1="60" x2="176" y2="60" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#oto-arrow)"></line>
       <line x1="64" y1="100" x2="176" y2="100" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#oto-arrow)"></line>
       <line x1="64" y1="140" x2="176" y2="140" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#oto-arrow)"></line>
@@ -1191,8 +1218,8 @@ authors for the topic selection and pedagogical structure this draws on.
       <circle cx="60" cy="60" r="4" fill="#22303F"></circle><text x="40" y="55" font-size="12" fill="#22303F">x₁</text>
       <circle cx="60" cy="100" r="4" fill="#22303F"></circle><text x="40" y="105" font-size="12" fill="#22303F">x₂</text>
       <circle cx="60" cy="140" r="4" fill="#22303F"></circle><text x="40" y="145" font-size="12" fill="#22303F">x₃</text>
-      <circle cx="180" cy="80" r="4" fill="#2b6cb0"></circle><text x="192" y="75" font-size="12" fill="#2b6cb0">y₁</text>
-      <circle cx="180" cy="140" r="4" fill="#2b6cb0"></circle><text x="192" y="145" font-size="12" fill="#2b6cb0">y₂</text>
+      <circle cx="180" cy="80" r="4" fill="#18BC9C"></circle><text x="192" y="75" font-size="12" fill="#18BC9C">y₁</text>
+      <circle cx="180" cy="140" r="4" fill="#18BC9C"></circle><text x="192" y="145" font-size="12" fill="#18BC9C">y₂</text>
       <line x1="64" y1="60" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#mto-arrow)"></line>
       <line x1="64" y1="100" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#mto-arrow)"></line>
       <line x1="64" y1="140" x2="176" y2="140" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#mto-arrow)"></line>
@@ -1235,8 +1262,8 @@ authors for the topic selection and pedagogical structure this draws on.
       <line x1="100" y1="86" x2="100" y2="94" stroke="#5A6B80" stroke-width="1.25"></line>
       <line x1="150" y1="86" x2="150" y2="94" stroke="#5A6B80" stroke-width="1.25"></line>
       <text x="100" y="112" text-anchor="middle" font-size="12" fill="#5A6B80">0</text>
-      <circle cx="145" cy="90" r="5" fill="#2b6cb0"></circle>
-      <text x="145" y="72" text-anchor="middle" font-size="13" fill="#2b6cb0">(3)</text>
+      <circle cx="145" cy="90" r="5" fill="#18BC9C"></circle>
+      <text x="145" y="72" text-anchor="middle" font-size="13" fill="#18BC9C">(3)</text>
       <defs>
         <marker id="dim-arrow-1a" markerwidth="8" markerheight="8" refx="2" refy="3" orient="auto"><path d="M6,0 L0,3 L6,6 Z" fill="#5A6B80"></path></marker>
         <marker id="dim-arrow-1b" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker>
@@ -1253,8 +1280,8 @@ authors for the topic selection and pedagogical structure this draws on.
       <text x="90" y="134" font-size="12" fill="#5A6B80">0</text>
       <line x1="55" y1="50" x2="55" y2="120" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"></line>
       <line x1="55" y1="50" x2="100" y2="50" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"></line>
-      <circle cx="55" cy="50" r="5" fill="#2b6cb0"></circle>
-      <text x="30" y="42" font-size="13" fill="#2b6cb0">(-15, 5)</text>
+      <circle cx="55" cy="50" r="5" fill="#18BC9C"></circle>
+      <text x="30" y="42" font-size="13" fill="#18BC9C">(-15, 5)</text>
       <defs>
         <marker id="dim-arrow-2a" markerwidth="8" markerheight="8" refx="2" refy="3" orient="auto"><path d="M6,0 L0,3 L6,6 Z" fill="#5A6B80"></path></marker>
         <marker id="dim-arrow-2b" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker>
@@ -1274,8 +1301,8 @@ authors for the topic selection and pedagogical structure this draws on.
       <line x1="121" y1="95" x2="148" y2="74" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"></line>
       <line x1="148" y1="74" x2="148" y2="140" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"></line>
       <line x1="148" y1="74" x2="70" y2="74" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"></line>
-      <circle cx="121" cy="95" r="5" fill="#2b6cb0"></circle>
-      <text x="128" y="88" font-size="13" fill="#2b6cb0">(x, y, z)</text>
+      <circle cx="121" cy="95" r="5" fill="#18BC9C"></circle>
+      <text x="128" y="88" font-size="13" fill="#18BC9C">(x, y, z)</text>
       <defs>
         <marker id="dim-arrow-3" markerwidth="8" markerheight="8" refx="6" refy="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"></path></marker>
       </defs>
@@ -1489,6 +1516,243 @@ authors for the topic selection and pedagogical structure this draws on.
 <li class="fragment">Does it approach some limiting value?</li>
 </ul>
 </section>
+<section id="quick-reference-symbols-and-notation-12" class="slide level2 smaller">
+<h2>Quick Reference: Symbols and Notation (1/2)</h2>
+<div style="font-size: 0.5em; color: #5A6B80; margin-bottom: 0.3em;">
+<p>Table 1.2, Moore &amp; Siegel (2013), <em>A Mathematics Course for Political and Social Research</em>, ch.&nbsp;1.</p>
+</div>
+<div class="notation-reveal">
+<div class="notation-col">
+
+<table class="caption-top">
+<thead>
+<tr class="fragment fade-in header" data-fragment-index="1">
+<th data-quarto-table-cell-role="th">Symbol</th>
+<th class="meaning-head fragment fade-in" data-quarto-table-cell-role="th" data-fragment-index="3">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">+</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Addition</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">−</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Subtraction</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∗, ×, ·</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Multiplication</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">/, ÷</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Division</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1">±</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Plus or minus</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">xⁿ</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Exponentiation (“to the nth power”)</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">ⁿ√x</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Radical or nth root</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">!</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Factorial</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∞</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Infinity</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">Σ</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Sum of xᵢ from i = k to i = l</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">Π</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Product of xᵢ from i = k to i = l</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div class="notation-col">
+
+<table class="caption-top">
+<thead>
+<tr class="fragment fade-in header" data-fragment-index="1">
+<th data-quarto-table-cell-role="th">Symbol</th>
+<th class="meaning-head fragment fade-in" data-quarto-table-cell-role="th" data-fragment-index="3">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">…</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Continued progression</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1">d⁄dx</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Total derivative with respect to x</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1">∂⁄∂x</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Partial derivative with respect to x</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1">∫dx</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Integral over x</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∪</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Set union</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∩</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Set intersection</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">×</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Cartesian product of sets</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1">∖</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Set difference</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1">Aᶜ</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Complement of set A</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∅</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Empty (or null) set</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
+<section id="quick-reference-symbols-and-notation-22" class="slide level2 smaller">
+<h2>Quick Reference: Symbols and Notation (2/2)</h2>
+<div class="notation-reveal">
+<div class="notation-col">
+
+<table class="caption-top">
+<thead>
+<tr class="fragment fade-in header" data-fragment-index="1">
+<th data-quarto-table-cell-role="th">Symbol</th>
+<th class="meaning-head fragment fade-in" data-quarto-table-cell-role="th" data-fragment-index="3">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∈</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Set membership</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1">∉</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Not member of set</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∣, :, ∋</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Such that</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">⊂</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Proper subset</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">⊆</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Subset</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">&lt;</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Less than</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">≤</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Less than or equal to</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">=</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Equal to</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">&gt;</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Greater than</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">≥</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Greater than or equal to</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1">≠</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Not equal to</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<div class="notation-col">
+
+<table class="caption-top">
+<thead>
+<tr class="fragment fade-in header" data-fragment-index="1">
+<th data-quarto-table-cell-role="th">Symbol</th>
+<th class="meaning-head fragment fade-in" data-quarto-table-cell-role="th" data-fragment-index="3">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1">≡</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Equivalent to or defined as</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">f(), f(·)</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Function</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">{ }</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Delimiter for discrete set</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">( )</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Delimiter for open set</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">[ ]</span></td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Delimiter for closed set</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1">∀</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">For all (or for every/each)</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1">∃</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">There exists</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1">⇒</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Implies</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1">⇔</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">If and only if</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1">¬C, ∼C</td>
+<td class="meaning-cell fragment fade-in" data-fragment-index="3">Negation (not C)</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</section>
 <section id="solving-for-a-variable" class="slide level2 smaller">
 <h2>Solving for a Variable</h2>
 <ul>
@@ -1553,12 +1817,21 @@ authors for the topic selection and pedagogical structure this draws on.
 <li class="fragment">We’ll see both claims happen on a graph, then prove them algebraically, step by step.</li>
 </ul>
 </section>
-<section id="watch-it-happen-the-residuals" class="slide level2 smaller">
-<h2>Watch It Happen — The Residuals</h2>
-<p>Drag the point <span class="math inline">\(c\)</span> along the eight polyarchy values and watch <span class="math inline">\(\Sigma(x_i - c)\)</span> in the readout.</p>
-<div class="viz join-minimize jm-part-residuals">
-  <div class="jm-numberline-wrap">
-    <svg class="jm-numberline" viewbox="0 0 640 210" role="img" aria-label="Eight polyarchy values on a number line, a draggable point c, and its signed residual to each value"></svg>
+<section id="watch-it-happen-residuals-minimizing-sc" class="slide level2 smaller">
+<h2>Watch It Happen — Residuals &amp; Minimizing <span class="math inline">\(S(c)\)</span></h2>
+<p>Drag the point <span class="math inline">\(c\)</span> along the eight polyarchy values: watch <span class="math inline">\(\Sigma(x_i - c)\)</span> on the left and <span class="math inline">\(S(c) = \Sigma(x_i - c)^2\)</span> trace out a curve on the right.</p>
+<div class="viz join-minimize jm-part-residuals jm-part-curve">
+  <div class="jm-columns">
+    <div class="jm-col">
+      <div class="jm-numberline-wrap">
+        <svg class="jm-numberline" viewbox="0 0 640 210" role="img" aria-label="Eight polyarchy values on a number line, a draggable point c, and its signed residual to each value"></svg>
+      </div>
+    </div>
+    <div class="jm-col">
+      <div class="jm-curve-wrap">
+        <svg class="jm-curve" viewbox="0 0 640 190" role="img" aria-label="Parabola of S(c) versus c, with a marker at the current c and a dashed line at x-bar"></svg>
+      </div>
+    </div>
   </div>
 
   <div class="jm-controls">
@@ -1581,33 +1854,35 @@ authors for the topic selection and pedagogical structure this draws on.
     </div>
   </div>
 
-  <div class="jm-hint">Drag the blue point on the number line, or use the slider.</div>
+  <div class="jm-hint">Drag the green point on the number line, or use the slider — both graphs move together.</div>
 </div>
 
 <style>
-.viz.join-minimize { max-width: 640px; margin: 0 auto; font-size: 0.5em; }
+.viz.join-minimize { max-width: 900px; margin: 0 auto; font-size: 0.5em; }
+.join-minimize .jm-columns { display: flex; gap: 24px; align-items: flex-start; }
+.join-minimize .jm-col { flex: 1 1 50%; min-width: 0; }
 .join-minimize .jm-numberline-wrap,
 .join-minimize .jm-curve-wrap { width: 100%; }
 .join-minimize svg { width: 100%; height: auto; display: block; }
 .join-minimize .jm-axis { stroke: #D9E0EA; stroke-width: 1.5; }
 .join-minimize .jm-tick { font-size: 11px; fill: #5A6B80; }
 .join-minimize .jm-point { fill: #8a8f98; }
-.join-minimize .jm-marker-line { stroke: #2b6cb0; stroke-width: 2; }
-.join-minimize .jm-marker { fill: #2b6cb0; cursor: grab; touch-action: none; }
+.join-minimize .jm-marker-line { stroke: #18BC9C; stroke-width: 2; }
+.join-minimize .jm-marker { fill: #18BC9C; cursor: grab; touch-action: none; }
 .join-minimize .jm-marker:active { cursor: grabbing; }
-.join-minimize .jm-bar-pos { stroke: #2b6cb0; stroke-width: 5; }
-.join-minimize .jm-bar-neg { stroke: #e53e3e; stroke-width: 5; }
+.join-minimize .jm-bar-pos { stroke: #18BC9C; stroke-width: 5; }
+.join-minimize .jm-bar-neg { stroke: #BC1838; stroke-width: 5; }
 .join-minimize .jm-bar-zero { stroke: #8a8f98; stroke-width: 5; }
 
 .join-minimize .jm-controls {
   display: flex; align-items: center; gap: 14px; justify-content: center; margin: 10px 0;
 }
-.join-minimize .jm-slider { flex: 1 1 auto; max-width: 360px; }
+.join-minimize .jm-slider { flex: 1 1 auto; max-width: 360px; accent-color: #18BC9C; }
 .join-minimize .jm-snap {
-  font-size: 0.9em; padding: 5px 12px; border-radius: 999px; border: 1px solid #2b6cb0;
-  background: #fff; color: #2b6cb0; cursor: pointer;
+  font-size: 0.9em; padding: 5px 12px; border-radius: 999px; border: 1px solid #18BC9C;
+  background: #fff; color: #18BC9C; cursor: pointer;
 }
-.join-minimize .jm-snap:hover { background: #2b6cb0; color: #fff; }
+.join-minimize .jm-snap:hover { background: #18BC9C; color: #fff; }
 
 .join-minimize .jm-readout {
   display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 8px;
@@ -1620,11 +1895,11 @@ authors for the topic selection and pedagogical structure this draws on.
 .join-minimize .jm-readout-label { display: block; font-size: 0.85em; color: #5A6B80; }
 .join-minimize .jm-readout-value { display: block; font-size: 1.2em; font-weight: 700; color: #22303F; }
 
-.join-minimize.jm-at-min .jm-readout-item { background: #EAF6EF; border-color: #38a169; }
-.join-minimize.jm-at-min .jm-readout-value { color: #2f855a; }
+.join-minimize.jm-at-min .jm-readout-item { background: #FBE9ED; border-color: #BC1838; }
+.join-minimize.jm-at-min .jm-readout-value { color: #BC1838; }
 
-.join-minimize .jm-curve-line { fill: none; stroke: #2b6cb0; stroke-width: 2.5; }
-.join-minimize .jm-curve-dot { fill: #2b6cb0; stroke: #fff; stroke-width: 1.5; }
+.join-minimize .jm-curve-line { fill: none; stroke: #18BC9C; stroke-width: 2.5; }
+.join-minimize .jm-curve-dot { fill: #18BC9C; stroke: #fff; stroke-width: 1.5; }
 .join-minimize .jm-xbar-line { stroke: #8a8f98; stroke-width: 1.5; stroke-dasharray: 4,4; }
 .join-minimize .jm-xbar-label { font-size: 11px; fill: #5A6B80; }
 
@@ -1632,21 +1907,6 @@ authors for the topic selection and pedagogical structure this draws on.
   text-align: center; font-size: 0.85em; color: #5A6B80; font-style: italic; margin-top: 4px;
 }
 </style>
-<ul>
-<li class="fragment"><span class="math inline">\(\Sigma(x_i - c)\)</span> is a straight line in <span class="math inline">\(c\)</span> — it crosses zero exactly once.</li>
-<li class="fragment">Watch the readout: it hits <span class="math inline">\(0.000\)</span> right when <span class="math inline">\(c = \bar x\)</span>.</li>
-</ul>
-</section>
-<section id="watch-it-happen-minimizing-sc" class="slide level2 smaller">
-<h2>Watch It Happen — Minimizing <span class="math inline">\(S(c)\)</span></h2>
-<p>Same drag, same <span class="math inline">\(c\)</span> — now watch <span class="math inline">\(S(c) = \Sigma(x_i - c)^2\)</span> trace out a curve.</p>
-<div class="viz join-minimize jm-part-curve">
-  <div class="jm-curve-wrap">
-    <svg class="jm-curve" viewbox="0 0 640 190" role="img" aria-label="Parabola of S(c) versus c, with a marker at the current c and a dashed line at x-bar"></svg>
-  </div>
-
-  <div class="jm-hint">Keep dragging on the previous slide — the dot here moves with it.</div>
-</div>
 
 <script>
 (function () {
@@ -1942,8 +2202,8 @@ authors for the topic selection and pedagogical structure this draws on.
 </section>
 <section id="section" class="slide level2 center">
 <h2></h2>
-<p><strong>Programming lecture:</strong> <a href="../chapters/01-notation-functions-limits/programming.html">webpage chapter</a></p>
-<p><strong>Back to:</strong> <a href="../index.html">MathCamp 2026 website</a></p>
+<p><strong>Programming lecture:</strong> <a href="../chapters/01-notation-functions-limits/programming.html">Webpage Chapter</a></p>
+<p><strong>Back to:</strong> <a href="../index.html">Math Camp 2026 website</a></p>
 
 </section>
     </div>
