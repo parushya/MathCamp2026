@@ -1,6 +1,6 @@
-# MathCamp 2026
+# Math Camp 2026
 
-Math camp for the incoming Political Science PhD cohort at Pol Sci.
+Math camp for the incoming Government PhD cohort.
 
 **Instructors:**  Rong Qin, Parushya
 

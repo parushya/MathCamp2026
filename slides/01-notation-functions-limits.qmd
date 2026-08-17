@@ -1,5 +1,5 @@
 ---
-title: Talking in *Mathematics*
+title: '<span style="color:#000;">Talking in</span> <span class="flatly-green" style="font-style:italic;">Mathematics</span>'
 subtitle: "Math and Programming Camp Day 1"
 author: Parushya
 date: today
@@ -8,16 +8,14 @@ date: today
 ## The Big Question(s) {.smaller}
 
 
-::: {.incremental}
-
+::: {.fragment}
 **Does Democracy Cause Growth?**
-
 :::
 
 
 ```{=html}
 <div class="viz term-cards">
-  <div class="term-head">
+  <div class="term-head fragment">
     <div class="term-head-term">Term</div>
     <div class="term-head-def">Definition</div>
     <div class="term-head-ex">Democracy → growth, cross-section 2020</div>
@@ -92,7 +90,7 @@ date: today
 }
 .term-cards .term-badge {
   display: inline-block;
-  background: #2b6cb0;
+  background: #18BC9C;
   color: #fff;
   font-weight: 600;
   text-align: center;
@@ -172,7 +170,7 @@ date: today
 }
 .hyp-cards .hyp-badge {
   display: inline-block;
-  background: #2b6cb0;
+  background: #18BC9C;
   color: #fff;
   font-weight: 600;
   text-align: center;
@@ -194,7 +192,18 @@ date: today
 -   **Variable:** A concept or measure that takes different values in a given set.
 -   **Constant:** A concept or measure that has a single value for a given set.
 -   **Hypothesis:** a testable statement, derived from a theory, about the expected relationship between concepts or variables.
--   **Let's hear some ideas from your research areas!**
+-   [**Let's hear some ideas from your research areas!**]{.flatly-green}
+:::
+
+## Today's Agenda {.smaller}
+
+::: {.incremental}
+-   **Sets** — reading a dataset as a set, unions and intersections.
+-   **Essential Math Refresher** — levels of measurement, arithmetic, order of operations, sequences and series.
+-   **Notations** — summation, product, factorial, and modulo notation.
+-   **Functions** — mappings, domain/range/codomain, composition, dimensionality.
+-   **Special Functions and Finding Roots** — exponents, logarithms, roots, solving equations.
+-   **Final Exercise** — a worked example, start to finish.
 :::
 
 ## Sets
@@ -205,7 +214,7 @@ date: today
 
 
 
-![](01-notation-functions-limits/images/vdem-polyarchy-gdppc-2019.png)
+![](01-notation-functions-limits/images/vdem-polyarchy-gdppc-2019.png){width="60%" fig-align="center" .nostretch}
 
 Polyarchy (our **measure** of democracy) vs. GDP per capita, one dot per country. $n = 174$.
 
@@ -328,7 +337,7 @@ Polyarchy (our **measure** of democracy) vs. GDP per capita, one dot per country
 }
 .viz-scatter-to-sets .sts-item .sts-badge {
   display: inline-block;
-  background: #2b6cb0;
+  background: #18BC9C;
   color: #fff;
   border-radius: 999px;
   font-size: 0.8em;
@@ -359,7 +368,7 @@ Polyarchy (our **measure** of democracy) vs. GDP per capita, one dot per country
 }
 .viz-scatter-to-sets.sts-revealed .sts-dot-hl {
   r: 6;
-  filter: drop-shadow(0 0 4px var(--hlc, #2b6cb0));
+  filter: drop-shadow(0 0 4px var(--hlc, #18BC9C));
 }
 </style>
 
@@ -560,7 +569,7 @@ Polyarchy (our **measure** of democracy) vs. GDP per capita, one dot per country
 <div class="viz venn-subset">
 <svg class="viz-plot" viewBox="0 0 300 220" role="img" aria-label="Circle A entirely inside circle B">
   <circle cx="150" cy="115" r="95" fill="#8a8f98"/>
-  <circle cx="150" cy="115" r="46" fill="#2b6cb0"/>
+  <circle cx="150" cy="115" r="46" fill="#18BC9C"/>
   <text x="150" y="26" text-anchor="middle" font-size="20" fill="#22303F">B</text>
   <text x="150" y="120" text-anchor="middle" font-size="20" fill="#fff">A</text>
 </svg>
@@ -579,7 +588,7 @@ Polyarchy (our **measure** of democracy) vs. GDP per capita, one dot per country
 ```{=html}
 <div class="viz venn-intersection">
 <svg class="viz-plot" viewBox="0 0 320 200" role="img" aria-label="Two overlapping circles A and B with their intersection highlighted">
-  <circle cx="130" cy="100" r="80" fill="#2b6cb0" fill-opacity="0.6"/>
+  <circle cx="130" cy="100" r="80" fill="#18BC9C" fill-opacity="0.6"/>
   <circle cx="210" cy="100" r="80" fill="#8a8f98" fill-opacity="0.6"/>
   <text x="80" y="35" font-size="20" fill="#22303F">A</text>
   <text x="250" y="35" font-size="20" fill="#22303F">B</text>
@@ -600,8 +609,8 @@ Polyarchy (our **measure** of democracy) vs. GDP per capita, one dot per country
 ```{=html}
 <div class="viz venn-union">
 <svg class="viz-plot" viewBox="0 0 320 220" role="img" aria-label="Two overlapping circles A and B, both fully shaded to represent their union">
-  <circle cx="130" cy="110" r="80" fill="#2b6cb0"/>
-  <circle cx="210" cy="110" r="80" fill="#2b6cb0"/>
+  <circle cx="130" cy="110" r="80" fill="#18BC9C"/>
+  <circle cx="210" cy="110" r="80" fill="#18BC9C"/>
   <text x="80" y="35" font-size="20" fill="#22303F">A</text>
   <text x="250" y="35" font-size="20" fill="#22303F">B</text>
   <text x="170" y="18" text-anchor="middle" font-size="16" fill="#22303F">A∪B</text>
@@ -621,7 +630,7 @@ Polyarchy (our **measure** of democracy) vs. GDP per capita, one dot per country
 ```{=html}
 <div class="viz venn-disjoint">
 <svg class="viz-plot" viewBox="0 0 340 200" role="img" aria-label="Two separate, non-overlapping circles A and B">
-  <circle cx="90" cy="100" r="70" fill="#2b6cb0"/>
+  <circle cx="90" cy="100" r="70" fill="#18BC9C"/>
   <circle cx="260" cy="100" r="70" fill="#8a8f98"/>
   <text x="90" y="35" text-anchor="middle" font-size="20" fill="#22303F">A</text>
   <text x="260" y="35" text-anchor="middle" font-size="20" fill="#22303F">B</text>
@@ -639,7 +648,7 @@ Polyarchy (our **measure** of democracy) vs. GDP per capita, one dot per country
 
 *Levels of measurement, arithmetic, notation, and sequences — the toolkit everything else builds on.*
 
-## Levels of Measurement {.smaller}
+## Levels of Measurement (1/2) {.smaller}
 
 Four levels, each subsuming the ones below it (Moore & Siegel 2013, ch. 1):
 
@@ -648,6 +657,11 @@ Four levels, each subsuming the ones below it (Moore & Siegel 2013, ch. 1):
     -   e.g. gender, party affiliation
 -   **Ordinal**: differences of *degree*, with meaningful order ($<, \le, =, \ge, >$ apply) — but distance between values isn't constant, so addition/subtraction don't make sense.
     -   e.g. self-placed ideology (far left … far right)
+:::
+
+## Levels of Measurement (2/2) {.smaller}
+
+::: {.incremental}
 -   **Interval**: order *and* a constant distance between values — addition/subtraction are meaningful, but zero isn't.
     -   e.g. feeling thermometer (0–100; 0 isn't "no feeling")
 -   **Ratio**: interval, plus a meaningful zero — multiplication/division (ratios) are also meaningful.
@@ -680,7 +694,7 @@ What level of measurement is each? Click to check.
 -   Number of wars a country has participated in — [**ratio**, discrete: an event count — 0 means none, and 4 is twice 2.]{.fragment}
 :::
 
-## Basic Properties of Arithmetic {.smaller}
+## Basic Properties of Arithmetic (1/2) {.smaller}
 
 For variables that stand for real numbers or integers, these properties will always hold:
 
@@ -693,6 +707,11 @@ For variables that stand for real numbers or integers, these properties will alw
     -   $a \cdot b = b \cdot a$
 -   **Distributive properties:**
     -   $a \cdot (b+c)=ab+ac$
+:::
+
+## Basic Properties of Arithmetic (2/2) {.smaller}
+
+::: {.incremental}
 -   **Identity properties:**
     -   $a+0=a$
     -   $a \cdot 1 = a$
@@ -849,8 +868,8 @@ Work these out, then click to check.
       <circle cx="60" cy="60" r="4" fill="#22303F"/><text x="40" y="55" font-size="12" fill="#22303F">x&#8321;</text>
       <circle cx="60" cy="100" r="4" fill="#22303F"/><text x="40" y="105" font-size="12" fill="#22303F">x&#8322;</text>
       <circle cx="60" cy="140" r="4" fill="#22303F"/><text x="40" y="145" font-size="12" fill="#22303F">x&#8323;</text>
-      <circle cx="180" cy="80" r="4" fill="#2b6cb0"/><text x="192" y="75" font-size="12" fill="#2b6cb0">y&#8321;</text>
-      <circle cx="180" cy="140" r="4" fill="#2b6cb0"/><text x="192" y="145" font-size="12" fill="#2b6cb0">y&#8322;</text>
+      <circle cx="180" cy="80" r="4" fill="#18BC9C"/><text x="192" y="75" font-size="12" fill="#18BC9C">y&#8321;</text>
+      <circle cx="180" cy="140" r="4" fill="#18BC9C"/><text x="192" y="145" font-size="12" fill="#18BC9C">y&#8322;</text>
       <line x1="64" y1="60" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-ok)"/>
       <line x1="64" y1="100" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-ok)"/>
       <line x1="64" y1="140" x2="176" y2="140" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-ok)"/>
@@ -859,18 +878,18 @@ Work these out, then click to check.
   </div>
   <div class="fcm-panel">
     <svg class="viz-plot" viewBox="0 0 240 200" role="img" aria-label="Not a function: one input points to two different outputs">
-      <text x="120" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#B23A48">Not a function</text>
+      <text x="120" y="20" text-anchor="middle" font-size="14" font-weight="700" fill="#BC1838">Not a function</text>
       <circle cx="60" cy="60" r="4" fill="#22303F"/><text x="40" y="55" font-size="12" fill="#22303F">x&#8321;</text>
       <circle cx="60" cy="100" r="4" fill="#22303F"/><text x="40" y="105" font-size="12" fill="#22303F">x&#8322;</text>
       <circle cx="60" cy="140" r="4" fill="#22303F"/><text x="40" y="145" font-size="12" fill="#22303F">x&#8323;</text>
-      <circle cx="180" cy="70" r="4" fill="#B23A48"/><text x="192" y="65" font-size="12" fill="#B23A48">y&#8321;</text>
-      <circle cx="180" cy="110" r="4" fill="#B23A48"/><text x="192" y="115" font-size="12" fill="#B23A48">y&#8322;</text>
-      <circle cx="180" cy="150" r="4" fill="#2b6cb0"/><text x="192" y="155" font-size="12" fill="#2b6cb0">y&#8323;</text>
-      <line x1="64" y1="60" x2="176" y2="70" stroke="#B23A48" stroke-width="1.5" marker-end="url(#fcm-arrow-bad)"/>
-      <line x1="64" y1="60" x2="176" y2="110" stroke="#B23A48" stroke-width="1.5" marker-end="url(#fcm-arrow-bad)"/>
+      <circle cx="180" cy="70" r="4" fill="#BC1838"/><text x="192" y="65" font-size="12" fill="#BC1838">y&#8321;</text>
+      <circle cx="180" cy="110" r="4" fill="#BC1838"/><text x="192" y="115" font-size="12" fill="#BC1838">y&#8322;</text>
+      <circle cx="180" cy="150" r="4" fill="#18BC9C"/><text x="192" y="155" font-size="12" fill="#18BC9C">y&#8323;</text>
+      <line x1="64" y1="60" x2="176" y2="70" stroke="#BC1838" stroke-width="1.5" marker-end="url(#fcm-arrow-bad)"/>
+      <line x1="64" y1="60" x2="176" y2="110" stroke="#BC1838" stroke-width="1.5" marker-end="url(#fcm-arrow-bad)"/>
       <line x1="64" y1="140" x2="176" y2="150" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#fcm-arrow-bad2)"/>
       <defs>
-        <marker id="fcm-arrow-bad" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#B23A48"/></marker>
+        <marker id="fcm-arrow-bad" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#BC1838"/></marker>
         <marker id="fcm-arrow-bad2" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"/></marker>
       </defs>
     </svg>
@@ -931,8 +950,8 @@ In which of these graphs can we observe a function?
   <circle cx="380" cy="140" r="100" fill="#EDF0F5" stroke="#D9E0EA" stroke-width="2"/>
   <text x="380" y="28" text-anchor="middle" font-size="16" font-weight="700" fill="#22303F">Codomain (B)</text>
 
-  <ellipse cx="362" cy="143" rx="55" ry="72" fill="#2b6cb0" fill-opacity="0.18" stroke="#2b6cb0" stroke-width="2" stroke-dasharray="5,4"/>
-  <text x="362" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#2b6cb0">Range</text>
+  <ellipse cx="362" cy="143" rx="55" ry="72" fill="#18BC9C" fill-opacity="0.18" stroke="#18BC9C" stroke-width="2" stroke-dasharray="5,4"/>
+  <text x="362" y="235" text-anchor="middle" font-size="14" font-weight="700" fill="#18BC9C">Range</text>
 
   <line x1="98" y1="90" x2="332" y2="90" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#drc-arrow)"/>
   <line x1="98" y1="140" x2="332" y2="90" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#drc-arrow)"/>
@@ -954,12 +973,12 @@ In which of these graphs can we observe a function?
   <circle cx="150" cy="140" r="5" fill="#22303F"/>
   <text x="156" y="132" font-size="13" fill="#22303F">x₄</text>
 
-  <circle cx="340" cy="90" r="5" fill="#2b6cb0"/>
-  <text x="316" y="78" font-size="13" fill="#2b6cb0">y₁</text>
-  <circle cx="340" cy="150" r="5" fill="#2b6cb0"/>
-  <text x="316" y="168" font-size="13" fill="#2b6cb0">y₃</text>
-  <circle cx="400" cy="190" r="5" fill="#2b6cb0"/>
-  <text x="406" y="210" font-size="13" fill="#2b6cb0">y₄</text>
+  <circle cx="340" cy="90" r="5" fill="#18BC9C"/>
+  <text x="316" y="78" font-size="13" fill="#18BC9C">y₁</text>
+  <circle cx="340" cy="150" r="5" fill="#18BC9C"/>
+  <text x="316" y="168" font-size="13" fill="#18BC9C">y₃</text>
+  <circle cx="400" cy="190" r="5" fill="#18BC9C"/>
+  <text x="406" y="210" font-size="13" fill="#18BC9C">y₄</text>
 
   <circle cx="440" cy="90" r="5" fill="#8a8f98"/>
   <text x="446" y="82" font-size="13" fill="#5A6B80">y₂</text>
@@ -1003,9 +1022,9 @@ In which of these graphs can we observe a function?
       <circle cx="60" cy="60" r="4" fill="#22303F"/><text x="40" y="55" font-size="12" fill="#22303F">x&#8321;</text>
       <circle cx="60" cy="100" r="4" fill="#22303F"/><text x="40" y="105" font-size="12" fill="#22303F">x&#8322;</text>
       <circle cx="60" cy="140" r="4" fill="#22303F"/><text x="40" y="145" font-size="12" fill="#22303F">x&#8323;</text>
-      <circle cx="180" cy="60" r="4" fill="#2b6cb0"/><text x="192" y="55" font-size="12" fill="#2b6cb0">y&#8321;</text>
-      <circle cx="180" cy="100" r="4" fill="#2b6cb0"/><text x="192" y="105" font-size="12" fill="#2b6cb0">y&#8322;</text>
-      <circle cx="180" cy="140" r="4" fill="#2b6cb0"/><text x="192" y="145" font-size="12" fill="#2b6cb0">y&#8323;</text>
+      <circle cx="180" cy="60" r="4" fill="#18BC9C"/><text x="192" y="55" font-size="12" fill="#18BC9C">y&#8321;</text>
+      <circle cx="180" cy="100" r="4" fill="#18BC9C"/><text x="192" y="105" font-size="12" fill="#18BC9C">y&#8322;</text>
+      <circle cx="180" cy="140" r="4" fill="#18BC9C"/><text x="192" y="145" font-size="12" fill="#18BC9C">y&#8323;</text>
       <line x1="64" y1="60" x2="176" y2="60" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#oto-arrow)"/>
       <line x1="64" y1="100" x2="176" y2="100" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#oto-arrow)"/>
       <line x1="64" y1="140" x2="176" y2="140" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#oto-arrow)"/>
@@ -1018,8 +1037,8 @@ In which of these graphs can we observe a function?
       <circle cx="60" cy="60" r="4" fill="#22303F"/><text x="40" y="55" font-size="12" fill="#22303F">x&#8321;</text>
       <circle cx="60" cy="100" r="4" fill="#22303F"/><text x="40" y="105" font-size="12" fill="#22303F">x&#8322;</text>
       <circle cx="60" cy="140" r="4" fill="#22303F"/><text x="40" y="145" font-size="12" fill="#22303F">x&#8323;</text>
-      <circle cx="180" cy="80" r="4" fill="#2b6cb0"/><text x="192" y="75" font-size="12" fill="#2b6cb0">y&#8321;</text>
-      <circle cx="180" cy="140" r="4" fill="#2b6cb0"/><text x="192" y="145" font-size="12" fill="#2b6cb0">y&#8322;</text>
+      <circle cx="180" cy="80" r="4" fill="#18BC9C"/><text x="192" y="75" font-size="12" fill="#18BC9C">y&#8321;</text>
+      <circle cx="180" cy="140" r="4" fill="#18BC9C"/><text x="192" y="145" font-size="12" fill="#18BC9C">y&#8322;</text>
       <line x1="64" y1="60" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#mto-arrow)"/>
       <line x1="64" y1="100" x2="176" y2="80" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#mto-arrow)"/>
       <line x1="64" y1="140" x2="176" y2="140" stroke="#5A6B80" stroke-width="1.5" marker-end="url(#mto-arrow)"/>
@@ -1066,8 +1085,8 @@ $\mathbb{R}^n$ is just the **Cartesian product** of $\mathbb{R}$ with itself, $n
       <line x1="100" y1="86" x2="100" y2="94" stroke="#5A6B80" stroke-width="1.25"/>
       <line x1="150" y1="86" x2="150" y2="94" stroke="#5A6B80" stroke-width="1.25"/>
       <text x="100" y="112" text-anchor="middle" font-size="12" fill="#5A6B80">0</text>
-      <circle cx="145" cy="90" r="5" fill="#2b6cb0"/>
-      <text x="145" y="72" text-anchor="middle" font-size="13" fill="#2b6cb0">(3)</text>
+      <circle cx="145" cy="90" r="5" fill="#18BC9C"/>
+      <text x="145" y="72" text-anchor="middle" font-size="13" fill="#18BC9C">(3)</text>
       <defs>
         <marker id="dim-arrow-1a" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto"><path d="M6,0 L0,3 L6,6 Z" fill="#5A6B80"/></marker>
         <marker id="dim-arrow-1b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"/></marker>
@@ -1084,8 +1103,8 @@ $\mathbb{R}^n$ is just the **Cartesian product** of $\mathbb{R}$ with itself, $n
       <text x="90" y="134" font-size="12" fill="#5A6B80">0</text>
       <line x1="55" y1="50" x2="55" y2="120" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"/>
       <line x1="55" y1="50" x2="100" y2="50" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"/>
-      <circle cx="55" cy="50" r="5" fill="#2b6cb0"/>
-      <text x="30" y="42" font-size="13" fill="#2b6cb0">(-15, 5)</text>
+      <circle cx="55" cy="50" r="5" fill="#18BC9C"/>
+      <text x="30" y="42" font-size="13" fill="#18BC9C">(-15, 5)</text>
       <defs>
         <marker id="dim-arrow-2a" markerWidth="8" markerHeight="8" refX="2" refY="3" orient="auto"><path d="M6,0 L0,3 L6,6 Z" fill="#5A6B80"/></marker>
         <marker id="dim-arrow-2b" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"/></marker>
@@ -1105,8 +1124,8 @@ $\mathbb{R}^n$ is just the **Cartesian product** of $\mathbb{R}$ with itself, $n
       <line x1="121" y1="95" x2="148" y2="74" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"/>
       <line x1="148" y1="74" x2="148" y2="140" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"/>
       <line x1="148" y1="74" x2="70" y2="74" stroke="#8a8f98" stroke-width="1" stroke-dasharray="3,3"/>
-      <circle cx="121" cy="95" r="5" fill="#2b6cb0"/>
-      <text x="128" y="88" font-size="13" fill="#2b6cb0">(x, y, z)</text>
+      <circle cx="121" cy="95" r="5" fill="#18BC9C"/>
+      <text x="128" y="88" font-size="13" fill="#18BC9C">(x, y, z)</text>
       <defs>
         <marker id="dim-arrow-3" markerWidth="8" markerHeight="8" refX="6" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#5A6B80"/></marker>
       </defs>
@@ -1300,6 +1319,94 @@ This is exactly why maximum-likelihood estimation works with a **log-likelihood*
 -   Does it approach some limiting value?
 :::
 
+## Quick Reference: Symbols and Notation (1/2) {.smaller}
+
+:::: {style="font-size: 0.5em; color: #5A6B80; margin-bottom: 0.3em;"}
+Table 1.2, Moore & Siegel (2013), *A Mathematics Course for Political and Social Research*, ch. 1.
+::::
+
+```{=html}
+<div class="notation-reveal">
+<div class="notation-col">
+<table>
+<thead><tr class="fragment fade-in" data-fragment-index="1"><th>Symbol</th><th class="meaning-head fragment fade-in" data-fragment-index="3">Meaning</th></tr></thead>
+<tbody>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">+</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Addition</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">−</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Subtraction</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∗, ×, ·</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Multiplication</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">/, ÷</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Division</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">±</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Plus or minus</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">xⁿ</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Exponentiation (“to the nth power”)</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">ⁿ√x</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Radical or nth root</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">!</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Factorial</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∞</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Infinity</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">Σ</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Sum of xᵢ from i = k to i = l</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">Π</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Product of xᵢ from i = k to i = l</td></tr>
+</tbody>
+</table>
+</div>
+<div class="notation-col">
+<table>
+<thead><tr class="fragment fade-in" data-fragment-index="1"><th>Symbol</th><th class="meaning-head fragment fade-in" data-fragment-index="3">Meaning</th></tr></thead>
+<tbody>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">…</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Continued progression</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">d⁄dx</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Total derivative with respect to x</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">∂⁄∂x</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Partial derivative with respect to x</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">∫dx</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Integral over x</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∪</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Set union</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∩</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Set intersection</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">×</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Cartesian product of sets</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">∖</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Set difference</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">Aᶜ</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Complement of set A</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∅</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Empty (or null) set</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+```
+
+## Quick Reference: Symbols and Notation (2/2) {.smaller}
+
+```{=html}
+<div class="notation-reveal">
+<div class="notation-col">
+<table>
+<thead><tr class="fragment fade-in" data-fragment-index="1"><th>Symbol</th><th class="meaning-head fragment fade-in" data-fragment-index="3">Meaning</th></tr></thead>
+<tbody>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∈</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Set membership</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">∉</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Not member of set</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">∣, :, ∋</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Such that</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">⊂</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Proper subset</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">⊆</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Subset</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">&lt;</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Less than</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">≤</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Less than or equal to</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">=</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Equal to</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">&gt;</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Greater than</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">≥</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Greater than or equal to</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">≠</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Not equal to</td></tr>
+</tbody>
+</table>
+</div>
+<div class="notation-col">
+<table>
+<thead><tr class="fragment fade-in" data-fragment-index="1"><th>Symbol</th><th class="meaning-head fragment fade-in" data-fragment-index="3">Meaning</th></tr></thead>
+<tbody>
+<tr><td class="fragment fade-in" data-fragment-index="1">≡</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Equivalent to or defined as</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">f(), f(·)</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Function</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">{ }</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Delimiter for discrete set</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">( )</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Delimiter for open set</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1"><span class="fragment highlight-green" data-fragment-index="2">[ ]</span></td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Delimiter for closed set</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">∀</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">For all (or for every/each)</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">∃</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">There exists</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">⇒</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Implies</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">⇔</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">If and only if</td></tr>
+<tr><td class="fragment fade-in" data-fragment-index="1">¬C, ∼C</td><td class="meaning-cell fragment fade-in" data-fragment-index="3">Negation (not C)</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+```
+
 ## Solving for a Variable {.smaller}
 
 ::: {.incremental}
@@ -1372,14 +1479,23 @@ We have eight polyarchy values from the running V-Dem example, $x_1, \dots, x_8$
 -   We'll see both claims happen on a graph, then prove them algebraically, step by step.
 :::
 
-## Watch It Happen — The Residuals {.smaller}
+## Watch It Happen — Residuals & Minimizing $S(c)$ {.smaller}
 
-Drag the point $c$ along the eight polyarchy values and watch $\Sigma(x_i - c)$ in the readout.
+Drag the point $c$ along the eight polyarchy values: watch $\Sigma(x_i - c)$ on the left and $S(c) = \Sigma(x_i - c)^2$ trace out a curve on the right.
 
 ```{=html}
-<div class="viz join-minimize jm-part-residuals">
-  <div class="jm-numberline-wrap">
-    <svg class="jm-numberline" viewBox="0 0 640 210" role="img" aria-label="Eight polyarchy values on a number line, a draggable point c, and its signed residual to each value"></svg>
+<div class="viz join-minimize jm-part-residuals jm-part-curve">
+  <div class="jm-columns">
+    <div class="jm-col">
+      <div class="jm-numberline-wrap">
+        <svg class="jm-numberline" viewBox="0 0 640 210" role="img" aria-label="Eight polyarchy values on a number line, a draggable point c, and its signed residual to each value"></svg>
+      </div>
+    </div>
+    <div class="jm-col">
+      <div class="jm-curve-wrap">
+        <svg class="jm-curve" viewBox="0 0 640 190" role="img" aria-label="Parabola of S(c) versus c, with a marker at the current c and a dashed line at x-bar"></svg>
+      </div>
+    </div>
   </div>
 
   <div class="jm-controls">
@@ -1402,33 +1518,35 @@ Drag the point $c$ along the eight polyarchy values and watch $\Sigma(x_i - c)$ 
     </div>
   </div>
 
-  <div class="jm-hint">Drag the blue point on the number line, or use the slider.</div>
+  <div class="jm-hint">Drag the green point on the number line, or use the slider — both graphs move together.</div>
 </div>
 
 <style>
-.viz.join-minimize { max-width: 640px; margin: 0 auto; font-size: 0.5em; }
+.viz.join-minimize { max-width: 900px; margin: 0 auto; font-size: 0.5em; }
+.join-minimize .jm-columns { display: flex; gap: 24px; align-items: flex-start; }
+.join-minimize .jm-col { flex: 1 1 50%; min-width: 0; }
 .join-minimize .jm-numberline-wrap,
 .join-minimize .jm-curve-wrap { width: 100%; }
 .join-minimize svg { width: 100%; height: auto; display: block; }
 .join-minimize .jm-axis { stroke: #D9E0EA; stroke-width: 1.5; }
 .join-minimize .jm-tick { font-size: 11px; fill: #5A6B80; }
 .join-minimize .jm-point { fill: #8a8f98; }
-.join-minimize .jm-marker-line { stroke: #2b6cb0; stroke-width: 2; }
-.join-minimize .jm-marker { fill: #2b6cb0; cursor: grab; touch-action: none; }
+.join-minimize .jm-marker-line { stroke: #18BC9C; stroke-width: 2; }
+.join-minimize .jm-marker { fill: #18BC9C; cursor: grab; touch-action: none; }
 .join-minimize .jm-marker:active { cursor: grabbing; }
-.join-minimize .jm-bar-pos { stroke: #2b6cb0; stroke-width: 5; }
-.join-minimize .jm-bar-neg { stroke: #e53e3e; stroke-width: 5; }
+.join-minimize .jm-bar-pos { stroke: #18BC9C; stroke-width: 5; }
+.join-minimize .jm-bar-neg { stroke: #BC1838; stroke-width: 5; }
 .join-minimize .jm-bar-zero { stroke: #8a8f98; stroke-width: 5; }
 
 .join-minimize .jm-controls {
   display: flex; align-items: center; gap: 14px; justify-content: center; margin: 10px 0;
 }
-.join-minimize .jm-slider { flex: 1 1 auto; max-width: 360px; }
+.join-minimize .jm-slider { flex: 1 1 auto; max-width: 360px; accent-color: #18BC9C; }
 .join-minimize .jm-snap {
-  font-size: 0.9em; padding: 5px 12px; border-radius: 999px; border: 1px solid #2b6cb0;
-  background: #fff; color: #2b6cb0; cursor: pointer;
+  font-size: 0.9em; padding: 5px 12px; border-radius: 999px; border: 1px solid #18BC9C;
+  background: #fff; color: #18BC9C; cursor: pointer;
 }
-.join-minimize .jm-snap:hover { background: #2b6cb0; color: #fff; }
+.join-minimize .jm-snap:hover { background: #18BC9C; color: #fff; }
 
 .join-minimize .jm-readout {
   display: flex; justify-content: center; gap: 24px; flex-wrap: wrap; margin-bottom: 8px;
@@ -1441,11 +1559,11 @@ Drag the point $c$ along the eight polyarchy values and watch $\Sigma(x_i - c)$ 
 .join-minimize .jm-readout-label { display: block; font-size: 0.85em; color: #5A6B80; }
 .join-minimize .jm-readout-value { display: block; font-size: 1.2em; font-weight: 700; color: #22303F; }
 
-.join-minimize.jm-at-min .jm-readout-item { background: #EAF6EF; border-color: #38a169; }
-.join-minimize.jm-at-min .jm-readout-value { color: #2f855a; }
+.join-minimize.jm-at-min .jm-readout-item { background: #FBE9ED; border-color: #BC1838; }
+.join-minimize.jm-at-min .jm-readout-value { color: #BC1838; }
 
-.join-minimize .jm-curve-line { fill: none; stroke: #2b6cb0; stroke-width: 2.5; }
-.join-minimize .jm-curve-dot { fill: #2b6cb0; stroke: #fff; stroke-width: 1.5; }
+.join-minimize .jm-curve-line { fill: none; stroke: #18BC9C; stroke-width: 2.5; }
+.join-minimize .jm-curve-dot { fill: #18BC9C; stroke: #fff; stroke-width: 1.5; }
 .join-minimize .jm-xbar-line { stroke: #8a8f98; stroke-width: 1.5; stroke-dasharray: 4,4; }
 .join-minimize .jm-xbar-label { font-size: 11px; fill: #5A6B80; }
 
@@ -1453,25 +1571,6 @@ Drag the point $c$ along the eight polyarchy values and watch $\Sigma(x_i - c)$ 
   text-align: center; font-size: 0.85em; color: #5A6B80; font-style: italic; margin-top: 4px;
 }
 </style>
-```
-
-::: {.incremental}
--   $\Sigma(x_i - c)$ is a straight line in $c$ — it crosses zero exactly once.
--   Watch the readout: it hits $0.000$ right when $c = \bar x$.
-:::
-
-## Watch It Happen — Minimizing $S(c)$ {.smaller}
-
-Same drag, same $c$ — now watch $S(c) = \Sigma(x_i - c)^2$ trace out a curve.
-
-```{=html}
-<div class="viz join-minimize jm-part-curve">
-  <div class="jm-curve-wrap">
-    <svg class="jm-curve" viewBox="0 0 640 190" role="img" aria-label="Parabola of S(c) versus c, with a marker at the current c and a dashed line at x-bar"></svg>
-  </div>
-
-  <div class="jm-hint">Keep dragging on the previous slide — the dot here moves with it.</div>
-</div>
 
 <script>
 (function () {
@@ -1761,6 +1860,6 @@ Moore, W. H., & Siegel, D. A. (2013). *A Mathematics Course for Political and So
 
 ##  {.center}
 
-**Programming lecture:** [webpage chapter](../chapters/01-notation-functions-limits/programming.html)
+**Programming lecture:** [Webpage Chapter](../chapters/01-notation-functions-limits/programming.html)
 
-**Back to:** [MathCamp 2026 website](../index.html)
+**Back to:** [Math Camp 2026 website](../index.html)
