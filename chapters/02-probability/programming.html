@@ -1148,8 +1148,8 @@ $GREscores
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><a href="images/haim.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="RStudio Screen"><img src="images/haim.png" class="img-fluid figure-img" alt="RStudio Screen"></a></p>
-<figcaption>RStudio Screen</figcaption>
+<p><a href="images/haim.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Haim’s Research Question"><img src="images/haim.png" class="img-fluid figure-img" alt="Haim’s Research Question"></a></p>
+<figcaption>Haim’s Research Question</figcaption>
 </figure>
 </div>
 </div>
@@ -1281,9 +1281,11 @@ Note
 <summary>Code</summary>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(readr)</span></span>
 <span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>JPRdata_select <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data/JPRdata_select.csv"</span></span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a><span class="co">#create a subfolder called "data" first</span></span>
+<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>JPRdata_select <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data/JPRdata_select.csv"</span> </span>
+<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(JPRdata_select)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </details>
 </div>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
@@ -2305,7 +2307,7 @@ Note
 <span id="cb77-458"><a href="#cb77-458" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-461"><a href="#cb77-461" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
 <span id="cb77-462"><a href="#cb77-462" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: false</span></span>
-<span id="cb77-463"><a href="#cb77-463" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "RStudio Screen"</span></span>
+<span id="cb77-463"><a href="#cb77-463" aria-hidden="true" tabindex="-1"></a><span class="co">#| fig-cap: "Haim's Research Question"</span></span>
 <span id="cb77-464"><a href="#cb77-464" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb77-465"><a href="#cb77-465" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">include_graphics</span>(<span class="st">"images/haim.png"</span>)</span>
 <span id="cb77-466"><a href="#cb77-466" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
@@ -2354,73 +2356,74 @@ Note
 <span id="cb77-509"><a href="#cb77-509" aria-hidden="true" tabindex="-1"></a><span class="in">```{r, eval=FALSE, echo=TRUE}</span></span>
 <span id="cb77-510"><a href="#cb77-510" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages(readr)</span></span>
 <span id="cb77-511"><a href="#cb77-511" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
-<span id="cb77-512"><a href="#cb77-512" aria-hidden="true" tabindex="-1"></a>JPRdata_select <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
-<span id="cb77-513"><a href="#cb77-513" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data/JPRdata_select.csv"</span></span>
-<span id="cb77-514"><a href="#cb77-514" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb77-515"><a href="#cb77-515" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-516"><a href="#cb77-516" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-517"><a href="#cb77-517" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-518"><a href="#cb77-518" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset}</span>
-<span id="cb77-519"><a href="#cb77-519" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-520"><a href="#cb77-520" aria-hidden="true" tabindex="-1"></a><span class="fu">### [`r paste("Exercise", 3)`]{style="color:#1696d2;"}</span></span>
-<span id="cb77-521"><a href="#cb77-521" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-522"><a href="#cb77-522" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>What are the classes of the variable <span class="in">`StateNme_export`</span>, <span class="in">`logflow`</span>, <span class="in">`region`</span>? (hint: <span class="in">`class()`</span> or <span class="in">`typeof()`</span>)</span>
-<span id="cb77-523"><a href="#cb77-523" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-524"><a href="#cb77-524" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>How many rows and columns are in this dataset?</span>
-<span id="cb77-525"><a href="#cb77-525" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-526"><a href="#cb77-526" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>How to extract the column <span class="in">`shareally`</span> from this dataset?</span>
-<span id="cb77-527"><a href="#cb77-527" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-528"><a href="#cb77-528" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Can you create a list to store the dyad information from the first observation in this dataset?</span>
-<span id="cb77-529"><a href="#cb77-529" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-530"><a href="#cb77-530" aria-hidden="true" tabindex="-1"></a><span class="fu">### [`r paste("Code for your reference")`]{style="color:#1696d2;"}</span></span>
-<span id="cb77-531"><a href="#cb77-531" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-532"><a href="#cb77-532" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 1</span></span>
-<span id="cb77-533"><a href="#cb77-533" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-534"><a href="#cb77-534" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb77-535"><a href="#cb77-535" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(JPRdata_select<span class="sc">$</span>StateAbb_export)</span>
-<span id="cb77-536"><a href="#cb77-536" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-537"><a href="#cb77-537" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(JPRdata_select<span class="sc">$</span>logflow)</span>
-<span id="cb77-538"><a href="#cb77-538" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(JPRdata_select<span class="sc">$</span>logflow)</span>
-<span id="cb77-539"><a href="#cb77-539" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-540"><a href="#cb77-540" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(JPRdata_select<span class="sc">$</span>region)</span>
-<span id="cb77-541"><a href="#cb77-541" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-542"><a href="#cb77-542" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-543"><a href="#cb77-543" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 2</span></span>
-<span id="cb77-544"><a href="#cb77-544" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-545"><a href="#cb77-545" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb77-546"><a href="#cb77-546" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(JPRdata_select)</span>
-<span id="cb77-547"><a href="#cb77-547" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-548"><a href="#cb77-548" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-549"><a href="#cb77-549" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 3</span></span>
-<span id="cb77-550"><a href="#cb77-550" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-551"><a href="#cb77-551" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb77-552"><a href="#cb77-552" aria-hidden="true" tabindex="-1"></a>shareally <span class="ot">&lt;-</span> JPRdata_select[,<span class="dv">10</span>]</span>
-<span id="cb77-553"><a href="#cb77-553" aria-hidden="true" tabindex="-1"></a>shareally <span class="ot">&lt;-</span> JPRdata_select<span class="sc">$</span>shareally</span>
-<span id="cb77-554"><a href="#cb77-554" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-555"><a href="#cb77-555" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-556"><a href="#cb77-556" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 4</span></span>
-<span id="cb77-557"><a href="#cb77-557" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-558"><a href="#cb77-558" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
-<span id="cb77-559"><a href="#cb77-559" aria-hidden="true" tabindex="-1"></a>Dyad1 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
-<span id="cb77-560"><a href="#cb77-560" aria-hidden="true" tabindex="-1"></a>  <span class="at">year      =</span> JPRdata_select<span class="sc">$</span>year[<span class="dv">1</span>],</span>
-<span id="cb77-561"><a href="#cb77-561" aria-hidden="true" tabindex="-1"></a>  <span class="at">exporter  =</span> JPRdata_select<span class="sc">$</span>StateNme_export[<span class="dv">1</span>],</span>
-<span id="cb77-562"><a href="#cb77-562" aria-hidden="true" tabindex="-1"></a>  <span class="at">importer  =</span> JPRdata_select<span class="sc">$</span>StateNme_import[<span class="dv">1</span>],</span>
-<span id="cb77-563"><a href="#cb77-563" aria-hidden="true" tabindex="-1"></a>  <span class="at">trade     =</span> JPRdata_select<span class="sc">$</span>logflow[<span class="dv">1</span>],</span>
-<span id="cb77-564"><a href="#cb77-564" aria-hidden="true" tabindex="-1"></a>  <span class="at">alliance  =</span> JPRdata_select<span class="sc">$</span>shareally[<span class="dv">1</span>],</span>
-<span id="cb77-565"><a href="#cb77-565" aria-hidden="true" tabindex="-1"></a>  <span class="at">MID       =</span> JPRdata_select<span class="sc">$</span>MID[<span class="dv">1</span>],</span>
-<span id="cb77-566"><a href="#cb77-566" aria-hidden="true" tabindex="-1"></a>  <span class="at">region    =</span> JPRdata_select<span class="sc">$</span>region[<span class="dv">1</span>]</span>
-<span id="cb77-567"><a href="#cb77-567" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb77-568"><a href="#cb77-568" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-569"><a href="#cb77-569" aria-hidden="true" tabindex="-1"></a>Dyad1<span class="sc">$</span>alliance</span>
-<span id="cb77-570"><a href="#cb77-570" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-571"><a href="#cb77-571" aria-hidden="true" tabindex="-1"></a>Dyad1<span class="sc">$</span>MID</span>
-<span id="cb77-572"><a href="#cb77-572" aria-hidden="true" tabindex="-1"></a>Dyad1[<span class="dv">3</span>]</span>
-<span id="cb77-573"><a href="#cb77-573" aria-hidden="true" tabindex="-1"></a>Dyad1[[<span class="dv">3</span>]]</span>
-<span id="cb77-574"><a href="#cb77-574" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
-<span id="cb77-575"><a href="#cb77-575" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-576"><a href="#cb77-576" aria-hidden="true" tabindex="-1"></a>:::</span>
-<span id="cb77-577"><a href="#cb77-577" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-578"><a href="#cb77-578" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
+<span id="cb77-512"><a href="#cb77-512" aria-hidden="true" tabindex="-1"></a><span class="co">#create a subfolder called "data" first</span></span>
+<span id="cb77-513"><a href="#cb77-513" aria-hidden="true" tabindex="-1"></a>JPRdata_select <span class="ot">&lt;-</span> readr<span class="sc">::</span><span class="fu">read_csv</span>(</span>
+<span id="cb77-514"><a href="#cb77-514" aria-hidden="true" tabindex="-1"></a>  <span class="st">"data/JPRdata_select.csv"</span> </span>
+<span id="cb77-515"><a href="#cb77-515" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb77-516"><a href="#cb77-516" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(JPRdata_select)</span>
+<span id="cb77-517"><a href="#cb77-517" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-518"><a href="#cb77-518" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-519"><a href="#cb77-519" aria-hidden="true" tabindex="-1"></a>::: {.panel-tabset}</span>
+<span id="cb77-520"><a href="#cb77-520" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-521"><a href="#cb77-521" aria-hidden="true" tabindex="-1"></a><span class="fu">### [`r paste("Exercise", 3)`]{style="color:#1696d2;"}</span></span>
+<span id="cb77-522"><a href="#cb77-522" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-523"><a href="#cb77-523" aria-hidden="true" tabindex="-1"></a><span class="ss">1. </span>What are the classes of the variable <span class="in">`StateNme_export`</span>, <span class="in">`logflow`</span>, <span class="in">`region`</span>? (hint: <span class="in">`class()`</span> or <span class="in">`typeof()`</span>)</span>
+<span id="cb77-524"><a href="#cb77-524" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-525"><a href="#cb77-525" aria-hidden="true" tabindex="-1"></a><span class="ss">2. </span>How many rows and columns are in this dataset?</span>
+<span id="cb77-526"><a href="#cb77-526" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-527"><a href="#cb77-527" aria-hidden="true" tabindex="-1"></a><span class="ss">3. </span>How to extract the column <span class="in">`shareally`</span> from this dataset?</span>
+<span id="cb77-528"><a href="#cb77-528" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-529"><a href="#cb77-529" aria-hidden="true" tabindex="-1"></a><span class="ss">4. </span>Can you create a list to store the dyad information from the first observation in this dataset?</span>
+<span id="cb77-530"><a href="#cb77-530" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-531"><a href="#cb77-531" aria-hidden="true" tabindex="-1"></a><span class="fu">### [`r paste("Code for your reference")`]{style="color:#1696d2;"}</span></span>
+<span id="cb77-532"><a href="#cb77-532" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-533"><a href="#cb77-533" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 1</span></span>
+<span id="cb77-534"><a href="#cb77-534" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-535"><a href="#cb77-535" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb77-536"><a href="#cb77-536" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(JPRdata_select<span class="sc">$</span>StateAbb_export)</span>
+<span id="cb77-537"><a href="#cb77-537" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-538"><a href="#cb77-538" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(JPRdata_select<span class="sc">$</span>logflow)</span>
+<span id="cb77-539"><a href="#cb77-539" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(JPRdata_select<span class="sc">$</span>logflow)</span>
+<span id="cb77-540"><a href="#cb77-540" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-541"><a href="#cb77-541" aria-hidden="true" tabindex="-1"></a><span class="fu">class</span>(JPRdata_select<span class="sc">$</span>region)</span>
+<span id="cb77-542"><a href="#cb77-542" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-543"><a href="#cb77-543" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-544"><a href="#cb77-544" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 2</span></span>
+<span id="cb77-545"><a href="#cb77-545" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-546"><a href="#cb77-546" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb77-547"><a href="#cb77-547" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(JPRdata_select)</span>
+<span id="cb77-548"><a href="#cb77-548" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-549"><a href="#cb77-549" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-550"><a href="#cb77-550" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 3</span></span>
+<span id="cb77-551"><a href="#cb77-551" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-552"><a href="#cb77-552" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb77-553"><a href="#cb77-553" aria-hidden="true" tabindex="-1"></a>shareally <span class="ot">&lt;-</span> JPRdata_select[,<span class="dv">10</span>]</span>
+<span id="cb77-554"><a href="#cb77-554" aria-hidden="true" tabindex="-1"></a>shareally <span class="ot">&lt;-</span> JPRdata_select<span class="sc">$</span>shareally</span>
+<span id="cb77-555"><a href="#cb77-555" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-556"><a href="#cb77-556" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-557"><a href="#cb77-557" aria-hidden="true" tabindex="-1"></a><span class="fu">#### Question 4</span></span>
+<span id="cb77-558"><a href="#cb77-558" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-559"><a href="#cb77-559" aria-hidden="true" tabindex="-1"></a><span class="in">```{r eval=FALSE}</span></span>
+<span id="cb77-560"><a href="#cb77-560" aria-hidden="true" tabindex="-1"></a>Dyad1 <span class="ot">&lt;-</span> <span class="fu">list</span>(</span>
+<span id="cb77-561"><a href="#cb77-561" aria-hidden="true" tabindex="-1"></a>  <span class="at">year      =</span> JPRdata_select<span class="sc">$</span>year[<span class="dv">1</span>],</span>
+<span id="cb77-562"><a href="#cb77-562" aria-hidden="true" tabindex="-1"></a>  <span class="at">exporter  =</span> JPRdata_select<span class="sc">$</span>StateNme_export[<span class="dv">1</span>],</span>
+<span id="cb77-563"><a href="#cb77-563" aria-hidden="true" tabindex="-1"></a>  <span class="at">importer  =</span> JPRdata_select<span class="sc">$</span>StateNme_import[<span class="dv">1</span>],</span>
+<span id="cb77-564"><a href="#cb77-564" aria-hidden="true" tabindex="-1"></a>  <span class="at">trade     =</span> JPRdata_select<span class="sc">$</span>logflow[<span class="dv">1</span>],</span>
+<span id="cb77-565"><a href="#cb77-565" aria-hidden="true" tabindex="-1"></a>  <span class="at">alliance  =</span> JPRdata_select<span class="sc">$</span>shareally[<span class="dv">1</span>],</span>
+<span id="cb77-566"><a href="#cb77-566" aria-hidden="true" tabindex="-1"></a>  <span class="at">MID       =</span> JPRdata_select<span class="sc">$</span>MID[<span class="dv">1</span>],</span>
+<span id="cb77-567"><a href="#cb77-567" aria-hidden="true" tabindex="-1"></a>  <span class="at">region    =</span> JPRdata_select<span class="sc">$</span>region[<span class="dv">1</span>]</span>
+<span id="cb77-568"><a href="#cb77-568" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb77-569"><a href="#cb77-569" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-570"><a href="#cb77-570" aria-hidden="true" tabindex="-1"></a>Dyad1<span class="sc">$</span>alliance</span>
+<span id="cb77-571"><a href="#cb77-571" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-572"><a href="#cb77-572" aria-hidden="true" tabindex="-1"></a>Dyad1<span class="sc">$</span>MID</span>
+<span id="cb77-573"><a href="#cb77-573" aria-hidden="true" tabindex="-1"></a>Dyad1[<span class="dv">3</span>]</span>
+<span id="cb77-574"><a href="#cb77-574" aria-hidden="true" tabindex="-1"></a>Dyad1[[<span class="dv">3</span>]]</span>
+<span id="cb77-575"><a href="#cb77-575" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb77-576"><a href="#cb77-576" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-577"><a href="#cb77-577" aria-hidden="true" tabindex="-1"></a>:::</span>
+<span id="cb77-578"><a href="#cb77-578" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-579"><a href="#cb77-579" aria-hidden="true" tabindex="-1"></a><span class="dt">&lt;</span><span class="kw">br</span><span class="dt">&gt;</span></span>
 </code></pre></div><button title="Copy to Clipboard" class="code-copy-button" data-in-quarto-modal=""><i class="bi"></i></button></div>
 </div></div></div></div></div>
 </div> <!-- /content -->
