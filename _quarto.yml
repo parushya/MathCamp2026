@@ -7,14 +7,14 @@ execute:
 
 book:
   title: "Math and Programming Camp 2026"
-  subtitle: "Math camp for the incoming Political Science PhD cohort"
+  subtitle: "Department of Government, Georgetown University"
   author:
     - Parushya
     - Rong Qin
   date: today
   repo-url: https://github.com/parushya/MathCamp2026
   page-footer:
-    left: "Math Camp 2026, Government PhD Program"
+    left: "Government PhD Program"
     right: "Georgetown University"
   sidebar:
     style: docked

@@ -1,27 +1,6 @@
 ---
-subtitle: ""
-author: []
-date: ""
-pub-date: "August 16, 2026"
 code-tools: false
 ---
-
-```{=html}
-<style>
-/* The book title already shows in the sidebar and in the cover image itself
-   -- drop the repeated H1 the auto title-block would otherwise render here.
-   Scoped to this page only (a shared styles.css rule would hide it on every
-   chapter page too). */
-#title-block-header h1.title { display: none; }
-</style>
-```
-
-![](mnp26.png){.cover-banner fig-alt="Math & Programming Camp — for PhD Government students. Model. Check. Talk."}
-
-::: {.index-byline}
-**Authors:** Parushya, Rong Qin\
-**Published:** {{< meta pub-date >}}
-:::
 
 # Welcome {.unnumbered}
 
