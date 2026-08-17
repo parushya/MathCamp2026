@@ -2,9 +2,9 @@
   {
     "objectID": "index.html",
     "href": "index.html",
-    "title": "Math Camp 2026",
+    "title": "Math and Programming Camp 2026",
     "section": "",
-    "text": "Welcome\nThis is the interactive book for Math and Programming 2026, built for the incoming Government PhD cohort.",
+    "text": "Welcome\nThis is the interactive book for Math and Programming Camp 2026, built for the incoming Government PhD cohort.",
     "crumbs": [
       "Welcome"
     ]
@@ -12,9 +12,9 @@
   {
     "objectID": "index.html#how-to-use-this-book",
     "href": "index.html#how-to-use-this-book",
-    "title": "Math Camp 2026",
+    "title": "Math and Programming Camp 2026",
     "section": "How to use this book",
-    "text": "How to use this book\nEach session is its own chapter with two sub-chapters:\n\nSlides — the in-class Mathematics slides (also browsable on its own here).\nProgramming Lecture — a webpage walking through the programming material with runnable R code, worked examples, and interactive visualizations.",
+    "text": "How to use this book\nEach session is its own chapter with two sub-chapters:\n\nMathematics Slides: the in-class Mathematics slides (also browsable on its own here).\nProgramming Lecture: — a webpage walking through the programming material with runnable R code, worked examples, and interactive visualizations.",
     "crumbs": [
       "Welcome"
     ]
@@ -22,9 +22,19 @@
   {
     "objectID": "index.html#sessions",
     "href": "index.html#sessions",
-    "title": "Math Camp 2026",
+    "title": "Math and Programming Camp 2026",
     "section": "Sessions",
-    "text": "Sessions\nThis camp runs Monday, August 17 – Friday, August 21, 2026, ahead of the start of the Political Science PhD program. Each day pairs a math session with a hands-on R programming session. No prior programming experience is assumed.\n\nDay 1 — Talking in Mathematics / Setup\nMath: theory, concept, measure, variable, and hypothesis; sets and set notation (unions, intersections, subsets, sample spaces); functions (domain, codomain, range); summation and product notation; exponents, logarithms, and roots; solving equations and finding roots.\nProgramming — Setup: setting up R, RStudio, Zotero, and GitHub; basic introduction to R and RStudio; basic practices (commenting, code chunks).\nSlides  |  Programming Lecture\n\n\nDay 2 — Probability / Basics\nMath: basic probability; compound probability; random variables and expectation algebra; conditional expectation and the type-shift (\\(E[Y|X=x]\\) vs. \\(E[Y|X]\\)).\nProgramming — Basics: why programming; R basics; objects, data types, and data structures (vectors, matrices, lists); exercise on a real replication dataset.\nSlides  |  Programming Lecture\n\n\nDay 3 — Calculus / Exploration\nMath: limits; differentiation and optimization (first-order conditions); integration basics; area under the curve.\nProgramming — Exploration: data structures continued (factors and data frames); conditionals in base R; descriptive statistics and aggregation; exercise exploring summary statistics of the sample dataset.\nSlides  |  Programming Lecture\n\n\nDay 4 — Linear Algebra / Mission\nMath: matrix readings; transformations; sampling distributions; basic derivations.\nProgramming — Mission: housekeeping (working directories, importing/exporting datasets, packages, YAML, code chunks); data wrangling with dplyr and tidyr; grammar of graphics with ggplot; why functions.\nSlides  |  Programming Lecture\n\n\nDay 5 — Intro to Advanced Topics / AI\nMath: sampling distributions; the law of large numbers and central limit theorem, by demonstration; frequentist vs. Bayesian inference; causality and causal inference; the road ahead.\nProgramming — AI: coding with AI.\nSlides  |  Programming Lecture\nOpen Discussion and Q&A:\nProf. Mark Richardson\nMethods’ Coordinator\nDepartment of Government",
+    "text": "Sessions\nThis camp runs Monday, August 17 to Friday, August 21, 2026, ahead of the start of the Political Science PhD program. Each day pairs a math session with a hands-on R programming session. No prior programming experience is assumed.\n\nDay 1 — Talking in Mathematics / Setup\nMath: theory, concept, measure, variable, and hypothesis; sets and set notation (unions, intersections, subsets, sample spaces); functions (domain, codomain, range); summation and product notation; exponents, logarithms, and roots; solving equations and finding roots.\nProgramming — Setup: setting up R, RStudio, Zotero, and GitHub; basic introduction to R and RStudio; basic practices (commenting, code chunks).\nSlides  |  Programming Lecture\n\n\nDay 2 — Probability / Basics\nMath: basic probability; compound probability; random variables and expectation algebra; conditional expectation and the type-shift (\\(E[Y|X=x]\\) vs. \\(E[Y|X]\\)).\nProgramming — Basics: why programming; R basics; objects, data types, and data structures (vectors, matrices, lists); exercise on a real replication dataset.\nSlides  |  Programming Lecture\n\n\nDay 3 — Calculus / Exploration\nMath: limits; differentiation and optimization (first-order conditions); integration basics; area under the curve.\nProgramming — Exploration: data structures continued (factors and data frames); conditionals in base R; descriptive statistics and aggregation; exercise exploring summary statistics of the sample dataset.\nSlides  |  Programming Lecture\n\n\nDay 4 — Linear Algebra / Mission\nMath: matrix readings; transformations; sampling distributions; basic derivations.\nProgramming — Mission: housekeeping (working directories, importing/exporting datasets, packages, YAML, code chunks); data wrangling with dplyr and tidyr; grammar of graphics with ggplot; why functions.\nSlides  |  Programming Lecture\n\n\nDay 5 — Intro to Advanced Topics / AI\nMath: sampling distributions; the law of large numbers and central limit theorem, by demonstration; frequentist vs. Bayesian inference; causality and causal inference; the road ahead.\nProgramming — AI: coding with AI.\nSlides  |  Programming Lecture\nOpen Discussion and Q&A:\nProf. Mark Richardson\nMethods’ Coordinator\nDepartment of Government",
+    "crumbs": [
+      "Welcome"
+    ]
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Math and Programming Camp 2026",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThanks to Henry Watson, Ankushi Mitra, and Hashem Krayem for sharing teaching material from previous editions of Math Camp.",
     "crumbs": [
       "Welcome"
     ]
