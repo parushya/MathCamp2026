@@ -6,6 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Parushya">
+<meta name="author" content="Rong Qin">
+<meta name="dcterms.date" content="2026-08-17">
 
 <title>Math and Programming Camp 2026</title>
 <style>
@@ -51,9 +54,6 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/bootstrap/bootstrap-571e6285f55efe5c2f4d285306a07d24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark-8c2b17065e4478d2890ba6668fc6c718.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/bootstrap/bootstrap-571e6285f55efe5c2f4d285306a07d24.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme-extra" id="quarto-bootstrap" data-mode="light">
-<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
-<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -482,6 +482,7 @@ window.Quarto = {
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
 <h1 class="title">Math and Programming Camp 2026</h1>
+<p class="subtitle lead">Department of Government, Georgetown University</p>
 </div>
 
 
@@ -489,12 +490,19 @@ window.Quarto = {
 <div class="quarto-title-meta">
 
     <div>
-    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-heading">Authors</div>
     <div class="quarto-title-meta-contents">
-             <p> </p>
+             <p>Parushya </p>
+             <p>Rong Qin </p>
           </div>
   </div>
     
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">August 17, 2026</p>
+    </div>
+  </div>
   
     
   </div>
@@ -504,18 +512,6 @@ window.Quarto = {
 </header>
 
 
-<style>
-/* The book title already shows in the sidebar and in the cover image itself
-   -- drop the repeated H1 the auto title-block would otherwise render here.
-   Scoped to this page only (a shared styles.css rule would hide it on every
-   chapter page too). */
-#title-block-header h1.title { display: none; }
-</style>
-<p><a href="mnp26.png" class="lightbox" data-gallery="quarto-lightbox-gallery-1"><img src="mnp26.png" class="cover-banner img-fluid" alt="Math &amp; Programming Camp — for PhD Government students. Model. Check. Talk."></a></p>
-<div class="index-byline">
-<p><strong>Authors:</strong> Parushya, Rong Qin<br>
-<strong>Published:</strong> August 16, 2026</p>
-</div>
 <section id="welcome" class="level1 unnumbered">
 <h1 class="unnumbered">Welcome</h1>
 <p>This is the interactive book for <strong>Math and Programming Camp 2026</strong>, built for the incoming Government PhD cohort.</p>
@@ -1000,7 +996,7 @@ Department of Government</p>
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Math Camp 2026, Government PhD Program</p>
+<p>Government PhD Program</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
@@ -1010,38 +1006,6 @@ Department of Government</p>
 </div>
   </div>
 </footer>
-<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
-(function() {
-  let previousOnload = window.onload;
-  window.onload = () => {
-    if (previousOnload) {
-      previousOnload();
-    }
-    lightboxQuarto.on('slide_before_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      const href = trigger.getAttribute('href');
-      if (href !== null) {
-        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
-        if (imgEl !== null) {
-          const srcAttr = imgEl.getAttribute("src");
-          if (srcAttr && srcAttr.startsWith("data:")) {
-            slideConfig.href = srcAttr;
-          }
-        }
-      } 
-    });
-  
-    lightboxQuarto.on('slide_after_load', (data) => {
-      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
-      if (window.Quarto?.typesetMath) {
-        window.Quarto.typesetMath(slideNode);
-      }
-    });
-  
-  };
-  
-})();
-          </script>
 
 
 
