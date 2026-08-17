@@ -1,3 +1,7 @@
+---
+code-tools: false
+---
+
 # Day 2 — Probability
 
 Day 2 — Probability / Basics. Math covers basic and compound

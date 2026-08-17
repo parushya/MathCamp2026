@@ -1,3 +1,7 @@
+---
+code-tools: false
+---
+
 ## Math Session {#sec-04-slides}
 
 ::: {.callout-note}

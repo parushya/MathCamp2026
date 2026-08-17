@@ -1,21 +1,46 @@
+---
+subtitle: ""
+author: []
+date: ""
+pub-date: "August 16, 2026"
+code-tools: false
+---
+
+```{=html}
+<style>
+/* The book title already shows in the sidebar and in the cover image itself
+   -- drop the repeated H1 the auto title-block would otherwise render here.
+   Scoped to this page only (a shared styles.css rule would hide it on every
+   chapter page too). */
+#title-block-header h1.title { display: none; }
+</style>
+```
+
+![](mnp26.png){.cover-banner fig-alt="Math & Programming Camp — for PhD Government students. Model. Check. Talk."}
+
+::: {.index-byline}
+**Authors:** Parushya, Rong Qin\
+**Published:** {{< meta pub-date >}}
+:::
+
 # Welcome {.unnumbered}
 
-This is the interactive  book for **Math and Programming 2026**, built
+This is the interactive  book for **Math and Programming Camp 2026**, built
 for the incoming Government PhD cohort. 
 
 ## How to use this book
 
 Each session is its own chapter with two sub-chapters:
 
-- **Slides** — the in-class Mathematics slides (also browsable on its own
+- **Mathematics Slides:** the in-class Mathematics slides (also browsable on its own
   [here](slides/index.html)).
-- **Programming Lecture** — a webpage walking through the programming material with
+- **Programming Lecture:** — a webpage walking through the programming material with
   runnable R code, worked examples, and  interactive
   visualizations.
 
 ## Sessions
 
-This camp runs Monday, August 17 – Friday, August 21, 2026, ahead of the
+This camp runs Monday, August 17 to Friday, August 21, 2026, ahead of the
 start of the Political Science PhD program. Each day pairs a math
 session with a hands-on R programming session. No prior programming
 experience is assumed.
@@ -81,9 +106,13 @@ causality and causal inference; the road ahead.
 [Slides](chapters/05-advanced-topics/slides.qmd) &nbsp;|&nbsp;
 [Programming Lecture](chapters/05-advanced-topics/programming.qmd)
 
-**Open Discussion and Q&A:**   
+**Open Discussion and Q&A:**  
 Prof. [Mark Richardson ](https://www.mrichardson.info/)  
 Methods' Coordinator  
 Department of Government
 
+## Acknowledgements
+
+Thanks to Henry Watson, Ankushi Mitra, and Hashem Krayem for sharing
+teaching material from previous editions of Math Camp.
 

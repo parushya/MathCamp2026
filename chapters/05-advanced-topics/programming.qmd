@@ -1,3 +1,7 @@
+---
+code-tools: false
+---
+
 ## Programming Session {#sec-05-programming}
 
 Placeholder

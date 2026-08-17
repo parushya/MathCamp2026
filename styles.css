@@ -1,1 +1,26 @@
 /* MathCamp 2026 book styles */
+
+/* Cover image on the Welcome page (index.qmd). Plain content-column image
+   (not a full-bleed title-block-banner) so it stays the same width as the
+   surrounding text and the sidebar keeps running parallel to it, instead of
+   the banner spanning edge-to-edge above both. */
+.cover-banner {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin: 0.5em 0 1em 0;
+}
+
+.index-byline {
+  color: #6c757d;
+  font-size: 0.95em;
+  margin-bottom: 1.5em;
+}
+
+/* Every page's auto-generated author/date block is empty in this book (only
+   the Welcome page ever populated it, and that's now handled manually via
+   .index-byline above) -- hide the leftover empty wrapper everywhere. */
+#title-block-header.quarto-title-block.default .quarto-title-meta {
+  display: none;
+}

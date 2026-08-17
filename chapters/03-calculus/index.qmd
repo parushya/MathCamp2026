@@ -1,3 +1,7 @@
+---
+code-tools: false
+---
+
 # Day 3 — Calculus
 
 Day 3 — Calculus / Exploration. Math covers limits, differentiation
