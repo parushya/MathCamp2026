@@ -13,7 +13,7 @@ Each session is its own chapter with two sub-chapters:
 
 - **Mathematics Slides:** the in-class Mathematics slides (also browsable on its own
   [here](slides/index.html)).
-- **Programming Lecture:** — a webpage walking through the programming material with
+- **Programming Lecture:** a webpage walking through the programming material with
   runnable R code, worked examples, and  interactive
   visualizations.
 
