@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Parushya">
-  <meta name="dcterms.date" content="2026-08-17">
+  <meta name="dcterms.date" content="2026-08-18">
   <title>Uncertain World and what to Expect</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -137,7 +137,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Uncertain World and what to <em>Expect</em></h1>
+  <h1 class="title"><span style="color:#000;">Uncertain World and what to</span> <span class="flatly-green" style="font-style:italic;">Expect</span></h1>
   <p class="subtitle">Math and Programming Camp Day 2</p>
 
 <div class="quarto-title-authors">
@@ -148,7 +148,7 @@ Parushya
 </div>
 </div>
 
-  <p class="date">2026-08-17</p>
+  <p class="date">2026-08-18</p>
 </section>
 <section class="slide level2">
 
@@ -182,19 +182,42 @@ recap slides, closing programming-lecture link) mirror
 <li class="fragment"><p><strong>Not certainty. But uncertainty, made precise enough to argue with.</strong></p></li>
 </ul>
 </section>
+<section id="why-probability" class="slide level2 smaller">
+<h2>Why Probability?</h2>
+<ul>
+<li class="fragment">Even the best model can’t say with certainty whether any one country will grow next year — the world is uncertain, and probability is the language for being precise about <em>how</em> uncertain.</li>
+<li class="fragment">Two different quantities get called “probability”: the <em>theoretical</em> chance built into the process, and the <em>empirical</em> frequency we actually observe in one sample.</li>
+<li class="fragment">Running example: of our 174 countries, some fraction happened to have positive growth — that’s an empirical frequency. Probability asks what generated it.
+<ul>
+<li class="fragment">“What generated it” means the true, unknown probability <span class="math inline">\(p\)</span> that any given country has positive growth in a given year — the observed fraction is our sample’s estimate of that fixed <span class="math inline">\(p\)</span>, not <span class="math inline">\(p\)</span> itself.</li>
+</ul></li>
+</ul>
+<div class="slide-footnote fragment">Framing probability as "theoretical chance" vs. "empirical frequency" reflects one particular view: the <strong>frequentist</strong> approach, which treats the true probability as a fixed, existing fact about the data-generating process — something a sample only ever <em>uncovers</em> or estimates, more precisely as the sample grows. A second view, the <strong>Bayesian</strong> approach, treats probability instead as a <em>degree of belief</em> that can attach to any proposition — including one-off, non-repeatable events — and that gets revised as new evidence comes in. We'll unpack this frequentist vs. Bayesian distinction explicitly on Day 5.</div>
+</section>
 <section id="today" class="slide level2 smaller">
 <h2>Today</h2>
+<div class="columns today-agenda">
+<div class="column" style="width:50%;">
 <ul>
-<li class="fragment">Basic Probability
+<li class="fragment"><strong>Basic Probability</strong>
 <ul>
-<li class="fragment">Terminology</li>
-<li class="fragment">Pr() notation, computing event probabilities</li>
-<li class="fragment">Interactive: sample space and events</li>
-<li class="fragment">Revisit Sets</li>
+<li class="fragment">Terminology, Pr() notation</li>
+<li class="fragment">Sets and set operations</li>
 <li class="fragment">The axioms of probability</li>
-<li class="fragment">Counting</li>
 </ul></li>
-<li class="fragment">Pobability as a function
+<li class="fragment"><strong>Compound Probability</strong>
+<ul>
+<li class="fragment">Joint and conditional probability, independence</li>
+<li class="fragment">Bayes’ theorem</li>
+</ul></li>
+<li class="fragment"><strong>Counting</strong>
+<ul>
+<li class="fragment">Permutations and combinations</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:50%;">
+<ul>
+<li class="fragment"><strong>Probability as a Function</strong>
 <ul>
 <li class="fragment">Random variables: discrete vs.&nbsp;continuous</li>
 </ul></li>
@@ -202,18 +225,13 @@ recap slides, closing programming-lecture link) mirror
 <li class="fragment">Variance and covariance</li>
 <li class="fragment"><strong>Conditional expectation and the type-shift</strong></li>
 <li class="fragment">The Law of Iterated Expectations (LIE)</li>
-<li class="fragment">Bayes’ theorem</li>
-<li class="fragment"><strong>Join:</strong> the selection-bias decomposition, in four lines, from linearity alone</li>
+<li class="fragment"><strong>The selection-bias decomposition</strong>, in four lines, from linearity alone</li>
 </ul>
-<div class="running-example-note">↪ Running example carried over from Day 1: Ω = {174 countries}, polyarchy and GDP per capita from V-Dem 2019.</div>
+</div></div>
 </section>
-<section id="why-probability" class="slide level2 smaller">
-<h2>Why Probability?</h2>
-<ul>
-<li class="fragment">Even the best model can’t say with certainty whether any one country will grow next year — the world is uncertain, and probability is the language for being precise about <em>how</em> uncertain.</li>
-<li class="fragment">Two different quantities get called “probability”: the <em>theoretical</em> chance built into the process, and the <em>empirical</em> frequency we actually observe in one sample.</li>
-<li class="fragment">Running example: of our 174 countries, some fraction happened to have positive growth — that’s an empirical frequency. Probability asks what generated it.</li>
-</ul>
+<section id="basic-probability" class="slide level2">
+<h2>Basic Probability</h2>
+<p><em>Outcomes, events, sets, and the sample space they all live in.</em></p>
 </section>
 <section id="terminology-outcomes-events-sample-space" class="slide level2 smaller">
 <h2>Terminology: Outcomes, Events, Sample Space</h2>
@@ -223,14 +241,14 @@ recap slides, closing programming-lecture link) mirror
 <li class="fragment"><strong>Sample space (<span class="math inline">\(\Omega\)</span>):</strong> the set of <em>all</em> possible outcomes.</li>
 <li class="fragment"><strong>Random event:</strong> an event that’s probabilistic rather than deterministic — we can point to causes that shift its probability, without any cause guaranteeing it happens.</li>
 </ul>
-<div class="running-example-note">↪ Running example: Ω = {174 countries}; the event "high polyarchy" = {countries with polyarchy &gt; 0.5} ⊂ Ω.</div>
+<div class="running-example-note">↪ Running example: Ω = {174 countries}; the event "Democracy" = {countries with polyarchy &gt; 0.5} ⊂ Ω.</div>
+<div class="slide-footnote">Note: "Democracy" here means polyarchy score &gt; 0.5 — that threshold is used throughout Day 2's running example, in place of the raw V-Dem term.</div>
 </section>
 <section id="pr-notation" class="slide level2 smaller">
 <h2>Pr() Notation</h2>
 <ul>
 <li class="fragment">When every outcome is equally likely, probability is just a counting ratio: <span class="math display">\[Pr(e) = \frac{\text{number of outcomes in event } e}{\text{number of outcomes in the sample space}}\]</span></li>
 <li class="fragment">Example: probability of flipping tails on a fair coin — one favorable outcome out of two possible ones, <span class="math inline">\(Pr(\text{tails}) = 1/2\)</span>.</li>
-<li class="fragment">Running example: <span class="math inline">\(Pr(\text{polyarchy} &gt; 0.5) = \dfrac{\#\{\text{high-polyarchy countries}\}}{174}\)</span> — same idea, now with its own notation.</li>
 </ul>
 </section>
 <section id="computing-an-events-probability" class="slide level2 smaller">
@@ -238,7 +256,6 @@ recap slides, closing programming-lecture link) mirror
 <ul>
 <li class="fragment">An event’s probability is the sum of the probabilities of the outcomes it contains: <span class="math inline">\(P(A) = \sum_{\omega \in A} P(\omega)\)</span>.</li>
 <li class="fragment">Useful trick: it’s often easier to compute <span class="math inline">\(P(A^c)\)</span> (the complement) and subtract from 1 than to compute <span class="math inline">\(P(A)\)</span> directly.</li>
-<li class="fragment">Running example: <span class="math inline">\(P(\text{polyarchy} &gt; 0.5) = \dfrac{\#\{\text{high-polyarchy countries}\}}{174}\)</span>.</li>
 </ul>
 <!--
 The Sets and Counting slides below cover the same topics as IQSS's
@@ -265,86 +282,573 @@ authors for the topic selection this draws on.
 <li class="fragment"><strong>Complement</strong> <span class="math inline">\(A^c\)</span>: outcomes in <span class="math inline">\(\Omega\)</span> but <em>not</em> in <span class="math inline">\(A\)</span>.</li>
 <li class="fragment"><strong>Empty set</strong> <span class="math inline">\(\emptyset\)</span>: the event with no outcomes at all — probability zero.</li>
 </ul>
-<div class="running-example-note">↪ Running example: A = {polyarchy &gt; 0.5}, B = {growth &gt; 0}. A ∩ B = high-polyarchy, positive-growth countries; A ∪ B = countries with at least one of the two; A<sup>c</sup> = low-polyarchy countries.</div>
+<div class="running-example-note">↪ Running example: A = {Democracy}, B = {growth &gt; 0}. A ∩ B = democratic, positive-growth countries; A ∪ B = countries with at least one of the two; A<sup>c</sup> = autocracies.</div>
 </section>
-<section id="sample-space-and-events-interactively" class="slide level2 smaller">
-<h2>Sample Space and Events, Interactively</h2>
-<div class="viz venn-interactive">
-  <div class="vi-controls">
-    <div class="vi-ctrl">
-      <label for="vi-pa">P(A): <span class="vi-pa-val">0.40</span></label>
-      <input id="vi-pa" type="range" min="0.05" max="0.85" step="0.01" value="0.40">
-    </div>
-    <div class="vi-ctrl">
-      <label for="vi-pb">P(B): <span class="vi-pb-val">0.35</span></label>
-      <input id="vi-pb" type="range" min="0.05" max="0.85" step="0.01" value="0.35">
-    </div>
-    <div class="vi-ctrl">
-      <label for="vi-overlap">Overlap: <span class="vi-overlap-val">0.50</span></label>
-      <input id="vi-overlap" type="range" min="0" max="1" step="0.01" value="0.50">
-    </div>
+<section id="outcomes-a-world-of-20-countries" class="slide level2 smaller">
+<h2>Outcomes: A World of 20 Countries</h2>
+<ul>
+<li class="fragment">Assume a world Ω of <strong>20 countries</strong>. Each dot below is one <strong>outcome</strong>.</li>
+<li class="fragment">Every country has two independent traits already baked in: its <strong>regime</strong> (democracy/autocracy) and its <strong>growth</strong> (high/low).</li>
+<li class="fragment">The other word for these traits here: <strong>events</strong></li>
+<li class="fragment">This 20-country world is a smaller, concrete illustration of the same running example — distinct from the abstract 174-country population used in the earlier slides and later Quick Drills.</li>
+</ul>
+<div class="sd-svg-wrap">
+<svg viewbox="0 0 540 270" role="img" aria-label="20 countries as outcomes, laid out in a grid, colored by regime and marked by growth">
+  <rect class="sd-omega" x="10" y="10" width="520" height="250" rx="12"></rect>
+  <text class="sd-omega-label" x="24" y="34">Ω</text>
+  <g>
+    <path class="sd-dot sd-dem" d="M0,-9 L8,7 L-8,7 Z" transform="translate(55,55)"></path>
+    <path class="sd-dot sd-dem" d="M0,-9 L8,7 L-8,7 Z" transform="translate(160,55)"></path>
+    <path class="sd-dot sd-dem" d="M0,-9 L8,7 L-8,7 Z" transform="translate(265,55)"></path>
+    <path class="sd-dot sd-dem" d="M0,-9 L8,7 L-8,7 Z" transform="translate(370,55)"></path>
+    <path class="sd-dot sd-dem" d="M0,-9 L8,7 L-8,7 Z" transform="translate(475,55)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(55,108)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(160,108)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(265,108)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(370,108)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(475,108)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(55,162)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(160,162)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(265,162)"></path>
+    <path class="sd-dot sd-aut" d="M0,-9 L8,7 L-8,7 Z" transform="translate(370,162)"></path>
+    <path class="sd-dot sd-aut" d="M0,-9 L8,7 L-8,7 Z" transform="translate(475,162)"></path>
+    <path class="sd-dot sd-aut" d="M0,-9 L8,7 L-8,7 Z" transform="translate(55,215)"></path>
+    <path class="sd-dot sd-aut" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(160,215)"></path>
+    <path class="sd-dot sd-aut" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(265,215)"></path>
+    <path class="sd-dot sd-aut" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(370,215)"></path>
+    <path class="sd-dot sd-aut" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(475,215)"></path>
+  </g>
+</svg>
+<div class="sd-legend">
+  <span><i class="sd-tri dem-up"></i> Democracy, high growth</span>
+  <span><i class="sd-tri dem-down"></i> Democracy, low growth</span>
+  <span><i class="sd-tri aut-up"></i> Autocracy, high growth</span>
+  <span><i class="sd-tri aut-down"></i> Autocracy, low growth</span>
+</div>
+</div>
+
+<style>
+.sd-svg-wrap { max-width: 480px; margin: -4px auto 0; }
+.sd-svg-wrap svg { width: 100%; height: auto; display: block; }
+.sd-omega { fill: #F7F8FA; stroke: #D9E0EA; stroke-width: 1.5; }
+.sd-omega-label { font-size: 16px; fill: #5A6B80; font-weight: 700; }
+.sd-circle { fill: none; stroke-width: 2.5; }
+.sd-circle-a { stroke: #2b6cb0; }
+.sd-circle-b { stroke: #d9720f; stroke-dasharray: 7 4; }
+.sd-circle-c { stroke: #7952b3; stroke-dasharray: 1.5 3.5; }
+.sd-label-a { fill: #2b6cb0; font-size: 15px; font-weight: 700; }
+.sd-label-b { fill: #d9720f; font-size: 15px; font-weight: 700; }
+.sd-label-c { fill: #7952b3; font-size: 15px; font-weight: 700; }
+.sd-dot { stroke: #22303F; stroke-width: 0.6; }
+.sd-dot.sd-dem { fill: #2f9e63; }
+.sd-dot.sd-aut { fill: #c0392b; }
+.sd-shade { fill: #2b6cb0; fill-opacity: 0.28; }
+.sd-count-label { font-size: 22px; font-weight: 700; fill: #2b6cb0; }
+.sd-legend { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; font-size: 0.6em; color: #5A6B80; margin-top: 3px; }
+.sd-tri { display: inline-block; width: 0; height: 0; border-left: 5px solid transparent; border-right: 5px solid transparent; margin-right: 4px; vertical-align: middle; }
+.sd-tri.dem-up { border-bottom: 8px solid #2f9e63; }
+.sd-tri.dem-down { border-top: 8px solid #2f9e63; }
+.sd-tri.aut-up { border-bottom: 8px solid #c0392b; }
+.sd-tri.aut-down { border-top: 8px solid #c0392b; }
+.sd-mini-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 4px; }
+.sd-mini { flex: 0 0 28%; max-width: 210px; text-align: center; }
+.sd-mini svg { width: 100%; height: auto; display: block; }
+.sd-mini-title { font-weight: 700; color: #2b6cb0; margin-bottom: 2px; font-size: 0.65em; }
+.sd-mini-count { font-size: 0.6em; color: #5A6B80; }
+.sd-calc-row { display: flex; flex-direction: column; gap: 1px; margin-bottom: 7px; font-size: 0.62em; }
+.sd-calc-question { color: #22303F; }
+.sd-calc-answer { color: #2b6cb0; }
+.sd-calc-answer strong { color: #2b6cb0; }
+.sd-compact-slide { font-size: 0.72em; line-height: 1.25; }
+.sd-compact-slide ul { margin: 0.15em 0; }
+.sd-compact-slide li { margin-bottom: 0.15em; }
+.sd-ops-slide { font-size: 0.85em; line-height: 1.3; }
+.sd-ops-slide ul { margin: 0.15em 0; }
+.sd-ops-slide li { margin-bottom: 0.2em; }
+.sd-ops-slide strong { display: block; margin-top: 0.3em; }
+.sd-notation-table { width: 100%; border-collapse: collapse; font-size: 0.95em; }
+.sd-notation-table th, .sd-notation-table td { text-align: left; padding: 6px 10px; border-bottom: 1px solid #D9E0EA; }
+.sd-notation-table th { color: #5A6B80; font-weight: 700; }
+.sd-notation-table td:first-child { color: #2b6cb0; font-weight: 700; white-space: nowrap; }
+</style>
+</section>
+<section id="events-a-democracy-b-high-growth" class="slide level2 smaller">
+<h2>Events: A = Democracy, B = High Growth</h2>
+<ul>
+<li class="fragment"><strong>Event A</strong> = {country is a democracy}. Out of 20 countries, <strong><span class="math inline">\(\lvert A\rvert = 13\)</span></strong>.</li>
+<li class="fragment"><strong>Event B</strong> = {country has high growth}. Out of 20 countries, <strong><span class="math inline">\(\lvert B\rvert = 8\)</span></strong>.</li>
+<li class="fragment">Sorting the same 20 dots by A and B lands them in four regions: only A, only B, both, or neither.</li>
+</ul>
+<div class="sd-svg-wrap">
+<svg viewbox="0 0 540 270" role="img" aria-label="The same 20 countries sorted into events A (Democracy) and B (High growth)">
+  <rect class="sd-omega" x="10" y="10" width="520" height="250" rx="12"></rect>
+  <text class="sd-omega-label" x="24" y="34">Ω</text>
+  <circle class="sd-circle sd-circle-a" cx="190" cy="135" r="80"></circle>
+  <circle class="sd-circle sd-circle-b" cx="310" cy="135" r="80"></circle>
+  <text class="sd-label-a" x="70" y="45">A: Democracy</text>
+  <text class="sd-label-b" x="400" y="45">B: High growth</text>
+  <g>
+    <path class="sd-dot sd-dem" d="M0,-9 L8,7 L-8,7 Z" transform="translate(247,133)"></path>
+    <path class="sd-dot sd-dem" d="M0,-9 L8,7 L-8,7 Z" transform="translate(253,151)"></path>
+    <path class="sd-dot sd-dem" d="M0,-9 L8,7 L-8,7 Z" transform="translate(247,157)"></path>
+    <path class="sd-dot sd-dem" d="M0,-9 L8,7 L-8,7 Z" transform="translate(253,121)"></path>
+    <path class="sd-dot sd-dem" d="M0,-9 L8,7 L-8,7 Z" transform="translate(247,145)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(223,151)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(199,133)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(175,181)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(133,139)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(187,103)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(235,181)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(181,157)"></path>
+    <path class="sd-dot sd-dem" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(163,115)"></path>
+    <path class="sd-dot sd-aut" d="M0,-9 L8,7 L-8,7 Z" transform="translate(355,181)"></path>
+    <path class="sd-dot sd-aut" d="M0,-9 L8,7 L-8,7 Z" transform="translate(355,103)"></path>
+    <path class="sd-dot sd-aut" d="M0,-9 L8,7 L-8,7 Z" transform="translate(319,109)"></path>
+    <path class="sd-dot sd-aut" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(73,61)"></path>
+    <path class="sd-dot sd-aut" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(379,97)"></path>
+    <path class="sd-dot sd-aut" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(229,31)"></path>
+    <path class="sd-dot sd-aut" d="M0,9 L8,-7 L-8,-7 Z" transform="translate(97,223)"></path>
+  </g>
+</svg>
+<div class="sd-legend">
+  <span><i class="sd-tri dem-up"></i> Democracy, high growth</span>
+  <span><i class="sd-tri dem-down"></i> Democracy, low growth</span>
+  <span><i class="sd-tri aut-up"></i> Autocracy, high growth</span>
+  <span><i class="sd-tri aut-down"></i> Autocracy, low growth</span>
+</div>
+</div>
+<div class="slide-footnote">A dot outside both circles is still valid — it's an autocracy with low growth. Regime {Democracy, Autocracy} and growth {High, Low} are two separate partitions of Ω: each is mutually exclusive and exhaustive on its own, but they cut across each other, so a country can sit outside both A and B without any contradiction.</div>
+</section>
+<section id="set-operations-reading-the-regions" class="slide level2 smaller">
+<h2>Set Operations: Reading the Regions</h2>
+<ul>
+<li class="fragment"><strong><span class="math inline">\(A \cap B\)</span></strong> (“both”): countries in the shaded lens are democracies <em>and</em> high-growth.</li>
+<li class="fragment"><strong><span class="math inline">\(A \cup B\)</span></strong> (“either”): countries in the shaded area are in <em>at least one</em> of the two events.</li>
+<li class="fragment"><strong><span class="math inline">\(A^c\)</span></strong> (“complement”): everything shaded is <em>not</em> in A — the autocracies.</li>
+</ul>
+<div class="sd-mini-row">
+
+  <div class="sd-mini">
+    <div class="sd-mini-title">A ∩ B</div>
+    <svg viewbox="0 0 170 130" role="img" aria-label="A intersect B shaded">
+      <rect class="sd-omega" x="5" y="10" width="160" height="110" rx="8"></rect>
+      <clippath id="sd-clip-and"><circle cx="55" cy="65" r="45"></circle></clippath>
+      <path class="sd-shade" clip-path="url(#sd-clip-and)" d="M 70 65 A 45 45 0 1 0 160 65 A 45 45 0 1 0 70 65 Z"></path>
+      <circle class="sd-circle sd-circle-a" cx="55" cy="65" r="45"></circle>
+      <circle class="sd-circle sd-circle-b" cx="115" cy="65" r="45"></circle>
+    </svg>
+    <div class="sd-mini-count">5 of 20 countries</div>
   </div>
-  <svg class="viz-plot vi-svg" viewbox="0 0 480 220" role="img" aria-label="Interactive Venn diagram of two events A and B inside sample space Omega, with sliders for P(A), P(B), and their overlap">
-    <rect class="vi-omega" x="6" y="6" width="468" height="208" rx="10"></rect>
-    <text class="vi-omega-label" x="18" y="26">Ω</text>
-    <circle class="vi-circle-a"></circle>
-    <circle class="vi-circle-b"></circle>
-    <text class="vi-label-a"></text>
-    <text class="vi-label-b"></text>
-  </svg>
-  <div class="vi-readout">
-    <span>P(A) = <strong class="vi-out-pa"></strong></span>
-    <span>P(B) = <strong class="vi-out-pb"></strong></span>
-    <span>P(A∩B) = <strong class="vi-out-pab"></strong></span>
-    <span>P(A∪B) = <strong class="vi-out-pau"></strong></span>
-    <span>P(A<sup>c</sup>) = <strong class="vi-out-pac"></strong></span>
+
+  <div class="sd-mini">
+    <div class="sd-mini-title">A ∪ B</div>
+    <svg viewbox="0 0 170 130" role="img" aria-label="A union B shaded">
+      <rect class="sd-omega" x="5" y="10" width="160" height="110" rx="8"></rect>
+      <path class="sd-shade" d="M 10 65 A 45 45 0 1 0 100 65 A 45 45 0 1 0 10 65 Z M 70 65 A 45 45 0 1 0 160 65 A 45 45 0 1 0 70 65 Z"></path>
+      <circle class="sd-circle sd-circle-a" cx="55" cy="65" r="45"></circle>
+      <circle class="sd-circle sd-circle-b" cx="115" cy="65" r="45"></circle>
+    </svg>
+    <div class="sd-mini-count">16 of 20 countries</div>
+  </div>
+
+  <div class="sd-mini">
+    <div class="sd-mini-title">A<sup>c</sup></div>
+    <svg viewbox="0 0 170 130" role="img" aria-label="Complement of A shaded">
+      <rect class="sd-omega" x="5" y="10" width="160" height="110" rx="8"></rect>
+      <path class="sd-shade" fill-rule="evenodd" d="M 5 10 H 165 V 120 H 5 Z M 10 65 A 45 45 0 1 0 100 65 A 45 45 0 1 0 10 65 Z"></path>
+      <circle class="sd-circle sd-circle-a" cx="55" cy="65" r="45"></circle>
+      <circle class="sd-circle sd-circle-b" cx="115" cy="65" r="45"></circle>
+    </svg>
+    <div class="sd-mini-count">7 of 20 countries</div>
+  </div>
+
+</div>
+</section>
+<section id="calculating-probabilities" class="slide level2 smaller">
+<h2>Calculating Probabilities</h2>
+<div class="columns">
+<div class="column" style="width:42%;">
+<div class="sd-svg-wrap">
+<svg viewbox="0 0 540 270" role="img" aria-label="Venn diagram with the count of countries labeled in each of the four regions">
+  <rect class="sd-omega" x="10" y="10" width="520" height="250" rx="12"></rect>
+  <text class="sd-omega-label" x="24" y="34">Ω</text>
+  <circle class="sd-circle sd-circle-a" cx="190" cy="135" r="80"></circle>
+  <circle class="sd-circle sd-circle-b" cx="310" cy="135" r="80"></circle>
+  <text class="sd-label-a" x="70" y="45">A: Democracy</text>
+  <text class="sd-label-b" x="400" y="45">B: High growth</text>
+  <text class="sd-count-label" x="150" y="140" text-anchor="middle">8</text>
+  <text class="sd-count-label" x="250" y="140" text-anchor="middle">5</text>
+  <text class="sd-count-label" x="350" y="140" text-anchor="middle">3</text>
+  <text class="sd-count-label" x="460" y="230" text-anchor="middle">4</text>
+</svg>
+</div>
+</div><div class="column" style="width:56%;">
+<div class="sd-calc-row">
+  <div class="sd-calc-question fragment">What's the probability a country is a democracy?</div>
+  <div class="sd-calc-answer fragment"><strong>P(A) = 13/20 = 0.65</strong></div>
+</div>
+<div class="sd-calc-row">
+  <div class="sd-calc-question fragment">What's the probability a country has high growth?</div>
+  <div class="sd-calc-answer fragment"><strong>P(B) = 8/20 = 0.40</strong></div>
+</div>
+<div class="sd-calc-row">
+  <div class="sd-calc-question fragment">What's the probability a country is a democracy AND has high growth?</div>
+  <div class="sd-calc-answer fragment"><strong>P(A ∩ B) = 5/20 = 0.25</strong></div>
+</div>
+<div class="sd-calc-row">
+  <div class="sd-calc-question fragment">What's the probability a country is a democracy OR has high growth (or both)?</div>
+  <div class="sd-calc-answer fragment"><strong>P(A ∪ B) = 16/20 = 0.80</strong></div>
+</div>
+<div class="sd-calc-row">
+  <div class="sd-calc-question fragment">What's the probability a country is NOT a democracy?</div>
+  <div class="sd-calc-answer fragment"><strong>P(A<sup>c</sup>) = 7/20 = 0.35</strong></div>
+</div>
+<div class="sd-calc-row">
+  <div class="sd-calc-question fragment">Given a country has high growth, what's the probability it's a democracy?</div>
+  <div class="sd-calc-answer fragment"><strong>P(A | B) = 5/8 = 0.625</strong></div>
+</div>
+</div></div>
+</section>
+<section id="properties-of-set-operations" class="slide level2 smaller">
+<h2>Properties of Set Operations</h2>
+<ul>
+<li class="fragment"><strong>Commutative / associative:</strong> <span class="math inline">\(A \cup B = B \cup A\)</span>; grouping doesn’t matter for repeated unions or intersections.</li>
+<li class="fragment"><strong>Distributive:</strong> <span class="math inline">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)</span>.</li>
+<li class="fragment"><strong>De Morgan’s laws:</strong> <span class="math inline">\((A \cup B)^c = A^c \cap B^c\)</span> — “not (A or B)” is the same event as “not A, and not B.”</li>
+<li class="fragment"><strong>Mutually exclusive / partition:</strong> disjoint sets (<span class="math inline">\(A \cap B = \emptyset\)</span>) that together cover <span class="math inline">\(\Omega\)</span> split the sample space into non-overlapping pieces — exactly what <code>D=1{Democracy}</code> does to our 174 countries.</li>
+</ul>
+</section>
+<section id="a-third-event-c-presidential-system" class="slide level2 smaller">
+<h2>A Third Event: C = Presidential System</h2>
+<div class="sd-compact-slide">
+<ul>
+<li class="fragment">Add <strong>Event C</strong> = {presidential system} to the same 20-country world. <strong><span class="math inline">\(\lvert C\rvert = 4\)</span></strong>.</li>
+<li class="fragment">Ω now splits into up to 8 regions — one consistent way to keep <span class="math inline">\(\lvert A\rvert=13\)</span>, <span class="math inline">\(\lvert B\rvert=8\)</span>, <span class="math inline">\(\lvert A\cap B\rvert=5\)</span> from before.</li>
+</ul>
+<div class="columns">
+<div class="column" style="width:46%;">
+<div class="sd-svg-wrap">
+<svg viewbox="0 0 500 290" role="img" aria-label="Three-circle Venn diagram of events A (Democracy), B (High growth), and C (Presidential system), with the count of countries labeled in each of the eight regions">
+  <rect class="sd-omega" x="15" y="15" width="470" height="255" rx="12"></rect>
+  <circle class="sd-circle sd-circle-a" cx="215" cy="120" r="70"></circle>
+  <circle class="sd-circle sd-circle-b" cx="275" cy="120" r="70"></circle>
+  <circle class="sd-circle sd-circle-c" cx="245" cy="170" r="70"></circle>
+  <text class="sd-label-a" x="140" y="45">A: Democracy</text>
+  <text class="sd-label-b" x="300" y="45">B: High growth</text>
+  <text class="sd-label-c" x="245" y="262" text-anchor="middle">C: Presidential</text>
+  <text class="sd-count-label" x="175" y="95" text-anchor="middle">7</text>
+  <text class="sd-count-label" x="315" y="95" text-anchor="middle">3</text>
+  <text class="sd-count-label" x="245" y="222" text-anchor="middle">2</text>
+  <text class="sd-count-label" x="245" y="95" text-anchor="middle">4</text>
+  <text class="sd-count-label" x="200" y="155" text-anchor="middle">1</text>
+  <text class="sd-count-label" x="290" y="155" text-anchor="middle">0</text>
+  <text class="sd-count-label" x="245" y="140" text-anchor="middle">1</text>
+  <text class="sd-count-label" x="440" y="240" text-anchor="middle">2</text>
+  <text class="sd-none-label" x="440" y="222" text-anchor="middle">none of A,B,C</text>
+</svg>
+</div>
+
+<style>
+.sd-none-label { font-size: 11px; fill: #5A6B80; }
+</style>
+</div><div class="column" style="width:52%;">
+<ul>
+<li class="fragment"><strong>Commutative:</strong> <span class="math inline">\(A\cap B = B\cap A\)</span> — both 5.</li>
+<li class="fragment"><strong>Associative:</strong> <span class="math inline">\((A\cap B)\cap C = A\cap(B\cap C)\)</span> — same 1-country center.</li>
+<li class="fragment"><strong>Distributive:</strong> <span class="math inline">\(A\cap(B\cup C) = (A\cap B)\cup(A\cap C)\)</span> — same <span class="math inline">\(4{+}1{+}1=6\)</span> countries.</li>
+<li class="fragment"><strong>De Morgan’s:</strong> <span class="math inline">\((A\cup B\cup C)^c = A^c\cap B^c\cap C^c\)</span> — same 2 countries outside all three.</li>
+<li class="fragment"><strong>Partition:</strong> <span class="math inline">\(7{+}3{+}2{+}4{+}1{+}0{+}1{+}2 = 20\)</span>. <span class="math inline">\(B\cap C\setminus A = 0\)</span> is a valid, empty piece.</li>
+</ul>
+</div></div>
+</div>
+<!--
+Quick-reference notation primer. Topic list (which symbols/definitions to
+cover) is standard across intro probability treatments, including IQSS's
+"prefresher" course notes, probability chapter:
+https://iqss.github.io/prefresher/06_probability.html (GPLv3 licensed).
+Definitions and examples here are written independently in this deck's own
+voice, tied to the running country example -- not copied from that source.
+-->
+</section>
+<section id="set-notation-quick-reference" class="slide level2 smaller">
+<h2>Set Notation, Quick Reference</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<table class="sd-notation-table caption-top">
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Notation</th>
+<th data-quarto-table-cell-role="th">Meaning</th>
+</tr>
+<tr class="even">
+<td>\(x \in A\)</td>
+<td>x is an element of A</td>
+</tr>
+<tr class="odd">
+<td>\(x \notin A\)</td>
+<td>x is not an element of A</td>
+</tr>
+<tr class="even">
+<td>\(A \subseteq B\)</td>
+<td>every element of A is also in B</td>
+</tr>
+<tr class="odd">
+<td>\(\emptyset\)</td>
+<td>the empty set — no elements</td>
+</tr>
+<tr class="even">
+<td>\(\Omega\) (or S)</td>
+<td>the sample space — all possible outcomes</td>
+</tr>
+<tr class="odd">
+<td>\(\lvert A \rvert\)</td>
+<td>cardinality — the number of elements in A</td>
+</tr>
+<tr class="even">
+<td>\(A \cap B = \emptyset\)</td>
+<td>A and B are mutually exclusive</td>
+</tr>
+</tbody>
+</table>
+</div><div class="column" style="width:50%;">
+<table class="sd-notation-table caption-top">
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th">Notation</th>
+<th data-quarto-table-cell-role="th">Meaning</th>
+</tr>
+<tr class="even">
+<td>\(A \cup B\)</td>
+<td>union — in A, or B, or both</td>
+</tr>
+<tr class="odd">
+<td>\(A \cap B\)</td>
+<td>intersection — in both A and B</td>
+</tr>
+<tr class="even">
+<td>\(A^c\) (or \(A'\))</td>
+<td>complement — in Ω but not A</td>
+</tr>
+<tr class="odd">
+<td>\(A \setminus B\)</td>
+<td>difference — in A but not B</td>
+</tr>
+<tr class="even">
+<td>\(\displaystyle\bigcup_{i=1}^n A_i\)</td>
+<td>union of n sets: \(A_1\cup\cdots\cup A_n\)</td>
+</tr>
+<tr class="odd">
+<td>\(\displaystyle\bigcap_{i=1}^n A_i\)</td>
+<td>intersection of n sets: \(A_1\cap\cdots\cap A_n\)</td>
+</tr>
+</tbody>
+</table>
+</div></div>
+<ul>
+<li>A <strong>partition</strong> of <span class="math inline">\(\Omega\)</span> is a collection of mutually exclusive sets <span class="math inline">\(A_1,\dots,A_n\)</span> whose union <span class="math inline">\(\bigcup_{i=1}^n A_i\)</span> is all of <span class="math inline">\(\Omega\)</span> — exactly the 8 regions two slides back (there, <span class="math inline">\(n=8\)</span>).</li>
+</ul>
+</section>
+<section id="quick-drill-sets" class="slide level2 smaller">
+<h2>Quick Drill: Sets</h2>
+<div class="sd-compact-slide">
+<ul>
+<li class="fragment"><span class="math inline">\(A\)</span> = {Democracy}, <span class="math inline">\(B\)</span> = {growth &gt; 0}. In words, what is <span class="math inline">\(A^c \cap B^c\)</span>? <span class="fragment">Autocracies with non-positive growth — by De Morgan’s, this is <span class="math inline">\((A \cup B)^c\)</span>.</span></li>
+<li class="fragment">Are <span class="math inline">\(\{D=1\}\)</span> and <span class="math inline">\(\{D=0\}\)</span> mutually exclusive? Do they partition <span class="math inline">\(\Omega\)</span>? <span class="fragment">Yes to both — every country is in exactly one, so they’re disjoint and cover all 174.</span></li>
+<li class="fragment">Using the 20-country world with <span class="math inline">\(A\)</span> = Democracy, <span class="math inline">\(B\)</span> = High growth, <span class="math inline">\(C\)</span> = Presidential (<span class="math inline">\(\lvert A\rvert=13,\lvert B\rvert=8,\lvert C\rvert=4\)</span>, <span class="math inline">\(\lvert A\cap B\rvert=5,\lvert A\cap C\rvert=2,\lvert B\cap C\rvert=1,\lvert A\cap B\cap C\rvert=1\)</span>): how many countries are in <span class="math inline">\(A \cup B \cup C\)</span>? <span class="fragment">Inclusion–exclusion: <span class="math inline">\(13+8+4-5-2-1+1=18\)</span>.</span></li>
+<li class="fragment">Same setup — how many countries are in <span class="math inline">\((A \cap B) \cup C\)</span>? <span class="fragment"><span class="math inline">\(\lvert A\cap B\rvert + \lvert C\rvert - \lvert (A\cap B)\cap C\rvert = 5+4-1=8\)</span>, since <span class="math inline">\((A\cap B)\cap C\)</span> is just the 1-country center region.</span></li>
+</ul>
+</div>
+</section>
+<section id="axioms-probability-operations" class="slide level2">
+<h2>Axioms &amp; Probability Operations</h2>
+<p><em>The three rules any probability function must obey — and everything else, derived from them.</em></p>
+</section>
+<section id="what-have-we-observed-so-far" class="slide level2 smaller">
+<h2>What Have We Observed, So Far?</h2>
+<ul>
+<li class="fragment">Every probability we’ve computed has been <strong>non-negative</strong> — never once did an event come out less likely than impossible.</li>
+<li class="fragment"><span class="math inline">\(P(\Omega)\)</span> has always come out to <strong>1</strong> — some outcome always occurs; the sample space is the whole deal.</li>
+<li class="fragment">When two events couldn’t both happen — mutually exclusive events, like <span class="math inline">\(D=1\)</span> and <span class="math inline">\(D=0\)</span> — their probabilities just <strong>added</strong>.</li>
+<li class="fragment">Nothing we’ve done — Pr() notation, the complement trick, the Venn diagrams, three overlapping events — ever broke these three patterns.</li>
+<li class="fragment"><strong>Question:</strong> are these just patterns we happened to notice, or rules that <em>define</em> what “probability” is allowed to mean?</li>
+</ul>
+</section>
+<section id="the-kolmogorov-axioms" class="slide level2 smaller">
+<h2>The Kolmogorov Axioms</h2>
+<ul>
+<li class="fragment">These patterns are not a coincidence — they <strong>are</strong>, formally, the definition of probability. Any function claiming to assign probabilities must satisfy exactly these three axioms (Kolmogorov, 1933):</li>
+<li class="fragment"><strong>Axiom 1 (non-negativity):</strong> <span class="math inline">\(P(A) \geq 0\)</span> for every event <span class="math inline">\(A \subseteq \Omega\)</span>.</li>
+<li class="fragment"><strong>Axiom 2 (normalization):</strong> <span class="math inline">\(P(\Omega) = 1\)</span>.</li>
+<li class="fragment"><strong>Axiom 3 (additivity):</strong> for pairwise disjoint events <span class="math inline">\(A_1, A_2, \ldots, A_n\)</span> (i.e.&nbsp;<span class="math inline">\(A_i \cap A_j = \emptyset\)</span> for <span class="math inline">\(i\neq j\)</span>), <span class="math display">\[P\Big(\bigcup\limits_{i=1}^{n} A_i\Big) = \sum\limits_{i=1}^{n} P(A_i)\]</span></li>
+<li class="fragment">That’s it. Every other probability rule we’ll use — including ones we haven’t proven yet — is a <em>consequence</em> of these three, not an extra assumption.</li>
+</ul>
+</section>
+<section id="probability-is-a-mapping" class="slide level2 smaller">
+<h2>Probability Is a Mapping</h2>
+<ul>
+<li class="fragment">Informally: probability is a machine. Feed it an <strong>event</strong>, it hands back a <strong>number</strong> in <span class="math inline">\([0,1]\)</span> — nothing more, nothing less.</li>
+<li class="fragment">Formally: a <strong>probability function</strong> is a mapping <span class="math display">\[P : \{\text{events on } \Omega\} \to [0,1]\]</span> that satisfies Kolmogorov’s three axioms above.</li>
+<li class="fragment">This is exactly the same idea as a function from Day 1 (<span class="math inline">\(f: \text{domain} \to \text{codomain}\)</span>) — the domain here just happens to be <em>events</em>, not numbers.</li>
+<li class="fragment">Running example: <span class="math inline">\(P(\text{Democracy})\)</span> takes the event “country is a democracy” and returns <span class="math inline">\(0.65\)</span> — one event in, one number out.</li>
+</ul>
+<!--
+The Probability Operations slide below covers the same topic list as IQSS's
+"prefresher" course notes, probability chapter:
+https://iqss.github.io/prefresher/06_probability.html (GPLv3 licensed):
+P(empty set)=0, 0<=P(A)<=1, the complement rule, monotonicity, the addition
+rule, and Boole's inequality. Content, derivations, and examples here are
+written independently in this deck's own voice, derived from the Kolmogorov
+axioms above rather than copied -- credit to the IQSS prefresher authors for
+the topic selection this draws on.
+-->
+</section>
+<section id="probability-operations-i" class="slide level2 smaller">
+<h2>Probability Operations I</h2>
+<div class="sd-ops-slide">
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><strong>Empty set</strong></p>
+<ul>
+<li class="fragment">What is <span class="math inline">\(P(\emptyset)\)</span>?</li>
+<li class="fragment">Let <span class="math inline">\(A_1=\Omega\)</span> and <span class="math inline">\(A_2=\emptyset\)</span> — disjoint, and their union is <span class="math inline">\(\Omega\)</span>.</li>
+<li class="fragment">Axiom 3: <span class="math inline">\(P(\Omega) = P(A_1\cup A_2) = P(\Omega)+P(\emptyset)\)</span>.</li>
+<li class="fragment">Subtract <span class="math inline">\(P(\Omega)\)</span> from both sides: <span class="math inline">\(P(\emptyset)=0\)</span>.</li>
+</ul>
+</div><div class="column" style="width:48%;">
+<p><strong>Bounded</strong></p>
+<ul>
+<li class="fragment">Why is <span class="math inline">\(0 \leq P(A) \leq 1\)</span> for every event <span class="math inline">\(A\)</span>?</li>
+<li class="fragment">Lower bound: that’s just Axiom 1, directly.</li>
+<li class="fragment">Upper bound: <span class="math inline">\(A \subseteq \Omega\)</span>, and by monotonicity (next slide) <span class="math inline">\(P(A) \leq P(\Omega) = 1\)</span>.</li>
+</ul>
+</div></div>
+</div>
+</section>
+<section id="probability-operations-ii" class="slide level2 smaller">
+<h2>Probability Operations II</h2>
+<div class="sd-ops-slide">
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><strong>Complement rule</strong></p>
+<ul>
+<li class="fragment">What is <span class="math inline">\(P(A^c)\)</span>, in terms of <span class="math inline">\(P(A)\)</span>?</li>
+<li class="fragment"><span class="math inline">\(A\)</span> and <span class="math inline">\(A^c\)</span> are disjoint, and together cover <span class="math inline">\(\Omega\)</span>: <span class="math inline">\(A \cup A^c = \Omega\)</span>.</li>
+<li class="fragment">Axiom 3: <span class="math inline">\(P(A) + P(A^c) = P(\Omega) = 1\)</span>.</li>
+<li class="fragment">Rearranged: <span class="math inline">\(P(A^c) = 1-P(A)\)</span>.</li>
+</ul>
+</div><div class="column" style="width:48%;">
+<p><strong>Monotonicity</strong></p>
+<ul>
+<li class="fragment">If <span class="math inline">\(A \subseteq B\)</span>, is <span class="math inline">\(P(A) \leq P(B)\)</span>?</li>
+<li class="fragment">Split <span class="math inline">\(B\)</span> into two disjoint pieces: <span class="math inline">\(B = A \cup (B\setminus A)\)</span>.</li>
+<li class="fragment">Axiom 3: <span class="math inline">\(P(B) = P(A) + P(B\setminus A)\)</span>.</li>
+<li class="fragment">Since <span class="math inline">\(P(B\setminus A) \geq 0\)</span> (Axiom 1), <span class="math inline">\(P(B) \geq P(A)\)</span>.</li>
+</ul>
+</div></div>
+</div>
+</section>
+<section id="probability-operations-iii" class="slide level2 smaller">
+<h2>Probability Operations III</h2>
+<div class="sd-ops-slide">
+<div class="columns">
+<div class="column" style="width:48%;">
+<p><strong>Addition rule</strong></p>
+<ul>
+<li class="fragment">What is <span class="math inline">\(P(A\cup B)\)</span> once <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> overlap?</li>
+<li class="fragment">Split <span class="math inline">\(A \cup B\)</span> into three disjoint pieces: <span class="math inline">\(A\)</span>-only, <span class="math inline">\(B\)</span>-only, <span class="math inline">\(A\cap B\)</span>.</li>
+<li class="fragment">Adding <span class="math inline">\(P(A)+P(B)\)</span> counts the <span class="math inline">\(A\cap B\)</span> piece <strong>twice</strong> — once inside each.</li>
+<li class="fragment">Subtract it back out once: <span class="math inline">\(P(A\cup B) = P(A)+P(B)-P(A\cap B)\)</span>.</li>
+<li class="fragment">Check: <span class="math inline">\(0.65+0.40-0.25=0.80\)</span> — matches the <span class="math inline">\(16/20\)</span> we counted directly.</li>
+</ul>
+</div><div class="column" style="width:48%;">
+<p><strong>Boole’s inequality (stated)</strong></p>
+<ul>
+<li class="fragment">For any events <span class="math inline">\(A_1,\ldots,A_n\)</span> — overlapping or not: <span class="math display">\[P\Big(\bigcup\limits_{i=1}^{n} A_i\Big) \leq \sum\limits_{i=1}^{n} P(A_i)\]</span></li>
+<li class="fragment">Why an <em>inequality</em>, not always an equation? See the next slide.</li>
+</ul>
+</div></div>
+</div>
+</section>
+<section id="booles-inequality-interactively" class="slide level2 smaller">
+<h2>Boole’s Inequality, Interactively</h2>
+<div class="sd-compact-slide">
+<ul>
+<li class="fragment">The addition rule is <strong>exact</strong>: <span class="math inline">\(P(A\cup B) = P(A)+P(B)-P(A\cap B)\)</span>.</li>
+<li class="fragment">Since <span class="math inline">\(P(A\cap B) \geq 0\)</span> always, dropping that term can only make the right side bigger (or leave it equal): <span class="math inline">\(P(A\cup B) \leq P(A)+P(B)\)</span>.</li>
+<li class="fragment"><strong>When A and B overlap</strong>, summing <span class="math inline">\(P(A)+P(B)\)</span> double-counts the shared region — it <em>overshoots</em> the true union probability by exactly <span class="math inline">\(P(A\cap B)\)</span>.</li>
+<li class="fragment"><strong>When A and B are disjoint</strong> (<span class="math inline">\(P(A\cap B)=0\)</span>), there’s nothing left to double-count, and the inequality becomes an equality.</li>
+<li class="fragment">Drag the sliders below and watch the gap between <span class="math inline">\(P(A)+P(B)\)</span> and <span class="math inline">\(P(A\cup B)\)</span> open and close with the overlap.</li>
+</ul>
+</div>
+<div class="bl">
+  <div class="bl-controls">
+    <label>P(A): <span class="bl-pa-val">0.40</span>
+      <input id="bl-pa" type="range" min="0.05" max="0.85" step="0.01" value="0.40">
+    </label>
+    <label>P(B): <span class="bl-pb-val">0.35</span>
+      <input id="bl-pb" type="range" min="0.05" max="0.85" step="0.01" value="0.35">
+    </label>
+    <label>Overlap: <span class="bl-ov-val">0.50</span>
+      <input id="bl-ov" type="range" min="0" max="1" step="0.01" value="0.50">
+    </label>
+  </div>
+
+  <div class="bl-layout">
+    <svg class="bl-svg" viewbox="0 0 420 220" role="img" aria-label="Two overlapping circles representing events A and B, resizing with the sliders">
+      <rect class="sd-omega" x="6" y="6" width="408" height="208" rx="10"></rect>
+      <text class="sd-omega-label" x="18" y="28">Ω</text>
+      <circle class="bl-circle-a"></circle>
+      <circle class="bl-circle-b"></circle>
+      <text class="bl-label-a"></text>
+      <text class="bl-label-b"></text>
+    </svg>
+
+    <div class="bl-panel">
+      <div class="bl-row"><span>P(A)</span><strong class="bl-out-pa"></strong></div>
+      <div class="bl-row"><span>P(B)</span><strong class="bl-out-pb"></strong></div>
+      <div class="bl-row bl-row-sum"><span>P(A) + P(B)</span><strong class="bl-out-sum"></strong></div>
+      <div class="bl-row"><span>P(A ∩ B) — the double-counted part</span><strong class="bl-out-pab"></strong></div>
+      <div class="bl-row bl-row-union"><span>P(A ∪ B)</span><strong class="bl-out-pau"></strong></div>
+      <div class="bl-ineq">P(A ∪ B) <span class="bl-out-rel">≤</span> P(A) + P(B)</div>
+    </div>
   </div>
 </div>
 
 <style>
-.venn-interactive { max-width: 100%; font-size: 0.55em; }
-.venn-interactive .vi-controls {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 12px 20px;
-  flex: 0 0 auto;
-  margin-bottom: 4px;
-}
-.venn-interactive .vi-ctrl { display: flex; align-items: center; gap: 8px; }
-.venn-interactive .vi-ctrl input[type="range"] { width: 130px; }
-.venn-interactive .vi-svg { flex: 1 1 auto; min-height: 0; width: 100%; }
-.venn-interactive .vi-omega { fill: #F7F8FA; stroke: #D9E0EA; stroke-width: 1.5; }
-.venn-interactive .vi-omega-label { font-size: 14px; fill: #5A6B80; font-weight: 700; }
-.venn-interactive .vi-circle-a { fill: #2b6cb0; fill-opacity: 0.45; stroke: #2b6cb0; stroke-width: 1.5; }
-.venn-interactive .vi-circle-b { fill: #8a8f98; fill-opacity: 0.45; stroke: #8a8f98; stroke-width: 1.5; }
-.venn-interactive .vi-label-a { font-size: 15px; font-weight: 700; fill: #22303F; }
-.venn-interactive .vi-label-b { font-size: 15px; font-weight: 700; fill: #22303F; }
-.venn-interactive .vi-readout {
-  flex: 0 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px 16px;
-  margin-top: 6px;
-  color: #5A6B80;
-}
-.venn-interactive .vi-readout strong { color: #2b6cb0; }
+.bl { font-size: 0.75em; }
+.bl-controls { display: flex; flex-wrap: wrap; gap: 10px 22px; margin-bottom: 6px; }
+.bl-controls label { display: flex; align-items: center; gap: 6px; }
+.bl-controls input[type="range"] { width: 130px; }
+.bl-layout { display: flex; gap: 18px; align-items: center; flex-wrap: wrap; }
+.bl-svg { flex: 1 1 55%; min-width: 260px; }
+.bl-circle-a { fill: #2b6cb0; fill-opacity: 0.45; stroke: #2b6cb0; stroke-width: 1.5; }
+.bl-circle-b { fill: #d9720f; fill-opacity: 0.45; stroke: #d9720f; stroke-width: 1.5; }
+.bl-label-a { font-size: 14px; font-weight: 700; fill: #2b6cb0; }
+.bl-label-b { font-size: 14px; font-weight: 700; fill: #d9720f; }
+.bl-panel { flex: 1 1 35%; min-width: 220px; display: flex; flex-direction: column; gap: 5px; }
+.bl-row { display: flex; justify-content: space-between; gap: 10px; }
+.bl-row strong { color: #2b6cb0; }
+.bl-row-sum strong { color: #5A6B80; }
+.bl-row-union strong { color: #18BC9C; }
+.bl-ineq { margin-top: 6px; padding-top: 6px; border-top: 1px dashed #D9E0EA; font-weight: 700; text-align: center; }
+.bl-out-rel { color: #c0392b; padding: 0 4px; }
 </style>
 
 <script>
 (function () {
-  var wrappers = document.querySelectorAll('.venn-interactive');
-  var wrapper = wrappers[wrappers.length - 1];
-  var svg = wrapper.querySelector('.vi-svg');
-  var circleA = wrapper.querySelector('.vi-circle-a');
-  var circleB = wrapper.querySelector('.vi-circle-b');
-  var labelA = wrapper.querySelector('.vi-label-a');
-  var labelB = wrapper.querySelector('.vi-label-b');
+  var roots = document.querySelectorAll('.bl');
+  var root = roots[roots.length - 1];
 
-  var paSlider = wrapper.querySelector('#vi-pa');
-  var pbSlider = wrapper.querySelector('#vi-pb');
-  var ovSlider = wrapper.querySelector('#vi-overlap');
+  var paSlider = root.querySelector('#bl-pa');
+  var pbSlider = root.querySelector('#bl-pb');
+  var ovSlider = root.querySelector('#bl-ov');
 
-  var cx = 240, cy = 112, maxR = 82;
+  var circleA = root.querySelector('.bl-circle-a');
+  var circleB = root.querySelector('.bl-circle-b');
+  var labelA = root.querySelector('.bl-label-a');
+  var labelB = root.querySelector('.bl-label-b');
+
+  var cx = 210, cy = 110, maxR = 78;
 
   function fmt(v) { return v.toFixed(2); }
 
@@ -353,9 +857,9 @@ authors for the topic selection this draws on.
     var pb = parseFloat(pbSlider.value);
     var ov = parseFloat(ovSlider.value);
 
-    wrapper.querySelector('.vi-pa-val').textContent = fmt(pa);
-    wrapper.querySelector('.vi-pb-val').textContent = fmt(pb);
-    wrapper.querySelector('.vi-overlap-val').textContent = fmt(ov);
+    root.querySelector('.bl-pa-val').textContent = fmt(pa);
+    root.querySelector('.bl-pb-val').textContent = fmt(pb);
+    root.querySelector('.bl-ov-val').textContent = fmt(ov);
 
     var rA = maxR * Math.sqrt(pa);
     var rB = maxR * Math.sqrt(pb);
@@ -373,23 +877,24 @@ authors for the topic selection this draws on.
     circleB.setAttribute('cy', cy);
     circleB.setAttribute('r', rB);
 
-    labelA.setAttribute('x', xA - rA - 4);
-    labelA.setAttribute('y', cy - rA + 4);
+    labelA.setAttribute('x', xA - rA - 6);
+    labelA.setAttribute('y', cy - rA + 2);
     labelA.setAttribute('text-anchor', 'end');
     labelA.textContent = 'A';
-    labelB.setAttribute('x', xB + rB + 4);
-    labelB.setAttribute('y', cy - rB + 4);
+    labelB.setAttribute('x', xB + rB + 6);
+    labelB.setAttribute('y', cy - rB + 2);
     labelB.textContent = 'B';
 
     var pab = ov * Math.min(pa, pb);
     var pau = pa + pb - pab;
-    var pac = 1 - pa;
+    var sum = pa + pb;
 
-    wrapper.querySelector('.vi-out-pa').textContent = fmt(pa);
-    wrapper.querySelector('.vi-out-pb').textContent = fmt(pb);
-    wrapper.querySelector('.vi-out-pab').textContent = fmt(pab);
-    wrapper.querySelector('.vi-out-pau').textContent = fmt(pau);
-    wrapper.querySelector('.vi-out-pac').textContent = fmt(pac);
+    root.querySelector('.bl-out-pa').textContent = fmt(pa);
+    root.querySelector('.bl-out-pb').textContent = fmt(pb);
+    root.querySelector('.bl-out-sum').textContent = fmt(sum);
+    root.querySelector('.bl-out-pab').textContent = fmt(pab);
+    root.querySelector('.bl-out-pau').textContent = fmt(pau);
+    root.querySelector('.bl-out-rel').textContent = pab < 0.005 ? '=' : '<';
   }
 
   [paSlider, pbSlider, ovSlider].forEach(function (el) {
@@ -399,31 +904,189 @@ authors for the topic selection this draws on.
   draw();
 })();
 </script>
-<div class="running-example-note">↪ Running example: let A = {polyarchy &gt; 0.5}, B = {growth &gt; 0}. Drag the sliders and watch P(A∩B) and P(A∪B) update as the circles move.</div>
 </section>
-<section id="properties-of-set-operations" class="slide level2 smaller">
-<h2>Properties of Set Operations</h2>
+<section id="compound-probability-bayes-theorem" class="slide level2">
+<h2>Compound Probability &amp; Bayes’ Theorem</h2>
+<p><em>Joint and conditional probability, independence, and flipping a conditional around.</em></p>
+</section>
+<section id="compound-probability-joint-conditional" class="slide level2 smaller">
+<h2>Compound Probability: Joint &amp; Conditional</h2>
 <ul>
-<li class="fragment"><strong>Commutative / associative:</strong> <span class="math inline">\(A \cup B = B \cup A\)</span>; grouping doesn’t matter for repeated unions or intersections.</li>
-<li class="fragment"><strong>Distributive:</strong> <span class="math inline">\(A \cap (B \cup C) = (A \cap B) \cup (A \cap C)\)</span>.</li>
-<li class="fragment"><strong>De Morgan’s laws:</strong> <span class="math inline">\((A \cup B)^c = A^c \cap B^c\)</span> — “not (A or B)” is the same event as “not A, and not B.”</li>
-<li class="fragment"><strong>Mutually exclusive / partition:</strong> disjoint sets (<span class="math inline">\(A \cap B = \emptyset\)</span>) that together cover <span class="math inline">\(\Omega\)</span> split the sample space into non-overlapping pieces — exactly what <code>D=1{polyarchy&gt;0.5}</code> does to our 174 countries.</li>
+<li class="fragment"><strong>Joint probability</strong> <span class="math inline">\(P(A \cap B)\)</span>: the chance both events happen at once.
+<ul>
+<li class="fragment">Running example: <span class="math inline">\(P(\text{Democracy} \cap \text{High growth})\)</span> — countries that are both.</li>
+</ul></li>
+<li class="fragment"><strong>Conditional probability</strong>: once we know <span class="math inline">\(B\)</span> happened, the world shrinks down to just <span class="math inline">\(B\)</span>.
+<ul>
+<li class="fragment">Formally: <span class="math inline">\(P(A \mid B) = \dfrac{P(A \cap B)}{P(B)}\)</span>, for <span class="math inline">\(P(B)&gt;0\)</span>.</li>
+<li class="fragment">Intuition: restrict the sample space to <span class="math inline">\(B\)</span>, then ask what <em>share</em> of that smaller world is also in <span class="math inline">\(A\)</span> — same ratio idea as <span class="math inline">\(\Pr(e)\)</span> back on Day 2’s first slide, just on a shrunk-down <span class="math inline">\(\Omega\)</span>.</li>
+</ul></li>
+</ul>
+<div class="running-example-note">↪ Running example: A = {Democracy}, B = {High growth}. P(A|B) = share of high-growth countries that are also democracies — not the same number as P(A).</div>
+</section>
+<section id="compound-probability-the-multiplication-rule" class="slide level2 smaller">
+<h2>Compound Probability: The Multiplication Rule</h2>
+<ul>
+<li class="fragment">Clear the denominator in the conditional-probability definition:
+<ul>
+<li class="fragment"><span class="math inline">\(P(A \mid B)\,P(B) = P(A\cap B)\)</span>.</li>
+</ul></li>
+<li class="fragment">The same logic, starting instead from <span class="math inline">\(B\mid A\)</span>:
+<ul>
+<li class="fragment"><span class="math inline">\(P(B \mid A)\,P(A) = P(A \cap B)\)</span> too — the <em>same</em> joint probability, built two different ways.</li>
+<li class="fragment">That’s exactly the fact Bayes’ rule exploits, coming up soon.</li>
+</ul></li>
+<li class="fragment">Check against the running example: <span class="math inline">\(P(A\mid B) = 0.625\)</span> and <span class="math inline">\(P(B)=0.40\)</span>, so <span class="math inline">\(P(A\mid B)P(B) = 0.625 \times 0.40 = 0.25\)</span> — matches <span class="math inline">\(P(A\cap B)=0.25\)</span> we counted directly.</li>
 </ul>
 </section>
-<section id="quick-drill-sets" class="slide level2 smaller">
-<h2>Quick Drill: Sets</h2>
+<section id="independence-two-events" class="slide level2 smaller">
+<h2>Independence: Two Events</h2>
 <ul>
-<li class="fragment"><span class="math inline">\(A\)</span> = {polyarchy &gt; 0.5}, <span class="math inline">\(B\)</span> = {growth &gt; 0}. In words, what is <span class="math inline">\(A^c \cap B^c\)</span>? <span class="fragment">Low-polyarchy countries with non-positive growth — by De Morgan’s, this is <span class="math inline">\((A \cup B)^c\)</span>.</span></li>
-<li class="fragment">Are <span class="math inline">\(\{D=1\}\)</span> and <span class="math inline">\(\{D=0\}\)</span> mutually exclusive? Do they partition <span class="math inline">\(\Omega\)</span>? <span class="fragment">Yes to both — every country is in exactly one, so they’re disjoint and cover all 174.</span></li>
+<li class="fragment">Intuition: <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are <strong>independent</strong> if knowing one happened tells you <em>nothing</em> about the other.</li>
+<li class="fragment">Formal definition — two equivalent forms:
+<ul>
+<li class="fragment"><span class="math inline">\(P(A \mid B) = P(A)\)</span> — conditioning on <span class="math inline">\(B\)</span> doesn’t move <span class="math inline">\(A\)</span>’s probability at all.</li>
+<li class="fragment">Equivalently: <span class="math inline">\(P(A \cap B) = P(A)\,P(B)\)</span>.</li>
+<li class="fragment">Why equivalent: substitute <span class="math inline">\(P(A\mid B) = P(A)\)</span> into the multiplication rule <span class="math inline">\(P(A\cap B) = P(A\mid B)P(B)\)</span>, and the right side collapses to <span class="math inline">\(P(A)P(B)\)</span>.</li>
+</ul></li>
+</ul>
+<div class="running-example-note">↪ Running example check: P(A)=0.65, P(B)=0.40 → P(A)P(B)=0.26, but we counted P(A∩B)=0.25 directly. Close, but not equal — Democracy and High growth are <em>not quite</em> independent in this world.</div>
+</section>
+<section id="independence-three-or-more-events" class="slide level2 smaller">
+<h2>Independence: Three or More Events</h2>
+<ul>
+<li class="fragment">With <strong>three or more events</strong>, independence comes in two strengths:
+<ul>
+<li class="fragment"><strong>Pairwise independence</strong>: every pair satisfies the product rule on its own —
+<ul>
+<li class="fragment"><span class="math inline">\(P(A\cap B)=P(A)P(B)\)</span></li>
+<li class="fragment"><span class="math inline">\(P(A\cap C)=P(A)P(C)\)</span></li>
+<li class="fragment"><span class="math inline">\(P(B\cap C)=P(B)P(C)\)</span></li>
+</ul></li>
+<li class="fragment"><strong>Mutual independence</strong>: the <em>whole</em> collection satisfies the product rule at once —
+<ul>
+<li class="fragment"><span class="math inline">\(P(A\cap B\cap C) = P(A)P(B)P(C)\)</span></li>
+<li class="fragment"><em>in addition to</em> every pairwise version above.</li>
+</ul></li>
+</ul></li>
+<li class="fragment">Mutual independence is strictly <strong>stronger</strong> — events can pass every pairwise check and still fail the joint one.</li>
 </ul>
 </section>
-<section id="the-axioms-of-probability" class="slide level2 smaller">
-<h2>The Axioms of Probability</h2>
+<section id="quick-drill-compound-probability" class="slide level2 smaller">
+<h2>Quick Drill: Compound Probability</h2>
 <ul>
-<li class="fragment"><span class="math inline">\(P(A) \geq 0\)</span> for any event <span class="math inline">\(A\)</span> — nothing is less likely than impossible.</li>
-<li class="fragment"><span class="math inline">\(P(\Omega) = 1\)</span> — some outcome always occurs.</li>
-<li class="fragment">If <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> can’t both happen (mutually exclusive), <span class="math inline">\(P(A \cup B) = P(A) + P(B)\)</span>.</li>
-<li class="fragment">Everything we’ve done with sets and events so far — unions, complements, the interactive diagram — all obeys just these three rules.</li>
+<li class="fragment">Of our 20-country world, 8 have positive growth, and 5 of those are also democracies. What is <span class="math inline">\(P(A|B)\)</span>? <span class="fragment"><span class="math inline">\(5/8 = 0.625\)</span> — matching <span class="math inline">\(P(A\mid B)\)</span> from the running tallies.</span></li>
+<li class="fragment">If instead <span class="math inline">\(P(A) = 0.45\)</span> and <span class="math inline">\(P(A|B) = 0.45\)</span>, are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent? <span class="fragment">Yes — conditioning on B didn’t move the probability of A.</span></li>
+<li class="fragment">Suppose regime type and region were assigned independently. What would <span class="math inline">\(P(\text{Democracy} \cap \text{region } r)\)</span> equal? <span class="fragment"><span class="math inline">\(P(\text{Democracy}) \times P(\text{region } r)\)</span>, by independence.</span></li>
+</ul>
+</section>
+<section id="bayes-theorem-the-idea" class="slide level2 smaller">
+<h2>Bayes’ Theorem: The Idea</h2>
+<ul>
+<li class="fragment">Conditional probability lets us go from <span class="math inline">\(B\)</span> to <span class="math inline">\(A\)</span>, i.e.&nbsp;compute <span class="math inline">\(P(A\mid B)\)</span>.</li>
+<li class="fragment"><strong>Bayes’ rule flips it around</strong> — it recovers <span class="math inline">\(P(A\mid B)\)</span> starting from <span class="math inline">\(P(B\mid A)\)</span> instead.</li>
+<li class="fragment">Starting point: the multiplication rule, written two ways for the <em>same</em> joint probability:
+<ul>
+<li class="fragment"><span class="math inline">\(P(A\cap B) = P(A\mid B)\,P(B)\)</span></li>
+<li class="fragment"><span class="math inline">\(P(A\cap B) = P(B\mid A)\,P(A)\)</span></li>
+</ul></li>
+</ul>
+</section>
+<section id="bayes-theorem-solving-for-pab" class="slide level2 smaller">
+<h2>Bayes’ Theorem: Solving for P(A|B)</h2>
+<ul>
+<li class="fragment">Both right-hand sides equal the same <span class="math inline">\(P(A\cap B)\)</span>, so they equal each other:
+<ul>
+<li class="fragment"><span class="math inline">\(P(A\mid B)\,P(B) = P(B\mid A)\,P(A)\)</span></li>
+</ul></li>
+<li class="fragment">Divide both sides by <span class="math inline">\(P(B)\)</span>: <span class="math display">\[P(A \mid B) = \dfrac{P(B\mid A)\,P(A)}{P(B)}\]</span></li>
+<li class="fragment">That’s <strong>Bayes’ Theorem</strong>.</li>
+</ul>
+<div class="running-example-note">↪ Worked example: P(B|A) = P(A∩B)/P(A) = 0.25/0.65 ≈ 0.385. Bayes' rule: P(A|B) = 0.385 × 0.65 / 0.40 = 0.625 — matches the 5/8 = 0.625 we got by counting directly on the earlier slide.</div>
+</section>
+<section id="bayes-theorem-why-the-direction-matters" class="slide level2 smaller">
+<h2>Bayes’ Theorem: Why the Direction Matters</h2>
+<ul>
+<li class="fragment">A monitoring model screens 500 countries for signs of an impending debt crisis.</li>
+<li class="fragment">Truly in crisis: 40 countries. Flagged by the model: 60 total — 32 of those are real crises, 28 are false alarms.</li>
+<li class="fragment"><span class="math inline">\(P(\text{Crisis} \mid \text{Flagged}) = 32/60 \approx 0.53\)</span></li>
+<li class="fragment"><span class="math inline">\(P(\text{Flagged} \mid \text{Crisis}) = 32/40 = 0.80\)</span></li>
+<li class="fragment"><strong>These are different numbers</strong> — 0.53 vs 0.80 — even though both describe the same two events, just conditioned in opposite directions.</li>
+<li class="fragment"><span class="math inline">\(P(A\mid B) \neq P(B\mid A)\)</span> in general. Bayes’ rule is exactly the tool for converting one into the other.</li>
+</ul>
+</section>
+<section id="bayes-rule-generalized-setup" class="slide level2 smaller">
+<h2>Bayes’ Rule, Generalized: Setup</h2>
+<ul>
+<li class="fragment">Real questions rarely have just one possible “cause.”</li>
+<li class="fragment">Suppose the evidence <span class="math inline">\(B\)</span> could instead come from any of several mutually exclusive, exhaustive causes <span class="math inline">\(A_1,\ldots,A_k\)</span> — a <strong>partition</strong> of <span class="math inline">\(\Omega\)</span>.</li>
+<li class="fragment">The generalized rule swaps in the <strong>Law of Total Probability</strong> for the denominator: <span class="math display">\[P(A_j \mid B) = \dfrac{P(B\mid A_j)\,P(A_j)}{\displaystyle\sum_{i=1}^{k} P(B\mid A_i)\,P(A_i)}\]</span></li>
+</ul>
+</section>
+<section id="bayes-rule-generalized-reading-the-formula" class="slide level2 smaller">
+<h2>Bayes’ Rule, Generalized: Reading the Formula</h2>
+<ul>
+<li class="fragment"><strong>Numerator:</strong> the prior <span class="math inline">\(P(A_j)\)</span> times the likelihood <span class="math inline">\(P(B\mid A_j)\)</span> — how well cause <span class="math inline">\(A_j\)</span> alone explains the evidence.</li>
+<li class="fragment"><strong>Denominator:</strong> that same product, summed over <em>every</em> possible cause.
+<ul>
+<li class="fragment">This is exactly <span class="math inline">\(P(B) = \sum_i P(B\mid A_i)P(A_i)\)</span>, just rewritten so nothing but priors and likelihoods appear.</li>
+</ul></li>
+<li class="fragment"><strong>Reading it:</strong> Bayes’ rule takes our prior beliefs across all the possible causes and <strong>reweights</strong> them by how well each one predicts the evidence we actually saw.</li>
+</ul>
+</section>
+<section id="prior-and-posterior-probability" class="slide level2 smaller">
+<h2>Prior and Posterior Probability</h2>
+<div class="pp-graphic">
+  <div class="pp-box pp-prior">
+    <div class="pp-label">Prior</div>
+    <div class="pp-formula">P(A<sub>j</sub>)</div>
+    <div class="pp-note">the probability of A<sub>j</sub> <em>before</em> anything else is known</div>
+  </div>
+  <div class="pp-arrow">⟶<span>fold in evidence B, via Bayes' rule</span></div>
+  <div class="pp-box pp-posterior">
+    <div class="pp-label">Posterior</div>
+    <div class="pp-formula">P(A<sub>j</sub> | B)</div>
+    <div class="pp-note">the probability of A<sub>j</sub> <em>after</em> evidence B is taken into account</div>
+  </div>
+</div>
+
+<div class="pp-explain">
+  <p><strong>Prior, P(A<sub>j</sub>):</strong> our belief about which cause is true before we observe anything — just the base rate.</p>
+  <p><strong>Posterior, P(A<sub>j</sub> | B):</strong> our updated belief once we see the evidence B — the whole point of running Bayes' rule.</p>
+  <p>Bayes' rule is, in this sense, an <strong>updating rule</strong>: it takes a prior and a piece of evidence, and returns a posterior.</p>
+</div>
+
+<style>
+.pp-graphic { display: flex; align-items: center; justify-content: center; gap: 28px; margin: 40px 0 32px; flex-wrap: wrap; }
+.pp-box { border: 2.5px solid #2b6cb0; border-radius: 12px; padding: 24px 32px; text-align: center; min-width: 260px; background: #F7F8FA; }
+.pp-box.pp-posterior { border-color: #18BC9C; }
+.pp-label { font-weight: 700; color: #2b6cb0; text-transform: uppercase; letter-spacing: 0.06em; font-size: 1.1em; }
+.pp-posterior .pp-label { color: #18BC9C; }
+.pp-formula { font-size: 1.6em; font-weight: 700; color: #22303F; margin: 10px 0; }
+.pp-note { color: #5A6B80; font-style: italic; max-width: 260px; margin: 0 auto; font-size: 1.05em; }
+.pp-arrow { font-size: 1.8em; color: #5A6B80; display: flex; flex-direction: column; align-items: center; }
+.pp-arrow span { font-size: 0.32em; font-style: italic; max-width: 180px; text-align: center; }
+.pp-explain { max-width: 800px; margin: 0 auto; font-size: 0.85em; }
+.pp-explain p { margin: 0 0 12px; color: #22303F; }
+.pp-explain strong { color: #2b6cb0; }
+</style>
+</section>
+<section id="likelihood-and-the-marginal" class="slide level2 smaller">
+<h2>Likelihood and the Marginal</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="02-probability-draft/images/bayes.png" class="quarto-figure quarto-figure-center" style="width:42.0%"></p>
+</figure>
+</div>
+</section>
+<section id="quick-drill-conditioning-and-bayes" class="slide level2 smaller">
+<h2>Quick Drill: Conditioning and Bayes</h2>
+<ul>
+<li class="fragment">Suppose 3% of countries are genuinely at risk of near-term democratic breakdown. A monitoring model flags 96% of at-risk countries correctly, and correctly clears 98% of countries that are <em>not</em> at risk. If the model flags a country, what’s the probability it’s actually at risk?</li>
+<li class="fragment"><strong>Step 1 — name the events.</strong> <span class="math inline">\(R\)</span> = “at risk,” <span class="math inline">\(F\)</span> = “flagged.” Given: <span class="math inline">\(P(R)=0.03\)</span>, <span class="math inline">\(P(F\mid R)=0.96\)</span>, <span class="math inline">\(P(F\mid R^c)=1-0.98=0.02\)</span>.</li>
+<li class="fragment"><strong>Step 2 — total probability of a flag:</strong> <span class="math inline">\(P(F) = P(F\mid R)P(R) + P(F\mid R^c)P(R^c) = (0.96)(0.03)+(0.02)(0.97) = 0.0288+0.0194=0.0482\)</span>.</li>
+<li class="fragment"><strong>Step 3 — apply Bayes’ rule:</strong> <span class="math inline">\(P(R\mid F) = \dfrac{P(F\mid R)P(R)}{P(F)} = \dfrac{0.0288}{0.0482} \approx 0.60\)</span>.</li>
+<li class="fragment"><strong>Step 4 — the paradox:</strong> even at 96%/98% accuracy, a flagged country is only about <strong>60%</strong> likely to truly be at risk — at-risk countries are rare, so false positives drawn from the much larger not-at-risk pool add up fast.</li>
 </ul>
 <!--
 The Counting slides below cover the same topic as IQSS's "prefresher"
@@ -432,7 +1095,17 @@ https://iqss.github.io/prefresher/06_probability.html (GPLv3 licensed).
 Content here is written independently in this deck's own voice and
 slide format, not copied verbatim -- credit to the IQSS prefresher
 authors for the topic selection this draws on.
+
+The Review of Factorials / Why These Formulas Work / worked-example slides
+below expand on last year's in-house deck: Resources/Slide Decks 2025/
+Latex_materials_mc/Latex/Slides/Math Camp Slides - Probability/main.tex
+(Combinations and Permutations section), rewritten here in this deck's own
+voice/format and tied to the running country example.
 -->
+</section>
+<section id="counting" class="slide level2">
+<h2>Counting</h2>
+<p><em>Combinatorics: shortcuts for counting outcomes without listing every one.</em></p>
 </section>
 <section id="counting-why-we-need-it" class="slide level2 smaller">
 <h2>Counting: Why We Need It</h2>
@@ -450,6 +1123,21 @@ authors for the topic selection this draws on.
 <li class="fragment">This single multiplication rule is what everything else on this slide builds on.</li>
 </ul>
 </section>
+<section id="review-of-factorials" class="slide level2 smaller">
+<h2>Review of Factorials</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(n! = n \times (n-1) \times \cdots \times 1\)</span> — the number of ways to arrange all <span class="math inline">\(n\)</span> objects in order.</li>
+<li class="fragment">Example: <span class="math inline">\(3! = 3\times2\times1=6\)</span>. For countries <span class="math inline">\(\{X,Y,Z\}\)</span>, all 6 orderings: XYZ, XZY, YXZ, YZX, ZXY, ZYX.
+<ul>
+<li class="fragment">Slot 1 has 3 choices; slot 2 has 2 left; slot 3 has 1 left — <span class="math inline">\(3\times2\times1\)</span>.</li>
+</ul></li>
+<li class="fragment">By convention, <span class="math inline">\(0! = 1\)</span> — there’s exactly one way to arrange zero objects: do nothing.</li>
+<li class="fragment">Useful cancellation: <span class="math inline">\(\dfrac{n!}{(n-k)!} = n\times(n-1)\times\cdots\times(n-k+1)\)</span> — the tail end of the factorial cancels out.
+<ul>
+<li class="fragment">E.g. <span class="math inline">\(\dfrac{5!}{(5-3)!} = 5\times4\times3\)</span> — the trailing <span class="math inline">\(2\times1\)</span> cancels between numerator and denominator.</li>
+</ul></li>
+</ul>
+</section>
 <section id="permutations-and-combinations" class="slide level2 smaller">
 <h2>Permutations and Combinations</h2>
 <ul>
@@ -459,13 +1147,86 @@ authors for the topic selection this draws on.
 </ul>
 <div class="running-example-note">↪ Running example: choosing an unordered comparison group of 3 countries from a shortlist of 10 is a combination, $\binom{10}{3}=120$; ranking a top-3 by growth from that same shortlist is a permutation, $10 \cdot 9 \cdot 8 = 720$.</div>
 </section>
+<section id="why-the-permutation-formula-works" class="slide level2 smaller">
+<h2>Why the Permutation Formula Works</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\dfrac{n!}{(n-k)!}\)</span>: choosing <span class="math inline">\(k\)</span> from <span class="math inline">\(n\)</span>, order matters, no replacement.</li>
+<li class="fragment"><span class="math inline">\(n!\)</span> counts every possible full ordering of all <span class="math inline">\(n\)</span> objects.</li>
+<li class="fragment">We only care about the first <span class="math inline">\(k\)</span> picks — the leftover <span class="math inline">\(n-k\)</span> slots can be filled in any of <span class="math inline">\((n-k)!\)</span> ways, and we don’t care which.</li>
+<li class="fragment">Dividing <span class="math inline">\(n!\)</span> by <span class="math inline">\((n-k)!\)</span> cancels out exactly that irrelevant tail, leaving only the first <span class="math inline">\(k\)</span> picks: <span class="math inline">\(n\times(n-1)\times\cdots\times(n-k+1)\)</span>.</li>
+</ul>
+</section>
+<section id="why-the-combination-formula-works" class="slide level2 smaller">
+<h2>Why the Combination Formula Works</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\dbinom{n}{k} = \dfrac{n!}{k!(n-k)!}\)</span>: same setup as a permutation, but order no longer matters.</li>
+<li class="fragment">Start from the permutation count <span class="math inline">\(\frac{n!}{(n-k)!}\)</span> — but every unordered group of <span class="math inline">\(k\)</span> got counted once <strong>for each of its <span class="math inline">\(k!\)</span> orderings</strong>.</li>
+<li class="fragment">Example: the 3-country group <span class="math inline">\(\{X,Y,Z\}\)</span> shows up as <span class="math inline">\(3!=6\)</span> different permutations (XYZ, XZY, YXZ, YZX, ZXY, ZYX) — all the <em>same</em> group, over-counted 6 times.</li>
+<li class="fragment">Dividing by <span class="math inline">\(k!\)</span> collapses each cluster of duplicates back down to one group — that’s the extra <span class="math inline">\(k!\)</span> in the denominator.</li>
+</ul>
+</section>
+<section id="combinations-worked-step-by-step" class="slide level2 smaller">
+<h2>Combinations, Worked Step by Step</h2>
+<ul>
+<li class="fragment">How many ways to form an unordered research team of 3 from a shortlist of 5 countries?</li>
+<li class="fragment"><span class="math inline">\(\dbinom{5}{3} = \dfrac{5!}{3!(5-3)!}\)</span></li>
+<li class="fragment"><span class="math inline">\(= \dfrac{120}{6 \times 2} = \dfrac{120}{12} = 10\)</span></li>
+<li class="fragment">Sanity check via the cancellation trick: <span class="math inline">\(\dfrac{5!}{2!} = 5\times4\times3=60\)</span> ordered picks, then <span class="math inline">\(\div\,3! = 6\)</span> collapses those into <span class="math inline">\(10\)</span> unique unordered teams.</li>
+</ul>
+</section>
+<section id="combinations-listed-out" class="slide level2 smaller">
+<h2>Combinations, Listed Out</h2>
+<ul>
+<li class="fragment">With 5 countries <span class="math inline">\(\{V,W,X,Y,Z\}\)</span>, here are all <span class="math inline">\(\binom{5}{3}=10\)</span> possible research teams of 3, listed out:</li>
+<li class="fragment">VWX, VWY, VWZ, VXY, VXZ, VYZ</li>
+<li class="fragment">WXY, WXZ, WYZ</li>
+<li class="fragment">XYZ</li>
+<li class="fragment">Ten teams, no more, no fewer — the formula isn’t an approximation, it’s exactly this list’s size.</li>
+</ul>
+</section>
+<section id="splitting-into-multiple-groups" class="slide level2 smaller">
+<h2>Splitting Into Multiple Groups</h2>
+<ul>
+<li class="fragment">Combinations chain together when <em>everyone</em> gets split into more than two groups.</li>
+<li class="fragment">Suppose our shortlist of 20 countries needs to be split into research sub-teams: 4 for polling data, 6 for economic data, 5 for conflict data, and the remaining 5 for institutional data.</li>
+<li class="fragment">Choose each sub-team in turn, shrinking the pool each time: <span class="math display">\[\binom{20}{4}\binom{16}{6}\binom{10}{5}\binom{5}{5}\]</span></li>
+<li class="fragment">By the fundamental rule of counting, multiply the stages together: <span class="math inline">\(4845 \times 8008 \times 252 \times 1 \approx 9.78\)</span> billion ways to split all 20 countries into the four teams.</li>
+</ul>
+</section>
 <section id="quick-drill-counting" class="slide level2 smaller">
 <h2>Quick Drill: Counting</h2>
 <ul>
 <li class="fragment">From a shortlist of 8 countries, how many ways to choose an <em>unordered</em> pair for a paired comparison? <span class="fragment"><span class="math inline">\(\binom{8}{2} = 28\)</span></span></li>
 <li class="fragment">From that same shortlist, how many ways to pick an <em>ordered</em> “most, then second-most” democratic pair? <span class="fragment"><span class="math inline">\(8 \cdot 7 = 56\)</span></span></li>
-<li class="fragment">With 4 possible polyarchy categories and 3 possible growth categories, how many (polyarchy category, growth category) pairs are there? <span class="fragment"><span class="math inline">\(4 \times 3 = 12\)</span>, by the fundamental rule</span></li>
+<li class="fragment">With 4 possible democracy-score categories and 3 possible growth categories, how many (democracy-score category, growth category) pairs are there? <span class="fragment"><span class="math inline">\(4 \times 3 = 12\)</span>, by the fundamental rule</span></li>
+<li class="fragment">From a shortlist of 6 countries, selecting 3 to visit <strong>in order, with repeat visits allowed</strong>: how many itineraries? <span class="fragment"><span class="math inline">\(6^3 = 216\)</span></span></li>
+<li class="fragment">Same shortlist of 6, selecting 3 <strong>in order, no repeats</strong>: how many itineraries? <span class="fragment"><span class="math inline">\(6 \cdot 5 \cdot 4 = 120\)</span></span></li>
+<li class="fragment">Same shortlist of 6, selecting an <strong>unordered</strong> group of 3 to visit: how many groups? <span class="fragment"><span class="math inline">\(\binom{6}{3} = 20\)</span></span></li>
 </ul>
+</section>
+<section id="at-least-one-success" class="slide level2 smaller">
+<h2>At Least One Success</h2>
+<ul>
+<li class="fragment">Common problem: given a known <span class="math inline">\(P(\text{success})\)</span> on one attempt, what’s <span class="math inline">\(P(\text{at least one success})\)</span> over several independent attempts?</li>
+<li class="fragment">Example: a game of chance has a 10% chance of success. If you play 5 times, what’s the probability of winning at least once?</li>
+<li class="fragment">Warm-up (not the answer, but intuitive): the probability of winning <strong>all 5</strong> in a row is just <span class="math inline">\((0.1)^5 = 0.00001\)</span> — multiply the single-trial probability by itself.</li>
+<li class="fragment">“At least once” is easier the other way: find the probability of <strong>losing every time</strong>, then take the complement.</li>
+<li class="fragment"><span class="math inline">\(P(\text{lose all 5}) = (1-0.1)^5 = (0.9)^5\)</span>, so <span class="math inline">\(P(\text{win at least once}) = 1-(0.9)^5 \approx 0.41\)</span>.</li>
+<li class="fragment">Play 10 times instead of 5: <span class="math inline">\(1-(0.9)^{10}\approx 0.65\)</span>.</li>
+</ul>
+</section>
+<section id="random-variables-expectation" class="slide level2">
+<h2>Random Variables &amp; Expectation</h2>
+<p><em>From events to numbers — and the algebra of what to expect.</em></p>
+</section>
+<section id="from-events-to-numbers" class="slide level2 smaller">
+<h2>From Events to Numbers</h2>
+<ul>
+<li class="fragment">Everything so far has been about <strong>events</strong> — subsets of <span class="math inline">\(\Omega\)</span>, yes/no questions: is the country a democracy, is growth positive. Events can be combined (union, intersection) but not added or averaged.</li>
+<li class="fragment">A <strong>random variable</strong> assigns a <em>number</em> to every outcome: <span class="math inline">\(X: \Omega \to \mathbb{R}\)</span>. Once outcomes are numbers, ordinary arithmetic applies — sums, averages, variances.</li>
+<li class="fragment">This is the switch the rest of today runs on: “is the event {Democracy} likely?” becomes “what’s the expected value of the underlying democracy score itself?”</li>
+</ul>
+<div class="running-example-note">↪ Running example: the *event* "Democracy" = {democracy score &gt; 0.5} is a yes/no subset of Ω; the *random variable* "democracy score" assigns each of the 174 countries its own number in [0,1] — now we can average it, take its variance, condition on it.</div>
 </section>
 <section id="random-variables-discrete-vs.-continuous" class="slide level2 smaller">
 <h2>Random Variables: Discrete vs.&nbsp;Continuous</h2>
@@ -508,7 +1269,7 @@ authors for the topic selection this draws on.
 <li class="fragment"><span class="math inline">\(E[Y|X]\)</span>: a <em>random variable</em> — a function of <span class="math inline">\(X\)</span> itself</li>
 <li class="fragment">Side-by-side worked example distinguishing the two</li>
 </ul>
-<div class="running-example-note">↪ Running example: E[growth | polyarchy = 0.8] is a number; E[growth | polyarchy] is a random variable across all 174 countries.</div>
+<div class="running-example-note">↪ Running example: E[growth | democracy score = 0.8] is a number; E[growth | democracy score] is a random variable across all 174 countries.</div>
 </section>
 <section id="the-law-of-iterated-expectations" class="slide level2 smaller">
 <h2>The Law of Iterated Expectations</h2>
@@ -519,20 +1280,8 @@ authors for the topic selection this draws on.
 <li class="fragment">Worked example</li>
 </ul>
 </section>
-<section id="bayes-theorem" class="slide level2 smaller">
-<h2>Bayes’ Theorem</h2>
-<p>[placeholder]</p>
-<ul>
-<li class="fragment">Statement and derivation from the definition of conditional probability</li>
-<li class="fragment">Worked example using the running dataset (e.g.&nbsp;P(democracy | high growth))</li>
-</ul>
-</section>
-<section id="quick-drill-conditioning-and-bayes" class="slide level2 smaller">
-<h2>Quick Drill: Conditioning and Bayes</h2>
-<p>[placeholder — mirrors Day 1’s quick-drill format, fragment-revealed answers]</p>
-</section>
-<section id="join-the-selection-bias-decomposition" class="slide level2 smaller">
-<h2>Join: The Selection-Bias Decomposition</h2>
+<section id="the-selection-bias-decomposition" class="slide level2 smaller">
+<h2>The Selection-Bias Decomposition</h2>
 <p><strong>Today’s closing exercise — assembled from this slide’s tools, not a new topic.</strong></p>
 <p>[placeholder]</p>
 <ul>
@@ -551,9 +1300,18 @@ authors for the topic selection this draws on.
 <li class="fragment"><strong>Bayes’ theorem:</strong> flips a conditional around</li>
 </ul>
 </section>
+<section id="references" class="slide level2 smaller">
+<h2>References</h2>
+<ul>
+<li class="fragment"><strong>Seeing Theory — Basic &amp; Compound Probability</strong> (Brown University): <a href="https://seeing-theory.brown.edu/doc/basic-probability.pdf">https://seeing-theory.brown.edu/doc/basic-probability.pdf</a></li>
+<li class="fragment">Blitzstein, J. K., &amp; Hwang, J. (2019). <em>Introduction to Probability</em> (2nd ed.). Chapman and Hall/CRC. Free copy from the authors: <a href="http://probabilitybook.net">http://probabilitybook.net</a></li>
+<li class="fragment"><strong>Statistics 110: Probability</strong> — Harvard lecture videos by Joe Blitzstein: <a href="https://stat110.hsites.harvard.edu/youtube">https://stat110.hsites.harvard.edu/youtube</a></li>
+</ul>
+</section>
 <section id="section" class="slide level2 center">
 <h2></h2>
 <p><strong>Programming lecture:</strong> <a href="../chapters/02-probability/programming.html">webpage chapter</a></p>
+<p><strong>Back to:</strong> <a href="../index.html">Math Camp 2026 website</a></p>
 
 </section>
     </div>
