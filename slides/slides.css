@@ -134,3 +134,32 @@
   margin-top: 12px;
   padding-top: 6px;
 }
+
+/* Small caveat/aside footnote, distinct from the running-example note above
+   (e.g. flagging an interpretive choice to be revisited later in the camp). */
+.slide-footnote {
+  font-size: 0.5em;
+  font-style: italic;
+  color: #5A6B80;
+  border-top: 1px dashed #D9E0EA;
+  margin-top: 6px;
+  padding-top: 4px;
+}
+
+/* Compact two-column agenda list (e.g. Day 2's "Today" slide) -- keeps a
+   long nested bullet list from overflowing a single-column slide. */
+.reveal .today-agenda {
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+}
+.reveal .today-agenda .column {
+  font-size: 0.75em;
+  line-height: 1.28;
+}
+.reveal .today-agenda ul {
+  margin-top: 0.2em;
+}
+.reveal .today-agenda ul ul {
+  font-size: 0.92em;
+}
