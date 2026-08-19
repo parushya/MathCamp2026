@@ -137,7 +137,7 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Uncertainty Extended and Expected</h1>
+  <h1 class="title"><span style="color:#000;">Uncertainty Extended and</span> <span class="flatly-green" style="font-style:italic;">Expected</span></h1>
   <p class="subtitle">Math and Programming Camp Day 3 — Session 1</p>
 
 <div class="quarto-title-authors">
@@ -840,6 +840,41 @@ independently in this deck's own voice, not copied verbatim -- credit to
 the IQSS prefresher authors for the definitions/notation this draws on.
 -->
 </section>
+<section id="the-joint-pmf-two-coin-flip-variables" class="slide level2 smaller">
+<h2>The Joint PMF: Two Coin-Flip Variables</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;"><span class="math inline">\(Y=1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y=0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X=0\)</span></td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(X=1\)</span></td>
+<td style="text-align: center;">2/8</td>
+<td style="text-align: center;">2/8</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(X=2\)</span></td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">1/8</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="fragment">Two random variables from the <em>same</em> 3-flip experiment: <span class="math inline">\(X\)</span> = number of heads in flips 1–2, <span class="math inline">\(Y\)</span> = 1 if flip 3 is heads, 0 if tails.</li>
+<li class="fragment">The joint PMF assigns a probability to every <em>pair</em>: <span class="math inline">\(p(x,y) = P(X=x, Y=y)\)</span>.</li>
+<li class="fragment">Check: <span class="math inline">\(\frac18+\frac18+\frac28+\frac28+\frac18+\frac18=1\)</span> — all 8 outcomes accounted for.</li>
+</ul>
+<div class="slide-footnote">Reminder: $X$ = number of heads in flips 1–2 (values 0, 1, 2); $Y$ = 1 if flip 3 is heads, 0 if tails. Same $X,Y$ across this slide and the next two coin-flip slides.</div>
+</section>
 <section id="the-joint-pmf" class="slide level2 smaller">
 <h2>The Joint PMF</h2>
 <table class="caption-top">
@@ -864,10 +899,48 @@ the IQSS prefresher authors for the definitions/notation this draws on.
 </tbody>
 </table>
 <ul>
-<li class="fragment">Two random variables at once: <span class="math inline">\(p(x,y) = P(X=x, Y=y)\)</span>, satisfying <span class="math inline">\(\sum_x\sum_y p(x,y) = 1\)</span>.</li>
+<li class="fragment">Same idea, formally: <span class="math inline">\(p(x,y) = P(X=x, Y=y)\)</span>, satisfying <span class="math inline">\(\sum_x\sum_y p(x,y) = 1\)</span>.</li>
 <li class="fragment"><span class="math inline">\(D\)</span> = democracy indicator, <span class="math inline">\(G\)</span> = high-growth indicator, from Day 2’s 20-country world — each cell is <span class="math inline">\(p(x,y)\)</span>, e.g.&nbsp;<span class="math inline">\(p(1,1)=\frac{5}{20}=0.25\)</span> is democracy <em>and</em> high growth.</li>
 <li class="fragment">Check: <span class="math inline">\(0.25+0.4+0.15+0.2=1\)</span> — every country falls in exactly one cell.</li>
 </ul>
+</section>
+<section id="the-marginal-coin-flips" class="slide level2 smaller">
+<h2>The Marginal: Coin Flips</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th style="text-align: center;"><span class="math inline">\(Y=1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Y=0\)</span></th>
+<th style="text-align: center;"><strong><span class="math inline">\(p_X\)</span></strong></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(X=0\)</span></td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;"><strong>2/8</strong></td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(X=1\)</span></td>
+<td style="text-align: center;">2/8</td>
+<td style="text-align: center;">2/8</td>
+<td style="text-align: center;"><strong>4/8</strong></td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(X=2\)</span></td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;">1/8</td>
+<td style="text-align: center;"><strong>2/8</strong></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="fragment">Forget <span class="math inline">\(Y\)</span> — what’s <span class="math inline">\(X\)</span>’s own distribution? Sum each row: <span class="math inline">\(p_X(0)=\frac28\)</span>, <span class="math inline">\(p_X(1)=\frac48\)</span>, <span class="math inline">\(p_X(2)=\frac28\)</span>.</li>
+<li class="fragment">That’s <span class="math inline">\(\frac14,\frac12,\frac14\)</span> — exactly Binomial(2, 0.5), the number of heads in 2 flips. Makes sense: <span class="math inline">\(X\)</span> only depends on flips 1–2, so summing out <span class="math inline">\(Y\)</span> just hands back its own distribution untouched.</li>
+</ul>
+<div class="slide-footnote">Reminder: $X$ = number of heads in flips 1–2; $Y$ = 1 if flip 3 is heads, 0 if tails.</div>
 </section>
 <section id="the-marginal" class="slide level2 smaller">
 <h2>The Marginal</h2>
@@ -896,41 +969,245 @@ the IQSS prefresher authors for the definitions/notation this draws on.
 </tbody>
 </table>
 <ul>
-<li class="fragment">Question: forget <span class="math inline">\(G\)</span> entirely — what’s <span class="math inline">\(D\)</span>’s own distribution, on its own? That’s the <strong>marginal</strong> — and the name is literal: it’s the row total sitting in the <em>margin</em> of the table.</li>
+<li class="fragment">Same move as the coin table: forget <span class="math inline">\(G\)</span> entirely — what’s <span class="math inline">\(D\)</span>’s own distribution, on its own? That’s the <strong>marginal</strong> — and the name is literal: it’s the row total sitting in the <em>margin</em> of the table.</li>
 <li class="fragment">Get it by collapsing the joint table down to one variable: add across a whole row, ignoring which column it came from. <span class="math inline">\(p_D(x) = \sum_y p(x,y)\)</span>.</li>
 <li class="fragment"><span class="math inline">\(p_D(1) = 0.25+0.40=0.65\)</span> — the <span class="math inline">\(D=1\)</span> row, summed.</li>
 <li class="fragment">That’s exactly <span class="math inline">\(P(\text{Democracy})=13/20\)</span> from Day 2. The marginal <em>is</em> the ordinary one-variable probability — this is just how to recover it once you start from the joint table instead of counting outcomes directly.</li>
 </ul>
 </section>
+<section id="the-conditional-distribution-coin-flips" class="slide level2 smaller">
+<h2>The Conditional Distribution: Coin Flips</h2>
+<ul>
+<li class="fragment">Tab through <span class="math inline">\(X=0,1,2\)</span>: the bars <strong>don’t move</strong>. <span class="math inline">\(P(Y=1\mid X{=}x)=\frac12\)</span> no matter what <span class="math inline">\(x\)</span> is — flip 3 doesn’t care what flips 1–2 did.</li>
+<li class="fragment">That’s exactly what <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> being <strong>independent</strong> looks like: conditioning changes nothing.</li>
+<li class="fragment">Contrast with the next slide: democracy and growth <em>aren’t</em> independent, so conditioning <em>does</em> move the distribution.</li>
+</ul>
+<div class="viz viz-condcoin">
+  <div class="viz-condcoin-controls">
+    <button class="viz-condcoin-tab active" data-x="0">Condition on X=0</button>
+    <button class="viz-condcoin-tab" data-x="1">Condition on X=1</button>
+    <button class="viz-condcoin-tab" data-x="2">Condition on X=2</button>
+  </div>
+  <svg class="viz-plot viz-condcoin-svg" viewbox="0 0 300 210" xmlns="http://www.w3.org/2000/svg">
+    <text class="viz-condcoin-caption" x="150" y="18" text-anchor="middle" font-size="13" fill="#22303F">P(Y=1|X=0) = 0.500</text>
+    <rect class="viz-condcoin-bar1" x="60" y="100" width="60" height="70" fill="#2b6cb0"></rect>
+    <rect class="viz-condcoin-bar0" x="180" y="100" width="60" height="70" fill="#2b6cb0"></rect>
+    <text class="viz-condcoin-label1" x="90" y="94" text-anchor="middle" font-size="13" fill="#22303F">0.500</text>
+    <text class="viz-condcoin-label0" x="210" y="94" text-anchor="middle" font-size="13" fill="#22303F">0.500</text>
+    <line x1="30" y1="170" x2="270" y2="170" stroke="#5A6B80" stroke-width="2"></line>
+    <text x="90" y="190" text-anchor="middle" font-size="14" fill="#5A6B80">Y=1</text>
+    <text x="210" y="190" text-anchor="middle" font-size="14" fill="#5A6B80">Y=0</text>
+  </svg>
+</div>
+
+<style>
+.viz-condcoin { max-width: 380px; margin: 0 auto; }
+.viz-condcoin-controls { display: flex; gap: 8px; flex: 0 0 auto; font-size: 0.4em; justify-content: center; }
+.viz-condcoin-controls button { cursor: pointer; border: 1.5px solid #2b6cb0; background: #F7F8FA; color: #2b6cb0; border-radius: 6px; padding: 4px 10px; font-weight: 600; }
+.viz-condcoin-controls button.active { background: #2b6cb0; color: #fff; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-condcoin');
+  container = container[container.length - 1];
+
+  var tabs = container.querySelectorAll('.viz-condcoin-tab');
+  var bar1 = container.querySelector('.viz-condcoin-bar1');
+  var bar0 = container.querySelector('.viz-condcoin-bar0');
+  var label1 = container.querySelector('.viz-condcoin-label1');
+  var label0 = container.querySelector('.viz-condcoin-label0');
+  var caption = container.querySelector('.viz-condcoin-caption');
+
+  // P(Y=1|X=x) for x=0,1,2 -- all 0.5, since flip 3 (Y) is independent of flips 1-2 (X).
+  var probs = { 0: 0.5, 1: 0.5, 2: 0.5 };
+  var baseline = 170, maxHeight = 140;
+
+  function render(x) {
+    var p1 = probs[x];
+    var p0 = 1 - p1;
+    var h1 = p1 * maxHeight, h0 = p0 * maxHeight;
+    bar1.setAttribute('y', baseline - h1);
+    bar1.setAttribute('height', h1);
+    bar0.setAttribute('y', baseline - h0);
+    bar0.setAttribute('height', h0);
+    label1.setAttribute('y', baseline - h1 - 6);
+    label1.textContent = p1.toFixed(3);
+    label0.setAttribute('y', baseline - h0 - 6);
+    label0.textContent = p0.toFixed(3);
+    caption.textContent = 'P(Y=1|X=' + x + ') = ' + p1.toFixed(3);
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      render(Number(tab.dataset.x));
+    });
+  });
+
+  render(0);
+})();
+</script>
+<div class="slide-footnote">Reminder: $X$ = number of heads in flips 1–2; $Y$ = 1 if flip 3 is heads, 0 if tails.</div>
+</section>
 <section id="the-conditional-distribution" class="slide level2 smaller">
 <h2>The Conditional Distribution</h2>
-<table class="caption-top">
-<thead>
-<tr class="header">
-<th></th>
-<th style="text-align: center;"><span class="math inline">\(p(\cdot,1)\)</span> joint</th>
-<th style="text-align: center;"><span class="math inline">\(p(\cdot\mid D{=}1)\)</span> conditional</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td><span class="math inline">\(G=1\)</span></td>
-<td style="text-align: center;">0.25</td>
-<td style="text-align: center;"><strong>0.385</strong></td>
-</tr>
-<tr class="even">
-<td><span class="math inline">\(G=0\)</span></td>
-<td style="text-align: center;">0.40</td>
-<td style="text-align: center;"><strong>0.615</strong></td>
-</tr>
-</tbody>
-</table>
 <ul>
-<li class="fragment">Question: <em>given</em> <span class="math inline">\(D=1\)</span>, what’s the distribution of <span class="math inline">\(G\)</span>? Take the <span class="math inline">\(D=1\)</span> row from the joint table, then rescale it so it sums to 1 again: <span class="math inline">\(p_{Y|X}(y|x) = \dfrac{p(x,y)}{p_X(x)}\)</span>.</li>
-<li class="fragment"><span class="math inline">\(p_{G|D}(1\mid1) = \dfrac{0.25}{0.65}\approx0.385\)</span> — divide the joint cell by the row’s own marginal, <span class="math inline">\(0.65\)</span>, from the previous slide.</li>
-<li class="fragment">Matches <span class="math inline">\(P(B\mid A)=5/13\approx0.385\)</span> from Day 2’s Bayes section — same conditional-probability move (<span class="math inline">\(P(A\mid B)=P(A\cap B)/P(B)\)</span>), now applied to a whole distribution instead of one event.</li>
-<li class="fragment">This is the object <strong>conditional expectation</strong> (a few slides ahead) is built directly on top of.</li>
+<li class="fragment">Tab between <span class="math inline">\(D=1\)</span> and <span class="math inline">\(D=0\)</span>: the bars <strong>do move</strong> — <span class="math inline">\(P(G=1\mid D{=}1)\approx0.385\)</span> vs.&nbsp;<span class="math inline">\(P(G=1\mid D{=}0)\approx0.429\)</span>.</li>
+<li class="fragment">Unlike the coin case: conditioning on <span class="math inline">\(D\)</span> shifts the distribution, since democracy and growth aren’t independent.</li>
+<li class="fragment">Matches <span class="math inline">\(P(B\mid A)=5/13\approx0.385\)</span> from Day 2’s Bayes section.</li>
 </ul>
+<div class="viz viz-conddem">
+  <div class="viz-conddem-controls">
+    <button class="viz-conddem-tab active" data-d="1">Condition on D=1 (democracy)</button>
+    <button class="viz-conddem-tab" data-d="0">Condition on D=0 (not democracy)</button>
+  </div>
+  <svg class="viz-plot viz-conddem-svg" viewbox="0 0 300 210" xmlns="http://www.w3.org/2000/svg">
+    <text class="viz-conddem-caption" x="150" y="18" text-anchor="middle" font-size="13" fill="#22303F">P(G=1|D=1) = 0.385</text>
+    <rect class="viz-conddem-bar1" x="60" y="100" width="60" height="70" fill="#2b6cb0"></rect>
+    <rect class="viz-conddem-bar0" x="180" y="100" width="60" height="70" fill="#2b6cb0"></rect>
+    <text class="viz-conddem-label1" x="90" y="94" text-anchor="middle" font-size="13" fill="#22303F">0.385</text>
+    <text class="viz-conddem-label0" x="210" y="94" text-anchor="middle" font-size="13" fill="#22303F">0.615</text>
+    <line x1="30" y1="170" x2="270" y2="170" stroke="#5A6B80" stroke-width="2"></line>
+    <text x="90" y="190" text-anchor="middle" font-size="14" fill="#5A6B80">G=1</text>
+    <text x="210" y="190" text-anchor="middle" font-size="14" fill="#5A6B80">G=0</text>
+  </svg>
+</div>
+
+<style>
+.viz-conddem { max-width: 380px; margin: 0 auto; }
+.viz-conddem-controls { display: flex; gap: 8px; flex: 0 0 auto; font-size: 0.4em; justify-content: center; }
+.viz-conddem-controls button { cursor: pointer; border: 1.5px solid #2b6cb0; background: #F7F8FA; color: #2b6cb0; border-radius: 6px; padding: 4px 10px; font-weight: 600; }
+.viz-conddem-controls button.active { background: #2b6cb0; color: #fff; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-conddem');
+  container = container[container.length - 1];
+
+  var tabs = container.querySelectorAll('.viz-conddem-tab');
+  var bar1 = container.querySelector('.viz-conddem-bar1');
+  var bar0 = container.querySelector('.viz-conddem-bar0');
+  var label1 = container.querySelector('.viz-conddem-label1');
+  var label0 = container.querySelector('.viz-conddem-label0');
+  var caption = container.querySelector('.viz-conddem-caption');
+
+  // P(G=1|D=d): unlike the coin case, this genuinely changes with d.
+  var probs = { 1: 0.25 / 0.65, 0: 0.15 / 0.35 };
+  var baseline = 170, maxHeight = 140;
+
+  function render(d) {
+    var p1 = probs[d];
+    var p0 = 1 - p1;
+    var h1 = p1 * maxHeight, h0 = p0 * maxHeight;
+    bar1.setAttribute('y', baseline - h1);
+    bar1.setAttribute('height', h1);
+    bar0.setAttribute('y', baseline - h0);
+    bar0.setAttribute('height', h0);
+    label1.setAttribute('y', baseline - h1 - 6);
+    label1.textContent = p1.toFixed(3);
+    label0.setAttribute('y', baseline - h0 - 6);
+    label0.textContent = p0.toFixed(3);
+    caption.textContent = 'P(G=1|D=' + d + ') = ' + p1.toFixed(3);
+  }
+
+  tabs.forEach(function (tab) {
+    tab.addEventListener('click', function () {
+      tabs.forEach(function (t) { t.classList.remove('active'); });
+      tab.classList.add('active');
+      render(Number(tab.dataset.d));
+    });
+  });
+
+  render(1);
+})();
+</script>
+</section>
+<section id="the-continuous-case-a-sliding-distribution" class="slide level2 smaller">
+<h2>The Continuous Case: A Sliding Distribution</h2>
+<div class="viz viz-condcont">
+  <div class="viz-condcont-controls">
+    <label for="viz-condcont-slider">Democracy score, x = <span class="viz-condcont-xreadout">0.50</span></label>
+    <input id="viz-condcont-slider" type="range" min="0" max="1" step="0.01" value="0.5">
+  </div>
+  <svg class="viz-plot viz-condcont-svg" viewbox="0 0 500 240" xmlns="http://www.w3.org/2000/svg">
+    <path class="viz-condcont-curve" d="" fill="#EDF0F5" stroke="#2b6cb0" stroke-width="2.5"></path>
+    <line class="viz-condcont-mean-line" x1="0" y1="0" x2="0" y2="210" stroke="#38a169" stroke-width="1.5" stroke-dasharray="3,3"></line>
+    <text class="viz-condcont-mean-label" x="0" y="0" text-anchor="middle" font-size="13" font-weight="700" fill="#2f855a"></text>
+    <line x1="55" y1="210" x2="465" y2="210" stroke="#5A6B80" stroke-width="2"></line>
+    <text x="60" y="228" text-anchor="middle" font-size="13" fill="#5A6B80">-2%</text>
+    <text x="260" y="228" text-anchor="middle" font-size="13" fill="#5A6B80">2%</text>
+    <text x="460" y="228" text-anchor="middle" font-size="13" fill="#5A6B80">6%</text>
+    <text x="260" y="12" text-anchor="middle" font-size="13" font-style="italic" fill="#5A6B80">Density of Growth (Y), given X = x</text>
+  </svg>
+</div>
+
+<style>
+.viz-condcont { max-width: 520px; margin: 0 auto; }
+.viz-condcont-controls { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; font-size: 0.32em; }
+.viz-condcont-controls input[type="range"] { flex: 1; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-condcont');
+  container = container[container.length - 1];
+
+  var slider = container.querySelector('#viz-condcont-slider');
+  var xReadout = container.querySelector('.viz-condcont-xreadout');
+  var curve = container.querySelector('.viz-condcont-curve');
+  var meanLine = container.querySelector('.viz-condcont-mean-line');
+  var meanLabel = container.querySelector('.viz-condcont-mean-label');
+
+  // Illustrative model, not real data: growth (Y) given democracy score (X=x)
+  // is bump-shaped, centered at mean(x) = -1 + 4x, so the whole density
+  // slides right as x increases -- E[Y|X=x] traced out by the green marker.
+  var GMIN = -2, GMAX = 6, PX0 = 60, PX1 = 460, BASE_Y = 210, TOP_Y = 40, HALFWIDTH = 2;
+
+  function gxPix(g) { return PX0 + (g - GMIN) / (GMAX - GMIN) * (PX1 - PX0); }
+  function meanOf(x) { return -1 + 4 * x; }
+
+  function density(g, mean) {
+    if (Math.abs(g - mean) >= HALFWIDTH) return 0;
+    return (1 + Math.cos(Math.PI * (g - mean) / HALFWIDTH)) / 2;
+  }
+
+  function update() {
+    var x = Number(slider.value);
+    xReadout.textContent = x.toFixed(2);
+    var mean = meanOf(x);
+
+    var pts = [];
+    for (var g = GMIN; g <= GMAX + 1e-9; g += 0.1) {
+      var d = density(g, mean);
+      pts.push(gxPix(g).toFixed(1) + ',' + (BASE_Y - d * (BASE_Y - TOP_Y)).toFixed(1));
+    }
+    var path = 'M' + gxPix(GMIN) + ',' + BASE_Y + ' L' + pts.join(' L') + ' L' + gxPix(GMAX) + ',' + BASE_Y + ' Z';
+    curve.setAttribute('d', path);
+
+    var mx = gxPix(mean);
+    meanLine.setAttribute('x1', mx);
+    meanLine.setAttribute('x2', mx);
+    meanLine.setAttribute('y2', BASE_Y - (BASE_Y - TOP_Y));
+    meanLabel.setAttribute('x', mx);
+    meanLabel.setAttribute('y', TOP_Y - 10);
+    meanLabel.textContent = 'E[Y|X=' + x.toFixed(2) + '] = ' + mean.toFixed(2) + '%';
+  }
+
+  slider.addEventListener('input', update);
+  update();
+})();
+</script>
+<div style="font-size: 0.85em;">
+<ul>
+<li class="fragment">No discrete rows to tab between now — <span class="math inline">\(X\)</span> is continuous, so <em>slide</em> through values instead of jumping.</li>
+<li class="fragment">Drag <span class="math inline">\(x\)</span>: the density of growth (<span class="math inline">\(Y\)</span>) shifts location — <span class="math inline">\(f(y\mid x)\)</span> changing continuously.</li>
+<li class="fragment">The green marker traces <span class="math inline">\(E[Y\mid X=x]\)</span> — a full function, not one number. That’s the <strong>conditional expectation function</strong>; a regression line estimates it.</li>
+</ul>
+</div>
+<div class="slide-footnote">Illustrative model only, not real data — growth's conditional mean is set to shift linearly with democracy score purely to demonstrate the mechanics of a sliding conditional distribution.</div>
 </section>
 <section id="expectation-algebra" class="slide level2">
 <h2>Expectation Algebra</h2>
@@ -939,16 +1216,8 @@ the IQSS prefresher authors for the definitions/notation this draws on.
 <section id="from-weighted-sum-to-ey" class="slide level2 smaller">
 <h2>From Weighted Sum to <span class="math inline">\(E[Y]\)</span></h2>
 <ul>
-<li class="fragment">The question: run the 3-flip experiment over and over — what’s the long-run average number of heads? Not any single outcome, a summary of the whole distribution.
-<ul>
-<li class="fragment">The move: weight each possible value by how likely it is, then add those weighted values up.</li>
-<li class="fragment">For the coin: <span class="math inline">\(0\times\tfrac18 + 1\times\tfrac38 + 2\times\tfrac38+3\times\tfrac18\)</span>.</li>
-</ul></li>
-<li class="fragment">Written with <span class="math inline">\(\Sigma\)</span>, that’s <span class="math inline">\(\sum_y y\,p(y)\)</span> — the same summation notation from Day 1, now weighting by probability instead of by <span class="math inline">\(\tfrac1n\)</span>.</li>
-<li class="fragment">Give that sum a name and a symbol: <span class="math inline">\(E[Y] = \sum_y y\,p(y)\)</span>.
-<ul>
-<li class="fragment">“<span class="math inline">\(E\)</span>” is just notation for the weighted sum you were already computing — nothing new mathematically, just a shorthand.</li>
-</ul></li>
+<li class="fragment">Recall the weighted-sum average from a few slides back — written with <span class="math inline">\(\Sigma\)</span>, that’s <span class="math inline">\(\sum_y y\,p(y)\)</span>.</li>
+<li class="fragment">Give that sum a name and a symbol: <span class="math inline">\(E[Y] = \sum_y y\,p(y)\)</span>. “<span class="math inline">\(E\)</span>” is just notation for the weighted sum you already computed — nothing new mathematically.</li>
 </ul>
 </section>
 <section id="what-ey-does-and-doesnt-mean" class="slide level2 smaller">
@@ -971,20 +1240,372 @@ the IQSS prefresher authors for the definitions/notation this draws on.
 <section id="conditional-expectation" class="slide level2 smaller">
 <h2>Conditional Expectation</h2>
 <ul>
-<li class="fragment"><span class="math inline">\(E[Y\mid X=x] = \sum_y y\,p_{Y|X}(y|x)\)</span> — average <span class="math inline">\(Y\)</span>, but only over the slice of the world where <span class="math inline">\(X=x\)</span>.
+<li class="fragment"><span class="math inline">\(E[Y\mid X=x] = \sum_y y\,p_{Y|X}(y|x)\)</span>
 <ul>
-<li class="fragment">Built directly on the conditional distribution from a few slides back — same move, now averaged instead of just listed.</li>
-</ul></li>
-<li class="fragment">Worked example: <span class="math inline">\(E[G\mid D=1] = 1\times p_{G|D}(1\mid1) + 0\times p_{G|D}(0\mid1) = 1\times0.385+0\times0.615=0.385\)</span>.
-<ul>
-<li class="fragment">For a 0/1 indicator, conditional expectation <em>is</em> conditional probability: <span class="math inline">\(E[G\mid D=1]=P(G=1\mid D=1)\)</span>. Averaging a yes/no variable just hands back its probability.</li>
+<li class="fragment">Average <span class="math inline">\(Y\)</span>, but only over the slice where <span class="math inline">\(X=x\)</span>.</li>
+<li class="fragment">Built on the conditional distribution from a few slides back — same move, now averaged.</li>
 </ul></li>
 <li class="fragment">Used for prediction: know <span class="math inline">\(X\)</span>, don’t know <span class="math inline">\(Y\)</span> yet — <span class="math inline">\(E[Y\mid X=x]\)</span> is your best guess.</li>
-<li class="fragment">Continuous case, same shape: <span class="math inline">\(E[Y\mid X=x] = \int_y y\,f_{Y|X}(y|x)\,dy\)</span> — preview only, same as today’s other <span class="math inline">\(\int\)</span> mentions.</li>
 </ul>
 </section>
-<section id="variance-and-covariance-definitions" class="slide level2 smaller">
-<h2>Variance and Covariance: Definitions</h2>
+<section id="conditional-expectation-worked-example" class="slide level2 smaller">
+<h2>Conditional Expectation: Worked Example</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(E[G\mid D=1]\)</span>, step by step:
+<ul>
+<li class="fragment"><span class="math inline">\(=1\times p_{G|D}(1\mid1) + 0\times p_{G|D}(0\mid1)\)</span></li>
+<li class="fragment"><span class="math inline">\(=1(0.385)+0(0.615)\)</span></li>
+<li class="fragment"><span class="math inline">\(=0.385\)</span></li>
+</ul></li>
+<li class="fragment">For a 0/1 indicator, conditional expectation <em>is</em> conditional probability.
+<ul>
+<li class="fragment">Averaging a yes/no variable just hands back its own probability.</li>
+</ul></li>
+<li class="fragment">Continuous case, same shape: <span class="math inline">\(E[Y\mid X=x] = \int_y y\,f_{Y|X}(y|x)\,dy\)</span> — preview only.</li>
+</ul>
+</section>
+<section id="five-flips-a-slider-instead-of-tabs" class="slide level2 smaller">
+<h2>Five Flips: A Slider Instead of Tabs</h2>
+<div class="viz viz-cond5">
+  <div class="viz-cond5-controls">
+    <label for="viz-cond5-slider">X (heads in first 4 flips) = <span class="viz-cond5-xreadout">0</span></label>
+    <input id="viz-cond5-slider" type="range" min="0" max="4" step="1" value="0">
+  </div>
+  <div class="viz-cond5-plots">
+    <svg class="viz-plot viz-cond5-bars" viewbox="0 0 300 200" xmlns="http://www.w3.org/2000/svg">
+      <text class="viz-cond5-caption" x="150" y="18" text-anchor="middle" font-size="13" fill="#22303F">P(Y=1|X=0) = 0.500</text>
+      <rect class="viz-cond5-bar1" x="60" y="100" width="60" height="70" fill="#2b6cb0"></rect>
+      <rect class="viz-cond5-bar0" x="180" y="100" width="60" height="70" fill="#2b6cb0"></rect>
+      <line x1="30" y1="170" x2="270" y2="170" stroke="#5A6B80" stroke-width="2"></line>
+      <text x="90" y="190" text-anchor="middle" font-size="14" fill="#5A6B80">Y=1</text>
+      <text x="210" y="190" text-anchor="middle" font-size="14" fill="#5A6B80">Y=0</text>
+    </svg>
+    <svg class="viz-plot viz-cond5-trace" viewbox="0 0 300 140" xmlns="http://www.w3.org/2000/svg">
+      <text x="150" y="14" text-anchor="middle" font-size="12" font-style="italic" fill="#5A6B80">E[Y|X=x], across all x</text>
+      <line x1="40" y1="110" x2="260" y2="110" stroke="#5A6B80" stroke-width="1.5"></line>
+      <line x1="40" y1="30" x2="40" y2="110" stroke="#5A6B80" stroke-width="1.5"></line>
+      <text x="30" y="34" text-anchor="end" font-size="11" fill="#5A6B80">1</text>
+      <text x="30" y="114" text-anchor="end" font-size="11" fill="#5A6B80">0</text>
+      <line class="viz-cond5-flatline" x1="40" y1="70" x2="260" y2="70" stroke="#2b6cb0" stroke-width="2"></line>
+      <circle class="viz-cond5-dot" cx="40" cy="70" r="6" fill="#38a169"></circle>
+      <text x="40" y="126" text-anchor="middle" font-size="11" fill="#5A6B80">0</text>
+      <text x="95" y="126" text-anchor="middle" font-size="11" fill="#5A6B80">1</text>
+      <text x="150" y="126" text-anchor="middle" font-size="11" fill="#5A6B80">2</text>
+      <text x="205" y="126" text-anchor="middle" font-size="11" fill="#5A6B80">3</text>
+      <text x="260" y="126" text-anchor="middle" font-size="11" fill="#5A6B80">4</text>
+    </svg>
+  </div>
+</div>
+
+<style>
+.viz-cond5 { max-width: 560px; margin: 0 auto; }
+.viz-cond5-controls { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; font-size: 0.36em; }
+.viz-cond5-controls input[type="range"] { flex: 1; }
+.viz-cond5-plots { display: flex; flex-direction: row; gap: 12px; flex: 1 1 auto; min-height: 0; }
+.viz-cond5-plots svg.viz-plot { flex: 1 1 0; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-cond5');
+  container = container[container.length - 1];
+
+  var slider = container.querySelector('#viz-cond5-slider');
+  var xReadout = container.querySelector('.viz-cond5-xreadout');
+  var bar1 = container.querySelector('.viz-cond5-bar1');
+  var bar0 = container.querySelector('.viz-cond5-bar0');
+  var caption = container.querySelector('.viz-cond5-caption');
+  var dot = container.querySelector('.viz-cond5-dot');
+
+  // Y = 1 if flip 5 is heads -- independent of X = heads in flips 1-4,
+  // so P(Y=1|X=x) = 0.5 for every x. The trace panel is a flat line on
+  // purpose: that flatness *is* independence, same point as the 3-flip
+  // tab widget, now shown as a genuine function of x instead of 3 tabs.
+  var baseline = 170, maxHeight = 140;
+  var xPix = { 0: 40, 1: 95, 2: 150, 3: 205, 4: 260 };
+
+  function render(x) {
+    xReadout.textContent = x;
+    var p1 = 0.5, p0 = 0.5;
+    var h1 = p1 * maxHeight, h0 = p0 * maxHeight;
+    bar1.setAttribute('y', baseline - h1);
+    bar1.setAttribute('height', h1);
+    bar0.setAttribute('y', baseline - h0);
+    bar0.setAttribute('height', h0);
+    caption.textContent = 'P(Y=1|X=' + x + ') = ' + p1.toFixed(3);
+    dot.setAttribute('cx', xPix[x]);
+  }
+
+  slider.addEventListener('input', function () { render(Number(slider.value)); });
+  render(0);
+})();
+</script>
+<div style="font-size: 0.85em;">
+<ul>
+<li class="fragment">Same coin idea, one dial instead of three tabs: <span class="math inline">\(X\)</span> = heads in flips 1–4 (0 through 4), <span class="math inline">\(Y\)</span> = 1 if flip 5 is heads.</li>
+<li class="fragment">The right panel plots <span class="math inline">\(E[Y\mid X=x]\)</span> as an actual function of <span class="math inline">\(x\)</span> — flat at 0.5, because <span class="math inline">\(X\)</span> and <span class="math inline">\(Y\)</span> are still independent. Slide through every <span class="math inline">\(x\)</span> and the dot never leaves the line.</li>
+</ul>
+</div>
+</section>
+<section id="probability-to-cef" class="slide level2 smaller">
+<h2>Probability to CEF</h2>
+<div class="viz viz-condwin">
+  <div class="viz-condwin-controls">
+    <label for="viz-condwin-x1">x1 = <span class="viz-condwin-x1readout">0.30</span></label>
+    <input id="viz-condwin-x1" type="range" min="0" max="1" step="0.01" value="0.3">
+    <label for="viz-condwin-x2">x2 = <span class="viz-condwin-x2readout">0.70</span></label>
+    <input id="viz-condwin-x2" type="range" min="0" max="1" step="0.01" value="0.7">
+  </div>
+  <div class="viz-condwin-plots">
+    <svg class="viz-plot viz-condwin-pdf" viewbox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clippath id="vizCondwinClip"><rect class="viz-condwin-clip-rect" x="60" y="0" width="0" height="260"></rect></clippath>
+      </defs>
+      <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210 Z" fill="#EDF0F5" stroke="none"></path>
+      <g clip-path="url(#vizCondwinClip)">
+        <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210 Z" fill="#38a169" opacity="0.32"></path>
+      </g>
+      <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210" fill="none" stroke="#2b6cb0" stroke-width="2.5"></path>
+      <line x1="40" y1="210" x2="470" y2="210" stroke="#5A6B80" stroke-width="2"></line>
+      <line x1="60" y1="40" x2="60" y2="210" stroke="#5A6B80" stroke-width="1.5"></line>
+      <text x="60" y="228" text-anchor="middle" font-size="16" fill="#5A6B80">0</text>
+      <text x="460" y="228" text-anchor="middle" font-size="16" fill="#5A6B80">1</text>
+      <text x="260" y="245" text-anchor="middle" font-size="14" fill="#5A6B80">Polyarchy Score (X)</text>
+      <text x="16" y="32" font-size="13" fill="#5A6B80">density f(x)</text>
+      <text x="20" y="24" font-size="16" font-weight="700" fill="#22303F">1</text>
+    </svg>
+    <svg class="viz-plot viz-condwin-growth" viewbox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+      <path class="viz-condwin-curve" d="" fill="#EDF0F5" stroke="#2b6cb0" stroke-width="2.5"></path>
+      <line class="viz-condwin-mean-line" x1="0" y1="0" x2="0" y2="210" stroke="#38a169" stroke-width="1.5" stroke-dasharray="3,3"></line>
+      <line x1="55" y1="210" x2="465" y2="210" stroke="#5A6B80" stroke-width="2"></line>
+      <line x1="60" y1="40" x2="60" y2="210" stroke="#5A6B80" stroke-width="1.5"></line>
+      <text x="60" y="228" text-anchor="middle" font-size="16" fill="#5A6B80">-2%</text>
+      <text x="460" y="228" text-anchor="middle" font-size="16" fill="#5A6B80">6%</text>
+      <text x="260" y="245" text-anchor="middle" font-size="14" fill="#5A6B80">Growth (Y), given the window</text>
+      <text x="16" y="32" font-size="13" fill="#5A6B80">density f(y)</text>
+      <text x="20" y="24" font-size="16" font-weight="700" fill="#22303F">2</text>
+    </svg>
+    <svg class="viz-plot viz-condwin-scatter" viewbox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+      <rect class="viz-condwin-scatter-band" x="0" y="40" width="0" height="170" fill="#38a169" opacity="0.18"></rect>
+      <line x1="60" y1="40" x2="60" y2="210" stroke="#5A6B80" stroke-width="1.5"></line>
+      <line x1="60" y1="210" x2="460" y2="210" stroke="#5A6B80" stroke-width="1.5"></line>
+      <text x="60" y="228" text-anchor="middle" font-size="16" fill="#5A6B80">0</text>
+      <text x="460" y="228" text-anchor="middle" font-size="16" fill="#5A6B80">1</text>
+      <text x="46" y="216" text-anchor="end" font-size="14" fill="#5A6B80">-2%</text>
+      <text x="46" y="48" text-anchor="end" font-size="14" fill="#5A6B80">6%</text>
+      <text x="260" y="245" text-anchor="middle" font-size="14" fill="#5A6B80">X: Polyarchy Score</text>
+      <text x="20" y="30" font-size="13" fill="#5A6B80">Y: Growth</text>
+      <g class="viz-condwin-scatter-dots"></g>
+      <text x="20" y="24" font-size="16" font-weight="700" fill="#22303F">3</text>
+    </svg>
+    <svg class="viz-plot viz-condwin-cef" viewbox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+      <rect class="viz-condwin-cef-band" x="0" y="40" width="0" height="170" fill="#38a169" opacity="0.18"></rect>
+      <line x1="60" y1="40" x2="60" y2="210" stroke="#5A6B80" stroke-width="1.5"></line>
+      <line x1="60" y1="210" x2="460" y2="210" stroke="#5A6B80" stroke-width="1.5"></line>
+      <text x="60" y="228" text-anchor="middle" font-size="16" fill="#5A6B80">0</text>
+      <text x="460" y="228" text-anchor="middle" font-size="16" fill="#5A6B80">1</text>
+      <text x="260" y="245" text-anchor="middle" font-size="14" fill="#5A6B80">X: Polyarchy Score</text>
+      <text x="20" y="30" font-size="13" fill="#5A6B80">Y: Growth</text>
+      <g class="viz-condwin-ridges"></g>
+      <line class="viz-condwin-regline" x1="0" y1="0" x2="0" y2="0" stroke="#B23A48" stroke-width="2" stroke-dasharray="5,3"></line>
+      <polyline class="viz-condwin-cefline" points="" fill="none" stroke="#2b6cb0" stroke-width="2.5"></polyline>
+      <g class="viz-condwin-cef-dots"></g>
+      <text x="480" y="24" text-anchor="end" font-size="16" font-weight="700" fill="#22303F">4</text>
+    </svg>
+  </div>
+  <div class="viz-condwin-readout">E[Y | x1&lt;X&lt;x2] ≈ <strong class="viz-condwin-eyreadout">1.20%</strong></div>
+</div>
+
+<style>
+.viz-condwin { max-width: 980px; margin: 0 auto; }
+.reveal .slides .viz.viz-condwin { max-height: 60vh; }
+.viz-condwin-controls { display: flex; align-items: center; gap: 10px; flex: 0 0 auto; font-size: 0.38em; flex-wrap: wrap; }
+.viz-condwin-controls input[type="range"] { flex: 1; min-width: 60px; }
+.viz-condwin-plots { display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 8px; flex: 1 1 auto; min-height: 0; }
+.viz-condwin-plots svg.viz-plot { width: 100%; height: 100%; min-width: 0; min-height: 0; }
+.viz-condwin-readout { flex: 0 0 auto; font-size: 0.62em; font-weight: 700; text-align: center; color: #22303F; }
+.viz-condwin-readout strong { color: #2f855a; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-condwin');
+  container = container[container.length - 1];
+
+  var s1 = container.querySelector('#viz-condwin-x1');
+  var s2 = container.querySelector('#viz-condwin-x2');
+  var x1Readout = container.querySelector('.viz-condwin-x1readout');
+  var x2Readout = container.querySelector('.viz-condwin-x2readout');
+  var clipRect = container.querySelector('.viz-condwin-clip-rect');
+  var curve = container.querySelector('.viz-condwin-curve');
+  var meanLine = container.querySelector('.viz-condwin-mean-line');
+  var eyReadout = container.querySelector('.viz-condwin-eyreadout');
+  var scatterBand = container.querySelector('.viz-condwin-scatter-band');
+  var scatterDots = container.querySelector('.viz-condwin-scatter-dots');
+  var cefBand = container.querySelector('.viz-condwin-cef-band');
+  var cefLine = container.querySelector('.viz-condwin-cefline');
+  var cefDots = container.querySelector('.viz-condwin-cef-dots');
+  var regLine = container.querySelector('.viz-condwin-regline');
+  var ridges = container.querySelector('.viz-condwin-ridges');
+
+  var SVGNS = 'http://www.w3.org/2000/svg';
+  var PX0 = 60, PX1 = 460;
+  var GMIN = -2, GMAX = 6, Y_BASE = 210, Y_TOP = 40, HALFWIDTH = 2;
+
+  function xPix(x) { return PX0 + x * (PX1 - PX0); }
+  function yPixG(g) { return Y_BASE - (g - GMIN) / (GMAX - GMIN) * (Y_BASE - Y_TOP); }
+  function meanOf(x) { return -1 + 4 * x; }
+  function density(g, mean) {
+    if (Math.abs(g - mean) >= HALFWIDTH) return 0;
+    return (1 + Math.cos(Math.PI * (g - mean) / HALFWIDTH)) / 2;
+  }
+
+  // Made-up scatter data: 90 points, deterministic (seeded) so the plot
+  // is identical on every load. y = mean(x) + noise; the noise is what
+  // makes the binned CEF panel (4) look jagged next to the smooth
+  // regression line, similar in spirit to MHE Figure 3.1.1 (own
+  // construction -- the source PDF was sign-in gated, not read directly).
+  function seededRand(n) {
+    var v = Math.sin(n * 12.9898 + 78.233) * 43758.5453;
+    return v - Math.floor(v);
+  }
+  var N = 90, data = [];
+  for (var i = 0; i < N; i++) {
+    var xi = seededRand(i * 2 + 1);
+    var yi = meanOf(xi) + (seededRand(i * 2 + 2) - 0.5) * 3.2;
+    data.push({ x: xi, y: yi });
+  }
+
+  data.forEach(function (d) {
+    var c = document.createElementNS(SVGNS, 'circle');
+    c.setAttribute('cx', xPix(d.x));
+    c.setAttribute('cy', yPixG(d.y));
+    c.setAttribute('r', 3.2);
+    c.setAttribute('fill', '#2b6cb0');
+    d.circle = c;
+    scatterDots.appendChild(c);
+  });
+
+  // Binned empirical CEF (8 bins) -- panel 4.
+  var BINS = 8, binSum = new Array(BINS).fill(0), binCount = new Array(BINS).fill(0);
+  data.forEach(function (d) {
+    var b = Math.min(BINS - 1, Math.floor(d.x * BINS));
+    binSum[b] += d.y; binCount[b]++;
+  });
+  var cefPts = [];
+  for (var b = 0; b < BINS; b++) {
+    if (binCount[b] > 0) {
+      var bx = (b + 0.5) / BINS, by = binSum[b] / binCount[b];
+      cefPts.push({ x: bx, y: by });
+    }
+  }
+  cefLine.setAttribute('points', cefPts.map(function (p) { return xPix(p.x) + ',' + yPixG(p.y); }).join(' '));
+  cefPts.forEach(function (p) {
+    var c = document.createElementNS(SVGNS, 'circle');
+    c.setAttribute('cx', xPix(p.x));
+    c.setAttribute('cy', yPixG(p.y));
+    c.setAttribute('r', 4);
+    c.setAttribute('fill', '#2b6cb0');
+    cefDots.appendChild(c);
+  });
+  regLine.setAttribute('x1', xPix(0));
+  regLine.setAttribute('y1', yPixG(meanOf(0)));
+  regLine.setAttribute('x2', xPix(1));
+  regLine.setAttribute('y2', yPixG(meanOf(1)));
+
+  // Small "violin" at each of 5 x-positions showing the *shape* of the
+  // theoretical conditional density Y|X~=x, not just its mean -- the
+  // changing-distribution complement to the CEF/regression lines.
+  [0.1, 0.3, 0.5, 0.7, 0.9].forEach(function (xr) {
+    var cx = xPix(xr), scale = 16, pathPts = [];
+    for (var g = GMIN; g <= GMAX + 1e-9; g += 0.2) {
+      pathPts.push((cx + density(g, meanOf(xr)) * scale) + ',' + yPixG(g));
+    }
+    for (g = GMAX; g >= GMIN - 1e-9; g -= 0.2) {
+      pathPts.push((cx - density(g, meanOf(xr)) * scale) + ',' + yPixG(g));
+    }
+    var poly = document.createElementNS(SVGNS, 'polygon');
+    poly.setAttribute('points', pathPts.join(' '));
+    poly.setAttribute('fill', '#8a8f98');
+    poly.setAttribute('opacity', '0.35');
+    ridges.appendChild(poly);
+  });
+
+  function update() {
+    // Each slider keeps its own label -- no swapping the readouts, only
+    // the internal lo/hi used for shading and filtering. (Previously the
+    // labels got reassigned after sorting, which made a slider's dot look
+    // "inverted" from the number printed next to it.)
+    var xa = Number(s1.value), xb = Number(s2.value);
+    x1Readout.textContent = xa.toFixed(2);
+    x2Readout.textContent = xb.toFixed(2);
+    var xLo = Math.min(xa, xb), xHi = Math.max(xa, xb);
+
+    clipRect.setAttribute('x', xPix(xLo));
+    clipRect.setAttribute('width', Math.max(0, xPix(xHi) - xPix(xLo)));
+    scatterBand.setAttribute('x', xPix(xLo));
+    scatterBand.setAttribute('width', Math.max(0, xPix(xHi) - xPix(xLo)));
+    cefBand.setAttribute('x', xPix(xLo));
+    cefBand.setAttribute('width', Math.max(0, xPix(xHi) - xPix(xLo)));
+
+    var sum = 0, count = 0;
+    data.forEach(function (d) {
+      var inWindow = d.x >= xLo && d.x <= xHi;
+      d.circle.setAttribute('fill', inWindow ? '#38a169' : '#2b6cb0');
+      if (inWindow) { sum += d.y; count++; }
+    });
+    var avgY = count > 0 ? sum / count : meanOf((xLo + xHi) / 2);
+
+    var pts = [];
+    for (var g = GMIN; g <= GMAX + 1e-9; g += 0.1) {
+      var dens = density(g, avgY);
+      pts.push(xPix((g - GMIN) / (GMAX - GMIN)).toFixed(1) + ',' + (Y_BASE - dens * (Y_BASE - Y_TOP)).toFixed(1));
+    }
+    curve.setAttribute('d', 'M' + xPix(0) + ',' + Y_BASE + ' L' + pts.join(' L') + ' L' + xPix(1) + ',' + Y_BASE + ' Z');
+    var mx = xPix((avgY - GMIN) / (GMAX - GMIN));
+    meanLine.setAttribute('x1', mx);
+    meanLine.setAttribute('x2', mx);
+    meanLine.setAttribute('y2', Y_TOP);
+
+    eyReadout.textContent = (count > 0 ? avgY.toFixed(2) + '%' : '(no points in window)');
+  }
+
+  s1.addEventListener('input', update);
+  s2.addEventListener('input', update);
+  update();
+})();
+</script>
+<div class="slide-footnote">Panel 4 ≈ Angrist &amp; Pischke, Mostly Harmless Econometrics, Fig. 3.1.1 (own construction, source PDF was sign-in gated): blue = empirical CEF, red dashed = regression line, grey = conditional distribution shape. Scatter data is made up.</div>
+<!--
+The two slides below (formal definition + properties) align with Blitzstein
+& Hwang, "Introduction to Probability," Ch. 9 (Conditional Expectation),
+sections 9.1-9.2 -- definition of E[Y|X=x] and its basic properties
+(linearity, taking out what's known). Deliberately NOT covering E[Y|X] as
+a random variable / Adam's Law here -- that's the type-shift material this
+session isn't teaching (see the header comment at the top of this file).
+Note: the linked source PDF was sign-in gated and unreadable directly;
+this content is written from established knowledge of the book's
+structure, not a direct transcription -- worth spot-checking notation
+against the actual chapter before using in class.
+-->
+</section>
+<section id="conditional-expectation-formally" class="slide level2 smaller">
+<h2>Conditional Expectation, Formally</h2>
+<ul>
+<li class="fragment">Discrete: <span class="math inline">\(E[Y\mid X=x] = \sum_y y\,P(Y=y\mid X=x)\)</span> — the definition already in use, just named.</li>
+<li class="fragment">Continuous: <span class="math inline">\(E[Y\mid X=x] = \int y\,f_{Y\mid X}(y\mid x)\,dy\)</span> — same shape, sum replaced by integral.</li>
+<li class="fragment">Both are just <span class="math inline">\(E[Y]\)</span>’s own definition, applied to the <em>conditional</em> distribution instead of the marginal one.</li>
+</ul>
+</section>
+<section id="properties-of-conditional-expectation" class="slide level2 smaller">
+<h2>Properties of Conditional Expectation</h2>
+<ul>
+<li class="fragment"><strong>Linear:</strong> <span class="math inline">\(E[aY+bZ\mid X=x] = aE[Y\mid X=x]+bE[Z\mid X=x]\)</span> — same linearity as ordinary expectation.</li>
+<li class="fragment"><strong>Taking out what’s known:</strong> <span class="math inline">\(E[g(X)Y\mid X=x] = g(x)\,E[Y\mid X=x]\)</span>.
+<ul>
+<li class="fragment">Once you’ve conditioned on <span class="math inline">\(X=x\)</span>, <span class="math inline">\(g(x)\)</span> is just a number — pull it out of the average like any other constant.</li>
+</ul></li>
+</ul>
 <ul>
 <li class="fragment"><span class="math inline">\(\text{Var}(Y) = E[(Y-E[Y])^2] = E[Y^2]-(E[Y])^2\)</span> — spread around the mean, and the computational shortcut.</li>
 <li class="fragment"><span class="math inline">\(SD(Y) = \sqrt{\text{Var}(Y)}\)</span>.</li>
@@ -1001,6 +1622,94 @@ the IQSS prefresher authors for the definitions/notation this draws on.
 <li class="fragment"><span class="math inline">\(\text{Cov}(aX,bY)=ab\,\text{Cov}(X,Y)\)</span>; <span class="math inline">\(\quad\text{Cov}(X+a,Y)=\text{Cov}(X,Y)\)</span>.</li>
 <li class="fragment"><span class="math inline">\(\text{Cov}(X+Z,Y+W)=\text{Cov}(X,Y)+\text{Cov}(X,W)+\text{Cov}(Z,Y)+\text{Cov}(Z,W)\)</span>.</li>
 <li class="fragment"><span class="math inline">\(\text{Var}(X+Y) = \text{Var}(X)+\text{Var}(Y)+2\,\text{Cov}(X,Y)\)</span>.</li>
+</ul>
+</section>
+<section id="quick-drill-the-cef-percentile-by-percentile" class="slide level2 smaller">
+<h2>Quick Drill: The CEF, Percentile by Percentile</h2>
+<p><span class="math inline">\(X\)</span> = polyarchy score, discretized into 6 percentile bins. Each bin has its own pair of possible growth outcomes and probabilities:</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Percentile bin</th>
+<th style="text-align: center;">Low growth</th>
+<th style="text-align: center;"><span class="math inline">\(P(\text{Low})\)</span></th>
+<th style="text-align: center;">High growth</th>
+<th style="text-align: center;"><span class="math inline">\(P(\text{High})\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;"><span class="math inline">\(-2\%\)</span></td>
+<td style="text-align: center;">0.75</td>
+<td style="text-align: center;"><span class="math inline">\(1\%\)</span></td>
+<td style="text-align: center;">0.25</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(-1\%\)</span></td>
+<td style="text-align: center;">0.65</td>
+<td style="text-align: center;"><span class="math inline">\(2\%\)</span></td>
+<td style="text-align: center;">0.35</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;"><span class="math inline">\(0\%\)</span></td>
+<td style="text-align: center;">0.55</td>
+<td style="text-align: center;"><span class="math inline">\(3\%\)</span></td>
+<td style="text-align: center;">0.45</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;"><span class="math inline">\(1\%\)</span></td>
+<td style="text-align: center;">0.45</td>
+<td style="text-align: center;"><span class="math inline">\(4\%\)</span></td>
+<td style="text-align: center;">0.55</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;"><span class="math inline">\(1\%\)</span></td>
+<td style="text-align: center;">0.30</td>
+<td style="text-align: center;"><span class="math inline">\(5\%\)</span></td>
+<td style="text-align: center;">0.70</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"><span class="math inline">\(2\%\)</span></td>
+<td style="text-align: center;">0.15</td>
+<td style="text-align: center;"><span class="math inline">\(6\%\)</span></td>
+<td style="text-align: center;">0.85</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Question:</strong> Compute <span class="math inline">\(E[\text{Growth}\mid X=\text{bin}]\)</span> for each of the 6 bins.</p>
+</section>
+<section id="solution-bins-13" class="slide level2 smaller">
+<h2>Solution: Bins 1–3</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(E[\text{Growth}\mid X=x] = (\text{Low value})\times P(\text{Low}) + (\text{High value})\times P(\text{High})\)</span>.</li>
+<li class="fragment"><strong>Bin 1:</strong> $(-2)(0.75) + (1)(0.25) = -1.5+0.25 = $ <span class="fragment"><span class="math inline">\(-1.25\%\)</span></span></li>
+<li class="fragment"><strong>Bin 2:</strong> $(-1)(0.65) + (2)(0.35) = -0.65+0.70 = $ <span class="fragment"><span class="math inline">\(0.05\%\)</span></span></li>
+<li class="fragment"><strong>Bin 3:</strong> $(0)(0.55) + (3)(0.45) = 0+1.35 = $ <span class="fragment"><span class="math inline">\(1.35\%\)</span></span></li>
+</ul>
+</section>
+<section id="solution-bins-46" class="slide level2 smaller">
+<h2>Solution: Bins 4–6</h2>
+<ul>
+<li class="fragment"><strong>Bin 4:</strong> $(1)(0.45) + (4)(0.55) = 0.45+2.20 = $ <span class="fragment"><span class="math inline">\(2.65\%\)</span></span></li>
+<li class="fragment"><strong>Bin 5:</strong> $(1)(0.30) + (5)(0.70) = 0.30+3.50 = $ <span class="fragment"><span class="math inline">\(3.80\%\)</span></span></li>
+<li class="fragment"><strong>Bin 6:</strong> $(2)(0.15) + (6)(0.85) = 0.30+5.10 = $ <span class="fragment"><span class="math inline">\(5.40\%\)</span></span></li>
+<li class="fragment">All six together: <span class="fragment"><span class="math inline">\(-1.25\%,\ 0.05\%,\ 1.35\%,\ 2.65\%,\ 3.80\%,\ 5.40\%\)</span></span>
+<ul>
+<li class="fragment"><span class="fragment">Increasing across bins, even though every row used different growth values and probabilities — that sequence itself is the discretized CEF, the same object the sliding-window widget traced continuously.</span></li>
+</ul></li>
 </ul>
 </section>
 <section id="special-distributions" class="slide level2">
@@ -1084,18 +1793,81 @@ the IQSS prefresher authors for the definitions/notation this draws on.
 <li class="fragment">Mean <span class="math inline">\(=\mu\)</span>; variance <span class="math inline">\(=\sigma^2\)</span> — the two parameters <em>are</em> the shape.</li>
 </ul>
 </section>
+<section id="recap-the-toolkit" class="slide level2 smaller">
+<h2>Recap: The Toolkit</h2>
+<ul>
+<li class="fragment"><strong>Combinatorics:</strong> counting without listing — the fundamental rule, permutations, combinations.</li>
+<li class="fragment"><strong>Random variables:</strong> turning outcomes into numbers, <span class="math inline">\(X:\Omega\to\mathbb{R}\)</span> — discrete (PMF, CDF) and continuous (PDF).</li>
+<li class="fragment"><strong>Joint, marginal, conditional distributions:</strong> the coin (independent — conditioning changes nothing) vs.&nbsp;democracy (dependent — conditioning moves the distribution).</li>
+<li class="fragment"><strong>Expectation algebra:</strong> <span class="math inline">\(E[Y]=\sum_y y\,p(y)\)</span>, linearity, and the conditional version <span class="math inline">\(E[Y\mid X=x]\)</span> — the seed of the CEF.</li>
+<li class="fragment"><strong>Variance and covariance:</strong> spread around the mean, and whether two variables move together.</li>
+<li class="fragment"><strong>Special distributions:</strong> Binomial, Poisson, Uniform, Normal — named shapes to recognize, not build fluency in yet.</li>
+</ul>
+</section>
+<section id="recap-one-example-every-tool" class="slide level2 smaller">
+<h2>Recap: One Example, Every Tool</h2>
+<div style="font-size: 0.55em;">
+<table class="caption-top">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 70%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Tool</th>
+<th>Running example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Combinatorics</strong></td>
+<td><span class="math inline">\(\binom{5}{2}=10\)</span> ways to pick 2 of 5 left-handed students</td>
+</tr>
+<tr class="even">
+<td><strong>Random variable</strong></td>
+<td><span class="math inline">\(X\)</span> = heads in 3 coin flips; democracy score <span class="math inline">\(X\in[0,1]\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Joint / marginal / conditional</strong></td>
+<td><span class="math inline">\(D\)</span> = democracy, <span class="math inline">\(G\)</span> = growth: <span class="math inline">\(p(1,1)=0.25\)</span>, <span class="math inline">\(p_D(1)=0.65\)</span>, <span class="math inline">\(p_{G\mid D}(1\mid1)\approx0.385\)</span></td>
+</tr>
+<tr class="even">
+<td><strong>Expectation</strong></td>
+<td><span class="math inline">\(E[X]=1.5\)</span> heads, from <span class="math inline">\(0(\tfrac18)+1(\tfrac38)+2(\tfrac38)+3(\tfrac18)\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Conditional expectation / CEF</strong></td>
+<td><span class="math inline">\(E[\text{growth}\mid\text{polyarchy}=x]\)</span>, sliding window plot</td>
+</tr>
+<tr class="even">
+<td><strong>Variance / covariance</strong></td>
+<td><span class="math inline">\(\text{Var}(X+Y)=\text{Var}(X)+\text{Var}(Y)+2\text{Cov}(X,Y)\)</span></td>
+</tr>
+<tr class="odd">
+<td><strong>Special distributions</strong></td>
+<td>3-flip PMF <em>is</em> Binomial(3, 0.5)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Same running examples, just increasingly precise language for asking about them.</p>
+</section>
 <section id="references" class="slide level2 smaller">
 <h2>References</h2>
 <ul>
 <li class="fragment"><strong>Seeing Theory — Basic &amp; Compound Probability</strong> (Brown University): <a href="https://seeing-theory.brown.edu/doc/basic-probability.pdf">https://seeing-theory.brown.edu/doc/basic-probability.pdf</a></li>
-<li class="fragment">Blitzstein, J. K., &amp; Hwang, J. (2019). <em>Introduction to Probability</em> (2nd ed.). Chapman and Hall/CRC. Free copy from the authors: <a href="http://probabilitybook.net">http://probabilitybook.net</a></li>
+<li class="fragment"><strong>Setosa.io — Conditional Probability</strong>, interactive visualization: <a href="https://setosa.io/conditional/">https://setosa.io/conditional/</a></li>
+<li class="fragment">Blitzstein, J. K., &amp; Hwang, J. (2019). <em>Introduction to Probability</em> (2nd ed.). Chapman and Hall/CRC. Free copy from the authors: <a href="http://probabilitybook.net">http://probabilitybook.net</a>
+<ul>
+<li class="fragment">For an advanced treatment: random variables and their distributions in <strong>Ch. 3</strong>, conditional expectation in <strong>Ch. 9</strong>.</li>
+</ul></li>
 <li class="fragment"><strong>Statistics 110: Probability</strong> — Harvard lecture videos by Joe Blitzstein: <a href="https://stat110.hsites.harvard.edu/youtube">https://stat110.hsites.harvard.edu/youtube</a></li>
 <li class="fragment"><strong>IQSS Prefresher — Probability</strong> (Harvard IQSS): random variables, distributions, expectation, joint/conditional distributions, variance/covariance, special distributions: <a href="https://iqss.github.io/prefresher/06_probability.html">https://iqss.github.io/prefresher/06_probability.html</a></li>
 </ul>
 </section>
 <section id="section" class="slide level2 center">
 <h2></h2>
-<p><strong>Programming lecture:</strong> <a href="../chapters/03-calculus/programming.html">webpage chapter</a></p>
+<p><strong>Programming lecture:</strong> <a href="../chapters/03-calculus/programming.html">Webpage Chapter</a></p>
 <p><strong>Back to:</strong> <a href="../index.html">Math Camp 2026 website</a></p>
 
 </section>
