@@ -10,7 +10,7 @@
   <meta name="generator" content="quarto-1.10.18">
 
   <meta name="author" content="Parushya">
-  <meta name="dcterms.date" content="2026-08-18">
+  <meta name="dcterms.date" content="2026-08-19">
   <title>Uncertain World and what to Expect</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -148,7 +148,7 @@ Parushya
 </div>
 </div>
 
-  <p class="date">2026-08-18</p>
+  <p class="date">2026-08-19</p>
 </section>
 <section id="big-questions-live-in-an-uncertain-world" class="slide level2">
 <h2>Big questions live in an uncertain world</h2>
@@ -873,7 +873,9 @@ the topic selection this draws on.
     labelB.setAttribute('y', cy - rB + 2);
     labelB.textContent = 'B';
 
-    var pab = ov * Math.min(pa, pb);
+    var lower = Math.max(0, pa + pb - 1);
+    var upper = Math.min(pa, pb);
+    var pab = lower + ov * (upper - lower);
     var pau = pa + pb - pab;
     var sum = pa + pb;
 
