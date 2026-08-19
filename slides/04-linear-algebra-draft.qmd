@@ -1,0 +1,38 @@
+---
+title: "Probability Extensions + Linear Algebra"
+subtitle: "Math and Programming Camp Day 4"
+author: Parushya
+date: today
+---
+
+<!--
+Placeholder draft. Holds two topics relocated out of the Day 3 restructure
+(see 03-calculus-draft.qmd's header comment): PDF/CDF & continuous
+distributions needs both the Random-Variables/Expectation chain and the
+Area-Under-the-Curve chain finished first, so it couldn't land inside Day 3
+without re-introducing a topic switch. Linear Algebra basics is placed here
+too, per HANDOFF.md's original Day 4 slot. Placement of both relative to
+the existing 04-linear-algebra.qmd stub's topics (matrix readings,
+transformations, sampling distributions, basic derivations) is not yet
+decided -- this file is scaffolding, not a final running order. No slide
+content has been written yet.
+-->
+
+## Topics for this session (placeholder) {.smaller}
+
+::: {.incremental}
+-   **PDF/CDF & Distributions** — the topic that needs both the Random-Variables/Expectation chain and the Area-Under-the-Curve chain from Day 3: $E[X]=\int x f(x)\,dx$ needs the RV/expectation concept, $P(a<X<b)=\int_a^b f(x)\,dx$ needs area-under-curve. Frame as the payoff line: "here's why we needed calculus for probability."
+-   **Linear Algebra basics** — a reading key (dimensions, conformability, transpose, inverse-as-undoing, design matrix), per HANDOFF.md's decision #4: matrices as compression/shorthand, not foundation. Cut: transformations, basis, span, eigenvalues, determinants, the projection picture.
+:::
+
+## PDF/CDF & Distributions {.smaller}
+
+[placeholder]
+
+## Linear Algebra Basics {.smaller}
+
+[placeholder]
+
+## {.center}
+
+**Programming lecture:** [webpage chapter](../chapters/04-linear-algebra/programming.html)

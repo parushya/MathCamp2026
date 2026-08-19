@@ -1,6 +1,6 @@
 ---
 title: "Calculus"
-subtitle: "MathCamp 2026 — Day 3"
+subtitle: "MathCamp 2026 — Day 3, Session 2"
 ---
 
 ## Slides: TBD

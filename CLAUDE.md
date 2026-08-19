@@ -38,25 +38,6 @@ Keep the two in sync when editing a session's content: the slide bullets live in
 - Both `quarto render` and `quarto render slides` must succeed before opening a PR — this is enforced implicitly since `.github/workflows/publish.yml` runs both on every push to `main`.
 - The book has `execute: freeze: auto` set in `_quarto.yml`, so `quarto render` skips re-executing a `programming.qmd`'s R code if its source hasn't changed since the last render — cached results live in `_freeze/` (committed to git, not gitignored). Every `quarto render` still traverses and writes out every page (so nav/search stay consistent), but only files you actually edited re-run R code. If you edit a `programming.qmd`, its `_freeze/` entry updates automatically on the next render — just commit the updated `_freeze/` files alongside your `.qmd` change. If a render looks stale after editing data files or upstream dependencies a chunk reads from (without editing the `.qmd` itself), delete the relevant subfolder under `_freeze/` (or the whole directory) to force re-execution.
 
-## Book structure
-
-- `_quarto.yml` — book config: title, nested chapter list/order (`part:` + `chapters:` per session), HTML theme (`cosmo`) and options. `output-dir: docs`.
-- `index.qmd` — book landing page (`Welcome`), links out to `slides/index.html`.
-- `chapters/0N-<session-name>/` — one folder per lecture session, each with:
-  - `index.qmd` — the part/session landing page (short overview + links to the two sub-chapters).
-  - `slides.qmd` — sub-chapter that embeds the session's `revealjs` deck via `<iframe>` (`src="../../slides/0N-*.html"`) plus a "open full-screen" link and a link back to the deck's `.qmd` source.
-  - `programming.qmd` — sub-chapter with the programming lecture: R code chunks (executed by Quarto/knitr at render time) walking through the session's material.
-  - Sessions: `01-notation-functions-limits/`, `02-probability/`, `03-calculus/`, `04-linear-algebra/`, `05-advanced-topics/`.
-- `chapters/references.qmd` — appendix.
-- `styles.css` — book-wide custom CSS, linked from `_quarto.yml`.
-
-## Slides structure
-
-- `slides/_quarto.yml` — own Quarto project (`type: default`, `format: revealjs`, `output-dir: ../docs/slides`), independent of the book project. This is the **source of truth** for slide content — the book's `slides.qmd` sub-chapters just embed the rendered output.
-- `slides/index.qmd` — slide-deck index (browsable on its own, outside the book), links back to the book (`../index.html`).
-- `slides/0N-*.qmd` — one `revealjs` deck per session, filenames mirroring `chapters/0N-*/`. Each ends with a link to its programming lecture (`../chapters/0N-*/programming.html`).
-- `slides/slides.css` — slide-theme overrides.
-
 ## Publishing / GitHub Pages
 
 - `.github/workflows/publish.yml` runs on every push to `main`: renders the book, renders the slides (both land under `docs/`), then deploys `docs/` to the `gh-pages` branch via `peaceiris/actions-gh-pages`. GitHub Pages should be configured to serve from the `gh-pages` branch.
@@ -72,20 +53,4 @@ When embedding `plotly`/`Shiny`/etc., put visualization code directly in the rel
 
 ## R package management (renv)
 
-This repo uses `renv` to pin R package versions so local machines and CI all install the exact same set. `renv.lock` is the source of truth and **is committed**; `renv/library/` (the actual installed package files) is gitignored and never committed — each machine restores it locally from the lockfile.
-
-**One-time setup per machine** (new clone, or first time after this was introduced): open the project in RStudio (or `cd` into the repo and start R) — `.Rprofile` auto-activates renv, then run:
-```r
-renv::restore()
-```
-This installs exactly the package versions recorded in `renv.lock` into a project-local library.
-
-**Every time you add or start using a new R package in any `.qmd` (or `.R`) file:**
-1. Write your code as normal, e.g. add `library(readr)` to a chunk.
-2. Run `install.packages("readr")` if it's not already installed locally.
-3. Run `renv::snapshot()` from the repo root. It scans the project's code for `library()`/`require()`/`pkg::fn()` calls and updates `renv.lock` to match — you don't need to manually list packages anywhere.
-4. Commit the updated `renv.lock` (and `.Rprofile` / `renv/activate.R` / `renv/settings.json` if this is the first snapshot) along with your `.qmd` changes, in the same PR.
-
-**Every time you pull changes that touched `renv.lock`:** run `renv::status()` to check if your local library is out of sync, and `renv::restore()` if so, before rendering.
-
-If you forget step 3, your local render will work (you have the package installed globally/in a personal library) but CI will fail with `there is no package called 'X'` — `renv::restore()` in CI only installs what's actually in the lockfile.
+This repo pins R packages via `renv.lock` (committed; `renv/library/` is not). When adding, updating, or restoring an R package, see the `renv-package-add` skill for the full workflow.

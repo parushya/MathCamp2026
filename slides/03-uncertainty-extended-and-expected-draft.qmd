@@ -1,0 +1,971 @@
+---
+title: "Uncertainty Extended and Expected"
+subtitle: "Math and Programming Camp Day 3 — Session 1"
+author: Parushya
+date: today
+---
+
+<!--
+Draft deck for Day 3, Session 1. Split off from the original combined
+"Probability + Calculus" draft (slides/03-calculus-draft.qmd, kept as-is
+for reference/archive) so that Day 3 now runs two separate sessions:
+this one (Combinatorics -> Random Variables -> Expectation) and a second
+"Calculus" session (slides/03-calculus.qmd, still TBD). Conditional
+Expectation and the Type-Shift, the Law of Iterated Expectations, the
+Selection-Bias Decomposition, and the probability recap that followed in
+the original draft are intentionally NOT carried over here -- this
+session isn't covering the type-shift material -- they stayed in
+slides/03-calculus-draft.qmd as drafts to revisit later. Formatting
+conventions mirror 01-notation-functions-limits-draft.qmd /
+02-probability-draft.qmd.
+-->
+
+## Today {.smaller}
+
+::: {.incremental}
+-   **Combinatorics** — shortcuts for counting outcomes without listing every one.
+-   **Random Variables & Expectation** — from events to numbers, and the algebra of what to expect.
+:::
+
+<!--
+The Counting slides below cover the same topic as IQSS's "prefresher"
+course notes, probability chapter:
+https://iqss.github.io/prefresher/06_probability.html (GPLv3 licensed).
+Content here is written independently in this deck's own voice and
+slide format, not copied verbatim -- credit to the IQSS prefresher
+authors for the topic selection this draws on.
+
+The Review of Factorials / Why These Formulas Work / worked-example slides
+below expand on last year's in-house deck: Resources/Slide Decks 2025/
+Latex_materials_mc/Latex/Slides/Math Camp Slides - Probability/main.tex
+(Combinations and Permutations section), rewritten here in this deck's own
+voice/format and tied to the running country example.
+-->
+
+## Counting
+
+*Combinatorics: shortcuts for counting outcomes without listing every one.*
+
+## Counting: Why We Need It {.smaller}
+
+::: {.incremental}
+-   `Pr(e)` was a ratio of counts — but counting outcomes by hand stops working once the sample space gets big.
+-   *Combinatorics* gives us shortcuts for counting without listing every possibility.
+-   Two questions decide which shortcut applies: does **order** matter, and are we sampling **with or without replacement**?
+:::
+
+## The Fundamental Rule of Counting {.smaller}
+
+::: {.incremental}
+-   If a choice is made in stages, and stage $i$ has $n_i$ independent options, the total number of ways to complete all stages is $\prod_i n_i$ — multiply, don't add.
+-   Example: classifying one country by region (5 options) and by regime type (2 options) gives $5 \times 2 = 10$ possible classifications.
+-   This single multiplication rule is what everything else on this slide builds on.
+:::
+
+## Review of Factorials {.smaller}
+
+::: {.incremental}
+-   $n! = n \times (n-1) \times \cdots \times 1$ — the number of ways to arrange all $n$ objects in order.
+-   Example: $3! = 3\times2\times1=6$. For countries $\{X,Y,Z\}$, all 6 orderings: XYZ, XZY, YXZ, YZX, ZXY, ZYX.
+    -   Slot 1 has 3 choices; slot 2 has 2 left; slot 3 has 1 left — $3\times2\times1$.
+-   By convention, $0! = 1$ — there's exactly one way to arrange zero objects: do nothing.
+-   Useful cancellation: $\dfrac{n!}{(n-k)!} = n\times(n-1)\times\cdots\times(n-k+1)$ — the tail end of the factorial cancels out.
+    -   E.g. $\dfrac{5!}{(5-3)!} = 5\times4\times3$ — the trailing $2\times1$ cancels between numerator and denominator.
+:::
+
+## Permutations and Combinations {.smaller}
+
+::: {.incremental}
+-   Selecting $k$ items from $n$, **order matters**, **with replacement**: $n^k$ possible outcomes.
+-   Selecting $k$ from $n$, **order matters**, **without replacement** (a *permutation*): $\dfrac{n!}{(n-k)!}$.
+-   Selecting $k$ from $n$, **order doesn't matter**, **without replacement** (a *combination*): $\dbinom{n}{k} = \dfrac{n!}{k!(n-k)!}$ — read "n choose k."
+:::
+
+```{=html}
+<div class="running-example-note">&#8618; Running example: choosing an unordered comparison group of 3 countries from a shortlist of 10 is a combination, $\binom{10}{3}=120$; ranking a top-3 by growth from that same shortlist is a permutation, $10 \cdot 9 \cdot 8 = 720$.</div>
+```
+
+## Why the Permutation Formula Works {.smaller}
+
+::: {.incremental}
+-   $\dfrac{n!}{(n-k)!}$: choosing $k$ from $n$, order matters, no replacement.
+-   $n!$ counts every possible full ordering of all $n$ objects.
+-   We only care about the first $k$ picks — the leftover $n-k$ slots can be filled in any of $(n-k)!$ ways, and we don't care which.
+-   Dividing $n!$ by $(n-k)!$ cancels out exactly that irrelevant tail, leaving only the first $k$ picks: $n\times(n-1)\times\cdots\times(n-k+1)$.
+:::
+
+## Why the Combination Formula Works {.smaller}
+
+::: {.incremental}
+-   $\dbinom{n}{k} = \dfrac{n!}{k!(n-k)!}$: same setup as a permutation, but order no longer matters.
+-   Start from the permutation count $\frac{n!}{(n-k)!}$ — but every unordered group of $k$ got counted once **for each of its $k!$ orderings**.
+-   Example: the 3-country group $\{X,Y,Z\}$ shows up as $3!=6$ different permutations (XYZ, XZY, YXZ, YZX, ZXY, ZYX) — all the *same* group, over-counted 6 times.
+-   Dividing by $k!$ collapses each cluster of duplicates back down to one group — that's the extra $k!$ in the denominator.
+:::
+
+## Combinations, Worked Step by Step {.smaller}
+
+::: {.incremental}
+-   How many ways to form an unordered research team of 3 from a shortlist of 5 countries?
+-   $\dbinom{5}{3} = \dfrac{5!}{3!(5-3)!}$
+-   $= \dfrac{120}{6 \times 2} = \dfrac{120}{12} = 10$
+-   Sanity check via the cancellation trick: $\dfrac{5!}{2!} = 5\times4\times3=60$ ordered picks, then $\div\,3! = 6$ collapses those into $10$ unique unordered teams.
+:::
+
+## Combinations, Listed Out {.smaller}
+
+::: {.incremental}
+-   With 5 countries $\{V,W,X,Y,Z\}$, here are all $\binom{5}{3}=10$ possible research teams of 3, listed out:
+-   VWX, VWY, VWZ, VXY, VXZ, VYZ
+-   WXY, WXZ, WYZ
+-   XYZ
+-   Ten teams, no more, no fewer — the formula isn't an approximation, it's exactly this list's size.
+:::
+
+## Splitting Into Multiple Groups {.smaller}
+
+::: {.incremental}
+-   Combinations chain together when *everyone* gets split into more than two groups.
+-   Suppose our shortlist of 20 countries needs to be split into research sub-teams: 4 for polling data, 6 for economic data, 5 for conflict data, and the remaining 5 for institutional data.
+-   Choose each sub-team in turn, shrinking the pool each time:
+    $$\binom{20}{4}\binom{16}{6}\binom{10}{5}\binom{5}{5}$$
+-   By the fundamental rule of counting, multiply the stages together: $4845 \times 8008 \times 252 \times 1 \approx 9.78$ billion ways to split all 20 countries into the four teams.
+:::
+
+## Quick Drill: Counting {.smaller}
+
+::: {.incremental}
+-   From a shortlist of 8 countries, how many ways to choose an *unordered* pair for a paired comparison? [$\binom{8}{2} = 28$]{.fragment}
+-   From that same shortlist, how many ways to pick an *ordered* "most, then second-most" democratic pair? [$8 \cdot 7 = 56$]{.fragment}
+-   With 4 possible democracy-score categories and 3 possible growth categories, how many (democracy-score category, growth category) pairs are there? [$4 \times 3 = 12$, by the fundamental rule]{.fragment}
+-   From a shortlist of 6 countries, selecting 3 to visit **in order, with repeat visits allowed**: how many itineraries? [$6^3 = 216$]{.fragment}
+-   Same shortlist of 6, selecting 3 **in order, no repeats**: how many itineraries? [$6 \cdot 5 \cdot 4 = 120$]{.fragment}
+-   Same shortlist of 6, selecting an **unordered** group of 3 to visit: how many groups? [$\binom{6}{3} = 20$]{.fragment}
+:::
+
+## At Least One Success {.smaller}
+
+::: {.incremental}
+-   Common problem: given a known $P(\text{success})$ on one attempt, what's $P(\text{at least one success})$ over several independent attempts?
+-   Example: a game of chance has a 10% chance of success. If you play 5 times, what's the probability of winning at least once?
+-   Warm-up (not the answer, but intuitive): the probability of winning **all 5** in a row is just $(0.1)^5 = 0.00001$ — multiply the single-trial probability by itself.
+-   "At least once" is easier the other way: find the probability of **losing every time**, then take the complement.
+-   $P(\text{lose all 5}) = (1-0.1)^5 = (0.9)^5$, so $P(\text{win at least once}) = 1-(0.9)^5 \approx 0.41$.
+-   Play 10 times instead of 5: $1-(0.9)^{10}\approx 0.65$.
+:::
+
+## Quick Drill: Counting + Bayes, Together {.smaller}
+
+::: {.incremental}
+-   I'm teaching a MathCamp class of 5 students, and — purely out of curiosity — I noticed 2 of them are left-handed. About 10–12.5% of people worldwide are left-handed. There's also a popular *myth* that artistically-inclined people are left-handed far more often — say, 25% of the time. Just from this one clue, what's the probability my class leans more "artsy" than a typical group?
+-   **Step 1 — Counting:** ways to choose *which* 2 of the 5 are left-handed: $\binom{5}{2} = $ [$10$]{.fragment} — you'll meet the general formula this belongs to, the Binomial distribution, later today.
+-   **Step 2 — Likelihoods:** [$a = P(2\text{ of }5\mid\text{Artsy}) = \binom{5}{2}(0.25)^2(0.75)^3 = 0.2637$]{.fragment}
+    -   [$g = P(2\text{ of }5\mid\text{Typical}) = \binom{5}{2}(0.125)^2(0.875)^3 = 0.1047$]{.fragment}
+-   **Step 3 — Bayes' rule**, equal priors cancel: [$P(\text{Artsy}\mid\text{evidence}) = \dfrac{a}{a+g} = \dfrac{0.2637}{0.3684} \approx 0.716$]{.fragment}
+-   [About a 72% chance my class leans artsy — a meaningful shift from the 50% prior, but $n=5$ is small, so two data points can't settle it.]{.fragment}
+:::
+
+## Random Variables & Expectation
+
+*From events to numbers — and the algebra of what to expect.*
+
+## One Flip: A Familiar Ratio {.smaller}
+
+**Number of Heads:**
+
+$$X = \begin{cases} 1 & \text{when } H \\ 0 & \text{when } T \end{cases}$$
+
+::: {.incremental}
+-   $\Omega=\{H,T\}$ — two equally likely outcomes.
+-   $P(\text{heads}) = P(X=1) = \dfrac12$.
+:::
+
+## Three Flips: Counting Again {.smaller}
+
+**Number of Heads:**
+
+$$X = \begin{cases} 3 & \text{when } HHH \\ 2 & \text{when } HHT,\ HTH,\ THH \\ 1 & \text{when } HTT,\ THT,\ TTH \\ 0 & \text{when } TTT \end{cases}$$
+
+::: {.incremental}
+-   $\Omega$ has $2^3=8$ equally likely outcomes, sorted above by $X$.
+-   $P(X=2) = \dfrac38$.
+:::
+
+## Picking a Country {.smaller}
+
+**Polyarchy Score:**
+
+$$X = \begin{cases} 0.83 & \text{when country} = A_1 \\ 0.61 & \text{when country} = A_2 \\ 0.34 & \text{when country} = A_3 \\ \vdots & \vdots \\ 0.72 & \text{when country} = A_{20} \end{cases}$$
+
+::: {.incremental}
+-   $\Omega$ = 20 countries, labeled $A_1,\ldots,A_{20}$. "Democracy" = $\{X>0.5\}$.
+-   $P(X>0.5) = \dfrac{13}{20} = 0.65$.
+:::
+
+## The Pattern Underneath {.smaller}
+
+::: {.incremental}
+-   Look back at all three: each time, "favorable" meant counting how many outcomes crossed some *numeric* line — heads $=1$; heads $=2$; polyarchy $>0.5$. Every event you just computed a probability for was secretly defined by a number, even when it was phrased as a yes/no question.
+-   That's the whole intuition for a **random variable**: a number attached to every outcome — heads count, or a country's polyarchy score — that was quietly doing the work behind "favorable" the entire time, before it ever had a name.
+-   And once that number exists on its own, not just buried inside one event's definition, you can ask far more than the single question you started with: not just "is polyarchy $>0.5$?" but *any* threshold — $P(\text{polyarchy}<0.3)$, $P(0.2<\text{polyarchy}<0.6)$ — all from the same underlying number, no new setup required.
+:::
+
+## Back to the Coin: A Worked Average {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 6px 0 10px;">
+<svg width="680" height="260" viewBox="0 0 680 260" xmlns="http://www.w3.org/2000/svg">
+  <rect x="10" y="5" width="660" height="250" rx="14" fill="#F7F8FA" stroke="#D9E0EA" stroke-width="2"/>
+
+  <!-- outcome labels -->
+  <text x="110" y="49" text-anchor="middle" font-size="14" fill="#22303F">TTT</text>
+
+  <text x="290" y="29" text-anchor="middle" font-size="14" fill="#22303F">HTT</text>
+  <text x="290" y="46" text-anchor="middle" font-size="14" fill="#22303F">THT</text>
+  <text x="290" y="63" text-anchor="middle" font-size="14" fill="#22303F">TTH</text>
+
+  <text x="470" y="29" text-anchor="middle" font-size="14" fill="#22303F">HHT</text>
+  <text x="470" y="46" text-anchor="middle" font-size="14" fill="#22303F">HTH</text>
+  <text x="470" y="63" text-anchor="middle" font-size="14" fill="#22303F">THH</text>
+
+  <text x="650" y="49" text-anchor="middle" font-size="14" fill="#22303F">HHH</text>
+
+  <!-- connectors from outcomes down to the axis -->
+  <line x1="110" y1="72" x2="110" y2="195" stroke="#8a8f98" stroke-width="1.5"/>
+  <line x1="290" y1="72" x2="290" y2="195" stroke="#8a8f98" stroke-width="1.5"/>
+  <line x1="470" y1="72" x2="470" y2="195" stroke="#8a8f98" stroke-width="1.5"/>
+  <line x1="650" y1="72" x2="650" y2="195" stroke="#8a8f98" stroke-width="1.5"/>
+
+  <!-- stacked dots: multiplicity landing on the real line -->
+  <circle cx="110" cy="185" r="7" fill="#2b6cb0" stroke="#F7F8FA" stroke-width="1.5"/>
+
+  <circle cx="290" cy="185" r="7" fill="#2b6cb0" stroke="#F7F8FA" stroke-width="1.5"/>
+  <circle cx="290" cy="168" r="7" fill="#2b6cb0" stroke="#F7F8FA" stroke-width="1.5"/>
+  <circle cx="290" cy="151" r="7" fill="#2b6cb0" stroke="#F7F8FA" stroke-width="1.5"/>
+
+  <circle cx="470" cy="185" r="7" fill="#2b6cb0" stroke="#F7F8FA" stroke-width="1.5"/>
+  <circle cx="470" cy="168" r="7" fill="#2b6cb0" stroke="#F7F8FA" stroke-width="1.5"/>
+  <circle cx="470" cy="151" r="7" fill="#2b6cb0" stroke="#F7F8FA" stroke-width="1.5"/>
+
+  <circle cx="650" cy="185" r="7" fill="#2b6cb0" stroke="#F7F8FA" stroke-width="1.5"/>
+
+  <!-- real number line -->
+  <line x1="60" y1="195" x2="670" y2="195" stroke="#5A6B80" stroke-width="2"/>
+  <line x1="110" y1="190" x2="110" y2="200" stroke="#5A6B80" stroke-width="2"/>
+  <line x1="290" y1="190" x2="290" y2="200" stroke="#5A6B80" stroke-width="2"/>
+  <line x1="470" y1="190" x2="470" y2="200" stroke="#5A6B80" stroke-width="2"/>
+  <line x1="650" y1="190" x2="650" y2="200" stroke="#5A6B80" stroke-width="2"/>
+  <text x="110" y="219" text-anchor="middle" font-size="15" fill="#5A6B80">0</text>
+  <text x="290" y="219" text-anchor="middle" font-size="15" fill="#5A6B80">1</text>
+  <text x="470" y="219" text-anchor="middle" font-size="15" fill="#5A6B80">2</text>
+  <text x="650" y="219" text-anchor="middle" font-size="15" fill="#5A6B80">3</text>
+  <text x="365" y="240" text-anchor="middle" font-size="13" font-style="italic" fill="#5A6B80">Number of Heads (X) &#8712; &#8477;</text>
+
+  <!-- average marker -->
+  <line x1="380" y1="177" x2="380" y2="195" stroke="#38a169" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <rect x="374" y="189" width="12" height="12" fill="#38a169" transform="rotate(45 380 195)"/>
+  <text x="380" y="168" text-anchor="middle" font-size="14" font-weight="700" fill="#2f855a">Average = 1.5</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   Full breakdown: $P(0)=\frac18$, $P(1)=\frac38$, $P(2)=\frac38$, $P(3)=\frac18$.
+-   **What's the average number of heads across all 8 equally likely outcomes of 3 flips?** Weight each value by how often it happens: $0(\tfrac18)+1(\tfrac38)+2(\tfrac38)+3(\tfrac18) = 1.5$ — lands between 1 and 2, pulled toward whichever value has more outcomes stacked on it.
+-   That weighted-average move — multiply each value by its own probability, add them up — is exactly what "expectation" means. It'll get its own notation, $E[X]$, shortly.
+:::
+
+<!--
+The formal random-variable/PMF/PDF definitions and notation from
+"Random Variables: The Formal Definition" through "Continuous Random
+Variables: A Preview" are aligned with IQSS's "prefresher" course notes,
+probability chapter, both the random-variables section:
+https://iqss.github.io/prefresher/06_probability.html#random-variables
+and the distributions section (PMF/CDF definitions, the Binomial formula
+on "PMF Example: The Binomial Distribution"):
+https://iqss.github.io/prefresher/06_probability.html#distributions
+(GPLv3 licensed). Wording, examples, and slide structure here are written
+independently in this deck's own voice, not copied verbatim -- credit to
+the IQSS prefresher authors for the definitions/notation this draws on.
+-->
+
+## Random Variables: The Formal Definition {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 2px 0 2px;">
+<svg width="520" height="226" viewBox="0 0 760 330" xmlns="http://www.w3.org/2000/svg">
+
+  <!-- Omega: space of outcomes -->
+  <path d="M60,60 C20,90 20,150 40,190 C10,230 40,275 90,285 C140,305 200,285 230,250
+           C270,220 260,160 240,130 C260,90 230,40 180,30 C140,10 90,20 60,60 Z"
+        fill="#F7F8FA" stroke="#22303F" stroke-width="2"/>
+  <text x="130" y="42" text-anchor="middle" font-size="18" font-weight="700" fill="#22303F">&#937;</text>
+  <text x="130" y="60" text-anchor="middle" font-size="11" fill="#5A6B80">space of outcomes</text>
+
+  <circle cx="95" cy="72" r="5" fill="#2b6cb0"/>
+  <text x="106" y="76" font-size="13" fill="#22303F">HHH</text>
+  <circle cx="190" cy="66" r="5" fill="#2b6cb0"/>
+  <text x="201" y="70" font-size="13" fill="#22303F">HHT</text>
+  <circle cx="60" cy="132" r="5" fill="#2b6cb0"/>
+  <text x="30" y="122" font-size="13" fill="#22303F">HTH</text>
+  <circle cx="215" cy="142" r="5" fill="#2b6cb0"/>
+  <text x="223" y="146" font-size="13" fill="#22303F">THH</text>
+  <circle cx="140" cy="112" r="5" fill="#2b6cb0"/>
+  <text x="148" y="107" font-size="13" fill="#22303F">HTT</text>
+  <circle cx="75" cy="207" r="5" fill="#2b6cb0"/>
+  <text x="40" y="220" font-size="13" fill="#22303F">THT</text>
+  <circle cx="178" cy="217" r="5" fill="#2b6cb0"/>
+  <text x="186" y="221" font-size="13" fill="#22303F">TTH</text>
+  <circle cx="115" cy="257" r="5" fill="#2b6cb0"/>
+  <text x="95" y="278" font-size="13" fill="#22303F">TTT</text>
+
+  <!-- real number line -->
+  <text x="640" y="140" text-anchor="middle" font-size="18" font-weight="700" fill="#22303F">&#8477;</text>
+  <line x1="515" y1="190" x2="755" y2="190" stroke="#5A6B80" stroke-width="2"/>
+  <line x1="545" y1="184" x2="545" y2="196" stroke="#5A6B80" stroke-width="2"/>
+  <line x1="612" y1="184" x2="612" y2="196" stroke="#5A6B80" stroke-width="2"/>
+  <line x1="679" y1="184" x2="679" y2="196" stroke="#5A6B80" stroke-width="2"/>
+  <line x1="746" y1="184" x2="746" y2="196" stroke="#5A6B80" stroke-width="2"/>
+  <text x="545" y="214" text-anchor="middle" font-size="14" fill="#5A6B80">0</text>
+  <text x="612" y="214" text-anchor="middle" font-size="14" fill="#5A6B80">1</text>
+  <text x="679" y="214" text-anchor="middle" font-size="14" fill="#5A6B80">2</text>
+  <text x="746" y="214" text-anchor="middle" font-size="14" fill="#5A6B80">3</text>
+  <circle cx="545" cy="190" r="6" fill="#38a169"/>
+  <circle cx="612" cy="190" r="6" fill="#38a169"/>
+  <circle cx="679" cy="190" r="6" fill="#38a169"/>
+  <circle cx="746" cy="190" r="6" fill="#38a169"/>
+
+  <defs>
+    <marker id="arrowhead2" markerWidth="7" markerHeight="7" refX="5.5" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#2b6cb0"/>
+    </marker>
+  </defs>
+
+  <path d="M95,72 Q420,10 746,183" fill="none" stroke="#2b6cb0" stroke-width="1.6" opacity="0.9" marker-end="url(#arrowhead2)"/>
+  <text x="420" y="24" text-anchor="middle" font-size="15" font-style="italic" fill="#2b6cb0">X</text>
+
+  <path d="M190,66 Q430,50 679,183" fill="none" stroke="#2b6cb0" stroke-width="1.3" opacity="0.75" marker-end="url(#arrowhead2)"/>
+  <path d="M215,142 Q450,150 679,196" fill="none" stroke="#2b6cb0" stroke-width="1.3" opacity="0.75" marker-end="url(#arrowhead2)"/>
+  <path d="M60,132 Q380,160 679,190" fill="none" stroke="#2b6cb0" stroke-width="1.3" opacity="0.75" marker-end="url(#arrowhead2)"/>
+
+  <path d="M140,112 Q380,130 612,183" fill="none" stroke="#2b6cb0" stroke-width="1.3" opacity="0.75" marker-end="url(#arrowhead2)"/>
+  <path d="M75,207 Q350,230 612,197" fill="none" stroke="#2b6cb0" stroke-width="1.3" opacity="0.75" marker-end="url(#arrowhead2)"/>
+  <path d="M178,217 Q400,240 612,200" fill="none" stroke="#2b6cb0" stroke-width="1.3" opacity="0.75" marker-end="url(#arrowhead2)"/>
+
+  <path d="M115,257 Q330,262 545,193" fill="none" stroke="#2b6cb0" stroke-width="1.3" opacity="0.75" marker-end="url(#arrowhead2)"/>
+
+  <!-- caption -->
+  <rect x="330" y="245" width="410" height="72" rx="16" fill="#EDF0F5" stroke="#D9E0EA" stroke-width="1.5"/>
+  <text x="535" y="268" text-anchor="middle" font-size="13" fill="#22303F">X is a function that assigns a number to every outcome.</text>
+  <text x="535" y="286" text-anchor="middle" font-size="13" fill="#22303F">The mapping itself is fixed — which outcome actually</text>
+  <text x="535" y="304" text-anchor="middle" font-size="13" fill="#22303F">occurs is still random.</text>
+</svg>
+</div>
+```
+
+::: {.incremental style="font-size: 0.85em;"}
+-   Formally, a random variable is a function $X:\Omega \to \mathbb{R}$.
+    -   Takes an outcome, returns a number.
+-   **The outcome itself is not the random variable.**
+    -   $\Omega$ holds outcomes like $HHT$ — not numbers.
+    -   $X$ is the mapping drawn above, landing each outcome on $\{0,1,2,3\}\subset\mathbb{R}$.
+-   **Where does "random" come from?** The mapping $X$ itself is fixed — $X(HHT)=2$, always.
+    -   Randomness means the outcome of the experiment isn't determined in advance: there's some probability the event will occur, not certainty.
+:::
+
+```{=html}
+<div class="slide-footnote">Technically it has to be a <em>measurable</em> function — a technical condition that automatically holds for every example we'll use, so not something to worry about.</div>
+<div class="slide-footnote">Figure inspired by Figure 5.2, IQSS Prefresher — Probability, Random Variables: <a href="https://iqss.github.io/prefresher/06_probability.html#random-variables">iqss.github.io/prefresher/06_probability.html#random-variables</a></div>
+```
+
+## What Is a Distribution? {.smaller}
+
+::: {.incremental}
+-   Knowing $X$ is a function isn't the whole picture — the natural next question is **how likely is each value $X$ can take?**
+-   A **distribution** answers exactly that: it specifies the probability of every value (or range of values) $X$ can take. It's what turns "$X$ is a number" into "here's how likely each number is."
+-   The coin example already has one, informally: $X=0$ with probability $\frac18$, $X=1$ with probability $\frac38$, and so on — that list of (value, probability) pairs *is* the distribution of $X$.
+-   How you *write down* a distribution splits along the same discrete/continuous line as $X$ itself — covered in full for each case over the next several slides.
+:::
+
+## Discrete Random Variables: Definition {.smaller}
+
+::: {.incremental}
+-   A discrete $X$ is one where you could, in principle, *list* every value it can take — the coin's $X\in\{0,1,2,3\}$ is a short, literal list.
+-   $X$ is **discrete** if it can take only a finite, or countably infinite, number of distinct values.
+-   Notation: capital $X$ denotes the random variable itself (the function, before we know the outcome); lowercase $x$ denotes one realized value. $p(x)=P(X=x)$ reads "the probability $X$ takes the specific value $x$."
+:::
+
+```{=html}
+<div class="running-example-note">&#8618; Running example: $X$ = "number of heads in 5 coin flips" is discrete, taking values in $\{0,1,2,3,4,5\}$ — a longer list than 3 flips, but still a list.</div>
+```
+
+## Discrete Random Variables: The PMF {.smaller}
+
+::: {.incremental}
+-   The distribution of a discrete $X$ is called a **probability mass function (PMF)**: $p(x) = P(X=x)$, satisfying $0\le p(x)\le 1$ and $\sum_x p(x) = 1$.
+-   The coin's PMF: $p(0)=\frac18$, $p(1)=\frac38$, $p(2)=\frac38$, $p(3)=\frac18$.
+:::
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="440" height="220" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+  <rect x="80" y="163" width="60" height="47" fill="#2b6cb0"/>
+  <rect x="190" y="70" width="60" height="140" fill="#2b6cb0"/>
+  <rect x="300" y="70" width="60" height="140" fill="#2b6cb0"/>
+  <rect x="410" y="163" width="60" height="47" fill="#2b6cb0"/>
+
+  <text x="110" y="155" text-anchor="middle" font-size="14" fill="#22303F">1/8</text>
+  <text x="220" y="62" text-anchor="middle" font-size="14" fill="#22303F">3/8</text>
+  <text x="330" y="62" text-anchor="middle" font-size="14" fill="#22303F">3/8</text>
+  <text x="440" y="155" text-anchor="middle" font-size="14" fill="#22303F">1/8</text>
+
+  <line x1="50" y1="210" x2="470" y2="210" stroke="#5A6B80" stroke-width="2"/>
+  <text x="110" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">0</text>
+  <text x="220" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">1</text>
+  <text x="330" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">2</text>
+  <text x="440" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">3</text>
+  <text x="260" y="250" text-anchor="middle" font-size="13" font-style="italic" fill="#5A6B80">Number of Heads (X)</text>
+</svg>
+</div>
+```
+
+## Discrete Random Variables: Expectation {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="440" height="220" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+  <rect x="80" y="163" width="60" height="47" fill="#2b6cb0"/>
+  <rect x="190" y="70" width="60" height="140" fill="#2b6cb0"/>
+  <rect x="300" y="70" width="60" height="140" fill="#2b6cb0"/>
+  <rect x="410" y="163" width="60" height="47" fill="#2b6cb0"/>
+
+  <text x="110" y="155" text-anchor="middle" font-size="14" fill="#22303F">1/8</text>
+  <text x="220" y="62" text-anchor="middle" font-size="14" fill="#22303F">3/8</text>
+  <text x="330" y="62" text-anchor="middle" font-size="14" fill="#22303F">3/8</text>
+  <text x="440" y="155" text-anchor="middle" font-size="14" fill="#22303F">1/8</text>
+
+  <line x1="50" y1="210" x2="470" y2="210" stroke="#5A6B80" stroke-width="2"/>
+  <text x="110" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">0</text>
+  <text x="220" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">1</text>
+  <text x="330" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">2</text>
+  <text x="440" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">3</text>
+  <text x="260" y="250" text-anchor="middle" font-size="13" font-style="italic" fill="#5A6B80">Number of Heads (X)</text>
+
+  <line x1="275" y1="140" x2="275" y2="210" stroke="#38a169" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <rect x="269" y="204" width="12" height="12" fill="#38a169" transform="rotate(45 275 210)"/>
+  <text x="275" y="128" text-anchor="middle" font-size="14" font-weight="700" fill="#2f855a">Average = 1.5</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   $E[X] = \sum_x x\,p(x)$ — the same $\Sigma$ from Day 1, weighting each value by its own probability instead of $\frac1n$.
+-   For the coin: $0(\tfrac18)+1(\tfrac38)+2(\tfrac38)+3(\tfrac18) = 1.5$.
+-   Works because there's a finite list of $x$'s to sum over — that's what "discrete" buys you.
+:::
+
+## Discrete Random Variables: The CDF {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="440" height="220" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+  <line x1="30" y1="40" x2="30" y2="210" stroke="#5A6B80" stroke-width="2"/>
+  <text x="18" y="214" text-anchor="end" font-size="13" fill="#5A6B80">0</text>
+  <text x="18" y="44" text-anchor="end" font-size="13" fill="#5A6B80">1</text>
+
+  <path d="M30,210 L110,210 L110,189 L220,189 L220,125 L330,125 L330,61 L440,61 L440,40 L470,40"
+        fill="none" stroke="#2b6cb0" stroke-width="2.5"/>
+
+  <circle cx="110" cy="210" r="4" fill="#F7F8FA" stroke="#2b6cb0" stroke-width="2"/>
+  <circle cx="220" cy="189" r="4" fill="#F7F8FA" stroke="#2b6cb0" stroke-width="2"/>
+  <circle cx="330" cy="125" r="4" fill="#F7F8FA" stroke="#2b6cb0" stroke-width="2"/>
+  <circle cx="440" cy="61" r="4" fill="#F7F8FA" stroke="#2b6cb0" stroke-width="2"/>
+
+  <circle cx="110" cy="189" r="4" fill="#2b6cb0"/>
+  <circle cx="220" cy="125" r="4" fill="#2b6cb0"/>
+  <circle cx="330" cy="61" r="4" fill="#2b6cb0"/>
+  <circle cx="440" cy="40" r="4" fill="#2b6cb0"/>
+
+  <text x="165" y="180" text-anchor="middle" font-size="13" fill="#22303F">1/8</text>
+  <text x="275" y="116" text-anchor="middle" font-size="13" fill="#22303F">4/8</text>
+  <text x="385" y="52" text-anchor="middle" font-size="13" fill="#22303F">7/8</text>
+  <text x="452" y="32" text-anchor="middle" font-size="13" fill="#22303F">1</text>
+
+  <line x1="30" y1="210" x2="470" y2="210" stroke="#5A6B80" stroke-width="2"/>
+  <text x="110" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">0</text>
+  <text x="220" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">1</text>
+  <text x="330" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">2</text>
+  <text x="440" y="230" text-anchor="middle" font-size="14" fill="#5A6B80">3</text>
+  <text x="260" y="250" text-anchor="middle" font-size="13" font-style="italic" fill="#5A6B80">F(x) = P(X &#8804; x)</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   Instead of "$X$ equals exactly this value," ask "$X$ is *at most* this value" — accumulate the PMF as you go.
+-   $F(x) = P(X\le x) = \sum_{i\le x} p(i)$.
+-   Non-decreasing; $\to0$ as $x\to-\infty$; $\to1$ as $x\to\infty$.
+:::
+
+```{=html}
+<div class="slide-footnote">Technically F is also right-continuous — a detail that matters more for the continuous case, so not something to dwell on here.</div>
+```
+
+## PMF Example: The Binomial Distribution {.smaller}
+
+::: {.incremental}
+-   That shape has a name: the **Binomial** distribution — successes ("heads") across $n$ independent trials, each with success probability $p$.
+-   $p(y) = \dbinom{n}{y}\,p^y(1-p)^{n-y}$. Check $y=2$: $\dbinom32(0.5)^2(0.5)^1 = \dfrac38$ — matches.
+-   Mean: $\mu = np = 3\times0.5 = 1.5$ — matches the average from a few slides back.
+:::
+
+## From Bars to a Curve {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="440" height="220" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="pdfClipA"><rect x="260" y="0" width="240" height="260"/></clipPath>
+  </defs>
+  <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210 Z"
+        fill="#EDF0F5" stroke="none"/>
+  <g clip-path="url(#pdfClipA)">
+    <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210 Z"
+          fill="#38a169" opacity="0.28"/>
+  </g>
+  <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210"
+        fill="none" stroke="#2b6cb0" stroke-width="2.5"/>
+
+  <line x1="260" y1="210" x2="260" y2="82" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="260" y="228" text-anchor="middle" font-size="13" fill="#5A6B80">0.5</text>
+  <text x="352" y="150" text-anchor="middle" font-size="13" fill="#2f855a">P(X&gt;0.5)</text>
+
+  <line x1="40" y1="210" x2="470" y2="210" stroke="#5A6B80" stroke-width="2"/>
+  <text x="60" y="230" text-anchor="middle" font-size="13" fill="#5A6B80">0</text>
+  <text x="460" y="230" text-anchor="middle" font-size="13" fill="#5A6B80">1</text>
+  <text x="260" y="250" text-anchor="middle" font-size="13" font-style="italic" fill="#5A6B80">Polyarchy Score (X)</text>
+  <text x="60" y="80" font-size="14" font-style="italic" fill="#22303F">f(x)</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   5 flips: 6 bars. 10 flips: 11 bars. More trials, thinner and more numerous bars.
+-   Polyarchy score doesn't wait for "more trials" — it's already a number on a continuum. No bars, just a curve: $f(x)$.
+-   Area under the curve is still probability — the shaded region above is $P(X>0.5)$, same idea as summing bars, just with $\int$ instead of $\Sigma$.
+:::
+
+## Continuous Random Variables: Definition {.smaller}
+
+::: {.incremental}
+-   $X$ is **continuous** if there's a nonnegative $f(x)$ such that for any interval $A$, $P(X\in A) = \int_A f(x)\,dx$.
+-   No $p(x)=P(X=x)$ to list — for continuous $X$, $P(X=x)=0$ at every single point.
+:::
+
+```{=html}
+<div class="running-example-note">&#8618; Running example: $X$ = democracy score is continuous, $X:\Omega \to [0,1]$; $x=0.83$ is the realized value for one particular country — no countable list of possible values the way the coin had one.</div>
+```
+
+## Continuous Random Variables: The PDF {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="440" height="220" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clipPath id="pdfClipB"><rect x="260" y="0" width="240" height="260"/></clipPath>
+  </defs>
+  <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210 Z"
+        fill="#EDF0F5" stroke="none"/>
+  <g clip-path="url(#pdfClipB)">
+    <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210 Z"
+          fill="#38a169" opacity="0.28"/>
+  </g>
+  <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210"
+        fill="none" stroke="#2b6cb0" stroke-width="2.5"/>
+
+  <line x1="260" y1="210" x2="260" y2="82" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="260" y="228" text-anchor="middle" font-size="13" fill="#5A6B80">0.5</text>
+  <text x="352" y="150" text-anchor="middle" font-size="13" fill="#2f855a">P(X&gt;0.5)</text>
+
+  <line x1="40" y1="210" x2="470" y2="210" stroke="#5A6B80" stroke-width="2"/>
+  <text x="60" y="230" text-anchor="middle" font-size="13" fill="#5A6B80">0</text>
+  <text x="460" y="230" text-anchor="middle" font-size="13" fill="#5A6B80">1</text>
+  <text x="260" y="250" text-anchor="middle" font-size="13" font-style="italic" fill="#5A6B80">Polyarchy Score (X)</text>
+  <text x="60" y="80" font-size="14" font-style="italic" fill="#22303F">f(x)</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   **Probability density function (PDF):** $f(x)\ge 0$, $\int_{-\infty}^{\infty} f(x)\,dx = 1$ — the continuous analog of $\sum_x p(x)=1$.
+-   $P(a\le X\le b) = \int_a^b f(x)\,dx$ — area under the curve between $a$ and $b$.
+-   $E[X] = \int x\, f(x)\, dx$ — same "weight by probability, add up" idea, $\int$ standing in for $\Sigma$.
+-   **Not building fluency with $\int$ yet** — that's Integration & Area Under the Curve, later today.
+:::
+
+## Continuous Random Variables: The CDF (Preview) {.smaller}
+
+::: {.incremental}
+-   Same idea as the discrete CDF, accumulated with an integral instead of a sum: $F(x) = P(X\le x) = \int_{-\infty}^x f(s)\,ds$.
+-   Linked by the derivative: $f(x) = \dfrac{dF(x)}{dx}$ — a preview of the Fundamental Theorem of Calculus, coming later today.
+-   Preview only — no computation practice until Integration is covered.
+:::
+
+## PDF and CDF, Side by Side {.smaller}
+
+Drag $x$: the shaded area under the PDF (left) always equals the height read off the CDF (right) — same number, two ways of seeing it.
+
+```{=html}
+<div class="viz viz-pdfcdf">
+  <div class="viz-pdfcdf-controls">
+    <label for="viz-pdfcdf-slider">x = <span class="viz-pdfcdf-xreadout">0.50</span></label>
+    <input id="viz-pdfcdf-slider" type="range" min="0" max="1" step="0.01" value="0.5">
+  </div>
+
+  <div class="viz-pdfcdf-plots">
+    <svg class="viz-plot viz-pdfcdf-pdf-svg" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="vizPdfCdfClip"><rect class="viz-pdfcdf-clip-rect" x="60" y="0" width="0" height="260"/></clipPath>
+      </defs>
+      <path d="M60,210 L80,207.4 L100,200.3 L120,189.3 L140,175.4 L160,159.4 L180,142.0 L200,124.0 L220,106.3 L240,89.7 L260,75.0 L280,63.0 L300,54.5 L320,50.3 L340,51.2 L360,58.1 L380,71.8 L400,93.05 L420,122.5 L440,161.3 L460,210 Z"
+            fill="#EDF0F5" stroke="none"/>
+      <g clip-path="url(#vizPdfCdfClip)">
+        <path d="M60,210 L80,207.4 L100,200.3 L120,189.3 L140,175.4 L160,159.4 L180,142.0 L200,124.0 L220,106.3 L240,89.7 L260,75.0 L280,63.0 L300,54.5 L320,50.3 L340,51.2 L360,58.1 L380,71.8 L400,93.05 L420,122.5 L440,161.3 L460,210 Z"
+              fill="#38a169" opacity="0.32"/>
+      </g>
+      <path d="M60,210 L80,207.4 L100,200.3 L120,189.3 L140,175.4 L160,159.4 L180,142.0 L200,124.0 L220,106.3 L240,89.7 L260,75.0 L280,63.0 L300,54.5 L320,50.3 L340,51.2 L360,58.1 L380,71.8 L400,93.05 L420,122.5 L440,161.3 L460,210"
+            fill="none" stroke="#2b6cb0" stroke-width="2.5"/>
+      <line class="viz-pdfcdf-pdf-guide" x1="260" y1="210" x2="260" y2="75" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <circle class="viz-pdfcdf-pdf-dot" cx="260" cy="75" r="5" fill="#38a169"/>
+      <line x1="40" y1="210" x2="470" y2="210" stroke="#5A6B80" stroke-width="2"/>
+      <text x="60" y="230" text-anchor="middle" font-size="17" fill="#5A6B80">0</text>
+      <text x="260" y="230" text-anchor="middle" font-size="17" fill="#5A6B80">0.5</text>
+      <text x="460" y="230" text-anchor="middle" font-size="17" fill="#5A6B80">1</text>
+      <text x="265" y="24" text-anchor="middle" font-size="19" font-weight="700" fill="#22303F">PDF: f(x)</text>
+    </svg>
+
+    <svg class="viz-plot viz-pdfcdf-cdf-svg" viewBox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+      <line x1="60" y1="30" x2="60" y2="210" stroke="#5A6B80" stroke-width="2"/>
+      <text x="48" y="214" text-anchor="end" font-size="17" fill="#5A6B80">0</text>
+      <text x="48" y="34" text-anchor="end" font-size="17" fill="#5A6B80">1</text>
+      <path d="M60,210 L80,209.9 L100,209.3 L120,207.8 L140,205.1 L160,200.9 L180,194.9 L200,187.2 L220,177.7 L240,166.5 L260,153.75 L280,139.6 L300,124.5 L320,108.7 L340,92.7 L360,77.1 L380,62.5 L400,49.7 L420,39.4 L440,32.5 L460,30"
+            fill="none" stroke="#2b6cb0" stroke-width="2.5"/>
+      <line class="viz-pdfcdf-cdf-guide-v" x1="260" y1="210" x2="260" y2="153.75" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <line class="viz-pdfcdf-cdf-guide-h" x1="60" y1="153.75" x2="260" y2="153.75" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"/>
+      <circle class="viz-pdfcdf-cdf-dot" cx="260" cy="153.75" r="5" fill="#38a169"/>
+      <line x1="40" y1="210" x2="470" y2="210" stroke="#5A6B80" stroke-width="2"/>
+      <text x="60" y="230" text-anchor="middle" font-size="17" fill="#5A6B80">0</text>
+      <text x="260" y="230" text-anchor="middle" font-size="17" fill="#5A6B80">0.5</text>
+      <text x="460" y="230" text-anchor="middle" font-size="17" fill="#5A6B80">1</text>
+      <text x="265" y="24" text-anchor="middle" font-size="19" font-weight="700" fill="#22303F">CDF: F(x)</text>
+    </svg>
+  </div>
+
+  <div class="viz-pdfcdf-readout">
+    <span>Shaded PDF area, \(P(X\le x)\): <strong class="viz-pdfcdf-area-readout">0.313</strong></span>
+    <span>CDF height, \(F(x)\): <strong class="viz-pdfcdf-cdf-readout">0.313</strong></span>
+  </div>
+  <div class="viz-pdfcdf-verbal">In words: there's about a <span class="viz-pdfcdf-verbal-pct">31.3%</span> chance \(X\) is at most <span class="viz-pdfcdf-verbal-x">0.50</span>.</div>
+</div>
+
+<style>
+.viz-pdfcdf { max-width: 980px; margin: 0 auto; }
+.reveal .slides .viz.viz-pdfcdf { max-height: 58vh; }
+.viz-pdfcdf-controls { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; font-size: 0.55em; }
+.viz-pdfcdf-controls input[type="range"] { flex: 1; }
+.viz-pdfcdf-plots { display: flex; flex-direction: row; gap: 18px; flex: 1 1 auto; min-height: 0; }
+.viz-pdfcdf-plots svg.viz-plot { flex: 1 1 0; }
+.viz-pdfcdf-readout { flex: 0 0 auto; display: flex; justify-content: space-between; gap: 18px; font-size: 0.55em; color: #22303F; }
+.viz-pdfcdf-readout strong { color: #2f855a; }
+.viz-pdfcdf-verbal { flex: 0 0 auto; font-size: 0.52em; font-style: italic; color: #5A6B80; text-align: center; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-pdfcdf');
+  container = container[container.length - 1];
+
+  var slider = container.querySelector('#viz-pdfcdf-slider');
+  var xReadout = container.querySelector('.viz-pdfcdf-xreadout');
+  var areaReadout = container.querySelector('.viz-pdfcdf-area-readout');
+  var cdfReadout = container.querySelector('.viz-pdfcdf-cdf-readout');
+  var clipRect = container.querySelector('.viz-pdfcdf-clip-rect');
+  var pdfGuide = container.querySelector('.viz-pdfcdf-pdf-guide');
+  var pdfDot = container.querySelector('.viz-pdfcdf-pdf-dot');
+  var cdfDot = container.querySelector('.viz-pdfcdf-cdf-dot');
+  var cdfGuideV = container.querySelector('.viz-pdfcdf-cdf-guide-v');
+  var cdfGuideH = container.querySelector('.viz-pdfcdf-cdf-guide-h');
+  var verbalPct = container.querySelector('.viz-pdfcdf-verbal-pct');
+  var verbalX = container.querySelector('.viz-pdfcdf-verbal-x');
+
+  // f(x) = 12 x^2 (1-x), the Beta(3,2) density -- closed-form CDF below,
+  // so the shaded PDF area and the CDF curve are guaranteed consistent
+  // (computed from the same formula, not two hand-drawn approximations).
+  function xPix(s) { return 60 + 400 * s; }
+  function pdfVal(s) { return 12 * s * s * (1 - s); }
+  function cdfVal(s) { return 4 * Math.pow(s, 3) - 3 * Math.pow(s, 4); }
+  function pdfYPix(v) { return 210 - 90 * v; }
+  function cdfYPix(v) { return 210 - 180 * v; }
+
+  function update() {
+    var s = Number(slider.value);
+    var px = xPix(s);
+    var py = pdfYPix(pdfVal(s));
+    var cv = cdfVal(s);
+    var cy = cdfYPix(cv);
+
+    xReadout.textContent = s.toFixed(2);
+    areaReadout.textContent = cv.toFixed(3);
+    cdfReadout.textContent = cv.toFixed(3);
+    verbalPct.textContent = (cv * 100).toFixed(1) + '%';
+    verbalX.textContent = s.toFixed(2);
+
+    clipRect.setAttribute('width', Math.max(0, px - 60));
+    pdfGuide.setAttribute('x1', px);
+    pdfGuide.setAttribute('x2', px);
+    pdfGuide.setAttribute('y2', py);
+    pdfDot.setAttribute('cx', px);
+    pdfDot.setAttribute('cy', py);
+
+    cdfDot.setAttribute('cx', px);
+    cdfDot.setAttribute('cy', cy);
+    cdfGuideV.setAttribute('x1', px);
+    cdfGuideV.setAttribute('x2', px);
+    cdfGuideV.setAttribute('y2', cy);
+    cdfGuideH.setAttribute('y1', cy);
+    cdfGuideH.setAttribute('y2', cy);
+    cdfGuideH.setAttribute('x2', px);
+  }
+
+  slider.addEventListener('input', update);
+  update();
+})();
+</script>
+```
+
+<!--
+Joint/Conditional Distributions, Expectation (intuition, notation, properties),
+Conditional Expectation, Variance/Covariance, and the Special Distributions
+reference section below are aligned with IQSS's "prefresher" course notes,
+probability chapter: the general page for joint/conditional distributions
+(https://iqss.github.io/prefresher/06_probability.html), the expectation
+section (https://iqss.github.io/prefresher/06_probability.html#expectation),
+and the distributions section for Binomial/Poisson/Uniform/Normal
+(https://iqss.github.io/prefresher/06_probability.html#distributions)
+(GPLv3 licensed). Wording, examples, and slide structure here are written
+independently in this deck's own voice, not copied verbatim -- credit to
+the IQSS prefresher authors for the definitions/notation this draws on.
+-->
+
+## The Joint PMF {.smaller}
+
+| | $G=1$ (growth) | $G=0$ (no growth) |
+|---|:---:|:---:|
+| $D=1$ (democracy) | 0.25 | 0.40 |
+| $D=0$ (not democracy) | 0.15 | 0.20 |
+
+::: {.incremental}
+-   Two random variables at once: $p(x,y) = P(X=x, Y=y)$, satisfying $\sum_x\sum_y p(x,y) = 1$.
+-   $D$ = democracy indicator, $G$ = high-growth indicator, from Day 2's 20-country world — each cell is $p(x,y)$, e.g. $p(1,1)=\frac{5}{20}=0.25$ is democracy *and* high growth.
+-   Check: $0.25+0.4+0.15+0.2=1$ — every country falls in exactly one cell.
+:::
+
+## The Marginal {.smaller}
+
+| | $G=1$ | $G=0$ | **$p_D$** |
+|---|:---:|:---:|:---:|
+| $D=1$ | 0.25 | 0.40 | **0.65** |
+| $D=0$ | 0.15 | 0.20 | **0.35** |
+
+::: {.incremental}
+-   Question: forget $G$ entirely — what's $D$'s own distribution, on its own? That's the **marginal** — and the name is literal: it's the row total sitting in the *margin* of the table.
+-   Get it by collapsing the joint table down to one variable: add across a whole row, ignoring which column it came from. $p_D(x) = \sum_y p(x,y)$.
+-   $p_D(1) = 0.25+0.40=0.65$ — the $D=1$ row, summed.
+-   That's exactly $P(\text{Democracy})=13/20$ from Day 2. The marginal *is* the ordinary one-variable probability — this is just how to recover it once you start from the joint table instead of counting outcomes directly.
+:::
+
+## The Conditional Distribution {.smaller}
+
+| | $p(\cdot,1)$ joint | $p(\cdot\mid D{=}1)$ conditional |
+|---|:---:|:---:|
+| $G=1$ | 0.25 | **0.385** |
+| $G=0$ | 0.40 | **0.615** |
+
+::: {.incremental}
+-   Question: *given* $D=1$, what's the distribution of $G$? Take the $D=1$ row from the joint table, then rescale it so it sums to 1 again: $p_{Y|X}(y|x) = \dfrac{p(x,y)}{p_X(x)}$.
+-   $p_{G|D}(1\mid1) = \dfrac{0.25}{0.65}\approx0.385$ — divide the joint cell by the row's own marginal, $0.65$, from the previous slide.
+-   Matches $P(B\mid A)=5/13\approx0.385$ from Day 2's Bayes section — same conditional-probability move ($P(A\mid B)=P(A\cap B)/P(B)$), now applied to a whole distribution instead of one event.
+-   This is the object **conditional expectation** (a few slides ahead) is built directly on top of.
+:::
+
+## Expectation Algebra
+
+*Turning a random variable into a single number you can compute with.*
+
+## From Weighted Sum to $E[Y]$ {.smaller}
+
+::: {.incremental}
+-   The question: run the 3-flip experiment over and over — what's the long-run average number of heads? Not any single outcome, a summary of the whole distribution.
+    -   The move: weight each possible value by how likely it is, then add those weighted values up.
+    -   For the coin: $0\times\tfrac18 + 1\times\tfrac38 + 2\times\tfrac38+3\times\tfrac18$.
+-   Written with $\Sigma$, that's $\sum_y y\,p(y)$ — the same summation notation from Day 1, now weighting by probability instead of by $\tfrac1n$.
+-   Give that sum a name and a symbol: $E[Y] = \sum_y y\,p(y)$.
+    -   "$E$" is just notation for the weighted sum you were already computing — nothing new mathematically, just a shorthand.
+:::
+
+## What $E[Y]$ Does and Doesn't Mean {.smaller}
+
+::: {.incremental}
+-   Not necessarily the value $Y$ "should" take on any one trial — the average value of $Y$ over many repetitions.
+-   For the coin, $E[X]=1.5$: no single flip ever lands on 1.5 heads, but 1.5 is what the average settles toward over many rounds of 3 flips.
+-   For a function of $Y$: $E[g(Y)] = \sum_y g(y)\,p(y)$ — same weighted-sum idea, applied to $g(Y)$ instead of $Y$ itself.
+:::
+
+## Properties of Expectation {.smaller}
+
+::: {.incremental}
+-   $E[c] = c$ — a constant's average is itself.
+-   $E[c\,g(Y)] = c\,E[g(Y)]$ — constants factor out.
+-   **Linear:** $E[g(Y_1)+\cdots+g(Y_n)] = E[g(Y_1)]+\cdots+E[g(Y_n)]$ — holds *regardless* of independence.
+-   If $X,Y$ independent: $E[XY] = E[X]E[Y]$ — this one *does* need independence.
+:::
+
+## Conditional Expectation {.smaller}
+
+::: {.incremental}
+-   $E[Y\mid X=x] = \sum_y y\,p_{Y|X}(y|x)$ — average $Y$, but only over the slice of the world where $X=x$.
+    -   Built directly on the conditional distribution from a few slides back — same move, now averaged instead of just listed.
+-   Worked example: $E[G\mid D=1] = 1\times p_{G|D}(1\mid1) + 0\times p_{G|D}(0\mid1) = 1\times0.385+0\times0.615=0.385$.
+    -   For a 0/1 indicator, conditional expectation *is* conditional probability: $E[G\mid D=1]=P(G=1\mid D=1)$. Averaging a yes/no variable just hands back its probability.
+-   Used for prediction: know $X$, don't know $Y$ yet — $E[Y\mid X=x]$ is your best guess.
+-   Continuous case, same shape: $E[Y\mid X=x] = \int_y y\,f_{Y|X}(y|x)\,dy$ — preview only, same as today's other $\int$ mentions.
+:::
+
+## Variance and Covariance: Definitions {.smaller}
+
+::: {.incremental}
+-   $\text{Var}(Y) = E[(Y-E[Y])^2] = E[Y^2]-(E[Y])^2$ — spread around the mean, and the computational shortcut.
+-   $SD(Y) = \sqrt{\text{Var}(Y)}$.
+-   $\text{Cov}(X,Y) = E[(X-E[X])(Y-E[Y])] = E[XY]-E[X]E[Y]$ — do $X$ and $Y$ move together?
+-   $\text{Corr}(X,Y) = \dfrac{\text{Cov}(X,Y)}{SD(X)\,SD(Y)}$ — covariance, rescaled to $[-1,1]$.
+:::
+
+## Variance and Covariance: Properties {.smaller}
+
+**Reference list — not a drill, just what's available when you need it later.**
+
+::: {.incremental}
+-   $\text{Var}(c)=0$; $\quad\text{Var}(cY)=c^2\text{Var}(Y)$.
+-   $\text{Cov}(Y,Y)=\text{Var}(Y)$; $\quad\text{Cov}(X,Y)=\text{Cov}(Y,X)$.
+-   $\text{Cov}(aX,bY)=ab\,\text{Cov}(X,Y)$; $\quad\text{Cov}(X+a,Y)=\text{Cov}(X,Y)$.
+-   $\text{Cov}(X+Z,Y+W)=\text{Cov}(X,Y)+\text{Cov}(X,W)+\text{Cov}(Z,Y)+\text{Cov}(Z,W)$.
+-   $\text{Var}(X+Y) = \text{Var}(X)+\text{Var}(Y)+2\,\text{Cov}(X,Y)$.
+:::
+
+## Special Distributions
+
+*Reference only — named shapes you'll meet again, not something to build fluency in today.*
+
+## The Binomial Distribution {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="420" height="170" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="70" y="149" width="40" height="21" fill="#2b6cb0"/>
+  <rect x="130" y="113" width="40" height="57" fill="#2b6cb0"/>
+  <rect x="190" y="70" width="40" height="100" fill="#2b6cb0"/>
+  <rect x="250" y="50" width="40" height="120" fill="#2b6cb0"/>
+  <rect x="310" y="70" width="40" height="100" fill="#2b6cb0"/>
+  <rect x="370" y="113" width="40" height="57" fill="#2b6cb0"/>
+  <rect x="430" y="149" width="40" height="21" fill="#2b6cb0"/>
+  <line x1="50" y1="170" x2="480" y2="170" stroke="#5A6B80" stroke-width="2"/>
+  <text x="250" y="192" text-anchor="middle" font-size="14" font-style="italic" fill="#5A6B80">number of successes (y)</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   Counting successes across $n$ independent trials, each with success probability $p$ — the coin's PMF, generalized.
+-   $p(y) = \dbinom{n}{y}p^y(1-p)^{n-y}$, for $y=0,1,\ldots,n$.
+-   Mean $\mu=np$; variance $\sigma^2=np(1-p)$.
+:::
+
+## The Poisson Distribution {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="420" height="170" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="60" y="143" width="30" height="27" fill="#2b6cb0"/>
+  <rect x="105" y="90" width="30" height="80" fill="#2b6cb0"/>
+  <rect x="150" y="50" width="30" height="120" fill="#2b6cb0"/>
+  <rect x="195" y="50" width="30" height="120" fill="#2b6cb0"/>
+  <rect x="240" y="80" width="30" height="90" fill="#2b6cb0"/>
+  <rect x="285" y="116" width="30" height="54" fill="#2b6cb0"/>
+  <rect x="330" y="143" width="30" height="27" fill="#2b6cb0"/>
+  <rect x="375" y="158" width="30" height="12" fill="#2b6cb0"/>
+  <rect x="420" y="165" width="30" height="5" fill="#2b6cb0"/>
+  <line x1="45" y1="170" x2="470" y2="170" stroke="#5A6B80" stroke-width="2"/>
+  <text x="250" y="192" text-anchor="middle" font-size="14" font-style="italic" fill="#5A6B80">count of rare events (y)</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   Models counts of rare events over a fixed window — the discrete analog of "how many, not whether."
+-   $P(Y=y) = \dfrac{\lambda^y}{y!}e^{-\lambda}$, for $y=0,1,2,\ldots$
+-   Mean $=$ variance $=\lambda$ — one parameter does both jobs.
+:::
+
+## The Uniform Distribution {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="420" height="170" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+  <rect x="100" y="70" width="300" height="100" fill="#EDF0F5" stroke="#2b6cb0" stroke-width="2.5"/>
+  <line x1="50" y1="170" x2="470" y2="170" stroke="#5A6B80" stroke-width="2"/>
+  <text x="100" y="190" text-anchor="middle" font-size="14" fill="#5A6B80">&#945;</text>
+  <text x="400" y="190" text-anchor="middle" font-size="14" fill="#5A6B80">&#946;</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   Every value in an interval $(\alpha,\beta)$ is equally likely — flat density, no peak.
+-   $f(y) = \dfrac{1}{\beta-\alpha}$, for $\alpha\le y\le\beta$.
+-   Mean $=\dfrac{\alpha+\beta}{2}$; variance $=\dfrac{(\beta-\alpha)^2}{12}$.
+:::
+
+## The Normal Distribution {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="420" height="170" viewBox="0 0 500 200" xmlns="http://www.w3.org/2000/svg">
+  <path d="M70,170 C130,168 180,60 250,40 C320,60 370,168 430,170 Z" fill="#EDF0F5" stroke="none"/>
+  <path d="M70,170 C130,168 180,60 250,40 C320,60 370,168 430,170" fill="none" stroke="#2b6cb0" stroke-width="2.5"/>
+  <line x1="50" y1="170" x2="470" y2="170" stroke="#5A6B80" stroke-width="2"/>
+  <line x1="250" y1="40" x2="250" y2="170" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"/>
+  <text x="250" y="190" text-anchor="middle" font-size="14" fill="#5A6B80">&#956;</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   The bell curve — symmetric, one peak, tails that never quite touch zero.
+-   $f(y) = \dfrac{1}{\sigma\sqrt{2\pi}}\,e^{-(y-\mu)^2/2\sigma^2}$.
+-   Mean $=\mu$; variance $=\sigma^2$ — the two parameters *are* the shape.
+:::
+
+## References {.smaller}
+
+::: {.incremental}
+-   **Seeing Theory — Basic & Compound Probability** (Brown University): [https://seeing-theory.brown.edu/doc/basic-probability.pdf](https://seeing-theory.brown.edu/doc/basic-probability.pdf)
+-   Blitzstein, J. K., & Hwang, J. (2019). *Introduction to Probability* (2nd ed.). Chapman and Hall/CRC. Free copy from the authors: [http://probabilitybook.net](http://probabilitybook.net)
+-   **Statistics 110: Probability** — Harvard lecture videos by Joe Blitzstein: [https://stat110.hsites.harvard.edu/youtube](https://stat110.hsites.harvard.edu/youtube)
+-   **IQSS Prefresher — Probability** (Harvard IQSS): random variables, distributions, expectation, joint/conditional distributions, variance/covariance, special distributions: [https://iqss.github.io/prefresher/06_probability.html](https://iqss.github.io/prefresher/06_probability.html)
+:::
+
+##  {.center}
+
+**Programming lecture:** [webpage chapter](../chapters/03-calculus/programming.html)
+
+**Back to:** [Math Camp 2026 website](../index.html)

@@ -49,13 +49,18 @@ lists); exercise on a real replication dataset.
 [Slides](chapters/02-probability/slides.qmd) &nbsp;|&nbsp;
 [Programming Lecture](chapters/02-probability/programming.qmd)
 
-### Day 3 — Calculus / Exploration
+### Day 3 — Uncertainty Extended and Expected / Calculus / Exploration
 
-**Math:** limits; differentiation and optimization (first-order
-conditions); integration basics; area under the curve.   
+Day 3 runs two math sessions.
+**Math (Session 1 — Uncertainty Extended and Expected):** combinatorics;
+random variables; expectation algebra; conditional expectation and the
+type-shift ($E[Y|X=x]$ vs. $E[Y|X]$).
+**Math (Session 2 — Calculus):** limits; differentiation and
+optimization (first-order conditions); integration basics; area under
+the curve.
 **Programming — Exploration:** data structures continued (factors and data frames);
 conditionals in base R; descriptive statistics and aggregation;
-exercise exploring summary statistics of the sample dataset.  
+exercise exploring summary statistics of the sample dataset.
 
 [Slides](chapters/03-calculus/slides.qmd) &nbsp;|&nbsp;
 [Programming Lecture](chapters/03-calculus/programming.qmd)

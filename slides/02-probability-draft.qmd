@@ -13,6 +13,13 @@ yet written (marked [placeholder]). Formatting conventions (frontmatter,
 .smaller, incremental bullets, running-example-note divs, quick drills,
 recap slides, closing programming-lecture link) mirror
 01-notation-functions-limits-draft.qmd.
+
+Day 2 now ends after the Bayes' Quick Drill. Combinatorics and the
+Random-Variables-through-Expectation-Algebra chain that used to follow it
+have moved to 03-calculus-draft.qmd (retitled "Probability + Calculus"),
+so that Day 2 stays focused on events/sets/axioms/Bayes and Day 3 runs the
+RV/expectation chain back-to-back with limits/differentiation/integration
+without an unrelated topic switch in between.
 -->
 
 ## Big questions live in an uncertain world
@@ -771,7 +778,9 @@ the topic selection this draws on.
     labelB.setAttribute('y', cy - rB + 2);
     labelB.textContent = 'B';
 
-    var pab = ov * Math.min(pa, pb);
+    var lower = Math.max(0, pa + pb - 1);
+    var upper = Math.min(pa, pb);
+    var pab = lower + ov * (upper - lower);
     var pau = pa + pb - pab;
     var sum = pa + pb;
 
@@ -962,234 +971,6 @@ the topic selection this draws on.
 -   **Step 2 — total probability of a flag:** $P(F) = P(F\mid R)P(R) + P(F\mid R^c)P(R^c) = (0.96)(0.03)+(0.02)(0.97) = 0.0288+0.0194=0.0482$.
 -   **Step 3 — apply Bayes' rule:** $P(R\mid F) = \dfrac{P(F\mid R)P(R)}{P(F)} = \dfrac{0.0288}{0.0482} \approx 0.60$.
 -   **Step 4 — the paradox:** even at 96%/98% accuracy, a flagged country is only about **60%** likely to truly be at risk — at-risk countries are rare, so false positives drawn from the much larger not-at-risk pool add up fast.
-:::
-
-<!--
-The Counting slides below cover the same topic as IQSS's "prefresher"
-course notes, probability chapter:
-https://iqss.github.io/prefresher/06_probability.html (GPLv3 licensed).
-Content here is written independently in this deck's own voice and
-slide format, not copied verbatim -- credit to the IQSS prefresher
-authors for the topic selection this draws on.
-
-The Review of Factorials / Why These Formulas Work / worked-example slides
-below expand on last year's in-house deck: Resources/Slide Decks 2025/
-Latex_materials_mc/Latex/Slides/Math Camp Slides - Probability/main.tex
-(Combinations and Permutations section), rewritten here in this deck's own
-voice/format and tied to the running country example.
--->
-
-## Counting
-
-*Combinatorics: shortcuts for counting outcomes without listing every one.*
-
-## Counting: Why We Need It {.smaller}
-
-::: {.incremental}
--   `Pr(e)` was a ratio of counts — but counting outcomes by hand stops working once the sample space gets big.
--   *Combinatorics* gives us shortcuts for counting without listing every possibility.
--   Two questions decide which shortcut applies: does **order** matter, and are we sampling **with or without replacement**?
-:::
-
-## The Fundamental Rule of Counting {.smaller}
-
-::: {.incremental}
--   If a choice is made in stages, and stage $i$ has $n_i$ independent options, the total number of ways to complete all stages is $\prod_i n_i$ — multiply, don't add.
--   Example: classifying one country by region (5 options) and by regime type (2 options) gives $5 \times 2 = 10$ possible classifications.
--   This single multiplication rule is what everything else on this slide builds on.
-:::
-
-## Review of Factorials {.smaller}
-
-::: {.incremental}
--   $n! = n \times (n-1) \times \cdots \times 1$ — the number of ways to arrange all $n$ objects in order.
--   Example: $3! = 3\times2\times1=6$. For countries $\{X,Y,Z\}$, all 6 orderings: XYZ, XZY, YXZ, YZX, ZXY, ZYX.
-    -   Slot 1 has 3 choices; slot 2 has 2 left; slot 3 has 1 left — $3\times2\times1$.
--   By convention, $0! = 1$ — there's exactly one way to arrange zero objects: do nothing.
--   Useful cancellation: $\dfrac{n!}{(n-k)!} = n\times(n-1)\times\cdots\times(n-k+1)$ — the tail end of the factorial cancels out.
-    -   E.g. $\dfrac{5!}{(5-3)!} = 5\times4\times3$ — the trailing $2\times1$ cancels between numerator and denominator.
-:::
-
-## Permutations and Combinations {.smaller}
-
-::: {.incremental}
--   Selecting $k$ items from $n$, **order matters**, **with replacement**: $n^k$ possible outcomes.
--   Selecting $k$ from $n$, **order matters**, **without replacement** (a *permutation*): $\dfrac{n!}{(n-k)!}$.
--   Selecting $k$ from $n$, **order doesn't matter**, **without replacement** (a *combination*): $\dbinom{n}{k} = \dfrac{n!}{k!(n-k)!}$ — read "n choose k."
-:::
-
-```{=html}
-<div class="running-example-note">&#8618; Running example: choosing an unordered comparison group of 3 countries from a shortlist of 10 is a combination, $\binom{10}{3}=120$; ranking a top-3 by growth from that same shortlist is a permutation, $10 \cdot 9 \cdot 8 = 720$.</div>
-```
-
-## Why the Permutation Formula Works {.smaller}
-
-::: {.incremental}
--   $\dfrac{n!}{(n-k)!}$: choosing $k$ from $n$, order matters, no replacement.
--   $n!$ counts every possible full ordering of all $n$ objects.
--   We only care about the first $k$ picks — the leftover $n-k$ slots can be filled in any of $(n-k)!$ ways, and we don't care which.
--   Dividing $n!$ by $(n-k)!$ cancels out exactly that irrelevant tail, leaving only the first $k$ picks: $n\times(n-1)\times\cdots\times(n-k+1)$.
-:::
-
-## Why the Combination Formula Works {.smaller}
-
-::: {.incremental}
--   $\dbinom{n}{k} = \dfrac{n!}{k!(n-k)!}$: same setup as a permutation, but order no longer matters.
--   Start from the permutation count $\frac{n!}{(n-k)!}$ — but every unordered group of $k$ got counted once **for each of its $k!$ orderings**.
--   Example: the 3-country group $\{X,Y,Z\}$ shows up as $3!=6$ different permutations (XYZ, XZY, YXZ, YZX, ZXY, ZYX) — all the *same* group, over-counted 6 times.
--   Dividing by $k!$ collapses each cluster of duplicates back down to one group — that's the extra $k!$ in the denominator.
-:::
-
-## Combinations, Worked Step by Step {.smaller}
-
-::: {.incremental}
--   How many ways to form an unordered research team of 3 from a shortlist of 5 countries?
--   $\dbinom{5}{3} = \dfrac{5!}{3!(5-3)!}$
--   $= \dfrac{120}{6 \times 2} = \dfrac{120}{12} = 10$
--   Sanity check via the cancellation trick: $\dfrac{5!}{2!} = 5\times4\times3=60$ ordered picks, then $\div\,3! = 6$ collapses those into $10$ unique unordered teams.
-:::
-
-## Combinations, Listed Out {.smaller}
-
-::: {.incremental}
--   With 5 countries $\{V,W,X,Y,Z\}$, here are all $\binom{5}{3}=10$ possible research teams of 3, listed out:
--   VWX, VWY, VWZ, VXY, VXZ, VYZ
--   WXY, WXZ, WYZ
--   XYZ
--   Ten teams, no more, no fewer — the formula isn't an approximation, it's exactly this list's size.
-:::
-
-## Splitting Into Multiple Groups {.smaller}
-
-::: {.incremental}
--   Combinations chain together when *everyone* gets split into more than two groups.
--   Suppose our shortlist of 20 countries needs to be split into research sub-teams: 4 for polling data, 6 for economic data, 5 for conflict data, and the remaining 5 for institutional data.
--   Choose each sub-team in turn, shrinking the pool each time:
-    $$\binom{20}{4}\binom{16}{6}\binom{10}{5}\binom{5}{5}$$
--   By the fundamental rule of counting, multiply the stages together: $4845 \times 8008 \times 252 \times 1 \approx 9.78$ billion ways to split all 20 countries into the four teams.
-:::
-
-## Quick Drill: Counting {.smaller}
-
-::: {.incremental}
--   From a shortlist of 8 countries, how many ways to choose an *unordered* pair for a paired comparison? [$\binom{8}{2} = 28$]{.fragment}
--   From that same shortlist, how many ways to pick an *ordered* "most, then second-most" democratic pair? [$8 \cdot 7 = 56$]{.fragment}
--   With 4 possible democracy-score categories and 3 possible growth categories, how many (democracy-score category, growth category) pairs are there? [$4 \times 3 = 12$, by the fundamental rule]{.fragment}
--   From a shortlist of 6 countries, selecting 3 to visit **in order, with repeat visits allowed**: how many itineraries? [$6^3 = 216$]{.fragment}
--   Same shortlist of 6, selecting 3 **in order, no repeats**: how many itineraries? [$6 \cdot 5 \cdot 4 = 120$]{.fragment}
--   Same shortlist of 6, selecting an **unordered** group of 3 to visit: how many groups? [$\binom{6}{3} = 20$]{.fragment}
-:::
-
-## At Least One Success {.smaller}
-
-::: {.incremental}
--   Common problem: given a known $P(\text{success})$ on one attempt, what's $P(\text{at least one success})$ over several independent attempts?
--   Example: a game of chance has a 10% chance of success. If you play 5 times, what's the probability of winning at least once?
--   Warm-up (not the answer, but intuitive): the probability of winning **all 5** in a row is just $(0.1)^5 = 0.00001$ — multiply the single-trial probability by itself.
--   "At least once" is easier the other way: find the probability of **losing every time**, then take the complement.
--   $P(\text{lose all 5}) = (1-0.1)^5 = (0.9)^5$, so $P(\text{win at least once}) = 1-(0.9)^5 \approx 0.41$.
--   Play 10 times instead of 5: $1-(0.9)^{10}\approx 0.65$.
-:::
-
-## Random Variables & Expectation
-
-*From events to numbers — and the algebra of what to expect.*
-
-## From Events to Numbers {.smaller}
-
-::: {.incremental}
--   Everything so far has been about **events** — subsets of $\Omega$, yes/no questions: is the country a democracy, is growth positive. Events can be combined (union, intersection) but not added or averaged.
--   A **random variable** assigns a *number* to every outcome: $X: \Omega \to \mathbb{R}$. Once outcomes are numbers, ordinary arithmetic applies — sums, averages, variances.
--   This is the switch the rest of today runs on: "is the event {Democracy} likely?" becomes "what's the expected value of the underlying democracy score itself?"
-:::
-
-```{=html}
-<div class="running-example-note">&#8618; Running example: the *event* "Democracy" = {democracy score &gt; 0.5} is a yes/no subset of &Omega;; the *random variable* "democracy score" assigns each of the 174 countries its own number in [0,1] — now we can average it, take its variance, condition on it.</div>
-```
-
-## Random Variables: Discrete vs. Continuous {.smaller}
-
-[placeholder]
-
-::: {.incremental}
--   Definition of a random variable as a function from the sample space to the reals
--   Discrete vs. continuous, with a worked example from the running dataset
--   Notation: capital $X$ for the variable, lowercase $x$ for a realized value
-:::
-
-## Expectation Algebra {.smaller}
-
-**Fluency block — drill this like Day 1's summation, not a single bullet among many.**
-
-[placeholder]
-
-::: {.incremental}
--   Definition: $E[X]$ as a weighted sum/integral
--   Linearity of expectation: $E[aX+bY] = aE[X]+bE[Y]$ — holds regardless of independence
--   Worked examples building up from one term to a full linear combination
-:::
-
-## Quick Drill: Expectation Algebra {.smaller}
-
-[placeholder — several linearity problems, fragment-revealed answers, same style as Day 1's quick drills]
-
-## Variance and Covariance {.smaller}
-
-[placeholder]
-
-::: {.incremental}
--   $\text{Var}(X) = E[(X-E[X])^2]$, and the computational shortcut $E[X^2]-(E[X])^2$
--   $\text{Cov}(X,Y) = E[(X-E[X])(Y-E[Y])]$
--   $\text{Var}(aX+bY) = a^2\text{Var}(X) + b^2\text{Var}(Y) + 2ab\,\text{Cov}(X,Y)$
-:::
-
-## Conditional Expectation and the Type-Shift {.smaller}
-
-**The hardest notational transition of the first year — give it its own slide(s), not a bullet.**
-
-[placeholder]
-
-::: {.incremental}
--   $E[Y|X=x]$: a *number*, one per value of $x$
--   $E[Y|X]$: a *random variable* — a function of $X$ itself
--   Side-by-side worked example distinguishing the two
-:::
-
-```{=html}
-<div class="running-example-note">&#8618; Running example: E[growth | democracy score = 0.8] is a number; E[growth | democracy score] is a random variable across all 174 countries.</div>
-```
-
-## The Law of Iterated Expectations {.smaller}
-
-[placeholder]
-
-::: {.incremental}
--   $E[E[Y|X]] = E[Y]$
--   Why this follows directly from the type-shift distinction on the previous slide
--   Worked example
-:::
-
-## The Selection-Bias Decomposition {.smaller}
-
-**Today's closing exercise — assembled from this slide's tools, not a new topic.**
-
-[placeholder]
-
-::: {.incremental}
--   Derive $E[Y(0)|D=1] - E[Y(0)|D=0]$ in four lines, using linearity of expectation alone
--   Connects directly to Thursday's dialect equivalence ($E[\varepsilon|X]=0$)
-:::
-
-## Recap: The Toolkit {.smaller}
-
-[placeholder — one line per tool tying back to the running V-Dem example, same style as Day 1's recap]
-
-::: {.incremental}
--   **Expectation algebra:** linearity as the one move that does most of the work
--   **Variance/covariance:** building blocks for everything from here to standard errors
--   **The type-shift:** $E[Y|X=x]$ vs. $E[Y|X]$
--   **LIE:** the identity that makes the type-shift useful
--   **Bayes' theorem:** flips a conditional around
 :::
 
 ## References {.smaller}

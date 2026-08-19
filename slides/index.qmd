@@ -11,7 +11,9 @@ version of each session (with more detail and worked examples), see the
 
 1. [Notation, Functions, and Limits](01-notation-functions-limits.html)
 2. [Probability](02-probability.html)
-3. [Calculus](03-calculus.html)
+3. Day 3 (two sessions):
+   - [Uncertainty Extended and Expected](03-uncertainty-extended-and-expected.html)
+   - [Calculus](03-calculus.html)
 4. [Linear Algebra](04-linear-algebra.html)
 5. [Intro to Advanced Topics](05-advanced-topics.html)
 
