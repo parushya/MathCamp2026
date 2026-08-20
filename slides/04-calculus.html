@@ -1,0 +1,1887 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="04-calculus_files/libs/clipboard/clipboard.min.js"></script>
+<script src="04-calculus_files/libs/quarto-html/tabby.min.js"></script>
+<script src="04-calculus_files/libs/quarto-html/popper.min.js"></script>
+<script src="04-calculus_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="04-calculus_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="04-calculus_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="04-calculus_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Parushya">
+  <meta name="dcterms.date" content="2026-08-20">
+  <title>Pebbles and Counting</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="04-calculus_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="04-calculus_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="04-calculus_files/libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
+  <link rel="stylesheet" href="slides.css">
+  <link href="04-calculus_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="04-calculus_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="04-calculus_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="04-calculus_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="04-calculus_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="04-calculus_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title">Pebbles and Counting</h1>
+  <p class="subtitle">Math and Programming Camp Day 4 — Calculus</p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Parushya
+</div>
+</div>
+</div>
+
+  <p class="date">2026-08-20</p>
+</section>
+<section class="slide level2">
+
+<!--
+Day 4 (Calculus). Synced from slides/04-calculus-draft.qmd on 2026-08-20:
+this deck carries the draft's slides 1-47 (through "Worked Example: A Limit
+at a Hole"), plus the References slide and the closing links slide. The
+draft's remaining Pass 2 slides (L'Hopital onward: differentiation rules,
+integration mechanics, FTC, the Join) are still being finished there and get
+copied over as they land -- edit the draft first, then re-sync, so the two
+don't diverge.
+
+Structure is the draft's two-pass design:
+Pass 1 (intuition, utility, notation): Integration -> Limits -> Differentiation.
+Pass 2 (mechanics): Limits -> Differentiation -> Integration.
+The camp's Why -> Intuition -> Formal -> Example -> Quick Drill arc operates at
+the *day* level here, not per topic block (Parushya, 2026-08-20) -- do not
+refactor back to per-block arcs. The arc stage is carried by each slide's
+title, not by an on-slide label.
+
+Four interactive slider visualizations (Closing In from Both Sides, Watching
+the Riemann Sum Converge, Watching the Secant Become the Tangent, The CDF's
+Slope Is the PDF) all use Day 3's Beta(3,2) pair, f(x) = 12x^2(1-x) and
+F(x) = 4x^3 - 3x^4, and follow the .viz conventions in slides/slides.css.
+-->
+</section>
+<section id="beyond-probability-rvs-and-expectation" class="slide level2 smaller">
+<h2>Beyond Probability, RVs, and Expectation</h2>
+<p>Now we also want to know:</p>
+<ul>
+<li class="fragment">What’s the chance that something lies between particular values?
+<ul>
+<li class="fragment">e.g.&nbsp;polyarchy score — does it exceed 0.5?</li>
+<li class="fragment">Sum up infinitely small pieces and integrate!</li>
+</ul></li>
+<li class="fragment">At particular values of any RV, how does the chance — the probability — change?
+<ul>
+<li class="fragment">Differentiate the distribution / PDF to find out.</li>
+</ul></li>
+</ul>
+</section>
+<section id="today" class="slide level2 smaller">
+<h2>Today</h2>
+<ul>
+<li class="fragment"><strong>First, what the tools are for</strong> — learn to <em>read</em> <span class="math inline">\(\int\)</span>, <span class="math inline">\(\lim\)</span>, and <span class="math inline">\(\dfrac{dy}{dx}\)</span>: integration as area under a curve, limits as the shrinking move underneath it, differentiation as change at a point.</li>
+<li class="fragment"><strong>Then, how to compute them</strong> — in the order the math builds: limits → derivatives → integrals.
+<ul>
+<li class="fragment">Saving integration’s mechanics for last is what makes the antiderivative a one-line observation instead of a mystery.</li>
+</ul></li>
+<li class="fragment"><strong>The Join</strong> — deriving bivariate <span class="math inline">\(\hat\beta\)</span> from a minimization criterion.</li>
+</ul>
+</section>
+<section id="refresher-pmf-pdf-expectation" class="slide level2 smaller">
+<h2>Refresher: PMF, PDF, Expectation</h2>
+<div class="columns">
+<div class="column" style="font-size:0.6em;">
+<ul>
+<li><strong>PMF</strong> — discrete <span class="math inline">\(X\)</span>: <span class="math inline">\(p(x) = P(X = x)\)</span>; each bar’s <em>height</em> is a probability.
+<ul>
+<li><span class="math inline">\(p(x) \ge 0\)</span> and <span class="math inline">\(\displaystyle\sum_x p(x) = 1\)</span>.</li>
+</ul></li>
+<li><strong>PDF</strong> — continuous <span class="math inline">\(X\)</span>: heights are <em>densities</em>; only <strong>areas</strong> are probabilities.
+<ul>
+<li><span class="math inline">\(f(x) \ge 0\)</span>, <span class="math inline">\(\;\displaystyle\int_{-\infty}^{\infty} f(x)\,dx = 1\)</span>, <span class="math inline">\(\;P(a \le X \le b) = \displaystyle\int_a^b f(x)\,dx\)</span>.</li>
+</ul></li>
+<li><strong>Expectation</strong> — the probability-weighted average: the distribution’s balance point.
+<ul>
+<li>Discrete: <span class="math inline">\(E[X] = \displaystyle\sum_x x\,p(x)\)</span>.</li>
+<li>Continuous: <span class="math inline">\(E[X] = \displaystyle\int_{-\infty}^{\infty} x\,f(x)\,dx\)</span> — <span class="math inline">\(\int\)</span> replaces <span class="math inline">\(\sum\)</span>, <span class="math inline">\(f(x)\,dx\)</span> replaces <span class="math inline">\(p(x)\)</span>.</li>
+</ul></li>
+</ul>
+</div><div class="column" style="width:45%;">
+<div style="display:flex; flex-direction:column; align-items:center; gap:4px;">
+<svg width="300" height="110" viewbox="0 0 300 110" xmlns="http://www.w3.org/2000/svg">
+  <text x="8" y="12" font-size="11" fill="#22303F">PMF: heights are probabilities</text>
+  <text x="292" y="12" text-anchor="end" font-size="10" font-style="italic" fill="#5A6B80">p(x)</text>
+  <rect x="43" y="80.1" width="34" height="11.9" fill="#2b6cb0" opacity="0.85"></rect>
+  <rect x="88" y="44.5" width="34" height="47.5" fill="#2b6cb0" opacity="0.85"></rect>
+  <rect x="133" y="20.8" width="34" height="71.2" fill="#2b6cb0" opacity="0.85"></rect>
+  <rect x="178" y="44.5" width="34" height="47.5" fill="#2b6cb0" opacity="0.85"></rect>
+  <rect x="223" y="80.1" width="34" height="11.9" fill="#2b6cb0" opacity="0.85"></rect>
+  <line x1="30" y1="92" x2="270" y2="92" stroke="#5A6B80" stroke-width="1.5"></line>
+  <text x="60" y="104" text-anchor="middle" font-size="9" fill="#5A6B80">0</text>
+  <text x="105" y="104" text-anchor="middle" font-size="9" fill="#5A6B80">1</text>
+  <text x="150" y="104" text-anchor="middle" font-size="9" fill="#5A6B80">2</text>
+  <text x="195" y="104" text-anchor="middle" font-size="9" fill="#5A6B80">3</text>
+  <text x="240" y="104" text-anchor="middle" font-size="9" fill="#5A6B80">4</text>
+</svg>
+<svg width="300" height="110" viewbox="0 0 300 110" xmlns="http://www.w3.org/2000/svg">
+  <text x="8" y="12" font-size="11" fill="#22303F">PDF: areas are probabilities</text>
+  <text x="292" y="12" text-anchor="end" font-size="10" font-style="italic" fill="#5A6B80">f(x)</text>
+  <defs>
+    <clippath id="refresherPdfClip"><rect x="111" y="0" width="78" height="110"></rect></clippath>
+  </defs>
+  <path d="M20,92 L46,87.9 L72,77.4 L98,63.3 L124,48.2 L150,35 L176,26.3 L193.4,24.4 L215,27.9 L241,42.6 L254,55.1 L267,71.4 L280,92 Z" fill="#EDF0F5" stroke="none"></path>
+  <path d="M20,92 L46,87.9 L72,77.4 L98,63.3 L124,48.2 L150,35 L176,26.3 L193.4,24.4 L215,27.9 L241,42.6 L254,55.1 L267,71.4 L280,92 Z" fill="#38a169" opacity="0.35" clip-path="url(#refresherPdfClip)"></path>
+  <path d="M20,92 L46,87.9 L72,77.4 L98,63.3 L124,48.2 L150,35 L176,26.3 L193.4,24.4 L215,27.9 L241,42.6 L254,55.1 L267,71.4 L280,92" fill="none" stroke="#2b6cb0" stroke-width="2" stroke-linejoin="round"></path>
+  <line x1="20" y1="92" x2="280" y2="92" stroke="#5A6B80" stroke-width="1.5"></line>
+  <text x="111" y="104" text-anchor="middle" font-size="9" fill="#5A6B80">a</text>
+  <text x="189" y="104" text-anchor="middle" font-size="9" fill="#5A6B80">b</text>
+</svg>
+<svg width="300" height="118" viewbox="0 0 300 118" xmlns="http://www.w3.org/2000/svg">
+  <text x="8" y="12" font-size="11" fill="#22303F">Expectation: the balance point</text>
+  <rect x="43" y="80.1" width="34" height="11.9" fill="#2b6cb0" opacity="0.4"></rect>
+  <rect x="88" y="44.5" width="34" height="47.5" fill="#2b6cb0" opacity="0.4"></rect>
+  <rect x="133" y="20.8" width="34" height="71.2" fill="#2b6cb0" opacity="0.4"></rect>
+  <rect x="178" y="44.5" width="34" height="47.5" fill="#2b6cb0" opacity="0.4"></rect>
+  <rect x="223" y="80.1" width="34" height="11.9" fill="#2b6cb0" opacity="0.4"></rect>
+  <line x1="30" y1="92" x2="270" y2="92" stroke="#5A6B80" stroke-width="1.5"></line>
+  <polygon points="150,93 141,107 159,107" fill="#B23A48"></polygon>
+  <text x="150" y="117" text-anchor="middle" font-size="10" font-weight="700" fill="#B23A48">E[X]</text>
+</svg>
+</div>
+</div></div>
+</section>
+<section id="integration-area-under-the-curve" class="slide level2">
+<h2>Integration &amp; Area Under the Curve</h2>
+<p><em>Where probability lives for continuous variables: the area under a curve.</em></p>
+</section>
+<section id="why-we-need-it" class="slide level2 smaller">
+<h2>Why We Need It</h2>
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="470" height="205" viewbox="0 0 470 205" xmlns="http://www.w3.org/2000/svg">
+  <text x="235" y="14" text-anchor="middle" font-size="13" fill="#22303F">Binomial(n=10, p=0.5)</text>
+  <text x="28" y="34" font-size="12" font-style="italic" fill="#22303F">PMF p(k)</text>
+  <g transform="translate(0,15)">
+    <rect x="30.00" y="169.44" width="30" height="0.56" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="68.00" y="164.44" width="30" height="5.56" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="106.00" y="145.00" width="30" height="25.00" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="144.00" y="103.33" width="30" height="66.67" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="182.00" y="53.33" width="30" height="116.67" fill="#38a169" fill-opacity="0.5" stroke="#2f855a" stroke-width="2"></rect>
+    <rect x="220.00" y="30.00" width="30" height="140.00" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="258.00" y="53.33" width="30" height="116.67" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="296.00" y="103.33" width="30" height="66.67" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="334.00" y="145.00" width="30" height="25.00" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="372.00" y="164.44" width="30" height="5.56" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="410.00" y="169.44" width="30" height="0.56" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <line x1="20" y1="170" x2="450" y2="170" stroke="#5A6B80" stroke-width="1.5"></line>
+    <text x="45" y="184" text-anchor="middle" font-size="11" fill="#5A6B80">0</text>
+    <text x="197" y="184" text-anchor="middle" font-size="11" fill="#2f855a">4</text>
+    <text x="425" y="184" text-anchor="middle" font-size="11" fill="#5A6B80">10</text>
+    <path d="M197,45 L197,32" stroke="#2f855a" stroke-width="1.5"></path>
+    <text x="197" y="26" text-anchor="middle" font-size="12" fill="#2f855a">P(X=4) ≈ 0.205</text>
+  </g>
+</svg>
+</div>
+<ul>
+<li class="fragment">Binomial(<span class="math inline">\(n=10\)</span>, <span class="math inline">\(p=0.5\)</span>): 10 coin flips, <span class="math inline">\(k\)</span> = number of heads.
+<ul>
+<li class="fragment">PMF: <span class="math inline">\(P(X=k) = \binom{10}{k}(0.5)^{10}\)</span> — one bar per possible outcome.</li>
+<li class="fragment"><span class="math inline">\(P(X=4) = \binom{10}{4}(0.5)^{10} = \dfrac{210}{1024} \approx 0.205\)</span> — read straight off the bar.</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-same-toolkit-concretely" class="slide level2 smaller">
+<h2>The Same Toolkit, Concretely</h2>
+<p>Every PMF/CDF/<span class="math inline">\(E[X]\)</span> we’ve used is a finite sum, <span class="math inline">\(\Sigma\)</span>, over the bars above.</p>
+<ul>
+<li class="fragment">PMF: <span class="math inline">\(\sum_{k=0}^{10} p(k) = 1\)</span> — all eleven bars add to 1.</li>
+<li class="fragment">CDF: <span class="math inline">\(F(4) = \sum_{k=0}^{4} p(k) = \dfrac{1+10+45+120+210}{1024} \approx 0.377\)</span>.</li>
+<li class="fragment"><span class="math inline">\(E[X] = \sum_{k=0}^{10} k\,p(k) = 10(0.5) = 5\)</span>.</li>
+</ul>
+</section>
+<section id="the-same-question-continuously" class="slide level2 smaller">
+<h2>The Same Question, Continuously</h2>
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="470" height="205" viewbox="0 0 470 205" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clippath id="pdfClipWhy"><rect x="150" y="0" width="140" height="205"></rect></clippath>
+  </defs>
+  <text x="235" y="14" text-anchor="middle" font-size="13" fill="#22303F">f(x): a continuous RV</text>
+  <text x="30" y="38" font-size="12" font-style="italic" fill="#22303F">PDF f(x)</text>
+  <g transform="translate(0,15)">
+    <path d="M40,170 Q235,-130 430,170 Z" fill="#EDF0F5" stroke="none"></path>
+    <g clip-path="url(#pdfClipWhy)">
+      <path d="M40,170 Q235,-130 430,170 Z" fill="#38a169" opacity="0.28"></path>
+    </g>
+    <path d="M40,170 Q235,-130 430,170" fill="none" stroke="#22303F" stroke-width="2"></path>
+    <line x1="150" y1="170" x2="150" y2="70" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"></line>
+    <line x1="290" y1="170" x2="290" y2="70" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"></line>
+    <text x="150" y="184" text-anchor="middle" font-size="12" fill="#5A6B80">a</text>
+    <text x="290" y="184" text-anchor="middle" font-size="12" fill="#5A6B80">b</text>
+    <line x1="20" y1="170" x2="450" y2="170" stroke="#5A6B80" stroke-width="2"></line>
+    <text x="220" y="120" text-anchor="middle" font-size="14" fill="#22303F">Area = ?</text>
+  </g>
+</svg>
+</div>
+<ul>
+<li class="fragment">No bars here — <span class="math inline">\(f(x)\)</span> is a curve, and <span class="math inline">\(P(X=x)=0\)</span> at any single point.
+<ul>
+<li class="fragment">“What’s the chance <span class="math inline">\(X\)</span> is between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>?” is the shaded area under <span class="math inline">\(f(x)\)</span>.</li>
+</ul></li>
+<li class="fragment">There’s no list of bars left to add — we need a way to sum the area under a curve.
+<ul>
+<li class="fragment">That’s what integration is for.</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-riemann-sum" class="slide level2 smaller">
+<h2>The Riemann Sum</h2>
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="470" height="210" viewbox="0 0 470 210" xmlns="http://www.w3.org/2000/svg">
+  <text x="100" y="14" text-anchor="middle" font-size="13" fill="#22303F">Coarse: n = 6</text>
+  <text x="12" y="14" font-size="12" font-style="italic" fill="#22303F">f(x)</text>
+  <g>
+    <rect x="10.00" y="89.44" width="30.00" height="30.56" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="40.00" y="45.00" width="30.00" height="75.00" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="70.00" y="22.78" width="30.00" height="97.22" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="100.00" y="22.78" width="30.00" height="97.22" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="130.00" y="45.00" width="30.00" height="75.00" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="160.00" y="89.44" width="30.00" height="30.56" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <path d="M10,120 Q100,-80 190,120" fill="none" stroke="#22303F" stroke-width="2"></path>
+    <line x1="10" y1="120" x2="190" y2="120" stroke="#5A6B80" stroke-width="1.5"></line>
+    <text x="10" y="134" text-anchor="middle" font-size="12" fill="#5A6B80">0</text>
+    <text x="190" y="134" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+  </g>
+  <text x="100" y="152" text-anchor="middle" font-size="13" fill="#22303F">Σᵢ f(xᵢ)·Δx</text>
+
+  <path d="M212,70 L248,70 M240,63 L248,70 L240,77" fill="none" stroke="#5A6B80" stroke-width="2"></path>
+  <text x="230" y="55" text-anchor="middle" font-size="12" fill="#5A6B80">Δx → 0</text>
+
+  <text x="360" y="14" text-anchor="middle" font-size="13" fill="#22303F">Fine: n = 18</text>
+  <g transform="translate(270,0)">
+    <rect x="10.00" y="109.20" width="10.00" height="10.80" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="20.00" y="89.44" width="10.00" height="30.56" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="30.00" y="72.16" width="10.00" height="47.84" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="40.00" y="57.35" width="10.00" height="62.65" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="50.00" y="45.00" width="10.00" height="75.00" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="60.00" y="35.12" width="10.00" height="84.88" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="70.00" y="27.72" width="10.00" height="92.28" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="80.00" y="22.78" width="10.00" height="97.22" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="90.00" y="20.31" width="10.00" height="99.69" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="100.00" y="20.31" width="10.00" height="99.69" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="110.00" y="22.78" width="10.00" height="97.22" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="120.00" y="27.72" width="10.00" height="92.28" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="130.00" y="35.12" width="10.00" height="84.88" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="140.00" y="45.00" width="10.00" height="75.00" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="150.00" y="57.35" width="10.00" height="62.65" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="160.00" y="72.16" width="10.00" height="47.84" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="170.00" y="89.44" width="10.00" height="30.56" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <rect x="180.00" y="109.20" width="10.00" height="10.80" fill="#2b6cb0" fill-opacity="0.35" stroke="#2b6cb0" stroke-width="1"></rect>
+    <path d="M10,120 Q100,-80 190,120" fill="none" stroke="#22303F" stroke-width="2"></path>
+    <line x1="10" y1="120" x2="190" y2="120" stroke="#5A6B80" stroke-width="1.5"></line>
+    <text x="10" y="134" text-anchor="middle" font-size="12" fill="#5A6B80">0</text>
+    <text x="190" y="134" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+  </g>
+  <text x="360" y="152" text-anchor="middle" font-size="13" fill="#22303F">→ ∫ f(x) dx</text>
+</svg>
+</div>
+<ul>
+<li class="fragment">Coarse strips: <span class="math inline">\(\sum_i f(x_i)\,\Delta x\)</span> — visibly off around the curve.</li>
+<li class="fragment">Thinner strips fit the curve almost exactly — that gap keeps shrinking as <span class="math inline">\(\Delta x \to 0\)</span>.
+<ul>
+<li class="fragment">That little arrow is hiding a promise. We’ll name it properly in the next section.</li>
+</ul></li>
+</ul>
+</section>
+<section id="density-vs.-probability" class="slide level2 smaller">
+<h2>Density vs.&nbsp;Probability</h2>
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="470" height="205" viewbox="0 0 470 205" xmlns="http://www.w3.org/2000/svg">
+  <text x="100" y="14" text-anchor="middle" font-size="13" fill="#22303F">A Single Point</text>
+  <text x="350" y="14" text-anchor="middle" font-size="13" fill="#22303F">A Tiny Interval</text>
+  <g transform="translate(0,15)">
+    <g>
+      <path d="M10,120 Q100,-80 190,120" fill="none" stroke="#22303F" stroke-width="2"></path>
+      <line x1="10" y1="120" x2="190" y2="120" stroke="#5A6B80" stroke-width="1.5"></line>
+      <line x1="100" y1="120" x2="100" y2="20" stroke="#B23A48" stroke-width="2.5"></line>
+      <text x="12" y="45" font-size="12" font-style="italic" fill="#22303F">PDF f(x)</text>
+      <text x="100" y="152" text-anchor="middle" font-size="12" fill="#B23A48">width → 0</text>
+      <text x="100" y="168" text-anchor="middle" font-size="12" fill="#B23A48">P(X=x₀) = 0</text>
+    </g>
+    <g transform="translate(250,0)">
+      <path d="M10,120 Q100,-80 190,120" fill="none" stroke="#22303F" stroke-width="2"></path>
+      <line x1="10" y1="120" x2="190" y2="120" stroke="#5A6B80" stroke-width="1.5"></line>
+      <rect x="130" y="45" width="20" height="75" fill="#38a169" fill-opacity="0.4" stroke="#2f855a" stroke-width="1.5"></rect>
+      <text x="100" y="152" text-anchor="middle" font-size="12" fill="#2f855a">width = dx</text>
+      <text x="100" y="168" text-anchor="middle" font-size="12" fill="#2f855a">≈ f(x₁)·dx</text>
+    </g>
+  </g>
+</svg>
+</div>
+<ul>
+<li class="fragment">Why the split? A discrete RV has <strong>countably many</strong> values — probability can sit on each one as a positive mass and still sum to <span class="math inline">\(1\)</span>.
+<ul>
+<li class="fragment">A continuous RV has <strong>uncountably many</strong> values — if every one carried positive probability, they couldn’t possibly sum to <span class="math inline">\(1\)</span>; there are too many of them.</li>
+<li class="fragment">So probability gets smeared as a <em>rate</em> over the continuum instead of stacked as mass on each point — that rate is the density.</li>
+</ul></li>
+</ul>
+</section>
+<section id="from-density-to-probability" class="slide level2 smaller">
+<h2>From Density to Probability</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(f(x)\)</span> is a <strong>density</strong>, not a probability — it can even be <span class="math inline">\(&gt;1\)</span>. Only an <em>area</em> under it is a probability.
+<ul>
+<li class="fragment">Compare: a PMF bar height <span class="math inline">\(p(x)\)</span> <em>is</em> the probability, directly.</li>
+</ul></li>
+<li class="fragment">To get an actual probability, multiply density by a width: <span class="math inline">\(P(x\le X\le x+dx) \approx f(x)\,dx\)</span>.</li>
+<li class="fragment">Shrink that width to a single point (<span class="math inline">\(dx\to 0\)</span>) and the area vanishes — that’s why <span class="math inline">\(P(X=x)=0\)</span> for any one value.</li>
+</ul>
+</section>
+<section id="watch-but-what-is-a-probability-density-function" class="slide level2 smaller">
+<h2>Watch: But What Is a Probability Density Function?</h2>
+<p><em>3Blue1Brown — a visual walkthrough of exactly this density-vs-probability distinction.</em></p>
+<div style="display:flex; justify-content:center; margin: 8px 0;">
+<iframe width="720" height="405" src="https://www.youtube.com/embed/ZA4JkHKZM50?start=303" title="But what is a probability density function? — 3Blue1Brown" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+</div>
+</section>
+<section id="notation-for-the-integral" class="slide level2 smaller">
+<h2>Notation for the Integral</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\displaystyle \int_a^b f(x)\,dx\)</span> — the limit of that sum as the strips get infinitely thin.</li>
+<li class="fragment">Read <span class="math inline">\(\int\)</span> as “sum” and <span class="math inline">\(dx\)</span> as an infinitesimally thin strip width — the same job as <span class="math inline">\(\Sigma\)</span> and <span class="math inline">\(\Delta x\)</span>, just in the limit.</li>
+<li class="fragment"><span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>: where the strips start and stop.</li>
+</ul>
+</section>
+<section id="anatomy-of-the-integral" class="slide level2 smaller">
+<h2>Anatomy of the Integral</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\displaystyle\int_a^b f(x)\,dx\)</span> has the same three parts as <span class="math inline">\(\displaystyle\sum_{i=a}^{b}\)</span>:
+<ul>
+<li class="fragment"><span class="math inline">\(f(x)\)</span> is the <strong>integrand</strong> — what gets summed, same job as <span class="math inline">\(f(x_i)\)</span> inside <span class="math inline">\(\sum_i f(x_i)\)</span>.</li>
+<li class="fragment"><span class="math inline">\(dx\)</span> is the <strong>variable of integration</strong> — the infinitesimal step, same job as the index (or <span class="math inline">\(\Delta x\)</span>) in <span class="math inline">\(\Sigma\)</span>.</li>
+<li class="fragment"><span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> are the <strong>limits of integration</strong> — same job as the bounds on <span class="math inline">\(\Sigma\)</span>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="this-is-already-familiar" class="slide level2 smaller">
+<h2>This Is Already Familiar</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(P(a\le X\le b) = \int_a^b f(x)\,dx\)</span> — area under the PDF between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>.</li>
+<li class="fragment"><span class="math inline">\(E[X] = \int x\,f(x)\,dx\)</span> — same “weight by probability, add up” idea as <span class="math inline">\(\sum_x x\,p(x)\)</span>, with <span class="math inline">\(\int\)</span> standing in for <span class="math inline">\(\Sigma\)</span>.</li>
+<li class="fragment">Day 3 used <span class="math inline">\(\int\)</span> as a symbol; today it’s a Riemann-sum limit — a shrinking sum of rectangles, same as <span class="math inline">\(\Sigma\)</span> but with the step size going to zero.</li>
+</ul>
+</section>
+<section id="quick-drill-reading-int-13" class="slide level2 smaller">
+<h2>Quick Drill: Reading <span class="math inline">\(\int\)</span> (1/3)</h2>
+<div style="font-size:0.8em;">
+<ul>
+<li class="fragment">Is <span class="math inline">\(\displaystyle\int_1^3 f(x)\,dx\)</span> a number or a function? What about <span class="math inline">\(\displaystyle\int f(x)\,dx\)</span>?
+<ul>
+<li class="fragment"><strong>Answer:</strong> with bounds, a single number — the area from <span class="math inline">\(1\)</span> to <span class="math inline">\(3\)</span>. Without bounds, a whole function — it gets a name (the antiderivative) when we solve integrals later today.</li>
+</ul></li>
+<li class="fragment">Given <span class="math inline">\(\int_a^b f(x)\,dx\)</span>, state in words what it represents.
+<ul>
+<li class="fragment"><strong>Answer:</strong> the area under <span class="math inline">\(f\)</span> between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> — and when <span class="math inline">\(f\)</span> is a PDF, that area is <span class="math inline">\(P(a\le X\le b)\)</span>.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="quick-drill-reading-int-23" class="slide level2 smaller">
+<h2>Quick Drill: Reading <span class="math inline">\(\int\)</span> (2/3)</h2>
+<div style="font-size:0.8em;">
+<ul>
+<li class="fragment">Discrete CDF: <span class="math inline">\(F(4)=\sum_{k=0}^{4} p(k)\)</span>. For a continuous <span class="math inline">\(X\)</span>, <span class="math inline">\(F(4)\)</span> becomes…
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(\sum_{x\le 4} f(x)\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(\displaystyle\int_{-\infty}^{4} f(x)\,dx\)</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(f(4)\)</span></li>
+<li class="fragment"><strong>Answer:</strong> (b) — <span class="math inline">\(\Sigma \to \int\)</span>, <span class="math inline">\(p(k) \to f(x)\,dx\)</span>. (a) can’t work: uncountably many points, each with probability <span class="math inline">\(0\)</span>. (c) is a density height, not a probability.</li>
+</ul></li>
+<li class="fragment">Discrete mean: <span class="math inline">\(E[X]=\sum_x x\,p(x)\)</span>. The continuous version is…
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(\displaystyle\int f(x)\,dx\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(\displaystyle\int x\,f(x)\,dx\)</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(\displaystyle\int x\,dx\)</span></li>
+<li class="fragment"><strong>Answer:</strong> (b) — same “weight each value, add up” move. (a) is total probability, always <span class="math inline">\(1\)</span>. (c) forgets the distribution entirely.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="quick-drill-reading-int-33" class="slide level2 smaller">
+<h2>Quick Drill: Reading <span class="math inline">\(\int\)</span> (3/3)</h2>
+<div style="display:flex; justify-content:center; margin: 0;">
+<svg width="390" height="145" viewbox="0 0 470 175" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clippath id="pdfClipDrillA"><rect x="70" y="0" width="60" height="175"></rect></clippath>
+    <clippath id="pdfClipDrillB"><rect x="10" y="0" width="80" height="175"></rect></clippath>
+  </defs>
+  <text x="100" y="14" text-anchor="middle" font-size="13" fill="#22303F">Plot A</text>
+  <text x="350" y="14" text-anchor="middle" font-size="13" fill="#22303F">Plot B</text>
+  <text x="12" y="60" font-size="11" font-style="italic" fill="#22303F">PDF f(x)</text>
+  <g transform="translate(0,20)">
+    <g>
+      <path d="M10,120 Q100,-80 190,120 Z" fill="#EDF0F5" stroke="none"></path>
+      <g clip-path="url(#pdfClipDrillA)">
+        <path d="M10,120 Q100,-80 190,120 Z" fill="#38a169" opacity="0.35"></path>
+      </g>
+      <path d="M10,120 Q100,-80 190,120" fill="none" stroke="#22303F" stroke-width="2"></path>
+      <line x1="70" y1="120" x2="70" y2="31" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"></line>
+      <line x1="130" y1="120" x2="130" y2="31" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"></line>
+      <line x1="10" y1="120" x2="190" y2="120" stroke="#5A6B80" stroke-width="1.5"></line>
+      <text x="70" y="136" text-anchor="middle" font-size="12" fill="#5A6B80">a</text>
+      <text x="130" y="136" text-anchor="middle" font-size="12" fill="#5A6B80">b</text>
+    </g>
+    <g transform="translate(250,0)">
+      <path d="M10,120 Q100,-80 190,120 Z" fill="#EDF0F5" stroke="none"></path>
+      <g clip-path="url(#pdfClipDrillB)">
+        <path d="M10,120 Q100,-80 190,120 Z" fill="#38a169" opacity="0.35"></path>
+      </g>
+      <path d="M10,120 Q100,-80 190,120" fill="none" stroke="#22303F" stroke-width="2"></path>
+      <line x1="90" y1="120" x2="90" y2="22" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"></line>
+      <line x1="10" y1="120" x2="190" y2="120" stroke="#5A6B80" stroke-width="1.5"></line>
+      <text x="90" y="136" text-anchor="middle" font-size="12" fill="#5A6B80">c</text>
+    </g>
+  </g>
+</svg>
+</div>
+<div style="font-size:0.7em;">
+<ul>
+<li class="fragment"><strong>Plot A</strong> — the shaded area is…
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(\int_a^b f(x)\,dx\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(f(b)-f(a)\)</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(\int_a^b x\,f(x)\,dx\)</span></li>
+<li class="fragment"><strong>Answer:</strong> (a) — the strip-sum between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span>; for a PDF, <span class="math inline">\(P(a\le X\le b)\)</span>. (b) is two heights, not an area; (c) is expectation’s integrand.</li>
+</ul></li>
+<li class="fragment"><strong>Plot B</strong> — everything shaded from the far left up to <span class="math inline">\(c\)</span> is…
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(f(c)\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(\int_{-\infty}^{c} f(x)\,dx\)</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(\int_{c}^{\infty} f(x)\,dx\)</span></li>
+<li class="fragment"><strong>Answer:</strong> (b) — all probability up to <span class="math inline">\(c\)</span>: the CDF <span class="math inline">\(F(c)=P(X\le c)\)</span>. (a) is a height (a density); (c) is the <em>other</em> tail, <span class="math inline">\(1-F(c)\)</span>.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="limits" class="slide level2">
+<h2>Limits</h2>
+<p><em>Naming the move we’ve been leaning on all day: shrink a step to zero, see where things settle.</em></p>
+</section>
+<section id="why-we-need-it-1" class="slide level2 smaller">
+<h2>Why We Need It</h2>
+<ul>
+<li class="fragment">We just shrank a width to zero and trusted the result to settle: rectangles → area. Day 3’s bars → curve was the same move, asserted without a name.
+<ul>
+<li class="fragment">“Settles” is doing real work there — some things don’t settle at all.</li>
+</ul></li>
+<li class="fragment">Differentiation, coming up, is <em>defined</em> as a limit — we can’t even write it down without one.</li>
+</ul>
+</section>
+<section id="from-bars-to-a-curve-revisited" class="slide level2 smaller">
+<h2>From Bars to a Curve, Revisited</h2>
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="440" height="220" viewbox="0 0 500 260" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <clippath id="pdfClipD4"><rect x="260" y="0" width="240" height="260"></rect></clippath>
+  </defs>
+  <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210 Z" fill="#EDF0F5" stroke="none"></path>
+  <g clip-path="url(#pdfClipD4)">
+    <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210 Z" fill="#38a169" opacity="0.28"></path>
+  </g>
+  <path d="M60,210 C120,205 150,120 210,95 C260,75 300,78 350,105 C400,135 430,175 460,210" fill="none" stroke="#2b6cb0" stroke-width="2.5"></path>
+
+  <line x1="260" y1="210" x2="260" y2="82" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"></line>
+  <text x="260" y="228" text-anchor="middle" font-size="13" fill="#5A6B80">0.5</text>
+  <text x="352" y="150" text-anchor="middle" font-size="13" fill="#2f855a">P(X&gt;0.5)</text>
+
+  <line x1="40" y1="210" x2="470" y2="210" stroke="#5A6B80" stroke-width="2"></line>
+  <text x="60" y="230" text-anchor="middle" font-size="13" fill="#5A6B80">0</text>
+  <text x="460" y="230" text-anchor="middle" font-size="13" fill="#5A6B80">1</text>
+  <text x="260" y="250" text-anchor="middle" font-size="13" font-style="italic" fill="#5A6B80">Polyarchy Score (X)</text>
+  <text x="60" y="80" font-size="14" font-style="italic" fill="#22303F">PDF f(x)</text>
+</svg>
+</div>
+<ul>
+<li class="fragment">Day 3: 5 flips gave 6 bars, 10 flips gave 11 bars — more trials, thinner and more numerous bars, until there were no bars left, just a curve <span class="math inline">\(f(x)\)</span>.</li>
+<li class="fragment">That’s a limit: a sum of rectangle areas, <span class="math inline">\(\sum_i f(x_i)\,\Delta x\)</span>, as <span class="math inline">\(\Delta x \to 0\)</span>.</li>
+</ul>
+</section>
+<section id="getting-arbitrarily-close" class="slide level2 smaller">
+<h2>Getting Arbitrarily Close</h2>
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="470" height="205" viewbox="0 0 470 205" xmlns="http://www.w3.org/2000/svg">
+  <text x="235" y="14" text-anchor="middle" font-size="13" fill="#22303F">xₙ = 1 + 3/n</text>
+  <g transform="translate(0,15)">
+    <line x1="40" y1="130" x2="440" y2="130" stroke="#B23A48" stroke-width="1.5" stroke-dasharray="5,4"></line>
+    <text x="44" y="124" font-size="12" fill="#B23A48">L = 1</text>
+    <text x="18" y="45" font-size="12" font-style="italic" fill="#22303F">xₙ</text>
+    <circle cx="60" cy="10" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="92.7" cy="70" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="125.5" cy="90" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="158.2" cy="100" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="190.9" cy="106" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="223.6" cy="110" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="256.4" cy="112.9" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="289.1" cy="115" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="321.8" cy="116.7" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="354.5" cy="118" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="387.3" cy="119.1" r="4.5" fill="#2b6cb0"></circle>
+    <circle cx="420" cy="120" r="4.5" fill="#2b6cb0"></circle>
+    <line x1="40" y1="170" x2="440" y2="170" stroke="#5A6B80" stroke-width="1.5"></line>
+    <text x="60" y="184" text-anchor="middle" font-size="11" fill="#5A6B80">n = 1</text>
+    <text x="420" y="184" text-anchor="middle" font-size="11" fill="#5A6B80">n = 12</text>
+  </g>
+</svg>
+</div>
+<ul>
+<li class="fragment">A <strong>sequence</strong> is an ordered list of numbers: <span class="math inline">\(x_1, x_2, x_3, \dots\)</span> — here <span class="math inline">\(x_n = 1 + \frac{3}{n}\)</span>: <span class="math inline">\(\;4,\; 2.5,\; 2,\; 1.75,\; \dots\)</span></li>
+<li class="fragment">The terms never reach <span class="math inline">\(1\)</span>, but past any point they stay as close to <span class="math inline">\(1\)</span> as you like — the sequence <strong>converges</strong> to <span class="math inline">\(1\)</span>.</li>
+<li class="fragment"><span class="math inline">\(\{i\} = 1, 2, 3, \dots\)</span> never settles — it <strong>diverges</strong>.</li>
+</ul>
+</section>
+<section id="infinite-sums" class="slide level2 smaller">
+<h2>Infinite Sums</h2>
+<ul>
+<li class="fragment">A <strong>series</strong> is the sum of a sequence — the <span class="math inline">\(\sum_{i=1}^{N} x_i\)</span> we’ve used since Day 1, now with <span class="math inline">\(N \to \infty\)</span>.</li>
+<li class="fragment"><span class="math inline">\(\displaystyle\sum_{i=0}^{\infty} \frac{1}{2^i} = 1 + \tfrac{1}{2} + \tfrac{1}{4} + \tfrac{1}{8} + \dots = 2\)</span> — infinitely many terms, finite total.
+<ul>
+<li class="fragment">Every PMF fact like <span class="math inline">\(\sum_k p(k) = 1\)</span> over countably many outcomes is this kind of convergent series.</li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(\displaystyle\sum_{i=1}^{\infty} i = 1 + 2 + 3 + \dots\)</span> blows up — divergent.</li>
+</ul>
+</section>
+<section id="closing-in-from-both-sides" class="slide level2 smaller">
+<h2>Closing In from Both Sides</h2>
+<div class="viz viz-limit2side">
+  <div class="viz-limit2side-controls">
+    <label for="viz-limit2side-slider">distance δ = <span class="viz-limit2side-delta-readout">0.400</span></label>
+    <input id="viz-limit2side-slider" type="range" min="0.005" max="0.4" step="0.005" value="0.4">
+  </div>
+
+  <svg class="viz-plot viz-limit2side-svg" viewbox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A density curve with one point approaching c from the left and one from the right, both heights converging to the same value L">
+    <line x1="60" y1="75" x2="260" y2="75" stroke="#5A6B80" stroke-width="1" stroke-dasharray="3,3"></line>
+    <line x1="260" y1="210" x2="260" y2="75" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"></line>
+    <path class="viz-limit2side-curve" d="" fill="none" stroke="#2b6cb0" stroke-width="2.5"></path>
+    <line class="viz-limit2side-lguide" x1="0" y1="210" x2="0" y2="0" stroke="#B23A48" stroke-width="1" stroke-dasharray="3,3"></line>
+    <line class="viz-limit2side-rguide" x1="0" y1="210" x2="0" y2="0" stroke="#2f855a" stroke-width="1" stroke-dasharray="3,3"></line>
+    <line class="viz-limit2side-lh" x1="60" y1="0" x2="0" y2="0" stroke="#B23A48" stroke-width="1" stroke-dasharray="3,3"></line>
+    <line class="viz-limit2side-rh" x1="60" y1="0" x2="0" y2="0" stroke="#2f855a" stroke-width="1" stroke-dasharray="3,3"></line>
+    <circle class="viz-limit2side-ldot" cx="0" cy="0" r="5" fill="#B23A48"></circle>
+    <circle class="viz-limit2side-rdot" cx="0" cy="0" r="5" fill="#2f855a"></circle>
+    <line x1="60" y1="210" x2="460" y2="210" stroke="#5A6B80" stroke-width="2"></line>
+    <text x="52" y="79" text-anchor="end" font-size="13" fill="#22303F">L = 1.5</text>
+    <text x="260" y="228" text-anchor="middle" font-size="13" fill="#5A6B80">c = 0.5</text>
+    <text x="60" y="228" text-anchor="middle" font-size="12" fill="#5A6B80">0</text>
+    <text x="460" y="228" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+    <text x="80" y="60" font-size="14" font-style="italic" fill="#22303F">PDF f(x)</text>
+    <text class="viz-limit2side-llab" x="0" y="246" text-anchor="middle" font-size="12" fill="#B23A48">c − δ</text>
+    <text class="viz-limit2side-rlab" x="0" y="246" text-anchor="middle" font-size="12" fill="#2f855a">c + δ</text>
+  </svg>
+
+  <div class="viz-limit2side-readout">
+    <div class="viz-limit2side-card">
+      <span class="viz-limit2side-card-label">from below: f(c − δ)</span>
+      <span class="viz-limit2side-card-value viz-limit2side-fleft">0.000</span>
+    </div>
+    <div class="viz-limit2side-card">
+      <span class="viz-limit2side-card-label">from above: f(c + δ)</span>
+      <span class="viz-limit2side-card-value viz-limit2side-fright">0.000</span>
+    </div>
+    <div class="viz-limit2side-card">
+      <span class="viz-limit2side-card-label">gap between them</span>
+      <span class="viz-limit2side-card-value viz-limit2side-gap">0.000</span>
+    </div>
+  </div>
+  <div class="viz-limit2side-verbal">Drag δ toward 0 and watch the two heights converge on L.</div>
+</div>
+
+<style>
+.viz-limit2side { max-width: 620px; margin: 0 auto; }
+.viz-limit2side-controls { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; font-size: 0.5em; }
+.viz-limit2side-controls input[type="range"] { flex: 1; }
+.viz-limit2side-readout { flex: 0 0 auto; display: flex; justify-content: center; gap: 16px; font-size: 0.5em; }
+.viz-limit2side-card {
+  background: #F7F8FA; border: 1px solid #EDF0F5; border-radius: 8px;
+  padding: 4px 14px; text-align: center; min-width: 130px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.viz-limit2side-card-label { display: block; font-size: 0.85em; color: #5A6B80; }
+.viz-limit2side-card-value { display: block; font-size: 1.15em; font-weight: 700; color: #22303F; }
+.viz-limit2side.viz-limit2side-agree .viz-limit2side-card { background: #EAF6EF; border-color: #38a169; }
+.viz-limit2side.viz-limit2side-agree .viz-limit2side-card-value { color: #2f855a; }
+.viz-limit2side-verbal { flex: 0 0 auto; font-size: 0.5em; font-style: italic; color: #5A6B80; text-align: center; }
+.viz-limit2side.viz-limit2side-agree .viz-limit2side-verbal { color: #2f855a; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-limit2side');
+  container = container[container.length - 1];
+
+  var slider = container.querySelector('#viz-limit2side-slider');
+  var deltaReadout = container.querySelector('.viz-limit2side-delta-readout');
+  var curve = container.querySelector('.viz-limit2side-curve');
+  var lguide = container.querySelector('.viz-limit2side-lguide');
+  var rguide = container.querySelector('.viz-limit2side-rguide');
+  var lh = container.querySelector('.viz-limit2side-lh');
+  var rh = container.querySelector('.viz-limit2side-rh');
+  var ldot = container.querySelector('.viz-limit2side-ldot');
+  var rdot = container.querySelector('.viz-limit2side-rdot');
+  var llab = container.querySelector('.viz-limit2side-llab');
+  var rlab = container.querySelector('.viz-limit2side-rlab');
+  var fleftEl = container.querySelector('.viz-limit2side-fleft');
+  var frightEl = container.querySelector('.viz-limit2side-fright');
+  var gapEl = container.querySelector('.viz-limit2side-gap');
+  var verbal = container.querySelector('.viz-limit2side-verbal');
+
+  // Same density as Day 3's PDF/CDF slider: f(x) = 12 x^2 (1-x), Beta(3,2).
+  var C = 0.5;
+  function xPix(s) { return 60 + 400 * s; }
+  function pdfVal(s) { return 12 * s * s * (1 - s); }
+  function pdfYPix(v) { return 210 - 90 * v; }
+
+  var d = '';
+  for (var i = 0; i <= 100; i++) {
+    var s = i / 100;
+    d += (i === 0 ? 'M' : 'L') + xPix(s).toFixed(1) + ',' + pdfYPix(pdfVal(s)).toFixed(1);
+  }
+  curve.setAttribute('d', d);
+
+  function place(guide, hline, dot, lab, x) {
+    var px = xPix(x);
+    var f = pdfVal(x);
+    var py = pdfYPix(f);
+    guide.setAttribute('x1', px); guide.setAttribute('x2', px);
+    guide.setAttribute('y1', 210); guide.setAttribute('y2', py);
+    hline.setAttribute('x2', px); hline.setAttribute('y1', py); hline.setAttribute('y2', py);
+    dot.setAttribute('cx', px); dot.setAttribute('cy', py);
+    lab.setAttribute('x', px);
+    return f;
+  }
+
+  function update() {
+    var delta = Number(slider.value);
+    deltaReadout.textContent = delta.toFixed(3);
+
+    var fl = place(lguide, lh, ldot, llab, C - delta);
+    var fr = place(rguide, rh, rdot, rlab, C + delta);
+
+    // Below-axis labels collide with each other and with "c = 0.5" when the
+    // dots get close -- fade them out instead of letting them overlap.
+    var labVis = delta < 0.06 ? 'hidden' : 'visible';
+    llab.setAttribute('visibility', labVis);
+    rlab.setAttribute('visibility', labVis);
+
+    fleftEl.textContent = fl.toFixed(3);
+    frightEl.textContent = fr.toFixed(3);
+    gapEl.textContent = Math.abs(fr - fl).toFixed(3);
+
+    var agree = delta <= 0.01;
+    container.classList.toggle('viz-limit2side-agree', agree);
+    verbal.textContent = agree
+      ? 'Pinned as tight as you like around one number — that number is the limit: f(x) → 1.5 as x → 0.5.'
+      : 'Drag δ toward 0 and watch the two heights converge on L.';
+  }
+
+  slider.addEventListener('input', update);
+  update();
+})();
+</script>
+<ul>
+<li class="fragment">Same density you dragged on Day 3. Squeeze <span class="math inline">\(x\)</span> toward <span class="math inline">\(c\)</span> from below (red) and from above (green): the two heights <span class="math inline">\(f(x)\)</span> get pinned as tightly around one number as you like — without ever needing to <em>arrive</em> at <span class="math inline">\(c\)</span>.</li>
+<li class="fragment">That number is what the next slide’s notation names: the <strong>limit</strong> of <span class="math inline">\(f\)</span> at <span class="math inline">\(c\)</span>.</li>
+</ul>
+</section>
+<section id="limit-notation" class="slide level2 smaller">
+<h2>Limit Notation</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\displaystyle\lim_{n\to\infty} x_n = L\)</span> — “as <span class="math inline">\(n\)</span> grows without bound, <span class="math inline">\(x_n\)</span> gets arbitrarily close to <span class="math inline">\(L\)</span>.”
+<ul>
+<li class="fragment">Converges: a finite limit <span class="math inline">\(L\)</span> exists. Diverges: no limit, or <span class="math inline">\(\pm\infty\)</span>.</li>
+</ul></li>
+<li class="fragment">Functions have limits too: <span class="math inline">\(\displaystyle\lim_{x\to c} f(x) = L\)</span> — as <span class="math inline">\(x\)</span> steps closer and closer to <span class="math inline">\(c\)</span>, <span class="math inline">\(f(x)\)</span> closes in on <span class="math inline">\(L\)</span>.
+<ul>
+<li class="fragment">Now <span class="math inline">\(x\)</span> can approach from below or from above: <span class="math inline">\(\lim_{x\to c^-}\)</span> and <span class="math inline">\(\lim_{x\to c^+}\)</span>. The limit exists when both sides agree.</li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(f\)</span> doesn’t have to be defined <em>at</em> <span class="math inline">\(c\)</span> for the limit to exist — only near it. That loophole is about to matter.</li>
+</ul>
+</section>
+<section id="watching-the-riemann-sum-converge" class="slide level2 smaller">
+<h2>Watching the Riemann Sum Converge</h2>
+<div class="viz viz-riemannlim">
+  <div class="viz-riemannlim-controls">
+    <label for="viz-riemannlim-slider">n = <span class="viz-riemannlim-n-readout">4</span> rectangles</label>
+    <input id="viz-riemannlim-slider" type="range" min="2" max="60" step="1" value="4">
+  </div>
+
+  <svg class="viz-plot viz-riemannlim-svg" viewbox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Rectangles under a density curve; as their number grows the staircase hugs the curve and the sum of their areas approaches 1">
+    <g class="viz-riemannlim-rects"></g>
+    <path class="viz-riemannlim-curve" d="" fill="none" stroke="#2b6cb0" stroke-width="2.5"></path>
+    <line x1="60" y1="210" x2="460" y2="210" stroke="#5A6B80" stroke-width="2"></line>
+    <text x="60" y="228" text-anchor="middle" font-size="12" fill="#5A6B80">0</text>
+    <text x="460" y="228" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+    <text x="80" y="60" font-size="14" font-style="italic" fill="#22303F">PDF f(x)</text>
+  </svg>
+
+  <div class="viz-riemannlim-readout">
+    <div class="viz-riemannlim-card">
+      <span class="viz-riemannlim-card-label">width Δx = 1/n</span>
+      <span class="viz-riemannlim-card-value viz-riemannlim-dx">0.250</span>
+    </div>
+    <div class="viz-riemannlim-card">
+      <span class="viz-riemannlim-card-label">Σ f(xᵢ)·Δx</span>
+      <span class="viz-riemannlim-card-value viz-riemannlim-sum">0.000</span>
+    </div>
+    <div class="viz-riemannlim-card">
+      <span class="viz-riemannlim-card-label">true area ∫₀¹ f(x) dx</span>
+      <span class="viz-riemannlim-card-value">1.000</span>
+    </div>
+  </div>
+  <div class="viz-riemannlim-verbal">Push n up — the staircase melts into the curve.</div>
+</div>
+
+<style>
+.viz-riemannlim { max-width: 620px; margin: 0 auto; }
+.viz-riemannlim-controls { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; font-size: 0.5em; }
+.viz-riemannlim-controls input[type="range"] { flex: 1; }
+.viz-riemannlim-readout { flex: 0 0 auto; display: flex; justify-content: center; gap: 16px; font-size: 0.5em; }
+.viz-riemannlim-card {
+  background: #F7F8FA; border: 1px solid #EDF0F5; border-radius: 8px;
+  padding: 4px 14px; text-align: center; min-width: 130px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.viz-riemannlim-card-label { display: block; font-size: 0.85em; color: #5A6B80; }
+.viz-riemannlim-card-value { display: block; font-size: 1.15em; font-weight: 700; color: #22303F; }
+.viz-riemannlim.viz-riemannlim-agree .viz-riemannlim-card { background: #EAF6EF; border-color: #38a169; }
+.viz-riemannlim.viz-riemannlim-agree .viz-riemannlim-card-value { color: #2f855a; }
+.viz-riemannlim-verbal { flex: 0 0 auto; font-size: 0.5em; font-style: italic; color: #5A6B80; text-align: center; }
+.viz-riemannlim.viz-riemannlim-agree .viz-riemannlim-verbal { color: #2f855a; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-riemannlim');
+  container = container[container.length - 1];
+
+  var slider = container.querySelector('#viz-riemannlim-slider');
+  var nReadout = container.querySelector('.viz-riemannlim-n-readout');
+  var curve = container.querySelector('.viz-riemannlim-curve');
+  var rects = container.querySelector('.viz-riemannlim-rects');
+  var dxEl = container.querySelector('.viz-riemannlim-dx');
+  var sumEl = container.querySelector('.viz-riemannlim-sum');
+  var verbal = container.querySelector('.viz-riemannlim-verbal');
+  var svgNS = 'http://www.w3.org/2000/svg';
+
+  // Same density as the previous slide (and Day 3): f(x) = 12 x^2 (1-x).
+  function xPix(s) { return 60 + 400 * s; }
+  function pdfVal(s) { return 12 * s * s * (1 - s); }
+  function pdfYPix(v) { return 210 - 90 * v; }
+
+  var d = '';
+  for (var i = 0; i <= 100; i++) {
+    var s = i / 100;
+    d += (i === 0 ? 'M' : 'L') + xPix(s).toFixed(1) + ',' + pdfYPix(pdfVal(s)).toFixed(1);
+  }
+  curve.setAttribute('d', d);
+
+  function update() {
+    var n = Number(slider.value);
+    var dx = 1 / n;
+    nReadout.textContent = n;
+    dxEl.textContent = dx.toFixed(3);
+
+    while (rects.firstChild) rects.removeChild(rects.firstChild);
+
+    // Left-endpoint rectangles: height f(i/n), width 1/n.
+    var sum = 0;
+    for (var i = 0; i < n; i++) {
+      var f = pdfVal(i / n);
+      sum += f * dx;
+      var y = pdfYPix(f);
+      var r = document.createElementNS(svgNS, 'rect');
+      r.setAttribute('x', xPix(i / n).toFixed(1));
+      r.setAttribute('y', y.toFixed(1));
+      r.setAttribute('width', (400 / n).toFixed(1));
+      r.setAttribute('height', (210 - y).toFixed(1));
+      r.setAttribute('fill', '#2b6cb0');
+      r.setAttribute('fill-opacity', '0.35');
+      r.setAttribute('stroke', '#2b6cb0');
+      r.setAttribute('stroke-width', '1');
+      rects.appendChild(r);
+    }
+    sumEl.textContent = sum.toFixed(3);
+
+    var agree = Math.abs(sum - 1) <= 0.01;
+    container.classList.toggle('viz-riemannlim-agree', agree);
+    verbal.textContent = agree
+      ? 'Σ has locked onto the area: the limit of the Riemann sum is ∫₀¹ f(x) dx = 1.'
+      : 'Push n up — the staircase melts into the curve.';
+  }
+
+  slider.addEventListener('input', update);
+  update();
+})();
+</script>
+<ul>
+<li class="fragment">Day 3 watched bars melt into a curve; here <em>you</em> drive it — every extra rectangle shrinks <span class="math inline">\(\Delta x\)</span>, and the staircase sum <span class="math inline">\(\sum_i f(x_i)\,\Delta x\)</span> closes in on the area.</li>
+<li class="fragment">The next slide is nothing more than this picture, written down.</li>
+</ul>
+</section>
+<section id="the-riemann-sum-limit-formally" class="slide level2 smaller">
+<h2>The Riemann-Sum Limit, Formally</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\displaystyle \int_a^b f(x)\,dx \;=\; \lim_{n\to\infty} \sum_{i=1}^n f(x_i)\,\Delta x\)</span> — the bars-to-curve picture, written down. The Riemann sum’s arrow, cashed in.</li>
+<li class="fragment">Every <span class="math inline">\(\Sigma\)</span> from Days 1–2 has this same shape: index, terms, add up. The only new piece is <span class="math inline">\(\Delta x \to 0\)</span>.</li>
+<li class="fragment">Same move underwrites <span class="math inline">\(E[X]=\sum_x x\,p(x)\)</span> becoming <span class="math inline">\(E[X]=\int x\,f(x)\,dx\)</span> for a continuous <span class="math inline">\(X\)</span>.</li>
+</ul>
+</section>
+<section id="quick-drill-limits-in-context-14" class="slide level2 smaller">
+<h2>Quick Drill: Limits in Context (1/4)</h2>
+<div style="font-size:0.8em;">
+<ul>
+<li class="fragment"><span class="math inline">\(\displaystyle\lim_{\Delta x \to 0} \sum_i f(x_i)\,\Delta x\)</span> is…
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(\int_a^b f(x)\,dx\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(f'(x)\)</span></li>
+<li class="fragment"><strong>(c)</strong> it diverges — infinitely many terms</li>
+<li class="fragment"><strong>Answer:</strong> (a) — thinner strips, more of them, and the sum settles on the area. Infinitely many terms can still settle: that’s convergence.</li>
+</ul></li>
+<li class="fragment">Day 3’s binomial bars, with more and more flips and ever-thinner bars: the limiting object is…
+<ul>
+<li class="fragment"><strong>(a)</strong> a CDF <span class="math inline">\(F(x)\)</span></li>
+<li class="fragment"><strong>(b)</strong> a PDF <span class="math inline">\(f(x)\)</span></li>
+<li class="fragment"><strong>(c)</strong> the expected value <span class="math inline">\(E[X]\)</span></li>
+<li class="fragment"><strong>Answer:</strong> (b) — the PMF’s bars melt into a density curve. Heights stop being probabilities; areas take over.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="quick-drill-limits-in-context-24" class="slide level2 smaller">
+<h2>Quick Drill: Limits in Context (2/4)</h2>
+<div style="display:flex; justify-content:center; margin: 0;">
+<svg width="390" height="130" viewbox="0 0 470 155" xmlns="http://www.w3.org/2000/svg">
+  <line x1="30" y1="35" x2="450" y2="35" stroke="#5A6B80" stroke-width="1" stroke-dasharray="4,3"></line>
+  <text x="24" y="39" text-anchor="end" font-size="12" fill="#5A6B80">1</text>
+  <path d="M30,128 C180,127 230,37 450,36" fill="none" stroke="#2b6cb0" stroke-width="2.5"></path>
+  <line x1="30" y1="130" x2="450" y2="130" stroke="#5A6B80" stroke-width="2"></line>
+  <text x="24" y="134" text-anchor="end" font-size="12" fill="#5A6B80">0</text>
+  <text x="446" y="148" text-anchor="end" font-size="12" font-style="italic" fill="#5A6B80">x</text>
+  <text x="60" y="60" font-size="13" font-style="italic" fill="#22303F">CDF F(x)</text>
+</svg>
+</div>
+<div style="font-size:0.7em;">
+<ul>
+<li class="fragment">A CDF <span class="math inline">\(F\)</span>, pushed all the way right: <span class="math inline">\(\displaystyle\lim_{x\to\infty} F(x)\)</span> is…
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(1\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(\infty\)</span></li>
+<li class="fragment"><strong>(c)</strong> depends on the distribution</li>
+<li class="fragment"><strong>Answer:</strong> (a) — <span class="math inline">\(F(x)\)</span> accumulates probability as <span class="math inline">\(x\)</span> grows; in the limit it has accumulated <em>all</em> of it, and total probability is <span class="math inline">\(1\)</span> for every distribution.</li>
+</ul></li>
+<li class="fragment">And pushed all the way left: <span class="math inline">\(\displaystyle\lim_{x\to-\infty} F(x)\)</span> is…
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(-1\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(0\)</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(f(-\infty)\)</span></li>
+<li class="fragment"><strong>Answer:</strong> (b) — nothing accumulated yet. Every CDF carries these two limits built in: <span class="math inline">\(0\)</span> on the far left, <span class="math inline">\(1\)</span> on the far right.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="quick-drill-limits-in-context-34" class="slide level2 smaller">
+<h2>Quick Drill: Limits in Context (3/4)</h2>
+<div style="display:flex; justify-content:center; margin: 0;">
+<svg width="390" height="145" viewbox="0 0 470 175" xmlns="http://www.w3.org/2000/svg">
+  <text x="240" y="14" text-anchor="middle" font-size="13" fill="#22303F">CDF of X = number of heads in 2 flips</text>
+  <line x1="240" y1="150" x2="240" y2="67.5" stroke="#5A6B80" stroke-width="1" stroke-dasharray="3,3"></line>
+  <line x1="30" y1="150" x2="450" y2="150" stroke="#5A6B80" stroke-width="2"></line>
+  <line x1="40" y1="150" x2="106" y2="150" stroke="#2b6cb0" stroke-width="2.5"></line>
+  <line x1="106" y1="122.5" x2="240" y2="122.5" stroke="#2b6cb0" stroke-width="2.5"></line>
+  <line x1="240" y1="67.5" x2="373" y2="67.5" stroke="#2b6cb0" stroke-width="2.5"></line>
+  <line x1="373" y1="40" x2="450" y2="40" stroke="#2b6cb0" stroke-width="2.5"></line>
+  <circle cx="106" cy="122.5" r="4" fill="#2b6cb0"></circle>
+  <circle cx="240" cy="67.5" r="4" fill="#2b6cb0"></circle>
+  <circle cx="373" cy="40" r="4" fill="#2b6cb0"></circle>
+  <circle cx="106" cy="150" r="4" fill="#FFFFFF" stroke="#2b6cb0" stroke-width="1.5"></circle>
+  <circle cx="240" cy="122.5" r="4" fill="#FFFFFF" stroke="#2b6cb0" stroke-width="1.5"></circle>
+  <circle cx="373" cy="67.5" r="4" fill="#FFFFFF" stroke="#2b6cb0" stroke-width="1.5"></circle>
+  <line x1="175" y1="122.5" x2="218" y2="122.5" stroke="#B23A48" stroke-width="2"></line>
+  <polygon points="218,118.5 226,122.5 218,126.5" fill="#B23A48"></polygon>
+  <line x1="305" y1="67.5" x2="262" y2="67.5" stroke="#2f855a" stroke-width="2"></line>
+  <polygon points="262,63.5 254,67.5 262,71.5" fill="#2f855a"></polygon>
+  <text x="24" y="126.5" text-anchor="end" font-size="11" fill="#5A6B80">0.25</text>
+  <text x="24" y="71.5" text-anchor="end" font-size="11" fill="#5A6B80">0.75</text>
+  <text x="24" y="44" text-anchor="end" font-size="11" fill="#5A6B80">1</text>
+  <text x="24" y="28" text-anchor="end" font-size="11" font-style="italic" fill="#22303F">CDF F(x)</text>
+  <text x="106" y="166" text-anchor="middle" font-size="12" fill="#5A6B80">0</text>
+  <text x="240" y="166" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+  <text x="373" y="166" text-anchor="middle" font-size="12" fill="#5A6B80">2</text>
+</svg>
+</div>
+<div style="font-size:0.7em;">
+<ul>
+<li class="fragment">A <em>discrete</em> RV’s CDF is a staircase. At <span class="math inline">\(x = 1\)</span>, does <span class="math inline">\(\displaystyle\lim_{x\to 1} F(x)\)</span> exist?
+<ul>
+<li class="fragment"><strong>(a)</strong> yes — it’s <span class="math inline">\(0.75\)</span></li>
+<li class="fragment"><strong>(b)</strong> yes — it’s <span class="math inline">\(0.25\)</span></li>
+<li class="fragment"><strong>(c)</strong> no — from below <span class="math inline">\(F \to 0.25\)</span>, from above <span class="math inline">\(F \to 0.75\)</span></li>
+<li class="fragment"><strong>Answer:</strong> (c) — the one-sided limits disagree, so the two-sided limit doesn’t exist. And the jump <em>is</em> the PMF: its height, <span class="math inline">\(0.75 - 0.25 = 0.5\)</span>, is exactly <span class="math inline">\(P(X=1)\)</span>.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="quick-drill-limits-in-context-44" class="slide level2 smaller">
+<h2>Quick Drill: Limits in Context (4/4)</h2>
+<div style="font-size:0.8em;">
+<ul>
+<li class="fragment">A <em>continuous</em> RV’s CDF has no jumps — both one-sided limits agree everywhere. What does that say about <span class="math inline">\(P(X = x)\)</span> at any exact value?
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(P(X=x) = f(x)\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(P(X=x) = 0\)</span></li>
+<li class="fragment"><strong>(c)</strong> can’t tell from the CDF</li>
+<li class="fragment"><strong>Answer:</strong> (b) — the jump height at <span class="math inline">\(x\)</span> is exactly <span class="math inline">\(P(X=x)\)</span>; no jump means zero. Day 3’s “an exact value has probability <span class="math inline">\(0\)</span>” is a statement about limits.</li>
+</ul></li>
+<li class="fragment">For any PMF <span class="math inline">\(p\)</span>: <span class="math inline">\(\displaystyle\lim_{N\to\infty} \sum_{k=0}^{N} p(k)\)</span> is…
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(1\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(\infty\)</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(0\)</span></li>
+<li class="fragment"><strong>Answer:</strong> (a) — “probabilities sum to <span class="math inline">\(1\)</span>” over infinitely many outcomes is a convergent series, like <span class="math inline">\(\sum 1/2^i\)</span> from the Infinite Sums slide.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="differentiation" class="slide level2">
+<h2>Differentiation</h2>
+<p><em>The same shrinking-width limit as Integration, run the other direction.</em></p>
+</section>
+<section id="why-we-need-it-2" class="slide level2 smaller">
+<h2>Why We Need It</h2>
+<ul>
+<li class="fragment">The opening slide’s second question is still open: at a particular value of an RV, how fast is the chance changing? A curve’s height alone won’t answer that — we need its <em>slope</em>.</li>
+<li class="fragment">Day 1 found <span class="math inline">\(\bar x\)</span> minimizes <span class="math inline">\(\sum(x_i-c)^2\)</span> by algebra alone. Most minimization criteria aren’t that friendly — we need a general tool for “where is this function flattest.”</li>
+</ul>
+</section>
+<section id="change-we-can-already-measure" class="slide level2 smaller">
+<h2>Change We Can Already Measure</h2>
+<ul>
+<li class="fragment">Across two years, change is a <strong>first difference</strong>: <span class="math inline">\(x_{t+1} - x_t\)</span>.
+<ul>
+<li class="fragment">A country’s polyarchy score: <span class="math inline">\(0.42\)</span> in 2010 <span class="math inline">\(\to\)</span> <span class="math inline">\(0.45\)</span> in 2011 — first difference <span class="math inline">\(+0.03\)</span>.</li>
+<li class="fragment">As a <strong>percentage change</strong>: <span class="math inline">\(\dfrac{x_{t+1}-x_t}{x_t} = \dfrac{0.03}{0.42} \approx +7\%\)</span>.</li>
+</ul></li>
+<li class="fragment">Day 3’s other running variable already <em>is</em> one: <strong>growth</strong> is the percentage first difference of GDP, year over year.</li>
+<li class="fragment">Both recipes need <strong>two</strong> snapshots — a year and the year after. Subtract, divide by the gap, done.</li>
+<li class="fragment">But ask “how fast was the score changing <em>in 2010 itself</em>?” and there’s only the 2010 number: nothing to subtract, and a zero-length gap to divide by.
+<ul>
+<li class="fragment">The derivative is the tool that gets an honest answer out of exactly that situation — next slide.</li>
+</ul></li>
+</ul>
+</section>
+<section id="secant-to-tangent" class="slide level2 smaller">
+<h2>Secant to Tangent</h2>
+<div style="display:flex; justify-content:center; margin: 4px 0 4px;">
+<svg width="470" height="210" viewbox="0 0 470 210" xmlns="http://www.w3.org/2000/svg">
+  <text x="100" y="14" text-anchor="middle" font-size="13" fill="#22303F">Secant: two years</text>
+  <text x="360" y="14" text-anchor="middle" font-size="13" fill="#22303F">Tangent: one instant</text>
+  <text x="10" y="34" font-size="11" font-style="italic" fill="#22303F">y(t)</text>
+  <text x="280" y="34" font-size="11" font-style="italic" fill="#22303F">y(t)</text>
+  <g transform="translate(0,20)">
+    <line x1="37" y1="69" x2="37" y2="120" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"></line>
+    <line x1="100" y1="20" x2="100" y2="120" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"></line>
+    <line x1="20" y1="82" x2="120" y2="4" stroke="#B23A48" stroke-width="2"></line>
+    <path d="M10,120 Q100,-80 190,120" fill="none" stroke="#22303F" stroke-width="2"></path>
+    <circle cx="37" cy="69" r="4" fill="#B23A48"></circle>
+    <circle cx="100" cy="20" r="4" fill="#B23A48"></circle>
+    <line x1="10" y1="120" x2="190" y2="120" stroke="#5A6B80" stroke-width="1.5"></line>
+    <text x="37" y="134" text-anchor="middle" font-size="11" fill="#5A6B80">t</text>
+    <text x="100" y="134" text-anchor="middle" font-size="11" fill="#5A6B80">t + h</text>
+    <text x="100" y="152" text-anchor="middle" font-size="12" fill="#22303F">slope = (y(t+h) − y(t)) / h</text>
+
+    <path d="M212,70 L248,70 M240,63 L248,70 L240,77" fill="none" stroke="#5A6B80" stroke-width="2"></path>
+    <text x="230" y="55" text-anchor="middle" font-size="12" fill="#5A6B80">h → 0</text>
+
+    <g transform="translate(270,0)">
+      <line x1="64" y1="36" x2="64" y2="120" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="3,3"></line>
+      <line x1="12" y1="82" x2="102" y2="2" stroke="#2f855a" stroke-width="2"></line>
+      <path d="M10,120 Q100,-80 190,120" fill="none" stroke="#22303F" stroke-width="2"></path>
+      <circle cx="64" cy="36" r="4" fill="#2f855a"></circle>
+      <line x1="10" y1="120" x2="190" y2="120" stroke="#5A6B80" stroke-width="1.5"></line>
+      <text x="64" y="134" text-anchor="middle" font-size="11" fill="#5A6B80">t</text>
+    </g>
+    <text x="360" y="152" text-anchor="middle" font-size="12" fill="#22303F">slope = y′(t)</text>
+  </g>
+</svg>
+</div>
+<ul>
+<li class="fragment">Let <span class="math inline">\(y(t)\)</span> be the country’s polyarchy score over time. A <strong>secant</strong> joins two years, <span class="math inline">\(t\)</span> and <span class="math inline">\(t+h\)</span>; its slope, <span class="math inline">\(\dfrac{y(t+h)-y(t)}{h}\)</span>, is the average change per year between them.
+<ul>
+<li class="fragment">At <span class="math inline">\(h = 1\)</span> it <em>is</em> the last slide’s first difference: <span class="math inline">\(y_{2011} - y_{2010}\)</span> over a gap of one.</li>
+</ul></li>
+<li class="fragment">Shrink <span class="math inline">\(h \to 0\)</span>: the two years merge and the secant settles into the <strong>tangent</strong> — the score’s rate of change <em>at</em> the moment <span class="math inline">\(t\)</span>. The one-snapshot question, answered.</li>
+<li class="fragment">Same <span class="math inline">\(\Delta x \to 0\)</span> move as the Riemann sum, aimed at a slope instead of an area.</li>
+</ul>
+</section>
+<section id="watching-the-secant-become-the-tangent" class="slide level2 smaller">
+<h2>Watching the Secant Become the Tangent</h2>
+<div class="viz viz-sec2tan">
+  <div class="viz-sec2tan-controls">
+    <label for="viz-sec2tan-slider">gap h = <span class="viz-sec2tan-h-readout">0.500</span></label>
+    <input id="viz-sec2tan-slider" type="range" min="0.005" max="0.5" step="0.005" value="0.5">
+  </div>
+
+  <svg class="viz-plot viz-sec2tan-svg" viewbox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="A curve with a fixed point at x and a movable point at x plus h; the red secant through them swings onto the green tangent as h shrinks">
+    <path class="viz-sec2tan-curve" d="" fill="none" stroke="#2b6cb0" stroke-width="2.5"></path>
+    <line class="viz-sec2tan-tangent" x1="120" y1="195.4" x2="240" y2="88.5" stroke="#2f855a" stroke-width="2" stroke-dasharray="6,4"></line>
+    <line class="viz-sec2tan-secant" x1="0" y1="0" x2="0" y2="0" stroke="#B23A48" stroke-width="2"></line>
+    <circle class="viz-sec2tan-p0" cx="180" cy="141.9" r="5" fill="#2b6cb0"></circle>
+    <circle class="viz-sec2tan-p1" cx="0" cy="0" r="5" fill="#B23A48"></circle>
+    <line x1="60" y1="210" x2="460" y2="210" stroke="#5A6B80" stroke-width="2"></line>
+    <text x="180" y="228" text-anchor="middle" font-size="12" fill="#5A6B80">x</text>
+    <text class="viz-sec2tan-p1lab" x="0" y="228" text-anchor="middle" font-size="12" fill="#B23A48">x + h</text>
+    <text x="248" y="80" font-size="12" fill="#2f855a">tangent</text>
+    <text x="80" y="60" font-size="14" font-style="italic" fill="#22303F">PDF f(x)</text>
+  </svg>
+
+  <div class="viz-sec2tan-readout">
+    <div class="viz-sec2tan-card">
+      <span class="viz-sec2tan-card-label">secant slope (f(x+h) − f(x)) / h</span>
+      <span class="viz-sec2tan-card-value viz-sec2tan-slope">0.000</span>
+    </div>
+    <div class="viz-sec2tan-card">
+      <span class="viz-sec2tan-card-label">tangent slope f′(x)</span>
+      <span class="viz-sec2tan-card-value">3.960</span>
+    </div>
+  </div>
+  <div class="viz-sec2tan-verbal">Shrink h — the red secant swings down onto the green tangent.</div>
+</div>
+
+<style>
+.viz-sec2tan { max-width: 620px; margin: 0 auto; }
+.viz-sec2tan-controls { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; font-size: 0.5em; }
+.viz-sec2tan-controls input[type="range"] { flex: 1; }
+.viz-sec2tan-readout { flex: 0 0 auto; display: flex; justify-content: center; gap: 16px; font-size: 0.5em; }
+.viz-sec2tan-card {
+  background: #F7F8FA; border: 1px solid #EDF0F5; border-radius: 8px;
+  padding: 4px 14px; text-align: center; min-width: 150px;
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+.viz-sec2tan-card-label { display: block; font-size: 0.85em; color: #5A6B80; }
+.viz-sec2tan-card-value { display: block; font-size: 1.15em; font-weight: 700; color: #22303F; }
+.viz-sec2tan.viz-sec2tan-agree .viz-sec2tan-card { background: #EAF6EF; border-color: #38a169; }
+.viz-sec2tan.viz-sec2tan-agree .viz-sec2tan-card-value { color: #2f855a; }
+.viz-sec2tan-verbal { flex: 0 0 auto; font-size: 0.5em; font-style: italic; color: #5A6B80; text-align: center; }
+.viz-sec2tan.viz-sec2tan-agree .viz-sec2tan-verbal { color: #2f855a; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-sec2tan');
+  container = container[container.length - 1];
+
+  var slider = container.querySelector('#viz-sec2tan-slider');
+  var hReadout = container.querySelector('.viz-sec2tan-h-readout');
+  var curve = container.querySelector('.viz-sec2tan-curve');
+  var secant = container.querySelector('.viz-sec2tan-secant');
+  var p1 = container.querySelector('.viz-sec2tan-p1');
+  var p1lab = container.querySelector('.viz-sec2tan-p1lab');
+  var slopeEl = container.querySelector('.viz-sec2tan-slope');
+  var verbal = container.querySelector('.viz-sec2tan-verbal');
+
+  // Same density as the earlier viz slides: f(x) = 12 x^2 (1-x).
+  // Anchor point x0 = 0.3, where f'(x0) = 12(2x - 3x^2) = 3.96.
+  var X0 = 0.3;
+  var FPRIME = 3.96;
+  function xPix(s) { return 60 + 400 * s; }
+  function pdfVal(s) { return 12 * s * s * (1 - s); }
+  function pdfYPix(v) { return 210 - 90 * v; }
+
+  var d = '';
+  for (var i = 0; i <= 100; i++) {
+    var s = i / 100;
+    d += (i === 0 ? 'M' : 'L') + xPix(s).toFixed(1) + ',' + pdfYPix(pdfVal(s)).toFixed(1);
+  }
+  curve.setAttribute('d', d);
+
+  function update() {
+    var h = Number(slider.value);
+    hReadout.textContent = h.toFixed(3);
+
+    var f0 = pdfVal(X0);
+    var f1 = pdfVal(X0 + h);
+    var m = (f1 - f0) / h;
+    slopeEl.textContent = m.toFixed(3);
+
+    p1.setAttribute('cx', xPix(X0 + h));
+    p1.setAttribute('cy', pdfYPix(f1));
+    p1lab.setAttribute('x', xPix(X0 + h));
+    p1lab.setAttribute('visibility', h < 0.06 ? 'hidden' : 'visible');
+
+    // Draw the secant extended a little past both points (clamped to [0,1]).
+    var xa = Math.max(0.02, X0 - 0.15);
+    var xb = Math.min(0.98, X0 + h + 0.15);
+    secant.setAttribute('x1', xPix(xa));
+    secant.setAttribute('y1', pdfYPix(f0 + m * (xa - X0)));
+    secant.setAttribute('x2', xPix(xb));
+    secant.setAttribute('y2', pdfYPix(f0 + m * (xb - X0)));
+
+    var agree = Math.abs(m - FPRIME) <= 0.05;
+    container.classList.toggle('viz-sec2tan-agree', agree);
+    verbal.textContent = agree
+      ? 'The secant has settled onto the tangent: the limit of the slopes is f′(x) = 3.96.'
+      : 'Shrink h — the red secant swings down onto the green tangent.';
+  }
+
+  slider.addEventListener('input', update);
+  update();
+})();
+</script>
+<ul>
+<li class="fragment">Same curve, and the same move as the last two sliders: shrink a gap to zero and watch a number settle. The settling number is the slope <em>at</em> <span class="math inline">\(x\)</span>.</li>
+</ul>
+</section>
+<section id="slope-in-the-language-of-probability" class="slide level2 smaller">
+<h2>Slope, in the Language of Probability</h2>
+<ul>
+<li class="fragment">The CDF answers “<strong>how much?</strong>”: <span class="math inline">\(F(x) = P(X \le x)\)</span> — the probability accumulated by the time you reach <span class="math inline">\(x\)</span>.</li>
+<li class="fragment">Its slope answers “<strong>how fast?</strong>”: how much <em>new</em> probability arrives per unit of <span class="math inline">\(x\)</span>, right at <span class="math inline">\(x\)</span>.
+<ul>
+<li class="fragment">Concretely, Day 3’s density: <span class="math inline">\(F(0.50) = 0.313\)</span> and <span class="math inline">\(F(0.51) = 0.328\)</span> — so <span class="math inline">\(0.015\)</span> of probability arrived in a window of width <span class="math inline">\(0.01\)</span>.</li>
+<li class="fragment">Rate: <span class="math inline">\(\dfrac{0.328 - 0.313}{0.01} \approx 1.5\)</span> per unit of <span class="math inline">\(x\)</span>. Shrink the window and this rate settles — that’s a derivative.</li>
+</ul></li>
+<li class="fragment">Steep CDF → probability arriving fast → values near <span class="math inline">\(x\)</span> common. Flat CDF → almost nothing arriving → values near <span class="math inline">\(x\)</span> rare.</li>
+<li class="fragment">“Probability per unit of <span class="math inline">\(x\)</span>” already has a name: the <strong>density</strong>. Next slide: the CDF’s slope <em>is</em> <span class="math inline">\(f(x)\)</span>, at every <span class="math inline">\(x\)</span>.</li>
+</ul>
+</section>
+<section id="the-cdfs-slope-is-the-pdf" class="slide level2 smaller">
+<h2>The CDF’s Slope Is the PDF</h2>
+<div class="viz viz-cdf2pdf">
+  <div class="viz-cdf2pdf-controls">
+    <label for="viz-cdf2pdf-slider">x = <span class="viz-cdf2pdf-x-readout">0.30</span></label>
+    <input id="viz-cdf2pdf-slider" type="range" min="0.02" max="0.98" step="0.01" value="0.3">
+  </div>
+
+  <div class="viz-cdf2pdf-plots">
+    <svg class="viz-plot viz-cdf2pdf-cdf-svg" viewbox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CDF curve with a tangent line whose slope changes as x moves">
+      <path class="viz-cdf2pdf-cdf-curve" d="" fill="none" stroke="#2b6cb0" stroke-width="2.5"></path>
+      <line class="viz-cdf2pdf-tan" x1="0" y1="0" x2="0" y2="0" stroke="#B23A48" stroke-width="2.5"></line>
+      <circle class="viz-cdf2pdf-cdf-dot" cx="0" cy="0" r="5" fill="#2b6cb0"></circle>
+      <line x1="60" y1="210" x2="460" y2="210" stroke="#5A6B80" stroke-width="2"></line>
+      <text x="60" y="228" text-anchor="middle" font-size="12" fill="#5A6B80">0</text>
+      <text x="460" y="228" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+      <text x="265" y="24" text-anchor="middle" font-size="19" font-weight="700" fill="#22303F">CDF: F(x)</text>
+      <text x="380" y="55" text-anchor="middle" font-size="13" fill="#B23A48">slope F′(x)</text>
+    </svg>
+    <svg class="viz-plot viz-cdf2pdf-pdf-svg" viewbox="0 0 500 260" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="PDF curve with a dot whose height equals the CDF's slope at the same x">
+      <path class="viz-cdf2pdf-pdf-curve" d="" fill="none" stroke="#2b6cb0" stroke-width="2.5"></path>
+      <line class="viz-cdf2pdf-guide" x1="0" y1="210" x2="0" y2="0" stroke="#2f855a" stroke-width="1.5" stroke-dasharray="3,3"></line>
+      <circle class="viz-cdf2pdf-pdf-dot" cx="0" cy="0" r="5" fill="#2f855a"></circle>
+      <line x1="60" y1="210" x2="460" y2="210" stroke="#5A6B80" stroke-width="2"></line>
+      <text x="60" y="228" text-anchor="middle" font-size="12" fill="#5A6B80">0</text>
+      <text x="460" y="228" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+      <text x="265" y="24" text-anchor="middle" font-size="19" font-weight="700" fill="#22303F">PDF: f(x)</text>
+      <text x="380" y="55" text-anchor="middle" font-size="13" fill="#2f855a">height f(x)</text>
+    </svg>
+  </div>
+
+  <div class="viz-cdf2pdf-readout">
+    <span>Slope of the CDF at x, F′(x): <strong class="viz-cdf2pdf-slope-readout">0.756</strong></span>
+    <span>Height of the PDF at x, f(x): <strong class="viz-cdf2pdf-height-readout">0.756</strong></span>
+  </div>
+  <div class="viz-cdf2pdf-verbal">Same number, twice — at every x. Differentiation reads the CDF and hands back the PDF.</div>
+</div>
+
+<style>
+.viz-cdf2pdf { max-width: 980px; margin: 0 auto; }
+.reveal .slides .viz.viz-cdf2pdf { max-height: 58vh; }
+.viz-cdf2pdf-controls { display: flex; align-items: center; gap: 12px; flex: 0 0 auto; font-size: 0.55em; }
+.viz-cdf2pdf-controls input[type="range"] { flex: 1; }
+.viz-cdf2pdf-plots { display: flex; flex-direction: row; gap: 18px; flex: 1 1 auto; min-height: 0; }
+.viz-cdf2pdf-plots svg.viz-plot { flex: 1 1 0; }
+.viz-cdf2pdf-readout { flex: 0 0 auto; display: flex; justify-content: space-between; gap: 18px; font-size: 0.55em; color: #22303F; }
+.viz-cdf2pdf-readout strong { color: #B23A48; }
+.viz-cdf2pdf-readout span + span strong { color: #2f855a; }
+.viz-cdf2pdf-verbal { flex: 0 0 auto; font-size: 0.52em; font-style: italic; color: #5A6B80; text-align: center; }
+</style>
+
+<script>
+(function () {
+  var container = document.querySelectorAll('.viz-cdf2pdf');
+  container = container[container.length - 1];
+
+  var slider = container.querySelector('#viz-cdf2pdf-slider');
+  var xReadout = container.querySelector('.viz-cdf2pdf-x-readout');
+  var cdfCurve = container.querySelector('.viz-cdf2pdf-cdf-curve');
+  var pdfCurve = container.querySelector('.viz-cdf2pdf-pdf-curve');
+  var tan = container.querySelector('.viz-cdf2pdf-tan');
+  var cdfDot = container.querySelector('.viz-cdf2pdf-cdf-dot');
+  var guide = container.querySelector('.viz-cdf2pdf-guide');
+  var pdfDot = container.querySelector('.viz-cdf2pdf-pdf-dot');
+  var slopeReadout = container.querySelector('.viz-cdf2pdf-slope-readout');
+  var heightReadout = container.querySelector('.viz-cdf2pdf-height-readout');
+
+  // Day 3's pair: f(x) = 12 x^2 (1-x), F(x) = 4x^3 - 3x^4, and F'(x) = f(x).
+  function xPix(s) { return 60 + 400 * s; }
+  function pdfVal(s) { return 12 * s * s * (1 - s); }
+  function cdfVal(s) { return 4 * Math.pow(s, 3) - 3 * Math.pow(s, 4); }
+  function pdfYPix(v) { return 210 - 90 * v; }
+  function cdfYPix(v) { return 210 - 180 * v; }
+
+  var dp = '', dc = '';
+  for (var i = 0; i <= 100; i++) {
+    var s = i / 100;
+    dp += (i === 0 ? 'M' : 'L') + xPix(s).toFixed(1) + ',' + pdfYPix(pdfVal(s)).toFixed(1);
+    dc += (i === 0 ? 'M' : 'L') + xPix(s).toFixed(1) + ',' + cdfYPix(cdfVal(s)).toFixed(1);
+  }
+  pdfCurve.setAttribute('d', dp);
+  cdfCurve.setAttribute('d', dc);
+
+  function update() {
+    var s = Number(slider.value);
+    xReadout.textContent = s.toFixed(2);
+
+    var f = pdfVal(s);
+    var px = xPix(s);
+    var cy = cdfYPix(cdfVal(s));
+    var py = pdfYPix(f);
+
+    // Tangent segment on the CDF: data slope f becomes f * 180/400 in pixels.
+    var mPix = f * 180 / 400;
+    var dx = 45;
+    tan.setAttribute('x1', px - dx); tan.setAttribute('y1', cy + mPix * dx);
+    tan.setAttribute('x2', px + dx); tan.setAttribute('y2', cy - mPix * dx);
+    cdfDot.setAttribute('cx', px); cdfDot.setAttribute('cy', cy);
+
+    guide.setAttribute('x1', px); guide.setAttribute('x2', px); guide.setAttribute('y2', py);
+    pdfDot.setAttribute('cx', px); pdfDot.setAttribute('cy', py);
+
+    slopeReadout.textContent = f.toFixed(3);
+    heightReadout.textContent = f.toFixed(3);
+  }
+
+  slider.addEventListener('input', update);
+  update();
+})();
+</script>
+</section>
+<section id="what-a-derivative-is" class="slide level2 smaller">
+<h2>What a Derivative Is</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(f'(x) = \dfrac{dy}{dx} = \displaystyle\lim_{h \to 0}\, \frac{f(x+h) - f(x)}{h}\)</span> — the limit of the secant slope.</li>
+<li class="fragment">Read it as the <strong>instantaneous rate of change</strong> of <span class="math inline">\(f\)</span>: the slope of the curve at the point <span class="math inline">\(x\)</span>.</li>
+<li class="fragment"><span class="math inline">\(f'\)</span> is itself a function — a slope at every <span class="math inline">\(x\)</span>.</li>
+</ul>
+</section>
+<section id="quick-drill-reading-dfracddx-13" class="slide level2 smaller">
+<h2>Quick Drill: Reading <span class="math inline">\(\dfrac{d}{dx}\)</span> (1/3)</h2>
+<div style="font-size:0.8em;">
+<ul>
+<li class="fragment">Is <span class="math inline">\(f'(3)\)</span> a number or a function? What about <span class="math inline">\(f'\)</span>?
+<ul>
+<li class="fragment"><strong>Answer:</strong> <span class="math inline">\(f'(3)\)</span> is a single number — the slope of <span class="math inline">\(f\)</span> right at <span class="math inline">\(x=3\)</span>. <span class="math inline">\(f'\)</span> is a whole function: a slope at every <span class="math inline">\(x\)</span>. (Same split as <span class="math inline">\(\int_1^3 f\,dx\)</span> vs.&nbsp;<span class="math inline">\(\int f\,dx\)</span>.)</li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(f'(x)\)</span> and <span class="math inline">\(\dfrac{dy}{dx}\)</span> — same thing or different things?
+<ul>
+<li class="fragment"><strong>Answer:</strong> the same object, two notations: Lagrange’s <span class="math inline">\(f'(x)\)</span> and Leibniz’s <span class="math inline">\(\frac{dy}{dx}\)</span> (with <span class="math inline">\(y = f(x)\)</span>). Both say: how much <span class="math inline">\(y\)</span> moves per tiny nudge of <span class="math inline">\(x\)</span> — a first difference with the gap shrunk to zero.</li>
+<li class="fragment">You’ll meet both in the wild — papers write <span class="math inline">\(\frac{\partial}{\partial x}\)</span>-style Leibniz for clarity about <em>what varies</em>, <span class="math inline">\(f'\)</span> for brevity.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="quick-drill-reading-dfracddx-23" class="slide level2 smaller">
+<h2>Quick Drill: Reading <span class="math inline">\(\dfrac{d}{dx}\)</span> (2/3)</h2>
+<div style="display:flex; justify-content:center; margin: 0;">
+<svg width="390" height="145" viewbox="0 0 470 175" xmlns="http://www.w3.org/2000/svg">
+  <path d="M40,160 L79,153.3 L118,136.2 L157,113.1 L196,88.6 L235,67 L274,52.9 L300,49.8 L332.5,55.4 L371.5,79.3 L391,99.7 L410.5,126.4 L430,160" fill="none" stroke="#2b6cb0" stroke-width="2.5" stroke-linejoin="round"></path>
+  <text x="36" y="24" font-size="13" font-style="italic" fill="#22303F">f(x)</text>
+  <line x1="132" y1="128.8" x2="182" y2="97.4" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="4,3"></line>
+  <line x1="275" y1="49.8" x2="325" y2="49.8" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="4,3"></line>
+  <line x1="373" y1="78.1" x2="409" y2="121.3" stroke="#5A6B80" stroke-width="1.5" stroke-dasharray="4,3"></line>
+  <circle cx="157" cy="113.1" r="4.5" fill="#2b6cb0"></circle>
+  <circle cx="300" cy="49.8" r="4.5" fill="#2b6cb0"></circle>
+  <circle cx="391" cy="99.7" r="4.5" fill="#2b6cb0"></circle>
+  <text x="150" y="100" text-anchor="middle" font-size="13" font-weight="700" fill="#22303F">A</text>
+  <text x="300" y="36" text-anchor="middle" font-size="13" font-weight="700" fill="#22303F">B</text>
+  <text x="404" y="92" text-anchor="middle" font-size="13" font-weight="700" fill="#22303F">C</text>
+  <line x1="30" y1="160" x2="445" y2="160" stroke="#5A6B80" stroke-width="2"></line>
+  <text x="440" y="173" text-anchor="end" font-size="12" font-style="italic" fill="#5A6B80">x</text>
+</svg>
+</div>
+<div style="font-size:0.7em;">
+<ul>
+<li class="fragment">At which point is <span class="math inline">\(f'(x) = \dfrac{dy}{dx} = 0\)</span>?
+<ul>
+<li class="fragment"><strong>(a)</strong> A</li>
+<li class="fragment"><strong>(b)</strong> B</li>
+<li class="fragment"><strong>(c)</strong> C</li>
+<li class="fragment"><strong>Answer:</strong> (b) — the tangent at the peak is flat. Hold that thought: “find where the slope is zero” becomes our optimization tool this afternoon.</li>
+</ul></li>
+<li class="fragment">At which point is <span class="math inline">\(f'(x)\)</span> <em>negative</em>?
+<ul>
+<li class="fragment"><strong>(a)</strong> A</li>
+<li class="fragment"><strong>(b)</strong> B</li>
+<li class="fragment"><strong>(c)</strong> C</li>
+<li class="fragment"><strong>Answer:</strong> (c) — the curve is falling there, so the rate of change is negative. At A it’s rising: <span class="math inline">\(f'(x) &gt; 0\)</span>.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="quick-drill-reading-dfracddx-33" class="slide level2 smaller">
+<h2>Quick Drill: Reading <span class="math inline">\(\dfrac{d}{dx}\)</span> (3/3)</h2>
+<div style="font-size:0.8em;">
+<ul>
+<li class="fragment">For a continuous RV, <span class="math inline">\(F'(x)\)</span> is…
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(f(x)\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(P(X = x)\)</span></li>
+<li class="fragment"><strong>(c)</strong> the area under <span class="math inline">\(f\)</span> up to <span class="math inline">\(x\)</span></li>
+<li class="fragment"><strong>Answer:</strong> (a) — the slider you just dragged: the CDF’s slope at <span class="math inline">\(x\)</span> is the density. (b) is <span class="math inline">\(0\)</span> for a continuous RV (last drill!); (c) is <span class="math inline">\(F(x)\)</span> itself, not its slope.</li>
+</ul></li>
+<li class="fragment">Where the CDF is at its <em>steepest</em>, the PDF is…
+<ul>
+<li class="fragment"><strong>(a)</strong> at its peak</li>
+<li class="fragment"><strong>(b)</strong> zero</li>
+<li class="fragment"><strong>(c)</strong> equal to <span class="math inline">\(1\)</span></li>
+<li class="fragment"><strong>Answer:</strong> (a) — steepest accumulation = highest density. And where the CDF has gone flat, <span class="math inline">\(f(x) = 0\)</span>: no probability arriving.</li>
+</ul></li>
+</ul>
+</div>
+</section>
+<section id="watch-limits-and-lhôpitals-rule" class="slide level2 smaller">
+<h2>Watch: Limits and L’Hôpital’s Rule</h2>
+<p><em>3Blue1Brown, Essence of Calculus Chapter 7 — cued to L’Hôpital’s rule, the standard tool for the <span class="math inline">\(\frac{0}{0}\)</span> limits we’ve been reading; scrub back to the start for the limit ideas we just built.</em></p>
+<div style="display:flex; justify-content:center; margin: 8px 0;">
+<iframe width="720" height="405" src="https://www.youtube.com/embed/kfF40MiS7zA?start=814" title="Limits, L'Hôpital's rule, and epsilon delta definitions — 3Blue1Brown" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen=""></iframe>
+</div>
+</section>
+<section id="trivia-pebbles-and-a-stretched-s" class="slide level2 smaller">
+<h2>Trivia: Pebbles and a Stretched S</h2>
+<ul>
+<li class="fragment"><strong>“Calculus” is Latin for “small pebble”</strong> — the counting stones of a Roman abacus. Medicine still uses the old sense: kidney stones are <em>renal calculi</em>.
+<ul>
+<li class="fragment">Newton called his version “the method of fluxions”; Leibniz’s names — <em>calculus differentialis</em> and <em>calculus integralis</em> — are the ones that stuck.</li>
+</ul></li>
+<li class="fragment"><strong>The <span class="math inline">\(\int\)</span> is a stretched S.</strong> Leibniz introduced it in a 1675 manuscript by elongating the long s (ſ) of Latin <em>summa</em> — “sum.”
+<ul>
+<li class="fragment">The notation itself remembers what we built this morning: an integral <em>is</em> a sum of thin strips.</li>
+</ul></li>
+<li class="fragment">Sources: <a href="https://en.wikipedia.org/wiki/History_of_calculus">History of calculus</a> · <a href="https://en.wikipedia.org/wiki/Integral_symbol">Integral symbol</a></li>
+</ul>
+</section>
+<section id="references" class="slide level2 smaller">
+<h2>References</h2>
+<ul>
+<li class="fragment">Paul’s Online Math Notes: <a href="https://tutorial.math.lamar.edu/Classes/CalcI/AreaProblem.aspx">Area Problem</a>, <a href="https://tutorial.math.lamar.edu/Classes/CalcI/IntegralsIntro.aspx">Integrals</a>, <a href="https://tutorial.math.lamar.edu/Classes/CalcI/DerivativesIntro.aspx">Derivatives</a>, <a href="https://tutorial.math.lamar.edu/Classes/CalcI/Optimization.aspx">Optimization</a></li>
+<li class="fragment"><strong>IQSS Prefresher — Limits</strong> (Harvard IQSS), for sequences, convergence, and continuity: <a href="https://iqss.github.io/prefresher/03_limits.html">https://iqss.github.io/prefresher/03_limits.html</a></li>
+<li class="fragment"><strong>IQSS Prefresher — Calculus</strong> (Harvard IQSS), for the derivative definition and rules: <a href="https://iqss.github.io/prefresher/04_calculus.html">https://iqss.github.io/prefresher/04_calculus.html</a></li>
+<li class="fragment"><strong>IQSS Prefresher — Probability</strong> (Harvard IQSS), for the PDF/CDF continuity with Day 3: <a href="https://iqss.github.io/prefresher/06_probability.html">https://iqss.github.io/prefresher/06_probability.html</a></li>
+<li class="fragment"><strong>3Blue1Brown</strong> — visual companions to today: <a href="https://www.youtube.com/watch?v=ZA4JkHKZM50">But what is a probability density function?</a>, <a href="https://www.youtube.com/watch?v=kfF40MiS7zA">Limits, L’Hôpital’s rule, and epsilon delta definitions</a>, and the full <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDMsr9K-rj53DwVRMYO3t5Yr">Essence of Calculus</a> series.</li>
+</ul>
+</section>
+<section id="section" class="slide level2 center">
+<h2></h2>
+<p><strong>Programming lecture:</strong> <a href="../chapters/03-calculus/programming.html">Webpage Chapter</a></p>
+<p><strong>Back to:</strong> <a href="../index.html">Math Camp 2026 website</a></p>
+
+</section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Math and Programming Camp, Dept. of Government, Georgetown University</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="04-calculus_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="04-calculus_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="04-calculus_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="04-calculus_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="04-calculus_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="04-calculus_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="04-calculus_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="04-calculus_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="04-calculus_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="04-calculus_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="04-calculus_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>
