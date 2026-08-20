@@ -32,7 +32,8 @@ Keep the two in sync when editing a session's content: the slide bullets live in
 ## Build/render commands
 
 - `quarto render` — renders the book (all sessions' `index.qmd`/`slides.qmd`/`programming.qmd`) to `docs/` (gitignored, only produced locally or in CI).
-- `quarto render slides` — renders the standalone `revealjs` decks to `docs/slides/` (run from repo root; `slides/_quarto.yml` sets `output-dir: ../docs/slides`). **Render the book after this** (or re-render both) since each session's `slides.qmd` sub-chapter iframes the standalone deck — the iframe just needs the target file to exist at render time, order doesn't otherwise matter, but do render both before checking links.
+- `quarto render slides` — renders the standalone `revealjs` decks to `docs/slides/` (run from repo root; `slides/_quarto.yml` sets `output-dir: ../docs/slides`).
+- **Order matters when rebuilding both: book first, slides second** — `quarto render` cleans the whole `docs/` output directory, `docs/slides/` included, so rendering the slides first silently deletes them and leaves every session's `slides.qmd` iframe pointing at a missing file. Run `quarto render && quarto render slides`, and check `ls docs/slides/*.html` before following links. `.github/workflows/publish.yml` already runs them in this order.
 - `quarto preview` — live-reloading local preview of the book. Run `quarto preview` from inside `slides/` to preview the standalone decks.
 - `quarto render chapters/02-probability/programming.qmd` — render a single sub-chapter.
 - Both `quarto render` and `quarto render slides` must succeed before opening a PR — this is enforced implicitly since `.github/workflows/publish.yml` runs both on every push to `main`.
