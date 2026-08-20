@@ -24,7 +24,7 @@
     "href": "index.html#sessions",
     "title": "Math and Programming Camp 2026",
     "section": "Sessions",
-    "text": "Sessions\nThis camp runs Monday, August 17 to Friday, August 21, 2026, ahead of the start of the Political Science PhD program. Each day pairs a math session with a hands-on R programming session. No prior programming experience is assumed.\n\nDay 1 — Talking in Mathematics / Setup\nMath: theory, concept, measure, variable, and hypothesis; sets and set notation (unions, intersections, subsets, sample spaces); functions (domain, codomain, range); summation and product notation; exponents, logarithms, and roots; solving equations and finding roots.\nProgramming — Setup: setting up R, RStudio, Zotero, and GitHub; basic introduction to R and RStudio; basic practices (commenting, code chunks).\nSlides  |  Programming Lecture\n\n\nDay 2 — Probability / Basics\nMath: basic probability; compound probability; random variables and expectation algebra; conditional expectation and the type-shift (\\(E[Y|X=x]\\) vs. \\(E[Y|X]\\)).\nProgramming — Basics: why programming; R basics; objects, data types, and data structures (vectors, matrices, lists); exercise on a real replication dataset.\nSlides  |  Programming Lecture\n\n\nDay 3 — Uncertainty Extended and Expected / Calculus / Exploration\nDay 3 runs two math sessions. Math (Session 1 — Uncertainty Extended and Expected): combinatorics; random variables; expectation algebra; conditional expectation and the type-shift (\\(E[Y|X=x]\\) vs. \\(E[Y|X]\\)). Math (Session 2 — Calculus): limits; differentiation and optimization (first-order conditions); integration basics; area under the curve. Programming — Exploration: data structures continued (factors and data frames); conditionals in base R; descriptive statistics and aggregation; exercise exploring summary statistics of the sample dataset.\nSlides  |  Programming Lecture\n\n\nDay 4 — Linear Algebra / Mission\nMath: matrix readings; transformations; sampling distributions; basic derivations.\nProgramming — Mission: housekeeping (working directories, importing/exporting datasets, packages, YAML, code chunks); data wrangling with dplyr and tidyr; grammar of graphics with ggplot; why functions.\nSlides  |  Programming Lecture\n\n\nDay 5 — Intro to Advanced Topics / AI\nMath: sampling distributions; the law of large numbers and central limit theorem, by demonstration; frequentist vs. Bayesian inference; causality and causal inference; the road ahead.\nProgramming — AI: coding with AI.\nSlides  |  Programming Lecture\nOpen Discussion and Q&A:\nProf. Mark Richardson\nMethods’ Coordinator\nDepartment of Government",
+    "text": "Sessions\nThis camp runs Monday, August 17 to Friday, August 21, 2026, ahead of the start of the Political Science PhD program. Each day pairs a math session with a hands-on R programming session. No prior programming experience is assumed.\n\nDay 1 — Talking in Mathematics / Setup\nMath: theory, concept, measure, variable, and hypothesis; sets and set notation (unions, intersections, subsets, sample spaces); functions (domain, codomain, range); summation and product notation; exponents, logarithms, and roots; solving equations and finding roots.\nProgramming — Setup: setting up R, RStudio, Zotero, and GitHub; basic introduction to R and RStudio; basic practices (commenting, code chunks).\nSlides  |  Programming Lecture\n\n\nDay 2 — Probability / Basics\nMath: basic probability; compound probability; random variables and expectation algebra; conditional expectation and the type-shift (\\(E[Y|X=x]\\) vs. \\(E[Y|X]\\)).\nProgramming — Basics: why programming; R basics; objects, data types, and data structures (vectors, matrices, lists); exercise on a real replication dataset.\nSlides  |  Programming Lecture\n\n\nDay 3 — Uncertainty Extended and Expected / Exploration\nMath: combinatorics; random variables; expectation algebra; conditional expectation and the type-shift (\\(E[Y|X=x]\\) vs. \\(E[Y|X]\\)); PDFs and CDFs for continuous random variables. Programming — Exploration: data structures continued (factors and data frames); conditionals in base R; descriptive statistics and aggregation; exercise exploring summary statistics of the sample dataset.\nSlides  |  Programming Lecture\n\n\nDay 4 — Calculus / Mission\nMath: integration and area under the curve; limits; differentiation — learning to read \\(\\int\\), \\(\\lim\\), and \\(\\dfrac{dy}{dx}\\) before computing them, with each tool tied back to Day 3’s PDFs, CDFs, and expectation.\nProgramming — Mission: housekeeping (working directories, importing/exporting datasets, packages, YAML, code chunks); data wrangling with dplyr and tidyr; grammar of graphics with ggplot; why functions.\nSlides  |  Programming Lecture\n\n\nDay 5 — Intro to Advanced Topics / AI\nMath: sampling distributions; the law of large numbers and central limit theorem, by demonstration; frequentist vs. Bayesian inference; causality and causal inference; the road ahead.\nProgramming — AI: coding with AI.\nSlides  |  Programming Lecture\nOpen Discussion and Q&A:\nProf. Mark Richardson\nMethods’ Coordinator\nDepartment of Government",
     "crumbs": [
       "Welcome"
     ]
@@ -212,44 +212,22 @@
   {
     "objectID": "chapters/03-calculus/index.html",
     "href": "chapters/03-calculus/index.html",
-    "title": "Day 3 — Uncertainty Extended and Expected / Calculus",
+    "title": "Day 3 — Uncertainty Extended and Expected",
     "section": "",
-    "text": "Day 3 runs two math sessions. Session 1 — Uncertainty Extended and Expected covers combinatorics, random variables, expectation algebra, and conditional expectation (the type-shift). Session 2 — Calculus covers limits, differentiation and optimization (first-order conditions), and integration basics. Programming continues exploring R’s data structures (factors, data frames), conditionals, and descriptive statistics.\nThis session has two parts:\n\nMath Session — the in-class slideshow.\nProgramming Session — a webpage walking through the same material with runnable R code.",
+    "text": "Day 3 covers combinatorics, random variables, expectation algebra, and conditional expectation (the type-shift), closing with PDFs and CDFs for continuous random variables. Calculus, which used to share this day, is now its own session on Day 4. Programming continues exploring R’s data structures (factors, data frames), conditionals, and descriptive statistics.\nThis session has two parts:\n\nMath Session — the in-class slideshow.\nProgramming Session — a webpage walking through the same material with runnable R code.",
     "crumbs": [
-      "Day 3 — Uncertainty Extended and Expected / Calculus"
+      "Day 3 — Uncertainty Extended and Expected"
     ]
   },
   {
     "objectID": "chapters/03-calculus/slides.html",
     "href": "chapters/03-calculus/slides.html",
-    "title": "Math Sessions",
+    "title": "Math Session",
     "section": "",
-    "text": "Session 1: Uncertainty Extended and Expected\nSlide source: slides/03-uncertainty-extended-and-expected.qmd.",
+    "text": "Note\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/03-uncertainty-extended-and-expected.qmd.\nCalculus has moved to its own session — see Day 4 — Calculus.",
     "crumbs": [
-      "Day 3 — Uncertainty Extended and Expected / Calculus",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Math Sessions</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/03-calculus/slides.html#sec-03-slides-1",
-    "href": "chapters/03-calculus/slides.html#sec-03-slides-1",
-    "title": "Math Sessions",
-    "section": "",
-    "text": "Note\n\n\n\nOpen the slides full-screen",
-    "crumbs": [
-      "Day 3 — Uncertainty Extended and Expected / Calculus",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Math Sessions</span>"
-    ]
-  },
-  {
-    "objectID": "chapters/03-calculus/slides.html#sec-03-slides-2",
-    "href": "chapters/03-calculus/slides.html#sec-03-slides-2",
-    "title": "Math Sessions",
-    "section": "Session 2: Calculus",
-    "text": "Session 2: Calculus\n\n\n\n\n\n\nNote\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/03-calculus.qmd.",
-    "crumbs": [
-      "Day 3 — Uncertainty Extended and Expected / Calculus",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Math Sessions</span>"
+      "Day 3 — Uncertainty Extended and Expected",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Math Session</span>"
     ]
   },
   {
@@ -259,7 +237,7 @@
     "section": "",
     "text": "Data Structures (continued)",
     "crumbs": [
-      "Day 3 — Uncertainty Extended and Expected / Calculus",
+      "Day 3 — Uncertainty Extended and Expected",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
@@ -270,7 +248,7 @@
     "section": "Conditionals in Base R",
     "text": "Conditionals in Base R\nConditional statements let your code make decisions.\n\nComparison operators (what they do)\n\n==, !=: test equality / inequality (return TRUE/FALSE).\n&gt;, &gt;=, &lt;, &lt;=: numeric comparisons.\n&, |: logic operators\n!: logical negation.\n\n\n\nCode\nx &lt;- 10\ny &lt;- 20\n\nx == y     # FALSE\n\n\n[1] FALSE\n\n\nCode\nx != y     # TRUE\n\n\n[1] TRUE\n\n\nCode\nx &gt; 0      # TRUE\n\n\n[1] TRUE\n\n\nCode\nx &gt;= 10    # TRUE\n\n\n[1] TRUE\n\n\nCode\nx &lt; y      # TRUE\n\n\n[1] TRUE\n\n\nCode\nx &lt;= y     # TRUE\n\n\n[1] TRUE\n\n\n\n\nif\n\nRuns a code block only if the condition is TRUE.\n\n\n\nCode\nif (x &gt; 0) {\n  print(\"x is a positive number\")\n}\n\n\n[1] \"x is a positive number\"\n\n\n\n\nif ... else\n\nChooses one of two paths.\n\n```{r}\nif (x &gt; y) {\n  print(\"x is greater than y\")\n} else {\n  print(\"y is greater than or equal to x\")\n}\n```\n\n\nLaddered else if\n\nChains multiple mutually exclusive tests.\n\n\n\nCode\n# condition 1\nx &lt;- 10\ny &lt;- 20\n# condition 2\nx &lt;- y\n\n# test\nif (x &gt; y) {\n  print(\"x is greater than y\")\n} else if (y &gt; x) {\n  print(\"y is greater than x\")\n} else {\n  print(\"x and y are equal\")\n}\n\n\n[1] \"x and y are equal\"\n\n\n\n\nNested if\n\nScope one decision inside another.\n\n\n\nCode\nx &lt;- 20; y &lt;- 10; z &lt;- -30\n\nif (x &gt; y) {\n  print(\"x is greater than y\") #decision 1 if x&gt;y\n  if (x &gt; z) {                 #decision 2 if x&gt;y\n    print(\"x is greater than y and z\")\n  }\n}\n\n\n[1] \"x is greater than y\"\n[1] \"x is greater than y and z\"\n\n\n\n\nMultiple conditions and &/| `\n\n\nCode\n#one number\nx &lt;- 5\ny &lt;- 3\nz &lt;- 1\n\nx &gt; y & x &gt; z\n\n\n[1] TRUE\n\n\nCode\n#Vectors\n\nx &lt;- c(10, 50, 30)\ny &lt;- c(6, 40, 15)\nz &lt;- c(12, 35, 40)\n\nx &gt; y \n\n\n[1] TRUE TRUE TRUE\n\n\nCode\ny &gt; z\n\n\n[1] FALSE  TRUE FALSE\n\n\nCode\nx &gt; y & y &gt; z\n\n\n[1] FALSE  TRUE FALSE",
     "crumbs": [
-      "Day 3 — Uncertainty Extended and Expected / Calculus",
+      "Day 3 — Uncertainty Extended and Expected",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
@@ -281,237 +259,237 @@
     "section": "Descriptive Statistics & Aggregation (Base R)",
     "text": "Descriptive Statistics & Aggregation (Base R)\nSummarize the mpg dataset to understand central tendency, spread, and relationships.\n\nCentral tendency\n\nmean(x): arithmetic average (sensitive to outliers).\nmedian(x): middle value (robust to outliers).\n\n\n\nCode\n# Install if needed (run once):\n#install.packages(\"ggplot2\")\nlibrary(ggplot2)   # loads ggplot2, dplyr, tidyr, readr, tibble, stringr, forcats, purrr\n\n\n\n\nCode\nsummary(mpg)\n\n\n manufacturer          model               displ            year     \n Length:234         Length:234         Min.   :1.600   Min.   :1999  \n Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999  \n Mode  :character   Mode  :character   Median :3.300   Median :2004  \n                                       Mean   :3.472   Mean   :2004  \n                                       3rd Qu.:4.600   3rd Qu.:2008  \n                                       Max.   :7.000   Max.   :2008  \n      cyl           trans               drv                 cty       \n Min.   :4.000   Length:234         Length:234         Min.   : 9.00  \n 1st Qu.:4.000   Class :character   Class :character   1st Qu.:14.00  \n Median :6.000   Mode  :character   Mode  :character   Median :17.00  \n Mean   :5.889                                         Mean   :16.86  \n 3rd Qu.:8.000                                         3rd Qu.:19.00  \n Max.   :8.000                                         Max.   :35.00  \n      hwy             fl               class          \n Min.   :12.00   Length:234         Length:234        \n 1st Qu.:18.00   Class :character   Class :character  \n Median :24.00   Mode  :character   Mode  :character  \n Mean   :23.44                                        \n 3rd Qu.:27.00                                        \n Max.   :44.00                                        \n\n\nCode\nmean(mpg$displ)\n\n\n[1] 3.471795\n\n\nCode\nmedian(mpg$displ)\n\n\n[1] 3.3\n\n\nCode\n# Note: base R's mode() returns the storage mode, not the statistical mode.\nmode(mpg$displ)\n\n\n[1] \"numeric\"\n\n\n\n\nSpread & quantiles\n\nvar(x), sd(x): variance and SD.\nquantile(x, p): p-th quantile (e.g., 0.25 = Q1).\nIQR(x): Q3 - Q1.\nrange(x), min(x), max(x).\n\n\n\nCode\nvar(mpg$cty)\n\n\n[1] 18.11307\n\n\nCode\nsd(mpg$cty)\n\n\n[1] 4.255946\n\n\nCode\nquantile(mpg$cty, c(0.25, 0.75))\n\n\n25% 75% \n 14  19 \n\n\nCode\nIQR(mpg$cty)\n\n\n[1] 5\n\n\nCode\nmin(mpg$cty); max(mpg$cty)\n\n\n[1] 9\n\n\n[1] 35\n\n\nCode\nrange(mpg$cty)\n\n\n[1]  9 35\n\n\n\n\nCategorical summaries\n\ntable(x): counts by category.\nunique(x): distinct values.\n\n\n\nCode\ntable(mpg$fl)\n\n\n\n  c   d   e   p   r \n  1   5   8  52 168 \n\n\nCode\nunique(mpg$cyl)\n\n\n[1] 4 6 8 5\n\n\n\n\nGroup-wise means (manual vs. aggregate())\n\naggregate(y ~ g, FUN, data): summary of y by groups g.\nsubset = lets you compute summaries on filtered rows.\n\n\n\nCode\n# Manual subsetting (repetitive)\nmean(mpg$cty[mpg$cyl == 4])\n\n\n[1] 21.01235\n\n\nCode\nmean(mpg$cty[mpg$cyl == 6])\n\n\n[1] 16.21519\n\n\nCode\nmean(mpg$cty[mpg$cyl == 8])\n\n\n[1] 12.57143\n\n\nCode\n# Using aggregate(): dv ~ iv\naggregate(cty ~ cyl, FUN = mean, data = mpg)\n\n\n  cyl      cty\n1   4 21.01235\n2   5 20.50000\n3   6 16.21519\n4   8 12.57143\n\n\nCode\n# Subset argument\naggregate(cty ~ cyl,\n          FUN = mean,\n          subset = cty &lt; 15,\n          data = mpg)\n\n\n  cyl      cty\n1   6 13.50000\n2   8 12.05085\n\n\n\n\nQuick summaries (summary(), by())\n\nsummary(df) gives per-column summaries.\nby(df, group, summary) applies summary() within each group.\n\n\n\nCode\nsummary(mpg)\n\n\n manufacturer          model               displ            year     \n Length:234         Length:234         Min.   :1.600   Min.   :1999  \n Class :character   Class :character   1st Qu.:2.400   1st Qu.:1999  \n Mode  :character   Mode  :character   Median :3.300   Median :2004  \n                                       Mean   :3.472   Mean   :2004  \n                                       3rd Qu.:4.600   3rd Qu.:2008  \n                                       Max.   :7.000   Max.   :2008  \n      cyl           trans               drv                 cty       \n Min.   :4.000   Length:234         Length:234         Min.   : 9.00  \n 1st Qu.:4.000   Class :character   Class :character   1st Qu.:14.00  \n Median :6.000   Mode  :character   Mode  :character   Median :17.00  \n Mean   :5.889                                         Mean   :16.86  \n 3rd Qu.:8.000                                         3rd Qu.:19.00  \n Max.   :8.000                                         Max.   :35.00  \n      hwy             fl               class          \n Min.   :12.00   Length:234         Length:234        \n 1st Qu.:18.00   Class :character   Class :character  \n Median :24.00   Mode  :character   Mode  :character  \n Mean   :23.44                                        \n 3rd Qu.:27.00                                        \n Max.   :44.00                                        \n\n\nCode\nsummary(mpg$displ)\n\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n  1.600   2.400   3.300   3.472   4.600   7.000 \n\n\nCode\nby(mpg, mpg$cyl, summary)\n\n\nmpg$cyl: 4\n manufacturer          model               displ            year     \n Length:81          Length:81          Min.   :1.600   Min.   :1999  \n Class :character   Class :character   1st Qu.:1.900   1st Qu.:1999  \n Mode  :character   Mode  :character   Median :2.000   Median :1999  \n                                       Mean   :2.146   Mean   :2003  \n                                       3rd Qu.:2.400   3rd Qu.:2008  \n                                       Max.   :2.700   Max.   :2008  \n      cyl       trans               drv                 cty       \n Min.   :4   Length:81          Length:81          Min.   :15.00  \n 1st Qu.:4   Class :character   Class :character   1st Qu.:19.00  \n Median :4   Mode  :character   Mode  :character   Median :21.00  \n Mean   :4                                         Mean   :21.01  \n 3rd Qu.:4                                         3rd Qu.:22.00  \n Max.   :4                                         Max.   :35.00  \n      hwy            fl               class          \n Min.   :20.0   Length:81          Length:81         \n 1st Qu.:26.0   Class :character   Class :character  \n Median :29.0   Mode  :character   Mode  :character  \n Mean   :28.8                                        \n 3rd Qu.:31.0                                        \n Max.   :44.0                                        \n------------------------------------------------------------ \nmpg$cyl: 5\n manufacturer          model               displ          year           cyl   \n Length:4           Length:4           Min.   :2.5   Min.   :2008   Min.   :5  \n Class :character   Class :character   1st Qu.:2.5   1st Qu.:2008   1st Qu.:5  \n Mode  :character   Mode  :character   Median :2.5   Median :2008   Median :5  \n                                       Mean   :2.5   Mean   :2008   Mean   :5  \n                                       3rd Qu.:2.5   3rd Qu.:2008   3rd Qu.:5  \n                                       Max.   :2.5   Max.   :2008   Max.   :5  \n    trans               drv                 cty            hwy       \n Length:4           Length:4           Min.   :20.0   Min.   :28.00  \n Class :character   Class :character   1st Qu.:20.0   1st Qu.:28.75  \n Mode  :character   Mode  :character   Median :20.5   Median :29.00  \n                                       Mean   :20.5   Mean   :28.75  \n                                       3rd Qu.:21.0   3rd Qu.:29.00  \n                                       Max.   :21.0   Max.   :29.00  \n      fl               class          \n Length:4           Length:4          \n Class :character   Class :character  \n Mode  :character   Mode  :character  \n                                      \n                                      \n                                      \n------------------------------------------------------------ \nmpg$cyl: 6\n manufacturer          model               displ            year     \n Length:79          Length:79          Min.   :2.500   Min.   :1999  \n Class :character   Class :character   1st Qu.:3.000   1st Qu.:1999  \n Mode  :character   Mode  :character   Median :3.400   Median :1999  \n                                       Mean   :3.409   Mean   :2003  \n                                       3rd Qu.:3.800   3rd Qu.:2008  \n                                       Max.   :4.200   Max.   :2008  \n      cyl       trans               drv                 cty       \n Min.   :6   Length:79          Length:79          Min.   :11.00  \n 1st Qu.:6   Class :character   Class :character   1st Qu.:15.00  \n Median :6   Mode  :character   Mode  :character   Median :16.00  \n Mean   :6                                         Mean   :16.22  \n 3rd Qu.:6                                         3rd Qu.:18.00  \n Max.   :6                                         Max.   :19.00  \n      hwy             fl               class          \n Min.   :17.00   Length:79          Length:79         \n 1st Qu.:19.00   Class :character   Class :character  \n Median :24.00   Mode  :character   Mode  :character  \n Mean   :22.82                                        \n 3rd Qu.:26.00                                        \n Max.   :29.00                                        \n------------------------------------------------------------ \nmpg$cyl: 8\n manufacturer          model               displ            year     \n Length:70          Length:70          Min.   :4.000   Min.   :1999  \n Class :character   Class :character   1st Qu.:4.700   1st Qu.:1999  \n Mode  :character   Mode  :character   Median :5.200   Median :2008  \n                                       Mean   :5.133   Mean   :2005  \n                                       3rd Qu.:5.400   3rd Qu.:2008  \n                                       Max.   :7.000   Max.   :2008  \n      cyl       trans               drv                 cty       \n Min.   :8   Length:70          Length:70          Min.   : 9.00  \n 1st Qu.:8   Class :character   Class :character   1st Qu.:11.00  \n Median :8   Mode  :character   Mode  :character   Median :13.00  \n Mean   :8                                         Mean   :12.57  \n 3rd Qu.:8                                         3rd Qu.:14.00  \n Max.   :8                                         Max.   :16.00  \n      hwy             fl               class          \n Min.   :12.00   Length:70          Length:70         \n 1st Qu.:16.00   Class :character   Class :character  \n Median :17.00   Mode  :character   Mode  :character  \n Mean   :17.63                                        \n 3rd Qu.:19.00                                        \n Max.   :26.00                                        \n\n\n\nExercise 2Code for your reference\n\n\nLet’s explore our sample dataset.\n\nHow can we learn more about countries’ wealth levels (hint: loggdp.e) across regions?\nI cam now curious about the dyads that are involved in military conflicts. Are they more likely dissimilar in foreign policy positions (hint: sscore)? Are they less likely to trade with each other (hint: logflow)?\nWhat other questions you might have for this dataset?\n\n\n\n\nQuestion 1\n\n\nCode\nnew_updated_full &lt;- JPRdata_select[, c(1, 2, 3, 5, 6, 10, 11, 15)] #add the counter party's GDP (log)\n\nnew_US_full &lt;- new_updated_full[new_updated_full$ccode_a==2,]\n\nmean(new_US_full$loggdp.e[new_US_full$region== \"Western Europe\"])\n\n\n[1] NA\n\n\nCode\nmean(new_US_full$loggdp.e[new_US_full$region== \"South Asia\"])\n\n\n[1] NA\n\n\nCode\nmean(new_US_full$loggdp.e[new_US_full$region== \"Sub-Saharan Africa\"], na.rm = TRUE)\n\n\n[1] NA\n\n\n\n\nQuestion 2\n\n\nCode\ntable(JPRdata_select$atopally, JPRdata_select$MID)\n\n\n   \n        0     1\n  0 25396    72\n  1  5515    48\n\n\nCode\nby(JPRdata_select$logflow, JPRdata_select$MID, summary)\n\n\nJPRdata_select$MID: 0\n     Min.   1st Qu.    Median      Mean   3rd Qu.      Max. \n0.000e+00 5.671e-04 4.630e-01 1.698e+00 2.892e+00 1.244e+01 \n------------------------------------------------------------ \nJPRdata_select$MID: 1\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max. \n 0.0000  0.1265  2.0672  2.9773  5.5219 11.6027 \n\n\nCode\nby(JPRdata_select$sscore, JPRdata_select$MID, summary)\n\n\nJPRdata_select$MID: 0\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n-1.0000  0.4180  0.7143  0.6386  0.8984  1.0000    1774 \n------------------------------------------------------------ \nJPRdata_select$MID: 1\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n-0.5526  0.1316  0.5664  0.5085  0.8393  1.0000       6",
     "crumbs": [
-      "Day 3 — Uncertainty Extended and Expected / Calculus",
+      "Day 3 — Uncertainty Extended and Expected",
       "<span class='chapter-number'>6</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/index.html",
-    "href": "chapters/04-linear-algebra/index.html",
-    "title": "Day 4 — Linear Algebra",
+    "objectID": "chapters/04-calculus/index.html",
+    "href": "chapters/04-calculus/index.html",
+    "title": "Day 4 — Calculus / Mission",
     "section": "",
-    "text": "Day 4 — Linear Algebra / Mission. Math covers matrix readings, transformations, sampling distributions, and basic derivations. Programming covers R housekeeping, data wrangling with dplyr and tidyr, and the grammar of graphics with ggplot.\nThis session has two parts:\n\nMath Session — the in-class slideshow.\nProgramming Session — a webpage walking through the same material with runnable R code.",
+    "text": "Math covers integration and area under the curve, limits, and differentiation — first learning to read \\(\\int\\), \\(\\lim\\), and \\(\\dfrac{dy}{dx}\\), then computing them in the order the math builds, with each tool tied back to Day 3’s PDFs, CDFs, and expectation. Programming — Mission — covers housekeeping (working directories, importing and exporting datasets, packages, YAML, code chunks), data wrangling with dplyr and tidyr, and the grammar of graphics with ggplot.\nThis session has two parts:\n\nMath Session — the in-class slideshow.\nProgramming Session — a webpage walking through the same material with runnable R code.",
     "crumbs": [
-      "Day 4 — Linear Algebra"
+      "Day 4 — Calculus / Mission"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/slides.html",
-    "href": "chapters/04-linear-algebra/slides.html",
+    "objectID": "chapters/04-calculus/slides.html",
+    "href": "chapters/04-calculus/slides.html",
     "title": "Math Session",
     "section": "",
-    "text": "Note\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/04-linear-algebra.qmd.",
+    "text": "Note\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/04-calculus.qmd.",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Math Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html",
-    "href": "chapters/04-linear-algebra/programming.html",
+    "objectID": "chapters/04-calculus/programming.html",
+    "href": "chapters/04-calculus/programming.html",
     "title": "Programming Session",
     "section": "",
     "text": "Housekeeping",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#working-directories",
-    "href": "chapters/04-linear-algebra/programming.html#working-directories",
+    "objectID": "chapters/04-calculus/programming.html#working-directories",
+    "href": "chapters/04-calculus/programming.html#working-directories",
     "title": "Programming Session",
     "section": "Working directories",
     "text": "Working directories\nA working directory is sort of the “office” that you operate from. They tell R where to operate from.\nWorking directories are specified using a file path i.e. the address in your computer where your script will be stored, or where your dataset is kept.\n\n\nCode\n# Commands:\ngetwd() # Gets the present directory or pathway where you are operating from\n     \nsetwd(\"&lt;press tab here&gt;\") # Setting new directory as working directory\n\nlist.files()  #list the files in the working directory",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#importing-and-exporting-dataset",
-    "href": "chapters/04-linear-algebra/programming.html#importing-and-exporting-dataset",
+    "objectID": "chapters/04-calculus/programming.html#importing-and-exporting-dataset",
+    "href": "chapters/04-calculus/programming.html#importing-and-exporting-dataset",
     "title": "Programming Session",
     "section": "Importing and Exporting Dataset",
     "text": "Importing and Exporting Dataset\n\n\nCode\nread.csv(\"FileName\") # reads CSV files / press tab inside the quotes\nread_csv(\"Pathname/filename.csv\")  \n\n# The part before :: in the following code refers to the package from where the \n#  function comes from. You will need to load those packages first.\n\nreadxl::read_excel() # read excel files\nreadxl::read_xlsx() # reads excel workbooks\nhaven::read_dta()   # reads stata dta files\n\n# example: \n    \nlibrary(readr)\nJPRdata_select &lt;- readr::read_csv(\"Resources/Dataset/JPRdata_select.csv\")",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#packages",
-    "href": "chapters/04-linear-algebra/programming.html#packages",
+    "objectID": "chapters/04-calculus/programming.html#packages",
+    "href": "chapters/04-calculus/programming.html#packages",
     "title": "Programming Session",
     "section": "Packages",
     "text": "Packages\n“Packages are the fundamental units of reproducible R code. They include reusable R functions, the documentation that describes how to use them, and sample data.” 1\n\n\n\n\n\n\nNote\n\n\n\nOr, in my words, packages are useful, because smart people have figured out efficient ways to do (relatively) basic data operations, and we are standing on their shoudlers so no one needs to reinvent the wheels.\n\n\n\n\nCode\n# Check available packages\nlibrary()\n\n\nYou can install packages from Comprehensive R Archive Network or CRAN which is an online storage of peer-reviewed and documented packages.\nThe command for loading a package is install.package().\n\n\nCode\n# installing package. Eg, tidyverse\n\ninstall.packages(\"dplyr\") # You have to run this once on system\n\nlibrary(dplyr) # Once installed library(&lt;packagename&gt;) command loads all the functions associated with the package in the current session for use",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#summary-importing-common-data-file-types-in-r",
-    "href": "chapters/04-linear-algebra/programming.html#summary-importing-common-data-file-types-in-r",
+    "objectID": "chapters/04-calculus/programming.html#summary-importing-common-data-file-types-in-r",
+    "href": "chapters/04-calculus/programming.html#summary-importing-common-data-file-types-in-r",
     "title": "Programming Session",
     "section": "Summary: Importing Common Data File Types in R",
     "text": "Summary: Importing Common Data File Types in R\n\n\n\n\n\n\n\n\n\nFile type\nTypical extension\nPackage\nCommand\n\n\n\n\nCSV\n.csv\nreadr\nreadr::read_csv(\"file.csv\")\n\n\nExcel\n.xlsx, .xls\nreadxl\nreadxl::read_excel(\"file.xlsx\")\n\n\nStata\n.dta\nhaven\nhaven::read_dta(\"file.dta\")\n\n\nR object\n.rds\nBase R\nreadRDS(\"file.rds\")\n\n\nR workspace/data file\n.RData, .rda\nBase R\nload(\"file.rda\")\n\n\nPlain text / delimited\n.txt, .tsv\nreadr\nreadr::read_tsv(\"file.tsv\")\n\n\n\n\n\n\n\n\n\nNoneData Loading Exercise\n\n\n\n Let’s explore this website and find one article you might want to replicate its findings.\nI did a quick search and the following two articles seem to have a pretty simple set up for replication files:\n\nGlobal Power Index link\nInternational Sanctions Termination Dataset link\n\nLet’s try to load the dataset into your R Studio!\n\n\nCode\nread_csv()\nread_excel() #package readxl()\n\n#install.packages(\"readxl\")\nlibrary(readxl)\ntest &lt;- read_excel(\"../../Resources/Dataset/IST_JPR_Attia_Grauvogel.xlsx\")",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#yaml",
-    "href": "chapters/04-linear-algebra/programming.html#yaml",
+    "objectID": "chapters/04-calculus/programming.html#yaml",
+    "href": "chapters/04-calculus/programming.html#yaml",
     "title": "Programming Session",
     "section": "YAML",
     "text": "YAML\nShort for Yet-Another-Markup-Languge\n“YAML is a human-readable data serialization format that Quarto uses to configure documents and control their behavior. Think of YAML as a set of instructions that tell Quarto how to process and present your document.”\n“Key benefits of YAML: - Simple, readable syntax - Flexible configuration options - Separates content from formatting - Allows consistent styling across documents”2\n\n\n\n\n\n\nNote\n\n\n\nThis is the part we see sandwiched between two --- at the start of .qmd file. Here we define different global settings for the particular document.\n\n\nCurrently, we see\n---\ntitle: \"Untitled\"\nformat: html\n---\nIt can be expanded into one like\n\n\n\n\n\n\n---\ntitle: “Analysis Report” author: “Sherlock Holmes” date: today execute: echo: false # hide code format: html: code-fold: true # # Enable code folding toc-depth: 3 # Specific to this document —\n\n\n\nWe can add many more options here to modify the details to appear at the start of the document. Here’s an example from quarto reference site\n\n\n\n\n\n\n  ---\n  title: \"Toward a Unified Theory of High-Energy Metaphysics: Silly String Theory\"\n  date: 2008-02-29\n  author:\n    - name: Josiah Carberry\n      id: jc\n      orcid: 0000-0002-1825-0097\n      email: josiah@psychoceramics.org\n      affiliation: \n        - name: Brown University\n          city: Providence\n          state: RI\n          url: www.brown.edu\n  abstract: &gt; \n    The characteristic theme of the works of Stone is \n    the bridge between culture and society. ...\n  keywords:\n    - Metaphysics\n    - String Theory\n  license: \"CC BY\"\n  copyright: \n    holder: Josiah Carberry\n    year: 2008\n  citation: \n    container-title: Journal of Psychoceramics\n    volume: 1\n    issue: 1\n    doi: 10.5555/12345678\n  funding: \"The author received no specific funding for this work.\"\n  ---",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#code-chunks",
-    "href": "chapters/04-linear-algebra/programming.html#code-chunks",
+    "objectID": "chapters/04-calculus/programming.html#code-chunks",
+    "href": "chapters/04-calculus/programming.html#code-chunks",
     "title": "Programming Session",
     "section": "Code Chunks",
     "text": "Code Chunks\nRecall, one of the fascinating features about quarto is that you can write code to anlayse data and regular text in the same document.\nR code chunks are surrounded by ```{r} and ```, separating the entire document into chunks.\nAgain, recall, a chunk should be relatively self-contained, and focused around a single task.\n\n\n\n\n\n\nTip\n\n\n\nYou can start a new R code chunk by pressing cmd + option + I or ctrl + alt + I.\nYou can run each code chunk by clicking the Run icon (it looks like a play button at the top of the chunk), or by pressing Cmd/Ctrl + Shift + Enter.\nTry to use the keyboard shortcut more often as it will save you a ton of time later.\n\n\n\nOptions\nYou can customize the presentation of each code chunk (along with the output from each code chunk) by playing around with the code chunk YAML. Code chunk options are included in a special comment at the top of the block (lines at the top prefaced with #| are considered options).\nMore on code chunk options here\n#| eval: true # Do evaluate this chunk\n#| echo: true # Do show this chunk in the final rendered document\n#| output: true # Do show the output / results of this chunk in the rendered document\n\nprint(\"Dont run this code\")\nOptions available for customizing output include:\n\n\n\n\n\n\n\nOption\nDescription\n\n\n\n\neval\nEvaluate the code chunk (if false, just echos the code into the output).\n\n\necho\nInclude the source code in output\n\n\noutput\nInclude the results of executing the code in the output (true, false, or asis to indicate that the output is raw markdown and should not have any of Quarto’s standard enclosing markdown).\n\n\nwarning\nInclude warnings in the output.\n\n\nerror\nInclude errors in the output (note that this implies that errors executing code will not halt processing of the document).\n\n\ninclude\nCatch all for preventing any output (code or results) from being included (e.g. include: false suppresses all output from the code block).\n\n\n\nThe following table summarizes which types of output each option suppresses:3\n\n\n\n\n\n\n\n\n\n\n\n\nOption\nRun code\nShow code\nOutput\nPlots\nMessages\nWarnings\n\n\n\n\neval: false\nX\n\nX\nX\nX\nX\n\n\ninclude: false\n\nX\nX\nX\nX\nX\n\n\necho: false\n\nX\n\n\n\n\n\n\nresults: hide\n\n\nX\n\n\n\n\n\nfig-show: hide\n\n\n\nX\n\n\n\n\nmessage: false\n\n\n\n\nX\n\n\n\nwarning: false\n\n\n\n\n\nX\n\n\n\n\n\n\n\n\n\nNoteHierarchy of YAML settings\n\n\n\nNote that code chunk YAML takes priority over document YAML header, meaning that the options in the code chunk YAML override the default setting laid out earlier in the document YAML header.\n\n\nFor example, you can set echo: true as a global option for the entire document in the document header YAML to show code throughout, but override it in a specific code chunk (echo: false) to hide the code within:\n---\nexecute: \n  echo: true #show code\n  inlcude: false\n---\n#| eval: true # Do evaluate this chunk\n#| echo: false # Do show this chunk in the final rendered document\n#| output: true # Do show the output / results of this chunk in the rendered document\n\n\nInline code\nWe can also embed R code into a Quarto document: directly into the text, with: ```{r} &lt;code&gt; ```.\nFor example: ```{r} (2+2)```.\n\n\nFormatting\n\n\n\n\n\n\nThese are some of the regularly used formatting options in RMarkdown/Quarto Titles and subtitles ————————————————————\n# Title 1\n\n## Title 2\n\n### Title 3\n\n\nText formatting \n------------------------------------------------------------\n\n*italic*  \n\n**bold**   \n\n`code`\n\nLists\n------------------------------------------------------------\n\n* Bulleted list item 1\n* Item 2\n  * Item 2a\n  * Item 2b\n\n1. Item 1\n2. Item 2\n\nLinks and images\n------------------------------------------------------------",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#pipes",
-    "href": "chapters/04-linear-algebra/programming.html#pipes",
+    "objectID": "chapters/04-calculus/programming.html#pipes",
+    "href": "chapters/04-calculus/programming.html#pipes",
     "title": "Programming Session",
     "section": "Pipes",
     "text": "Pipes\n\nCodeResult\n\n\n\n\nCode\n# Without pipe\nhead(arrange(select(mpg, manufacturer, model, hwy), desc(hwy)), 5)\n\n# With pipe (clearer)\nmpg |&gt;\n  select(manufacturer, model, hwy) |&gt;\n  arrange(desc(hwy)) |&gt;\n  head(5)\n\n\n\n\n\n\n# A tibble: 5 × 3\n  manufacturer model        hwy\n  &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;\n1 volkswagen   jetta         44\n2 volkswagen   new beetle    44\n3 volkswagen   new beetle    41\n4 toyota       corolla       37\n5 honda        civic         36\n\n\n# A tibble: 5 × 3\n  manufacturer model        hwy\n  &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;\n1 volkswagen   jetta         44\n2 volkswagen   new beetle    44\n3 volkswagen   new beetle    41\n4 toyota       corolla       37\n5 honda        civic         36",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#select-choose-columns",
-    "href": "chapters/04-linear-algebra/programming.html#select-choose-columns",
+    "objectID": "chapters/04-calculus/programming.html#select-choose-columns",
+    "href": "chapters/04-calculus/programming.html#select-choose-columns",
     "title": "Programming Session",
     "section": "select() (choose columns)",
     "text": "select() (choose columns)\n\nCodeResult\n\n\n\n\nCode\nmpg |&gt;\n  select(manufacturer, model, hwy)\n\nmpg |&gt;\n  select(starts_with(\"d\")) |&gt;\n  head(3)\n\n# Rename while selecting\nmpg |&gt;\n  select(make = manufacturer, model, hwy) |&gt;\n  head(3)\n\n# Move columns around\nmpg |&gt;\n  relocate(hwy, .before = displ) |&gt;\n  head(3)\n\n\n\n\n\n\n# A tibble: 234 × 3\n   manufacturer model        hwy\n   &lt;chr&gt;        &lt;chr&gt;      &lt;int&gt;\n 1 audi         a4            29\n 2 audi         a4            29\n 3 audi         a4            31\n 4 audi         a4            30\n 5 audi         a4            26\n 6 audi         a4            26\n 7 audi         a4            27\n 8 audi         a4 quattro    26\n 9 audi         a4 quattro    25\n10 audi         a4 quattro    28\n# ℹ 224 more rows\n\n\n# A tibble: 3 × 2\n  displ drv  \n  &lt;dbl&gt; &lt;chr&gt;\n1   1.8 f    \n2   1.8 f    \n3   2   f    \n\n\n# A tibble: 3 × 3\n  make  model   hwy\n  &lt;chr&gt; &lt;chr&gt; &lt;int&gt;\n1 audi  a4       29\n2 audi  a4       29\n3 audi  a4       31\n\n\n# A tibble: 3 × 11\n  manufacturer model   hwy displ  year   cyl trans      drv     cty fl    class \n  &lt;chr&gt;        &lt;chr&gt; &lt;int&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; \n1 audi         a4       29   1.8  1999     4 auto(l5)   f        18 p     compa…\n2 audi         a4       29   1.8  1999     4 manual(m5) f        21 p     compa…\n3 audi         a4       31   2    2008     4 manual(m6) f        20 p     compa…",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#filter-keep-rows",
-    "href": "chapters/04-linear-algebra/programming.html#filter-keep-rows",
+    "objectID": "chapters/04-calculus/programming.html#filter-keep-rows",
+    "href": "chapters/04-calculus/programming.html#filter-keep-rows",
     "title": "Programming Session",
     "section": "filter() (keep rows)",
     "text": "filter() (keep rows)\n\nCodeResult\n\n\n\n\nCode\nmpg |&gt;\n  filter(class == \"suv\", hwy &gt;= 20) |&gt;\n  head(5)\n\nmpg |&gt;\n  filter(manufacturer %in% c(\"toyota\", \"honda\")) |&gt;\n  count(manufacturer)\n\n\n\n\n\n\n# A tibble: 5 × 11\n  manufacturer model       displ  year   cyl trans drv     cty   hwy fl    class\n  &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n1 chevrolet    c1500 subu…   5.3  2008     8 auto… r        14    20 r     suv  \n2 chevrolet    c1500 subu…   5.3  2008     8 auto… r        14    20 r     suv  \n3 jeep         grand cher…   3    2008     6 auto… 4        17    22 d     suv  \n4 jeep         grand cher…   4    1999     6 auto… 4        15    20 r     suv  \n5 nissan       pathfinder…   4    2008     6 auto… 4        14    20 p     suv  \n\n\n# A tibble: 2 × 2\n  manufacturer     n\n  &lt;chr&gt;        &lt;int&gt;\n1 honda            9\n2 toyota          34",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#mutate-createmodify-columns",
-    "href": "chapters/04-linear-algebra/programming.html#mutate-createmodify-columns",
+    "objectID": "chapters/04-calculus/programming.html#mutate-createmodify-columns",
+    "href": "chapters/04-calculus/programming.html#mutate-createmodify-columns",
     "title": "Programming Session",
     "section": "mutate() (create/modify columns)",
     "text": "mutate() (create/modify columns)\n\nCodeResult\n\n\n\n\nCode\nmpg |&gt;\n  mutate(\n    hwy_kmpl = hwy * 0.425144,           # convert mpg to km/L (approx)\n    efficiency = case_when(\n      hwy &gt;= 30 ~ \"high\",\n      hwy &gt;= 20 ~ \"medium\",\n      TRUE ~ \"low\"\n    )\n  ) |&gt;\n  select(manufacturer, model, hwy, hwy_kmpl, efficiency) |&gt;\n  head(6)\n\n\n\n\n\n\n# A tibble: 6 × 5\n  manufacturer model   hwy hwy_kmpl efficiency\n  &lt;chr&gt;        &lt;chr&gt; &lt;int&gt;    &lt;dbl&gt; &lt;chr&gt;     \n1 audi         a4       29     12.3 medium    \n2 audi         a4       29     12.3 medium    \n3 audi         a4       31     13.2 high      \n4 audi         a4       30     12.8 high      \n5 audi         a4       26     11.1 medium    \n6 audi         a4       26     11.1 medium",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#arrange-sort-rows",
-    "href": "chapters/04-linear-algebra/programming.html#arrange-sort-rows",
+    "objectID": "chapters/04-calculus/programming.html#arrange-sort-rows",
+    "href": "chapters/04-calculus/programming.html#arrange-sort-rows",
     "title": "Programming Session",
     "section": "arrange() (sort rows)",
     "text": "arrange() (sort rows)\n\nCodeResult\n\n\n\n\nCode\nmpg |&gt;\n  arrange(manufacturer, desc(hwy)) |&gt;\n  head(6)\n\n\n\n\n\n\n# A tibble: 6 × 11\n  manufacturer model      displ  year   cyl trans  drv     cty   hwy fl    class\n  &lt;chr&gt;        &lt;chr&gt;      &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;  &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n1 audi         a4           2    2008     4 manua… f        20    31 p     comp…\n2 audi         a4           2    2008     4 auto(… f        21    30 p     comp…\n3 audi         a4           1.8  1999     4 auto(… f        18    29 p     comp…\n4 audi         a4           1.8  1999     4 manua… f        21    29 p     comp…\n5 audi         a4 quattro   2    2008     4 manua… 4        20    28 p     comp…\n6 audi         a4           3.1  2008     6 auto(… f        18    27 p     comp…",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#group_by-summarise-grouped-summaries",
-    "href": "chapters/04-linear-algebra/programming.html#group_by-summarise-grouped-summaries",
+    "objectID": "chapters/04-calculus/programming.html#group_by-summarise-grouped-summaries",
+    "href": "chapters/04-calculus/programming.html#group_by-summarise-grouped-summaries",
     "title": "Programming Session",
     "section": "group_by() + summarise() (grouped summaries)",
     "text": "group_by() + summarise() (grouped summaries)\n\nCodeResult\n\n\n\n\nCode\nmpg |&gt;\n  group_by(cyl) |&gt;\n  summarise(\n    mean_cty = mean(cty),\n    median_hwy = median(hwy),\n    n = dplyr::n()\n  )\n\nmpg |&gt;\n  group_by(drv) |&gt;\n  summarise(across(c(cty, hwy), list(mean = mean, sd = sd)))\n\n\n\n\n\n\n# A tibble: 4 × 4\n    cyl mean_cty median_hwy     n\n  &lt;int&gt;    &lt;dbl&gt;      &lt;dbl&gt; &lt;int&gt;\n1     4     21.0         29    81\n2     5     20.5         29     4\n3     6     16.2         24    79\n4     8     12.6         17    70\n\n\n# A tibble: 3 × 5\n  drv   cty_mean cty_sd hwy_mean hwy_sd\n  &lt;chr&gt;    &lt;dbl&gt;  &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt;\n1 4         14.3   2.87     19.2   4.08\n2 f         20.0   3.63     28.2   4.21\n3 r         14.1   2.22     21     3.66",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#distinct-slice-sampling",
-    "href": "chapters/04-linear-algebra/programming.html#distinct-slice-sampling",
+    "objectID": "chapters/04-calculus/programming.html#distinct-slice-sampling",
+    "href": "chapters/04-calculus/programming.html#distinct-slice-sampling",
     "title": "Programming Session",
     "section": "distinct(), slice(), sampling",
     "text": "distinct(), slice(), sampling\n\nCodeResult\n\n\n\n\nCode\n# Unique combinations of columns\nmpg |&gt;\n  distinct(manufacturer, class) |&gt;\n  head(10)\n\n# Take specific rows by position\nmpg |&gt;\n  slice(1:5)\n\n# Random samples\nset.seed(123)\nmpg |&gt;\n  slice_sample(n = 5)\n\n\n\n\n\n\n# A tibble: 10 × 2\n   manufacturer class  \n   &lt;chr&gt;        &lt;chr&gt;  \n 1 audi         compact\n 2 audi         midsize\n 3 chevrolet    suv    \n 4 chevrolet    2seater\n 5 chevrolet    midsize\n 6 dodge        minivan\n 7 dodge        pickup \n 8 dodge        suv    \n 9 ford         suv    \n10 ford         pickup \n\n\n# A tibble: 5 × 11\n  manufacturer model displ  year   cyl trans      drv     cty   hwy fl    class \n  &lt;chr&gt;        &lt;chr&gt; &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt;      &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; \n1 audi         a4      1.8  1999     4 auto(l5)   f        18    29 p     compa…\n2 audi         a4      1.8  1999     4 manual(m5) f        21    29 p     compa…\n3 audi         a4      2    2008     4 manual(m6) f        20    31 p     compa…\n4 audi         a4      2    2008     4 auto(av)   f        21    30 p     compa…\n5 audi         a4      2.8  1999     6 auto(l5)   f        16    26 p     compa…\n\n\n# A tibble: 5 × 11\n  manufacturer model       displ  year   cyl trans drv     cty   hwy fl    class\n  &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt; &lt;int&gt; &lt;int&gt; &lt;chr&gt; &lt;chr&gt;\n1 pontiac      grand prix    5.3  2008     8 auto… f        16    25 p     mids…\n2 toyota       toyota tac…   4    2008     6 auto… 4        16    20 r     pick…\n3 toyota       4runner 4wd   4.7  2008     8 auto… 4        14    17 r     suv  \n4 audi         a4 quattro    3.1  2008     6 auto… 4        17    25 p     comp…\n5 toyota       corolla       1.8  1999     4 auto… f        24    33 r     comp…",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#joins-combine-tables-by-keys",
-    "href": "chapters/04-linear-algebra/programming.html#joins-combine-tables-by-keys",
+    "objectID": "chapters/04-calculus/programming.html#joins-combine-tables-by-keys",
+    "href": "chapters/04-calculus/programming.html#joins-combine-tables-by-keys",
     "title": "Programming Session",
     "section": "Joins (combine tables by keys)",
     "text": "Joins (combine tables by keys)\n\nCodeResult\n\n\n\n\nCode\na &lt;- tibble(id = c(1,2,3), val = c(\"A\",\"B\",\"C\"))\nb &lt;- tibble(id = c(2,3,4), note = c(\"two\",\"three\",\"four\"))\n\nleft_join(a, b, by = \"id\")\ninner_join(a, b, by = \"id\")\nfull_join(a, b, by = \"id\")\nanti_join(a, b, by = \"id\")  # rows in a without matches in b\nsemi_join(a, b, by = \"id\")  # rows in a that have a match in b\n\n\n\n\n\n\n# A tibble: 3 × 3\n     id val   note \n  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n1     1 A     &lt;NA&gt; \n2     2 B     two  \n3     3 C     three\n\n\n# A tibble: 2 × 3\n     id val   note \n  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n1     2 B     two  \n2     3 C     three\n\n\n# A tibble: 4 × 3\n     id val   note \n  &lt;dbl&gt; &lt;chr&gt; &lt;chr&gt;\n1     1 A     &lt;NA&gt; \n2     2 B     two  \n3     3 C     three\n4     4 &lt;NA&gt;  four \n\n\n# A tibble: 1 × 2\n     id val  \n  &lt;dbl&gt; &lt;chr&gt;\n1     1 A    \n\n\n# A tibble: 2 × 2\n     id val  \n  &lt;dbl&gt; &lt;chr&gt;\n1     2 B    \n2     3 C",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#ggplot-is-the-r-functional-form-of-the-grammar-of-graphics",
-    "href": "chapters/04-linear-algebra/programming.html#ggplot-is-the-r-functional-form-of-the-grammar-of-graphics",
+    "objectID": "chapters/04-calculus/programming.html#ggplot-is-the-r-functional-form-of-the-grammar-of-graphics",
+    "href": "chapters/04-calculus/programming.html#ggplot-is-the-r-functional-form-of-the-grammar-of-graphics",
     "title": "Programming Session",
     "section": "ggplot is the R functional form of the Grammar of Graphics",
     "text": "ggplot is the R functional form of the Grammar of Graphics",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#but-what-does-it-mean",
-    "href": "chapters/04-linear-algebra/programming.html#but-what-does-it-mean",
+    "objectID": "chapters/04-calculus/programming.html#but-what-does-it-mean",
+    "href": "chapters/04-calculus/programming.html#but-what-does-it-mean",
     "title": "Programming Session",
     "section": "But what does it mean?",
     "text": "But what does it mean?\nThe Grammar of Graphics was introduced to describe the deep structure underlying statistical graphics. @wilkinsonGrammerGraphics2005 formalized the idea of what a “statistical graphic” is; @wickhamLayeredGrammarGraphics2010 adapted that grammar into a layered system in R. In short, a statistical plot maps data to aesthetic attributes (e.g., colour, shape, size) of geometric objects (e.g., points, lines, bars), may include statistical transformations, is drawn on a coordinate system, and can be faceted to repeat the same plot over subsets of the data. It’s the combination of these independent components that makes a graphic.\nggplot2 is built on the idea: any plot can be expressed from the same set of components—a dataset, a coordinate system, and geoms (visual marks). The key to understanding ggplot2 is thinking in layers, much like stacked layers in image editors such as Photoshop/Illustrator/Inkscape.\nThe guiding principle in ggplot2 is to build from foundational components (data, global mappings) to specific components (geoms, stats, scales, guides), connecting layers with +. Think of each layer as placed on the same canvas; together they compose the plot. The general structure is:\n\n\nCode\nggplot(data = &lt;DATA&gt;, mapping = aes(&lt;X&gt;, &lt;Y&gt;, &lt;global aesthetics&gt;)) +\n  geom_&lt;TYPE&gt;(aes(&lt;layer-specific aesthetics&gt;), &lt;layer options&gt;) +\n  stat_&lt;TRANSFORM&gt;(...) +\n  scale_&lt;...&gt;(...) +\n  coord_&lt;...&gt;(...) +\n  facet_&lt;...&gt;(...) +\n  labs(title = \"...\", subtitle = \"...\", x = \"...\", y = \"...\") +\n  theme(...)\n\n\nThe ggplot2 package builds plots by layering components: data, aesthetic mappings, geoms, statistics, scales, coordinates, and facets.\nYou can read more about ggplot here.\n\nFirst plot\n\nCodeResult\n\n\n\n\nCode\nggplot(worldbank_wide, aes(x = gdp, y = tariff)) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nCompare to base R:\n\nCodeResult\n\n\n\n\nCode\nplot(x = worldbank_wide$gdp, y = worldbank_wide$tariff)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAesthetics: colour, size, shape, alpha\n\nCodeResult\n\n\n\n\nCode\nggplot(worldbank_wide, aes(gdp, tariff, colour = country_name)) +\n  geom_point()\nggplot(worldbank_wide, aes(gdp, tariff, colour = country_name, shape = factor(year))) +\n  geom_point()\nggplot(worldbank_wide, aes(gdp, tariff, colour = country_name, alpha = factor(year))) +\n  geom_point()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWarning: Using alpha for a discrete variable is not advised.\n\n\n\n\n\n\n\n\n\n\n\n\nFixed aesthetics (outside aes()):\n\nInside aes() → map a variable or value (in your data) to a visual property.\nOutside aes() → set a fixed visual property.\n\n\n\n\n\n\n\nTip\n\n\n\naes() specifies which variables from that dataset should determine the appearance\n\n\n\nCodeResult\n\n\n\n\nCode\nggplot(worldbank_wide, aes(gdp, tariff)) + geom_point(aes(colour = \"blue\"))\nggplot(worldbank_wide, aes(gdp, tariff)) + geom_point(colour = \"blue\")\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nFaceting\n\nCodeResult\n\n\n\n\nCode\n# those with higher GDP -&gt; adopt higher tariff rates (within each year)\nggplot(worldbank_wide, aes(gdp, tariff)) +\n  geom_point() +\n  facet_wrap(~ year)\n\n# higher GDP -&gt; higher tariff rates (for each country across years)\nggplot(worldbank_wide, aes(gdp, tariff)) +\n  geom_point() +\n  facet_wrap(~ country_name)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSmoothed trends\n\nCodeResult\n\n\n\n\nCode\nggplot(mpg, aes(displ, hwy)) + geom_point() + geom_smooth()\nggplot(mpg, aes(displ, hwy)) + geom_point() + geom_smooth(method = \"lm\")\nggplot(mpg, aes(displ, hwy)) + geom_point() + geom_smooth(span = 0.9)  # loess span\n\n\n\n\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n`geom_smooth()` using formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n`geom_smooth()` using method = 'loess' and formula = 'y ~ x'\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDistributions: histogram, frequency polygon, density, combo\n\nCodeResult\n\n\n\n\nCode\nggplot(mpg, aes(hwy)) + geom_histogram()\nggplot(mpg, aes(hwy)) + geom_freqpoly()\n\n# Change binwidth\nggplot(mpg, aes(hwy)) + geom_histogram(binwidth = 2)\nggplot(mpg, aes(hwy)) + geom_freqpoly(binwidth = 2)\n\n# Density\nggplot(mpg, aes(hwy)) + geom_density()\n\n# Overlay histogram + density and add a mean line\np &lt;- ggplot(mpg, aes(hwy)) +\n  geom_histogram(aes(y = ..density..), colour = \"black\", fill = \"white\") +\n  geom_density(alpha = .2, fill = \"#FF6666\")\n\np + geom_vline(aes(xintercept = mean(hwy)), linetype = \"dashed\", size = 1)\n\n\n\n\n\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nWarning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.\nℹ Please use `linewidth` instead.\n\n\nWarning: The dot-dot notation (`..density..`) was deprecated in ggplot2 3.4.0.\nℹ Please use `after_stat(density)` instead.\n\n\n`stat_bin()` using `bins = 30`. Pick better value `binwidth`.\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBox, violin, and jitter\n\nCodeResult\n\n\n\n\nCode\nggplot(mpg, aes(drv, hwy)) + geom_boxplot()\nggplot(mpg, aes(drv, hwy)) + geom_jitter()\nggplot(mpg, aes(drv, hwy)) + geom_violin()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nBars: counts vs. pre-summarised values\n\nCodeResult\n\n\n\n\nCode\n# Counts from raw rows\nggplot(mpg, aes(manufacturer)) + geom_bar()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nLines & paths (time series)\n\nCodeResult\n\n\n\n\nCode\nworldbank_wide$year &lt;- as.numeric(worldbank_wide$year)\nggplot(worldbank_wide %&gt;% filter(country_name== \"Japan\"), aes(year, tariff)) + geom_line()\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAxes, limits, annotations\n\nCodeResult\n\n\n\n\nCode\nlibrary(scales)\nggplot(worldbank_wide, aes(gdp, tariff, colour = country_name)) +\n  geom_point() +\n  facet_wrap(~ year) +\n  scale_x_continuous(\n    labels = label_number(scale = 1e-9)\n  ) +\n  labs(\n    x = \"GDP (Billions of Dollars)\",\n    y = \"Mean tariff rate on all products (%)\",\n    colour = \"Country name\",\n    title = \"Tariff rate vs GDP\",\n    subtitle = \"Source: World Bank databank\"\n  )\n\n\n\n\n\n\n\nAttaching package: 'scales'\n\n\nThe following object is masked from 'package:purrr':\n\n    discard\n\n\nThe following object is masked from 'package:readr':\n\n    col_factor\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nSaving plots\n\n\nCode\n# Save a plot object to disk\np &lt;- ggplot(worldbank_wide, aes(gdp, tariff, colour = country_name)) +\n  geom_point() +\n  facet_wrap(~ year) +\n  scale_x_continuous(\n    labels = label_number(scale = 1e-9)\n  ) +\n  labs(\n    x = \"GDP (Billions of Dollars)\",\n    y = \"Mean tariff rate on all products (%)\",\n    colour = \"Country name\",\n    title = \"Tariff rate vs GDP\",\n    subtitle = \"Source: World Bank databank\"\n  )\nggsave(\"plot.png\", p, width = 5, height = 5)\n\n# Or specify a full path you control:\n# ggsave(\"path/to/your/folder/plot.png\", p, width = 5, height = 5)",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#how-to-write-a-function",
-    "href": "chapters/04-linear-algebra/programming.html#how-to-write-a-function",
+    "objectID": "chapters/04-calculus/programming.html#how-to-write-a-function",
+    "href": "chapters/04-calculus/programming.html#how-to-write-a-function",
     "title": "Programming Session",
     "section": "How to write a function?",
     "text": "How to write a function?\nThe basic and specific syntax for defining a function looks like:\n\n\nCode\nmy_function = function(x,y) # Arguments broken up by commas \n  { # Brackets that house the code\n  # Some code to execute\nz = x*y \nreturn(z) } # Return a data value \n\n\nFor example:\n\n\nCode\nTest1.function = function(xx, yy){ \n  return(xx *3 + 1 - yy)\n}\n\nTest1.function(4, 1)\n\n\n[1] 12\n\n\nCode\n#or\n\nTest2.function = function(xx, yy){ \n  out &lt;- xx *3 + 1 - yy\n  return(out)\n}\n\nTest2.function(4, 1)\n\n\n[1] 12\n\n\n\nScenario 1 - Transformation\nThis could be useful if we would like to do the same transformation, like rescaling, for different variables for multiple times\n\n\nCode\nset.seed(1234)\n\ndf &lt;- tibble(\n  a = rnorm(5),\n  b = rnorm(5),\n  c = rnorm(5),\n  d = rnorm(5),\n)\n\ndf |&gt; mutate(\n  a = (a - min(a, na.rm = TRUE)) / \n    (max(a, na.rm = TRUE) - min(a, na.rm = TRUE)),\n  b = (b - min(a, na.rm = TRUE)) / \n    (max(b, na.rm = TRUE) - min(b, na.rm = TRUE)),\n  c = (c - min(c, na.rm = TRUE)) / \n    (max(c, na.rm = TRUE) - min(c, na.rm = TRUE)),\n  d = (d - min(d, na.rm = TRUE)) / \n    (max(d, na.rm = TRUE) - min(d, na.rm = TRUE)),\n)\n\n\n# A tibble: 5 × 4\n      a      b     c      d\n  &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1 0.332  0.362 0.266 0.241 \n2 0.765 -0.412 0     0.120 \n3 1     -0.392 0.113 0     \n4 0     -0.404 0.543 0.0222\n5 0.809 -0.638 1     1     \n\n\n\n\n\n\n\n\nImportant\n\n\n\nOops we made a mistake above when copying-and-pasting and forgot to change an a to a b!\n\n\nIt seems that there are some patterns in our code when making this transformation:\n\n\nCode\n(X - min(X, na.rm = TRUE)) / (max(X, na.rm = TRUE) - min(X, na.rm = TRUE))\n\n\nWe can then write instead:\n\n\nCode\nrescale &lt;- function(x) {\n  (x - min(x, na.rm = TRUE)) / (max(x, na.rm = TRUE) - min(x, na.rm = TRUE))\n}\n\ndf |&gt; mutate(\n  a = rescale(a),\n  b = rescale(b),\n  c = rescale(c),\n  d = rescale(d),\n)\n\n\n# A tibble: 5 × 4\n      a     b     c      d\n  &lt;dbl&gt; &lt;dbl&gt; &lt;dbl&gt;  &lt;dbl&gt;\n1 0.332 1     0.266 0.241 \n2 0.765 0.226 0     0.120 \n3 1     0.246 0.113 0     \n4 0     0.233 0.543 0.0222\n5 0.809 0     1     1     \n\n\n\n\nScenario 2 - Data Cleaning\nOr maybe you want to strip percent signs, commas, and dollar signs from a string before converting it into a number:\n\n\nCode\nlibrary(stringr)\n\nv1 &lt;- c(\"$12,300\", \"$500\", \"$9,300\", \"$34,300\", \"$400\")\nv2 &lt;- c(\"55%\", \"34%\", \"24%\", \"34.4%\", \"14.9%\")\n\nclean_number &lt;- function(x) {\n  is_pct &lt;- str_detect(x, \"%\")\n  num &lt;- x |&gt; \n    str_remove_all(\"%\") |&gt; \n    str_remove_all(\",\") |&gt; \n    str_remove_all(fixed(\"$\")) |&gt; \n    as.numeric()\n  if_else(is_pct, num / 100, num)\n  return(num)\n}\n\nclean_number(v1)\n\n\n[1] 12300   500  9300 34300   400\n\n\nCode\nclean_number(v2)\n\n\n[1] 55.0 34.0 24.0 34.4 14.9",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },
   {
-    "objectID": "chapters/04-linear-algebra/programming.html#footnotes",
-    "href": "chapters/04-linear-algebra/programming.html#footnotes",
+    "objectID": "chapters/04-calculus/programming.html#footnotes",
+    "href": "chapters/04-calculus/programming.html#footnotes",
     "title": "Programming Session",
     "section": "",
     "text": "Hadley Wickham and Jennifer Bryan, R Packages↩︎\nGreg Martin, Customize with YAML↩︎\nThis section is copied from R4DS book↩︎\nHadley Wickham and Garrett Grolemund, R for DAta Science↩︎",
     "crumbs": [
-      "Day 4 — Linear Algebra",
+      "Day 4 — Calculus / Mission",
       "<span class='chapter-number'>8</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   },

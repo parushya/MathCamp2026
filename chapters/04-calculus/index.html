@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Math Session – Math and Programming Camp 2026</title>
+<title>Day 4 — Calculus / Mission – Math and Programming Camp 2026</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -36,8 +36,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="../../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../../">
-<link href="../../chapters/04-linear-algebra/programming.html" rel="next">
-<link href="../../chapters/04-linear-algebra/index.html" rel="prev">
+<link href="../../chapters/04-calculus/slides.html" rel="next">
+<link href="../../chapters/03-calculus/programming.html" rel="prev">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
@@ -80,6 +80,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 <link rel="stylesheet" href="../../styles.css">
 </head>
@@ -255,7 +284,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/04-linear-algebra/index.html">Day 4 — Linear Algebra</a></li><li class="breadcrumb-item"><a href="../../chapters/04-linear-algebra/slides.html"><span class="chapter-title">Math Session</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/04-calculus/index.html">Day 4 — Calculus / Mission</a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -341,7 +370,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a href="../../chapters/03-calculus/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 3 — Uncertainty Extended and Expected / Calculus</span></a>
+ <span class="menu-text">Day 3 — Uncertainty Extended and Expected</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -349,7 +378,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/03-calculus/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Sessions</span></a>
+  <a href="../../chapters/03-calculus/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -361,8 +390,8 @@ ul.task-list li input[type="checkbox"] {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a href="../../chapters/04-linear-algebra/index.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text">Day 4 — Linear Algebra</span></a>
+            <a href="../../chapters/04-calculus/index.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text">Day 4 — Calculus / Mission</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -370,12 +399,12 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/04-linear-algebra/slides.html" class="sidebar-item-text sidebar-link active"><span class="chapter-title">Math Session</span></a>
+  <a href="../../chapters/04-calculus/slides.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Math Session</span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="../../chapters/04-linear-algebra/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session</span></a>
+  <a href="../../chapters/04-calculus/programming.html" class="sidebar-item-text sidebar-link"><span class="chapter-title">Programming Session</span></a>
   </div>
 </li>
       </ul>
@@ -430,9 +459,9 @@ ul.task-list li input[type="checkbox"] {
 <main class="content" id="quarto-document-content">
 
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../chapters/04-linear-algebra/index.html">Day 4 — Linear Algebra</a></li><li class="breadcrumb-item"><a href="../../chapters/04-linear-algebra/slides.html"><span class="chapter-title">Math Session</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title"><span id="sec-04-slides" class="quarto-section-identifier"><span class="chapter-title">Math Session</span></span></h1>
+<h1 class="title">Day 4 — Calculus / Mission</h1>
 </div>
 
 
@@ -449,21 +478,12 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<div class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-Note
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p><a href="../../slides/04-linear-algebra.html" target="_blank">Open the slides full-screen</a></p>
-</div>
-</div>
-<iframe class="slide-deck" src="../../slides/04-linear-algebra.html" height="500" width="100%" style="border: 1px solid #ddd;"></iframe>
-<p>Slide source: <code>slides/04-linear-algebra.qmd</code>.</p>
+<p>Math covers integration and area under the curve, limits, and differentiation — first learning to <em>read</em> <span class="math inline">\(\int\)</span>, <span class="math inline">\(\lim\)</span>, and <span class="math inline">\(\dfrac{dy}{dx}\)</span>, then computing them in the order the math builds, with each tool tied back to Day 3’s PDFs, CDFs, and expectation. Programming — <strong>Mission</strong> — covers housekeeping (working directories, importing and exporting datasets, packages, YAML, code chunks), data wrangling with dplyr and tidyr, and the grammar of graphics with ggplot.</p>
+<p>This session has two parts:</p>
+<ul>
+<li><strong><a href="../../chapters/04-calculus/slides.html">Math Session</a></strong> — the in-class slideshow.</li>
+<li><strong><a href="../../chapters/04-calculus/programming.html">Programming Session</a></strong> — a webpage walking through the same material with runnable R code.</li>
+</ul>
 
 
 
@@ -883,13 +903,13 @@ Note
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="../../chapters/04-linear-algebra/index.html" class="pagination-link" aria-label="Day 4 — Linear Algebra">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Day 4 — Linear Algebra</span>
+      <a href="../../chapters/03-calculus/programming.html" class="pagination-link" aria-label="Programming Session">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-title">Programming Session</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../../chapters/04-linear-algebra/programming.html" class="pagination-link" aria-label="Programming Session">
-        <span class="nav-page-text"><span class="chapter-title">Programming Session</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../../chapters/04-calculus/slides.html" class="pagination-link" aria-label="Math Session">
+        <span class="nav-page-text"><span class="chapter-title">Math Session</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
