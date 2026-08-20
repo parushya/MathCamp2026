@@ -2,15 +2,14 @@
 code-tools: false
 ---
 
-# Day 3 — Uncertainty Extended and Expected / Calculus
+# Day 3 — Uncertainty Extended and Expected
 
-Day 3 runs two math sessions. **Session 1 — Uncertainty Extended and
-Expected** covers combinatorics, random variables, expectation algebra,
-and conditional expectation (the type-shift). **Session 2 — Calculus**
-covers limits, differentiation and optimization (first-order conditions),
-and integration basics. Programming continues exploring R's data
-structures (factors, data frames), conditionals, and descriptive
-statistics.
+Day 3 covers combinatorics, random variables, expectation algebra, and
+conditional expectation (the type-shift), closing with PDFs and CDFs for
+continuous random variables. Calculus, which used to share this day, is
+now its own session on [Day 4](../04-calculus/index.qmd). Programming
+continues exploring R's data structures (factors, data frames),
+conditionals, and descriptive statistics.
 
 This session has two parts:
 

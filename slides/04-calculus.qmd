@@ -1306,6 +1306,6 @@ Every PMF/CDF/$E[X]$ we've used is a finite sum, $\Sigma$, over the bars above.
 
 ##  {.center}
 
-**Programming lecture:** [Webpage Chapter](../chapters/03-calculus/programming.html)
+**Programming lecture:** [Webpage Chapter](../chapters/04-calculus/programming.html)
 
 **Back to:** [Math Camp 2026 website](../index.html)

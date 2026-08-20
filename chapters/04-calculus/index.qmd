@@ -1,0 +1,19 @@
+---
+code-tools: false
+---
+
+# Day 4 — Calculus / Mission
+
+Math covers integration and area under the curve, limits, and
+differentiation — first learning to *read* $\int$, $\lim$, and
+$\dfrac{dy}{dx}$, then computing them in the order the math builds, with
+each tool tied back to Day 3's PDFs, CDFs, and expectation. Programming
+— **Mission** — covers housekeeping (working directories, importing and
+exporting datasets, packages, YAML, code chunks), data wrangling with
+dplyr and tidyr, and the grammar of graphics with ggplot.
+
+This session has two parts:
+
+- **[Math Session](slides.qmd)** — the in-class slideshow.
+- **[Programming Session](programming.qmd)** — a webpage walking through the
+  same material with runnable R code.

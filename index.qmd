@@ -49,15 +49,11 @@ lists); exercise on a real replication dataset.
 [Slides](chapters/02-probability/slides.qmd) &nbsp;|&nbsp;
 [Programming Lecture](chapters/02-probability/programming.qmd)
 
-### Day 3 — Uncertainty Extended and Expected / Calculus / Exploration
+### Day 3 — Uncertainty Extended and Expected / Exploration
 
-Day 3 runs two math sessions.
-**Math (Session 1 — Uncertainty Extended and Expected):** combinatorics;
-random variables; expectation algebra; conditional expectation and the
-type-shift ($E[Y|X=x]$ vs. $E[Y|X]$).
-**Math (Session 2 — Calculus):** limits; differentiation and
-optimization (first-order conditions); integration basics; area under
-the curve.
+**Math:** combinatorics; random variables; expectation algebra;
+conditional expectation and the type-shift ($E[Y|X=x]$ vs. $E[Y|X]$);
+PDFs and CDFs for continuous random variables.
 **Programming — Exploration:** data structures continued (factors and data frames);
 conditionals in base R; descriptive statistics and aggregation;
 exercise exploring summary statistics of the sample dataset.
@@ -65,18 +61,19 @@ exercise exploring summary statistics of the sample dataset.
 [Slides](chapters/03-calculus/slides.qmd) &nbsp;|&nbsp;
 [Programming Lecture](chapters/03-calculus/programming.qmd)
 
-### Day 4 — Linear Algebra / Mission
+### Day 4 — Calculus / Mission
 
-**Math:** matrix readings; transformations; sampling distributions;
-basic derivations.  
+**Math:** integration and area under the curve; limits; differentiation
+— learning to read $\int$, $\lim$, and $\dfrac{dy}{dx}$ before computing
+them, with each tool tied back to Day 3's PDFs, CDFs, and expectation.
 
 **Programming — Mission:** housekeeping (working
 directories, importing/exporting datasets, packages, YAML, code
 chunks); data wrangling with dplyr and tidyr; grammar of graphics with
-ggplot; why functions.  
+ggplot; why functions.
 
-[Slides](chapters/04-linear-algebra/slides.qmd) &nbsp;|&nbsp;
-[Programming Lecture](chapters/04-linear-algebra/programming.qmd)
+[Slides](chapters/04-calculus/slides.qmd) &nbsp;|&nbsp;
+[Programming Lecture](chapters/04-calculus/programming.qmd)
 
 ### Day 5 — Intro to Advanced Topics / AI
 

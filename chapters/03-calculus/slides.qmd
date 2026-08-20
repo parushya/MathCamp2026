@@ -2,13 +2,7 @@
 code-tools: false
 ---
 
-# Math Sessions
-
-::: {.callout-note}
-Day 3 runs two math sessions, both below.
-:::
-
-## Session 1: Uncertainty Extended and Expected {#sec-03-slides-1}
+# Math Session
 
 ::: {.callout-note}
 [Open the slides full-screen](../../slides/03-uncertainty-extended-and-expected.html){target="_blank"}
@@ -20,14 +14,4 @@ Day 3 runs two math sessions, both below.
 
 Slide source: `slides/03-uncertainty-extended-and-expected.qmd`.
 
-## Session 2: Calculus {#sec-03-slides-2}
-
-::: {.callout-note}
-[Open the slides full-screen](../../slides/03-calculus.html){target="_blank"}
-:::
-
-```{=html}
-<iframe class="slide-deck" src="../../slides/03-calculus.html" height="500" width="100%" style="border: 1px solid #ddd;"></iframe>
-```
-
-Slide source: `slides/03-calculus.qmd`.
+Calculus has moved to its own session — see [Day 4 — Calculus](../04-calculus/index.qmd).

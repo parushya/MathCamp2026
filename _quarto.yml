@@ -34,10 +34,14 @@ book:
       chapters:
         - chapters/03-calculus/slides.qmd
         - chapters/03-calculus/programming.qmd
-    - part: chapters/04-linear-algebra/index.qmd
+    # Linear algebra's math is parked for now; chapters/04-linear-algebra/
+    # still holds its index/slides stubs. Its programming session ("Mission")
+    # was never linear-algebra-specific -- it belongs to Day 4 and moved with
+    # the day to chapters/04-calculus/programming.qmd.
+    - part: chapters/04-calculus/index.qmd
       chapters:
-        - chapters/04-linear-algebra/slides.qmd
-        - chapters/04-linear-algebra/programming.qmd
+        - chapters/04-calculus/slides.qmd
+        - chapters/04-calculus/programming.qmd
     - part: chapters/05-advanced-topics/index.qmd
       chapters:
         - chapters/05-advanced-topics/slides.qmd
