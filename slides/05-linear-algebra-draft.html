@@ -1,0 +1,1832 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script src="05-linear-algebra-draft_files/libs/clipboard/clipboard.min.js"></script>
+<script src="05-linear-algebra-draft_files/libs/quarto-html/tabby.min.js"></script>
+<script src="05-linear-algebra-draft_files/libs/quarto-html/popper.min.js"></script>
+<script src="05-linear-algebra-draft_files/libs/quarto-html/tippy.umd.min.js"></script>
+<link href="05-linear-algebra-draft_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="05-linear-algebra-draft_files/libs/quarto-html/light-border.css" rel="stylesheet">
+<link href="05-linear-algebra-draft_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
+  <meta name="generator" content="quarto-1.10.18">
+
+  <meta name="author" content="Parushya">
+  <meta name="dcterms.date" content="2026-08-21">
+  <title>quarto-input539efdf6f76fa626</title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="05-linear-algebra-draft_files/libs/revealjs/dist/reset.css">
+  <link rel="stylesheet" href="05-linear-algebra-draft_files/libs/revealjs/dist/reveal.css">
+  <style>
+    /* Default styles provided by pandoc.
+    ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+    */
+    span.smallcaps{font-variant: small-caps;}
+    div.columns{display: flex; gap: 1.5em;}
+    div.column{flex: auto;}
+    @media screen {
+    div.columns{gap: min(4vw, 1.5em);}
+    div.column{overflow-x: auto;}
+    }
+    div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+    ul.task-list{list-style: none;}
+    ul.task-list li input[type="checkbox"] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+      vertical-align: middle;
+    }
+  </style>
+  <link rel="stylesheet" href="05-linear-algebra-draft_files/libs/revealjs/dist/theme/quarto-0427d8d92a431aa6a6430e53ec02a470.css">
+  <link rel="stylesheet" href="slides.css">
+  <link href="05-linear-algebra-draft_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.css" rel="stylesheet">
+  <link href="05-linear-algebra-draft_files/libs/revealjs/plugin/reveal-menu/menu.css" rel="stylesheet">
+  <link href="05-linear-algebra-draft_files/libs/revealjs/plugin/reveal-menu/quarto-menu.css" rel="stylesheet">
+  <link href="05-linear-algebra-draft_files/libs/revealjs/plugin/reveal-chalkboard/font-awesome/css/all.css" rel="stylesheet">
+  <link href="05-linear-algebra-draft_files/libs/revealjs/plugin/reveal-chalkboard/style.css" rel="stylesheet">
+  <link href="05-linear-algebra-draft_files/libs/revealjs/plugin/quarto-support/footer.css" rel="stylesheet">
+  <style type="text/css">
+    .reveal div.sourceCode {
+      margin: 0;
+      overflow: auto;
+    }
+    .reveal div.hanging-indent {
+      margin-left: 1em;
+      text-indent: -1em;
+    }
+    .reveal .slide:not(.center) {
+      height: 100%;
+    }
+    .reveal .slide.scrollable {
+      overflow-y: auto;
+    }
+    .reveal .footnotes {
+      height: 100%;
+      overflow-y: auto;
+    }
+    .reveal .slide .absolute {
+      position: absolute;
+      display: block;
+    }
+    .reveal .footnotes ol {
+      counter-reset: ol;
+      list-style-type: none; 
+      margin-left: 0;
+    }
+    .reveal .footnotes ol li:before {
+      counter-increment: ol;
+      content: counter(ol) ". "; 
+    }
+    .reveal .footnotes ol li > p:first-child {
+      display: inline-block;
+    }
+    .reveal .slide ul,
+    .reveal .slide ol {
+      margin-bottom: 0.5em;
+    }
+    .reveal .slide ul li,
+    .reveal .slide ol li {
+      margin-top: 0.4em;
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide ul[role="tablist"] li {
+      margin-bottom: 0;
+    }
+    .reveal .slide ul li > *:first-child,
+    .reveal .slide ol li > *:first-child {
+      margin-block-start: 0;
+    }
+    .reveal .slide ul li > *:last-child,
+    .reveal .slide ol li > *:last-child {
+      margin-block-end: 0;
+    }
+    .reveal .slide .columns:nth-child(3) {
+      margin-block-start: 0.8em;
+    }
+    .reveal blockquote {
+      box-shadow: none;
+    }
+    .reveal .tippy-content>* {
+      margin-top: 0.2em;
+      margin-bottom: 0.7em;
+    }
+    .reveal .tippy-content>*:last-child {
+      margin-bottom: 0.2em;
+    }
+    .reveal .slide > img.stretch.quarto-figure-center,
+    .reveal .slide > img.r-stretch.quarto-figure-center {
+      display: block;
+      margin-left: auto;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-left,
+    .reveal .slide > img.r-stretch.quarto-figure-left  {
+      display: block;
+      margin-left: 0;
+      margin-right: auto; 
+    }
+    .reveal .slide > img.stretch.quarto-figure-right,
+    .reveal .slide > img.r-stretch.quarto-figure-right  {
+      display: block;
+      margin-left: auto;
+      margin-right: 0; 
+    }
+  </style>
+</head>
+<body class="quarto-light">
+  <div class="reveal">
+    <div class="slides">
+
+<section id="title-slide" class="quarto-title-block center">
+  <h1 class="title"><img class="ttl-img" src="05-linear-algebra/images/day5.png" alt="Shape of the union, over day = 1 to 4, of Topics sub day"></h1>
+  <p class="subtitle"><span class="math inline">\(\text{Topics} \in \{\,\text{Set theory},\; \text{Probability},\; \text{Integrals},\; \text{Limits},\; \text{Differentiation},\; \text{Data structures}\,\}\)</span><br><span style="font-size:0.6em;color:#8a8f98;font-weight:300;letter-spacing:0.09em;">MATH AND PROGRAMMING CAMP &nbsp;·&nbsp; DAY 5, SESSION 1 &nbsp;·&nbsp; LINEAR ALGEBRA</span></p>
+
+<div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Parushya
+</div>
+</div>
+</div>
+
+  <p class="date">2026-08-21</p>
+</section>
+<section id="where-we-are" class="slide level2 smaller">
+<h2>Where We Are</h2>
+<!--
+DRAFT. Day 5 Session 1 (Linear Algebra). Created 2026-08-20 after the day
+restructure: Day 5 now carries linear algebra in the morning session and
+Intro to Advanced Topics in the afternoon (05-advanced-topics-draft.qmd).
+The old Day 4 stubs (slides/04-linear-algebra.qmd,
+slides/04-linear-algebra-draft.qmd, chapters/04-linear-algebra/) are
+superseded by this file and should be retired once this deck is synced to
+slides/05-linear-algebra.qmd.
+
+SCOPE IS DELIBERATELY THIN -- HANDOFF.md decision #4. This is a *reading
+key*, roughly 45-60 minutes: dimensions, conformability, transpose,
+matrix types, the 2x2 determinant, inverse-as-undoing, design matrix.
+CUT: transformations, basis, span, eigenvalues, and the projection picture. Projection belongs
+to the post-camp four-lecture LA series and a preview here would compete
+with it in different notation. If a future edit wants to add eigenvalues,
+check with Parushya first -- this is a standing decision, not an oversight.
+
+Also HANDOFF #3: matrices are introduced as *compression* for the scalar
+summation algebra students already did on Days 1-3, never as foundations.
+Do not lead with the matrix form.
+
+WHAT STUDENTS ACTUALLY HAVE WHEN THEY WALK IN (Parushya, 2026-08-20 --
+Day 4 is staying as it is and will NOT be extended):
+
+  - Day 1: sum/product notation, summation algebra, and ONE minimization --
+    x-bar minimizes Sigma(x_i - c)^2, proved algebraically, no calculus
+    (01-notation-functions-limits.qmd, "Claim 2", with the jm-part-curve
+    interactive). This is the deck's anchor for "minimize a sum of squares."
+  - Day 3: expectation, conditional expectation, the type-shift, and
+    Var/Cov in expectation form. Line 1047 of the Day 3 deck says a
+    regression line estimates the CEF -- that is where the *idea* of
+    regression comes from, and it is all we may assume.
+  - Day 4: limits, derivatives, integrals as READING ONLY -- what the
+    symbols mean and what job each does. No differentiation rules, no FOCs,
+    no optimization, and NO beta-hat derivation. The Day 4 deck's "Today"
+    agenda slide still promises "deriving bivariate beta-hat from a
+    minimization criterion" (04-calculus.qmd line 49) but the deck does not
+    deliver it -- flagged to Parushya, left alone per the no-Day-4-changes
+    instruction.
+
+CONSEQUENCE, AND THE THING MOST LIKELY TO GET RE-BROKEN: beta-hat is NEVER
+derived anywhere in this camp, and the scalar formula appears nowhere before
+this deck. So no slide here may say "you already derived this," "Day 4's
+beta-hat," or "the estimator you derived." This deck PREVIEWS the estimator
+and teaches students to READ it; it does not recap a derivation. If a future
+session restores Day 4's Join (the written version is parked in
+04-calculus-draft.qmd), the recap framing can come back -- until then it is
+simply false. The scalar bivariate slope formula is introduced here as
+something they WILL meet, not something they have met.
+
+schedule.qmd / syllabus.qmd still list Linear Algebra under Day 4 and give
+Day 5 only the advanced topics. Both need updating for the two-session
+Day 5 -- flagged, not yet done.
+
+Running example throughout is the standing one (RUNNING_EXAMPLE.md):
+V-Dem cross-section, X = polyarchy 2000, Y = mean annual log GDP p.c.
+growth 2000-2019, n ~ 175. Country names in the design matrix are real
+rows from that slice. TODO: verify the printed n and the four displayed
+rows against the actual data file before this deck is taught.
+
+TITLE (Parushya, 2026-08-21). The deck is "Shape of [bigcup from Day 1 to
+Day 4] Topics", with the subtitle declaring Topics as a set. It replaces
+"Stenography", which came from HANDOFF.md #3 but was never explained on any
+slide and whose justification ("you derived beta-hat in scalar form, here it
+is compressed") died when Day 4 stopped deriving. The union operator is
+deliberate: it is camp notation the students already own -- sets on Day 1,
+probability on Day 2 -- so the title is written in the language being taught,
+and it says what the session is: everything from Days 1-4, unioned, given a
+shape.
+
+Mechanics (2026-08-21, second pass): the title and the subtitle's set line
+are REAL LATEX, typeset by MathJax -- Quarto passes $...$ in a YAML title
+through pandoc, which emits <span class="math inline">, and MathJax typesets
+it because the title slide sits inside .reveal .slides. This was verified in
+the rendered HTML. Earlier attempts hand-built the operator from a Unicode
+U+22C3 in an inline-flex column; that looked like a bold sans capital "U",
+and the limits overlapped the bowl once line-height was tightened. Do NOT go
+back to the Unicode/HTML version -- \displaystyle\bigcup places the limits
+correctly and gives real math letterforms and stroke weights for free.
+
+Only "Shape of" carries inline HTML, purely to override the deck-wide h1
+colour (#107F69, slides.css) to black; the math inherits the green. Avoid
+\color{...} in the title -- MathJax's hex-colour support is not dependable
+enough to rely on here.
+
+DETERMINANTS, INVERSES AND SINGULARITY ARE ALL CUT (Parushya, 2026-08-21).
+Determinants were added on 2026-08-20 against HANDOFF.md #4 and are now cut
+again, together with the whole "Inverses and Systems" section (Why /
+Intuition: Undo / Identity and Inverse / When the Inverse Doesn't Exist /
+Diagnose the Singularity). Reasoning: the determinant's only job here was
+the invertibility test, so it has nothing to do once the inverse section
+goes; and singularity (dummy-variable trap, lm() returning NA) is diagnostic
+statistics, not notation-reading. This puts the deck back in line with
+HANDOFF.md #4.
+
+The ONLY survivor is the notation: "Undoing A" gives three sentences --
+scalar algebra divides, matrix algebra has no division, so the undo is
+written A^-1. That satisfies HANDOFF #4's "inverse-as-undoing" keep without
+a section. Do NOT grow it back into one: no identity-and-inverse slide, no
+A^-1 A = I, no computation, no singularity. The identity lives in the zoo
+("Named by Structure: The Identity") on IA = AI = A, which stands alone.
+
+THE CLOSING SECTION IS A NARRATIVE, NOT AN ARC. "Regression as a System of
+Equations" runs 2x2 system -> matrix form -> undo -> our dataset -> too tall
+to solve -> the estimator -> what R prints. It deliberately does not follow
+the camp's Why -> Intuition -> Formal -> Example -> Quick Drill structure;
+the through-line is the point. Note Day 1 teaches solving ONE equation
+("Solving for a Variable", "Finding Roots") but not simultaneous systems, so
+the 2x2 opener is new to the camp -- it is included precisely because
+ordinary school algebra is far more familiar than determinants ever were.
+
+"Taller Than It Is Wide" is load-bearing and must not be cut: a regression
+is overdetermined (n equations, k unknowns, no exact solution), and saying
+"regression is solving a system" without it teaches something false. It
+names least squares and stops there -- deriving beta-hat stays out.
+
+TERMINOLOGY (Parushya, 2026-08-20): the deck's word is CONFORMABLE, not
+"legal". "Legal" is not a term of art; conformable is what students will
+see in print, and HANDOFF.md #2 names matrix conformability as one of the
+camp's three fluency targets -- so the deck must actually reason in that
+word, not just declare it on the goals slide. Failures are "not
+conformable". Do not reintroduce legal/illegal.
+
+Arc: the camp's Why -> Intuition -> Formal -> Example -> Quick Drill runs
+per topic block here (unlike Day 4, where it ran at the day level). The
+stage is carried by the slide title, not by an on-slide label.
+Palette: project_slide_figure_palette (#22303F #2b6cb0 #5A6B80 #8a8f98
+#B23A48 #EDF0F5 #D9E0EA #F7F8FA, greens #38a169/#2f855a).
+-->
+<style>
+/* Title slide for this deck only. The title and the subtitle's set line are
+   MathJax-typeset LaTeX, which inherits the huge reveal h1 size unless it is
+   reined in here. #title-slide scopes every rule to the title block. */
+#title-slide .title { margin-bottom: 0.45em; }
+/* The title is artwork (day5.png), so it must beat slides.css's blanket
+   `.reveal .slides img { max-height: 40vh }` cap. */
+#title-slide .title img.ttl-img {
+  display: block; margin: 0 auto;
+  height: 46vh; max-height: 46vh; width: auto; max-width: 92%;
+}
+#title-slide .subtitle { font-size: 0.60em; line-height: 1.6; color: #22303F; margin-top: 0.55em; }
+#title-slide .subtitle .math { font-size: 0.94em; }
+#title-slide .quarto-title-authors,
+#title-slide p.date { font-size: 0.55em; color: #5A6B80; margin-top: 0.15em; }
+</style>
+<p>Four days in, we can already read the objects that matter:</p>
+<ul>
+<li class="fragment">Day 1 — sets, functions, <span class="math inline">\(\sum\)</span>, logs.</li>
+<li class="fragment">Day 2 — probability, random variables, PMF/PDF/CDF.</li>
+<li class="fragment">Day 3 — expectation, conditional expectation, the type-shift; a regression line as an estimate of the CEF.</li>
+<li class="fragment">Day 4 — limits, derivatives, integrals: reading <span class="math inline">\(\int\)</span>, <span class="math inline">\(\lim\)</span>, and <span class="math inline">\(\dfrac{dy}{dx}\)</span>.</li>
+<li class="fragment"><strong>Today, morning</strong> — the notation your first methods course will write all of it in.</li>
+</ul>
+</section>
+<section id="the-slide-you-will-meet-in-week-1" class="slide level2 smaller">
+<h2>The Slide You Will Meet in Week 1</h2>
+<ul>
+<li class="fragment"><p>Somewhere in the second or third week of your first methods course, this appears with no ceremony:</p>
+<p><span class="math display">\[\hat\beta = (X'X)^{-1}X'y\]</span></p></li>
+<li class="fragment"><p>Three reactions are possible:</p>
+<ul>
+<li class="fragment"><em>“I have never seen this and I am behind.”</em></li>
+<li class="fragment"><em>“I will memorize it and hope.”</em></li>
+<li class="fragment"><em>“Four objects, and I can name the shape of each.”</em> ← today’s goal</li>
+</ul></li>
+<li class="fragment"><p>To be clear about what today is <strong>not</strong>: we are not deriving this, and you are not expected to have seen it before.</p>
+<ul>
+<li class="fragment">Where it comes from is your econometrics course’s job, and it will take them a while.</li>
+</ul></li>
+<li class="fragment"><p>Today buys you something smaller and more useful on the day: when that slide goes up, you can <strong>read</strong> it instead of bracing.</p></li>
+</ul>
+</section>
+<section id="today-is-a-reading-key-not-a-course" class="slide level2 smaller">
+<h2>Today Is a Reading Key, Not a Course</h2>
+<ul>
+<li class="fragment"><strong>Goal:</strong> read a matrix expression, say what shape each piece is, and say whether the pieces are <strong>conformable</strong>.</li>
+<li class="fragment"><strong>Not the goal:</strong> compute a <span class="math inline">\(4\times4\)</span> inverse by hand, or prove anything about vector spaces.</li>
+<li class="fragment"><strong>Deliberately not covered:</strong> determinants, eigenvalues, span, basis, rank, projection geometry.
+<ul>
+<li class="fragment">These are real and you will need them — the post-camp linear algebra series does them properly, with time.</li>
+<li class="fragment">A rushed preview here in different notation would compete with that series rather than prepare you for it.</li>
+</ul></li>
+<li class="fragment">One fluency target only: <strong>conformability</strong>. Do the shapes fit?</li>
+</ul>
+</section>
+<section>
+<section id="vectors" class="title-slide slide level1 center">
+<h1>Vectors</h1>
+<p><em>A column of numbers you have already been staring at all week.</em></p>
+</section>
+<section id="why-we-need-them" class="slide level2 smaller">
+<h2>Why We Need Them</h2>
+<ul>
+<li class="fragment">Our dataset is <span class="math inline">\(n \approx 175\)</span> countries, each with a polyarchy score <span class="math inline">\(x_i\)</span> and a growth rate <span class="math inline">\(y_i\)</span>.</li>
+<li class="fragment">Everything we did on Days 1–4 was written one country at a time and then summed: <span class="math display">\[\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i, \qquad \widehat{\text{Cov}}(x,y) = \frac{1}{n}\sum_{i=1}^{n}(x_i-\bar x)(y_i-\bar y)\]</span></li>
+<li class="fragment">That <span class="math inline">\(\sum_{i=1}^{n}\)</span> is doing a lot of work, and it is doing the <em>same</em> work every time.
+<ul>
+<li class="fragment">A vector is what lets us stop writing it.</li>
+</ul></li>
+</ul>
+</section>
+<section id="intuition-the-data-column" class="slide level2 smaller">
+<h2>Intuition: The Data Column</h2>
+<div style="display:flex; justify-content:center; gap:36px; align-items:center; margin: 6px 0;">
+<svg width="480" height="215" viewbox="0 0 480 215" xmlns="http://www.w3.org/2000/svg">
+  <text x="8" y="14" font-size="12" fill="#22303F">The whole table — a matrix</text>
+  <rect x="8" y="24" width="230" height="150" fill="#F7F8FA" stroke="#D9E0EA" stroke-width="1"></rect>
+  <line x1="8" y1="48" x2="238" y2="48" stroke="#5A6B80" stroke-width="1.5"></line>
+  <line x1="128" y1="24" x2="128" y2="174" stroke="#D9E0EA" stroke-width="1"></line>
+  <line x1="183" y1="24" x2="183" y2="174" stroke="#D9E0EA" stroke-width="1"></line>
+  <text x="16" y="41" font-size="11" fill="#22303F">country</text>
+  <text x="136" y="41" font-size="11" font-style="italic" fill="#22303F">x</text>
+  <text x="191" y="41" font-size="11" font-style="italic" fill="#22303F">y</text>
+  <text x="16" y="68" font-size="11" fill="#5A6B80">Norway</text>
+  <text x="136" y="68" font-size="11" fill="#2b6cb0">0.91</text>
+  <text x="191" y="68" font-size="11" fill="#5A6B80">1.2</text>
+  <text x="16" y="93" font-size="11" fill="#5A6B80">India</text>
+  <text x="136" y="93" font-size="11" fill="#2b6cb0">0.56</text>
+  <text x="191" y="93" font-size="11" fill="#5A6B80">4.9</text>
+  <text x="16" y="118" font-size="11" fill="#5A6B80">Jordan</text>
+  <text x="136" y="118" font-size="11" fill="#2b6cb0">0.28</text>
+  <text x="191" y="118" font-size="11" fill="#5A6B80">2.1</text>
+  <text x="16" y="143" font-size="11" fill="#5A6B80">Chad</text>
+  <text x="136" y="143" font-size="11" fill="#2b6cb0">0.14</text>
+  <text x="191" y="143" font-size="11" fill="#5A6B80">1.6</text>
+  <text x="16" y="166" font-size="11" fill="#8a8f98">⋮</text>
+  <text x="136" y="166" font-size="11" fill="#8a8f98">⋮</text>
+  <text x="191" y="166" font-size="11" fill="#8a8f98">⋮</text>
+
+  <path d="M254,99 L292,99 M284,92 L292,99 L284,106" fill="none" stroke="#5A6B80" stroke-width="2"></path>
+  <text x="273" y="88" text-anchor="middle" font-size="11" fill="#5A6B80">take one column</text>
+
+  <text x="310" y="14" font-size="12" fill="#22303F">and you have a vector</text>
+  <text x="316" y="104" font-size="15" font-style="italic" fill="#22303F">x =</text>
+  <path d="M366,34 L358,34 L358,166 L366,166" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <path d="M424,34 L432,34 L432,166 L424,166" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <text x="395" y="56" text-anchor="middle" font-size="12" fill="#2b6cb0">0.91</text>
+  <text x="395" y="83" text-anchor="middle" font-size="12" fill="#2b6cb0">0.56</text>
+  <text x="395" y="110" text-anchor="middle" font-size="12" fill="#2b6cb0">0.28</text>
+  <text x="395" y="137" text-anchor="middle" font-size="12" fill="#2b6cb0">0.14</text>
+  <text x="395" y="160" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+  <text x="452" y="104" font-size="11" fill="#5A6B80">n × 1</text>
+</svg>
+</div>
+<ul>
+<li class="fragment">Careful with the words. The <strong>whole table</strong> is a <em>matrix</em> — rows and columns together. <strong>A single column</strong> of it is a <em>vector</em>.
+<ul>
+<li class="fragment">So a data frame isn’t a vector; it’s a collection of them, stacked side by side. We’ll come back to the whole table later this hour.</li>
+</ul></li>
+<li class="fragment">A <strong>vector</strong> is an <em>ordered</em> list of numbers — unlike a set, the order is part of the object, and a repeated value is not the same as one value.</li>
+<li class="fragment">Order matters here for a concrete reason: row 2 is India in <span class="math inline">\(x\)</span> <em>and</em> in <span class="math inline">\(y\)</span>. Shuffling one column breaks the pairing between them.</li>
+</ul>
+</section>
+<section id="formal-columns-rows-and-the-prime" class="slide level2 smaller">
+<h2>Formal: Columns, Rows, and the Prime</h2>
+<ul>
+<li class="fragment">A column vector with <span class="math inline">\(n\)</span> entries is an <span class="math inline">\(n \times 1\)</span> object; a row vector is <span class="math inline">\(1 \times n\)</span>. <span class="math display">\[\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}_{n \times 1}, \qquad \mathbf{x}' = \begin{bmatrix} x_1 &amp; x_2 &amp; \cdots &amp; x_n \end{bmatrix}_{1 \times n}\]</span></li>
+<li class="fragment"><strong>Convention (near-universal in stats):</strong> unadorned means <em>column</em>. The prime <span class="math inline">\('\)</span> (or superscript <span class="math inline">\(\top\)</span>) turns it on its side.
+<ul>
+<li class="fragment">Same <span class="math inline">\(n\)</span> numbers, same order, different shape — and the shape, as the next slide shows, is what decides which operations you can write down at all.</li>
+</ul></li>
+<li class="fragment">In R this is just a numeric column: <code>df$polyarchy</code> is <span class="math inline">\(\mathbf{x}\)</span>.</li>
+</ul>
+</section>
+<section id="every-object-has-a-shape" class="slide level2 smaller">
+<h2>Every Object Has a Shape</h2>
+<p>Before any operation at all, the rule that governs every one of them.</p>
+<ul>
+<li class="fragment">Everything today is a <strong>rectangle of numbers</strong>, described by rows × columns — <strong>rows first, always</strong>.
+<ul>
+<li class="fragment">A single number is <span class="math inline">\(1\times1\)</span>. A column vector is <span class="math inline">\(n\times1\)</span>. A row vector is <span class="math inline">\(1\times n\)</span>. A matrix is <span class="math inline">\(m\times n\)</span>.</li>
+<li class="fragment">Four names, one family. The shape is the only thing that changes.</li>
+</ul></li>
+<li class="fragment">Shapes decide what you can write down. Two rules, and that’s the whole of it:
+<ul>
+<li class="fragment"><strong>Conformable for addition:</strong> the shapes must be <strong>identical</strong>. <span class="math inline">\((n\times1) + (n\times1)\)</span> ✓, <span class="math inline">\((n\times1) + (1\times n)\)</span> ✗.</li>
+<li class="fragment"><strong>Conformable for multiplication:</strong> the <strong>inner</strong> dimensions must match. They cancel; the <strong>outer</strong> pair survives as the answer’s shape.</li>
+</ul></li>
+<li class="fragment"><strong>Conformable</strong> is the word — it’s what you’ll see in print, so use it rather than “allowed” or “works”. When shapes aren’t conformable the operation simply does not exist: the expression isn’t wrong, it’s <em>meaningless</em>, like dividing by a colour.</li>
+</ul>
+</section>
+<section id="conformable-or-not-reading-the-shapes" class="slide level2 smaller">
+<h2>Conformable or Not: Reading the Shapes</h2>
+<div style="display:flex; justify-content:center; margin: 4px 0;">
+<svg width="620" height="215" viewbox="0 0 620 215" xmlns="http://www.w3.org/2000/svg">
+  <text x="20" y="18" font-size="12" font-weight="700" fill="#2f855a">CONFORMABLE</text>
+
+  <text x="60" y="60" font-size="22" fill="#22303F">(</text>
+  <text x="80" y="60" font-size="20" fill="#2f855a">3</text>
+  <text x="99" y="60" font-size="16" fill="#8a8f98">×</text>
+  <text x="118" y="60" font-size="20" fill="#B23A48">4</text>
+  <text x="136" y="60" font-size="22" fill="#22303F">)</text>
+  <text x="98" y="82" text-anchor="middle" font-size="11" font-style="italic" fill="#5A6B80">A</text>
+
+  <text x="168" y="60" font-size="22" fill="#22303F">(</text>
+  <text x="188" y="60" font-size="20" fill="#B23A48">4</text>
+  <text x="207" y="60" font-size="16" fill="#8a8f98">×</text>
+  <text x="226" y="60" font-size="20" fill="#2f855a">2</text>
+  <text x="244" y="60" font-size="22" fill="#22303F">)</text>
+  <text x="206" y="82" text-anchor="middle" font-size="11" font-style="italic" fill="#5A6B80">B</text>
+
+  <text x="278" y="60" font-size="20" fill="#5A6B80">=</text>
+  <text x="312" y="60" font-size="22" fill="#22303F">(</text>
+  <text x="332" y="60" font-size="20" fill="#2f855a">3</text>
+  <text x="351" y="60" font-size="16" fill="#8a8f98">×</text>
+  <text x="370" y="60" font-size="20" fill="#2f855a">2</text>
+  <text x="388" y="60" font-size="22" fill="#22303F">)</text>
+  <text x="350" y="82" text-anchor="middle" font-size="11" font-style="italic" fill="#5A6B80">C</text>
+
+  <path d="M122,30 C122,16 184,16 184,30" fill="none" stroke="#B23A48" stroke-width="1.6"></path>
+  <text x="153" y="14" text-anchor="middle" font-size="11" fill="#B23A48">must match — then they vanish</text>
+
+  <path d="M84,70 C84,104 328,104 328,72" fill="none" stroke="#2f855a" stroke-width="1.4" stroke-dasharray="4,3"></path>
+  <path d="M230,70 C230,120 366,120 366,72" fill="none" stroke="#2f855a" stroke-width="1.4" stroke-dasharray="4,3"></path>
+  <text x="470" y="60" font-size="11" fill="#2f855a">the outer pair survives —</text>
+  <text x="470" y="76" font-size="11" fill="#2f855a">it is the answer's shape</text>
+
+  <line x1="20" y1="136" x2="600" y2="136" stroke="#D9E0EA" stroke-width="1"></line>
+
+  <text x="20" y="160" font-size="12" font-weight="700" fill="#B23A48">NOT CONFORMABLE</text>
+
+  <text x="100" y="196" font-size="22" fill="#22303F">(</text>
+  <text x="120" y="196" font-size="20" fill="#8a8f98">3</text>
+  <text x="139" y="196" font-size="16" fill="#8a8f98">×</text>
+  <text x="158" y="196" font-size="20" fill="#B23A48">4</text>
+  <text x="176" y="196" font-size="22" fill="#22303F">)</text>
+  <text x="208" y="196" font-size="22" fill="#22303F">(</text>
+  <text x="228" y="196" font-size="20" fill="#B23A48">2</text>
+  <text x="247" y="196" font-size="16" fill="#8a8f98">×</text>
+  <text x="266" y="196" font-size="20" fill="#8a8f98">5</text>
+  <text x="284" y="196" font-size="22" fill="#22303F">)</text>
+  <path d="M162,168 C162,154 224,154 224,168" fill="none" stroke="#B23A48" stroke-width="1.6"></path>
+  <text x="193" y="152" text-anchor="middle" font-size="11" fill="#B23A48">4 ≠ 2</text>
+  <text x="330" y="196" font-size="22" fill="#B23A48">✗</text>
+  <text x="362" y="192" font-size="11" fill="#5A6B80">Not "wrong" — there is simply no</text>
+  <text x="362" y="208" font-size="11" fill="#5A6B80">such object to compute.</text>
+</svg>
+</div>
+<ul>
+<li class="fragment">Read every matrix line this way and most of your first year becomes checkable: <strong>name the shapes, see if the inner pair matches.</strong></li>
+<li class="fragment">We cash this in twice today: a <strong>row times a column</strong> gives <span class="math inline">\((1\times n)(n\times 1) = 1\times1\)</span> — a single number; a <strong>matrix times a column</strong> gives <span class="math inline">\((n\times k)(k\times 1) = n\times1\)</span> — a whole column.
+<ul>
+<li class="fragment">Both are the same rule. Neither needs new arithmetic.</li>
+</ul></li>
+</ul>
+</section>
+<section id="formal-adding-and-scaling" class="slide level2 smaller">
+<h2>Formal: Adding and Scaling</h2>
+<p>Two operations on vectors. Both are done entry by entry, and both obey the rules from the last slide.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<p><strong>Addition</strong> — add matching entries. Conformable only when the shapes are <strong>identical</strong>.</p>
+<p><span class="math display">\[\begin{bmatrix} 0.91 \\ 0.56 \\ 0.28 \end{bmatrix} + \begin{bmatrix} 0.03 \\ 0.10 \\ 0.02 \end{bmatrix} = \begin{bmatrix} 0.94 \\ 0.66 \\ 0.30 \end{bmatrix}\]</span></p>
+<p><span class="math inline">\((n\times1) + (n\times1) = (n\times1)\)</span></p>
+</div><div class="column" style="width:50%;">
+<p><strong>Scalar multiplication</strong> — multiply every entry by one number. Always conformable; shape never changes.</p>
+<p><span class="math display">\[2\begin{bmatrix} 0.91 \\ 0.56 \\ 0.28 \end{bmatrix} = \begin{bmatrix} 1.82 \\ 1.12 \\ 0.56 \end{bmatrix}\]</span></p>
+<p><span class="math inline">\((1\times1)\cdot(n\times1) = (n\times1)\)</span></p>
+</div></div>
+<div class="fragment">
+<p>One vector is worth naming: <span class="math inline">\(\mathbf{1}\)</span>, the <span class="math inline">\(n\times1\)</span> column of <strong>all ones</strong>. Scale it and you get a column of identical numbers — <span class="math inline">\(\bar x\,\mathbf{1}\)</span> is <span class="math inline">\(\bar x\)</span> repeated <span class="math inline">\(n\)</span> times. That is the standard move for turning a lone number into something you’re <em>allowed</em> to add to or subtract from a column.</p>
+</div>
+</section>
+<section id="example-centering-is-a-vector-operation" class="slide level2 smaller">
+<h2>Example: Centering Is a Vector Operation</h2>
+<p>One country at a time: <span class="math inline">\(\tilde x_i = x_i - \bar x\)</span>. As vectors, using the <span class="math inline">\(\mathbf{1}\)</span> from the last slide: <span class="math inline">\(\;\tilde{\mathbf{x}} = \mathbf{x} - \bar{x}\,\mathbf{1}\)</span>.</p>
+<div style="display:flex; justify-content:center; margin: 2px 0 4px;">
+<svg width="640" height="210" viewbox="0 0 640 210" xmlns="http://www.w3.org/2000/svg">
+  <!-- x -->
+  <text x="62" y="20" text-anchor="middle" font-size="12" fill="#22303F">polyarchy</text>
+  <text x="62" y="36" text-anchor="middle" font-size="13" font-style="italic" fill="#22303F">x</text>
+  <path d="M36,46 L28,46 L28,168 L36,168" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <path d="M88,46 L96,46 L96,168 L88,168" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <text x="62" y="68" text-anchor="middle" font-size="13" fill="#2b6cb0">0.91</text>
+  <text x="62" y="96" text-anchor="middle" font-size="13" fill="#2b6cb0">0.56</text>
+  <text x="62" y="124" text-anchor="middle" font-size="13" fill="#2b6cb0">0.28</text>
+  <text x="62" y="152" text-anchor="middle" font-size="13" fill="#2b6cb0">0.14</text>
+  <text x="62" y="166" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+  <text x="62" y="188" text-anchor="middle" font-size="11" fill="#5A6B80">n × 1</text>
+  <text x="112" y="72" font-size="9" fill="#8a8f98">Norway</text>
+  <text x="112" y="100" font-size="9" fill="#8a8f98">India</text>
+  <text x="112" y="128" font-size="9" fill="#8a8f98">Jordan</text>
+  <text x="112" y="156" font-size="9" fill="#8a8f98">Chad</text>
+
+  <text x="180" y="112" text-anchor="middle" font-size="22" fill="#5A6B80">−</text>
+
+  <!-- xbar * 1 -->
+  <text x="268" y="20" text-anchor="middle" font-size="12" fill="#22303F">the mean, stretched</text>
+  <text x="268" y="36" text-anchor="middle" font-size="13" font-style="italic" fill="#22303F">x̄ · 1</text>
+  <path d="M242,46 L234,46 L234,168 L242,168" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <path d="M294,46 L302,46 L302,168 L294,168" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <text x="268" y="68" text-anchor="middle" font-size="13" fill="#5A6B80">0.47</text>
+  <text x="268" y="96" text-anchor="middle" font-size="13" fill="#5A6B80">0.47</text>
+  <text x="268" y="124" text-anchor="middle" font-size="13" fill="#5A6B80">0.47</text>
+  <text x="268" y="152" text-anchor="middle" font-size="13" fill="#5A6B80">0.47</text>
+  <text x="268" y="166" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+  <text x="268" y="188" text-anchor="middle" font-size="11" fill="#5A6B80">n × 1</text>
+
+  <text x="340" y="112" text-anchor="middle" font-size="22" fill="#5A6B80">=</text>
+
+  <!-- xtilde -->
+  <text x="428" y="20" text-anchor="middle" font-size="12" fill="#22303F">centered</text>
+  <text x="428" y="36" text-anchor="middle" font-size="13" font-style="italic" fill="#22303F">x̃</text>
+  <path d="M402,46 L394,46 L394,168 L402,168" fill="none" stroke="#2f855a" stroke-width="1.5"></path>
+  <path d="M454,46 L462,46 L462,168 L454,168" fill="none" stroke="#2f855a" stroke-width="1.5"></path>
+  <rect x="396" y="52" width="56" height="24" fill="#EAF6EF"></rect>
+  <rect x="396" y="80" width="56" height="24" fill="#EAF6EF"></rect>
+  <rect x="396" y="108" width="56" height="24" fill="#EDF0F5"></rect>
+  <rect x="396" y="136" width="56" height="24" fill="#EDF0F5"></rect>
+  <text x="428" y="68" text-anchor="middle" font-size="13" fill="#2f855a">+0.44</text>
+  <text x="428" y="96" text-anchor="middle" font-size="13" fill="#2f855a">+0.09</text>
+  <text x="428" y="124" text-anchor="middle" font-size="13" fill="#B23A48">−0.19</text>
+  <text x="428" y="152" text-anchor="middle" font-size="13" fill="#B23A48">−0.33</text>
+  <text x="428" y="166" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+  <text x="428" y="188" text-anchor="middle" font-size="11" fill="#5A6B80">n × 1</text>
+
+  <text x="492" y="72" font-size="10" fill="#2f855a">above average</text>
+  <text x="492" y="100" font-size="10" fill="#2f855a">above average</text>
+  <text x="492" y="128" font-size="10" fill="#B23A48">below average</text>
+  <text x="492" y="156" font-size="10" fill="#B23A48">below average</text>
+
+  <text x="320" y="206" text-anchor="middle" font-size="11" fill="#8a8f98">Same shape in, same shape out — subtraction happens row by row.</text>
+</svg>
+</div>
+<div class="fragment">
+<p>The <span class="math inline">\(\mathbf{1}\)</span> is there to make the shapes match — you can’t subtract a lone number from a column, so you stretch it into one.</p>
+</div>
+</section>
+<section id="what-centering-did-and-didnt" class="slide level2 smaller">
+<h2>What Centering Did, and Didn’t</h2>
+<ul>
+<li class="fragment"><strong>Didn’t change:</strong> the spacing between countries. Norway is still <span class="math inline">\(0.77\)</span> above Chad, before and after.</li>
+<li class="fragment"><strong>Did change:</strong> where zero sits. Zero now means <em>average</em>, so the sign of an entry tells you which side of the mean a country is on.</li>
+<li class="fragment"><strong>Across all <span class="math inline">\(n\)</span></strong>, the centered column sums to zero: <span class="math inline">\(\sum_i(x_i - \bar x) = 0\)</span>.</li>
+<li class="fragment"><strong>The point of the notation:</strong> one line replaced <span class="math inline">\(n\)</span> lines, and nothing conceptual changed.
+<ul>
+<li class="fragment">In R you’ve been doing it this way since Monday: <code>x - mean(x)</code>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="quick-drill-vectors-by-the-numbers" class="slide level2 smaller">
+<h2>Quick Drill: Vectors by the Numbers</h2>
+<p>Let <span class="math inline">\(\;\mathbf{a} = (2,\;5,\;2)'\;\)</span> and <span class="math inline">\(\;\mathbf{b} = (4,\;0,\;3)'\;\)</span> — both <span class="math inline">\(3\times1\)</span> — and let <span class="math inline">\(\;\mathbf{1} = (1,\;1,\;1)'\)</span>.</p>
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(\mathbf{a} + \mathbf{b} \;=\;\)</span> <span class="fragment"><span class="math inline">\((6,\;5,\;5)'\)</span> — add matching entries. Still <span class="math inline">\(3\times1\)</span>.</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(2\,\mathbf{a} \;=\;\)</span> <span class="fragment"><span class="math inline">\((4,\;10,\;4)'\)</span> — every entry doubled. Shape unchanged.</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(\bar a \;=\;\)</span> <span class="fragment"><span class="math inline">\(3\)</span>, so <span class="math inline">\(\;\tilde{\mathbf{a}} = \mathbf{a} - 3\,\mathbf{1} = (-1,\;2,\;-1)'\)</span> — and it sums to <span class="math inline">\(0\)</span>, as a centered column always must.</span></li>
+<li class="fragment"><strong>(d)</strong> What shape is <span class="math inline">\(\mathbf{a}'\)</span>, and are <span class="math inline">\(\;\mathbf{a}\;\)</span> and <span class="math inline">\(\;\mathbf{b}'\;\)</span> conformable for addition? <span class="fragment"><span class="math inline">\(\mathbf{a}'\)</span> is <span class="math inline">\(1\times3\)</span>. <strong>Not conformable</strong> — <span class="math inline">\(3\times1\)</span> and <span class="math inline">\(1\times3\)</span> are different shapes, even with the same three numbers.</span></li>
+<li class="fragment"><strong>(e)</strong> R evaluates <code>a + 5</code> without complaint. What comes back, and what should you have written? <span class="fragment"><span class="math inline">\((7,\;10,\;7)'\)</span> — R silently recycled the <span class="math inline">\(5\)</span>. Properly: <span class="math inline">\(\;\mathbf{a} + 5\,\mathbf{1}\)</span>.</span></li>
+</ul>
+<div class="fragment">
+<p><strong>(e) is the one to remember.</strong> Software’s willingness to guess is exactly why you need the rule in your own head.</p>
+</div>
+</section></section>
+<section>
+<section id="the-dot-product" class="title-slide slide level1 center">
+<h1>The Dot Product</h1>
+<p><em>The one operation that is secretly every formula you learned this week.</em></p>
+</section>
+<section id="why-we-need-it" class="slide level2 smaller">
+<h2>Why We Need It</h2>
+<ul>
+<li class="fragment">Three sums keep turning up wherever two columns of data meet:
+<ul>
+<li class="fragment"><span class="math inline">\(\sum_i x_i\)</span> — the numerator of the mean.</li>
+<li class="fragment"><span class="math inline">\(\sum_i x_i^2\)</span> — a sum of squares.</li>
+<li class="fragment"><span class="math inline">\(\sum_i x_i y_i\)</span> — the cross-product of two variables.</li>
+</ul></li>
+<li class="fragment">Every one of them is the same shape of operation: <em>multiply in pairs, then add up</em>.</li>
+<li class="fragment">Give that operation a name once, and all three collapse into one piece of notation.</li>
+</ul>
+</section>
+<section id="intuition-a-row-times-a-column" class="slide level2 smaller">
+<h2>Intuition: A Row Times a Column</h2>
+<div style="display:flex; justify-content:center; margin: 2px 0 4px;">
+<svg width="660" height="268" viewbox="0 0 660 268" xmlns="http://www.w3.org/2000/svg">
+  <!-- row vector x' -->
+  <text x="20" y="30" font-size="13" font-style="italic" fill="#22303F">x′</text>
+  <text x="42" y="30" font-size="13" fill="#5A6B80">=</text>
+  <path d="M74,14 L64,14 L64,44 L74,44" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <path d="M414,14 L424,14 L424,44 L414,44" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <text x="118" y="34" text-anchor="middle" font-size="15" fill="#2b6cb0">0.91</text>
+  <text x="203" y="34" text-anchor="middle" font-size="15" fill="#e53e3e">0.56</text>
+  <text x="288" y="34" text-anchor="middle" font-size="15" fill="#38a169">0.28</text>
+  <text x="373" y="34" text-anchor="middle" font-size="15" fill="#d69e2e">0.14</text>
+  <text x="446" y="34" font-size="11" fill="#5A6B80">1 × 4</text>
+
+  <!-- pairing arrows -->
+  <path d="M118,48 L118,74 M113,67 L118,74 L123,67" fill="none" stroke="#2b6cb0" stroke-width="1.6"></path>
+  <path d="M203,48 L203,74 M198,67 L203,74 L208,67" fill="none" stroke="#e53e3e" stroke-width="1.6"></path>
+  <path d="M288,48 L288,74 M283,67 L288,74 L293,67" fill="none" stroke="#38a169" stroke-width="1.6"></path>
+  <path d="M373,48 L373,74 M368,67 L373,74 L378,67" fill="none" stroke="#d69e2e" stroke-width="1.6"></path>
+  <text x="486" y="66" font-size="11" fill="#8a8f98">pair them off,</text>
+  <text x="486" y="81" font-size="11" fill="#8a8f98">first with first</text>
+
+  <!-- column vector y, laid out to line up -->
+  <text x="20" y="98" font-size="13" font-style="italic" fill="#22303F">y</text>
+  <text x="42" y="98" font-size="13" fill="#5A6B80">=</text>
+  <path d="M74,82 L64,82 L64,112 L74,112" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <path d="M414,82 L424,82 L424,112 L414,112" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <text x="118" y="102" text-anchor="middle" font-size="15" fill="#2b6cb0">1.2</text>
+  <text x="203" y="102" text-anchor="middle" font-size="15" fill="#e53e3e">4.9</text>
+  <text x="288" y="102" text-anchor="middle" font-size="15" fill="#38a169">2.1</text>
+  <text x="373" y="102" text-anchor="middle" font-size="15" fill="#d69e2e">1.6</text>
+  <text x="430" y="102" font-size="13" fill="#22303F">′</text>
+  <text x="446" y="102" font-size="11" fill="#5A6B80">4 × 1</text>
+  <text x="486" y="106" font-size="10" fill="#8a8f98">written on its side</text>
+  <text x="486" y="120" font-size="10" fill="#8a8f98">so the pairs line up</text>
+
+  <line x1="20" y1="132" x2="640" y2="132" stroke="#D9E0EA" stroke-width="1"></line>
+
+  <!-- multiply each pair -->
+  <text x="20" y="160" font-size="12" fill="#22303F">multiply</text>
+  <text x="20" y="176" font-size="12" fill="#22303F">each pair</text>
+  <text x="118" y="168" text-anchor="middle" font-size="12" fill="#2b6cb0">0.91×1.2</text>
+  <text x="203" y="168" text-anchor="middle" font-size="12" fill="#e53e3e">0.56×4.9</text>
+  <text x="288" y="168" text-anchor="middle" font-size="12" fill="#38a169">0.28×2.1</text>
+  <text x="373" y="168" text-anchor="middle" font-size="12" fill="#d69e2e">0.14×1.6</text>
+
+  <text x="118" y="196" text-anchor="middle" font-size="14" fill="#2b6cb0">1.092</text>
+  <text x="203" y="196" text-anchor="middle" font-size="14" fill="#e53e3e">2.744</text>
+  <text x="288" y="196" text-anchor="middle" font-size="14" fill="#38a169">0.588</text>
+  <text x="373" y="196" text-anchor="middle" font-size="14" fill="#d69e2e">0.224</text>
+  <text x="160" y="196" text-anchor="middle" font-size="14" fill="#5A6B80">+</text>
+  <text x="245" y="196" text-anchor="middle" font-size="14" fill="#5A6B80">+</text>
+  <text x="330" y="196" text-anchor="middle" font-size="14" fill="#5A6B80">+</text>
+
+  <!-- add them -->
+  <text x="20" y="234" font-size="12" fill="#22303F">then add</text>
+  <path d="M118,206 L240,222 M232,215 L240,222 L231,227" fill="none" stroke="#5A6B80" stroke-width="1.3"></path>
+  <path d="M373,206 L262,222 M270,215 L262,222 L271,227" fill="none" stroke="#5A6B80" stroke-width="1.3"></path>
+  <rect x="204" y="226" width="96" height="32" fill="#EAF6EF" stroke="#38a169" stroke-width="1.5"></rect>
+  <text x="252" y="248" text-anchor="middle" font-size="16" fill="#2f855a">4.648</text>
+  <text x="322" y="240" font-size="12" font-style="italic" fill="#22303F">x′y</text>
+  <text x="322" y="256" font-size="11" fill="#5A6B80">one number, 1 × 1</text>
+</svg>
+</div>
+<ul>
+<li class="fragment">Each colour is one <strong>pair</strong>: the first entry of the row with the first entry of the column, and so on down the line.</li>
+<li class="fragment">Multiply within each pair, then add the four results. <strong>Two vectors in, one number out.</strong></li>
+<li class="fragment"><span class="math inline">\((1\times 4)\)</span> times <span class="math inline">\((4\times 1)\)</span> gives <span class="math inline">\((1\times 1)\)</span>: the two <span class="math inline">\(4\)</span>s faced each other and cancelled, the two <span class="math inline">\(1\)</span>s survived.</li>
+</ul>
+</section>
+<section id="formal-the-dot-product" class="slide level2 smaller">
+<h2>Formal: The Dot Product</h2>
+<ul>
+<li class="fragment">For <span class="math inline">\(\mathbf{x},\mathbf{y}\)</span> both <span class="math inline">\(n\times1\)</span>: <span class="math display">\[\mathbf{x}'\mathbf{y} \;=\; \sum_{i=1}^{n} x_i y_i \qquad (1\times n)(n\times1) = 1\times 1\]</span></li>
+<li class="fragment">Note the shapes multiply the way you’d hope: the inner dimensions (<span class="math inline">\(n\)</span> and <span class="math inline">\(n\)</span>) meet and vanish; the outer dimensions (<span class="math inline">\(1\)</span> and <span class="math inline">\(1\)</span>) survive.
+<ul>
+<li class="fragment"><strong>That is the whole rule of matrix multiplication.</strong> We will state it again in a moment for the general case, but you have now seen it.</li>
+</ul></li>
+<li class="fragment">Special case worth memorizing: <span class="math inline">\(\mathbf{x}'\mathbf{x} = \sum_i x_i^2\)</span> — a sum of squares, always <span class="math inline">\(\ge 0\)</span>.</li>
+</ul>
+</section>
+<section id="one-operation-three-names" class="slide level2 smaller">
+<h2>One Operation, Three Names</h2>
+<p>Textbooks call this same thing three different things. They are <strong>synonyms</strong> — the difference is only which feature the name points at.</p>
+<ul>
+<li class="fragment"><strong>Dot product</strong> — named for the notation, a centred dot. The elementary name.
+<ul>
+<li class="fragment"><span class="math inline">\(\mathbf{x} \cdot \mathbf{y} \;=\; \sum_{i=1}^{n} x_i y_i\)</span></li>
+</ul></li>
+<li class="fragment"><strong>Scalar product</strong> — named for what comes <em>out</em>: a single scalar.
+<ul>
+<li class="fragment"><span class="math inline">\(\mathbf{x} \cdot \mathbf{y} \;=\; 4.648\)</span>, a <span class="math inline">\(1\times1\)</span></li>
+</ul></li>
+<li class="fragment"><strong>Inner product</strong> — the general name, and the one econometrics tends to use.
+<ul>
+<li class="fragment"><span class="math inline">\(\langle \mathbf{x}, \mathbf{y}\rangle\)</span> in abstract notation; <span class="math inline">\(\;\mathbf{x}'\mathbf{y}\)</span> in matrix notation</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p><strong>In this deck: “dot product”, written <span class="math inline">\(\mathbf{x}'\mathbf{y}\)</span>.</strong> When you meet the other two names, they are not new operations.</p>
+</div>
+</section>
+<section id="two-traps-in-those-names" class="slide level2 smaller">
+<h2>Two Traps in Those Names</h2>
+<ul>
+<li class="fragment"><strong>Scalar product <span class="math inline">\(\neq\)</span> scalar multiplication.</strong> One word apart, completely different operations.
+<ul>
+<li class="fragment"><em>Scalar product:</em> <span class="math inline">\(\;\mathbf{x}'\mathbf{y}\)</span> — two vectors in, <strong>one number</strong> out. <span class="math inline">\((1\times n)(n\times1) = 1\times1\)</span>.</li>
+<li class="fragment"><em>Scalar multiplication:</em> <span class="math inline">\(\;c\,\mathbf{x}\)</span> — a number and a vector in, <strong>a vector</strong> out, same shape as <span class="math inline">\(\mathbf{x}\)</span>.</li>
+</ul></li>
+<li class="fragment"><strong>Inner product <span class="math inline">\(\neq\)</span> outer product.</strong> Same two vectors, opposite order, wildly different results.
+<ul>
+<li class="fragment"><em>Inner:</em> <span class="math inline">\(\;\mathbf{x}'\mathbf{y}\)</span> — <span class="math inline">\((1\times n)(n\times1) = 1\times1\)</span>, a <strong>number</strong>.</li>
+<li class="fragment"><em>Outer:</em> <span class="math inline">\(\;\mathbf{x}\mathbf{y}'\)</span> — <span class="math inline">\((n\times1)(1\times n) = n\times n\)</span>, a <strong>whole matrix</strong>.</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p>Both traps are settled the same way: <strong>name the shapes.</strong> One prime in the wrong place is the difference between a number and <span class="math inline">\(n^2\)</span> of them.</p>
+</div>
+</section>
+<section id="example-familiar-formulas-compressed" class="slide level2 smaller">
+<h2>Example: Familiar Formulas, Compressed</h2>
+<p>Write <span class="math inline">\(\tilde{\mathbf{x}} = \mathbf{x} - \bar x\mathbf{1}\)</span> and <span class="math inline">\(\tilde{\mathbf{y}} = \mathbf{y} - \bar y\mathbf{1}\)</span> for the centered columns, as on the last slide.</p>
+<ul>
+<li class="fragment"><strong>Sum</strong>: <span class="math inline">\(\;\mathbf{1}'\mathbf{x} = \sum_i x_i\)</span>, so the mean is <span class="math inline">\(\bar x = \tfrac{1}{n}\mathbf{1}'\mathbf{x}\)</span>.</li>
+<li class="fragment"><strong>Sum of squares</strong>: <span class="math inline">\(\;\mathbf{x}'\mathbf{x} = \sum_i x_i^2\)</span>.</li>
+<li class="fragment"><strong>The variance’s numerator</strong>: <span class="math inline">\(\;\tilde{\mathbf{x}}'\tilde{\mathbf{x}} = \sum_i (x_i - \bar x)^2\)</span> — how much polyarchy moves on its own.</li>
+<li class="fragment"><strong>The covariance’s numerator</strong>: <span class="math inline">\(\;\tilde{\mathbf{x}}'\tilde{\mathbf{y}} = \sum_i (x_i - \bar x)(y_i - \bar y)\)</span> — how polyarchy and growth move together.</li>
+<li class="fragment">The same arithmetic you would write with <span class="math inline">\(\sum\)</span>, in fewer symbols.
+<ul>
+<li class="fragment">Keep these last two in view. When we read <span class="math inline">\(X'X\)</span> and <span class="math inline">\(X'y\)</span> at the end of the hour, they are exactly these two objects with more columns.</li>
+</ul></li>
+</ul>
+</section>
+<section id="quick-drill-is-it-a-number-or-a-vector" class="slide level2 smaller">
+<h2>Quick Drill: Is It a Number or a Vector?</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(\mathbf{x}\)</span> and <span class="math inline">\(\mathbf{y}\)</span> are both <span class="math inline">\(n\times 1\)</span>. For each, give the shape of the result:
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(\mathbf{x}'\mathbf{y}\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(\mathbf{x}\mathbf{y}'\)</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(\mathbf{x}\mathbf{y}\)</span></li>
+</ul></li>
+<li class="fragment"><strong>Answers:</strong> (a) <span class="math inline">\(1\times1\)</span> — a single number, the dot product. (b) <span class="math inline">\(n \times n\)</span> — a whole matrix, the <strong>outer product</strong>. (c) <strong>not conformable</strong>: <span class="math inline">\((n\times1)(n\times1)\)</span>, inner dimensions <span class="math inline">\(1\)</span> and <span class="math inline">\(n\)</span> don’t match.</li>
+<li class="fragment">Moral: <span class="math inline">\(\mathbf{x}'\mathbf{y}\)</span> and <span class="math inline">\(\mathbf{x}\mathbf{y}'\)</span> differ by one prime and by <span class="math inline">\(n^2 - 1\)</span> numbers.</li>
+</ul>
+</section></section>
+<section>
+<section id="matrices" class="title-slide slide level1 center">
+<h1>Matrices</h1>
+<p><em>A stack of vectors, with dimensions you must keep in view.</em></p>
+</section>
+<section id="why-we-need-them-1" class="slide level2 smaller">
+<h2>Why We Need Them</h2>
+<ul>
+<li class="fragment">So far: one predictor, polyarchy. But no one believes growth depends on democracy alone.</li>
+<li class="fragment">Add GDP per capita in 2000, region dummies, an oil indicator, a colonial-origin indicator…</li>
+<li class="fragment">Written out one predictor at a time, a <span class="math inline">\(k\)</span>-predictor model needs <span class="math inline">\(k\)</span> separate equations, each with its own nested summations.
+<ul>
+<li class="fragment">Doable. Unreadable — and it gets worse with every variable you add.</li>
+</ul></li>
+<li class="fragment">Matrices are how the <em>same</em> model is written so it fits on one line, for any <span class="math inline">\(k\)</span>.</li>
+</ul>
+</section>
+<section id="intuition-the-design-matrix" class="slide level2 smaller">
+<h2>Intuition: The Design Matrix</h2>
+<div style="display:flex; justify-content:center; margin: 6px 0;">
+<svg width="620" height="215" viewbox="0 0 620 215" xmlns="http://www.w3.org/2000/svg">
+  <text x="10" y="16" font-size="13" fill="#22303F">X — the design matrix (n × k)</text>
+  <text x="20" y="40" font-size="11" fill="#8a8f98">intercept</text>
+  <text x="104" y="40" font-size="11" fill="#8a8f98">polyarchy</text>
+  <text x="196" y="40" font-size="11" fill="#8a8f98">log GDPpc</text>
+
+  <path d="M22,50 L12,50 L12,178 L22,178" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <path d="M268,50 L278,50 L278,178 L268,178" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+
+  <rect x="24" y="52" width="66" height="24" fill="#EDF0F5"></rect>
+  <rect x="24" y="80" width="66" height="24" fill="#EDF0F5"></rect>
+  <rect x="24" y="108" width="66" height="24" fill="#EDF0F5"></rect>
+  <rect x="24" y="136" width="66" height="24" fill="#EDF0F5"></rect>
+  <text x="57" y="69" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+  <text x="57" y="97" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+  <text x="57" y="125" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+  <text x="57" y="153" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+
+  <text x="145" y="69" text-anchor="middle" font-size="12" fill="#2b6cb0">0.91</text>
+  <text x="145" y="97" text-anchor="middle" font-size="12" fill="#2b6cb0">0.56</text>
+  <text x="145" y="125" text-anchor="middle" font-size="12" fill="#2b6cb0">0.28</text>
+  <text x="145" y="153" text-anchor="middle" font-size="12" fill="#2b6cb0">0.14</text>
+
+  <text x="235" y="69" text-anchor="middle" font-size="12" fill="#5A6B80">10.9</text>
+  <text x="235" y="97" text-anchor="middle" font-size="12" fill="#5A6B80">7.3</text>
+  <text x="235" y="125" text-anchor="middle" font-size="12" fill="#5A6B80">8.1</text>
+  <text x="235" y="153" text-anchor="middle" font-size="12" fill="#5A6B80">6.5</text>
+
+  <text x="145" y="172" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+
+  <text x="292" y="69" font-size="10" fill="#8a8f98">Norway</text>
+  <text x="292" y="97" font-size="10" fill="#8a8f98">India</text>
+  <text x="292" y="125" font-size="10" fill="#8a8f98">Jordan</text>
+  <text x="292" y="153" font-size="10" fill="#8a8f98">Chad</text>
+
+  <path d="M12,192 L278,192" stroke="#5A6B80" stroke-width="1"></path>
+  <text x="145" y="206" text-anchor="middle" font-size="11" fill="#5A6B80">k = 3 columns</text>
+  <text x="4" y="118" text-anchor="end" font-size="11" fill="#5A6B80" transform="rotate(-90 4 118)">n ≈ 175 rows</text>
+
+  <text x="390" y="16" font-size="13" fill="#22303F">y (n × 1)</text>
+  <path d="M406,50 L396,50 L396,178 L406,178" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <path d="M452,50 L462,50 L462,178 L452,178" fill="none" stroke="#22303F" stroke-width="1.5"></path>
+  <text x="429" y="69" text-anchor="middle" font-size="12" fill="#2f855a">1.2</text>
+  <text x="429" y="97" text-anchor="middle" font-size="12" fill="#2f855a">4.9</text>
+  <text x="429" y="125" text-anchor="middle" font-size="12" fill="#2f855a">2.1</text>
+  <text x="429" y="153" text-anchor="middle" font-size="12" fill="#2f855a">1.6</text>
+  <text x="429" y="172" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+
+  <text x="500" y="90" font-size="11" fill="#5A6B80">one row =</text>
+  <text x="500" y="106" font-size="11" fill="#5A6B80">one country</text>
+  <text x="500" y="126" font-size="11" fill="#5A6B80">one column =</text>
+  <text x="500" y="142" font-size="11" fill="#5A6B80">one variable</text>
+</svg>
+</div>
+<ul>
+<li class="fragment">A matrix is your data frame with the country names peeled off and only the numbers left.</li>
+<li class="fragment">The leading column of <span class="math inline">\(1\)</span>s is not data — it’s the bookkeeping device that gives you an intercept. We’ll see exactly why when we read the model row by row at the end.</li>
+</ul>
+</section>
+<section id="formal-dimensions-and-elements" class="slide level2 smaller">
+<h2>Formal: Dimensions and Elements</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(A\)</span> is <span class="math inline">\(m \times n\)</span>: <span class="math inline">\(m\)</span> rows, <span class="math inline">\(n\)</span> columns. <strong>Rows first, always</strong> — the same convention as vectors, where a column was <span class="math inline">\(n\times1\)</span>.</li>
+<li class="fragment">A single entry is <span class="math inline">\(a_{ij}\)</span>: <strong>row <span class="math inline">\(i\)</span>, column <span class="math inline">\(j\)</span></strong>. Row index first, again. <span class="math display">\[A = \begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \end{bmatrix}_{2\times 3} \qquad a_{11} = 1, \quad a_{23} = 6, \quad a_{12} = 2\]</span></li>
+<li class="fragment"><span class="math inline">\(a_{23}\)</span> is row 2, column 3 — <strong>not</strong> “the 23rd entry”, and not column 2, row 3.
+<ul>
+<li class="fragment">Getting this backwards is the most common slip when reading a summation like <span class="math inline">\(\sum_i x_{ij}\)</span>.</li>
+</ul></li>
+<li class="fragment">For our data, <span class="math inline">\(X\)</span> is <span class="math inline">\(n\times k\)</span>: <span class="math inline">\(x_{ij}\)</span> is country <span class="math inline">\(i\)</span>’s value on variable <span class="math inline">\(j\)</span>.</li>
+</ul>
+</section>
+<section id="formal-multiplication-and-conformability" class="slide level2 smaller">
+<h2>Formal: Multiplication and Conformability</h2>
+<ul>
+<li class="fragment">The rule from the Vectors section, now in general. <span class="math inline">\(AB\)</span> exists <strong>only if</strong> the columns of <span class="math inline">\(A\)</span> equal the rows of <span class="math inline">\(B\)</span>: <span class="math display">\[\underset{m\times \color{#2b6cb0}{n}}{A}\;\underset{\color{#2b6cb0}{n}\times p}{B} \;=\; \underset{m \times p}{C}, \qquad c_{ij} = \sum_{\ell=1}^{n} a_{i\ell}\,b_{\ell j}\]</span></li>
+<li class="fragment">Entry <span class="math inline">\(c_{ij}\)</span> is exactly the <strong>dot product</strong> of row <span class="math inline">\(i\)</span> of <span class="math inline">\(A\)</span> with column <span class="math inline">\(j\)</span> of <span class="math inline">\(B\)</span>. Nothing new since two sections ago.</li>
+<li class="fragment">Inner dimensions must match and disappear; outer dimensions survive.</li>
+<li class="fragment"><strong><span class="math inline">\(AB \ne BA\)</span>.</strong> Order is meaning, not style. Often <span class="math inline">\(BA\)</span> isn’t even conformable.</li>
+</ul>
+</section>
+<section id="formal-the-transpose" class="slide level2 smaller">
+<h2>Formal: The Transpose</h2>
+<p>The same prime you met on vectors, now for a rectangle: <strong>rows become columns.</strong></p>
+<p><span class="math display">\[A = \begin{bmatrix} 1 &amp; 2 &amp; 3 \\ 4 &amp; 5 &amp; 6 \end{bmatrix}_{2\times3} \qquad\Longrightarrow\qquad A' = \begin{bmatrix} 1 &amp; 4 \\ 2 &amp; 5 \\ 3 &amp; 6 \end{bmatrix}_{3\times2}\]</span></p>
+<ul>
+<li class="fragment">Row 1 of <span class="math inline">\(A\)</span> becomes column 1 of <span class="math inline">\(A'\)</span>; row 2 becomes column 2.</li>
+<li class="fragment">Formally <span class="math inline">\((A')_{ij} = a_{ji}\)</span> — the indices swap, and an <span class="math inline">\(m\times n\)</span> becomes <span class="math inline">\(n\times m\)</span>.</li>
+</ul>
+</section>
+<section id="two-transpose-rules-and-what-they-build" class="slide level2 smaller">
+<h2>Two Transpose Rules, and What They Build</h2>
+<ul>
+<li class="fragment"><span class="math inline">\((A')' = A\)</span> — do it twice and you’re back where you started.</li>
+<li class="fragment"><span class="math inline">\((AB)' = B'A'\)</span> — <strong>the order reverses.</strong> Not a typo, and the step most often got wrong when reading a variance derivation.</li>
+</ul>
+<div class="fragment">
+<p>Now we can build the object this hour keeps pointing at. <span class="math inline">\(X\)</span> is <span class="math inline">\(n\times k\)</span>, so <span class="math inline">\(X'\)</span> is <span class="math inline">\(k\times n\)</span>:</p>
+<p><span class="math display">\[X'X \;=\; (k\times n)(n\times k) \;=\; k\times k\]</span></p>
+<p>Small and square <strong>however many countries there are</strong> — the <span class="math inline">\(n\)</span> met itself in the middle and cancelled.</p>
+</div>
+</section>
+<section id="named-by-shape-scalars-and-columns" class="slide level2 smaller">
+<h2>Named by Shape: Scalars and Columns</h2>
+<p>The first set of names say nothing but <strong>how many rows and columns</strong>.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="scalar-1times1">Scalar — <span class="math inline">\(1\times1\)</span></h3>
+<p><span class="math display">\[\begin{bmatrix}7\end{bmatrix}\]</span></p>
+<p>An ordinary number, wearing brackets. A mean, a variance, or the <span class="math inline">\(\mathbf{x}'\mathbf{y}\)</span> you computed a moment ago.</p>
+</div><div class="column" style="width:50%;">
+<h3 id="column-vector-ntimes1">Column vector — <span class="math inline">\(n\times1\)</span></h3>
+<p><span class="math display">\[\begin{bmatrix}1.2\\4.9\\2.1\end{bmatrix}\]</span></p>
+<p>One variable, one entry per country. The outcome <span class="math inline">\(\mathbf{y}\)</span> is one of these.</p>
+</div></div>
+</section>
+<section id="named-by-shape-rows-and-rectangles" class="slide level2 smaller">
+<h2>Named by Shape: Rows and Rectangles</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="row-vector-1times-n">Row vector — <span class="math inline">\(1\times n\)</span></h3>
+<p><span class="math display">\[\begin{bmatrix}1.2 &amp; 4.9 &amp; 2.1\end{bmatrix}\]</span></p>
+<p>One country, one entry per variable. A single row of the data table.</p>
+</div><div class="column" style="width:50%;">
+<h3 id="rectangular-m-neq-n">Rectangular — <span class="math inline">\(m \neq n\)</span></h3>
+<p><span class="math display">\[\begin{bmatrix}1&amp;2&amp;3\\4&amp;5&amp;6\end{bmatrix}\]</span></p>
+<p>More rows than columns, or fewer. The design matrix <span class="math inline">\(X\)</span> is one: <span class="math inline">\(n \times k\)</span>, and <span class="math inline">\(n\)</span> is far bigger.</p>
+</div></div>
+</section>
+<section id="named-by-shape-square" class="slide level2 smaller">
+<h2>Named by Shape: Square</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="square-m-n">Square — <span class="math inline">\(m = n\)</span></h3>
+<p><span class="math display">\[\begin{bmatrix}4&amp;1\\2&amp;3\end{bmatrix}\]</span></p>
+<p>As many rows as columns.</p>
+</div><div class="column" style="width:50%;">
+<p>We built one two slides ago:</p>
+<p><span class="math display">\[X'X \;=\; (k\times n)(n\times k) \;=\; k\times k\]</span></p>
+<p>Square whatever <span class="math inline">\(n\)</span> is: <span class="math inline">\(175\)</span> countries or <span class="math inline">\(17\)</span>, <span class="math inline">\(X'X\)</span> is still <span class="math inline">\(k\times k\)</span>.</p>
+</div></div>
+<div class="fragment">
+<p><strong>One family, four names so far.</strong> None of these is a new kind of object — a scalar is simply a matrix that ran out of rows and columns.</p>
+</div>
+</section>
+<section id="named-by-structure-symmetric-and-diagonal" class="slide level2 smaller">
+<h2>Named by Structure: Symmetric and Diagonal</h2>
+<p>The second set say <strong>where the zeros are</strong>, or how a matrix relates to its own transpose. Both of these are square.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="symmetric-a-a">Symmetric — <span class="math inline">\(A = A'\)</span></h3>
+<p><span class="math display">\[\begin{bmatrix}4&amp;\color{#2b6cb0}{1}\\ \color{#2b6cb0}{1}&amp;3\end{bmatrix}\]</span></p>
+<p>Swap rows for columns and nothing changes. Every variance–covariance matrix is one.</p>
+</div><div class="column" style="width:50%;">
+<h3 id="diagonal-off-diagonal-entries-all-0">Diagonal — off-diagonal entries all <span class="math inline">\(0\)</span></h3>
+<p><span class="math display">\[\begin{bmatrix}4&amp;0\\0&amp;3\end{bmatrix}\]</span></p>
+<p>Only the top-left-to-bottom-right entries survive. It scales each row by its own number and does nothing else.</p>
+</div></div>
+</section>
+<section id="named-by-structure-the-identity" class="slide level2 smaller">
+<h2>Named by Structure: The Identity</h2>
+<div class="columns">
+<div class="column" style="width:50%;">
+<h3 id="identity-i-1s-down-the-middle">Identity <span class="math inline">\(I\)</span> — <span class="math inline">\(1\)</span>s down the middle</h3>
+<p><span class="math display">\[I = \begin{bmatrix}1&amp;0\\0&amp;1\end{bmatrix}\]</span></p>
+<p><span class="math display">\[IA = AI = A\]</span></p>
+<p>The matrix world’s number <span class="math inline">\(1\)</span>: multiply by it and nothing changes.</p>
+</div><div class="column" style="width:50%;">
+<div class="fragment">
+<p><strong>The nesting.</strong> Every identity is diagonal; every diagonal is square; and symmetric implies square too, since <span class="math inline">\(A\)</span> and <span class="math inline">\(A'\)</span> can’t be equal unless the shape survives the swap.</p>
+</div>
+<div class="fragment">
+<p><strong>And <span class="math inline">\(X'X\)</span> is symmetric</strong> — using only the two transpose rules: <span class="math display">\[(X'X)' = X'(X')' = X'X \;\checkmark\]</span></p>
+</div>
+</div></div>
+</section>
+<section id="example-reading-shapes-off-the-regression" class="slide level2 smaller">
+<h2>Example: Reading Shapes Off the Regression</h2>
+<p>A regression model, written for <span class="math inline">\(k\)</span> predictors at once. Our only job right now is to check the shapes.</p>
+<ul>
+<li class="fragment"><span class="math inline">\(X\)</span> is <span class="math inline">\(n\times k\)</span>, <span class="math inline">\(\beta\)</span> is <span class="math inline">\(k\times1\)</span>, <span class="math inline">\(y\)</span> is <span class="math inline">\(n\times1\)</span>, <span class="math inline">\(\varepsilon\)</span> is <span class="math inline">\(n\times1\)</span>.</li>
+<li class="fragment"><span class="math display">\[\underset{n\times1}{y} \;=\; \underset{n\times k}{X}\,\underset{k\times1}{\beta} \;+\; \underset{n\times1}{\varepsilon}\]</span></li>
+<li class="fragment">Check it: <span class="math inline">\((n\times k)(k\times1) = n\times1\)</span>. ✓ Matches <span class="math inline">\(y\)</span>. ✓ Matches <span class="math inline">\(\varepsilon\)</span>. The shapes conform.</li>
+<li class="fragment">Row <span class="math inline">\(i\)</span> of <span class="math inline">\(X\beta\)</span> spells out <span class="math inline">\(\;\beta_1 + \beta_2 x_{i2} + \beta_3 x_{i3}\)</span> — the leading column of <span class="math inline">\(1\)</span>s is what makes <span class="math inline">\(\beta_1\)</span> the intercept.</li>
+</ul>
+</section>
+<section id="quick-drill-types-and-transposes" class="slide level2 smaller">
+<h2>Quick Drill: Types and Transposes</h2>
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(A\)</span> is <span class="math inline">\(3\times5\)</span>. What shape is <span class="math inline">\(A'\)</span>? <span class="fragment"><span class="math inline">\(5\times3\)</span> — the dimensions swap.</span></li>
+<li class="fragment"><strong>(b)</strong> Can a <span class="math inline">\(3\times5\)</span> matrix be symmetric? <span class="fragment"><strong>No.</strong> <span class="math inline">\(A'\)</span> would be <span class="math inline">\(5\times3\)</span>, so <span class="math inline">\(A = A'\)</span> can’t even be written down. Symmetric requires square.</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(B = \begin{bmatrix}2&amp;0\\0&amp;7\end{bmatrix}\)</span>. Name every label that fits. <span class="fragment">Square, diagonal, <strong>and</strong> symmetric — a diagonal matrix always equals its own transpose. Not the identity, since the entries aren’t <span class="math inline">\(1\)</span>s.</span></li>
+<li class="fragment"><strong>(d)</strong> <span class="math inline">\(X\)</span> is <span class="math inline">\(n\times k\)</span>. Is <span class="math inline">\(X'X\)</span> symmetric? <span class="fragment"><strong>Yes</strong> — <span class="math inline">\((X'X)' = X'(X')' = X'X\)</span>, using <span class="math inline">\((AB)'=B'A'\)</span> and <span class="math inline">\((A')'=A\)</span>. This is why variance–covariance matrices are always symmetric.</span></li>
+<li class="fragment"><strong>(e)</strong> What is <span class="math inline">\(IA\)</span>, for <span class="math inline">\(I\)</span> the identity of the right size? <span class="fragment"><span class="math inline">\(A\)</span> itself — multiplying by <span class="math inline">\(I\)</span> changes nothing, exactly as multiplying a number by <span class="math inline">\(1\)</span> changes nothing.</span></li>
+</ul>
+</section>
+<section id="quick-drill-conformability" class="slide level2 smaller">
+<h2>Quick Drill: Conformability</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(X\)</span> is <span class="math inline">\(n\times k\)</span>, <span class="math inline">\(y\)</span> is <span class="math inline">\(n\times 1\)</span>. Conformable or not — and if so, what shape?
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(X'X\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(XX'\)</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(X'y\)</span></li>
+<li class="fragment"><strong>(d)</strong> <span class="math inline">\(Xy\)</span></li>
+</ul></li>
+<li class="fragment"><strong>Answers:</strong> (a) <span class="math inline">\(k\times k\)</span> ✓. (b) <span class="math inline">\(n\times n\)</span> ✓ — conformable but enormous (<span class="math inline">\(175\times175\)</span> here), and almost never what you want. (c) <span class="math inline">\(k\times1\)</span> ✓. (d) not conformable: <span class="math inline">\((n\times k)(n\times1)\)</span>, inner dimensions <span class="math inline">\(k\)</span> and <span class="math inline">\(n\)</span> don’t match.</li>
+<li class="fragment">If you can do this drill reliably, you can audit most matrix lines you’ll be shown this year.</li>
+</ul>
+</section></section>
+<section>
+<section id="regression-as-a-system-of-equations" class="title-slide slide level1 center">
+<h1>Regression as a System of Equations</h1>
+<p><em>What the matrix notation has been compressing all along.</em></p>
+</section>
+<section id="two-equations-two-unknowns" class="slide level2 smaller">
+<h2>Two Equations, Two Unknowns</h2>
+<p>Ordinary algebra, nothing new. Two facts about two unknown numbers:</p>
+<p><span class="math display">\[
+\begin{aligned}
+2x + y &amp;= 5 \\
+x - y &amp;= 1
+\end{aligned}
+\]</span></p>
+<ul>
+<li class="fragment">Add the two equations: the <span class="math inline">\(y\)</span>s cancel, leaving <span class="math inline">\(3x = 6\)</span>, so <span class="math inline">\(x = 2\)</span>.</li>
+<li class="fragment">Substitute back: <span class="math inline">\(2 - y = 1\)</span>, so <span class="math inline">\(y = 1\)</span>.</li>
+<li class="fragment"><strong>Two equations, two unknowns, one exact answer.</strong> Hold on to that phrase — in a moment it stops being true.</li>
+</ul>
+</section>
+<section id="the-same-system-in-matrix-form" class="slide level2 smaller">
+<h2>The Same System, in Matrix Form</h2>
+<p>Pull the system apart into three pieces: the <strong>coefficients</strong>, the <strong>unknowns</strong>, and the <strong>right-hand sides</strong>.</p>
+<p><span class="math display">\[
+\underbrace{\begin{bmatrix} 2 &amp; 1 \\ 1 &amp; -1 \end{bmatrix}}_{A}
+\underbrace{\begin{bmatrix} x \\ y \end{bmatrix}}_{\mathbf{x}}
+=
+\underbrace{\begin{bmatrix} 5 \\ 1 \end{bmatrix}}_{\mathbf{b}}
+\qquad\text{that is,}\qquad
+A\mathbf{x} = \mathbf{b}
+\]</span></p>
+<ul>
+<li class="fragment">Multiply out row 1: <span class="math inline">\(2x + 1y = 5\)</span>. Row 2: <span class="math inline">\(1x - 1y = 1\)</span>. <strong>The original system, exactly.</strong></li>
+<li class="fragment">Shapes: <span class="math inline">\((2\times2)(2\times1) = 2\times1\)</span> ✓ — conformable, matching <span class="math inline">\(\mathbf{b}\)</span>.</li>
+<li class="fragment">So matrix notation isn’t a new kind of mathematics. It’s a system of equations with the bookkeeping pulled out into its own boxes.</li>
+</ul>
+</section>
+<section id="undoing-a" class="slide level2 smaller">
+<h2>Undoing <span class="math inline">\(A\)</span></h2>
+<ul>
+<li class="fragment">With one equation, <span class="math inline">\(ax = b\)</span>, you solve by <strong>dividing</strong>: <span class="math inline">\(x = b/a\)</span>.</li>
+<li class="fragment">With a matrix there is <strong>no division</strong>. Instead we write the undo step with a superscript <span class="math inline">\(-1\)</span>: <span class="math display">\[A\mathbf{x} = \mathbf{b} \qquad\Longrightarrow\qquad \mathbf{x} = A^{-1}\mathbf{b}\]</span></li>
+<li class="fragment"><span class="math inline">\(A^{-1}\)</span> is called the <strong>inverse</strong> of <span class="math inline">\(A\)</span> — the matrix that undoes whatever <span class="math inline">\(A\)</span> did.</li>
+</ul>
+</section>
+<section id="the-inverse-on-our-2times2" class="slide level2 smaller">
+<h2>The Inverse, on Our <span class="math inline">\(2\times2\)</span></h2>
+<p><span class="math inline">\(A^{-1}\)</span> is defined by what it does: <span class="math inline">\(\;A^{-1}A = I\)</span>, the identity from the zoo. For the system we just solved,</p>
+<p><span class="math display">\[A = \begin{bmatrix} 2 &amp; 1 \\ 1 &amp; -1 \end{bmatrix} \qquad A^{-1} = \frac{1}{3}\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; -2 \end{bmatrix}\]</span></p>
+<div class="fragment">
+<p>Check it — multiply them and the identity falls out:</p>
+<p><span class="math display">\[A^{-1}A = \frac{1}{3}\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; -2 \end{bmatrix}\begin{bmatrix} 2 &amp; 1 \\ 1 &amp; -1 \end{bmatrix} = \frac{1}{3}\begin{bmatrix} 3 &amp; 0 \\ 0 &amp; 3 \end{bmatrix} = \begin{bmatrix} 1 &amp; 0 \\ 0 &amp; 1 \end{bmatrix} = I \;\checkmark\]</span></p>
+</div>
+<div class="fragment">
+<p>And it solves the system: <span class="math inline">\(\;\mathbf{x} = A^{-1}\mathbf{b} = \frac{1}{3}\begin{bmatrix} 1 &amp; 1 \\ 1 &amp; -2 \end{bmatrix}\begin{bmatrix} 5 \\ 1 \end{bmatrix} = \frac{1}{3}\begin{bmatrix} 6 \\ 3 \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}\)</span> — the same <span class="math inline">\(x=2\)</span>, <span class="math inline">\(y=1\)</span> we got by elimination.</p>
+</div>
+</section>
+<section id="the-model-written-out" class="slide level2 smaller">
+<h2>The Model, Written Out</h2>
+<p><span class="math display">\[\underset{n\times1}{\mathbf{y}} \;=\; \underset{n\times k}{X}\;\underset{k\times1}{\boldsymbol\beta} \;+\; \underset{n\times1}{\boldsymbol\varepsilon}\]</span></p>
+<div class="fragment">
+<p>Four countries, two predictors — so <span class="math inline">\(n = 4\)</span> and <span class="math inline">\(k = 3\)</span>, because <strong>the intercept column counts</strong>:</p>
+<p><span class="math display">\[
+\underbrace{\begin{bmatrix} 1.2 \\ 4.9 \\ 2.1 \\ 1.6 \end{bmatrix}}_{\mathbf{y}\;(4\times1)}
+=
+\underbrace{\begin{bmatrix} 1 &amp; 0.91 &amp; 10.9 \\ 1 &amp; 0.56 &amp; 7.3 \\ 1 &amp; 0.28 &amp; 8.1 \\ 1 &amp; 0.14 &amp; 6.5 \end{bmatrix}}_{X\;(4\times3)}
+\underbrace{\begin{bmatrix} \beta_1 \\ \beta_2 \\ \beta_3 \end{bmatrix}}_{\boldsymbol\beta\;(3\times1)}
++
+\underbrace{\begin{bmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \varepsilon_3 \\ \varepsilon_4 \end{bmatrix}}_{\boldsymbol\varepsilon\;(4\times1)}
+\]</span></p>
+</div>
+<div class="fragment">
+<p>Shapes: <span class="math inline">\((4\times1) = (4\times3)(3\times1) + (4\times1)\)</span> ✓ — conformable, and both sides come out <span class="math inline">\(4\times1\)</span>.</p>
+</div>
+</section>
+<section id="one-row-at-a-time" class="slide level2 smaller">
+<h2>One Row at a Time</h2>
+<p>Same trick as the <span class="math inline">\(2\times2\)</span>: multiply out one row and you get back an ordinary equation. This is <strong>equation 2 of 4</strong> — India:</p>
+<p><span class="math display">\[
+\underbrace{4.9}_{y_2}
+\;=\;
+\beta_1(1) \;+\; \beta_2(0.56) \;+\; \beta_3(7.3) \;+\; \varepsilon_2
+\]</span></p>
+<ul>
+<li class="fragment">The leading <span class="math inline">\(1\)</span> is what makes <span class="math inline">\(\beta_1\)</span> an <strong>intercept</strong> — it multiplies the same <span class="math inline">\(1\)</span> in every row, so it shifts every prediction equally.</li>
+<li class="fragment"><span class="math inline">\(\beta_2\)</span> is what one full unit of polyarchy is worth in growth; <span class="math inline">\(\beta_3\)</span> the same for log GDP per capita.</li>
+<li class="fragment">Four countries, four equations like this one, stacked. <strong>Nothing is hidden in the notation — it’s a system, written compactly.</strong></li>
+</ul>
+</section>
+<section id="every-piece-named" class="slide level2 smaller">
+<h2>Every Piece, Named</h2>
+<table class="caption-top">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Object</th>
+<th>Shape</th>
+<th>What it holds</th>
+<th>Known?</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(\mathbf{y}\)</span></td>
+<td><span class="math inline">\(4\times1\)</span></td>
+<td>growth, one entry per country</td>
+<td><strong>known</strong> — it’s data</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(X\)</span></td>
+<td><span class="math inline">\(4\times3\)</span></td>
+<td>a column of <span class="math inline">\(1\)</span>s, polyarchy, log GDP per capita</td>
+<td><strong>known</strong> — it’s data</td>
+</tr>
+<tr class="odd">
+<td><span class="math inline">\(\boldsymbol\beta\)</span></td>
+<td><span class="math inline">\(3\times1\)</span></td>
+<td>one slope per column of <span class="math inline">\(X\)</span></td>
+<td><strong>unknown</strong> — what we want</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(\boldsymbol\varepsilon\)</span></td>
+<td><span class="math inline">\(4\times1\)</span></td>
+<td>what the model misses, per country</td>
+<td><strong>unknown</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>Two known, two unknown — the same situation as <span class="math inline">\(A\mathbf{x} = \mathbf{b}\)</span>, where <span class="math inline">\(A\)</span> and <span class="math inline">\(\mathbf{b}\)</span> were given and <span class="math inline">\(\mathbf{x}\)</span> was not.</p>
+</div>
+</section>
+<section id="taller-than-it-is-wide" class="slide level2 smaller">
+<h2>Taller Than It Is Wide</h2>
+<ul>
+<li class="fragment">The <span class="math inline">\(2\times2\)</span> system had <strong>two equations and two unknowns</strong>, and one exact answer.</li>
+<li class="fragment">The real dataset has <strong><span class="math inline">\(n \approx 175\)</span> equations and <span class="math inline">\(k = 3\)</span> unknowns</strong> — one equation per country, three coefficients.</li>
+<li class="fragment">With that many more equations than unknowns, there is <strong>no exact answer</strong>. No three numbers satisfy all 175 equations at once.
+<ul>
+<li class="fragment">Which is just the familiar fact that no straight line passes through every point of a scatterplot.</li>
+</ul></li>
+<li class="fragment">So we don’t <em>solve</em> the system. We take the <strong>best compromise</strong> — the <span class="math inline">\(\hat{\boldsymbol\beta}\)</span> that misses by as little as possible, measured by squared misses.
+<ul>
+<li class="fragment">That is what the name <strong>least squares</strong> refers to.</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-estimator-read-left-to-right" class="slide level2 smaller">
+<h2>The Estimator, Read Left to Right</h2>
+<p><span class="math display">\[\hat{\boldsymbol\beta} \;=\; (X'X)^{-1}X'\mathbf{y}\]</span></p>
+<p>Same four countries, so <span class="math inline">\(X\)</span> is <span class="math inline">\(4\times3\)</span> and <span class="math inline">\(\mathbf{y}\)</span> is <span class="math inline">\(4\times1\)</span>:</p>
+<ul>
+<li class="fragment"><span class="math inline">\(X'\)</span> — <span class="math inline">\((3\times4)\)</span>. The design matrix on its side.</li>
+<li class="fragment"><span class="math inline">\(X'\mathbf{y}\)</span> — <span class="math inline">\((3\times4)(4\times1) = 3\times1\)</span>. One dot product per predictor with the outcome: <strong>the covariance-ish part.</strong></li>
+<li class="fragment"><span class="math inline">\(X'X\)</span> — <span class="math inline">\((3\times4)(4\times3) = 3\times3\)</span>. Square and symmetric: <strong>the variance-ish part.</strong> It stays <span class="math inline">\(3\times3\)</span> — it never grows with the number of countries.</li>
+<li class="fragment"><span class="math inline">\((X'X)^{-1}\)</span> — still <span class="math inline">\(3\times3\)</span>, and by now you know how to read it: <em>undo the <span class="math inline">\(X'X\)</span> part.</em></li>
+<li class="fragment">All together: <span class="math inline">\((3\times3)(3\times1) = 3\times1\)</span>. <strong>One number per column of <span class="math inline">\(X\)</span>.</strong> ✓</li>
+</ul>
+</section>
+<section id="what-comes-out" class="slide level2 smaller">
+<h2>What Comes Out</h2>
+<p><span class="math display">\[\hat{\boldsymbol\beta} = \begin{bmatrix} \hat\beta_1 \\ \hat\beta_2 \\ \hat\beta_3 \end{bmatrix}_{3\times1} \qquad\longleftrightarrow\qquad \texttt{lm(growth ~ polyarchy + loggdp)}\]</span></p>
+<ul>
+<li class="fragment">Three columns in, three coefficients out — one per column of <span class="math inline">\(X\)</span>, in the order the columns appear.</li>
+<li class="fragment">That is exactly the coefficient table R prints: <strong>the matrix formula and the R output are the same object.</strong></li>
+</ul>
+</section>
+<section id="quick-drill-audit-the-line" class="slide level2 smaller">
+<h2>Quick Drill: Audit the Line</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(X\)</span> is <span class="math inline">\(n\times k\)</span> and <span class="math inline">\(\mathbf{y}\)</span> is <span class="math inline">\(n\times1\)</span>. One of these is written correctly — which, and what’s wrong with the others?
+<ul>
+<li class="fragment"><strong>(a)</strong> <span class="math inline">\(\hat\beta = (XX')^{-1}X'y\)</span></li>
+<li class="fragment"><strong>(b)</strong> <span class="math inline">\(\hat\beta = (X'X)^{-1}Xy\)</span></li>
+<li class="fragment"><strong>(c)</strong> <span class="math inline">\(\hat\beta = (X'X)^{-1}X'y\)</span></li>
+<li class="fragment"><strong>(d)</strong> <span class="math inline">\(\hat\beta = X'y(X'X)^{-1}\)</span></li>
+</ul></li>
+<li class="fragment"><strong>Answer: (c).</strong> Every wrong one fails on shape alone:
+<ul>
+<li class="fragment"><ol type="a">
+<li class="fragment"><span class="math inline">\(XX'\)</span> is <span class="math inline">\(n\times n\)</span>, and <span class="math inline">\(X'y\)</span> is <span class="math inline">\(k\times1\)</span> — so <span class="math inline">\((n\times n)(k\times1)\)</span> is not conformable.</li>
+</ol></li>
+<li class="fragment"><ol start="2" type="a">
+<li class="fragment"><span class="math inline">\(Xy\)</span> is not conformable: <span class="math inline">\((n\times k)(n\times1)\)</span>.</li>
+</ol></li>
+<li class="fragment"><ol start="4" type="a">
+<li class="fragment"><span class="math inline">\((k\times1)(k\times k)\)</span> — inner dimensions don’t match. <strong>Order is meaning.</strong></li>
+</ol></li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="play-with-it" class="title-slide slide level1 center">
+<h1>Play With It</h1>
+<p><em>One matrix, yours to change. Everything else on these three slides follows from it.</em></p>
+</section>
+<section id="your-3times3-and-its-transpose" class="slide level2 smaller">
+<h2>Your <span class="math inline">\(3\times3\)</span>, and Its Transpose</h2>
+<style>
+/* .viz caps at 45vh; these slides carry nothing but a heading, so allow more room. */
+.reveal .slides .viz.viz-matrixlab {
+  max-height: 72vh;
+  font-size: 0.58em;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.reveal .slides .viz-matrixlab .ml-row { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; width: 100%; }
+.reveal .slides .viz-matrixlab .ml-block { text-align: center; }
+.reveal .slides .viz-matrixlab .ml-label { color: #5A6B80; margin-bottom: 7px; white-space: nowrap; font-size: 0.95em; }
+.reveal .slides .viz-matrixlab table { border-collapse: collapse; margin: 0 auto; }
+.reveal .slides .viz-matrixlab td {
+  border: 1px solid #D9E0EA; padding: 0;
+  width: 66px; height: 50px;
+  text-align: center; vertical-align: middle;
+  background: #fff; font-size: 1.2em; font-variant-numeric: tabular-nums;
+}
+.reveal .slides .viz-matrixlab td.out  { background: #F7F8FA; color: #22303F; }
+.reveal .slides .viz-matrixlab td.diag { background: #EDF0F5; }
+.reveal .slides .viz-matrixlab td.mark { background: #EAF6EF; color: #2f855a; font-weight: 700; }
+.reveal .slides .viz-matrixlab input {
+  width: 64px; height: 48px;
+  border: 0; text-align: center;
+  font: inherit; font-size: 1em; font-weight: 600;
+  color: #2b6cb0; background: transparent;
+  -moz-appearance: textfield;
+}
+.reveal .slides .viz-matrixlab input::-webkit-outer-spin-button,
+.reveal .slides .viz-matrixlab input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.reveal .slides .viz-matrixlab input:focus { outline: 2px solid #2b6cb0; background: #EDF0F5; }
+.reveal .slides .viz-matrixlab .ml-op { font-size: 2em; color: #5A6B80; line-height: 1; }
+.reveal .slides .viz-matrixlab .ml-btns { display: flex; gap: 9px; justify-content: center; flex-wrap: wrap; }
+.reveal .slides .viz-matrixlab .ml-btns button {
+  font: inherit; font-size: 0.92em; padding: 6px 14px;
+  border: 1px solid #2b6cb0; background: #fff; color: #2b6cb0;
+  border-radius: 4px; cursor: pointer;
+}
+.reveal .slides .viz-matrixlab .ml-btns button:hover { background: #2b6cb0; color: #fff; }
+.reveal .slides .viz-matrixlab .ml-line {
+  background: #F7F8FA; border-left: 4px solid #2b6cb0;
+  padding: 10px 14px; margin: 0 auto;
+  color: #22303F; text-align: left;
+  max-width: 860px; font-size: 0.98em; line-height: 1.45;
+}
+.reveal .slides .viz-matrixlab .ml-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.reveal .slides .viz-matrixlab .ml-badge {
+  border: 1px solid #D9E0EA; border-radius: 5px;
+  padding: 8px 14px; min-width: 156px; line-height: 1.4;
+}
+.reveal .slides .viz-matrixlab .ml-badge.yes { border-color: #38a169; background: #EAF6EF; color: #2f855a; }
+.reveal .slides .viz-matrixlab .ml-badge.no  { border-color: #D9E0EA; background: #F7F8FA; color: #8a8f98; }
+.reveal .slides .viz-matrixlab .ml-badge b { display: block; font-size: 1.02em; }
+.reveal .slides .viz-matrixlab .ml-badge span { font-size: 0.86em; }
+</style>
+
+<div class="viz viz-matrixlab" id="mlPanel1">
+  <div class="ml-row" data-slot="grids"></div>
+  <div class="ml-btns" data-slot="btns"></div>
+  <div class="ml-line" data-slot="line"></div>
+</div>
+</section>
+<section id="which-names-fit" class="slide level2 smaller">
+<h2>Which Names Fit?</h2>
+<div class="viz viz-matrixlab" id="mlPanel2">
+  <div class="ml-row" data-slot="grids"></div>
+  <div class="ml-badges" data-slot="badges"></div>
+  <div class="ml-btns" data-slot="btns"></div>
+  <div class="ml-line" data-slot="line"></div>
+</div>
+</section>
+<section id="building-aa" class="slide level2 smaller">
+<h2>Building <span class="math inline">\(A'A\)</span></h2>
+<div class="viz viz-matrixlab" id="mlPanel3">
+  <div class="ml-row" data-slot="grids"></div>
+  <div class="ml-btns" data-slot="btns"></div>
+  <div class="ml-line" data-slot="line"></div>
+</div>
+
+<script>
+(function(){
+  var START=[[2,1,0],[0,3,1],[1,0,2]];
+  var A=START.map(function(r){return r.slice();});
+  var P1=document.getElementById("mlPanel1"),
+      P2=document.getElementById("mlPanel2"),
+      P3=document.getElementById("mlPanel3");
+  if(!P1||!P2||!P3) return;
+  var PANELS=[P1,P2,P3];
+
+  function T(M){return [0,1,2].map(function(i){return [0,1,2].map(function(j){return M[j][i];});});}
+  function mul(M,N){return [0,1,2].map(function(i){return [0,1,2].map(function(j){
+    return M[i][0]*N[0][j]+M[i][1]*N[1][j]+M[i][2]*N[2][j];});});}
+  function isSym(M){return M[0][1]===M[1][0]&&M[0][2]===M[2][0]&&M[1][2]===M[2][1];}
+  function offZero(M){return [[0,1],[0,2],[1,0],[1,2],[2,0],[2,1]].every(function(p){return M[p[0]][p[1]]===0;});}
+  function isIdent(M){return offZero(M)&&M[0][0]===1&&M[1][1]===1&&M[2][2]===1;}
+  function firstAsym(M){var q=[[0,1],[0,2],[1,2]];
+    for(var k=0;k<q.length;k++){var i=q[k][0],j=q[k][1]; if(M[i][j]!==M[j][i])return{i:i,j:j};}
+    return null;}
+  function col(M,j){return [M[0][j],M[1][j],M[2][j]];}
+
+  function gridIn(cellCls){
+    var h="<table>";
+    for(var i=0;i<3;i++){h+="<tr>";
+      for(var j=0;j<3;j++){
+        h+="<td class='"+(cellCls?cellCls(i,j):"")+"'><input type='number' step='1' data-i='"+i+"' data-j='"+j+"'></td>";}
+      h+="</tr>";}
+    return h+"</table>";
+  }
+  function gridOut(key,cellCls){
+    var h="<table>";
+    for(var i=0;i<3;i++){h+="<tr>";
+      for(var j=0;j<3;j++){
+        h+="<td class='"+(cellCls?cellCls(i,j):"out")+"' data-m='"+key+"' data-i='"+i+"' data-j='"+j+"'></td>";}
+      h+="</tr>";}
+    return h+"</table>";
+  }
+  function block(label,inner){return "<div class='ml-block'><div class='ml-label'>"+label+"</div>"+inner+"</div>";}
+  var BTNS="<button data-do='reset'>Reset</button>"
+         +"<button data-do='sym'>Make it symmetric</button>"
+         +"<button data-do='diag'>Make it diagonal</button>"
+         +"<button data-do='ident'>Make it the identity</button>";
+
+  // ---- build the DOM once; inputs are never recreated after this ----
+  P1.querySelector("[data-slot=grids]").innerHTML =
+      block("<b>A</b> &mdash; type in it", gridIn())
+    + "<div class='ml-op'>&rarr;</div>"
+    + block("<b>A&prime;</b> &mdash; rows became columns", gridOut("at"));
+  P2.querySelector("[data-slot=grids]").innerHTML =
+      block("<b>A</b> &mdash; type in it", gridIn(function(i,j){return i===j?"diag":"";}));
+  P3.querySelector("[data-slot=grids]").innerHTML =
+      block("<b>A&prime;</b>", gridOut("at"))
+    + "<div class='ml-op'>&times;</div>"
+    + block("<b>A</b> &mdash; type in it", gridIn())
+    + "<div class='ml-op'>=</div>"
+    + block("<b>A&prime;A</b> &mdash; always symmetric", gridOut("ata", function(i,j){
+        return (i===0&&j===1)||(i===1&&j===0) ? "mark" : "out";}));
+  PANELS.forEach(function(P){
+    var b=P.querySelector("[data-slot=btns]"); if(b) b.innerHTML=BTNS;
+  });
+
+  // ---- refresh values only; skip the input currently being typed in ----
+  function update(src){
+    var At=T(A), AtA=mul(At,A);
+    PANELS.forEach(function(P){
+      P.querySelectorAll("input[data-i]").forEach(function(el){
+        if(el!==src) el.value = A[+el.dataset.i][+el.dataset.j];
+      });
+      P.querySelectorAll("td[data-m=at]").forEach(function(td){
+        td.textContent = At[+td.dataset.i][+td.dataset.j];
+      });
+      P.querySelectorAll("td[data-m=ata]").forEach(function(td){
+        td.textContent = AtA[+td.dataset.i][+td.dataset.j];
+      });
+    });
+
+    P1.querySelector("[data-slot=line]").innerHTML =
+      "Row 1 of <b>A</b> is (" + A[0].join(", ") + ") &mdash; read it down column 1 of <b>A&prime;</b>. "
+      + "Entry a<sub>12</sub> = " + A[0][1] + " has moved to position (2,1).";
+
+    var sym=isSym(A), dg=offZero(A), id=isIdent(A), asym=firstAsym(A);
+    function badge(on,name,test){
+      return "<div class='ml-badge "+(on?"yes":"no")+"'><b>"+(on?"✓ ":"✗ ")+name+"</b><span>"+test+"</span></div>";
+    }
+    P2.querySelector("[data-slot=badges]").innerHTML =
+        badge(true,"Square","3 rows, 3 columns")
+      + badge(sym,"Symmetric","A = A&prime;")
+      + badge(dg,"Diagonal","off-diagonals all 0")
+      + badge(id,"Identity","diagonal, all 1s");
+    P2.querySelector("[data-slot=line]").innerHTML = id
+      ? "This is <b>I</b>. Multiply anything by it and nothing changes."
+      : (sym
+        ? (dg ? "Diagonal, so symmetric automatically &mdash; a diagonal matrix always equals its own transpose."
+              : "Symmetric: every a<sub>ij</sub> matches a<sub>ji</sub>, so the swap changes nothing.")
+        : "Not symmetric: a<sub>"+(asym.i+1)+(asym.j+1)+"</sub> = "+A[asym.i][asym.j]
+          +" but a<sub>"+(asym.j+1)+(asym.i+1)+"</sub> = "+A[asym.j][asym.i]+". One mismatched pair is enough.");
+
+    var c1=col(A,0), c2=col(A,1);
+    P3.querySelector("[data-slot=line]").innerHTML =
+      "The green entry is column 1 of <b>A</b> dotted with column 2: ("+c1.join(", ")+") &middot; ("+c2.join(", ")+") = "
+      + c1[0]+"&times;"+c2[0]+" + "+c1[1]+"&times;"+c2[1]+" + "+c1[2]+"&times;"+c2[2]
+      + " = <b>"+AtA[0][1]+"</b>. Every entry is one column dotted with another &mdash; which is why A&prime;A comes out symmetric.";
+  }
+
+  // ---- delegated events: bound once, survive every update ----
+  PANELS.forEach(function(P){
+    P.addEventListener("input", function(e){
+      var el=e.target; if(!el.matches("input[data-i]")) return;
+      var v=parseFloat(el.value); if(isNaN(v)) return;
+      A[+el.dataset.i][+el.dataset.j]=v;
+      update(el);
+    });
+    P.addEventListener("click", function(e){
+      var b=e.target.closest("[data-slot=btns] button"); if(!b) return;
+      var d=b.getAttribute("data-do");
+      if(d==="reset") A=START.map(function(r){return r.slice();});
+      else if(d==="sym"){ A[1][0]=A[0][1]; A[2][0]=A[0][2]; A[2][1]=A[1][2]; }
+      else if(d==="diag") A=[[A[0][0],0,0],[0,A[1][1],0],[0,0,A[2][2]]];
+      else if(d==="ident") A=[[1,0,0],[0,1,0],[0,0,1]];
+      update(null);
+    });
+    P.addEventListener("keydown", function(e){ e.stopPropagation(); });
+  });
+
+  update(null);
+})();
+</script>
+</section>
+<section id="what-we-deliberately-skipped" class="slide level2 smaller">
+<h2>What We Deliberately Skipped</h2>
+<ul>
+<li class="fragment"><strong>Determinants</strong> — the single number that says whether a matrix can be undone at all.</li>
+<li class="fragment"><strong>Inverses, beyond the notation</strong> — how <span class="math inline">\(A^{-1}\)</span> is computed, and when it fails to exist.</li>
+<li class="fragment"><strong>Rank, span, basis</strong> — the vocabulary for when columns carry redundant information.</li>
+<li class="fragment"><strong>Eigenvalues and eigenvectors</strong> — central to PCA, factor analysis, Markov chains.</li>
+<li class="fragment"><strong>Projection</strong> — the geometric picture of OLS, and genuinely beautiful.</li>
+</ul>
+<div class="fragment">
+<p>All of it is the post-camp linear algebra series. You now have the vocabulary to start it.</p>
+</div>
+</section>
+<section id="references" class="slide level2 smaller">
+<h2>References</h2>
+<ul>
+<li class="fragment"><strong>IQSS Prefresher — Linear Algebra</strong> (Harvard IQSS): <a href="https://iqss.github.io/prefresher/05_matrices.html">https://iqss.github.io/prefresher/05_matrices.html</a></li>
+<li class="fragment"><strong>3Blue1Brown, <em>Essence of Linear Algebra</em></strong> — the geometric intuition we skipped, done properly: <a href="https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab">playlist</a></li>
+<li class="fragment"><strong>Setosa.io</strong> — interactive visual explanations, including <a href="https://setosa.io/ev/eigenvectors-and-eigenvalues/">eigenvectors</a>: <a href="https://setosa.io/#/">https://setosa.io/</a></li>
+<li class="fragment">Moore, W. H., &amp; Siegel, D. A. (2013). <em>A Mathematics Course for Political and Social Research</em> — Ch. 12–14 on matrices.</li>
+<li class="fragment">TODO(draft): add the post-camp LA series syllabus link once confirmed with its instructor (HANDOFF.md open item).</li>
+</ul>
+</section>
+<section id="section" class="slide level2 center">
+<h2></h2>
+<p><strong>Next session:</strong> <a href="05-advanced-topics.html">Intro to Advanced Topics</a></p>
+<p><strong>Programming lecture:</strong> <a href="../chapters/05-advanced-topics/programming.html">Webpage Chapter</a></p>
+<p><strong>Back to:</strong> <a href="../index.html">Math Camp 2026 website</a></p>
+
+</section></section>
+    </div>
+  <div class="quarto-auto-generated-content" style="display: none;">
+<div class="footer footer-default">
+<p>Math and Programming Camp, Dept. of Government, Georgetown University</p>
+</div>
+</div></div>
+
+  <script>window.backupDefine = window.define; window.define = undefined;</script>
+  <script src="05-linear-algebra-draft_files/libs/revealjs/dist/reveal.js"></script>
+  <!-- reveal.js plugins -->
+  <script src="05-linear-algebra-draft_files/libs/revealjs/plugin/quarto-line-highlight/line-highlight.js"></script>
+  <script src="05-linear-algebra-draft_files/libs/revealjs/plugin/pdf-export/pdfexport.js"></script>
+  <script src="05-linear-algebra-draft_files/libs/revealjs/plugin/reveal-menu/menu.js"></script>
+  <script src="05-linear-algebra-draft_files/libs/revealjs/plugin/reveal-menu/quarto-menu.js"></script>
+  <script src="05-linear-algebra-draft_files/libs/revealjs/plugin/reveal-chalkboard/plugin.js"></script>
+  <script src="05-linear-algebra-draft_files/libs/revealjs/plugin/quarto-support/support.js"></script>
+  
+
+  <script src="05-linear-algebra-draft_files/libs/revealjs/plugin/notes/notes.js"></script>
+  <script src="05-linear-algebra-draft_files/libs/revealjs/plugin/search/search.js"></script>
+  <script src="05-linear-algebra-draft_files/libs/revealjs/plugin/zoom/zoom.js"></script>
+  <script src="05-linear-algebra-draft_files/libs/revealjs/plugin/math/math.js"></script>
+  <script>window.define = window.backupDefine; window.backupDefine = undefined;</script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://revealjs.com/config/
+      Reveal.initialize({
+'controlsAuto': true,
+'previewLinksAuto': false,
+'pdfSeparateFragments': false,
+'autoAnimateEasing': "ease",
+'autoAnimateDuration': 1,
+'autoAnimateUnmatched': true,
+'jumpToSlide': true,
+'menu': {"side":"left","useTextContentForMissingTitles":true,"markers":false,"loadIcons":false,"custom":[{"title":"Tools","icon":"<i class=\"fas fa-gear\"></i>","content":"<ul class=\"slide-menu-items\">\n<li class=\"slide-tool-item active\" data-item=\"0\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.fullscreen(event)\"><kbd>f</kbd> Fullscreen</a></li>\n<li class=\"slide-tool-item\" data-item=\"1\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.speakerMode(event)\"><kbd>s</kbd> Speaker View</a></li>\n<li class=\"slide-tool-item\" data-item=\"2\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.overview(event)\"><kbd>o</kbd> Slide Overview</a></li>\n<li class=\"slide-tool-item\" data-item=\"3\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.togglePdfExport(event)\"><kbd>e</kbd> PDF Export Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"4\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleScrollView(event)\"><kbd>r</kbd> Scroll View Mode</a></li>\n<li class=\"slide-tool-item\" data-item=\"5\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleChalkboard(event)\"><kbd>b</kbd> Toggle Chalkboard</a></li>\n<li class=\"slide-tool-item\" data-item=\"6\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.toggleNotesCanvas(event)\"><kbd>c</kbd> Toggle Notes Canvas</a></li>\n<li class=\"slide-tool-item\" data-item=\"7\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.downloadDrawings(event)\"><kbd>d</kbd> Download Drawings</a></li>\n<li class=\"slide-tool-item\" data-item=\"8\"><a href=\"#\" onclick=\"RevealMenuToolHandlers.keyboardHelp(event)\"><kbd>?</kbd> Keyboard Help</a></li>\n</ul>"}],"openButton":true},
+'chalkboard': {"buttons":true},
+'smaller': true,
+ 
+        // Display controls in the bottom right corner
+        controls: false,
+
+        // Help the user learn the controls by providing hints, for example by
+        // bouncing the down arrow when they first encounter a vertical slide
+        controlsTutorial: false,
+
+        // Determines where controls appear, "edges" or "bottom-right"
+        controlsLayout: 'edges',
+
+        // Visibility rule for backwards navigation arrows; "faded", "hidden"
+        // or "visible"
+        controlsBackArrows: 'faded',
+
+        // Display a presentation progress bar
+        progress: true,
+
+        // Display the page number of the current slide
+        slideNumber: 'c/t',
+
+        // 'all', 'print', or 'speaker'
+        showSlideNumber: 'all',
+
+        // Add the current slide number to the URL hash so that reloading the
+        // page/copying the URL will return you to the same slide
+        hash: true,
+
+        // Start with 1 for the hash rather than 0
+        hashOneBasedIndex: false,
+
+        // Flags if we should monitor the hash and change slides accordingly
+        respondToHashChanges: true,
+
+        // Push each slide change to the browser history
+        history: true,
+
+        // Enable keyboard shortcuts for navigation
+        keyboard: true,
+
+        // Enable the slide overview mode
+        overview: true,
+
+        // Disables the default reveal.js slide layout (scaling and centering)
+        // so that you can use custom CSS layout
+        disableLayout: false,
+
+        // Vertical centering of slides
+        center: false,
+
+        // Enables touch navigation on devices with touch input
+        touch: true,
+
+        // Loop the presentation
+        loop: false,
+
+        // Change the presentation direction to be RTL
+        rtl: false,
+
+        // see https://revealjs.com/vertical-slides/#navigation-mode
+        navigationMode: 'linear',
+
+        // Randomizes the order of slides each time the presentation loads
+        shuffle: false,
+
+        // Turns fragments on and off globally
+        fragments: true,
+
+        // Flags whether to include the current fragment in the URL,
+        // so that reloading brings you to the same fragment position
+        fragmentInURL: false,
+
+        // Flags if the presentation is running in an embedded mode,
+        // i.e. contained within a limited portion of the screen
+        embedded: false,
+
+        // Flags if we should show a help overlay when the questionmark
+        // key is pressed
+        help: true,
+
+        // Flags if it should be possible to pause the presentation (blackout)
+        pause: true,
+
+        // Flags if speaker notes should be visible to all viewers
+        showNotes: false,
+
+        // Global override for autoplaying embedded media (null/true/false)
+        autoPlayMedia: null,
+
+        // Global override for preloading lazy-loaded iframes (null/true/false)
+        preloadIframes: null,
+
+        // Number of milliseconds between automatically proceeding to the
+        // next slide, disabled when set to 0, this value can be overwritten
+        // by using a data-autoslide attribute on your slides
+        autoSlide: 0,
+
+        // Stop auto-sliding after user input
+        autoSlideStoppable: true,
+
+        // Use this method for navigation when auto-sliding
+        autoSlideMethod: null,
+
+        // Specify the average time in seconds that you think you will spend
+        // presenting each slide. This is used to show a pacing timer in the
+        // speaker view
+        defaultTiming: null,
+
+        // Enable slide navigation via mouse wheel
+        mouseWheel: false,
+
+        // The display mode that will be used to show slides
+        display: 'block',
+
+        // Hide cursor if inactive
+        hideInactiveCursor: true,
+
+        // Time before the cursor is hidden (in ms)
+        hideCursorTime: 5000,
+
+        // Opens links in an iframe preview overlay
+        previewLinks: false,
+
+        // Transition style (none/fade/slide/convex/concave/zoom)
+        transition: 'none',
+
+        // Transition speed (default/fast/slow)
+        transitionSpeed: 'default',
+
+        // Transition style for full page slide backgrounds
+        // (none/fade/slide/convex/concave/zoom)
+        backgroundTransition: 'none',
+
+        // Number of slides away from the current that are visible
+        viewDistance: 3,
+
+        // Number of slides away from the current that are visible on mobile
+        // devices. It is advisable to set this to a lower number than
+        // viewDistance in order to save resources.
+        mobileViewDistance: 2,
+
+        // The "normal" size of the presentation, aspect ratio will be preserved
+        // when the presentation is scaled to fit different resolutions. Can be
+        // specified using percentage units.
+        width: 1050,
+
+        height: 700,
+
+        // Factor of the display size that should remain empty around the content
+        margin: 0.1,
+
+        math: {
+          mathjax: 'https://cdn.jsdelivr.net/npm/mathjax@2.7.9/MathJax.js',
+          config: 'TeX-AMS_HTML-full',
+          tex2jax: {
+            inlineMath: [['\\(','\\)']],
+            displayMath: [['\\[','\\]']],
+            balanceBraces: true,
+            processEscapes: false,
+            processRefs: true,
+            processEnvironments: true,
+            preview: 'TeX',
+            skipTags: ['script','noscript','style','textarea','pre','code'],
+            ignoreClass: 'tex2jax_ignore',
+            processClass: 'tex2jax_process'
+          },
+        },
+
+        // reveal.js plugins
+        plugins: [QuartoLineHighlight, PdfExport, RevealMenu, RevealChalkboard, QuartoSupport,
+
+          RevealMath,
+          RevealNotes,
+          RevealSearch,
+          RevealZoom
+        ]
+      });
+    </script>
+    <script id="quarto-html-after-body" type="application/javascript">
+      window.document.addEventListener("DOMContentLoaded", function (event) {
+        const tabsets =  window.document.querySelectorAll(".panel-tabset-tabby")
+        tabsets.forEach(function(tabset) {
+          const tabby = new Tabby('#' + tabset.id);
+        });
+        const isCodeAnnotation = (el) => {
+          for (const clz of el.classList) {
+            if (clz.startsWith('code-annotation-')) {                     
+              return true;
+            }
+          }
+          return false;
+        }
+        const onCopySuccess = function(e) {
+          // button target
+          const button = e.trigger;
+          // don't keep focus
+          button.blur();
+          // flash "checked"
+          button.classList.add('code-copy-button-checked');
+          var currentTitle = button.getAttribute("title");
+          button.setAttribute("title", "Copied!");
+          let tooltip;
+          if (window.bootstrap) {
+            button.setAttribute("data-bs-toggle", "tooltip");
+            button.setAttribute("data-bs-placement", "left");
+            button.setAttribute("data-bs-title", "Copied!");
+            tooltip = new bootstrap.Tooltip(button, 
+              { trigger: "manual", 
+                customClass: "code-copy-button-tooltip",
+                offset: [0, -8]});
+            tooltip.show();    
+          }
+          setTimeout(function() {
+            if (tooltip) {
+              tooltip.hide();
+              button.removeAttribute("data-bs-title");
+              button.removeAttribute("data-bs-toggle");
+              button.removeAttribute("data-bs-placement");
+            }
+            button.setAttribute("title", currentTitle);
+            button.classList.remove('code-copy-button-checked');
+          }, 1000);
+          // clear code selection
+          e.clearSelection();
+        }
+        const getTextToCopy = function(trigger) {
+          const outerScaffold = trigger.parentElement.cloneNode(true);
+          const codeEl = outerScaffold.querySelector('code');
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+        const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+          text: getTextToCopy
+        });
+        clipboard.on('success', onCopySuccess);
+        if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+          const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+            text: getTextToCopy,
+            container: window.document.getElementById('quarto-embedded-source-code-modal')
+          });
+          clipboardModal.on('success', onCopySuccess);
+        }
+          var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+          var mailtoRegex = new RegExp(/^mailto:/);
+            var filterRegex = new RegExp('/' + window.location.host + '/');
+          var isInternal = (href) => {
+              return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+          }
+          // Inspect non-navigation links and adorn them if external
+         var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+          for (var i=0; i<links.length; i++) {
+            const link = links[i];
+            if (!isInternal(link.href)) {
+              // undo the damage that might have been done by quarto-nav.js in the case of
+              // links that we want to consider external
+              if (link.dataset.originalHref !== undefined) {
+                link.href = link.dataset.originalHref;
+              }
+            }
+          }
+        function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+          const config = {
+            allowHTML: true,
+            maxWidth: 500,
+            delay: 100,
+            arrow: false,
+            appendTo: function(el) {
+                return el.closest('section.slide') || el.parentElement;
+            },
+            interactive: true,
+            interactiveBorder: 10,
+            theme: 'light-border',
+            placement: 'bottom-start',
+          };
+          if (contentFn) {
+            config.content = contentFn;
+          }
+          if (onTriggerFn) {
+            config.onTrigger = onTriggerFn;
+          }
+          if (onUntriggerFn) {
+            config.onUntrigger = onUntriggerFn;
+          }
+            config['offset'] = [0,0];
+            config['maxWidth'] = 700;
+          window.tippy(el, config); 
+        }
+        const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+        for (var i=0; i<noterefs.length; i++) {
+          const ref = noterefs[i];
+          tippyHover(ref, function() {
+            // use id or data attribute instead here
+            let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+            try { href = new URL(href).hash; } catch {}
+            const id = href.replace(/^#\/?/, "");
+            const note = window.document.getElementById(id);
+            if (note) {
+              return note.innerHTML;
+            } else {
+              return "";
+            }
+          });
+        }
+        const findCites = (el) => {
+          const parentEl = el.parentElement;
+          if (parentEl) {
+            const cites = parentEl.dataset.cites;
+            if (cites) {
+              return {
+                el,
+                cites: cites.split(' ')
+              };
+            } else {
+              return findCites(el.parentElement)
+            }
+          } else {
+            return undefined;
+          }
+        };
+        var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+        for (var i=0; i<bibliorefs.length; i++) {
+          const ref = bibliorefs[i];
+          const citeInfo = findCites(ref);
+          if (citeInfo) {
+            tippyHover(citeInfo.el, function() {
+              var popup = window.document.createElement('div');
+              citeInfo.cites.forEach(function(cite) {
+                var citeDiv = window.document.createElement('div');
+                citeDiv.classList.add('hanging-indent');
+                citeDiv.classList.add('csl-entry');
+                var biblioDiv = window.document.getElementById('ref-' + cite);
+                if (biblioDiv) {
+                  citeDiv.innerHTML = biblioDiv.innerHTML;
+                }
+                popup.appendChild(citeDiv);
+              });
+              return popup.innerHTML;
+            });
+          }
+        }
+      });
+      </script>
+    
+
+</body></html>

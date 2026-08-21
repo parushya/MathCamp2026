@@ -494,6 +494,27 @@
     ]
   },
   {
+    "objectID": "chapters/05-linear-algebra/index.html",
+    "href": "chapters/05-linear-algebra/index.html",
+    "title": "Day 5 — Linear Algebra",
+    "section": "",
+    "text": "Day 5 opens with linear algebra as a reading key, not a course: enough notation to read a matrix expression, name the shape of every piece, and say whether an operation is conformable. Vectors and the dot product, the design matrix, transposes and matrix types, and finally a regression written out as a system of equations — with the estimator \\(\\hat\\beta = (X'X)^{-1}X'y\\) read left to right rather than derived.\nDeliberately out of scope: determinants, inverses beyond the notation, eigenvalues, rank, span, and the projection picture. Those belong to the post-camp linear algebra series, which this session is meant to prepare you for rather than compete with.\nThis session has one part:\n\nMath Session — the in-class slideshow, closing with an interactive \\(3\\times3\\) matrix you can type into.\n\nThe day’s programming session (Coding with AI) is paired with Day 5 — Intro to Advanced Topics.",
+    "crumbs": [
+      "Day 5 — Linear Algebra"
+    ]
+  },
+  {
+    "objectID": "chapters/05-linear-algebra/slides.html",
+    "href": "chapters/05-linear-algebra/slides.html",
+    "title": "Math Session",
+    "section": "",
+    "text": "Note\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/05-linear-algebra.qmd.",
+    "crumbs": [
+      "Day 5 — Linear Algebra",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Math Session</span>"
+    ]
+  },
+  {
     "objectID": "chapters/05-advanced-topics/index.html",
     "href": "chapters/05-advanced-topics/index.html",
     "title": "Day 5 — Intro to Advanced Topics",
@@ -511,7 +532,7 @@
     "text": "Note\n\n\n\nOpen the slides full-screen\n\n\n\nSlide source: slides/05-advanced-topics.qmd.",
     "crumbs": [
       "Day 5 — Intro to Advanced Topics",
-      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Math Session</span>"
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Math Session</span>"
     ]
   },
   {
@@ -522,7 +543,7 @@
     "text": "Placeholder\nAn exercise + AI related topics",
     "crumbs": [
       "Day 5 — Intro to Advanced Topics",
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Programming Session</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Programming Session</span>"
     ]
   }
 ]

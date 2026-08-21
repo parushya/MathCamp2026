@@ -9,7 +9,9 @@
 <link href="05-advanced-topics_files/libs/quarto-html/quarto-syntax-highlighting-64a204ab8560d761af7679ceaba22944.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.10.18">
 
-  <title>Intro to Advanced Topics</title>
+  <meta name="author" content="Parushya">
+  <meta name="dcterms.date" content="2026-08-21">
+  <title>U got this!</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
@@ -135,32 +137,966 @@
     <div class="slides">
 
 <section id="title-slide" class="quarto-title-block center">
-  <h1 class="title">Intro to Advanced Topics</h1>
-  <p class="subtitle">MathCamp 2026 — Day 5</p>
+  <h1 class="title"><span class="flatly-green"><strong>U</strong></span> <span class="blk">got this!</span></h1>
+  <p class="subtitle">Math and Programming Camp Day 5 — Session 2: Intro to Advanced Topics</p>
 
 <div class="quarto-title-authors">
+<div class="quarto-title-author">
+<div class="quarto-title-author-name">
+Parushya
+</div>
+</div>
 </div>
 
+  <p class="date">2026-08-21</p>
 </section>
-<section id="overview" class="slide level2">
-<h2>Overview</h2>
-<p>A bridge from camp into first-year coursework — connecting the week’s tools (probability, calculus, linear algebra) to what’s ahead.</p>
+<section class="slide level2">
+
+<!--
+Day 5 Session 2 (Intro to Advanced Topics). SYNCED from
+slides/05-advanced-topics-draft.qmd on 2026-08-21. This deck carries the
+draft in full, 47 slides. EDIT THE DRAFT FIRST, then re-sync, so the two do
+not diverge -- the draft also keeps the pass-by-pass edit history and the
+record of what was deliberately cut, which is not repeated here.
+
+This is the camp's closing session and it is a BRIDGE. Three blocks:
+
+  1. From Population to Sample -- population/parameter -> sample/statistic,
+     the Greek-vs-hat convention, estimand vs. estimator vs. estimate, and
+     the three conditions under which a statistic speaks for what you wanted.
+  2. Frequentist and Bayesian -- named only AFTER students notice they have
+     been doing one of them all afternoon. The split is made precisely, via
+     p(e|H) vs. p(H|e) and the prior as what converts one into the other,
+     not via characterisations of the two camps. Ends on tooling: MCMC, the
+     R packages for each, Gelman & Hill.
+  3. Causality -- the potential-outcomes table, the decomposition, the four
+     estimands (ATE/ATT/ATC/CATE), and five identification designs.
+
+CONSTRAINTS THAT ARE LOAD-BEARING -- read before editing:
+
+  - DO NOT COLOUR MATH WITH \textcolor OR \color. It fails silently under
+    Quarto's MathJax and kills the whole equation. Colour comes from pandoc
+    spans instead: [$E[Y(1)|X=1]$]{.obs}. One scheme runs the causality
+    block -- .obs BLUE #2b6cb0 = we observe it, .unobs RED #B23A48 = it
+    never happened, so we never see it. Every estimand is read off its
+    colours; ATT being "half observed" is the point of that slide.
+
+  - ALL NUMBERS ARE ILLUSTRATIVE. The deck was deliberately de-anchored from
+    real dataset values. In the potential-outcomes table the values are
+    chosen so the visible comparison gets the SIGN wrong (true average effect
+    +0.125, visible comparison -1.55) -- that gap IS the bias named two
+    slides later. Keep that relationship if the values are ever edited, and
+    keep the two tables column-identical so nothing shifts between them.
+
+  - PREREQUISITE AUDIT (checked against chapters/0N/programming.qmd and
+    slides/0N-*.qmd, not against what was planned): NO REGRESSION HAS EVER
+    BEEN RUN IN R -- no lm(), confint(), broom, or model summary anywhere;
+    Day 4 reaches geom_smooth(method = "lm") and stops. No standard error is
+    ever computed. Beta-hat is never derived. Var(Xbar) = sigma^2/n is never
+    derived. The type-shift is explicitly out of scope on Day 3. Datasets
+    seen in R are JPRdata_select.csv, COW country codes and mpg -- NOT V-Dem.
+    Safe to assume: mean(), var(), sd(), quantiles, summary(), table(),
+    group-wise means, factors, data frames, subsetting, conditionals, dplyr,
+    pipes, ggplot, set.seed()/rnorm(). Do not write as though more has been
+    covered.
+
+  - The dialect equivalence -- E[eps|X]=0 and "the selection-bias term is
+    zero" as one claim in two notations -- is the payoff of the entire week
+    (HANDOFF, "two load-bearing conceptual moves"). Do not compress it.
+
+  - The design slides (experiments, DiD, RDD, IV, matching) are TWO LINES
+    each plus a small inline SVG. They are signposts, not a course.
+
+Deck-local CSS sits in a <style> block below: density controls, .po-table /
+.po-miss / .po-obs for the potential-outcomes tables, .obs / .unobs and
+.eqline for the decomposition, .design-fig for the method figures. Shared
+styling stays in slides/slides.css.
+
+Arc: Why -> Intuition -> Formal -> Example -> Quick Drill per topic block;
+stage carried by the slide title, not an on-slide label.
+Palette: project_slide_figure_palette.
+-->
+<style>
+/* Deck-local density controls. This deck runs long and text-heavy; these
+   trim type and leading a notch below the shared slides.css defaults. */
+.reveal .slides section        { font-size: 0.88em; line-height: 1.26; }
+.reveal .slides section h2     { font-size: 1.30em; margin-bottom: 0.35em; }
+.reveal .slides section ul li,
+.reveal .slides section ol li  { margin-bottom: 0.22em; }
+.reveal .slides section ul ul,
+.reveal .slides section ul ol  { font-size: 0.90em; }
+.reveal .slides section table  { font-size: 0.88em; }
+.reveal .slides section .columns { font-size: 0.96em; }
+/* Potential-outcomes table: observed cells vs. the counterfactuals that were
+   never recorded. Palette per project_slide_figure_palette. */
+.reveal .slides .po-miss { color: #B23A48; font-weight: 700; }
+.reveal .slides .po-obs  { color: #2b6cb0; }
+.reveal .slides .po-table { font-size: 0.78em; margin: 0.4em auto; border-collapse: collapse; }
+.reveal .slides .po-table th,
+.reveal .slides .po-table td { padding: 0.24em 0.75em; text-align: center; border: none; line-height: 1.3; }
+.reveal .slides .po-table th { border-bottom: 1px solid #5A6B80; font-weight: 700; }
+/* Headings are #107F69 via slides.css; .blk forces part of one back to black. */
+.reveal .slides .blk   { color: #000; }
+.reveal .slides .obs   { color: #2b6cb0; }
+.reveal .slides .unobs { color: #B23A48; }
+.reveal .slides .eqline { text-align:center; margin: 0.30em 0; font-size: 1.02em; }
+.reveal .slides .eqlab  { text-align:center; margin: 0.10em 0 0.45em; font-size: 0.80em; color:#5A6B80; }
+.reveal .slides .legend { text-align:center; font-size: 0.80em; color:#5A6B80; margin-bottom: 0.5em; }
+.reveal .slides .design-fig { display:flex; justify-content:center; margin: 2px 0 6px; }
+.reveal .slides .design-fig svg { width:100%; max-width:660px; height:auto; }
+.reveal .slides .po-table th:first-child,
+.reveal .slides .po-table td:first-child { text-align: left; }
+</style>
 </section>
-<section id="topics-for-this-session" class="slide level2 smaller">
-<h2>Topics for this session</h2>
+<section id="five-days-one-question" class="slide level2 smaller">
+<h2>Five Days, One Question</h2>
 <ul>
-<li>Sampling distributions</li>
-<li>The law of large numbers and the central limit theorem, by demonstration</li>
-<li>Frequentist vs.&nbsp;Bayesian inference</li>
-<li>Causality and causal inference</li>
-<li>The road ahead: where each of this week’s tools reappears in your first-year courses</li>
+<li class="fragment">Monday we asked: <em>does democracy cause economic growth?</em></li>
+<li class="fragment">Since then we built the machinery to even state the question:
+<ul>
+<li class="fragment"><strong>Day 1</strong> — functions, <span class="math inline">\(\sum\)</span>, logs: what a variable <em>is</em>.</li>
+<li class="fragment"><strong>Day 2</strong> — probability, random variables, distributions.</li>
+<li class="fragment"><strong>Day 3</strong> — counting, random variables, expectation, conditional expectation.</li>
+<li class="fragment"><strong>Day 4</strong> — limits, derivatives, integrals: reading the symbols and saying what each one does.</li>
+<li class="fragment"><strong>This morning</strong> — the matrix notation your methods courses write all of it in.</li>
+</ul></li>
+<li class="fragment">You can now <em>read</em> the formula that produces a number. <strong>Nobody has yet said how sure you should be of one.</strong></li>
 </ul>
 </section>
-<section id="section" class="slide level2 center">
-<h2></h2>
-<p><strong>Programming lecture:</strong> <a href="../chapters/05-advanced-topics/programming.html">webpage chapter</a></p>
+<section id="this-afternoon" class="slide level2 smaller">
+<h2>This Afternoon</h2>
+<ul>
+<li class="fragment"><strong>From population to sample</strong> — parameter and statistic, estimand and estimator and estimate, and what has to be true for one to speak for the other.</li>
+<li class="fragment"><strong>Two ways to talk about the same interval</strong> — frequentist and Bayesian.</li>
+<li class="fragment"><strong>Why none of it answers Monday’s question</strong> — causality, the gap more data cannot close, and the designs built to close it.</li>
+<li class="fragment">Then <strong>the map</strong>: where each of this week’s tools shows up in your courses.</li>
+</ul>
+</section>
+<section>
+<section id="from-population-to-sample" class="title-slide slide level1 center">
+<h1>From Population to Sample</h1>
+<p><em>Where the uncertainty was hiding all week.</em></p>
+</section>
+<section id="why-populations-and-parameters" class="slide level2 smaller">
+<h2>Why: Populations and Parameters</h2>
+<ul>
+<li class="fragment">A <strong>population</strong> is <em>all</em> the values there are — every unit you care about, not a selection of them.</li>
+<li class="fragment">A <strong>parameter</strong> is one number that describes that whole population.
+<ul>
+<li class="fragment">The mean age of every adult; the mean income of every household; the mean growth rate of every country.</li>
+</ul></li>
+<li class="fragment">Parameters are <strong>fixed</strong> — not random, they simply <em>are</em> — and <strong>unknown</strong>, because knowing one would mean measuring everybody.</li>
+<li class="fragment">So you take a <strong>sample</strong>, and on it you compute a <strong>statistic</strong>: the same kind of number, from the rows you actually have.</li>
+</ul>
+</section>
+<section id="greek-and-hats-the-naming-convention" class="slide level2 smaller">
+<h2>Greek and Hats: The Naming Convention</h2>
+<table class="caption-top">
+<thead>
+<tr class="header">
+<th></th>
+<th>Population parameter</th>
+<th>Sample statistic</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>mean</td>
+<td><span class="math inline">\(\mu\)</span></td>
+<td><span class="math inline">\(\bar x\)</span> (i.e.&nbsp;<span class="math inline">\(\hat\mu\)</span>)</td>
+</tr>
+<tr class="even">
+<td>standard deviation</td>
+<td><span class="math inline">\(\sigma\)</span></td>
+<td><span class="math inline">\(s\)</span> (i.e.&nbsp;<span class="math inline">\(\hat\sigma\)</span>)</td>
+</tr>
+<tr class="odd">
+<td>proportion</td>
+<td><span class="math inline">\(\pi\)</span></td>
+<td><span class="math inline">\(\hat p\)</span></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><strong>Greek for what you want; a hat, or a Roman letter, for what you computed.</strong> The hat means <em>estimated from data</em>.</p>
+</div>
+</section>
+<section id="the-estimand-what-you-actually-want-to-know" class="slide level2 smaller">
+<h2>The Estimand: What You Actually Want to Know</h2>
+<ul>
+<li class="fragment">A parameter is a fact about a <strong>population</strong>. An <strong>estimand</strong> is a fact about <strong>your question</strong>. These are not the same kind of thing.</li>
+<li class="fragment">The estimand is chosen <em>before</em> the data, by you, out of the research question. The parameter is just whatever the population happens to have.</li>
+<li class="fragment">Sometimes they coincide — and sometimes no parameter of your data is your estimand at all:
+<ul>
+<li class="fragment"><em>Question:</em> mean growth of all countries. <em>Estimand</em> <span class="math inline">\(= \mu\)</span>, a parameter of the population you sampled. They coincide.</li>
+<li class="fragment"><em>Question:</em> the <strong>effect</strong> of democracy on growth.
+<ul>
+<li class="fragment"><em>Estimand</em> <span class="math inline">\(= E[G(1)-G(0)]\)</span> — about worlds that never happened. No mean of any dataset equals it.</li>
+</ul></li>
+</ul></li>
+</ul>
+</section>
+<section id="estimand-estimator-estimate" class="slide level2 smaller">
+<h2>Estimand, Estimator, Estimate</h2>
+<ul>
+<li class="fragment">Used as a guess at the parameter, the recipe is an <strong>estimator</strong>; the number it returns on your data is an <strong>estimate</strong>.</li>
+<li class="fragment">Three words, three <strong>types</strong>. Keeping them apart is most of the discipline:
+<ul>
+<li class="fragment"><strong>Estimand</strong> <span class="math inline">\(\theta\)</span> — what you want. Fixed, unknown, <em>chosen</em>.</li>
+<li class="fragment"><strong>Estimator</strong> <span class="math inline">\(\hat\theta = g(X_1,\dots,X_n)\)</span> — the recipe. A <strong>random variable</strong>, because the data are.</li>
+<li class="fragment"><strong>Estimate</strong> <span class="math inline">\(\hat\theta_{\text{obs}}\)</span> — the number, <code>2.7</code>. Not random; it already happened.</li>
+</ul></li>
+<li class="fragment">Two properties you will hear constantly, both about the <strong>middle</strong> one:
+<ul>
+<li class="fragment"><strong>Unbiased:</strong> <span class="math inline">\(E[\hat\theta] = \theta\)</span> — right <em>on average across samples</em>, not right in yours.</li>
+<li class="fragment"><strong>Consistent:</strong> <span class="math inline">\(\hat\theta \to \theta\)</span> as <span class="math inline">\(n \to \infty\)</span>.</li>
+</ul></li>
+<li class="fragment">Keeping them apart is what makes a results sentence precise.
+<ul>
+<li class="fragment"><em>“The estimate is 2.7”</em> reports this sample. <em>“The effect is 2.7”</em> is a claim about the estimand.</li>
+<li class="fragment">Getting from the first to the second takes assumptions, and they should be stated.</li>
+</ul></li>
+</ul>
+</section>
+<section id="intuition-two-worlds" class="slide level2 smaller">
+<h2>Intuition: Two Worlds</h2>
+<div style="display:flex; justify-content:center; margin: 4px 0;">
+<svg viewbox="0 0 700 200" style="width:100%; max-width:900px; height:auto;" xmlns="http://www.w3.org/2000/svg">
+  <text x="150" y="16" text-anchor="middle" font-size="13" font-weight="700" fill="#22303F">THE POPULATION</text>
+  <ellipse cx="150" cy="100" rx="132" ry="76" fill="#EDF0F5" stroke="#22303F" stroke-width="1.5"></ellipse>
+  <text x="150" y="84" text-anchor="middle" font-size="15" font-style="italic" fill="#B23A48">μ<tspan font-size="10" dy="4">age</tspan><tspan dy="-4"> = ?</tspan></text>
+  <text x="150" y="110" text-anchor="middle" font-size="15" font-style="italic" fill="#B23A48">μ<tspan font-size="10" dy="4">income</tspan><tspan dy="-4"> = ?</tspan></text>
+  <text x="150" y="136" text-anchor="middle" font-size="15" font-style="italic" fill="#B23A48">μ<tspan font-size="10" dy="4">growth</tspan><tspan dy="-4"> = ?</tspan></text>
+  <text x="150" y="192" text-anchor="middle" font-size="11" fill="#5A6B80">parameters · fixed · unknown · never seen</text>
+
+  <path d="M290,86 L392,86 M383,79 L392,86 L383,93" fill="none" stroke="#5A6B80" stroke-width="2"></path>
+  <text x="341" y="74" text-anchor="middle" font-size="11" fill="#5A6B80">take a sample</text>
+
+  <path d="M392,126 L290,126 M299,119 L290,126 L299,133" fill="none" stroke="#2f855a" stroke-width="2" stroke-dasharray="5,3"></path>
+  <text x="341" y="116" text-anchor="middle" font-size="11" fill="#2f855a">estimates</text>
+
+  <text x="545" y="16" text-anchor="middle" font-size="13" font-weight="700" fill="#2b6cb0">THE SAMPLE</text>
+  <rect x="402" y="30" width="286" height="140" fill="#F7F8FA" stroke="#2b6cb0" stroke-width="1.5"></rect>
+  <text x="545" y="50" text-anchor="middle" font-size="11" fill="#8a8f98">n = 175 rows</text>
+  <text x="545" y="84" text-anchor="middle" font-size="15" font-style="italic" fill="#2b6cb0">x̄<tspan font-size="10" dy="4">age</tspan><tspan dy="-4"> = 47.3</tspan></text>
+  <text x="545" y="110" text-anchor="middle" font-size="15" font-style="italic" fill="#2b6cb0">x̄<tspan font-size="10" dy="4">income</tspan><tspan dy="-4"> = 12.4k</tspan></text>
+  <text x="545" y="136" text-anchor="middle" font-size="15" font-style="italic" fill="#2b6cb0">x̄<tspan font-size="10" dy="4">growth</tspan><tspan dy="-4"> = 2.7</tspan></text>
+  <text x="545" y="192" text-anchor="middle" font-size="11" fill="#5A6B80">statistics · computed · known · they move</text>
+</svg>
+</div>
+<div class="fragment">
+<p>Solid arrow: you draw a sample. Dashed green arrow: the statistic is used to <strong>estimate</strong> the parameter. That green arrow is the whole subject.</p>
+</div>
+</section>
+<section id="when-is-the-estimand-simply-the-parameter" class="slide level2 smaller">
+<h2>When Is the Estimand Simply the Parameter?</h2>
+<ul>
+<li class="fragment">The green arrow claims <span class="math inline">\(\bar x\)</span> speaks for <span class="math inline">\(\mu\)</span>.
+<ul>
+<li class="fragment">It speaks for <strong>what you wanted</strong> only under three conditions — all assumptions, none checkable from the data alone:</li>
+<li class="fragment"><strong>Representativeness</strong> — the population you sampled <em>is</em> the population your question is about.</li>
+<li class="fragment"><strong>Measurement</strong> — the thing you measured <em>is</em> the thing you meant. (Polyarchy is itself an estimate, with V-Dem’s own credible intervals.)</li>
+<li class="fragment"><strong>Descriptive, not causal</strong> — the question asks what <em>is</em>, not what <em>would have been</em>.</li>
+</ul></li>
+<li class="fragment">Break any one and <span class="math inline">\(\bar x\)</span> still estimates <span class="math inline">\(\mu\)</span> perfectly well. It just stops estimating <strong>your estimand</strong>.</li>
+<li class="fragment">Our data breaks the third one, badly. That is the last block of the afternoon.</li>
+</ul>
+</section></section>
+<section>
+<section id="frequentist-and-bayesian" class="title-slide slide level1 center">
+<h1>Frequentist and Bayesian</h1>
+<p><em>You have been doing one of these all afternoon without being told.</em></p>
+</section>
+<section id="everything-so-far-has-been-frequentist" class="slide level2 smaller">
+<h2>Everything So Far Has Been Frequentist</h2>
+<ul>
+<li class="fragment">Look back at what we just built. Every move rested on one commitment: <strong>the parameter is fixed; the data are random.</strong>
+<ul>
+<li class="fragment"><span class="math inline">\(\mu\)</span> was “fixed · unknown · never seen” — never random.</li>
+<li class="fragment"><span class="math inline">\(\hat\theta\)</span> was the random variable, because the <em>sample</em> could have come out otherwise.</li>
+<li class="fragment">The three conditions were about whether <span class="math inline">\(\bar x\)</span> could be trusted to speak for a <span class="math inline">\(\mu\)</span> that sits still while we sample.</li>
+</ul></li>
+<li class="fragment">That commitment has a name.
+<ul>
+<li class="fragment">The <strong>frequentist</strong> school holds the parameter of interest to be <strong>constant but unknown</strong>.</li>
+<li class="fragment">Probability is defined as <strong>long-run frequency over repeated trials</strong>.</li>
+</ul></li>
+<li class="fragment">Its characteristic sentence: <em>there is a truth, a right answer, and I can be <strong>confident</strong> to some degree that I have found it.</em></li>
+<li class="fragment">Nothing forced this on us. It was smuggled in on the very first slide, when we called <span class="math inline">\(\mu\)</span> fixed.</li>
+</ul>
+</section>
+<section id="how-bayesians-differ" class="slide level2 smaller">
+<h2>How Bayesians Differ</h2>
+<ul>
+<li class="fragment"><strong>Bayesian:</strong> the parameter of interest is treated as a <strong>random variable</strong>.
+<ul>
+<li class="fragment">Not because <span class="math inline">\(\mu\)</span> varies — because probability is used to represent uncertainty <em>about</em> <span class="math inline">\(\mu\)</span>.</li>
+</ul></li>
+<li class="fragment">Probability therefore attaches to <strong>propositions</strong> — including “<span class="math inline">\(\mu\)</span> lies in this interval” — and not only to repeatable events.</li>
+<li class="fragment">Both schools use the same machinery from Day 2. Write <span class="math inline">\(H\)</span> for a hypothesis about the parameter and <span class="math inline">\(e\)</span> for the evidence: <span class="math display">\[p(H \mid e) \;=\; \frac{p(e \mid H)\,p(H)}{p(e)}\]</span></li>
+<li class="fragment">Nobody disputes this theorem. The schools differ over <strong>which term is the object of inference</strong>.</li>
+</ul>
+</section>
+<section id="pe-mid-h-and-ph-mid-e" class="slide level2 smaller">
+<h2><span class="math inline">\(p(e \mid H)\)</span> and <span class="math inline">\(p(H \mid e)\)</span></h2>
+<ul>
+<li class="fragment"><strong>Frequentist inference works with <span class="math inline">\(p(e \mid H)\)</span></strong> — the probability of the <em>evidence</em>, with the hypothesis held fixed.
+<ul>
+<li class="fragment">A <span class="math inline">\(p\)</span>-value is <span class="math inline">\(p(\text{evidence this extreme} \mid H_0)\)</span>.</li>
+<li class="fragment">The coverage statement behind a confidence interval has the same shape: a probability about <em>intervals</em>, given a fixed <span class="math inline">\(\mu\)</span>.</li>
+</ul></li>
+<li class="fragment"><strong>Bayesian inference targets <span class="math inline">\(p(H \mid e)\)</span></strong> — the probability of the <em>hypothesis</em>, given the evidence in hand.</li>
+<li class="fragment">These are different quantities. Reporting one and reading it as the other is the most common misreading in applied work.</li>
+</ul>
+</section>
+<section id="the-prior-is-what-converts-one-into-the-other" class="slide level2 smaller">
+<h2>The Prior Is What Converts One Into the Other</h2>
+<ul>
+<li class="fragment">The theorem states exactly what turns <span class="math inline">\(p(e \mid H)\)</span> into <span class="math inline">\(p(H \mid e)\)</span>: the <strong>prior</strong> <span class="math inline">\(p(H)\)</span>.
+<ul>
+<li class="fragment">Without <span class="math inline">\(p(H)\)</span>, <span class="math inline">\(\;p(e \mid H)\)</span> does not become <span class="math inline">\(p(H \mid e)\)</span>. There is no way around this.</li>
+</ul></li>
+<li class="fragment">So the disagreement is not about the algebra but about whether <span class="math inline">\(p(H)\)</span> is a defined object:
+<ul>
+<li class="fragment"><strong>Frequentist:</strong> <span class="math inline">\(H\)</span> is not random, so <span class="math inline">\(p(H)\)</span> has no referent — and neither does <span class="math inline">\(p(H \mid e)\)</span>.</li>
+<li class="fragment"><strong>Bayesian:</strong> <span class="math inline">\(p(H)\)</span> states what was held before the data, and the theorem updates it to <span class="math inline">\(p(H \mid e)\)</span>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="the-coin-that-splits-them" class="slide level2 smaller">
+<h2>The Coin That Splits Them</h2>
+<ul>
+<li class="fragment"><em>I am <strong>about to</strong> flip a fair coin. What is the probability it lands heads?</em>
+<ul>
+<li class="fragment">Frequentist: <strong>50%.</strong> Bayesian: <strong>50%.</strong> No disagreement.</li>
+</ul></li>
+<li class="fragment"><em>I have <strong>already</strong> flipped it, and not looked. What is the probability that <strong>this</strong> coin is heads?</em>
+<ul>
+<li class="fragment">Bayesian: still <strong>50%</strong> — my information hasn’t changed, and probability describes my information.</li>
+<li class="fragment">Frequentist: <strong>it is no longer a matter of probability.</strong> The coin is what it is. It is heads or it isn’t.</li>
+</ul></li>
+<li class="fragment">Nothing about the coin changed between the two questions. What changed is whether there is anything left to be random.</li>
+</ul>
+<div class="fragment">
+<p><strong>Now put <span class="math inline">\(\mu\)</span> where the coin is.</strong> The sample has been drawn; the number has been computed. Is there anything left to be random?</p>
+</div>
+</section>
+<section id="the-same-interval-two-readings" class="slide level2 smaller">
+<h2>The Same Interval, Two Readings</h2>
+<p>Every estimate you report will come with an interval attached — call it <span class="math inline">\([\,L,\,U\,]\)</span>. Where that width comes from is next term’s business. Both schools accept the arithmetic, and disagree entirely about the sentence it licenses.</p>
+<div class="columns">
+<div class="column" style="font-size:0.82em;">
+<p><strong>Frequentist — a <em>confidence</em> interval</strong></p>
+<ul>
+<li><span class="math inline">\(\mu\)</span> is fixed; the <strong>interval</strong> is the random thing.</li>
+<li>“95% of intervals built this way cover <span class="math inline">\(\mu\)</span>.”</li>
+<li>The 95% is a property of the <strong>procedure</strong>, across studies — not of the one interval you have.</li>
+<li>You may <strong>not</strong> say <span class="math inline">\(P(\mu \in [\,L,\,U\,]) = 0.95\)</span>.</li>
+</ul>
+</div><div class="column" style="font-size:0.82em;">
+<p><strong>Bayesian — a <em>credible</em> interval</strong></p>
+<ul>
+<li><span class="math inline">\(\mu\)</span> is the random thing; the data are what you conditioned on.</li>
+<li>“Given prior and data, <span class="math inline">\(P(\mu \in [\,L,\,U\,]) = 0.95\)</span>.”</li>
+<li>Exactly the sentence you wanted to say, and are now licensed to.</li>
+<li>The price: you must state a <strong>prior</strong>, and the answer depends on it.</li>
+</ul>
+</div></div>
+</section>
+<section id="where-it-actually-bites" class="slide level2 smaller">
+<h2>Where It Actually Bites</h2>
+<ul>
+<li class="fragment"><strong>With lots of data and a mild prior, the two agree numerically.</strong> Most of the time the fight is about interpretation, not digits.</li>
+<li class="fragment">It bites when data are thin, when the prior is informative, or when you need a probability statement about a hypothesis for a decision.</li>
+<li class="fragment">Neither camp is a moral position, and you are not required to pick one this week.
+<ul>
+<li class="fragment">You <em>are</em> required to notice which one a paper’s language is assuming.</li>
+</ul></li>
+<li class="fragment"><strong>Neither one rescues you from the next block.</strong> A credible interval around a biased estimate is a precisely-quantified wrong answer.</li>
+</ul>
+</section>
+<section id="quick-drill-whose-sentence-is-it" class="slide level2 smaller">
+<h2>Quick Drill: Whose Sentence Is It?</h2>
+<ul>
+<li class="fragment"><strong>(a)</strong> “There is a 90% probability the effect is positive.”</li>
+<li class="fragment"><strong>(b)</strong> “We reject <span class="math inline">\(H_0\)</span> at the 5% level.”</li>
+<li class="fragment"><strong>(c)</strong> “With a weakly informative prior, the posterior mean is 2.7.”</li>
+<li class="fragment"><strong>(d)</strong> “Under repeated sampling this estimator is unbiased.”</li>
+<li class="fragment"><strong>Answers:</strong> (a) Bayesian. (b) frequentist. (c) Bayesian. (d) frequentist.</li>
+<li class="fragment">Now the harder one: which of these did you <em>assume</em> the regression output was telling you, before this afternoon?</li>
+</ul>
+</section>
+<section id="in-practice-what-each-one-costs" class="slide level2 smaller">
+<h2>In Practice: What Each One Costs</h2>
+<ul>
+<li class="fragment"><strong>Frequentist:</strong> the estimate is usually a closed form or a quick optimization.
+<ul>
+<li class="fragment">In R it is mostly built in — <code>lm()</code>, <code>glm()</code>, <code>t.test()</code>, <code>confint()</code> — and returns immediately.</li>
+</ul></li>
+<li class="fragment"><strong>Bayesian:</strong> the posterior <span class="math inline">\(p(H \mid e)\)</span> rarely has a closed form.
+<ul>
+<li class="fragment">It is <strong>sampled rather than solved</strong>, by <strong>MCMC</strong> (Markov chain Monte Carlo) — a long chain of draws whose histogram approximates the posterior.</li>
+<li class="fragment">Computationally heavy — seconds to hours — and the chains must be checked for convergence before the answer means anything.</li>
+</ul></li>
+<li class="fragment"><strong>Packages:</strong>
+<ul>
+<li class="fragment">Frequentist — base <code>stats</code>, plus <code>sandwich</code> and <code>fixest</code>.</li>
+<li class="fragment">Bayesian — <code>brms</code> and <code>rstanarm</code> (both take <code>lm()</code>-style formulas, Stan underneath), <code>MCMCpack</code>, <code>rjags</code>.</li>
+</ul></li>
+<li class="fragment"><strong>To read:</strong>
+<ul>
+<li class="fragment">Gelman &amp; Hill, <em>Data Analysis Using Regression and Multilevel/Hierarchical Models</em>.</li>
+<li class="fragment">McElreath, <em>Statistical Rethinking</em>; Gelman et al., <em>Bayesian Data Analysis</em>.</li>
+</ul></li>
+</ul>
+</section></section>
+<section>
+<section id="causality" class="title-slide slide level1 center">
+<h1>Causality</h1>
+<p><em>Our unanswered question: does democracy <strong>cause</strong> growth?</em></p>
+</section>
+<section id="the-estimate-we-have" class="slide level2 smaller">
+<h2>The Estimate We Have</h2>
+<ul>
+<li class="fragment">Let <span class="math inline">\(G\)</span> be a country’s growth rate, and let <span class="math inline">\(D\)</span> record its regime: <span class="math inline">\(D=1\)</span> for a democracy, <span class="math inline">\(D=0\)</span> for an autocracy.</li>
+<li class="fragment">Two quantities we already know how to compute:
+<ul>
+<li class="fragment"><span class="math inline">\(E[G \mid D=1]\)</span> — average growth <strong>among the democracies</strong>. Take the democracies, average their growth.</li>
+<li class="fragment"><span class="math inline">\(E[G \mid D=0]\)</span> — average growth <strong>among the autocracies</strong>. Same move, other group.</li>
+</ul></li>
+<li class="fragment">Their difference is the number every paper on this question reports: <span class="math display">\[E[G \mid D=1] - E[G \mid D=0]\]</span></li>
+<li class="fragment"><strong>What it gives us:</strong> an honest <em>description</em>. Democracies grew faster, or slower, than autocracies — by this much.
+<ul>
+<li class="fragment">Nothing more is needed to compute it. It is two group averages and a subtraction.</li>
+</ul></li>
+</ul>
+<div class="fragment">
+<p><em>(Your courses will write <span class="math inline">\(Y\)</span> where we are writing <span class="math inline">\(G\)</span>. Same object.)</em></p>
+</div>
+</section>
+<section id="why-that-is-not-yet-a-cause" class="slide level2 smaller">
+<h2>Why That Is Not Yet a Cause</h2>
+<ul>
+<li class="fragment">A cause would mean: <em>these countries grew faster <strong>because</strong> they were democracies.</em> The comparison above cannot say that, for two reasons.</li>
+<li class="fragment"><strong>The two groups were already different.</strong>
+<ul>
+<li class="fragment">Richer, older states with settled institutions sit on one side; poorer states catching up sit on the other. They would not have grown alike even under identical regimes.</li>
+</ul></li>
+<li class="fragment"><strong>Regimes are not handed out at random.</strong>
+<ul>
+<li class="fragment">Countries that became democracies were the kind of country that becomes a democracy — and whatever made that happen may drive growth too.</li>
+</ul></li>
+<li class="fragment">Neither problem shrinks with more countries. Both are about <em>which</em> countries are in which group, not how many.</li>
+<li class="fragment">To see why, it helps to imagine a table we can never actually have.</li>
+</ul>
+</section>
+<section id="if-we-could-see-both-columns" class="slide level2 smaller">
+<h2>If We Could See Both Columns</h2>
+<p>Imagine we could observe each country <strong>twice</strong> — once as a democracy, once not.</p>
+<table class="po-table caption-top">
+<thead>
+<tr class="header">
+<th class="fragment fade-in" data-quarto-table-cell-role="th" data-fragment-index="1">Country</th>
+<th class="fragment fade-in" data-quarto-table-cell-role="th" data-fragment-index="2">Democracy?</th>
+<th class="fragment fade-in" data-quarto-table-cell-role="th" data-fragment-index="3">D</th>
+<th class="fragment fade-in" data-quarto-table-cell-role="th" data-fragment-index="4">Growth if democratic</th>
+<th class="fragment fade-in" data-quarto-table-cell-role="th" data-fragment-index="5">Growth if not</th>
+<th class="fragment fade-in" data-quarto-table-cell-role="th" data-fragment-index="6">Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1">Norway</td>
+<td class="fragment fade-in" data-fragment-index="2">Yes</td>
+<td class="fragment fade-in" data-fragment-index="3">1</td>
+<td class="fragment fade-in" data-fragment-index="4">2.1</td>
+<td class="fragment fade-in" data-fragment-index="5">1.4</td>
+<td class="fragment fade-in" data-fragment-index="6">+0.7</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1">Denmark</td>
+<td class="fragment fade-in" data-fragment-index="2">Yes</td>
+<td class="fragment fade-in" data-fragment-index="3">1</td>
+<td class="fragment fade-in" data-fragment-index="4">1.8</td>
+<td class="fragment fade-in" data-fragment-index="5">1.5</td>
+<td class="fragment fade-in" data-fragment-index="6">+0.3</td>
+</tr>
+<tr class="odd">
+<td class="fragment fade-in" data-fragment-index="1">Saudi Arabia</td>
+<td class="fragment fade-in" data-fragment-index="2">No</td>
+<td class="fragment fade-in" data-fragment-index="3">0</td>
+<td class="fragment fade-in" data-fragment-index="4">5.6</td>
+<td class="fragment fade-in" data-fragment-index="5">6.4</td>
+<td class="fragment fade-in" data-fragment-index="6">−0.8</td>
+</tr>
+<tr class="even">
+<td class="fragment fade-in" data-fragment-index="1">North Korea</td>
+<td class="fragment fade-in" data-fragment-index="2">No</td>
+<td class="fragment fade-in" data-fragment-index="3">0</td>
+<td class="fragment fade-in" data-fragment-index="4">0.9</td>
+<td class="fragment fade-in" data-fragment-index="5">0.6</td>
+<td class="fragment fade-in" data-fragment-index="6">+0.3</td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p>The last column is, for each country, <strong>the effect of democracy on its own growth</strong> — what democracy did <em>for that country</em>. Average it and you have the effect of democracy, full stop: <span class="math inline">\((0.7 + 0.3 - 0.8 + 0.3)/4 = +0.125\)</span>.</p>
+</div>
+<div class="fragment">
+<p><em>Illustrative values, not data.</em></p>
+</div>
+</section>
+<section id="in-the-real-world-one-column-is-blank" class="slide level2 smaller">
+<h2>In the Real World, One Column Is Blank</h2>
+<p>A country is either a democracy or it isn’t. We never see the other version of it.</p>
+<table class="po-table caption-top">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th">Country</th>
+<th data-quarto-table-cell-role="th">Democracy?</th>
+<th data-quarto-table-cell-role="th">D</th>
+<th data-quarto-table-cell-role="th">Growth if democratic</th>
+<th data-quarto-table-cell-role="th">Growth if not</th>
+<th data-quarto-table-cell-role="th">Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Norway</td>
+<td>Yes</td>
+<td>1</td>
+<td class="po-obs">2.1</td>
+<td class="po-miss">?</td>
+<td class="po-miss">?</td>
+</tr>
+<tr class="even">
+<td>Denmark</td>
+<td>Yes</td>
+<td>1</td>
+<td class="po-obs">1.8</td>
+<td class="po-miss">?</td>
+<td class="po-miss">?</td>
+</tr>
+<tr class="odd">
+<td>Saudi Arabia</td>
+<td>No</td>
+<td>0</td>
+<td class="po-miss">?</td>
+<td class="po-obs">6.4</td>
+<td class="po-miss">?</td>
+</tr>
+<tr class="even">
+<td>North Korea</td>
+<td>No</td>
+<td>0</td>
+<td class="po-miss">?</td>
+<td class="po-obs">0.6</td>
+<td class="po-miss">?</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li class="fragment">Every <span class="po-miss">?</span> is a number that was <strong>never recorded anywhere</strong>. Norway’s growth without democratisation isn’t missing from the dataset — it never happened.</li>
+<li class="fragment">So <strong>not one row</strong> of the difference column can be filled in. Not for any country, ever.</li>
+<li class="fragment">All we can do is compare the two visible columns: <span class="math inline">\(\;\text{mean}(2.1,\,1.8) - \text{mean}(6.4,\,0.6) = -1.55\)</span>.
+<ul>
+<li class="fragment">The true answer, one slide ago, was <span class="math inline">\(+0.125\)</span>. The visible comparison gets the <strong>sign wrong</strong>.</li>
+</ul></li>
+</ul>
+</section>
+<section id="now-the-notation" class="slide level2 smaller">
+<h2>Now the Notation</h2>
+<p>The two columns you just saw have names, and you will meet them constantly.</p>
+<table class="caption-top">
+<colgroup>
+<col style="width: 30%">
+<col style="width: 40%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>What we called it</th>
+<th style="text-align: center;">Notation</th>
+<th>Read it as</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Growth if democratic</td>
+<td style="text-align: center;"><span class="math inline">\(G_i(1)\)</span></td>
+<td>country <span class="math inline">\(i\)</span>’s growth in the world where it <em>is</em> a democracy</td>
+</tr>
+<tr class="even">
+<td>Growth if not</td>
+<td style="text-align: center;"><span class="math inline">\(G_i(0)\)</span></td>
+<td>the same country’s growth in the world where it is <em>not</em></td>
+</tr>
+<tr class="odd">
+<td>Difference</td>
+<td style="text-align: center;"><span class="math inline">\(G_i(1) - G_i(0)\)</span></td>
+<td>the causal effect of democracy <strong>for country <span class="math inline">\(i\)</span></strong></td>
+</tr>
+<tr class="even">
+<td>Average of that column</td>
+<td style="text-align: center;"><span class="math inline">\(\tau = E[G(1) - G(0)]\)</span></td>
+<td>the average causal effect — <strong>our estimand</strong></td>
+</tr>
+</tbody>
+</table>
+<div class="fragment">
+<p><span class="math inline">\(\tau\)</span> (“tau”) is just a <strong>name</strong>. It is the Greek letter conventionally used for a causal effect, exactly as <span class="math inline">\(\mu\)</span> was the letter for a mean — and like <span class="math inline">\(\mu\)</span> it is a <strong>parameter</strong>: one fixed, unknown number we are trying to learn.</p>
+</div>
+</section>
+<section id="the-fundamental-problem" class="slide level2 smaller">
+<h2>The Fundamental Problem</h2>
+<ul>
+<li class="fragment"><span class="math inline">\(G_i(1)\)</span> and <span class="math inline">\(G_i(0)\)</span> are the <strong>potential outcomes</strong>. Both exist; only one is ever observed.</li>
+<li class="fragment">That is <strong>the fundamental problem of causal inference</strong>, and it is a <em>missing-data</em> problem.
+<ul>
+<li class="fragment">More countries add more rows. Every new row still arrives with one side blank.</li>
+</ul></li>
+<li class="fragment">Which is why <span class="math inline">\(\tau\)</span> is an estimand and not a statistic: no dataset contains the column it averages.</li>
+</ul>
+</section>
+<section id="y-and-x-the-general-notation" class="slide level2 smaller">
+<h2><span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>: The General Notation</h2>
+<p>Democracy and growth were one instance. The general vocabulary:</p>
+<ul>
+<li class="fragment"><span class="math inline">\(X\)</span> — the <strong>treatment</strong>, the thing whose effect you want.
+<ul>
+<li class="fragment">Often binary (<span class="math inline">\(X=1\)</span> treated, <span class="math inline">\(X=0\)</span> untreated): democracy, a job programme, a get-out-the-vote call.</li>
+<li class="fragment">It can also be continuous — years of schooling, dose, a polyarchy score — in which case “the effect” means the effect of <em>changing</em> <span class="math inline">\(X\)</span>.</li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(Y\)</span> — the <strong>outcome</strong>, the thing you measure afterwards.</li>
+<li class="fragment"><span class="math inline">\(Y_i(1)\)</span> and <span class="math inline">\(Y_i(0)\)</span> — the <strong><em>potential outcomes</em></strong>: unit <span class="math inline">\(i\)</span>’s outcome if treated, and if not.
+<ul>
+<li class="fragment">The word <em>potential</em> is doing real work. Both are properties of the unit, whichever one the world happens to reveal.</li>
+</ul></li>
+<li class="fragment"><span class="math inline">\(W\)</span> — <strong>covariates</strong>, everything else you know about the unit before treatment.</li>
+</ul>
+<div class="fragment">
+<p>From here on: <span class="math inline">\(Y\)</span> and <span class="math inline">\(X\)</span>, not <span class="math inline">\(G\)</span> and <span class="math inline">\(D\)</span>. Same objects, the notation your courses use.</p>
+</div>
+</section>
+<section id="what-we-compute-vs.-what-we-want" class="slide level2 smaller">
+<h2>What We Compute vs.&nbsp;What We Want</h2>
+<div class="legend">
+<p><span class="obs">blue = we observe it</span> · <span class="unobs">red = it never happened, so we never see it</span></p>
+</div>
+<div class="eqline">
+<p><strong>What we compute:</strong> <span class="obs"><span class="math inline">\(E[Y \mid X{=}1]\)</span></span> <span class="math inline">\(\;-\;\)</span> <span class="obs"><span class="math inline">\(E[Y \mid X{=}0]\)</span></span></p>
+</div>
+<div class="fragment">
+<div class="eqline">
+<p><strong>The same thing, in potential outcomes:</strong> <span class="obs"><span class="math inline">\(E[Y(1) \mid X{=}1]\)</span></span> <span class="math inline">\(\;-\;\)</span> <span class="obs"><span class="math inline">\(E[Y(0) \mid X{=}0]\)</span></span></p>
+</div>
+</div>
+<div class="fragment">
+<div class="eqline">
+<p><strong>What we want:</strong> <span class="obs"><span class="math inline">\(E[Y(1) \mid X{=}1]\)</span></span> <span class="math inline">\(\;-\;\)</span> <span class="unobs"><span class="math inline">\(E[Y(0) \mid X{=}1]\)</span></span></p>
+</div>
+<div class="eqlab">
+<p>the same countries, treated and untreated</p>
+</div>
+</div>
+<div class="fragment">
+<p>The two lines differ in <strong>one term only</strong> — and it is the red one.</p>
+</div>
+</section>
+<section id="the-bias-is-that-one-red-term" class="slide level2 smaller">
+<h2>The Bias Is That One Red Term</h2>
+<div class="eqline">
+<p><span class="math inline">\(\text{bias} \;=\;\)</span> <span class="unobs"><span class="math inline">\(E[Y(0) \mid X{=}1]\)</span></span> <span class="math inline">\(\;-\;\)</span> <span class="obs"><span class="math inline">\(E[Y(0) \mid X{=}0]\)</span></span></p>
+</div>
+<ul>
+<li class="fragment">We wanted to subtract the red term. We subtracted the blue one instead, because it is the one that exists in the data.</li>
+<li class="fragment">So the number we compute is <strong>the effect plus this gap</strong>, and the gap has a name: <strong>baseline bias</strong>.</li>
+<li class="fragment">Read it in words: <em>how the two groups would have compared had neither been treated.</em>
+<ul>
+<li class="fragment">Norway and North Korea do not share a <span class="math inline">\(Y(0)\)</span>. Democracy is not what makes them differ.</li>
+</ul></li>
+<li class="fragment">If the treated group would have done better anyway, the gap is positive and our number <strong>overstates</strong> the effect.</li>
+<li class="fragment">It contains a red term, so it can never be computed. No larger <span class="math inline">\(n\)</span> turns it blue.</li>
+</ul>
+</section>
+<section id="selection-bias" class="slide level2 smaller">
+<h2>Selection Bias</h2>
+<ul>
+<li class="fragment"><strong>Selection</strong> is the <em>mechanism</em> behind that gap: units are not assigned treatment, they end up with it.</li>
+<li class="fragment">Two ways it bites:
+<ul>
+<li class="fragment"><strong>Selection on levels</strong> — units that would have done better anyway are likelier to be treated. This is the baseline bias above.</li>
+<li class="fragment"><strong>Selection on gains</strong> — units that would <em>benefit most</em> are likelier to be treated. Then the effect on the treated differs from the effect on everyone else.</li>
+</ul></li>
+<li class="fragment">Many texts use “selection bias” for the baseline term itself. Notice which sense is meant.</li>
+<li class="fragment">Both are about <strong>which</strong> units are in which group — never about how many.</li>
+</ul>
+</section>
+<section id="ate-average-treatment-effect" class="slide level2 smaller">
+<h2>ATE — Average Treatment Effect</h2>
+<div class="eqline">
+<p><span class="math inline">\(\tau_{\text{ATE}} \;=\; E\big[\,Y(1) - Y(0)\,\big]\)</span></p>
+</div>
+<ul>
+<li class="fragment">The average effect <strong>over everybody</strong>, treated and untreated alike.</li>
+<li class="fragment"><em>If we treated the whole population instead of nobody, how far would the average outcome move?</em></li>
+<li class="fragment">It is the default estimand — and frequently not the one a study can deliver.</li>
+</ul>
+</section>
+<section id="att-effect-on-the-treated" class="slide level2 smaller">
+<h2>ATT — Effect on the Treated</h2>
+<div class="eqline">
+<p><span class="math inline">\(\tau_{\text{ATT}} \;=\;\)</span> <span class="obs"><span class="math inline">\(E[Y(1) \mid X{=}1]\)</span></span> <span class="math inline">\(\;-\;\)</span> <span class="unobs"><span class="math inline">\(E[Y(0) \mid X{=}1]\)</span></span></p>
+</div>
+<ul>
+<li class="fragment">The average effect <strong>among the units that were actually treated</strong>.</li>
+<li class="fragment"><em>For the countries that did democratise, what did democratising do for them?</em></li>
+<li class="fragment">Notice the colours: <strong>one half is observed.</strong> That is why observational work so often targets the ATT — you are missing one term, not two.</li>
+</ul>
+</section>
+<section id="atc-effect-on-the-controls" class="slide level2 smaller">
+<h2>ATC — Effect on the Controls</h2>
+<div class="eqline">
+<p><span class="math inline">\(\tau_{\text{ATC}} \;=\;\)</span> <span class="unobs"><span class="math inline">\(E[Y(1) \mid X{=}0]\)</span></span> <span class="math inline">\(\;-\;\)</span> <span class="obs"><span class="math inline">\(E[Y(0) \mid X{=}0]\)</span></span></p>
+</div>
+<ul>
+<li class="fragment">The average effect <strong>among the units that were not treated</strong> — what treatment <em>would have</em> done to them.</li>
+<li class="fragment"><em>What would democratising the remaining autocracies do?</em> The policy question, and the harder one.</li>
+<li class="fragment">The two combine into the ATE, weighted by the share treated <span class="math inline">\(\pi\)</span>:
+<ul>
+<li class="fragment"><span class="math inline">\(\tau_{\text{ATE}} = \pi\,\tau_{\text{ATT}} + (1-\pi)\,\tau_{\text{ATC}}\)</span></li>
+</ul></li>
+<li class="fragment">When <span class="math inline">\(\tau_{\text{ATT}} \neq \tau_{\text{ATC}}\)</span> the effect is <strong>heterogeneous</strong> — treatment does different things to different units.</li>
+</ul>
+</section>
+<section id="cate-conditional-average-treatment-effect" class="slide level2 smaller">
+<h2>CATE — Conditional Average Treatment Effect</h2>
+<div class="eqline">
+<p><span class="math inline">\(\tau_{\text{CATE}}(w) \;=\; E\big[\,Y(1) - Y(0) \,\big|\, W = w\,\big]\)</span></p>
+</div>
+<ul>
+<li class="fragment">The average effect <strong>within a subgroup</strong> picked out by covariates <span class="math inline">\(W\)</span> — by region, income level, prior institutions.</li>
+<li class="fragment">It is not one number but a <strong>function</strong> of <span class="math inline">\(w\)</span>: a different effect for each kind of unit.</li>
+<li class="fragment">This is where “does democracy cause growth?” ends up once people take it seriously.
+<ul>
+<li class="fragment">Not one effect for all countries, but an effect that depends on what the country already is.</li>
+</ul></li>
+<li class="fragment">Four estimands — ATE, ATT, ATC, CATE — from one table. <strong>Choose before you estimate.</strong></li>
+</ul>
+</section>
+<section id="why-some-designs-escape-the-problem" class="slide level2 smaller">
+<h2>Why Some Designs Escape the Problem</h2>
+<ul>
+<li class="fragment">Both bias terms come from one thing: <strong>who ends up treated is related to what would have happened to them.</strong></li>
+<li class="fragment">A design escapes when treatment is assigned <strong>exogenously</strong> — from outside the system, by something unrelated to the potential outcomes.
+<ul>
+<li class="fragment"><em>Exogenous</em> = determined <strong>outside</strong> the process you are studying. <em>Endogenous</em> = determined <strong>within</strong> it.</li>
+<li class="fragment">A country’s regime is endogenous to its history, wealth and institutions. A coin flip is not.</li>
+</ul></li>
+<li class="fragment">Written down: assignment independent of the potential outcomes, <span class="math inline">\(\;\big(Y(1), Y(0)\big) \perp X\)</span>.
+<ul>
+<li class="fragment">Then <span class="math inline">\(E[Y(0)\mid X{=}1] = E[Y(0)\mid X{=}0]\)</span>, so baseline bias is zero; and <span class="math inline">\(\tau_{\text{ATT}} = \tau_{\text{ATC}}\)</span>, so the third term is zero too.</li>
+</ul></li>
+<li class="fragment">The left side of the decomposition then <strong>equals</strong> the ATE. The statistic becomes the estimand.</li>
+<li class="fragment">Everything that follows is a catalogue of ways to get partway there when you cannot randomise.</li>
+</ul>
+</section>
+<section id="randomised-experiments" class="slide level2 smaller">
+<h2>Randomised Experiments</h2>
+<div class="design-fig">
+<svg viewbox="0 0 480 132" xmlns="http://www.w3.org/2000/svg">
+  <text x="56" y="24" text-anchor="middle" font-size="11" fill="#22303F">all units</text>
+  <rect x="8" y="32" width="96" height="64" fill="#EDF0F5" stroke="#22303F" stroke-width="1.3"></rect>
+  <g fill="#5A6B80"><circle cx="30" cy="54" r="4"></circle><circle cx="56" cy="54" r="4"></circle><circle cx="82" cy="54" r="4"></circle><circle cx="30" cy="76" r="4"></circle><circle cx="56" cy="76" r="4"></circle><circle cx="82" cy="76" r="4"></circle></g>
+  <path d="M108,64 L134,64 M127,58 L134,64 L127,70" fill="none" stroke="#5A6B80" stroke-width="1.5"></path>
+  <circle cx="160" cy="64" r="21" fill="#F7F8FA" stroke="#2f855a" stroke-width="1.5"></circle>
+  <text x="160" y="70" text-anchor="middle" font-size="15" fill="#2f855a">⚄</text>
+  <text x="160" y="104" text-anchor="middle" font-size="10" fill="#2f855a">randomiser</text>
+  <path d="M186,53 L234,35 M226,30 L234,35 L227,42" fill="none" stroke="#5A6B80" stroke-width="1.5"></path>
+  <path d="M186,75 L234,93 M227,87 L234,93 L226,99" fill="none" stroke="#5A6B80" stroke-width="1.5"></path>
+  <rect x="238" y="10" width="118" height="44" fill="#F7F8FA" stroke="#2b6cb0" stroke-width="1.3"></rect>
+  <text x="297" y="30" text-anchor="middle" font-size="11" fill="#2b6cb0">treated (X = 1)</text>
+  <text x="297" y="45" text-anchor="middle" font-size="10" fill="#5A6B80">we observe Y(1)</text>
+  <rect x="238" y="74" width="118" height="44" fill="#F7F8FA" stroke="#5A6B80" stroke-width="1.3"></rect>
+  <text x="297" y="94" text-anchor="middle" font-size="11" fill="#5A6B80">control (X = 0)</text>
+  <text x="297" y="109" text-anchor="middle" font-size="10" fill="#5A6B80">we observe Y(0)</text>
+  <text x="424" y="58" text-anchor="middle" font-size="10" fill="#22303F">the groups differ</text>
+  <text x="424" y="74" text-anchor="middle" font-size="10" fill="#22303F">only by chance</text>
+</svg>
+</div>
+<ul>
+<li class="fragment"><strong>What it does:</strong> a coin, not the unit, decides who is treated.</li>
+<li class="fragment"><strong>Why it works:</strong> assignment is independent of <span class="math inline">\(Y(1)\)</span> and <span class="math inline">\(Y(0)\)</span> by construction, so both bias terms are zero — not assumed away, <em>built</em> away.</li>
+</ul>
+</section>
+<section id="difference-in-differences" class="slide level2 smaller">
+<h2>Difference-in-Differences</h2>
+<div class="design-fig">
+<svg viewbox="0 0 480 132" xmlns="http://www.w3.org/2000/svg">
+  <line x1="46" y1="110" x2="352" y2="110" stroke="#5A6B80" stroke-width="1.2"></line>
+  <line x1="46" y1="110" x2="46" y2="16" stroke="#5A6B80" stroke-width="1.2"></line>
+  <text x="86" y="125" text-anchor="middle" font-size="10" fill="#5A6B80">before</text>
+  <text x="266" y="125" text-anchor="middle" font-size="10" fill="#5A6B80">after</text>
+  <line x1="86" y1="88" x2="266" y2="76" stroke="#5A6B80" stroke-width="2"></line>
+  <line x1="86" y1="64" x2="266" y2="32" stroke="#2b6cb0" stroke-width="2"></line>
+  <line x1="86" y1="64" x2="266" y2="52" stroke="#2b6cb0" stroke-width="1.6" stroke-dasharray="5,3" stroke-opacity="0.55"></line>
+  <line x1="272" y1="32" x2="272" y2="52" stroke="#B23A48" stroke-width="2.5"></line>
+  <text x="282" y="46" font-size="10" fill="#B23A48">effect</text>
+  <text x="276" y="26" font-size="10" fill="#2b6cb0">treated</text>
+  <text x="276" y="80" font-size="10" fill="#5A6B80">control</text>
+  <text x="150" y="48" font-size="9.5" fill="#8a8f98">counterfactual trend</text>
+  <text x="366" y="102" font-size="9.5" fill="#8a8f98">parallel trends</text>
+  <text x="366" y="116" font-size="9.5" fill="#8a8f98">is the assumption</text>
+</svg>
+</div>
+<ul>
+<li class="fragment"><strong>What it does:</strong> compares the <em>change</em> over time in a treated group against the change in an untreated one.</li>
+<li class="fragment"><strong>Why it works:</strong> fixed baseline differences cancel in the subtraction — provided the two groups would have moved in <strong>parallel</strong> absent treatment.</li>
+</ul>
+</section>
+<section id="regression-discontinuity" class="slide level2 smaller">
+<h2>Regression Discontinuity</h2>
+<div class="design-fig">
+<svg viewbox="0 0 480 132" xmlns="http://www.w3.org/2000/svg">
+  <line x1="46" y1="110" x2="420" y2="110" stroke="#5A6B80" stroke-width="1.2"></line>
+  <line x1="228" y1="14" x2="228" y2="110" stroke="#B23A48" stroke-width="1.5" stroke-dasharray="5,3"></line>
+  <text x="228" y="125" text-anchor="middle" font-size="10" fill="#B23A48">cutoff</text>
+  <line x1="64" y1="88" x2="224" y2="70" stroke="#5A6B80" stroke-width="2"></line>
+  <line x1="232" y1="44" x2="404" y2="28" stroke="#2b6cb0" stroke-width="2"></line>
+  <line x1="228" y1="70" x2="228" y2="44" stroke="#B23A48" stroke-width="3"></line>
+  <text x="244" y="62" font-size="10" fill="#B23A48">jump = the effect</text>
+  <text x="106" y="102" font-size="10" fill="#5A6B80">untreated</text>
+  <text x="352" y="52" font-size="10" fill="#2b6cb0">treated</text>
+  <text x="228" y="10" text-anchor="middle" font-size="9.5" fill="#8a8f98">units just either side are nearly identical</text>
+</svg>
+</div>
+<ul>
+<li class="fragment"><strong>What it does:</strong> compares units just above and just below a threshold that mechanically determines treatment.</li>
+<li class="fragment"><strong>Why it works:</strong> near the cutoff, which side you land on is as good as random — so the jump at the line is the effect, for units near the line.</li>
+</ul>
+</section>
+<section id="instrumental-variables" class="slide level2 smaller">
+<h2>Instrumental Variables</h2>
+<div class="design-fig">
+<svg viewbox="0 0 480 132" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="78" cy="80" r="20" fill="#EAF6EF" stroke="#2f855a" stroke-width="1.4"></circle>
+  <text x="78" y="85" text-anchor="middle" font-size="14" fill="#2f855a">Z</text>
+  <circle cx="212" cy="80" r="20" fill="#F7F8FA" stroke="#2b6cb0" stroke-width="1.4"></circle>
+  <text x="212" y="85" text-anchor="middle" font-size="14" fill="#2b6cb0">X</text>
+  <circle cx="350" cy="80" r="20" fill="#F7F8FA" stroke="#22303F" stroke-width="1.4"></circle>
+  <text x="350" y="85" text-anchor="middle" font-size="14" fill="#22303F">Y</text>
+  <circle cx="281" cy="26" r="18" fill="#FAEDEF" stroke="#B23A48" stroke-width="1.4"></circle>
+  <text x="281" y="31" text-anchor="middle" font-size="13" fill="#B23A48">U</text>
+  <path d="M100,80 L186,80 M178,74 L186,80 L178,86" fill="none" stroke="#5A6B80" stroke-width="1.6"></path>
+  <path d="M234,80 L324,80 M316,74 L324,80 L316,86" fill="none" stroke="#5A6B80" stroke-width="1.6"></path>
+  <path d="M267,42 L224,64 M231,58 L224,64 L232,69" fill="none" stroke="#B23A48" stroke-width="1.5" stroke-dasharray="4,3"></path>
+  <path d="M295,42 L338,64 M331,58 L338,64 L330,69" fill="none" stroke="#B23A48" stroke-width="1.5" stroke-dasharray="4,3"></path>
+  <text x="78" y="116" text-anchor="middle" font-size="9.5" fill="#5A6B80">instrument</text>
+  <text x="212" y="116" text-anchor="middle" font-size="9.5" fill="#5A6B80">treatment</text>
+  <text x="350" y="116" text-anchor="middle" font-size="9.5" fill="#5A6B80">outcome</text>
+  <text x="404" y="30" font-size="9.5" fill="#B23A48">confounder</text>
+  <text x="404" y="44" font-size="9.5" fill="#B23A48">(unobserved)</text>
+</svg>
+</div>
+<ul>
+<li class="fragment"><strong>What it does:</strong> finds a variable <span class="math inline">\(Z\)</span> that shifts treatment <span class="math inline">\(X\)</span> but touches the outcome <strong>only through</strong> <span class="math inline">\(X\)</span>.</li>
+<li class="fragment"><strong>Why it works:</strong> the part of <span class="math inline">\(X\)</span> that <span class="math inline">\(Z\)</span> moves is unrelated to the confounder <span class="math inline">\(U\)</span> — so that part, and only that part, gives a clean comparison.</li>
+</ul>
+</section>
+<section id="matching" class="slide level2 smaller">
+<h2>Matching</h2>
+<div class="design-fig">
+<svg viewbox="0 0 480 132" xmlns="http://www.w3.org/2000/svg">
+  <text x="120" y="18" text-anchor="middle" font-size="11" fill="#2b6cb0">treated</text>
+  <text x="330" y="18" text-anchor="middle" font-size="11" fill="#5A6B80">untreated pool</text>
+  <g fill="#2b6cb0"><circle cx="120" cy="42" r="6"></circle><circle cx="120" cy="70" r="6"></circle><circle cx="120" cy="98" r="6"></circle></g>
+  <g fill="#5A6B80" fill-opacity="0.45"><circle cx="330" cy="32" r="6"></circle><circle cx="330" cy="54" r="6"></circle><circle cx="330" cy="76" r="6"></circle><circle cx="330" cy="98" r="6"></circle><circle cx="330" cy="118" r="6"></circle></g>
+  <g stroke="#2f855a" stroke-width="1.6" stroke-dasharray="4,3">
+    <line x1="128" y1="42" x2="322" y2="32"></line>
+    <line x1="128" y1="70" x2="322" y2="76"></line>
+    <line x1="128" y1="98" x2="322" y2="98"></line>
+  </g>
+  <text x="225" y="118" text-anchor="middle" font-size="10" fill="#2f855a">matched on W</text>
+  <text x="424" y="66" text-anchor="middle" font-size="9.5" fill="#8a8f98">unmatched</text>
+  <text x="424" y="80" text-anchor="middle" font-size="9.5" fill="#8a8f98">units dropped</text>
+</svg>
+</div>
+<ul>
+<li class="fragment"><strong>What it does:</strong> pairs each treated unit with untreated units that look the same on observed covariates <span class="math inline">\(W\)</span>, then compares within pairs.</li>
+<li class="fragment"><strong>Why it works — and when it doesn’t:</strong> it removes bias from what you <em>measured</em>. If anything <strong>unobserved</strong> drives selection, the bias survives, and no diagnostic will tell you.</li>
+</ul>
+</section>
+<section id="the-dialect-equivalence" class="slide level2 smaller">
+<h2>The Dialect Equivalence</h2>
+<ul>
+<li class="fragment">Your econometrics course will state the key assumption as <strong>exogeneity</strong>: <span class="math inline">\(\;E[\varepsilon \mid X] = 0\)</span>.</li>
+<li class="fragment">Your causal inference course will state it as <strong>the selection-bias term is zero</strong>.</li>
+<li class="fragment"><strong>These are the same claim in two notations.</strong> Different courses, different textbooks, different vocabulary, one idea.</li>
+<li class="fragment">In English, for our data: <em>whatever else drives growth is unrelated to how democratic a country is.</em>
+<ul>
+<li class="fragment">Say it out loud about the V-Dem cross-section and hear how implausible it is.</li>
+</ul></li>
+<li class="fragment">Recognizing this equivalence when you meet it in October is the single most useful thing this week can give you.</li>
+</ul>
+</section>
+<section id="quick-drill-which-gap" class="slide level2 smaller">
+<h2>Quick Drill: Which Gap?</h2>
+<ul>
+<li class="fragment">Three gaps stand between us and Monday’s question. Which one does each fix close?
+<ul>
+<li class="fragment"><strong>(a)</strong> Collect 30 more countries.</li>
+<li class="fragment"><strong>(b)</strong> Randomly assign democracy to countries.</li>
+<li class="fragment"><strong>(c)</strong> Use V-Dem’s credible intervals instead of the point estimate for polyarchy.</li>
+<li class="fragment"><strong>(d)</strong> Add region and prior-income controls.</li>
+</ul></li>
+<li class="fragment"><strong>Answers:</strong>
+<ul>
+<li class="fragment"><ol type="a">
+<li class="fragment">estimation only — narrower interval, same bias. (b) identification — and is unavailable, which is the point.</li>
+</ol></li>
+<li class="fragment"><ol start="3" type="a">
+<li class="fragment">measurement. (d) <em>maybe</em> identification, conditional on an untestable assumption you now know how to state.</li>
+</ol></li>
+</ul></li>
+<li class="fragment">Only estimation closes with <span class="math inline">\(n\)</span>. The other two don’t, ever.</li>
+</ul>
+</section></section>
+<section>
+<section id="the-map" class="title-slide slide level1 center">
+<h1>The Map</h1>
 
 </section>
+<section id="what-to-do-in-the-next-two-weeks" class="slide level2 smaller">
+<h2>What to Do in the Next Two Weeks</h2>
+<ul>
+<li class="fragment"><strong>Don’t re-read these slides.</strong> Re-do the one derivation you have on blank paper.
+<ul>
+<li class="fragment">The selection-bias decomposition: four lines, linearity of expectation only. Naming the rule on each line is the skill.</li>
+</ul></li>
+<li class="fragment">Keep the find-the-error habit. When a paper shows a line, ask what licenses it.</li>
+<li class="fragment">Start the linear algebra series when it runs; you have the vocabulary now.</li>
+<li class="fragment">When something in October looks unfamiliar, check first whether it’s a new idea or just new handwriting. Usually it’s handwriting.</li>
+<li class="fragment">Ask us. Really.</li>
+</ul>
+</section>
+<section id="references" class="slide level2 smaller">
+<h2>References</h2>
+<ul>
+<li class="fragment"><strong>IQSS Prefresher</strong> (Harvard IQSS) — <a href="https://iqss.github.io/prefresher/06_probability.html">Probability</a> and the LLN/CLT sections.</li>
+<li class="fragment"><strong>Seeing Theory</strong> (Brown University) — animated <a href="https://seeing-theory.brown.edu/frequentist-inference/index.html">frequentist inference</a> and <a href="https://seeing-theory.brown.edu/bayesian-inference/index.html">Bayesian inference</a>; the CLT visualizer is the best free one, and is the place to go if today’s 1.96 bothered you.</li>
+<li class="fragment"><strong>3Blue1Brown</strong> — <a href="https://www.youtube.com/watch?v=zeJD6dqJ5lo">Central limit theorem</a>, <a href="https://www.youtube.com/watch?v=HZGCoVF3YvM">Bayes’ theorem</a>.</li>
+<li class="fragment">Cunningham, S. <em>Causal Inference: The Mixtape</em> — Ch. 4 (potential outcomes): <a href="https://mixtape.scunning.com/">https://mixtape.scunning.com/</a></li>
+<li class="fragment">Aronow, P. M., &amp; Miller, B. T. (2019). <em>Foundations of Agnostic Statistics</em> — the estimand/estimator/estimate discipline, done rigorously.</li>
+<li class="fragment">Moore, W. H., &amp; Siegel, D. A. (2013). <em>A Mathematics Course for Political and Social Research</em>.</li>
+</ul>
+</section>
+<section id="u-got-this" class="slide level2 center">
+<h2><span class="flatly-green"><strong>U</strong></span> <span class="blk">got this!</span></h2>
+<p><strong>Programming lecture:</strong> <a href="../chapters/05-advanced-topics/programming.html">Webpage Chapter</a></p>
+<p><strong>Back to:</strong> <a href="../index.html">Math Camp 2026 website</a></p>
+<p><em>Thanks for a good week.</em></p>
+
+</section></section>
     </div>
   <div class="quarto-auto-generated-content" style="display: none;">
 <div class="footer footer-default">
