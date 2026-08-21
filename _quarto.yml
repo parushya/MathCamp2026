@@ -34,14 +34,18 @@ book:
       chapters:
         - chapters/03-calculus/slides.qmd
         - chapters/03-calculus/programming.qmd
-    # Linear algebra's math is parked for now; chapters/04-linear-algebra/
-    # still holds its index/slides stubs. Its programming session ("Mission")
-    # was never linear-algebra-specific -- it belongs to Day 4 and moved with
-    # the day to chapters/04-calculus/programming.qmd.
     - part: chapters/04-calculus/index.qmd
       chapters:
         - chapters/04-calculus/slides.qmd
         - chapters/04-calculus/programming.qmd
+    # Day 5 runs two math sessions. Session 1 (linear algebra) is math-only --
+    # the day's single programming session ("Coding with AI") sits under
+    # 05-advanced-topics, so this part has no programming.qmd.
+    # The old chapters/04-linear-algebra/ stubs are superseded by this and can
+    # be deleted; slides/04-linear-algebra{,-draft}.qmd likewise.
+    - part: chapters/05-linear-algebra/index.qmd
+      chapters:
+        - chapters/05-linear-algebra/slides.qmd
     - part: chapters/05-advanced-topics/index.qmd
       chapters:
         - chapters/05-advanced-topics/slides.qmd

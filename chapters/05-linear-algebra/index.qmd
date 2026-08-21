@@ -1,0 +1,25 @@
+---
+code-tools: false
+---
+
+# Day 5 — Linear Algebra
+
+Day 5 opens with linear algebra as a **reading key**, not a course: enough
+notation to read a matrix expression, name the shape of every piece, and say
+whether an operation is conformable. Vectors and the dot product, the design
+matrix, transposes and matrix types, and finally a regression written out as
+a system of equations — with the estimator $\hat\beta = (X'X)^{-1}X'y$ read
+left to right rather than derived.
+
+Deliberately out of scope: determinants, inverses beyond the notation,
+eigenvalues, rank, span, and the projection picture. Those belong to the
+post-camp linear algebra series, which this session is meant to prepare you
+for rather than compete with.
+
+This session has one part:
+
+- **[Math Session](slides.qmd)** — the in-class slideshow, closing with an
+  interactive $3\times3$ matrix you can type into.
+
+The day's programming session (**Coding with AI**) is paired with
+[Day 5 — Intro to Advanced Topics](../05-advanced-topics/index.qmd).

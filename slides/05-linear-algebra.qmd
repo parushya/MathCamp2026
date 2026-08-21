@@ -1,0 +1,1332 @@
+---
+title: '<img class="ttl-img" src="05-linear-algebra/images/day5.png" alt="Shape of the union, over day = 1 to 4, of Topics sub day">'
+subtitle: '$\text{Topics} \in \{\,\text{Set theory},\; \text{Probability},\; \text{Integrals},\; \text{Limits},\; \text{Differentiation},\; \text{Data structures}\,\}$<br><span style="font-size:0.6em;color:#8a8f98;font-weight:300;letter-spacing:0.09em;">MATH AND PROGRAMMING CAMP &nbsp;&middot;&nbsp; DAY 5, SESSION 1 &nbsp;&middot;&nbsp; LINEAR ALGEBRA</span>'
+author: Parushya
+date: today
+---
+
+## Where We Are {.smaller}
+
+<!--
+Day 5 Session 1 (Linear Algebra). SYNCED from
+slides/05-linear-algebra-draft.qmd on 2026-08-21 -- edit the draft first,
+then re-sync, so the two do not diverge.
+
+Created 2026-08-20 after the day restructure: Day 5 now carries linear
+algebra in the morning session and Intro to Advanced Topics in the afternoon
+(05-advanced-topics-draft.qmd). The old Day 4 stubs
+(slides/04-linear-algebra.qmd, slides/04-linear-algebra-draft.qmd,
+chapters/04-linear-algebra/) are superseded by this file and can now be
+retired. chapters/05-linear-algebra/ does not exist yet and this deck is not
+wired into _quarto.yml -- both are still open.
+
+SCOPE IS DELIBERATELY THIN -- HANDOFF.md decision #4. This is a *reading
+key*, roughly 45-60 minutes: dimensions, conformability, transpose,
+matrix types, the 2x2 determinant, inverse-as-undoing, design matrix.
+CUT: transformations, basis, span, eigenvalues, and the projection picture. Projection belongs
+to the post-camp four-lecture LA series and a preview here would compete
+with it in different notation. If a future edit wants to add eigenvalues,
+check with Parushya first -- this is a standing decision, not an oversight.
+
+Also HANDOFF #3: matrices are introduced as *compression* for the scalar
+summation algebra students already did on Days 1-3, never as foundations.
+Do not lead with the matrix form.
+
+WHAT STUDENTS ACTUALLY HAVE WHEN THEY WALK IN (Parushya, 2026-08-20 --
+Day 4 is staying as it is and will NOT be extended):
+
+  - Day 1: sum/product notation, summation algebra, and ONE minimization --
+    x-bar minimizes Sigma(x_i - c)^2, proved algebraically, no calculus
+    (01-notation-functions-limits.qmd, "Claim 2", with the jm-part-curve
+    interactive). This is the deck's anchor for "minimize a sum of squares."
+  - Day 3: expectation, conditional expectation, the type-shift, and
+    Var/Cov in expectation form. Line 1047 of the Day 3 deck says a
+    regression line estimates the CEF -- that is where the *idea* of
+    regression comes from, and it is all we may assume.
+  - Day 4: limits, derivatives, integrals as READING ONLY -- what the
+    symbols mean and what job each does. No differentiation rules, no FOCs,
+    no optimization, and NO beta-hat derivation. The Day 4 deck's "Today"
+    agenda slide still promises "deriving bivariate beta-hat from a
+    minimization criterion" (04-calculus.qmd line 49) but the deck does not
+    deliver it -- flagged to Parushya, left alone per the no-Day-4-changes
+    instruction.
+
+CONSEQUENCE, AND THE THING MOST LIKELY TO GET RE-BROKEN: beta-hat is NEVER
+derived anywhere in this camp, and the scalar formula appears nowhere before
+this deck. So no slide here may say "you already derived this," "Day 4's
+beta-hat," or "the estimator you derived." This deck PREVIEWS the estimator
+and teaches students to READ it; it does not recap a derivation. If a future
+session restores Day 4's Join (the written version is parked in
+04-calculus-draft.qmd), the recap framing can come back -- until then it is
+simply false. The scalar bivariate slope formula is introduced here as
+something they WILL meet, not something they have met.
+
+schedule.qmd / syllabus.qmd still list Linear Algebra under Day 4 and give
+Day 5 only the advanced topics. Both need updating for the two-session
+Day 5 -- flagged, not yet done.
+
+Running example throughout is the standing one (RUNNING_EXAMPLE.md):
+V-Dem cross-section, X = polyarchy 2000, Y = mean annual log GDP p.c.
+growth 2000-2019, n ~ 175. Country names in the design matrix are real
+rows from that slice. TODO: verify the printed n and the four displayed
+rows against the actual data file before this deck is taught.
+
+TITLE (Parushya, 2026-08-21). The deck is "Shape of [bigcup from Day 1 to
+Day 4] Topics", with the subtitle declaring Topics as a set. It replaces
+"Stenography", which came from HANDOFF.md #3 but was never explained on any
+slide and whose justification ("you derived beta-hat in scalar form, here it
+is compressed") died when Day 4 stopped deriving. The union operator is
+deliberate: it is camp notation the students already own -- sets on Day 1,
+probability on Day 2 -- so the title is written in the language being taught,
+and it says what the session is: everything from Days 1-4, unioned, given a
+shape.
+
+Mechanics (2026-08-21, second pass): the title and the subtitle's set line
+are REAL LATEX, typeset by MathJax -- Quarto passes $...$ in a YAML title
+through pandoc, which emits <span class="math inline">, and MathJax typesets
+it because the title slide sits inside .reveal .slides. This was verified in
+the rendered HTML. Earlier attempts hand-built the operator from a Unicode
+U+22C3 in an inline-flex column; that looked like a bold sans capital "U",
+and the limits overlapped the bowl once line-height was tightened. Do NOT go
+back to the Unicode/HTML version -- \displaystyle\bigcup places the limits
+correctly and gives real math letterforms and stroke weights for free.
+
+Only "Shape of" carries inline HTML, purely to override the deck-wide h1
+colour (#107F69, slides.css) to black; the math inherits the green. Avoid
+\color{...} in the title -- MathJax's hex-colour support is not dependable
+enough to rely on here.
+
+DETERMINANTS, INVERSES AND SINGULARITY ARE ALL CUT (Parushya, 2026-08-21).
+Determinants were added on 2026-08-20 against HANDOFF.md #4 and are now cut
+again, together with the whole "Inverses and Systems" section (Why /
+Intuition: Undo / Identity and Inverse / When the Inverse Doesn't Exist /
+Diagnose the Singularity). Reasoning: the determinant's only job here was
+the invertibility test, so it has nothing to do once the inverse section
+goes; and singularity (dummy-variable trap, lm() returning NA) is diagnostic
+statistics, not notation-reading. This puts the deck back in line with
+HANDOFF.md #4.
+
+The ONLY survivor is the notation: "Undoing A" gives three sentences --
+scalar algebra divides, matrix algebra has no division, so the undo is
+written A^-1. That satisfies HANDOFF #4's "inverse-as-undoing" keep without
+a section. Do NOT grow it back into one: no identity-and-inverse slide, no
+A^-1 A = I, no computation, no singularity. The identity lives in the zoo
+("Named by Structure: The Identity") on IA = AI = A, which stands alone.
+
+THE CLOSING SECTION IS A NARRATIVE, NOT AN ARC. "Regression as a System of
+Equations" runs 2x2 system -> matrix form -> undo -> our dataset -> too tall
+to solve -> the estimator -> what R prints. It deliberately does not follow
+the camp's Why -> Intuition -> Formal -> Example -> Quick Drill structure;
+the through-line is the point. Note Day 1 teaches solving ONE equation
+("Solving for a Variable", "Finding Roots") but not simultaneous systems, so
+the 2x2 opener is new to the camp -- it is included precisely because
+ordinary school algebra is far more familiar than determinants ever were.
+
+"Taller Than It Is Wide" is load-bearing and must not be cut: a regression
+is overdetermined (n equations, k unknowns, no exact solution), and saying
+"regression is solving a system" without it teaches something false. It
+names least squares and stops there -- deriving beta-hat stays out.
+
+TERMINOLOGY (Parushya, 2026-08-20): the deck's word is CONFORMABLE, not
+"legal". "Legal" is not a term of art; conformable is what students will
+see in print, and HANDOFF.md #2 names matrix conformability as one of the
+camp's three fluency targets -- so the deck must actually reason in that
+word, not just declare it on the goals slide. Failures are "not
+conformable". Do not reintroduce legal/illegal.
+
+Arc: the camp's Why -> Intuition -> Formal -> Example -> Quick Drill runs
+per topic block here (unlike Day 4, where it ran at the day level). The
+stage is carried by the slide title, not by an on-slide label.
+Palette: project_slide_figure_palette (#22303F #2b6cb0 #5A6B80 #8a8f98
+#B23A48 #EDF0F5 #D9E0EA #F7F8FA, greens #38a169/#2f855a).
+-->
+
+```{=html}
+<style>
+/* Title slide for this deck only. The title and the subtitle's set line are
+   MathJax-typeset LaTeX, which inherits the huge reveal h1 size unless it is
+   reined in here. #title-slide scopes every rule to the title block. */
+#title-slide .title { margin-bottom: 0.45em; }
+/* The title is artwork (day5.png), so it must beat slides.css's blanket
+   `.reveal .slides img { max-height: 40vh }` cap. */
+#title-slide .title img.ttl-img {
+  display: block; margin: 0 auto;
+  height: 46vh; max-height: 46vh; width: auto; max-width: 92%;
+}
+#title-slide .subtitle { font-size: 0.60em; line-height: 1.6; color: #22303F; margin-top: 0.55em; }
+#title-slide .subtitle .math { font-size: 0.94em; }
+#title-slide .quarto-title-authors,
+#title-slide p.date { font-size: 0.55em; color: #5A6B80; margin-top: 0.15em; }
+</style>
+```
+
+
+Four days in, we can already read the objects that matter:
+
+::: {.incremental}
+-   Day 1 — sets, functions, $\sum$, logs.
+-   Day 2 — probability, random variables, PMF/PDF/CDF.
+-   Day 3 — expectation, conditional expectation, the type-shift; a regression line as an estimate of the CEF.
+-   Day 4 — limits, derivatives, integrals: reading $\int$, $\lim$, and $\dfrac{dy}{dx}$.
+-   **Today, morning** — the notation your first methods course will write all of it in.
+:::
+
+## The Slide You Will Meet in Week 1 {.smaller}
+
+::: {.incremental}
+-   Somewhere in the second or third week of your first methods course, this appears with no ceremony:
+
+    $$\hat\beta = (X'X)^{-1}X'y$$
+
+-   Three reactions are possible:
+    -   *"I have never seen this and I am behind."*
+    -   *"I will memorize it and hope."*
+    -   *"Four objects, and I can name the shape of each."* ← today's goal
+-   To be clear about what today is **not**: we are not deriving this, and you are not expected to have seen it before.
+    -   Where it comes from is your econometrics course's job, and it will take them a while.
+-   Today buys you something smaller and more useful on the day: when that slide goes up, you can **read** it instead of bracing.
+:::
+
+## Today Is a Reading Key, Not a Course {.smaller}
+
+::: {.incremental}
+-   **Goal:** read a matrix expression, say what shape each piece is, and say whether the pieces are **conformable**.
+-   **Not the goal:** compute a $4\times4$ inverse by hand, or prove anything about vector spaces.
+-   **Deliberately not covered:** determinants, eigenvalues, span, basis, rank, projection geometry.
+    -   These are real and you will need them — the post-camp linear algebra series does them properly, with time.
+    -   A rushed preview here in different notation would compete with that series rather than prepare you for it.
+-   One fluency target only: **conformability**. Do the shapes fit?
+:::
+
+# Vectors
+
+*A column of numbers you have already been staring at all week.*
+
+## Why We Need Them {.smaller}
+
+::: {.incremental}
+-   Our dataset is $n \approx 175$ countries, each with a polyarchy score $x_i$ and a growth rate $y_i$.
+-   Everything we did on Days 1–4 was written one country at a time and then summed:
+    $$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i, \qquad \widehat{\text{Cov}}(x,y) = \frac{1}{n}\sum_{i=1}^{n}(x_i-\bar x)(y_i-\bar y)$$
+-   That $\sum_{i=1}^{n}$ is doing a lot of work, and it is doing the *same* work every time.
+    -   A vector is what lets us stop writing it.
+:::
+
+## Intuition: The Data Column {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; gap:36px; align-items:center; margin: 6px 0;">
+<svg width="480" height="215" viewBox="0 0 480 215" xmlns="http://www.w3.org/2000/svg">
+  <text x="8" y="14" font-size="12" fill="#22303F">The whole table — a matrix</text>
+  <rect x="8" y="24" width="230" height="150" fill="#F7F8FA" stroke="#D9E0EA" stroke-width="1"/>
+  <line x1="8" y1="48" x2="238" y2="48" stroke="#5A6B80" stroke-width="1.5"/>
+  <line x1="128" y1="24" x2="128" y2="174" stroke="#D9E0EA" stroke-width="1"/>
+  <line x1="183" y1="24" x2="183" y2="174" stroke="#D9E0EA" stroke-width="1"/>
+  <text x="16" y="41" font-size="11" fill="#22303F">country</text>
+  <text x="136" y="41" font-size="11" font-style="italic" fill="#22303F">x</text>
+  <text x="191" y="41" font-size="11" font-style="italic" fill="#22303F">y</text>
+  <text x="16" y="68" font-size="11" fill="#5A6B80">Norway</text>
+  <text x="136" y="68" font-size="11" fill="#2b6cb0">0.91</text>
+  <text x="191" y="68" font-size="11" fill="#5A6B80">1.2</text>
+  <text x="16" y="93" font-size="11" fill="#5A6B80">India</text>
+  <text x="136" y="93" font-size="11" fill="#2b6cb0">0.56</text>
+  <text x="191" y="93" font-size="11" fill="#5A6B80">4.9</text>
+  <text x="16" y="118" font-size="11" fill="#5A6B80">Jordan</text>
+  <text x="136" y="118" font-size="11" fill="#2b6cb0">0.28</text>
+  <text x="191" y="118" font-size="11" fill="#5A6B80">2.1</text>
+  <text x="16" y="143" font-size="11" fill="#5A6B80">Chad</text>
+  <text x="136" y="143" font-size="11" fill="#2b6cb0">0.14</text>
+  <text x="191" y="143" font-size="11" fill="#5A6B80">1.6</text>
+  <text x="16" y="166" font-size="11" fill="#8a8f98">⋮</text>
+  <text x="136" y="166" font-size="11" fill="#8a8f98">⋮</text>
+  <text x="191" y="166" font-size="11" fill="#8a8f98">⋮</text>
+
+  <path d="M254,99 L292,99 M284,92 L292,99 L284,106" fill="none" stroke="#5A6B80" stroke-width="2"/>
+  <text x="273" y="88" text-anchor="middle" font-size="11" fill="#5A6B80">take one column</text>
+
+  <text x="310" y="14" font-size="12" fill="#22303F">and you have a vector</text>
+  <text x="316" y="104" font-size="15" font-style="italic" fill="#22303F">x =</text>
+  <path d="M366,34 L358,34 L358,166 L366,166" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <path d="M424,34 L432,34 L432,166 L424,166" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <text x="395" y="56" text-anchor="middle" font-size="12" fill="#2b6cb0">0.91</text>
+  <text x="395" y="83" text-anchor="middle" font-size="12" fill="#2b6cb0">0.56</text>
+  <text x="395" y="110" text-anchor="middle" font-size="12" fill="#2b6cb0">0.28</text>
+  <text x="395" y="137" text-anchor="middle" font-size="12" fill="#2b6cb0">0.14</text>
+  <text x="395" y="160" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+  <text x="452" y="104" font-size="11" fill="#5A6B80">n × 1</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   Careful with the words. The **whole table** is a *matrix* — rows and columns together. **A single column** of it is a *vector*.
+    -   So a data frame isn't a vector; it's a collection of them, stacked side by side. We'll come back to the whole table later this hour.
+-   A **vector** is an *ordered* list of numbers — unlike a set, the order is part of the object, and a repeated value is not the same as one value.
+-   Order matters here for a concrete reason: row 2 is India in $x$ *and* in $y$. Shuffling one column breaks the pairing between them.
+:::
+
+## Formal: Columns, Rows, and the Prime {.smaller}
+
+::: {.incremental}
+-   A column vector with $n$ entries is an $n \times 1$ object; a row vector is $1 \times n$.
+    $$\mathbf{x} = \begin{bmatrix} x_1 \\ x_2 \\ \vdots \\ x_n \end{bmatrix}_{n \times 1}, \qquad \mathbf{x}' = \begin{bmatrix} x_1 & x_2 & \cdots & x_n \end{bmatrix}_{1 \times n}$$
+-   **Convention (near-universal in stats):** unadorned means *column*. The prime $'$ (or superscript $\top$) turns it on its side.
+    -   Same $n$ numbers, same order, different shape — and the shape, as the next slide shows, is what decides which operations you can write down at all.
+-   In R this is just a numeric column: `df$polyarchy` is $\mathbf{x}$.
+:::
+
+## Every Object Has a Shape {.smaller}
+
+Before any operation at all, the rule that governs every one of them.
+
+::: {.incremental}
+-   Everything today is a **rectangle of numbers**, described by rows × columns — **rows first, always**.
+    -   A single number is $1\times1$. A column vector is $n\times1$. A row vector is $1\times n$. A matrix is $m\times n$.
+    -   Four names, one family. The shape is the only thing that changes.
+-   Shapes decide what you can write down. Two rules, and that's the whole of it:
+    -   **Conformable for addition:** the shapes must be **identical**. $(n\times1) + (n\times1)$ ✓, $(n\times1) + (1\times n)$ ✗.
+    -   **Conformable for multiplication:** the **inner** dimensions must match. They cancel; the **outer** pair survives as the answer's shape.
+-   **Conformable** is the word — it's what you'll see in print, so use it rather than "allowed" or "works". When shapes aren't conformable the operation simply does not exist: the expression isn't wrong, it's *meaningless*, like dividing by a colour.
+:::
+
+## Conformable or Not: Reading the Shapes {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 4px 0;">
+<svg width="620" height="215" viewBox="0 0 620 215" xmlns="http://www.w3.org/2000/svg">
+  <text x="20" y="18" font-size="12" font-weight="700" fill="#2f855a">CONFORMABLE</text>
+
+  <text x="60" y="60" font-size="22" fill="#22303F">(</text>
+  <text x="80" y="60" font-size="20" fill="#2f855a">3</text>
+  <text x="99" y="60" font-size="16" fill="#8a8f98">×</text>
+  <text x="118" y="60" font-size="20" fill="#B23A48">4</text>
+  <text x="136" y="60" font-size="22" fill="#22303F">)</text>
+  <text x="98" y="82" text-anchor="middle" font-size="11" font-style="italic" fill="#5A6B80">A</text>
+
+  <text x="168" y="60" font-size="22" fill="#22303F">(</text>
+  <text x="188" y="60" font-size="20" fill="#B23A48">4</text>
+  <text x="207" y="60" font-size="16" fill="#8a8f98">×</text>
+  <text x="226" y="60" font-size="20" fill="#2f855a">2</text>
+  <text x="244" y="60" font-size="22" fill="#22303F">)</text>
+  <text x="206" y="82" text-anchor="middle" font-size="11" font-style="italic" fill="#5A6B80">B</text>
+
+  <text x="278" y="60" font-size="20" fill="#5A6B80">=</text>
+  <text x="312" y="60" font-size="22" fill="#22303F">(</text>
+  <text x="332" y="60" font-size="20" fill="#2f855a">3</text>
+  <text x="351" y="60" font-size="16" fill="#8a8f98">×</text>
+  <text x="370" y="60" font-size="20" fill="#2f855a">2</text>
+  <text x="388" y="60" font-size="22" fill="#22303F">)</text>
+  <text x="350" y="82" text-anchor="middle" font-size="11" font-style="italic" fill="#5A6B80">C</text>
+
+  <path d="M122,30 C122,16 184,16 184,30" fill="none" stroke="#B23A48" stroke-width="1.6"/>
+  <text x="153" y="14" text-anchor="middle" font-size="11" fill="#B23A48">must match — then they vanish</text>
+
+  <path d="M84,70 C84,104 328,104 328,72" fill="none" stroke="#2f855a" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <path d="M230,70 C230,120 366,120 366,72" fill="none" stroke="#2f855a" stroke-width="1.4" stroke-dasharray="4,3"/>
+  <text x="470" y="60" font-size="11" fill="#2f855a">the outer pair survives —</text>
+  <text x="470" y="76" font-size="11" fill="#2f855a">it is the answer's shape</text>
+
+  <line x1="20" y1="136" x2="600" y2="136" stroke="#D9E0EA" stroke-width="1"/>
+
+  <text x="20" y="160" font-size="12" font-weight="700" fill="#B23A48">NOT CONFORMABLE</text>
+
+  <text x="100" y="196" font-size="22" fill="#22303F">(</text>
+  <text x="120" y="196" font-size="20" fill="#8a8f98">3</text>
+  <text x="139" y="196" font-size="16" fill="#8a8f98">×</text>
+  <text x="158" y="196" font-size="20" fill="#B23A48">4</text>
+  <text x="176" y="196" font-size="22" fill="#22303F">)</text>
+  <text x="208" y="196" font-size="22" fill="#22303F">(</text>
+  <text x="228" y="196" font-size="20" fill="#B23A48">2</text>
+  <text x="247" y="196" font-size="16" fill="#8a8f98">×</text>
+  <text x="266" y="196" font-size="20" fill="#8a8f98">5</text>
+  <text x="284" y="196" font-size="22" fill="#22303F">)</text>
+  <path d="M162,168 C162,154 224,154 224,168" fill="none" stroke="#B23A48" stroke-width="1.6"/>
+  <text x="193" y="152" text-anchor="middle" font-size="11" fill="#B23A48">4 ≠ 2</text>
+  <text x="330" y="196" font-size="22" fill="#B23A48">✗</text>
+  <text x="362" y="192" font-size="11" fill="#5A6B80">Not "wrong" — there is simply no</text>
+  <text x="362" y="208" font-size="11" fill="#5A6B80">such object to compute.</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   Read every matrix line this way and most of your first year becomes checkable: **name the shapes, see if the inner pair matches.**
+-   We cash this in twice today: a **row times a column** gives $(1\times n)(n\times 1) = 1\times1$ — a single number; a **matrix times a column** gives $(n\times k)(k\times 1) = n\times1$ — a whole column.
+    -   Both are the same rule. Neither needs new arithmetic.
+:::
+
+## Formal: Adding and Scaling {.smaller}
+
+Two operations on vectors. Both are done entry by entry, and both obey the rules from the last slide.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+**Addition** — add matching entries. Conformable only when the shapes are **identical**.
+
+$$\begin{bmatrix} 0.91 \\ 0.56 \\ 0.28 \end{bmatrix} + \begin{bmatrix} 0.03 \\ 0.10 \\ 0.02 \end{bmatrix} = \begin{bmatrix} 0.94 \\ 0.66 \\ 0.30 \end{bmatrix}$$
+
+$(n\times1) + (n\times1) = (n\times1)$
+:::
+
+::: {.column width="50%"}
+**Scalar multiplication** — multiply every entry by one number. Always conformable; shape never changes.
+
+$$2\begin{bmatrix} 0.91 \\ 0.56 \\ 0.28 \end{bmatrix} = \begin{bmatrix} 1.82 \\ 1.12 \\ 0.56 \end{bmatrix}$$
+
+$(1\times1)\cdot(n\times1) = (n\times1)$
+:::
+
+::::
+
+::: {.fragment}
+One vector is worth naming: $\mathbf{1}$, the $n\times1$ column of **all ones**. Scale it and you get a column of identical numbers — $\bar x\,\mathbf{1}$ is $\bar x$ repeated $n$ times. That is the standard move for turning a lone number into something you're *allowed* to add to or subtract from a column.
+:::
+
+## Example: Centering Is a Vector Operation {.smaller}
+
+One country at a time: $\tilde x_i = x_i - \bar x$. As vectors, using the $\mathbf{1}$ from the last slide:
+$\;\tilde{\mathbf{x}} = \mathbf{x} - \bar{x}\,\mathbf{1}$.
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 2px 0 4px;">
+<svg width="640" height="210" viewBox="0 0 640 210" xmlns="http://www.w3.org/2000/svg">
+  <!-- x -->
+  <text x="62" y="20" text-anchor="middle" font-size="12" fill="#22303F">polyarchy</text>
+  <text x="62" y="36" text-anchor="middle" font-size="13" font-style="italic" fill="#22303F">x</text>
+  <path d="M36,46 L28,46 L28,168 L36,168" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <path d="M88,46 L96,46 L96,168 L88,168" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <text x="62" y="68" text-anchor="middle" font-size="13" fill="#2b6cb0">0.91</text>
+  <text x="62" y="96" text-anchor="middle" font-size="13" fill="#2b6cb0">0.56</text>
+  <text x="62" y="124" text-anchor="middle" font-size="13" fill="#2b6cb0">0.28</text>
+  <text x="62" y="152" text-anchor="middle" font-size="13" fill="#2b6cb0">0.14</text>
+  <text x="62" y="166" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+  <text x="62" y="188" text-anchor="middle" font-size="11" fill="#5A6B80">n × 1</text>
+  <text x="112" y="72" font-size="9" fill="#8a8f98">Norway</text>
+  <text x="112" y="100" font-size="9" fill="#8a8f98">India</text>
+  <text x="112" y="128" font-size="9" fill="#8a8f98">Jordan</text>
+  <text x="112" y="156" font-size="9" fill="#8a8f98">Chad</text>
+
+  <text x="180" y="112" text-anchor="middle" font-size="22" fill="#5A6B80">−</text>
+
+  <!-- xbar * 1 -->
+  <text x="268" y="20" text-anchor="middle" font-size="12" fill="#22303F">the mean, stretched</text>
+  <text x="268" y="36" text-anchor="middle" font-size="13" font-style="italic" fill="#22303F">x̄ · 1</text>
+  <path d="M242,46 L234,46 L234,168 L242,168" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <path d="M294,46 L302,46 L302,168 L294,168" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <text x="268" y="68" text-anchor="middle" font-size="13" fill="#5A6B80">0.47</text>
+  <text x="268" y="96" text-anchor="middle" font-size="13" fill="#5A6B80">0.47</text>
+  <text x="268" y="124" text-anchor="middle" font-size="13" fill="#5A6B80">0.47</text>
+  <text x="268" y="152" text-anchor="middle" font-size="13" fill="#5A6B80">0.47</text>
+  <text x="268" y="166" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+  <text x="268" y="188" text-anchor="middle" font-size="11" fill="#5A6B80">n × 1</text>
+
+  <text x="340" y="112" text-anchor="middle" font-size="22" fill="#5A6B80">=</text>
+
+  <!-- xtilde -->
+  <text x="428" y="20" text-anchor="middle" font-size="12" fill="#22303F">centered</text>
+  <text x="428" y="36" text-anchor="middle" font-size="13" font-style="italic" fill="#22303F">x̃</text>
+  <path d="M402,46 L394,46 L394,168 L402,168" fill="none" stroke="#2f855a" stroke-width="1.5"/>
+  <path d="M454,46 L462,46 L462,168 L454,168" fill="none" stroke="#2f855a" stroke-width="1.5"/>
+  <rect x="396" y="52" width="56" height="24" fill="#EAF6EF"/>
+  <rect x="396" y="80" width="56" height="24" fill="#EAF6EF"/>
+  <rect x="396" y="108" width="56" height="24" fill="#EDF0F5"/>
+  <rect x="396" y="136" width="56" height="24" fill="#EDF0F5"/>
+  <text x="428" y="68" text-anchor="middle" font-size="13" fill="#2f855a">+0.44</text>
+  <text x="428" y="96" text-anchor="middle" font-size="13" fill="#2f855a">+0.09</text>
+  <text x="428" y="124" text-anchor="middle" font-size="13" fill="#B23A48">−0.19</text>
+  <text x="428" y="152" text-anchor="middle" font-size="13" fill="#B23A48">−0.33</text>
+  <text x="428" y="166" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+  <text x="428" y="188" text-anchor="middle" font-size="11" fill="#5A6B80">n × 1</text>
+
+  <text x="492" y="72" font-size="10" fill="#2f855a">above average</text>
+  <text x="492" y="100" font-size="10" fill="#2f855a">above average</text>
+  <text x="492" y="128" font-size="10" fill="#B23A48">below average</text>
+  <text x="492" y="156" font-size="10" fill="#B23A48">below average</text>
+
+  <text x="320" y="206" text-anchor="middle" font-size="11" fill="#8a8f98">Same shape in, same shape out — subtraction happens row by row.</text>
+</svg>
+</div>
+```
+
+
+::: {.fragment}
+The $\mathbf{1}$ is there to make the shapes match — you can't subtract a lone number from a column, so you stretch it into one.
+:::
+
+## What Centering Did, and Didn't {.smaller}
+
+::: {.incremental}
+-   **Didn't change:** the spacing between countries. Norway is still $0.77$ above Chad, before and after.
+-   **Did change:** where zero sits. Zero now means *average*, so the sign of an entry tells you which side of the mean a country is on.
+-   **Across all $n$**, the centered column sums to zero: $\sum_i(x_i - \bar x) = 0$.
+-   **The point of the notation:** one line replaced $n$ lines, and nothing conceptual changed.
+    -   In R you've been doing it this way since Monday: `x - mean(x)`.
+:::
+
+## Quick Drill: Vectors by the Numbers {.smaller}
+
+Let $\;\mathbf{a} = (2,\;5,\;2)'\;$ and $\;\mathbf{b} = (4,\;0,\;3)'\;$ — both $3\times1$ — and let $\;\mathbf{1} = (1,\;1,\;1)'$.
+
+::: {.incremental}
+-   **(a)** $\mathbf{a} + \mathbf{b} \;=\;$ [$(6,\;5,\;5)'$ — add matching entries. Still $3\times1$.]{.fragment}
+-   **(b)** $2\,\mathbf{a} \;=\;$ [$(4,\;10,\;4)'$ — every entry doubled. Shape unchanged.]{.fragment}
+-   **(c)** $\bar a \;=\;$ [$3$, so $\;\tilde{\mathbf{a}} = \mathbf{a} - 3\,\mathbf{1} = (-1,\;2,\;-1)'$ — and it sums to $0$, as a centered column always must.]{.fragment}
+-   **(d)** What shape is $\mathbf{a}'$, and are $\;\mathbf{a}\;$ and $\;\mathbf{b}'\;$ conformable for addition? [$\mathbf{a}'$ is $1\times3$. **Not conformable** — $3\times1$ and $1\times3$ are different shapes, even with the same three numbers.]{.fragment}
+-   **(e)** R evaluates `a + 5` without complaint. What comes back, and what should you have written? [$(7,\;10,\;7)'$ — R silently recycled the $5$. Properly: $\;\mathbf{a} + 5\,\mathbf{1}$.]{.fragment}
+:::
+
+::: {.fragment}
+**(e) is the one to remember.** Software's willingness to guess is exactly why you need the rule in your own head.
+:::
+
+# The Dot Product
+
+*The one operation that is secretly every formula you learned this week.*
+
+## Why We Need It {.smaller}
+
+::: {.incremental}
+-   Three sums keep turning up wherever two columns of data meet:
+    -   $\sum_i x_i$ — the numerator of the mean.
+    -   $\sum_i x_i^2$ — a sum of squares.
+    -   $\sum_i x_i y_i$ — the cross-product of two variables.
+-   Every one of them is the same shape of operation: *multiply in pairs, then add up*.
+-   Give that operation a name once, and all three collapse into one piece of notation.
+:::
+
+## Intuition: A Row Times a Column {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 2px 0 4px;">
+<svg width="660" height="268" viewBox="0 0 660 268" xmlns="http://www.w3.org/2000/svg">
+  <!-- row vector x' -->
+  <text x="20" y="30" font-size="13" font-style="italic" fill="#22303F">x′</text>
+  <text x="42" y="30" font-size="13" fill="#5A6B80">=</text>
+  <path d="M74,14 L64,14 L64,44 L74,44" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <path d="M414,14 L424,14 L424,44 L414,44" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <text x="118" y="34" text-anchor="middle" font-size="15" fill="#2b6cb0">0.91</text>
+  <text x="203" y="34" text-anchor="middle" font-size="15" fill="#e53e3e">0.56</text>
+  <text x="288" y="34" text-anchor="middle" font-size="15" fill="#38a169">0.28</text>
+  <text x="373" y="34" text-anchor="middle" font-size="15" fill="#d69e2e">0.14</text>
+  <text x="446" y="34" font-size="11" fill="#5A6B80">1 × 4</text>
+
+  <!-- pairing arrows -->
+  <path d="M118,48 L118,74 M113,67 L118,74 L123,67" fill="none" stroke="#2b6cb0" stroke-width="1.6"/>
+  <path d="M203,48 L203,74 M198,67 L203,74 L208,67" fill="none" stroke="#e53e3e" stroke-width="1.6"/>
+  <path d="M288,48 L288,74 M283,67 L288,74 L293,67" fill="none" stroke="#38a169" stroke-width="1.6"/>
+  <path d="M373,48 L373,74 M368,67 L373,74 L378,67" fill="none" stroke="#d69e2e" stroke-width="1.6"/>
+  <text x="486" y="66" font-size="11" fill="#8a8f98">pair them off,</text>
+  <text x="486" y="81" font-size="11" fill="#8a8f98">first with first</text>
+
+  <!-- column vector y, laid out to line up -->
+  <text x="20" y="98" font-size="13" font-style="italic" fill="#22303F">y</text>
+  <text x="42" y="98" font-size="13" fill="#5A6B80">=</text>
+  <path d="M74,82 L64,82 L64,112 L74,112" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <path d="M414,82 L424,82 L424,112 L414,112" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <text x="118" y="102" text-anchor="middle" font-size="15" fill="#2b6cb0">1.2</text>
+  <text x="203" y="102" text-anchor="middle" font-size="15" fill="#e53e3e">4.9</text>
+  <text x="288" y="102" text-anchor="middle" font-size="15" fill="#38a169">2.1</text>
+  <text x="373" y="102" text-anchor="middle" font-size="15" fill="#d69e2e">1.6</text>
+  <text x="430" y="102" font-size="13" fill="#22303F">′</text>
+  <text x="446" y="102" font-size="11" fill="#5A6B80">4 × 1</text>
+  <text x="486" y="106" font-size="10" fill="#8a8f98">written on its side</text>
+  <text x="486" y="120" font-size="10" fill="#8a8f98">so the pairs line up</text>
+
+  <line x1="20" y1="132" x2="640" y2="132" stroke="#D9E0EA" stroke-width="1"/>
+
+  <!-- multiply each pair -->
+  <text x="20" y="160" font-size="12" fill="#22303F">multiply</text>
+  <text x="20" y="176" font-size="12" fill="#22303F">each pair</text>
+  <text x="118" y="168" text-anchor="middle" font-size="12" fill="#2b6cb0">0.91×1.2</text>
+  <text x="203" y="168" text-anchor="middle" font-size="12" fill="#e53e3e">0.56×4.9</text>
+  <text x="288" y="168" text-anchor="middle" font-size="12" fill="#38a169">0.28×2.1</text>
+  <text x="373" y="168" text-anchor="middle" font-size="12" fill="#d69e2e">0.14×1.6</text>
+
+  <text x="118" y="196" text-anchor="middle" font-size="14" fill="#2b6cb0">1.092</text>
+  <text x="203" y="196" text-anchor="middle" font-size="14" fill="#e53e3e">2.744</text>
+  <text x="288" y="196" text-anchor="middle" font-size="14" fill="#38a169">0.588</text>
+  <text x="373" y="196" text-anchor="middle" font-size="14" fill="#d69e2e">0.224</text>
+  <text x="160" y="196" text-anchor="middle" font-size="14" fill="#5A6B80">+</text>
+  <text x="245" y="196" text-anchor="middle" font-size="14" fill="#5A6B80">+</text>
+  <text x="330" y="196" text-anchor="middle" font-size="14" fill="#5A6B80">+</text>
+
+  <!-- add them -->
+  <text x="20" y="234" font-size="12" fill="#22303F">then add</text>
+  <path d="M118,206 L240,222 M232,215 L240,222 L231,227" fill="none" stroke="#5A6B80" stroke-width="1.3"/>
+  <path d="M373,206 L262,222 M270,215 L262,222 L271,227" fill="none" stroke="#5A6B80" stroke-width="1.3"/>
+  <rect x="204" y="226" width="96" height="32" fill="#EAF6EF" stroke="#38a169" stroke-width="1.5"/>
+  <text x="252" y="248" text-anchor="middle" font-size="16" fill="#2f855a">4.648</text>
+  <text x="322" y="240" font-size="12" font-style="italic" fill="#22303F">x′y</text>
+  <text x="322" y="256" font-size="11" fill="#5A6B80">one number, 1 × 1</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   Each colour is one **pair**: the first entry of the row with the first entry of the column, and so on down the line.
+-   Multiply within each pair, then add the four results. **Two vectors in, one number out.**
+-   $(1\times 4)$ times $(4\times 1)$ gives $(1\times 1)$: the two $4$s faced each other and cancelled, the two $1$s survived.
+:::
+
+## Formal: The Dot Product {.smaller}
+
+::: {.incremental}
+-   For $\mathbf{x},\mathbf{y}$ both $n\times1$:
+    $$\mathbf{x}'\mathbf{y} \;=\; \sum_{i=1}^{n} x_i y_i \qquad (1\times n)(n\times1) = 1\times 1$$
+-   Note the shapes multiply the way you'd hope: the inner dimensions ($n$ and $n$) meet and vanish; the outer dimensions ($1$ and $1$) survive.
+    -   **That is the whole rule of matrix multiplication.** We will state it again in a moment for the general case, but you have now seen it.
+-   Special case worth memorizing: $\mathbf{x}'\mathbf{x} = \sum_i x_i^2$ — a sum of squares, always $\ge 0$.
+:::
+
+## One Operation, Three Names {.smaller}
+
+Textbooks call this same thing three different things. They are **synonyms** — the difference is only which feature the name points at.
+
+::: {.incremental}
+-   **Dot product** — named for the notation, a centred dot. The elementary name.
+    -   $\mathbf{x} \cdot \mathbf{y} \;=\; \sum_{i=1}^{n} x_i y_i$
+-   **Scalar product** — named for what comes *out*: a single scalar.
+    -   $\mathbf{x} \cdot \mathbf{y} \;=\; 4.648$, a $1\times1$
+-   **Inner product** — the general name, and the one econometrics tends to use.
+    -   $\langle \mathbf{x}, \mathbf{y}\rangle$ in abstract notation; $\;\mathbf{x}'\mathbf{y}$ in matrix notation
+:::
+
+::: {.fragment}
+**In this deck: "dot product", written $\mathbf{x}'\mathbf{y}$.** When you meet the other two names, they are not new operations.
+:::
+
+## Two Traps in Those Names {.smaller}
+
+::: {.incremental}
+-   **Scalar product $\neq$ scalar multiplication.** One word apart, completely different operations.
+    -   *Scalar product:* $\;\mathbf{x}'\mathbf{y}$ — two vectors in, **one number** out. $(1\times n)(n\times1) = 1\times1$.
+    -   *Scalar multiplication:* $\;c\,\mathbf{x}$ — a number and a vector in, **a vector** out, same shape as $\mathbf{x}$.
+-   **Inner product $\neq$ outer product.** Same two vectors, opposite order, wildly different results.
+    -   *Inner:* $\;\mathbf{x}'\mathbf{y}$ — $(1\times n)(n\times1) = 1\times1$, a **number**.
+    -   *Outer:* $\;\mathbf{x}\mathbf{y}'$ — $(n\times1)(1\times n) = n\times n$, a **whole matrix**.
+:::
+
+::: {.fragment}
+Both traps are settled the same way: **name the shapes.** One prime in the wrong place is the difference between a number and $n^2$ of them.
+:::
+
+## Example: Familiar Formulas, Compressed {.smaller}
+
+Write $\tilde{\mathbf{x}} = \mathbf{x} - \bar x\mathbf{1}$ and $\tilde{\mathbf{y}} = \mathbf{y} - \bar y\mathbf{1}$ for the centered columns, as on the last slide.
+
+::: {.incremental}
+-   **Sum**: $\;\mathbf{1}'\mathbf{x} = \sum_i x_i$, so the mean is $\bar x = \tfrac{1}{n}\mathbf{1}'\mathbf{x}$.
+-   **Sum of squares**: $\;\mathbf{x}'\mathbf{x} = \sum_i x_i^2$.
+-   **The variance's numerator**: $\;\tilde{\mathbf{x}}'\tilde{\mathbf{x}} = \sum_i (x_i - \bar x)^2$ — how much polyarchy moves on its own.
+-   **The covariance's numerator**: $\;\tilde{\mathbf{x}}'\tilde{\mathbf{y}} = \sum_i (x_i - \bar x)(y_i - \bar y)$ — how polyarchy and growth move together.
+-   The same arithmetic you would write with $\sum$, in fewer symbols.
+    -   Keep these last two in view. When we read $X'X$ and $X'y$ at the end of the hour, they are exactly these two objects with more columns.
+:::
+
+## Quick Drill: Is It a Number or a Vector? {.smaller}
+
+::: {.incremental}
+-   $\mathbf{x}$ and $\mathbf{y}$ are both $n\times 1$. For each, give the shape of the result:
+    -   **(a)** $\mathbf{x}'\mathbf{y}$
+    -   **(b)** $\mathbf{x}\mathbf{y}'$
+    -   **(c)** $\mathbf{x}\mathbf{y}$
+-   **Answers:** (a) $1\times1$ — a single number, the dot product. (b) $n \times n$ — a whole matrix, the **outer product**. (c) **not conformable**: $(n\times1)(n\times1)$, inner dimensions $1$ and $n$ don't match.
+-   Moral: $\mathbf{x}'\mathbf{y}$ and $\mathbf{x}\mathbf{y}'$ differ by one prime and by $n^2 - 1$ numbers.
+:::
+
+# Matrices
+
+*A stack of vectors, with dimensions you must keep in view.*
+
+## Why We Need Them {.smaller}
+
+::: {.incremental}
+-   So far: one predictor, polyarchy. But no one believes growth depends on democracy alone.
+-   Add GDP per capita in 2000, region dummies, an oil indicator, a colonial-origin indicator…
+-   Written out one predictor at a time, a $k$-predictor model needs $k$ separate equations, each with its own nested summations.
+    -   Doable. Unreadable — and it gets worse with every variable you add.
+-   Matrices are how the *same* model is written so it fits on one line, for any $k$.
+:::
+
+## Intuition: The Design Matrix {.smaller}
+
+```{=html}
+<div style="display:flex; justify-content:center; margin: 6px 0;">
+<svg width="620" height="215" viewBox="0 0 620 215" xmlns="http://www.w3.org/2000/svg">
+  <text x="10" y="16" font-size="13" fill="#22303F">X — the design matrix (n × k)</text>
+  <text x="20" y="40" font-size="11" fill="#8a8f98">intercept</text>
+  <text x="104" y="40" font-size="11" fill="#8a8f98">polyarchy</text>
+  <text x="196" y="40" font-size="11" fill="#8a8f98">log GDPpc</text>
+
+  <path d="M22,50 L12,50 L12,178 L22,178" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <path d="M268,50 L278,50 L278,178 L268,178" fill="none" stroke="#22303F" stroke-width="1.5"/>
+
+  <rect x="24" y="52" width="66" height="24" fill="#EDF0F5"/>
+  <rect x="24" y="80" width="66" height="24" fill="#EDF0F5"/>
+  <rect x="24" y="108" width="66" height="24" fill="#EDF0F5"/>
+  <rect x="24" y="136" width="66" height="24" fill="#EDF0F5"/>
+  <text x="57" y="69" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+  <text x="57" y="97" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+  <text x="57" y="125" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+  <text x="57" y="153" text-anchor="middle" font-size="12" fill="#5A6B80">1</text>
+
+  <text x="145" y="69" text-anchor="middle" font-size="12" fill="#2b6cb0">0.91</text>
+  <text x="145" y="97" text-anchor="middle" font-size="12" fill="#2b6cb0">0.56</text>
+  <text x="145" y="125" text-anchor="middle" font-size="12" fill="#2b6cb0">0.28</text>
+  <text x="145" y="153" text-anchor="middle" font-size="12" fill="#2b6cb0">0.14</text>
+
+  <text x="235" y="69" text-anchor="middle" font-size="12" fill="#5A6B80">10.9</text>
+  <text x="235" y="97" text-anchor="middle" font-size="12" fill="#5A6B80">7.3</text>
+  <text x="235" y="125" text-anchor="middle" font-size="12" fill="#5A6B80">8.1</text>
+  <text x="235" y="153" text-anchor="middle" font-size="12" fill="#5A6B80">6.5</text>
+
+  <text x="145" y="172" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+
+  <text x="292" y="69" font-size="10" fill="#8a8f98">Norway</text>
+  <text x="292" y="97" font-size="10" fill="#8a8f98">India</text>
+  <text x="292" y="125" font-size="10" fill="#8a8f98">Jordan</text>
+  <text x="292" y="153" font-size="10" fill="#8a8f98">Chad</text>
+
+  <path d="M12,192 L278,192" stroke="#5A6B80" stroke-width="1"/>
+  <text x="145" y="206" text-anchor="middle" font-size="11" fill="#5A6B80">k = 3 columns</text>
+  <text x="4" y="118" text-anchor="end" font-size="11" fill="#5A6B80" transform="rotate(-90 4 118)">n ≈ 175 rows</text>
+
+  <text x="390" y="16" font-size="13" fill="#22303F">y (n × 1)</text>
+  <path d="M406,50 L396,50 L396,178 L406,178" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <path d="M452,50 L462,50 L462,178 L452,178" fill="none" stroke="#22303F" stroke-width="1.5"/>
+  <text x="429" y="69" text-anchor="middle" font-size="12" fill="#2f855a">1.2</text>
+  <text x="429" y="97" text-anchor="middle" font-size="12" fill="#2f855a">4.9</text>
+  <text x="429" y="125" text-anchor="middle" font-size="12" fill="#2f855a">2.1</text>
+  <text x="429" y="153" text-anchor="middle" font-size="12" fill="#2f855a">1.6</text>
+  <text x="429" y="172" text-anchor="middle" font-size="12" fill="#8a8f98">⋮</text>
+
+  <text x="500" y="90" font-size="11" fill="#5A6B80">one row =</text>
+  <text x="500" y="106" font-size="11" fill="#5A6B80">one country</text>
+  <text x="500" y="126" font-size="11" fill="#5A6B80">one column =</text>
+  <text x="500" y="142" font-size="11" fill="#5A6B80">one variable</text>
+</svg>
+</div>
+```
+
+::: {.incremental}
+-   A matrix is your data frame with the country names peeled off and only the numbers left.
+-   The leading column of $1$s is not data — it's the bookkeeping device that gives you an intercept. We'll see exactly why when we read the model row by row at the end.
+:::
+
+## Formal: Dimensions and Elements {.smaller}
+
+::: {.incremental}
+-   $A$ is $m \times n$: $m$ rows, $n$ columns. **Rows first, always** — the same convention as vectors, where a column was $n\times1$.
+-   A single entry is $a_{ij}$: **row $i$, column $j$**. Row index first, again.
+    $$A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}_{2\times 3} \qquad a_{11} = 1, \quad a_{23} = 6, \quad a_{12} = 2$$
+-   $a_{23}$ is row 2, column 3 — **not** "the 23rd entry", and not column 2, row 3.
+    -   Getting this backwards is the most common slip when reading a summation like $\sum_i x_{ij}$.
+-   For our data, $X$ is $n\times k$: $x_{ij}$ is country $i$'s value on variable $j$.
+:::
+
+## Formal: Multiplication and Conformability {.smaller}
+
+::: {.incremental}
+-   The rule from the Vectors section, now in general. $AB$ exists **only if** the columns of $A$ equal the rows of $B$:
+    $$\underset{m\times \color{#2b6cb0}{n}}{A}\;\underset{\color{#2b6cb0}{n}\times p}{B} \;=\; \underset{m \times p}{C}, \qquad c_{ij} = \sum_{\ell=1}^{n} a_{i\ell}\,b_{\ell j}$$
+-   Entry $c_{ij}$ is exactly the **dot product** of row $i$ of $A$ with column $j$ of $B$. Nothing new since two sections ago.
+-   Inner dimensions must match and disappear; outer dimensions survive.
+-   **$AB \ne BA$.** Order is meaning, not style. Often $BA$ isn't even conformable.
+:::
+
+## Formal: The Transpose {.smaller}
+
+The same prime you met on vectors, now for a rectangle: **rows become columns.**
+
+$$A = \begin{bmatrix} 1 & 2 & 3 \\ 4 & 5 & 6 \end{bmatrix}_{2\times3} \qquad\Longrightarrow\qquad A' = \begin{bmatrix} 1 & 4 \\ 2 & 5 \\ 3 & 6 \end{bmatrix}_{3\times2}$$
+
+::: {.incremental}
+-   Row 1 of $A$ becomes column 1 of $A'$; row 2 becomes column 2.
+-   Formally $(A')_{ij} = a_{ji}$ — the indices swap, and an $m\times n$ becomes $n\times m$.
+:::
+
+## Two Transpose Rules, and What They Build {.smaller}
+
+::: {.incremental}
+-   $(A')' = A$ — do it twice and you're back where you started.
+-   $(AB)' = B'A'$ — **the order reverses.** Not a typo, and the step most often got wrong when reading a variance derivation.
+:::
+
+::: {.fragment}
+Now we can build the object this hour keeps pointing at. $X$ is $n\times k$, so $X'$ is $k\times n$:
+
+$$X'X \;=\; (k\times n)(n\times k) \;=\; k\times k$$
+
+Small and square **however many countries there are** — the $n$ met itself in the middle and cancelled.
+:::
+
+## Named by Shape: Scalars and Columns {.smaller}
+
+The first set of names say nothing but **how many rows and columns**.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Scalar — $1\times1$
+
+$$\begin{bmatrix}7\end{bmatrix}$$
+
+An ordinary number, wearing brackets. A mean, a variance, or the $\mathbf{x}'\mathbf{y}$ you computed a moment ago.
+:::
+
+::: {.column width="50%"}
+### Column vector — $n\times1$
+
+$$\begin{bmatrix}1.2\\4.9\\2.1\end{bmatrix}$$
+
+One variable, one entry per country. The outcome $\mathbf{y}$ is one of these.
+:::
+
+::::
+
+## Named by Shape: Rows and Rectangles {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Row vector — $1\times n$
+
+$$\begin{bmatrix}1.2 & 4.9 & 2.1\end{bmatrix}$$
+
+One country, one entry per variable. A single row of the data table.
+:::
+
+::: {.column width="50%"}
+### Rectangular — $m \neq n$
+
+$$\begin{bmatrix}1&2&3\\4&5&6\end{bmatrix}$$
+
+More rows than columns, or fewer. The design matrix $X$ is one: $n \times k$, and $n$ is far bigger.
+:::
+
+::::
+
+## Named by Shape: Square {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Square — $m = n$
+
+$$\begin{bmatrix}4&1\\2&3\end{bmatrix}$$
+
+As many rows as columns.
+:::
+
+::: {.column width="50%"}
+We built one two slides ago:
+
+$$X'X \;=\; (k\times n)(n\times k) \;=\; k\times k$$
+
+Square whatever $n$ is: $175$ countries or $17$, $X'X$ is still $k\times k$.
+:::
+
+::::
+
+::: {.fragment}
+**One family, four names so far.** None of these is a new kind of object — a scalar is simply a matrix that ran out of rows and columns.
+:::
+
+## Named by Structure: Symmetric and Diagonal {.smaller}
+
+The second set say **where the zeros are**, or how a matrix relates to its own transpose. Both of these are square.
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Symmetric — $A = A'$
+
+$$\begin{bmatrix}4&\color{#2b6cb0}{1}\\ \color{#2b6cb0}{1}&3\end{bmatrix}$$
+
+Swap rows for columns and nothing changes. Every variance–covariance matrix is one.
+:::
+
+::: {.column width="50%"}
+### Diagonal — off-diagonal entries all $0$
+
+$$\begin{bmatrix}4&0\\0&3\end{bmatrix}$$
+
+Only the top-left-to-bottom-right entries survive. It scales each row by its own number and does nothing else.
+:::
+
+::::
+
+## Named by Structure: The Identity {.smaller}
+
+:::: {.columns}
+
+::: {.column width="50%"}
+### Identity $I$ — $1$s down the middle
+
+$$I = \begin{bmatrix}1&0\\0&1\end{bmatrix}$$
+
+$$IA = AI = A$$
+
+The matrix world's number $1$: multiply by it and nothing changes.
+:::
+
+::: {.column width="50%"}
+::: {.fragment}
+**The nesting.** Every identity is diagonal; every diagonal is square; and symmetric implies square too, since $A$ and $A'$ can't be equal unless the shape survives the swap.
+:::
+
+::: {.fragment}
+**And $X'X$ is symmetric** — using only the two transpose rules:
+$$(X'X)' = X'(X')' = X'X \;\checkmark$$
+:::
+:::
+
+::::
+
+## Example: Reading Shapes Off the Regression {.smaller}
+
+A regression model, written for $k$ predictors at once. Our only job right now is to check the shapes.
+
+::: {.incremental}
+-   $X$ is $n\times k$, $\beta$ is $k\times1$, $y$ is $n\times1$, $\varepsilon$ is $n\times1$.
+-   $$\underset{n\times1}{y} \;=\; \underset{n\times k}{X}\,\underset{k\times1}{\beta} \;+\; \underset{n\times1}{\varepsilon}$$
+-   Check it: $(n\times k)(k\times1) = n\times1$. ✓ Matches $y$. ✓ Matches $\varepsilon$. The shapes conform.
+-   Row $i$ of $X\beta$ spells out $\;\beta_1 + \beta_2 x_{i2} + \beta_3 x_{i3}$ — the leading column of $1$s is what makes $\beta_1$ the intercept.
+:::
+
+## Quick Drill: Types and Transposes {.smaller}
+
+::: {.incremental}
+-   **(a)** $A$ is $3\times5$. What shape is $A'$? [$5\times3$ — the dimensions swap.]{.fragment}
+-   **(b)** Can a $3\times5$ matrix be symmetric? [**No.** $A'$ would be $5\times3$, so $A = A'$ can't even be written down. Symmetric requires square.]{.fragment}
+-   **(c)** $B = \begin{bmatrix}2&0\\0&7\end{bmatrix}$. Name every label that fits. [Square, diagonal, **and** symmetric — a diagonal matrix always equals its own transpose. Not the identity, since the entries aren't $1$s.]{.fragment}
+-   **(d)** $X$ is $n\times k$. Is $X'X$ symmetric? [**Yes** — $(X'X)' = X'(X')' = X'X$, using $(AB)'=B'A'$ and $(A')'=A$. This is why variance–covariance matrices are always symmetric.]{.fragment}
+-   **(e)** What is $IA$, for $I$ the identity of the right size? [$A$ itself — multiplying by $I$ changes nothing, exactly as multiplying a number by $1$ changes nothing.]{.fragment}
+:::
+
+## Quick Drill: Conformability {.smaller}
+
+::: {.incremental}
+-   $X$ is $n\times k$, $y$ is $n\times 1$. Conformable or not — and if so, what shape?
+    -   **(a)** $X'X$
+    -   **(b)** $XX'$
+    -   **(c)** $X'y$
+    -   **(d)** $Xy$
+-   **Answers:** (a) $k\times k$ ✓. (b) $n\times n$ ✓ — conformable but enormous ($175\times175$ here), and almost never what you want. (c) $k\times1$ ✓. (d) not conformable: $(n\times k)(n\times1)$, inner dimensions $k$ and $n$ don't match.
+-   If you can do this drill reliably, you can audit most matrix lines you'll be shown this year.
+:::
+
+# Regression as a System of Equations
+
+*What the matrix notation has been compressing all along.*
+
+## Two Equations, Two Unknowns {.smaller}
+
+Ordinary algebra, nothing new. Two facts about two unknown numbers:
+
+$$
+\begin{aligned}
+2x + y &= 5 \\
+x - y &= 1
+\end{aligned}
+$$
+
+::: {.incremental}
+-   Add the two equations: the $y$s cancel, leaving $3x = 6$, so $x = 2$.
+-   Substitute back: $2 - y = 1$, so $y = 1$.
+-   **Two equations, two unknowns, one exact answer.** Hold on to that phrase — in a moment it stops being true.
+:::
+
+## The Same System, in Matrix Form {.smaller}
+
+Pull the system apart into three pieces: the **coefficients**, the **unknowns**, and the **right-hand sides**.
+
+$$
+\underbrace{\begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix}}_{A}
+\underbrace{\begin{bmatrix} x \\ y \end{bmatrix}}_{\mathbf{x}}
+=
+\underbrace{\begin{bmatrix} 5 \\ 1 \end{bmatrix}}_{\mathbf{b}}
+\qquad\text{that is,}\qquad
+A\mathbf{x} = \mathbf{b}
+$$
+
+::: {.incremental}
+-   Multiply out row 1: $2x + 1y = 5$. Row 2: $1x - 1y = 1$. **The original system, exactly.**
+-   Shapes: $(2\times2)(2\times1) = 2\times1$ ✓ — conformable, matching $\mathbf{b}$.
+-   So matrix notation isn't a new kind of mathematics. It's a system of equations with the bookkeeping pulled out into its own boxes.
+:::
+
+## Undoing $A$ {.smaller}
+
+::: {.incremental}
+-   With one equation, $ax = b$, you solve by **dividing**: $x = b/a$.
+-   With a matrix there is **no division**. Instead we write the undo step with a superscript $-1$:
+    $$A\mathbf{x} = \mathbf{b} \qquad\Longrightarrow\qquad \mathbf{x} = A^{-1}\mathbf{b}$$
+-   $A^{-1}$ is called the **inverse** of $A$ — the matrix that undoes whatever $A$ did.
+:::
+
+## The Inverse, on Our $2\times2$ {.smaller}
+
+$A^{-1}$ is defined by what it does: $\;A^{-1}A = I$, the identity from the zoo. For the system we just solved,
+
+$$A = \begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix} \qquad A^{-1} = \frac{1}{3}\begin{bmatrix} 1 & 1 \\ 1 & -2 \end{bmatrix}$$
+
+::: {.fragment}
+Check it — multiply them and the identity falls out:
+
+$$A^{-1}A = \frac{1}{3}\begin{bmatrix} 1 & 1 \\ 1 & -2 \end{bmatrix}\begin{bmatrix} 2 & 1 \\ 1 & -1 \end{bmatrix} = \frac{1}{3}\begin{bmatrix} 3 & 0 \\ 0 & 3 \end{bmatrix} = \begin{bmatrix} 1 & 0 \\ 0 & 1 \end{bmatrix} = I \;\checkmark$$
+:::
+
+::: {.fragment}
+And it solves the system: $\;\mathbf{x} = A^{-1}\mathbf{b} = \frac{1}{3}\begin{bmatrix} 1 & 1 \\ 1 & -2 \end{bmatrix}\begin{bmatrix} 5 \\ 1 \end{bmatrix} = \frac{1}{3}\begin{bmatrix} 6 \\ 3 \end{bmatrix} = \begin{bmatrix} 2 \\ 1 \end{bmatrix}$ — the same $x=2$, $y=1$ we got by elimination.
+:::
+
+## The Model, Written Out {.smaller}
+
+$$\underset{n\times1}{\mathbf{y}} \;=\; \underset{n\times k}{X}\;\underset{k\times1}{\boldsymbol\beta} \;+\; \underset{n\times1}{\boldsymbol\varepsilon}$$
+
+::: {.fragment}
+Four countries, two predictors — so $n = 4$ and $k = 3$, because **the intercept column counts**:
+
+$$
+\underbrace{\begin{bmatrix} 1.2 \\ 4.9 \\ 2.1 \\ 1.6 \end{bmatrix}}_{\mathbf{y}\;(4\times1)}
+=
+\underbrace{\begin{bmatrix} 1 & 0.91 & 10.9 \\ 1 & 0.56 & 7.3 \\ 1 & 0.28 & 8.1 \\ 1 & 0.14 & 6.5 \end{bmatrix}}_{X\;(4\times3)}
+\underbrace{\begin{bmatrix} \beta_1 \\ \beta_2 \\ \beta_3 \end{bmatrix}}_{\boldsymbol\beta\;(3\times1)}
++
+\underbrace{\begin{bmatrix} \varepsilon_1 \\ \varepsilon_2 \\ \varepsilon_3 \\ \varepsilon_4 \end{bmatrix}}_{\boldsymbol\varepsilon\;(4\times1)}
+$$
+:::
+
+::: {.fragment}
+Shapes: $(4\times1) = (4\times3)(3\times1) + (4\times1)$ ✓ — conformable, and both sides come out $4\times1$.
+:::
+
+## One Row at a Time {.smaller}
+
+Same trick as the $2\times2$: multiply out one row and you get back an ordinary equation. This is **equation 2 of 4** — India:
+
+$$
+\underbrace{4.9}_{y_2}
+\;=\;
+\beta_1(1) \;+\; \beta_2(0.56) \;+\; \beta_3(7.3) \;+\; \varepsilon_2
+$$
+
+::: {.incremental}
+-   The leading $1$ is what makes $\beta_1$ an **intercept** — it multiplies the same $1$ in every row, so it shifts every prediction equally.
+-   $\beta_2$ is what one full unit of polyarchy is worth in growth; $\beta_3$ the same for log GDP per capita.
+-   Four countries, four equations like this one, stacked. **Nothing is hidden in the notation — it's a system, written compactly.**
+:::
+
+## Every Piece, Named {.smaller}
+
+| Object | Shape | What it holds | Known? |
+|---|---|---|---|
+| $\mathbf{y}$ | $4\times1$ | growth, one entry per country | **known** — it's data |
+| $X$ | $4\times3$ | a column of $1$s, polyarchy, log GDP per capita | **known** — it's data |
+| $\boldsymbol\beta$ | $3\times1$ | one slope per column of $X$ | **unknown** — what we want |
+| $\boldsymbol\varepsilon$ | $4\times1$ | what the model misses, per country | **unknown** |
+
+::: {.fragment}
+Two known, two unknown — the same situation as $A\mathbf{x} = \mathbf{b}$, where $A$ and $\mathbf{b}$ were given and $\mathbf{x}$ was not.
+:::
+
+## Taller Than It Is Wide {.smaller}
+
+::: {.incremental}
+-   The $2\times2$ system had **two equations and two unknowns**, and one exact answer.
+-   The real dataset has **$n \approx 175$ equations and $k = 3$ unknowns** — one equation per country, three coefficients.
+-   With that many more equations than unknowns, there is **no exact answer**. No three numbers satisfy all 175 equations at once.
+    -   Which is just the familiar fact that no straight line passes through every point of a scatterplot.
+-   So we don't *solve* the system. We take the **best compromise** — the $\hat{\boldsymbol\beta}$ that misses by as little as possible, measured by squared misses.
+    -   That is what the name **least squares** refers to.
+:::
+
+## The Estimator, Read Left to Right {.smaller}
+
+$$\hat{\boldsymbol\beta} \;=\; (X'X)^{-1}X'\mathbf{y}$$
+
+Same four countries, so $X$ is $4\times3$ and $\mathbf{y}$ is $4\times1$:
+
+::: {.incremental}
+-   $X'$ — $(3\times4)$. The design matrix on its side.
+-   $X'\mathbf{y}$ — $(3\times4)(4\times1) = 3\times1$. One dot product per predictor with the outcome: **the covariance-ish part.**
+-   $X'X$ — $(3\times4)(4\times3) = 3\times3$. Square and symmetric: **the variance-ish part.** It stays $3\times3$ — it never grows with the number of countries.
+-   $(X'X)^{-1}$ — still $3\times3$, and by now you know how to read it: *undo the $X'X$ part.*
+-   All together: $(3\times3)(3\times1) = 3\times1$. **One number per column of $X$.** ✓
+:::
+
+## What Comes Out {.smaller}
+
+$$\hat{\boldsymbol\beta} = \begin{bmatrix} \hat\beta_1 \\ \hat\beta_2 \\ \hat\beta_3 \end{bmatrix}_{3\times1} \qquad\longleftrightarrow\qquad \texttt{lm(growth ~ polyarchy + loggdp)}$$
+
+::: {.incremental}
+-   Three columns in, three coefficients out — one per column of $X$, in the order the columns appear.
+-   That is exactly the coefficient table R prints: **the matrix formula and the R output are the same object.**
+:::
+
+## Quick Drill: Audit the Line {.smaller}
+
+::: {.incremental}
+-   $X$ is $n\times k$ and $\mathbf{y}$ is $n\times1$. One of these is written correctly — which, and what's wrong with the others?
+    -   **(a)** $\hat\beta = (XX')^{-1}X'y$
+    -   **(b)** $\hat\beta = (X'X)^{-1}Xy$
+    -   **(c)** $\hat\beta = (X'X)^{-1}X'y$
+    -   **(d)** $\hat\beta = X'y(X'X)^{-1}$
+-   **Answer: (c).** Every wrong one fails on shape alone:
+    -   (a) $XX'$ is $n\times n$, and $X'y$ is $k\times1$ — so $(n\times n)(k\times1)$ is not conformable.
+    -   (b) $Xy$ is not conformable: $(n\times k)(n\times1)$.
+    -   (d) $(k\times1)(k\times k)$ — inner dimensions don't match. **Order is meaning.**
+:::
+
+# Play With It
+
+*One matrix, yours to change. Everything else on these three slides follows from it.*
+
+## Your $3\times3$, and Its Transpose {.smaller}
+
+```{=html}
+<style>
+/* .viz caps at 45vh; these slides carry nothing but a heading, so allow more room. */
+.reveal .slides .viz.viz-matrixlab {
+  max-height: 72vh;
+  font-size: 0.58em;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+.reveal .slides .viz-matrixlab .ml-row { display: flex; align-items: center; justify-content: center; gap: 24px; flex-wrap: wrap; width: 100%; }
+.reveal .slides .viz-matrixlab .ml-block { text-align: center; }
+.reveal .slides .viz-matrixlab .ml-label { color: #5A6B80; margin-bottom: 7px; white-space: nowrap; font-size: 0.95em; }
+.reveal .slides .viz-matrixlab table { border-collapse: collapse; margin: 0 auto; }
+.reveal .slides .viz-matrixlab td {
+  border: 1px solid #D9E0EA; padding: 0;
+  width: 66px; height: 50px;
+  text-align: center; vertical-align: middle;
+  background: #fff; font-size: 1.2em; font-variant-numeric: tabular-nums;
+}
+.reveal .slides .viz-matrixlab td.out  { background: #F7F8FA; color: #22303F; }
+.reveal .slides .viz-matrixlab td.diag { background: #EDF0F5; }
+.reveal .slides .viz-matrixlab td.mark { background: #EAF6EF; color: #2f855a; font-weight: 700; }
+.reveal .slides .viz-matrixlab input {
+  width: 64px; height: 48px;
+  border: 0; text-align: center;
+  font: inherit; font-size: 1em; font-weight: 600;
+  color: #2b6cb0; background: transparent;
+  -moz-appearance: textfield;
+}
+.reveal .slides .viz-matrixlab input::-webkit-outer-spin-button,
+.reveal .slides .viz-matrixlab input::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.reveal .slides .viz-matrixlab input:focus { outline: 2px solid #2b6cb0; background: #EDF0F5; }
+.reveal .slides .viz-matrixlab .ml-op { font-size: 2em; color: #5A6B80; line-height: 1; }
+.reveal .slides .viz-matrixlab .ml-btns { display: flex; gap: 9px; justify-content: center; flex-wrap: wrap; }
+.reveal .slides .viz-matrixlab .ml-btns button {
+  font: inherit; font-size: 0.92em; padding: 6px 14px;
+  border: 1px solid #2b6cb0; background: #fff; color: #2b6cb0;
+  border-radius: 4px; cursor: pointer;
+}
+.reveal .slides .viz-matrixlab .ml-btns button:hover { background: #2b6cb0; color: #fff; }
+.reveal .slides .viz-matrixlab .ml-line {
+  background: #F7F8FA; border-left: 4px solid #2b6cb0;
+  padding: 10px 14px; margin: 0 auto;
+  color: #22303F; text-align: left;
+  max-width: 860px; font-size: 0.98em; line-height: 1.45;
+}
+.reveal .slides .viz-matrixlab .ml-badges { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+.reveal .slides .viz-matrixlab .ml-badge {
+  border: 1px solid #D9E0EA; border-radius: 5px;
+  padding: 8px 14px; min-width: 156px; line-height: 1.4;
+}
+.reveal .slides .viz-matrixlab .ml-badge.yes { border-color: #38a169; background: #EAF6EF; color: #2f855a; }
+.reveal .slides .viz-matrixlab .ml-badge.no  { border-color: #D9E0EA; background: #F7F8FA; color: #8a8f98; }
+.reveal .slides .viz-matrixlab .ml-badge b { display: block; font-size: 1.02em; }
+.reveal .slides .viz-matrixlab .ml-badge span { font-size: 0.86em; }
+</style>
+
+<div class="viz viz-matrixlab" id="mlPanel1">
+  <div class="ml-row" data-slot="grids"></div>
+  <div class="ml-btns" data-slot="btns"></div>
+  <div class="ml-line" data-slot="line"></div>
+</div>
+```
+
+## Which Names Fit? {.smaller}
+
+```{=html}
+<div class="viz viz-matrixlab" id="mlPanel2">
+  <div class="ml-row" data-slot="grids"></div>
+  <div class="ml-badges" data-slot="badges"></div>
+  <div class="ml-btns" data-slot="btns"></div>
+  <div class="ml-line" data-slot="line"></div>
+</div>
+```
+
+## Building $A'A$ {.smaller}
+
+```{=html}
+<div class="viz viz-matrixlab" id="mlPanel3">
+  <div class="ml-row" data-slot="grids"></div>
+  <div class="ml-btns" data-slot="btns"></div>
+  <div class="ml-line" data-slot="line"></div>
+</div>
+
+<script>
+(function(){
+  var START=[[2,1,0],[0,3,1],[1,0,2]];
+  var A=START.map(function(r){return r.slice();});
+  var P1=document.getElementById("mlPanel1"),
+      P2=document.getElementById("mlPanel2"),
+      P3=document.getElementById("mlPanel3");
+  if(!P1||!P2||!P3) return;
+  var PANELS=[P1,P2,P3];
+
+  function T(M){return [0,1,2].map(function(i){return [0,1,2].map(function(j){return M[j][i];});});}
+  function mul(M,N){return [0,1,2].map(function(i){return [0,1,2].map(function(j){
+    return M[i][0]*N[0][j]+M[i][1]*N[1][j]+M[i][2]*N[2][j];});});}
+  function isSym(M){return M[0][1]===M[1][0]&&M[0][2]===M[2][0]&&M[1][2]===M[2][1];}
+  function offZero(M){return [[0,1],[0,2],[1,0],[1,2],[2,0],[2,1]].every(function(p){return M[p[0]][p[1]]===0;});}
+  function isIdent(M){return offZero(M)&&M[0][0]===1&&M[1][1]===1&&M[2][2]===1;}
+  function firstAsym(M){var q=[[0,1],[0,2],[1,2]];
+    for(var k=0;k<q.length;k++){var i=q[k][0],j=q[k][1]; if(M[i][j]!==M[j][i])return{i:i,j:j};}
+    return null;}
+  function col(M,j){return [M[0][j],M[1][j],M[2][j]];}
+
+  function gridIn(cellCls){
+    var h="<table>";
+    for(var i=0;i<3;i++){h+="<tr>";
+      for(var j=0;j<3;j++){
+        h+="<td class='"+(cellCls?cellCls(i,j):"")+"'><input type='number' step='1' data-i='"+i+"' data-j='"+j+"'></td>";}
+      h+="</tr>";}
+    return h+"</table>";
+  }
+  function gridOut(key,cellCls){
+    var h="<table>";
+    for(var i=0;i<3;i++){h+="<tr>";
+      for(var j=0;j<3;j++){
+        h+="<td class='"+(cellCls?cellCls(i,j):"out")+"' data-m='"+key+"' data-i='"+i+"' data-j='"+j+"'></td>";}
+      h+="</tr>";}
+    return h+"</table>";
+  }
+  function block(label,inner){return "<div class='ml-block'><div class='ml-label'>"+label+"</div>"+inner+"</div>";}
+  var BTNS="<button data-do='reset'>Reset</button>"
+         +"<button data-do='sym'>Make it symmetric</button>"
+         +"<button data-do='diag'>Make it diagonal</button>"
+         +"<button data-do='ident'>Make it the identity</button>";
+
+  // ---- build the DOM once; inputs are never recreated after this ----
+  P1.querySelector("[data-slot=grids]").innerHTML =
+      block("<b>A</b> &mdash; type in it", gridIn())
+    + "<div class='ml-op'>&rarr;</div>"
+    + block("<b>A&prime;</b> &mdash; rows became columns", gridOut("at"));
+  P2.querySelector("[data-slot=grids]").innerHTML =
+      block("<b>A</b> &mdash; type in it", gridIn(function(i,j){return i===j?"diag":"";}));
+  P3.querySelector("[data-slot=grids]").innerHTML =
+      block("<b>A&prime;</b>", gridOut("at"))
+    + "<div class='ml-op'>&times;</div>"
+    + block("<b>A</b> &mdash; type in it", gridIn())
+    + "<div class='ml-op'>=</div>"
+    + block("<b>A&prime;A</b> &mdash; always symmetric", gridOut("ata", function(i,j){
+        return (i===0&&j===1)||(i===1&&j===0) ? "mark" : "out";}));
+  PANELS.forEach(function(P){
+    var b=P.querySelector("[data-slot=btns]"); if(b) b.innerHTML=BTNS;
+  });
+
+  // ---- refresh values only; skip the input currently being typed in ----
+  function update(src){
+    var At=T(A), AtA=mul(At,A);
+    PANELS.forEach(function(P){
+      P.querySelectorAll("input[data-i]").forEach(function(el){
+        if(el!==src) el.value = A[+el.dataset.i][+el.dataset.j];
+      });
+      P.querySelectorAll("td[data-m=at]").forEach(function(td){
+        td.textContent = At[+td.dataset.i][+td.dataset.j];
+      });
+      P.querySelectorAll("td[data-m=ata]").forEach(function(td){
+        td.textContent = AtA[+td.dataset.i][+td.dataset.j];
+      });
+    });
+
+    P1.querySelector("[data-slot=line]").innerHTML =
+      "Row 1 of <b>A</b> is (" + A[0].join(", ") + ") &mdash; read it down column 1 of <b>A&prime;</b>. "
+      + "Entry a<sub>12</sub> = " + A[0][1] + " has moved to position (2,1).";
+
+    var sym=isSym(A), dg=offZero(A), id=isIdent(A), asym=firstAsym(A);
+    function badge(on,name,test){
+      return "<div class='ml-badge "+(on?"yes":"no")+"'><b>"+(on?"✓ ":"✗ ")+name+"</b><span>"+test+"</span></div>";
+    }
+    P2.querySelector("[data-slot=badges]").innerHTML =
+        badge(true,"Square","3 rows, 3 columns")
+      + badge(sym,"Symmetric","A = A&prime;")
+      + badge(dg,"Diagonal","off-diagonals all 0")
+      + badge(id,"Identity","diagonal, all 1s");
+    P2.querySelector("[data-slot=line]").innerHTML = id
+      ? "This is <b>I</b>. Multiply anything by it and nothing changes."
+      : (sym
+        ? (dg ? "Diagonal, so symmetric automatically &mdash; a diagonal matrix always equals its own transpose."
+              : "Symmetric: every a<sub>ij</sub> matches a<sub>ji</sub>, so the swap changes nothing.")
+        : "Not symmetric: a<sub>"+(asym.i+1)+(asym.j+1)+"</sub> = "+A[asym.i][asym.j]
+          +" but a<sub>"+(asym.j+1)+(asym.i+1)+"</sub> = "+A[asym.j][asym.i]+". One mismatched pair is enough.");
+
+    var c1=col(A,0), c2=col(A,1);
+    P3.querySelector("[data-slot=line]").innerHTML =
+      "The green entry is column 1 of <b>A</b> dotted with column 2: ("+c1.join(", ")+") &middot; ("+c2.join(", ")+") = "
+      + c1[0]+"&times;"+c2[0]+" + "+c1[1]+"&times;"+c2[1]+" + "+c1[2]+"&times;"+c2[2]
+      + " = <b>"+AtA[0][1]+"</b>. Every entry is one column dotted with another &mdash; which is why A&prime;A comes out symmetric.";
+  }
+
+  // ---- delegated events: bound once, survive every update ----
+  PANELS.forEach(function(P){
+    P.addEventListener("input", function(e){
+      var el=e.target; if(!el.matches("input[data-i]")) return;
+      var v=parseFloat(el.value); if(isNaN(v)) return;
+      A[+el.dataset.i][+el.dataset.j]=v;
+      update(el);
+    });
+    P.addEventListener("click", function(e){
+      var b=e.target.closest("[data-slot=btns] button"); if(!b) return;
+      var d=b.getAttribute("data-do");
+      if(d==="reset") A=START.map(function(r){return r.slice();});
+      else if(d==="sym"){ A[1][0]=A[0][1]; A[2][0]=A[0][2]; A[2][1]=A[1][2]; }
+      else if(d==="diag") A=[[A[0][0],0,0],[0,A[1][1],0],[0,0,A[2][2]]];
+      else if(d==="ident") A=[[1,0,0],[0,1,0],[0,0,1]];
+      update(null);
+    });
+    P.addEventListener("keydown", function(e){ e.stopPropagation(); });
+  });
+
+  update(null);
+})();
+</script>
+```
+
+## What We Deliberately Skipped {.smaller}
+
+::: {.incremental}
+-   **Determinants** — the single number that says whether a matrix can be undone at all.
+-   **Inverses, beyond the notation** — how $A^{-1}$ is computed, and when it fails to exist.
+-   **Rank, span, basis** — the vocabulary for when columns carry redundant information.
+-   **Eigenvalues and eigenvectors** — central to PCA, factor analysis, Markov chains.
+-   **Projection** — the geometric picture of OLS, and genuinely beautiful.
+:::
+
+::: {.fragment}
+All of it is the post-camp linear algebra series. You now have the vocabulary to start it.
+:::
+
+## References {.smaller}
+
+::: {.incremental}
+-   **IQSS Prefresher — Linear Algebra** (Harvard IQSS): [https://iqss.github.io/prefresher/05_matrices.html](https://iqss.github.io/prefresher/05_matrices.html)
+-   **3Blue1Brown, *Essence of Linear Algebra*** — the geometric intuition we skipped, done properly: [playlist](https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab)
+-   **Setosa.io** — interactive visual explanations, including [eigenvectors](https://setosa.io/ev/eigenvectors-and-eigenvalues/): [https://setosa.io/](https://setosa.io/#/)
+-   Moore, W. H., & Siegel, D. A. (2013). *A Mathematics Course for Political and Social Research* — Ch. 12–14 on matrices.
+:::
+
+##  {.center}
+
+**Next session:** [Intro to Advanced Topics](05-advanced-topics.html)
+
+**Programming lecture:** [Webpage Chapter](../chapters/05-advanced-topics/programming.html)
+
+**Back to:** [Math Camp 2026 website](../index.html)

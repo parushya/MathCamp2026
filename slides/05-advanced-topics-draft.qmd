@@ -6,64 +6,239 @@ date: today
 ---
 
 <!--
-Day 5 Session 2 (Intro to Advanced Topics). SYNCED from
-slides/05-advanced-topics-draft.qmd on 2026-08-21. This deck carries the
-draft in full, 47 slides. EDIT THE DRAFT FIRST, then re-sync, so the two do
-not diverge -- the draft also keeps the pass-by-pass edit history and the
-record of what was deliberately cut, which is not repeated here.
+DRAFT. Day 5 Session 2 (Intro to Advanced Topics). Created 2026-08-20
+alongside 05-linear-algebra-draft.qmd, which is now Day 5 Session 1. This
+file supersedes the stub slides/05-advanced-topics.qmd; sync into that file
+once the content settles.
 
-This is the camp's closing session and it is a BRIDGE. Three blocks:
+This is the camp's closing session and it is a BRIDGE, not a new course.
 
-  1. From Population to Sample -- population/parameter -> sample/statistic,
-     the Greek-vs-hat convention, estimand vs. estimator vs. estimate, and
-     the three conditions under which a statistic speaks for what you wanted.
-  2. Frequentist and Bayesian -- named only AFTER students notice they have
-     been doing one of them all afternoon. The split is made precisely, via
-     p(e|H) vs. p(H|e) and the prior as what converts one into the other,
-     not via characterisations of the two camps. Ends on tooling: MCMC, the
-     R packages for each, Gelman & Hill.
-  3. Causality -- the potential-outcomes table, the decomposition, the four
-     estimands (ATE/ATT/ATC/CATE), and five identification designs.
+RESTRUCTURED 2026-08-20. The first draft carried seven blocks / ~35 slides,
+far too much for a closing bridge session. Cut to three teaching blocks plus
+the map:
 
-CONSTRAINTS THAT ARE LOAD-BEARING -- read before editing:
+  1. From Population to Sample   2. Frequentist and Bayesian   3. Causality
 
-  - DO NOT COLOUR MATH WITH \textcolor OR \color. It fails silently under
-    Quarto's MathJax and kills the whole equation. Colour comes from pandoc
-    spans instead: [$E[Y(1)|X=1]$]{.obs}. One scheme runs the causality
-    block -- .obs BLUE #2b6cb0 = we observe it, .unobs RED #B23A48 = it
-    never happened, so we never see it. Every estimand is read off its
-    colours; ATT being "half observed" is the point of that slide.
+DELIBERATELY CUT -- do not re-add without a conversation:
+  - The standalone "Estimand, Estimator, Estimate" block. It is now FOLDED
+    INTO block 1, where it names the rungs of the population/parameter ->
+    sample/statistic ladder rather than standing on its own.
+  - "Two Facts, By Demonstration" (LLN and CLT, with two .viz placeholders).
+    The CLT now survives only as a named clause on the interval slide -- we
+    borrow the 1.96 from it, we do not teach it. HANDOFF #6 wanted these by
+    simulation; simulation is a better fit for the R companion than for the
+    last hour of the last day.
+  - "Standard Errors and Confidence Intervals" as a block. Reduced to ONE
+    slide, the Example stage of block 1. That slide is load-bearing and must
+    not be cut: HANDOFF #7 moved frequentist-vs-Bayesian to Friday precisely
+    so students argue about an interval they have already built. No interval
+    on screen, no block 2.
+  Note this departs from schedule.qmd / syllabus.qmd, which have been
+  updated to match.
 
-  - ALL NUMBERS ARE ILLUSTRATIVE. The deck was deliberately de-anchored from
-    real dataset values. In the potential-outcomes table the values are
-    chosen so the visible comparison gets the SIGN wrong (true average effect
-    +0.125, visible comparison -1.55) -- that gap IS the bias named two
-    slides later. Keep that relationship if the values are ever edited, and
-    keep the two tables column-identical so nothing shifts between them.
+Everything is worked through the MEAN, not through beta-hat: mu = E[X] is the
+parameter, X-bar is the estimator, the printed number is the estimate. Day 3's
+expectation algebra is the only machinery needed. Keep it simple -- beta and
+the D notation come back only in block 3, where we are quoting what their
+October courses will actually write.
 
-  - PREREQUISITE AUDIT (checked against chapters/0N/programming.qmd and
-    slides/0N-*.qmd, not against what was planned): NO REGRESSION HAS EVER
-    BEEN RUN IN R -- no lm(), confint(), broom, or model summary anywhere;
-    Day 4 reaches geom_smooth(method = "lm") and stops. No standard error is
-    ever computed. Beta-hat is never derived. Var(Xbar) = sigma^2/n is never
-    derived. The type-shift is explicitly out of scope on Day 3. Datasets
-    seen in R are JPRdata_select.csv, COW country codes and mpg -- NOT V-Dem.
-    Safe to assume: mean(), var(), sd(), quantiles, summary(), table(),
-    group-wise means, factors, data frames, subsetting, conditionals, dplyr,
-    pipes, ggplot, set.seed()/rnorm(). Do not write as though more has been
-    covered.
+SECOND PASS 2026-08-20. Block 1 was rebuilt again, at request, to start from
+the ground up and stay conceptual:
 
-  - The dialect equivalence -- E[eps|X]=0 and "the selection-bias term is
-    zero" as one claim in two notations -- is the payoff of the entire week
-    (HANDOFF, "two load-bearing conceptual moves"). Do not compress it.
+  Why: Populations and Parameters   (population -> parameter -> sample ->
+                                     statistic -> estimator -> estimate;
+                                     Greek vs. hat convention, in a table)
+  The Estimand                      (the PHILOSOPHICAL move: a parameter is a
+                                     fact about a population, an estimand is a
+                                     fact about your question; they coincide
+                                     only sometimes)
+  Intuition: Two Worlds             (the visual, now AFTER the concepts, and
+                                     carrying "when is the estimand simply the
+                                     parameter?")
+  Why We Imagine Repeating the Study (repeated sampling as a CONCEPT, the CLT
+                                     as what makes it usable, and why honest
+                                     studies produce overlapping intervals)
 
-  - The design slides (experiments, DiD, RDD, IV, matching) are TWO LINES
-    each plus a small inline SVG. They are signposts, not a course.
+NINTH PASS 2026-08-21. Decomposition rebuilt.
+  - The three-term equation (ATE + baseline bias + differential effect bias)
+    was too complex AND DID NOT RENDER: \textcolor{#hex} inside $$...$$ fails
+    under Quarto's MathJax. DO NOT COLOUR MATH WITH \textcolor OR \color.
+    Colour comes from pandoc spans instead -- [$E[Y(1)|X=1]$]{.obs} -- which
+    MathJax inherits via currentColor. Same trick as [?]{.po-miss}.
+  - ONE colour scheme now runs through the whole block: .obs BLUE #2b6cb0 =
+    we observe it; .unobs RED #B23A48 = it never happened, so we never see it.
+    Every estimand is read off its colours; ATT is "half observed" and that is
+    the point of that slide.
+  - The decomposition is now the add-and-subtract shown in three short lines
+    (what we compute / same thing in potential outcomes / what we want),
+    followed by "The Bias Is That One Red Term".
+  - tau is now EXPLAINED, on "Now the Notation": it is just the Greek letter
+    for a causal effect, as mu was for a mean, and like mu it is a parameter.
+  - Base font dropped 0.92em -> 0.88em to keep these slides inside the frame.
 
-Deck-local CSS sits in a <style> block below: density controls, .po-table /
-.po-miss / .po-obs for the potential-outcomes tables, .obs / .unobs and
-.eqline for the decomposition, .design-fig for the method figures. Shared
-styling stays in slides/slides.css.
+EIGHTH PASS 2026-08-21. Causality block extended into a full arc:
+  - "Now the Notation" split (it overflowed): the mapping table stays, the
+    fundamental-problem bullets move to their own slide.
+  - New "Y and X: The General Notation" -- X treatment (binary OR continuous),
+    Y outcome, Y(1)/Y(0) the POTENTIAL outcomes, W covariates. The deck
+    switches from G/D to Y/X here and says so explicitly.
+  - The decomposition is now step-wise. One base equation
+    (SDO = ATE + baseline bias + differential effect bias, aligned over three
+    lines) is REPRINTED on each of the next slides with the focal term in
+    #B23A48 and the rest dimmed to #A9B2BD via \textcolor. If those colours
+    ever stop rendering, the \underbrace labels still carry the meaning.
+  - Own slides for: Baseline Bias, Selection Bias (the MECHANISM -- selection
+    on levels produces the baseline term, selection on gains produces the
+    third term; note that many texts call the baseline term "selection bias"),
+    ATE, ATT, ATC, CATE.
+  - "Why Some Designs Escape the Problem" defines EXOGENOUS vs endogenous in
+    words before the formal (Y(1),Y(0)) independent of X.
+  - Five design slides, two lines each plus a small inline SVG: randomised
+    experiments, difference-in-differences, regression discontinuity,
+    instrumental variables, matching. Figures use .design-fig and the standard
+    palette. Keep them at two lines -- they are signposts, not a course.
+  - "Where This Week Reappears" (the map table) REMOVED at request.
+
+SEVENTH PASS 2026-08-21. Causality block reopened from the top:
+  - "The Estimate We Have" now DEFINES its terms (G, D, E[G|D=1], E[G|D=0])
+    instead of assuming them, and says what the comparison does give.
+  - Split off "Why That Is Not Yet a Cause": the two obstacles in PLAIN WORDS,
+    no notation -- the groups were already different (baseline), and regimes
+    are not handed out at random (selection). "The Decomposition" later shows
+    these are the same thing formally, so do not add notation here.
+  - GROWTH IS NOW G, NOT Y, throughout the causality block, with a one-line
+    note that textbooks write Y. Kept consistent on the block-1 estimand line.
+  - The full table now reveals COLUMN BY COLUMN (raw HTML, shared
+    data-fragment-index per column, .po-table) with plain-English headers and
+    no notation. Notation arrives two slides later, on "Now the Notation".
+  - Countries are Norway / Denmark / Saudi Arabia / North Korea.
+  - NUMBERS CHANGED so the visible comparison gets the SIGN wrong, not just
+    the magnitude: true average effect +0.125, visible comparison -1.55. That
+    is the strongest version of the point and it feeds "The Decomposition".
+    Keep that relationship if the values are ever edited.
+  - "Formal: Potential Outcomes" is gone; "Now the Notation" replaces it and
+    maps each plain-English column onto its symbol.
+
+SIXTH PASS 2026-08-21. Added the potential-outcomes ("science") table to the
+causality block, as two slides before "Formal: Potential Outcomes":
+"If We Could See Both Columns" (the complete table, effects computable) and
+"What We Actually See" (counterfactual cells blanked to a red "?"). The
+contrast between the two is the point -- keep the columns identical so nothing
+shifts between slides. "Formal: Potential Outcomes" was trimmed to match; it
+no longer restates "you see Y(1) or Y(0), never both", which the tables now
+show, and instead names tau = E[Y(1)-Y(0)] as the estimand.
+
+THE NUMBERS ARE ILLUSTRATIVE AND MUST STAY THAT WAY -- the deck was
+deliberately de-anchored from real dataset values in an earlier pass. They are
+chosen so the arithmetic teaches: true average effect -0.325, naive visible
+comparison -3.85, i.e. off by an order of magnitude. That gap IS the
+selection-bias term named two slides later on "The Decomposition", so the two
+slides reinforce each other. If the values are ever edited, keep that
+relationship intact.
+
+FIFTH PASS 2026-08-20 -- PREREQUISITE AUDIT. Checked line by line against
+what the earlier sessions actually deliver (chapters/0N/programming.qmd and
+slides/0N-*.qmd), not against what was planned. Findings and corrections:
+
+  - NO REGRESSION HAS EVER BEEN RUN IN R. No lm(), no confint(), no broom, no
+    model summary, in any programming chapter. Day 4 reaches
+    geom_smooth(method = "lm") -- a line on a scatterplot, no coefficient
+    table. So the deck may NOT say "R prints an interval next to every
+    estimate". Fixed on "The Same Interval, Two Readings".
+  - NO STANDARD ERROR IS EVER COMPUTED, by hand or in R. "SE [TODO]" removed
+    from "The Estimate We Have".
+  - BETA-HAT IS NEVER DERIVED. Day 4's agenda advertises "The Join --
+    deriving bivariate beta-hat from a minimization criterion", but that deck
+    stops after "What a Derivative Is"; there is no optimization/FOC section.
+  - VAR(XBAR) = SIGMA^2/N IS NEVER DERIVED ANYWHERE. A previous pass sent
+    students off to redo it "from Day 4"; Day 4 does not have it. Fixed.
+  - THE TYPE-SHIFT IS DELIBERATELY NOT TAUGHT. slides/03-uncertainty-extended
+    -and-expected.qmd says so in an explicit comment: E[Y|X] as a random
+    variable and Adam's Law are out of scope there. Claims to the contrary
+    removed. NOTE: HANDOFF calls the type-shift one of the two load-bearing
+    moves of the week, so it is currently taught NOWHERE.
+  - SAFE TO ASSUME IN R: mean(), var(), sd(), quantiles, summary(), table(),
+    aggregate()/group-wise means, factors, data frames, subsetting,
+    conditionals, dplyr verbs, pipes, ggplot + geom_smooth, set.seed()/rnorm()
+    in passing.
+  - DATASETS SEEN IN R ARE JPRdata_select.csv, COW country codes, and mpg --
+    NOT V-Dem. Polyarchy and growth exist for students only as slide examples
+    (a 20-country toy world on Days 1-2, percentile bins on Day 3). Keep the
+    running example CONCEPTUAL; do not write as though they have the V-Dem
+    cross-section loaded in front of them.
+
+FOURTH PASS 2026-08-20. The parameter/statistic naming table moved to its own
+slide ("Greek and Hats"); the estimator/estimate bullet moved onto "Estimand,
+Estimator, Estimate"; and "Why We Imagine Repeating the Study" was CUT as
+confusing. CONSEQUENCE: the deck no longer builds the sampling distribution,
+the standard error, or the interval at all -- block 2 now introduces [2.1, 3.3]
+as something R hands you, which students have seen in regression output. If
+block 2 ever feels ungrounded on the day, that missing slide is why.
+
+THIRD PASS 2026-08-20. Overflow fixes and a proper opening for block 2:
+  - "The Estimand" split into two slides (the parameter-vs-estimand
+    philosophy, then estimand/estimator/estimate + unbiased/consistent).
+  - "Intuition: Two Worlds" split into two: the figure alone, then "When Is
+    the Estimand Simply the Parameter?" (representativeness / measurement /
+    descriptive-not-causal -- three assumptions, none checkable from data).
+  - "Why This Argument Is Worth Having Now" CUT; it was doing the same work
+    twice and confusing the handoff into block 2.
+  - The "# Frequentist and Bayesian" divider is BACK (the previous pass's
+    asymmetry is reversed), and block 2 now opens by naming what students
+    have been doing unknowingly: "Everything So Far Has Been Frequentist",
+    then "How Bayesians Differ", then "The Coin That Splits Them".
+  - Those three slides draw on the 2025 deck, Resources/Slide Decks 2025/
+    Latex_materials_mc/Latex/Slides/Math Camp Slides - Probability/main.tex,
+    frames "Frequentist vs. Bayesian" (constant-but-unknown vs. parameter-as-
+    random-variable; "confident" vs. "an opinion I update"; truth vs.
+    prediction and perspective; academia leans frequentist for causal
+    identification) and its already-flipped-coin example, which is the
+    cleanest philosophical wedge in the archive. Reuse it verbatim in spirit.
+  - "The Split, Precisely" became "The Same Interval, Two Readings", narrowed
+    to confidence vs. credible on [2.1, 3.3] so it no longer duplicates the
+    general philosophy now taught one slide earlier.
+
+ALSO CUT in this pass -- deliberate, do not restore silently:
+  - "Formal: Three Names for Three Things" (three-box SVG) and "Formal:
+    Notation and Vocabulary". Both were reading as unmotivated formalism
+    arriving out of nowhere; their content is now built up in prose across
+    the first two slides.
+  - "Intuition: Repeat the Study" (the population -> samples -> histogram
+    SVG). Too much machinery for the point being made; replaced by the plain
+    conceptual slide above.
+  - "Formal: The Distribution of an Estimator".
+  - The READ-ALONG DERIVATION of Var(Xbar) = sigma^2/n, and its find-the-error
+    drill. NOTE THE COST: HANDOFF's "The goal, as settled" makes reading a
+    variance derivation line by line the stated goal of the week, and this was
+    the last place in the camp where that peaked. The Day 4 deck must now
+    carry it alone, or the goal goes unmet.
+  - "Example: Putting a Width on the Number" and "Quick Drill: Name the
+    Object". The interval survives as the last bullet of the repeated-samples
+    slide, because block 2 is unusable without one on screen.
+  - The "# Frequentist and Bayesian" section divider, so that block now opens
+    straight into "Why This Argument Is Worth Having Now". Causality and The
+    Map still have dividers -- this is a deliberate asymmetry, not an
+    oversight.
+
+The dialect equivalence -- E[eps|X]=0 and "the selection-bias term is zero"
+as one claim in two notations -- is the payoff of the entire week
+(HANDOFF, "two load-bearing conceptual moves"). Do not compress it.
+
+Running example is the standing one (RUNNING_EXAMPLE.md): V-Dem
+cross-section, X = polyarchy 2000, Y = mean annual log GDP p.c. growth
+2000-2019, D = 1{polyarchy > 0.5}, n ~ 175.
+
+Block 1 now OPENS FROM THE BASICS -- population/parameter vs sample/statistic,
+Greek vs hat, with age and income as throwaway illustrations before the V-Dem
+growth mean takes over on the "Three Names" slide. The old opener ("we have
+every country -- a standard error of WHAT?", with its superpopulation /
+model-based / measurement trichotomy) was CUT 2026-08-20 as too sharp an
+entry point. If it is wanted back it belongs AFTER "Repeat the Study", once
+students know what a sampling distribution is, not before.
+
+TODO(draft): print the real n, the real xbar/s/SE, and the real D-gap from
+the V-Dem slice on every slide that currently shows a placeholder number.
+Placeholders in use: n = 175, xbar = 2.7, SE = 0.31, CI = [2.1, 3.3].
 
 Arc: Why -> Intuition -> Formal -> Example -> Quick Drill per topic block;
 stage carried by the slide title, not an on-slide label.
